@@ -1,0 +1,46 @@
+plugins {
+    id 'com.android.test'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.celzero.bravedns.benchmark'
+    compileSdk 36
+
+    defaultConfig {
+        minSdk 23
+        targetSdk 35
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        // This benchmark build type is used for keyboard benchmarks
+        benchmark {
+            debuggable = false
+            matchingFallbacks = ['release']
+        }
+    }
+
+    // :app declares two flavor dimensions (releaseChannel: play/fdroid/website,
+    // releaseType: full). "releaseType" only has one flavor so it's unambiguous,
+    // but "releaseChannel" has three, so AGP can't pick a variant of :app to test
+    // against without this module declaring a matching flavor — without it you get
+    // "Could not resolve project :app" for every benchmark testTarget.
+    // Pinned to "fdroid" since that's the Google-free channel this fork targets.
+    flavorDimensions = ["releaseChannel"]
+    productFlavors {
+        fdroid {
+            dimension "releaseChannel"
+        }
+    }
+
+    targetProjectPath = ":app"
+    experimentalProperties["android.experimental.self-instrumenting"] = true
+}
+
+dependencies {
+    implementation "androidx.benchmark:benchmark-macro-junit4:1.3.3"
+    implementation "androidx.test.ext:junit:1.3.0"
+    implementation "androidx.test.uiautomator:uiautomator:2.3.0"
+}

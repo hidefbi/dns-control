@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:versionCode="67"
+    android:versionName="v056"> <!-- 67 for v056 -->
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SYSTEM_EXEMPTED" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- https://developer.android.com/about/versions/13/behavior-changes-all#notification-permission -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Allows applications to change network connectivity state -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!-- WiFi and Location permissions required for SSID access -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- location permissions removed: they were only ever used to read the current
+         Wi-Fi SSID for WireGuard's per-network auto-switch feature (an Android platform
+         quirk pre-API 33, not for actual location tracking). That feature is now disabled
+         in SsidPermissionManager.kt / ConnectionMonitor.kt instead of requesting this. -->
+
+    
+    <!-- Android 11 introduces changes related to package visibility. These changes affect
+    apps only if they target Android 11.
+    https://developer.android.com/training/package-visibility -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <!-- Allows the app to perform actions across different users on the device. -->
+    <uses-permission
+        android:name="android.permission.INTERACT_ACROSS_USERS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- ACCESS_LOCAL_NETWORK: restored. Removing this broke VPN connection startup entirely —
+         turns out this isn't optional app-level code (nothing in Kotlin references it because
+         the requirement is enforced by the OS/VpnService layer itself, not by this app's own
+         code), it's a newer Android platform permission gating local-network/routing access
+         that VPN establishment itself depends on. Confirmed by testing: without it, "start
+         connection" stops working outright. Keeping it. -->
+    <uses-permission android:name="android.permission.ACCESS_LOCAL_NETWORK" />
+
+    <!-- https://github.com/celzero/rethink-app/issues/786 set memtagMode to off -->
+    <application
+        android:name=".RethinkDnsApplication"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:allowNativeHeapPointerTagging="false"
+        android:gwpAsanMode="never"
+        android:memtagMode="off"
+        android:pageSizeCompat="enabled"
+        android:enableOnBackInvokedCallback="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        tools:ignore="ForegroundServicePermission">
+
+        <service
+            android:name=".service.BraveVPNService"
+            android:exported="true"
+            android:foregroundServiceType="systemExempted|connectedDevice"
+            android:permission="android.permission.BIND_VPN_SERVICE"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="android.net.VpnService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.net.VpnService.SUPPORTS_ALWAYS_ON"
+                android:value="true" />
+            <meta-data
+                android:name="android.net.VpnService.SUPPORTS_LOCKDOWN"
+                android:value="true" />
+        </service>
+        <service
+            android:name=".service.BraveTileService"
+            android:exported="true"
+            android:icon="@drawable/shield_green"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            tools:targetApi="24">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
+    </application>
+</manifest>

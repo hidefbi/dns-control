@@ -1,0 +1,50 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '2.2.10'
+    repositories {
+        google()
+        // https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/
+        // jcenter() is no longer getting updates, instead using mavenCentral
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+plugins {
+    id 'com.google.devtools.ksp' version '2.3.6' apply false
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
+        def firestackRepo = project.findProperty("firestackRepo") ?: "github"
+
+        if (firestackRepo == "jitpack") {
+            // jitpack.io/#celzero/firestack
+            maven { url 'https://jitpack.io' }
+        } else if (firestackRepo == "github") {
+            // jitpack.io
+            maven {
+                name = 'GitHubPackages'
+                url = uri("https://jitpack.io")
+                credentials {
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME_GITHUB")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN_GITHUB")
+                }
+            }
+        } else {
+            // ossrh: https://central.sonatype.com/artifact/com.celzero/firestack/
+            // no-op; mavenCentral is already included
+        }
+    }
+}
+
+tasks.register('clean', Delete) {
+    delete rootProject.buildDir
+}
