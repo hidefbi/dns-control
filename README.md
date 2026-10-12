@@ -7,6 +7,23 @@ lets you decide which apps may reach the network.
 > This is an unofficial fork. It is not affiliated with or endorsed by RethinkDNS,
 > BraveDNS, or any DNS provider. See [NOTICE](NOTICE) for details.
 
+## Download
+
+Latest release: [v0.0.677](https://github.com/hidefbi/dns-control/releases/tag/v0.0.677)
+
+- APK: `DNS-Control-v0.0.677.apk`
+- SHA-256: `1a60c9ee384ad8d7132b79b4d6ce1ddd0e807c1c52a6f0854ac05760a5231579`
+- Signed by hidefbi, certificate SHA-256 `f06abe97928a05566812a4d3e45881b9bf30f2a242cae263b481c39a9075261f`
+
+Check the download before installing:
+
+```
+shasum -a 256 DNS-Control-v0.0.677.apk
+```
+
+Updates from earlier releases signed with the same key install over the existing
+app and keep its data.
+
 ## Features
 
 - Encrypted DNS: DNS-over-HTTPS, DNS-over-TLS, ODoH and DNSCrypt (ODoH and
