@@ -24,8 +24,6 @@ This app does not ship with any DNSCrypt or ODoH servers or relays. For
 transparency, add them yourself: copy an address from the sources below, then
 add it manually in the app on your phone (DNSCrypt and ODoH screens).
 
-为了追求透明，请都自行添加：从下面的链接复制地址，然后在手机上的 App 中手动添加。
-
 - DNSCrypt target servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
 - DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md
 - ODoH target servers: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md

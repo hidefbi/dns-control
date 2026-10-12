@@ -524,7 +524,7 @@
             android:layout_marginEnd="4dp"
             android:layout_marginTop="4dp"
             app:cardCornerRadius="8dp"
-            android:layout_marginBottom="80dp">
+            android:layout_marginBottom="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -935,16 +935,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/donate_section_title"
-                    android:textAppearance="?attr/textAppearanceTitleSmall"
-                    android:textColor="?attr/primaryTextColor"
-                    android:textStyle="bold" />
+                    android:textAppearance="@style/TextAppearance.Material3.BodyLarge.Emphasized"
+                    android:textColor="?attr/primaryTextColor" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="@string/donate_section_desc"
-                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?attr/primaryLightColorText" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -954,7 +953,7 @@
                     android:autoLink="web"
                     android:linksClickable="true"
                     android:text="@string/donate_repo_url"
-                    android:textAppearance="?attr/textAppearanceBodyMedium"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?attr/accentGood"
                     android:textIsSelectable="true" />
 
@@ -963,14 +962,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/donate_btc_label"
-                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?attr/primaryLightColorText" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/donate_btc_address"
-                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?attr/primaryTextColor"
                     android:textIsSelectable="true" />
 
@@ -979,14 +978,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/donate_eth_label"
-                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?attr/primaryLightColorText" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/donate_eth_address"
-                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                     android:textColor="?attr/primaryTextColor"
                     android:textIsSelectable="true" />
 
