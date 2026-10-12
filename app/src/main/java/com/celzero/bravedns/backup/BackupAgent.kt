@@ -286,9 +286,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
             // commenting out the below code. still testing it out.
             // TODO: check if the journal files are needed for restore
             // skip journal files, they are not needed for restore
-            /*if (f.path.endsWith("-journal") || f.path.endsWith("-shm") || f.path.endsWith("-wal")) {
-                continue
-            }*/
             val databaseFile =
                 backUpFile(f.absolutePath, constructDbFileName(path, f.name)) ?: return false
             if (f.name == AppDatabase.DATABASE_NAME) {

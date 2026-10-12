@@ -694,35 +694,7 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
             b.dnsServersText.visibility = View.GONE
         }
 
-        // uncomment this if we want to show the public key, addresses, listen port and mtu
-        /*b.publicKeyText.text = wgInterface?.getKeyPair()?.getPublicKey()?.base64()
 
-        if (wgInterface?.getAddresses()?.isEmpty() == true) {
-            b.addressesLabel.visibility = View.GONE
-            b.addressesText.visibility = View.GONE
-        } else {
-            b.addressesText.text = wgInterface?.getAddresses()?.joinToString { it.toString() }
-        }*/
-
-        /*if (wgInterface?.dnsServers?.isEmpty() == true) {
-                    b.dnsServersText.visibility = View.GONE
-              b.dnsServersLabel.visibility = View.GONE
-                } else {
-                    b.dnsServersText.text =
-                        wgInterface?.dnsServers?.joinToString { it.hostAddress?.toString() ?: "" }
-                }
-        if (wgInterface?.listenPort?.isPresent == true) {
-            b.listenPortText.text = wgInterface?.listenPort?.get().toString()
-        } else {
-            b.listenPortLabel.visibility = View.GONE
-            b.listenPortText.visibility = View.GONE
-        }
-        if (wgInterface?.mtu?.isPresent == true) {
-            b.mtuText.text = wgInterface?.mtu?.get().toString()
-        } else {
-            b.mtuLabel.visibility = View.GONE
-            b.mtuText.visibility = View.GONE
-        }*/
     }
 
     private fun handleAppsCount() {
@@ -758,10 +730,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
         b.deleteBtn.setOnClickListener { showDeleteInterfaceDialog() }
 
-        /*b.newConfLayout.setOnClickListener {
-            b.newConfProgressBar.visibility = View.VISIBLE
-            io { createConfigOrShowErrorLayout() }
-        }*/
 
         b.publicKeyLabel.setOnClickListener {
             UIUtils.clipboardCopy(this, b.publicKeyText.text.toString(), CLIPBOARD_PUBLIC_KEY_LBL)

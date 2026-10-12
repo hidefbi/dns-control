@@ -380,14 +380,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             // network with zero addresses
             // TODO: in case of wg, bind to the network depending on the call from go, wg ips
             // will always be zero.
-            /*if (
-                (destIp.isZero && who.startsWith(ID_WG_BASE)) ||
-                destIp.isZero ||
-                destIp.isLoopback
-            ) {
-                logd("bind: zero ip: $destIp, who: $who, addr: $addrPort")
-                return
-            }*/
 
             pfd = ParcelFileDescriptor.adoptFd(fid.toInt())
 
@@ -2041,9 +2033,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                             // as leaks are not possible.
                             // doing so also fixes 'endpoint closed' errors which are frequent in lockdown mode
                             // now unlink happens before creating new tunFd, see restartVpn()
-                            /* if (lockdown) {
-                                vpnAdapter?.unlink()
-                            } */
                             // in case, if vpn-adapter exists, update the existing vpn-adapter
                             if (vpnAdapter?.updateLinkAndRoutes(fd, mtu, nwMtu, protos) == false) {
                                 Logger.e(LOG_TAG_VPN, "err update vpn-adapter")
@@ -4193,13 +4182,5 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         return tunUnderlyingNetworks.isEmpty()
     }
 
-    /*override fun onUnbind(intent: Intent?): Boolean {
-        Logger.w(LOG_TAG_VPN, "onUnbind, stop vpn adapter")
-        // onUnbind is called when the vpn is disconnected by signalStopService or if
-        // some other vpn service is started by the user, so stop the vpn adapter in onUnbind which
-        // will close tunFd which is a prerequisite for onDestroy()
-        stopVpnAdapter()
-        return super.onUnbind(intent)
-    }*/
 
 }

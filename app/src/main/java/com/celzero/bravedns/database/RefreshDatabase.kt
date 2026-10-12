@@ -1066,23 +1066,6 @@ internal constructor(
     /** Below code to fetch the google play service-application category Not in use as of now. */
     private fun fetchCategory(): String {
         return PlayStoreCategory.OTHER.name
-        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            return PlayStoreCategory.OTHER.name
-        }else {
-            try {
-                val url =
-                    "$APP_URL$packageName&hl=en" //https://play.google.com/store/apps/details?id=com.example.app&hl=en
-                //Logger.d(LOG_TAG,"Insert Category: $packageName")
-                val categoryRaw = parseAndExtractCategory(url)
-                //Logger.d(LOG_TAG,"Insert Category2: $packageName")
-                val storeCategory =
-                    PlayStoreCategory.fromCategoryName(categoryRaw ?: PlayStoreCategory.OTHER.name)
-                return storeCategory.name
-            } catch (e: Exception) {
-                Logger.w(LOG_TAG, "Exception while fetching the category:" + e.message, e)
-                return PlayStoreCategory.OTHER.name
-            }
-        }*/
 
     }
 

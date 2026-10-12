@@ -1057,11 +1057,6 @@ class ConnectionMonitor(private val context: Context, private val networkListene
          */
         private suspend fun determineVpnProtos(nws: Set<NetworkAndSsid?>): Pair<Boolean, Boolean>? {
             val vpnNw = nws.firstOrNull { isVPN(it?.network) == true }
-            /*if (vpnNw == null) {
-                // fallback to the active network if the vpn network is not found
-                val allNws = cm.allNetworks
-                vpnNw = allNws.firstOrNull { isVPN(it) == true }
-            }*/
             if (vpnNw == null) {
                 // vpn routes is just the suggestion to mitigate the discrepancy between
                 // actual vpn routes and the ones handled by BraveVpnService, in that case
