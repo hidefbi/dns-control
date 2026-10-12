@@ -19,27 +19,19 @@ package com.celzero.bravedns.scheduler
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_SCHEDULER
 import android.content.Context
-import androidx.work.BackoffPolicy
 import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.ExistingWorkPolicy
-import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import androidx.work.WorkRequest
-import com.celzero.bravedns.util.Utilities
 import com.google.common.util.concurrent.ListenableFuture
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.TimeUnit
 
 class WorkScheduler(val context: Context) {
     companion object {
-        const val APP_EXIT_INFO_ONE_TIME_JOB_TAG = "OnDemandCollectAppExitInfoJob"
-        const val APP_EXIT_INFO_JOB_TAG = "ScheduledCollectAppExitInfoJob"
         const val BLOCKLIST_UPDATE_CHECK_JOB_TAG = "ScheduledBlocklistUpdateCheckJob"
         const val DATA_USAGE_JOB_TAG = "ScheduledDataUsageJob"
 
-        const val APP_EXIT_INFO_JOB_TIME_INTERVAL_DAYS: Long = 7
         const val BLOCKLIST_UPDATE_CHECK_INTERVAL_DAYS: Long = 3
         const val DATA_USAGE_TIME_INTERVAL_MINS: Long = 20
 
@@ -94,48 +86,6 @@ class WorkScheduler(val context: Context) {
                 false
             }
         }
-    }
-
-    // Schedule AppExitInfo every APP_EXIT_INFO_JOB_TIME_INTERVAL_DAYS
-    fun scheduleAppExitInfoCollectionJob() {
-        // app exit info is supported from R+
-        if (!Utilities.isAtleastR()) return
-
-        Logger.i(LOG_TAG_SCHEDULER, "App exit info job scheduled")
-        val bugReportCollector =
-            PeriodicWorkRequest.Builder(
-                BugReportCollector::class.java,
-                APP_EXIT_INFO_JOB_TIME_INTERVAL_DAYS,
-                TimeUnit.DAYS
-            )
-                .addTag(APP_EXIT_INFO_JOB_TAG)
-                .build()
-        WorkManager.getInstance(context.applicationContext)
-            .enqueueUniquePeriodicWork(
-                APP_EXIT_INFO_JOB_TAG,
-                ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
-                bugReportCollector
-            )
-    }
-
-    // Schedule AppExitInfo on demand
-    fun scheduleOneTimeWorkForAppExitInfo() {
-        val bugReportCollector =
-            OneTimeWorkRequestBuilder<BugReportCollector>()
-                .setBackoffCriteria(
-                    BackoffPolicy.LINEAR,
-                    WorkRequest.MIN_BACKOFF_MILLIS,
-                    TimeUnit.MILLISECONDS
-                )
-                .addTag(APP_EXIT_INFO_ONE_TIME_JOB_TAG)
-                .build()
-        WorkManager.getInstance(context.applicationContext)
-            .beginUniqueWork(
-                APP_EXIT_INFO_ONE_TIME_JOB_TAG,
-                ExistingWorkPolicy.REPLACE,
-                bugReportCollector
-            )
-            .enqueue()
     }
 
     // schedule blocklist update check (based on user settings)

@@ -205,8 +205,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     var proxyProvider by
         stringPref("proxy_proxyprovider").withDefault<String>(AppConfig.ProxyProvider.NONE.name)
 
-    // the last collected app exit info's timestamp
-    var lastAppExitInfoTimestamp by longPref("prev_trace_timestamp").withDefault<Long>(INIT_TIME_MS)
 
     // whether to show "what's new" chip on the homescreen, usually
     // shown after a update and until the user dismisses it

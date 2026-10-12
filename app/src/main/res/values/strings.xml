@@ -2463,4 +2463,21 @@
 
     <string name="lb_download_progress">File %1$d of %2$d · %3$d%% · %4$s of %5$s</string>
     <string name="lb_download_progress_unknown">File %1$d of %2$d · %3$s downloaded</string>
+    <!-- External DNSCrypt / ODoH server and relay sources. The app ships with none of these. -->
+    <string name="external_dnscrypt_notice" translatable="true">This app does not include DNSCrypt servers or relays. For transparency, add them yourself: copy an address from the sources below, then add it manually on your phone.</string>
+    <string name="external_odoh_notice" translatable="true">This app does not include ODoH servers or relays. For transparency, add them yourself: copy an address from the sources below, then add it manually on your phone.</string>
+    <string name="external_relay_notice" translatable="true">This app does not include DNSCrypt relays. For transparency, add them yourself: copy an address from the source below, then add it manually on your phone.</string>
+    <string name="external_dnscrypt_sources" translatable="false">DNSCrypt target servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
+DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md</string>
+    <string name="external_odoh_sources" translatable="false">ODoH target servers: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
+ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md</string>
+    <string name="external_relay_sources" translatable="false">DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md</string>
+    <!-- Donation block shown at the bottom of the home screen settings sheet -->
+    <string name="donate_section_title" translatable="true">Support this project</string>
+    <string name="donate_section_desc" translatable="true">Free, open-source and optional. Donations do not unlock features or imply support.</string>
+    <string name="donate_repo_url" translatable="false">https://github.com/hidefbi/bbb-dnscontrol</string>
+    <string name="donate_btc_label" translatable="true">BTC</string>
+    <string name="donate_btc_address" translatable="false">bc1q34tccx8ttkqdpaywugmdvhamqmc9uhh9qttqn7</string>
+    <string name="donate_eth_label" translatable="true">ETH</string>
+    <string name="donate_eth_address" translatable="false">0x21ac40d9afec1e6fd3c0abe730911da4a03d1d98</string>
 </resources>

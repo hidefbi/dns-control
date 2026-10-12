@@ -34,7 +34,6 @@ object ViewModelModule {
         viewModel { WgConfigViewModel(get()) }
         viewModel { DoTEndpointViewModel(get()) }
         viewModel { ODoHEndpointViewModel(get()) }
-        viewModel { EventsViewModel(get()) }
     }
 
     val modules = listOf(modelModules)

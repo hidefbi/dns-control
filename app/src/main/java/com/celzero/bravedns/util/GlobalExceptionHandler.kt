@@ -17,7 +17,6 @@ package com.celzero.bravedns.util
 
 import com.celzero.bravedns.util.Logger.LOG_TAG_APP
 import android.content.Context
-import com.celzero.bravedns.scheduler.EnhancedBugReport
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.Utilities.isFdroidFlavour
 import kotlinx.coroutines.CoroutineScope

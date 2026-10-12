@@ -160,19 +160,6 @@ class GoVpnAdapter : KoinComponent {
         Logger.v(LOG_TAG_VPN, "$TAG initResolverProxiesPcap done")
     }
 
-    /*
-    // commented as the setCrashFd is not working as expected, need to revisit
-    private suspend fun setCrashFd() {
-        Logger.v(LOG_TAG_VPN, "GoVpnAdapter setCrashFd")
-        val crashFd = EnhancedBugReport.getFileToWrite(context)
-        if (crashFd != null) {
-            val set = Intra.setCrashFd(crashFd.absolutePath)
-            Logger.i(LOG_TAG_VPN, "set crash fd: $crashFd, set? $set")
-        } else {
-            Logger.w(LOG_TAG_VPN, "crash fd is null, cannot set")
-        }
-    }*/
-
     suspend fun addTransport() {
         Logger.v(LOG_TAG_VPN, "$TAG addTransport")
         if (!tunnel.isConnected) {

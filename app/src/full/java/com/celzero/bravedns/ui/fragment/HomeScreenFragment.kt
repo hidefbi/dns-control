@@ -53,7 +53,6 @@ import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.FragmentHomeScreenBinding
 import com.celzero.bravedns.net.doh.Transaction
-import com.celzero.bravedns.scheduler.WorkScheduler
 import com.celzero.bravedns.service.DomainRulesManager
 import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
@@ -114,7 +113,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
     private val persistentState by inject<PersistentState>()
     private val appConfig by inject<AppConfig>()
-    private val workScheduler by inject<WorkScheduler>()
     private val eventLogger by inject<EventLogger>()
 
     private var isVpnActivated: Boolean = false
@@ -1463,21 +1461,9 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 return
             }
             // this case will happen when the app is updated or crashed
-            // generate the bug report and start the vpn
-            triggerBugReport()
             Logger.i(LOG_TAG_VPN, "start VPN (previous state)")
             prepareAndStartVpn()
         }
-    }
-
-    private fun triggerBugReport() {
-        if (WorkScheduler.isWorkRunning(requireContext(), WorkScheduler.APP_EXIT_INFO_JOB_TAG)) {
-            Logger.v(LOG_TAG_VPN, "bug report already triggered")
-            return
-        }
-
-        Logger.v(LOG_TAG_VPN, "trigger bug report")
-        workScheduler.scheduleOneTimeWorkForAppExitInfo()
     }
 
     // set the app mode to dns+firewall mode when vpn in lockdown state

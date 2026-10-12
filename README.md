@@ -9,14 +9,27 @@ lets you decide which apps may reach the network.
 
 ## Features
 
-- Encrypted DNS: DNS-over-HTTPS, DNS-over-TLS, ODoH and DNSCrypt
+- Encrypted DNS: DNS-over-HTTPS, DNS-over-TLS, ODoH and DNSCrypt (ODoH and
+  DNSCrypt servers and relays are not built in; see below)
 - Built-in presets: Quad9 (Classic and ECS) and Cloudflare; add your own
 - Per-app network control through a local VPN
 - Fail-closed encrypted DNS: if the selected encrypted resolver fails, the app
   does not silently switch to system DNS
 - No Firebase or Google services are configured
-- Connection and DNS query logs are not stored; only a local event log is kept
-  in the app database
+- No connection, DNS query or diagnostic logs are stored or uploaded
+
+## DNSCrypt and ODoH servers
+
+This app does not ship with any DNSCrypt or ODoH servers or relays. For
+transparency, add them yourself: copy an address from the sources below, then
+add it manually in the app on your phone (DNSCrypt and ODoH screens).
+
+为了追求透明，请都自行添加：从下面的链接复制地址，然后在手机上的 App 中手动添加。
+
+- DNSCrypt target servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
+- DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md
+- ODoH target servers: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
+- ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md
 
 ## Requirements
 
@@ -40,24 +53,14 @@ Run unit tests with:
 
 ## Changes from upstream
 
-See [NOTICE](NOTICE) for a summary. In short: log storage and log viewers are
-removed, several screens and background features are removed, DNS presets are
+See [NOTICE](NOTICE) for a summary. In short: log storage, log viewers and bug
+report collection are removed, several screens and background features are removed, DNS presets are
 replaced, and encrypted DNS failures no longer fall back to system DNS.
 
 ## Privacy
 
-Connection and DNS query metadata is not persisted. The local event log stays on
-the device. Encrypted DNS queries are sent only to the resolver you select.
-
-## Support
-
-If this project is useful to you, you can support its development:
-
-- GitHub: https://github.com/hidefbi/dns-control
-- BTC: `bc1q34tccx8ttkqdpaywugmdvhamqmc9uhh9qttqn7`
-- ETH: `0x21ac40d9afec1e6fd3c0abe730911da4a03d1d98`
-
-Donations are optional and do not grant any features or support obligations.
+Connection and DNS query metadata is not persisted, and no log files are written
+or uploaded. Encrypted DNS queries are sent only to the resolver you select.
 
 ## License
 

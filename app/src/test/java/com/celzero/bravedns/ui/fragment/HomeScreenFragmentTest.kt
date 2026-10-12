@@ -886,16 +886,4 @@ class HomeScreenFragmentTest : KoinTest {
         // Test grace period dialog logic
         Assert.assertTrue(true)
     }
-
-    @Test
-    fun `triggerBugReport should schedule bug report work when not already running`() {
-        // Test bug report scheduling
-        Assert.assertTrue("Bug report scheduling should work", true)
-    }
-
-    @Test
-    fun `triggerBugReport should not schedule when already running`() {
-        // Test when bug report is already running
-        Assert.assertTrue(true)
-    }
 }

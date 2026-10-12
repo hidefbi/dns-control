@@ -100,8 +100,6 @@
         <activity
             android:name=".ui.activity.ConfigureOtherDnsActivity"
             android:finishOnTaskLaunch="true" />
-        <activity android:name=".ui.activity.EventsActivity"
-            android:finishOnTaskLaunch="true" />
         <activity
             android:name=".ui.NotificationHandlerActivity"
             android:excludeFromRecents="true"

@@ -64,13 +64,16 @@ class RethinkDnsApplication : Application() {
             runCatching { get<LogDatabase>().clearAllTables() }
             runCatching { File(filesDir, "logs").deleteRecursively() }
             runCatching { File(filesDir, "tombstone").deleteRecursively() }
+            runCatching { File(filesDir, "bugreport").deleteRecursively() }
+            runCatching { File(filesDir, "flight_recorder").deleteRecursively() }
+            runCatching { File(filesDir, "rethinkdns.bugreport.zip").delete() }
+            runCatching { File(filesDir, "rethinkdns.tombstone.zip").delete() }
             scheduleJobs()
         }
     }
 
     private suspend fun scheduleJobs() {
         Logger.d(LOG_TAG_SCHEDULER, "Schedule job")
-        get<WorkScheduler>().scheduleAppExitInfoCollectionJob()
         // database refresh to keep app data up to date
         get<ScheduleManager>().scheduleDatabaseRefreshJob()
         get<WorkScheduler>().scheduleDataUsageJob()
