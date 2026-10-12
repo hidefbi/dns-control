@@ -1,7 +1,7 @@
 name: Release
 
 # Builds, signs, verifies and publishes a GitHub Release when a version tag is pushed.
-#   git tag v0.0.674 && git push origin v0.0.674
+#   git tag v0.0.675 && git push origin v0.0.675
 on:
   push:
     tags:
@@ -31,13 +31,14 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
+      # GitHub-hosted ubuntu runners ship with the Android SDK preinstalled and set ANDROID_HOME.
       - name: Install SDK packages
         run: |
-          yes | sdkmanager --licenses > /dev/null
-          sdkmanager "platforms;android-37" "build-tools;37.0.0"
+          test -n "$ANDROID_HOME" || { echo "ANDROID_HOME not set on runner"; exit 1; }
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          test -x "$SDKMANAGER" || SDKMANAGER=$(command -v sdkmanager)
+          yes | "$SDKMANAGER" --licenses > /dev/null
+          "$SDKMANAGER" "platforms;android-37" "build-tools;37.0.0"
 
       - name: Decode release keystore
         env:
@@ -66,7 +67,7 @@ jobs:
           grep -q "Signer #1 certificate SHA-256 digest: $EXPECTED_CERT_SHA256" signer.txt \
             || { echo "certificate does not match the expected release key"; exit 1; }
 
-          # the in-app version must match the tag, e.g. v0.0.674
+          # the in-app version must match the tag, e.g. v0.0.675
           "$AAPT2" dump badging "$APK" | grep -q "versionName='${GITHUB_REF_NAME}'" \
             || { echo "versionName does not match tag ${GITHUB_REF_NAME}"; exit 1; }
 
