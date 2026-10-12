@@ -34,32 +34,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_layout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="@string/settings_proxy_header"
-        app:hintTextColor="?attr/accentGood"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout_name">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/dialog_custom_proxy_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textUri"
-            android:maxLines="2"
-            android:textColor="?attr/primaryTextColor"
-            android:textAppearance="?attr/textAppearanceBodyLarge" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="@string/cd_doh_dialog_resolver_url"
+        android:hint="@string/odoh_target_hint"
         app:hintTextColor="?attr/accentGood"
-        app:layout_constraintTop_toBottomOf="@id/text_input_layout1">
+        app:layout_constraintTop_toBottomOf="@id/text_input_layout_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dialog_custom_resolver_edit_text"

@@ -103,31 +103,21 @@ lists in the app.
 
 ## DNSCrypt and ODoH servers
 
-This app does not ship with any DNSCrypt or ODoH servers or relays. For
-transparency, add them yourself: copy an address from the sources below, then
-add it manually in the app on your phone (DNSCrypt and ODoH screens).
+The app does not ship with DNSCrypt or ODoH servers or relays. Add them yourself
+from the sources on the DNSCrypt and ODoH screens.
 
-- DNSCrypt target servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
+- **DNSCrypt**: add a server or relay as an `sdns://` stamp.
+- **ODoH**: add a target as an `https://` URL or an `sdns://` stamp (protocol
+  0x05). Add a relay on the ODoH screen as an `sdns://` stamp (protocol 0x85) or
+  an `https://` URL, then select it. The selected relay is used for ODoH targets.
+  Without a relay, the target can see your IP address; the app shows a warning.
+
+Sources:
+
+- DNSCrypt servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
 - DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md
-- ODoH target servers: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
+- ODoH targets: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
 - ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md
-
-## Download
-
-Signed release APKs are published on the
-[Releases page](https://github.com/hidefbi/dns-control/releases).
-
-Latest release: [v0.0.673](https://github.com/hidefbi/dns-control/releases/tag/v0.0.673)
-(package `com.hidefbi.dnscontrol`, versionCode 673).
-
-To check a download:
-
-- APK SHA-256 for v0.0.673: `5f6e21f48669da7b929c026c35acb6145dc2f30aa63f45cd7e9e56540e194c68`
-  (`shasum -a 256 DNS-Control-v0.0.673.apk`)
-- Signing certificate SHA-256: `f06abe97928a05566812a4d3e45881b9bf30f2a242cae263b481c39a9075261f`
-  (`apksigner verify --print-certs DNS-Control-v0.0.673.apk`, from the Android SDK build-tools)
-
-Install only if both values match. The app is not on Google Play.
 
 ## Requirements
 

@@ -357,7 +357,11 @@ class GoVpnAdapter : KoinComponent {
                 failClosedDns()
                 return
             }
-            val proxy = odoh.proxy
+            // a target may carry its own relay (older entries); otherwise use the selected relay
+            val proxy = odoh.proxy.ifEmpty { persistentState.odohSelectedRelay }
+            if (proxy.isEmpty()) {
+                Logger.w(LOG_TAG_VPN, "$TAG odoh: no relay selected, the target can see the client IP")
+            }
             resolver = odoh.resolver
             val proxyIps = ""
             // add replaces the existing transport with the same id if successful

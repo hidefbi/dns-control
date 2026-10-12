@@ -17,9 +17,12 @@ package com.celzero.bravedns.ui.fragment
 
 import android.content.res.Resources
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
+import android.widget.RadioButton
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -32,8 +35,11 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.ODoHEndpointAdapter
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.ODoHEndpoint
+import com.celzero.bravedns.databinding.DialogAddOdohRelayBinding
 import com.celzero.bravedns.databinding.DialogSetCustomOdohBinding
 import com.celzero.bravedns.databinding.FragmentOdohListBinding
+import com.celzero.bravedns.service.PersistentState
+import com.celzero.bravedns.util.DnsStamp
 import com.celzero.bravedns.util.RecyclerViewSpacingDecoration
 import com.celzero.bravedns.viewmodel.ODoHEndpointViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -50,6 +56,7 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
     private val b by viewBinding(FragmentOdohListBinding::bind)
 
     private val appConfig by inject<AppConfig>()
+    private val persistentState by inject<PersistentState>()
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: ODoHEndpointAdapter? = null
@@ -70,6 +77,7 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
         initView()
         initClickListeners()
         applyEdgeToEdge()
+        renderRelays()
     }
 
     private fun initView() {
@@ -108,6 +116,7 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
         // see CustomIpFragment#setupClickListeners#bringToFront()
         b.odohFabAdd.bringToFront()
         b.odohFabAdd.setOnClickListener { showAddDialog() }
+        b.odohRelayAddBtn.setOnClickListener { showAddRelayDialog() }
     }
 
     private fun applyEdgeToEdge() {
@@ -140,11 +149,9 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
         val applyURLBtn = dialogBinding.dialogCustomUrlOkBtn
         val cancelURLBtn = dialogBinding.dialogCustomUrlCancelBtn
         val customName = dialogBinding.dialogCustomNameEditText
-        val customProxy = dialogBinding.dialogCustomProxyEditText
         val customResolver = dialogBinding.dialogCustomResolverEditText
         val progressBar = dialogBinding.dialogCustomUrlLoading
         val errorTxt = dialogBinding.dialogCustomUrlFailureText
-        val hintInputLayout = dialogBinding.textInputLayout1
 
         val title =
             getString(
@@ -166,19 +173,14 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
             }
         }
 
-        hintInputLayout.hint =
-            getString(R.string.settings_proxy_header).replaceFirstChar(Char::uppercase) +
-                getString(R.string.lbl_optional)
-
         customName.setText(getString(R.string.lbl_odoh), TextView.BufferType.EDITABLE)
         applyURLBtn.setOnClickListener {
-            val proxy = customProxy.text.toString()
-            val resolver = customResolver.text.toString()
             val name = customName.text.toString()
+            // the target may be given as an https:// URL or as an sdns:// stamp
+            val resolver = resolveUrl(customResolver.text.toString())
 
-            // check if the url is valid for resolver, proxy is optional
-            if (checkUrl(resolver)) {
-                insert(name, proxy, resolver)
+            if (resolver != null) {
+                insert(name, resolver)
                 dialog.dismiss()
             } else {
                 errorTxt.text = resources.getString(R.string.custom_url_error_invalid_url)
@@ -191,6 +193,12 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
 
         cancelURLBtn.setOnClickListener { dialog.dismiss() }
         dialog.show()
+    }
+
+    // Returns the https URL for an sdns:// stamp or an https:// URL, or null if neither is valid.
+    private fun resolveUrl(raw: String): String? {
+        val text = raw.trim()
+        return DnsStamp.toHttpsUrl(text) ?: text.takeIf { checkUrl(it) }
     }
 
     // Check that the URL is a plausible DOH server: https with a domain, a path (at least "/"),
@@ -208,17 +216,18 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
         }
     }
 
-    private fun insert(name: String, proxy: String, resolver: String) {
+    private fun insert(name: String, resolver: String) {
         io {
             var odohName: String = name
             if (name.isBlank()) {
                 odohName = resolver
             }
+            // relays are managed in the relay list; the selected relay is used for this target
             val endpoint =
                 ODoHEndpoint(
                     id = 0,
                     odohName,
-                    proxy,
+                    "",
                     resolver,
                     proxyIps = "",
                     desc = "",
@@ -229,6 +238,88 @@ class ODoHListFragment : Fragment(R.layout.fragment_odoh_list) {
                 )
             appConfig.insertODoHEndpoint(endpoint)
         }
+    }
+
+    // ---- relays -------------------------------------------------------------------------
+
+    private fun relayList(): List<String> {
+        return persistentState.odohRelays.split("\n").map { it.trim() }.filter { it.isNotEmpty() }
+    }
+
+    private fun saveRelays(relays: List<String>) {
+        persistentState.odohRelays = relays.joinToString("\n")
+    }
+
+    private fun renderRelays() {
+        val container = b.odohRelayList
+        container.removeAllViews()
+        val selected = persistentState.odohSelectedRelay
+        relayList().forEach { url ->
+            val row =
+                LayoutInflater.from(requireContext())
+                    .inflate(R.layout.item_odoh_relay, container, false)
+            val radio = row.findViewById<RadioButton>(R.id.item_relay_radio)
+            val label = row.findViewById<TextView>(R.id.item_relay_url)
+            val remove = row.findViewById<View>(R.id.item_relay_remove)
+            label.text = url
+            radio.isChecked = url == selected
+            radio.setOnClickListener { selectRelay(url) }
+            row.setOnClickListener { selectRelay(url) }
+            remove.setOnClickListener { removeRelay(url) }
+            container.addView(row)
+        }
+        b.odohRelayWarning.visibility = if (selected.isBlank()) View.VISIBLE else View.GONE
+    }
+
+    private fun selectRelay(url: String) {
+        persistentState.odohSelectedRelay = url
+        renderRelays()
+        io { appConfig.onOdohRelayChanged() }
+    }
+
+    private fun addRelay(url: String) {
+        val list = relayList()
+        if (url !in list) saveRelays(list + url)
+        // the first relay added is selected automatically
+        if (persistentState.odohSelectedRelay.isBlank()) persistentState.odohSelectedRelay = url
+        renderRelays()
+        io { appConfig.onOdohRelayChanged() }
+    }
+
+    private fun removeRelay(url: String) {
+        val remaining = relayList().filter { it != url }
+        saveRelays(remaining)
+        if (persistentState.odohSelectedRelay == url) {
+            persistentState.odohSelectedRelay = remaining.firstOrNull() ?: ""
+        }
+        renderRelays()
+        io { appConfig.onOdohRelayChanged() }
+    }
+
+    private fun showAddRelayDialog() {
+        val db = DialogAddOdohRelayBinding.inflate(layoutInflater)
+        val dialog =
+            MaterialAlertDialogBuilder(requireContext(), R.style.App_Dialog_NoDim)
+                .setTitle(R.string.odoh_relay_dialog_title)
+                .setView(db.root)
+                .setPositiveButton(R.string.lbl_add, null)
+                .setNegativeButton(R.string.lbl_cancel, null)
+                .create()
+        dialog.setOnShowListener {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+                val input = db.dialogRelayEditText.text.toString().trim()
+                // a relay is given as an sdns:// stamp or an https:// URL, stored as https
+                val relay = DnsStamp.toHttpsUrl(input) ?: input.takeIf { checkUrl(it) }
+                if (relay == null) {
+                    db.textInputLayoutRelay.error = getString(R.string.odoh_relay_invalid)
+                } else {
+                    db.textInputLayoutRelay.error = null
+                    addRelay(relay)
+                    dialog.dismiss()
+                }
+            }
+        }
+        dialog.show()
     }
 
     private fun io(f: suspend () -> Unit) {

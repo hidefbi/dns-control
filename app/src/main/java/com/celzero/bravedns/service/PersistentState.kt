@@ -197,6 +197,10 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // add all networks (say, both wifi / mobile) with internet capability to the vpn tunnel
     var useMultipleNetworks by booleanPref("add_all_networks_to_vpn").withDefault<Boolean>(false)
 
+    // ODoH relays as https URLs, one per line, and the relay used for ODoH targets
+    var odohRelays by stringPref("odoh_relays").withDefault<String>("")
+    var odohSelectedRelay by stringPref("odoh_selected_relay").withDefault<String>("")
+
     // user selected proxy type (e.g., http, socks5)
     var proxyType by
         stringPref("proxy_proxytype").withDefault<String>(AppConfig.ProxyType.NONE.name)

@@ -2464,8 +2464,8 @@
     <string name="lb_download_progress">File %1$d of %2$d · %3$d%% · %4$s of %5$s</string>
     <string name="lb_download_progress_unknown">File %1$d of %2$d · %3$s downloaded</string>
     <!-- External DNSCrypt / ODoH server and relay sources. The app ships with none of these. -->
-    <string name="external_dnscrypt_notice" translatable="true">This app does not include DNSCrypt servers or relays. For transparency, add them yourself: copy an address from the sources below, then add it manually on your phone.</string>
-    <string name="external_odoh_notice" translatable="true">This app does not include ODoH servers or relays. For transparency, add them yourself: copy an address from the sources below, then add it manually on your phone.</string>
+    <string name="external_dnscrypt_notice" translatable="true">Add a DNSCrypt server or relay as an sdns:// stamp. Copy an entry from the sources below.</string>
+    <string name="external_odoh_notice" translatable="true">Add an ODoH target and a relay. Enter each as an https:// URL or an sdns:// stamp. Copy an entry from the sources below.</string>
     <string name="external_relay_notice" translatable="true">This app does not include DNSCrypt relays. For transparency, add them yourself: copy an address from the source below, then add it manually on your phone.</string>
     <string name="external_dnscrypt_sources" translatable="false">DNSCrypt target servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
 DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md</string>
@@ -2484,4 +2484,20 @@ ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-
     <string name="donate_copy_btc" translatable="true">Copy BTC address</string>
     <string name="donate_copy_eth" translatable="true">Copy ETH address</string>
     <string name="donate_copied" translatable="true">Address copied</string>
+    <string name="external_sources_title" translatable="true">Sources</string>
+    <string name="external_odoh_targets_label" translatable="true">ODoH targets</string>
+    <string name="external_odoh_relays_label" translatable="true">ODoH relays</string>
+    <string name="external_dnscrypt_servers_label" translatable="true">DNSCrypt servers</string>
+    <string name="external_dnscrypt_relays_label" translatable="true">DNSCrypt relays</string>
+    <string name="external_odoh_targets_url" translatable="false">https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md</string>
+    <string name="external_odoh_relays_url" translatable="false">https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md</string>
+    <string name="external_dnscrypt_servers_url" translatable="false">https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md</string>
+    <string name="external_dnscrypt_relays_url" translatable="false">https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md</string>
+    <string name="odoh_relays_title" translatable="true">ODoH relays</string>
+    <string name="odoh_relay_add" translatable="true">Add relay</string>
+    <string name="odoh_relay_dialog_title" translatable="true">Add ODoH relay</string>
+    <string name="odoh_relay_dialog_hint" translatable="true">Relay sdns:// stamp or https:// URL</string>
+    <string name="odoh_relay_invalid" translatable="true">Enter an sdns:// relay stamp or an https:// relay URL</string>
+    <string name="odoh_relay_none_warning" translatable="true">No relay selected. ODoH targets can see your IP address. Add a relay and select it.</string>
+    <string name="odoh_target_hint" translatable="true">Target sdns:// stamp or https:// URL</string>
 </resources>

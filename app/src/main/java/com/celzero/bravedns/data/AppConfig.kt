@@ -688,6 +688,13 @@ internal constructor(
         )
     }
 
+    // invoked when the selected ODoH relay changes; re-applies the transport if ODoH is active
+    suspend fun onOdohRelayChanged() {
+        if (getDnsType() == DnsType.ODOH) {
+            onDnsChange(DnsType.ODOH)
+        }
+    }
+
     suspend fun handleODoHChanges(oDoHEndpoint: ODoHEndpoint) {
         // if the prev connection was not doh, then remove the connection status from database
         if (getDnsType() != DnsType.ODOH) {
