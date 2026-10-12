@@ -81,6 +81,10 @@ try {
     keystoreProperties['storePassword'] = ''
 }
 
+// Release signing for CI: only used when RELEASE_KEYSTORE_PATH is set. The keystore and its
+// passwords come from environment variables (GitHub Secrets) and are never stored in the repo.
+def releaseKeystorePath = System.getenv("RELEASE_KEYSTORE_PATH")
+
 // ref: developer.android.com/build/jdks#target-compat
 java {
     toolchain {
@@ -153,8 +157,22 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            if (releaseKeystorePath) {
+                storeFile file(releaseKeystorePath)
+                storePassword System.getenv("RELEASE_STORE_PASSWORD")
+                keyAlias System.getenv("RELEASE_KEY_ALIAS")
+                keyPassword System.getenv("RELEASE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            if (releaseKeystorePath) {
+                signingConfig signingConfigs.release
+            }
             // modified as part of #352, now webview is removed from app, flipping back
             // the setting to true
             minifyEnabled true

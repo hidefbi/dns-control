@@ -149,6 +149,21 @@ Run unit tests with:
 ./gradlew :app:testFdroidFullDebugUnitTest
 ```
 
+## Releasing (maintainers)
+
+Pushing a version tag builds, signs, verifies and publishes a release through
+`.github/workflows/release.yml`:
+
+```
+git tag v0.0.674 && git push origin v0.0.674
+```
+
+The workflow refuses to publish unless the APK's `versionName` matches the tag
+and it is signed with the expected certificate. It needs these repository
+secrets: `RELEASE_KEYSTORE_BASE64` (base64 of the keystore file),
+`RELEASE_STORE_PASSWORD`, `RELEASE_KEY_ALIAS` and `RELEASE_KEY_PASSWORD`. The
+keystore is never committed.
+
 ## Changes from upstream
 
 The application ID is `com.hidefbi.dnscontrol`, so this fork installs alongside
