@@ -3,19 +3,16 @@
     <string name="next">അടുത്തത്</string>
     <string name="finish">തീര്ക്കുക</string>
     <string name="slide_2_title">സ്വാഗതം</string>
-    <string name="slide_1_title">സ്വതന്ത്രവും കാണാൻ കഴിയുന്നതുമായ ഉറവിടം</string>
     <string name="always_on_dialog_neutral">ക്രമീകരണങ്ങള്‍</string>
     <string name="settings_theme_heading">രൂപം</string>
     <string name="title_settings">ക്രമീകരണങ്ങൾ</string>
     <string name="txt_home" translatable="true">പൂമുഖം</string>
     <string name="block" translatable="true">തടയുക</string>
     <string name="exclude" translatable="true">ഒഴിവാക്കുക</string>
-    <string name="lbl_rules" translatable="true">നിയമങ്ങൾ</string>
     <string name="pause_title_desc" translatable="true">ഉറങ്ങുന്നു…</string>
     <string name="skip" translatable="true">ഒഴിവാക്കുക</string>
     <string name="allow" translatable="true">അനുവദിക്കുക</string>
     <string name="isolate" translatable="true">ഒറ്റപ്പെടുത്തുക</string>
-    <string name="title_about" translatable="true">കുറിച്ച്</string>
     <string name="lbl_cancel" translatable="true">റദ്ദാക്കുക</string>
     <string name="lbl_apply" translatable="true">പ്രയോഗിക്കുക</string>
     <string name="lbl_dismiss" translatable="true">പിരിച്ചുവിടുക</string>
@@ -35,14 +32,12 @@
     <string name="dc_local_block_enabled" translatable="true">പ്രവർത്തനക്ഷമമാക്കി</string>
     <string name="notification_action_resume_vpn" translatable="true">പുനരാരംഭിക്കുക</string>
     <string name="brbs_restore_dialog_failure_title" translatable="true">പുനഃസ്ഥാപിക്കാനായില്ല</string>
-    <string name="title_statistics" translatable="true">സ്ഥിതിവിവരക്കണക്കുകൾ</string>
     <string name="notification_action_pause_vpn" translatable="true">താൽക്കാലികമായി നിർത്തുക</string>
     <string name="rt_list_simple_btn_txt" translatable="true">ലളിതമായ</string>
     <string name="rt_dialog_neutral" translatable="true">തുടരുക</string>
     <string name="rt_edit_dialog_positive" translatable="true">തിരുത്തുക</string>
     <string name="rt_filter_parent_selected" translatable="true">തിരഞ്ഞെടുത്തത്</string>
     <string name="ssv_see_more" translatable="true">എല്ലാം കാണിക്കുക</string>
-    <string name="lbl_maybe_blocked" translatable="true">ഒരുപക്ഷേ തടഞ്ഞിരിക്കാം</string>
     <string name="lbl_network" translatable="true">ശൃംഖല</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">പരാജയപ്പെടുകയാണ്</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">സംരക്ഷിച്ചിട്ടില്ല</string>

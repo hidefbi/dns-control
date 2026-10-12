@@ -8,13 +8,10 @@
     <string name="lbl_dismiss" translatable="true">Απόρριψη</string>
     <string name="lbl_all" translatable="true">Όλα</string>
     <string name="lbl_allowed" translatable="true">Επιτρέπεται</string>
-    <string name="lbl_maybe_blocked" translatable="true">Ίσως μπλοκαρισμένο</string>
     <string name="lbl_blocked" translatable="true">Αποκλεισμένο</string>
     <string name="lbl_disabled" translatable="true">Απενεργοποιημένο</string>
     <string name="lbl_action_required" translatable="true">Απαιτείται δράση</string>
-    <string name="lbl_rules" translatable="true">κανόνες</string>
     <string name="lbl_configure" translatable="true">Ρύθμιση παραμέτρων</string>
-    <string name="lbl_logs" translatable="true">αρχεία καταγραφής</string>
     <string name="lbl_network" translatable="true">δίκτυο</string>
     <string name="lbl_create" translatable="true">Δημιουργία</string>
     <string name="lbl_import" translatable="true">Εισαγωγή</string>
@@ -33,16 +30,12 @@
     <string name="lbl_optional" translatable="true">(προαιρετικά)</string>
     <string name="lbl_allowed_ips" translatable="true">Επιτρεπόμενες IPs</string>
     <string name="lbl_save" translatable="true">αποθήκευση</string>
-    <string name="lbl_status" translatable="true">Κατάσταση</string>
     <string name="lbl_remove" translatable="true">Αφαίρεση</string>
-    <string name="lbl_last" translatable="true">Τελευταίο</string>
     <string name="lbl_starting" translatable="true">Ξεκινώντας</string>
-    <string name="lbl_overall" translatable="true">Συνολικά</string>
     <string name="lbl_stopped" translatable="true">Σταμάτησε</string>
     <string name="lbl_private" translatable="true">private</string>
     <string name="lbl_secure" translatable="true">ασφαλής</string>
     <string name="slide_2_title" translatable="true">Καλώς ήρθατε</string>
-    <string name="slide_1_title" translatable="true">Ελεύθερο και ανοιχτό λογισμικό</string>
     <string name="allow" translatable="true">επιτρέπουν τη δυνατότητα</string>
     <string name="bypass_universal" translatable="true">γενική παράκαμψη</string>
     <string name="exclude" translatable="true">αποκλείστε το</string>
@@ -52,7 +45,6 @@
     <string name="firewall_mode_notification_title" translatable="true">Προστατεύεσαι! Συνδεθήκατε στο τείχος προστασίας.</string>
     <string name="pause_mode_notification_title" translatable="true">Παύση! Οι εφαρμογές που έχουν αποκλειστεί θα συνεχίσουν να βρίσκονται σε τείχος προστασίας.</string>
     <string name="status_protected" description="This is a large message in a reassuring color. It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">προστατεύεται</string>
-    <string name="status_app_error" translatable="true">σφάλμα της εφαρμογής</string>
     <string name="status_dns_error" translatable="true">σφάλμα dns</string>
     <string name="status_dns_server_down" translatable="true">διακομιστής dns εκτός λειτουργίας</string>
     <string name="status_no_internet" translatable="true">δεν υπάρχει ίντερνετ</string>
@@ -60,15 +52,11 @@
     <string name="status_protected_with_tor_private_dns" translatable="true">Προστατεύεσαι με tor &amp; private dns</string>
     <string name="status_protected_with_proxy_private_dns" translatable="true">Προστατεύεσαι! με proxy &amp; private dns</string>
     <string name="status_protected_with_socks5_private_dns" translatable="true">Προστατεύεσαι! με socks5 &amp; private dns</string>
-    <string name="title_about" translatable="true">Σχετικά</string>
     <string name="title_settings" translatable="true">Ρυθμίσεις</string>
-    <string name="title_statistics" translatable="true">Στατιστικά</string>
     <string name="pause_title_desc" translatable="true">παίρνοντας έναν υπνάκο…</string>
     <string name="settings_title_desc" translatable="true">Ένα εξαιρετικά παραμετροποιήσιμο DNS και τείχος προστασίας</string>
-    <string name="about_title_desc" translatable="true">Ανίχνευση και αποκλεισμό των απειλών για την ασφάλεια δικτύου</string>
     <string name="txt_home" translatable="true">Αρχική σελίδα</string>
     <string name="accessibility_service_description" translatable="true">Το DNS Control χρησιμοποιεί την υπηρεσία προσβασιμότητας και το τείχος προστασίας για τον εντοπισμό εφαρμογών παρασκηνίου.Το DNS Control δεν συλλέγει ούτε πωλεί καμία πληροφορία.</string>
-    <string name="lbl_applications" translatable="true">Εφαρμογές</string>
     <string name="lbl_ip_rules" translatable="true">Κανόνες IP</string>
     <string name="lbl_domain_rules" translatable="true">Κανόνες domain</string>
     <string name="lbl_delete" translatable="true">Διαγραφή</string>
@@ -79,7 +67,6 @@
     <string name="lbl_add" translatable="true">προσθήκη</string>
     <string name="lbl_app_wise" translatable="true">ανά εφαρμογή</string>
     <string name="lbl_day" translatable="true">ημέρα</string>
-    <string name="lbl_cache" translatable="true">Κρυφή μνήμη</string>
     <string name="lbl_anonymous" translatable="true">ανώνυμος</string>
     
     <string name="slide_2_desc" translatable="true">Το DNS Control είναι ο ευκολότερος τρόπος για να παρακολουθείτε τη δραστηριότητα του δικτύου, παρακάμπτοντας τη λογοκρισία του Διαδικτύου, και τις εφαρμογές μεσω του τείχους προστασίας στην Android συσκευή σας.</string>
@@ -108,7 +95,6 @@
     <string name="firewall_rules" translatable="true">Κανόνες δικτύου</string>
     <string name="hybrid_mode_info_title" translatable="true">DNS + Firewallwall</string>
     <string name="default_dns_name" translatable="true">RDNS Default</string>
-    <string name="bsct_block_domain" translatable="true">Block, εμπιστοσύνη &lt;u&gt;domain(s) &lt;/u&gt; για &lt;u&gt; αυτή την εφαρμογή &lt;/u&gt;</string>
     <string name="lbl_sec" translatable="true">δευτ</string>
     <string name="lbl_min" translatable="true">λεπ</string>
     <string name="status_protected_with_socks5" translatable="true">προστατεύεται με socks proxy</string>
@@ -125,17 +111,7 @@
     <string name="apps_info_title" translatable="true">Εφαρμογές</string>
     <string name="alert_permission_accessibility" translatable="true">Άδεια - Προσβασιμότητα</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">Αποτυχία ανοίγματος των ρυθμίσεων προσβασιμότητας. Δοκιμάστε ξανά αργότερα!</string>
-    <string name="brave_dns_connect_mode_change_firewall" translatable="true">Επιλέξτε Λειτουργία.</string>
-    <string name="brave_dns_connect_mode_change_dns" translatable="true">Επιλέξτε Λειτουργία.</string>
     <string name="custom_url_error_invalid_url" translatable="true">Μη έγκυρη διεύθυνση URL</string>
-    <string name="conn_track_clear_logs_title" translatable="true">Διαγραφή όλων των αρχείων καταγραφής δικτύου;</string>
-    <string name="conn_track_clear_logs_message" translatable="true">Αυτό διαγράφει μόνο τα αρχεία καταγραφής δικτύου αλλά όχι τους κανόνες τείχους προστασίας. Αυτή η λειτουργία δεν είναι αναστρέψιμη. Θέλετε να συνεχίσετε;</string>
-    <string name="dns_query_clear_logs_title" translatable="true">Διαγραφή όλων των αρχείων καταγραφής DNS;</string>
-    <string name="dns_query_clear_logs_message" translatable="true">Αυτό διαγράφει τα αρχεία καταγραφής DNS της συσκευής. Αυτή η λειτουργία δεν είναι αναστρέψιμη. Θέλετε να συνεχίσετε;</string>
-    <string name="bsct_block_ip" translatable="true">Αποκλεισμός, εμπιστοσύνη &lt;u&gt;αυτή η IP&lt;/u&gt; για &lt;u&gt;αυτή την εφαρμογή&lt;/u&gt;</string>
-    <string name="bsct_conn_block_desc" translatable="true">μπλοκαρισμένο %1$s από %2$s</string>
-    <string name="bsct_conn_block_desc_device" translatable="true">μπλοκαρισμένο %1$s στη συσκευή</string>
-    <string name="bsct_conn_desc_blocked" translatable="true">μπλοκαρισμένο στο %1$s %2$s</string>
     <string name="always_on_dialog_heading" translatable="true">Απενεργοποίηση Always-on VPN</string>
     <string name="always_on_dialog" translatable="true">Το \"Always-On VPN\" είναι ενεργοποιημένο σε αυτή τη συσκευή. Για να ξεκινήσετε το DNS Control, μεταβείτε στην εφαρμογή Ρυθμίσεις και απενεργοποιήστε το \"Always-on VPN\".</string>
     <string name="always_on_dialog_positive_btn" translatable="true">Μεταβείτε στις Ρυθμίσεις</string>
@@ -154,12 +130,8 @@
     <string name="dns_firewall_mode_info_explanation_new" translatable="true">Όλα τα παραπάνω + παράκαμψη της λογοκρισίας στο Διαδίκτυο.</string>
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control χρησιμοποιεί την υπηρεσία προσβασιμότητας για να παρακολουθεί ποιες εφαρμογές χρησιμοποιούνται (προσκήνιο) σε σχέση με εκείνες που δεν χρησιμοποιούνται (παρασκήνιο). \n \nDNS Control δεν συλλέγει πληροφορίες ούτε σας κατασκοπεύει με οποιονδήποτε τρόπο.</string>
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">Η υπηρεσία προσβασιμότητας DNS Control σταμάτησε ή κατέρρευσε.. <i><b>Μεταβείτε στις Ρυθμίσεις και κάντε αναγκαστική διακοπή</b></i>DNS Control και ξεκινήστε το ξανά για να χρησιμοποιήσετε <i>Αποκλείστε κάθε εφαρμογή που δεν χρησιμοποιείται</i>χαρακτηριστικό. \n \nΤο DNS Control χρησιμοποιεί υπηρεσία προσβασιμότητας για να παρακολουθεί ποιες εφαρμογές είναι σε χρήση (προσκήνιο) σε σχέση με εκείνες που δεν είναι σε χρήση (παρασκήνιο).</string>
-    <string name="bsct_app_info" translatable="true">Πληροφορίες εφαρμογής</string>
-    <string name="bsct_block" translatable="true">Αποκλεισμός, παράκαμψη, εξαίρεση, απομόνωση &lt;u&gt;αυτής της εφαρμογής&lt;/u&gt;</string>
-    <string name="bsct_conn_desc_allowed" translatable="true">επιτρέπεται στο %1$s %2$s</string>
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;: Αποκλείει μια εφαρμογή από τη σύνδεση στο Internet. \n &lt;u&gt;#2&lt;/u&gt;: Αποκλείει οποιαδήποτε εφαρμογή από τη σύνδεση σε μια συγκεκριμένη IP. \n &lt;u&gt;#3&lt;/u&gt;: Αποκλείει όλες τις συνδέσεις όταν η συσκευή είναι κλειδωμένη (Universal Firewall). \n &lt;u&gt;#4&lt;/u&gt;: Αποκλείει οποιαδήποτε εφαρμογή που δεν χρησιμοποιείται (Universal Firewall). \n &lt;u&gt;#5&lt;/u&gt;: Μπλοκάρει τις συνδέσεις όταν η εφαρμογή προέλευσης είναι άγνωστη (Universal Firewall). \n &lt;u&gt;#6&lt;/u&gt;: Αποκλείει όλη την κυκλοφορία UDP εκτός από το DNS (Universal Firewall). \n &lt;u&gt;#7&lt;/u&gt;: Αποκλείει τις συνδέσεις όταν παρακάμπτεται το DNS (Universal Firewall).</string>
     <string name="always_on_dialog_lockdown_stop_message" translatable="true">Το DNS Control τρέχει το VPN σε κατάσταση <i>Lockdown</i>. Η διακοπή της θα είχε ως αποτέλεσμα την απώλεια της συνδεσιμότητας στο Internet για αυτό το προφίλ χρήστη. Θέλετε να συνεχίσετε ούτως ή άλλως;</string>
-    <string name="firewall_act_network_monitor_tab" translatable="true">Δίκτυο</string>
     <string name="dns_act_configure_tab" translatable="true">Ρύθμιση παραμέτρων</string>
     <string name="univ_firewall_dialog_title" translatable="true">Διαγραφή κανόνα IP;</string>
     <string name="univ_firewall_dialog_message" translatable="true">Η διαγραφή αυτού του κανόνα θα επιτρέψει σε οποιαδήποτε εφαρμογή να συνδεθεί σε αυτήν την IP. Θέλετε να προχωρήσετε;</string>

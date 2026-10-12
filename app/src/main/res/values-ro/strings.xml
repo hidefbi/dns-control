@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_settings" translatable="true">Setări</string>
-    <string name="title_statistics" translatable="true">Statistici</string>
     <string name="pause_title_desc" translatable="true">într-o mică pauză…</string>
-    <string name="about_title_desc" translatable="true">Detectează și blochează riscurile de securitate în rețea</string>
     <string name="txt_home" translatable="true">Acasă</string>
     <string name="accessibility_service_description" translatable="true">DNS Control utilizează serviciul de accesibilitate pentru a detecta și proteja aplicațiile care rulează în fundal. DNS Control nu colectează și nu vinde nici o informație.</string>
     <string name="next" translatable="true">Următorul</string>
@@ -39,12 +37,8 @@
     <string name="lbl_persistent_keepalive" translatable="true">Menținut neîntrerupt</string>
     <string name="lbl_allowed_ips" translatable="true">IP-uri permise</string>
     <string name="lbl_save" translatable="true">Salvează</string>
-    <string name="lbl_cache" translatable="true">Cache</string>
-    <string name="lbl_status" translatable="true">Stare</string>
     <string name="lbl_remove" translatable="true">Elimină</string>
-    <string name="lbl_last" translatable="true">Ultima</string>
     <string name="lbl_starting" translatable="true">Se începe</string>
-    <string name="lbl_overall" translatable="true">Global</string>
     <string name="remaining_apps_dialog_desc" translatable="true">Include toate aplicațiile care au rămas nedirecționate printr-un proxy</string>
     <string name="remaining_apps_dialog_title" translatable="true">Include restul aplicațiilor</string>
     <string name="crypt_adguard_desc" translatable="true">Protejează-ți dispozitivul de aplicații dăunătoare și nu numai atât.</string>
@@ -64,7 +58,6 @@
     <string name="lbl_dismiss" translatable="true">Renunță</string>
     <string name="lbl_all" translatable="true">Toate</string>
     <string name="lbl_allowed" translatable="true">Permise</string>
-    <string name="lbl_maybe_blocked" translatable="true">Posibil blocate</string>
     <string name="lbl_http" translatable="true">HTTP</string>
     <string name="lbl_http_socks5" translatable="true">HTTPS &amp; SOCKS5</string>
     <string name="lbl_fast" translatable="true">rapid</string>
@@ -73,7 +66,6 @@
     <string name="cleanbrowsing_adult_dns_desc" translatable="true">Filtrul Adult blochează accesul la toate website-urile pornografice, pentru adulți sau cu conținut explicit. Nu blochează conexiunile prin proxy sau VPN și nici website-urile cu conținut mixt. Website-urile precum Reddit sunt permise. Google și Bing sunt setate pe SafeMode.</string>
     <string name="lbl_secure" translatable="true">securizat</string>
     <string name="lbl_anonymous" translatable="true">anonim</string>
-    <string name="untracked" translatable="true">neurmărit</string>
     <string name="bypass_dns_firewall" translatable="true">ocolește dns și firewall</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification." translatable="true">Atentie: DNS Control a fost dezactivat</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification." translatable="true">Apasă aici pentru a schimba setările protecției</string>
@@ -89,9 +81,7 @@
     <string name="lbl_domain" translatable="true">Domeniu</string>
     <string name="lbl_wildcard" translatable="true">Metacaracter</string>
     <string name="lbl_action_required" translatable="true">Actiune ceruta</string>
-    <string name="lbl_rules" translatable="true">reguli</string>
     <string name="lbl_configure" translatable="true">Configureaza</string>
-    <string name="lbl_logs" translatable="true">Jurnale</string>
     <string name="lbl_network" translatable="true">Retea</string>
     <string name="lbl_create" translatable="true">Creează</string>
     <string name="lbl_qr_code" translatable="true">Cod QR</string>
@@ -100,7 +90,6 @@
     <string name="lbl_public_key" translatable="true">Cheia publică</string>
     <string name="lbl_addresses" translatable="true">Adrese</string>
     <string name="lbl_dns_servers" translatable="true">Servere DNS</string>
-    <string name="lbl_applications" translatable="true">Aplicații</string>
     <string name="lbl_ip_rules" translatable="true">Reguli IP</string>
     <string name="lbl_stopped" translatable="true">Oprit</string>
     <string name="lbl_private" translatable="true">privat</string>
@@ -113,7 +102,6 @@
     <string name="memory_notification_text">DNS Control nu dispune de suficientă memorie. Operațiunile sistemului ar putea fi limitate.</string>
     <string name="slide_2_title" translatable="true">Bun venit</string>
     <string name="slide_2_desc" translatable="true">DNS Control e cea mai ușoară cale pentru monitorizarea activității din rețea, ocolirea cenzurii pe internet și protejarea aplicațiilor pe dispozitivul tău Android.</string>
-    <string name="slide_1_title" translatable="true">Gratuit și Open-Source</string>
     
     <string name="allow" translatable="true">Autorizează</string>
     <string name="block" translatable="true">Blochează</string>
@@ -127,23 +115,19 @@
     <string name="wireguard_no_config_msg" translatable="true">Nu există VPN AdGuard. Adaugă unul pentru a începe.</string>
     <string name="wireguard_connection_error" translatable="true">VPN-ul WireGuard nu a reușit să se conecteze</string>
     <string name="crypt_quad9_security_desc" translatable="true">Quad9 (anycast) dnssec/no–log/filter 9.9.9.9 – 149.112.112.9 – 149.112.112.112</string>
-    <string name="title_about" translatable="true">Despre</string>
     <string name="status_no_internet" translatable="true">Fără internet</string>
     <string name="notification_action_dns_mode" translatable="true">DNS</string>
     <string name="dns_mode_info_title" translatable="true">DNS</string>
     <string name="firewall_mode_info_title" translatable="true">Firewall</string>
     <string name="apps_info_title" translatable="true">Aplicații</string>
     <string name="custom_url_error_invalid_url" translatable="true">URL invalid</string>
-    <string name="bsct_app_info" translatable="true">Informații aplicație</string>
     <string name="always_on_dialog_positive_btn" translatable="true">Mergi la Setări</string>
     <string name="always_on_dialog_neutral" translatable="true">Setări</string>
     <string name="private_dns_dialog_positive" translatable="true">Mergi la Setări</string>
     <string name="dns_act_configure_tab" translatable="true">Configureaza</string>
     <string name="configure_dns_connected_doh_status" translatable="true">DNS peste HTTPS</string>
-    <string name="configure_dns_connection_name" translatable="true">Conectat la %1$s</string>
     <string name="download_update_dialog_title" translatable="true">Actualizare nouă!</string>
     <string name="download_update_dialog_failure_title" translatable="true">Ceva n-a mers bine!</string>
-    <string name="app_mode_dns" translatable="true">DNS</string>
     <string name="app_mode_firewall" translatable="true">Firewall</string>
     <string name="relative_time_today" translatable="true">Astazi</string>
     <string name="relative_time_yesterday" translatable="true">Ieri</string>
@@ -156,7 +140,6 @@
     <string name="settings_general_customize" translatable="true">Personalizare</string>
     <string name="settings_check_update_heading" translatable="true">Caută actualizări</string>
     <string name="settings_theme_heading" translatable="true">Aspect</string>
-    <string name="settings_go_log_heading" translatable="true">Nivele de jurnalizare</string>
     <string name="settings_dns_proxy_dialog_hostname" translatable="true">Nume gazdă</string>
     <string name="settings_app_list_default_app" translatable="true">Nici una</string>
     <string name="settings_socks5_dialog_hint_ip" translatable="true">Adresă IP</string>
@@ -168,12 +151,9 @@
     <string name="settings_theme_dialog_themes_3" translatable="true">Întunecat</string>
     <string name="settings_ip_text_ipv46" translatable="true">Automat</string>
     <string name="settings_notification_desc3" translatable="true">Nimic</string>
-    <string name="settings_pcap_dialog_option_1" translatable="true">Dezactivat (prestabilit)</string>
     <string name="firewall_status_allow" translatable="true">permise</string>
     <string name="firewall_status_blocked" translatable="true">blocate</string>
-    <string name="hs_biometeric_feature_not_supported" translatable="true">Pe acest dispozitiv autentificarea biometrică nu este posibilă sau e dezactivată</string>
     <string name="always_on_dialog_positive" translatable="true">Stop</string>
-    <string name="firewall_act_network_monitor_tab" translatable="true">Retea</string>
     <string name="orbot_install_dialog_positive" translatable="true">Instaleaza</string>
     <string name="settings_dns_proxy_dialog_username" translatable="true">Nume de utilizator</string>
     <string name="settings_general_header" translatable="true">General</string>
@@ -183,7 +163,6 @@
     <string name="settings_locale_heading" translatable="true">Schimbă limba</string>
     <string name="hsf_start_btn_state" translatable="true">start</string>
     <string name="hsf_stop_btn_state" translatable="true">stop</string>
-    <string name="status_app_error" translatable="true">eroare în aplicație</string>
     <string name="status_dns_error" translatable="true">eroare la DNS</string>
     <string name="status_dns_server_down" translatable="true">server DNS nefuncțional</string>
     <string name="status_protected_with_tor" translatable="true">protejat cu Tor</string>
@@ -216,42 +195,22 @@
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">Serviciul de accesibilitate al DNS Control s-a oprit sau s-a blocat. <i><b>Mergeți la Setări și Oprire Forțată</b></i> apoi reporniți DNS Control pentru <i>Blocare aplicații care rulează în fundal</i>.\n\nDNS Control utilizează serviciul de accesibilitate pentru a diferenția aplicațiile care rulează la vedere față de cele care rulează în fundal.</string>
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control utilizează serviciul de accesibilitate pentru a diferenția aplicațiile care rulează la vedere față de cele care rulează în fundal.\n\nDNS Control nu colectează nici o informație și nu vă spionează în nici un fel.</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">Nu s-a putut deschide Setări- Accesibilitate. Încearcă din nou mai târziu!</string>
-    <string name="brave_dns_connect_mode_change_firewall" translatable="true">Alege modul.</string>
-    <string name="brave_dns_connect_mode_change_dns" translatable="true">Alege modul.</string>
     <string name="default_dns_name" translatable="true">RDNS prestabilit</string>
-    <string name="conn_track_clear_logs_title" translatable="true">Ștergi toate jurnalele de rețea?</string>
-    <string name="conn_track_clear_logs_message" translatable="true">Vor fi eliminate toate jurnalele de rețea, dar nu și regulile Firewall-ului. Acțiunea este ireversibilă. Vrei să continui?</string>
-    <string name="dns_query_clear_logs_title" translatable="true">Ștergi toate jurnalele DNS?</string>
-    <string name="dns_query_clear_logs_message" translatable="true">Vor fi eliminate toate jurnalele DNS de pe dispozitiv. Acțiunea este ireversibilă. Vrei să continui?</string>
-    <string name="bsct_block_ip" translatable="true">Blochează, autorizează &lt;u&gt;aceasta adresă IP&lt;/u&gt; pentru &lt;u&gt;această aplicație&lt;/u&gt;</string>
-    <string name="bsct_block_domain" translatable="true">Blochează, autorizează &lt;u&gt;domeniul&lt;/u&gt; pentru &lt;u&gt;această aplicație&lt;/u&gt;</string>
-    <string name="bsct_block" translatable="true">Blochează, ocolește, exclude, izolează, &lt;u&gt;această aplicație&lt;/u&gt;</string>
-    <string name="bsct_conn_block_desc" translatable="true">%1$s blocate de %2$s</string>
-    <string name="bsct_conn_block_desc_device" translatable="true">%1$s blocate pe dispozitiv</string>
-    <string name="bsct_conn_desc_allowed" translatable="true">permise în %1$s %2$s</string>
-    <string name="bsct_conn_desc_blocked" translatable="true">blocate în %1$s %2$s</string>
     <string name="always_on_dialog_heading" translatable="true">Dezactivează VPN Permanent</string>
     <string name="always_on_dialog" translatable="true">\"VPN Permanent\" este activat pe acest dispozitiv. Pentru a porni DNS Control, mergi la setările aplicației și dezactivează \"VPN Permanent\".</string>
     <string name="always_on_dialog_stop_heading" translatable="true">VPN Permanent</string>
     <string name="firewall_act_universal_tab" translatable="true">Universal</string>
     <string name="download_update_dialog_trylater_message" translatable="true">Nu se poate actualiza acum, încearcă din nou mai târziu.</string>
-    <string name="search_firewall_network_log" translatable="true"><font size="12">Caută aplicații, IP-uri, domenii</font></string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Caută aplicații după uid, nume</font></string>
-    <string name="search_dns_logs" translatable="true"><font size="12">Caută nume de domenii sau IP-uri</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">Caută IP-uri</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Caută nume de domeniu</font></string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Caută liste de blocat</font></string>
     <string name="search_proxy_add_apps" translatable="true">Caută aplicații după nume</string>
     <string name="app_mode_dns_low_battery" translatable="true">DNS (economizor baterie)</string>
     <string name="app_mode_dns_firewall" translatable="true">DNS și Firewall (prestabilit)</string>
-    <string name="app_mode_wireguard" translatable="true">VPN</string>
-    <string name="settings_vpn_heading" translatable="true">vpn</string>
     <string name="info_dialog_copy_toast_msg" translatable="true">Adresă IP copiată.</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">URL copiat</string>
     <string name="public_key_copy_toast_msg" translatable="true">Cheie publică copiată.</string>
-    <string name="info_dialog_rethink_toast_msg" translatable="true">Copiat ca URL RDNS + DNS-peste-HTTPS</string>
-    <string name="settings_enable_logs_desc" translatable="true">Păstrează jurnalele DNS și Firewall local, pe dispozitiv.</string>
-    <string name="settings_enable_logs" translatable="true">Activează jurnalele pe dispozitiv</string>
     <string name="app_mode_choose" translatable="true">Alege modul</string>
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;: Blochează conectarea unei aplicații la internet.\n &lt;u&gt;#2&lt;/u&gt;: Blochează conectarea tuturor aplicațiilor la un anumit IP.\n &lt;u&gt;#3&lt;/u&gt;: Blochează toate conexiunile când dispozitivul este blocat (Universal Firewall).\n &lt;u&gt;#4&lt;/u&gt;: Blochează toate aplicațiile care rulează în fundal (Universal Firewall).\n &lt;u&gt;#5&lt;/u&gt;: Blochează conexiunile aplicațiilor din sursă necunoscută (Universal Firewall).\n &lt;u&gt;#6&lt;/u&gt;: Blochează tot traficul UDP cu excepția DNS (Universal Firewall).\n &lt;u&gt;#7&lt;/u&gt;: Blochează conexiunile când DNS este ocolit (Universal Firewall).</string>
     <string name="private_dns_dialog_desc" translatable="true">Setările DNS-ului DNS Control sunt suprascrise de DNS-ul privat din Android.\n\nPentru a utiliza DNS-ul DNS Control, mergi la Setări și oprește DNS privat.</string>
@@ -277,9 +236,7 @@
     <string name="local_blocklist_redownload_desc" translatable="true">Listele de blocat de pe dispozitiv sunt actualizate la ultima versiune v%1$s.</string>
     <string name="blocklist_update_check_failure" translatable="true">Ceva nu a mers bine. Încearcă din nou mai târziu!</string>
     <string name="blocklist_update_check_not_required" translatable="true">Listele de blocat sunt actualizate la ultima versiune.</string>
-    <string name="show_logs_disabled_dns_message" translatable="true">Înregistrarea cererilor DNS a fost dezactivată. Pentru reactivare, mergi la <i>Setări</i> și selectează <i>Activează jurnalele pe dispozitiv</i></string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS Proxy</string>
-    <string name="configure_dns_crypt" translatable="true">Rezolvatori DNSCrypt: %1$s</string>
     <string name="http_proxy_dialog_heading" translatable="true">Alege HTTP(S) CONNECT Proxy</string>
     <string name="http_proxy_dialog_desc" translatable="true">Setează URL de forma &lt;protocol&gt;://&lt;username&gt;:&lt;password&gt;@&lt;domain-or-ip&gt;:&lt;port&gt;&lt;path&gt;. Examplu: http://proxy.example.com:8080/</string>
     <string name="download_update_dialog_message" translatable="true">O noua versiune a aplicației este disponibilă pentru descărcare de pe website. Începi descărcarea?</string>
@@ -288,18 +245,13 @@
     <string name="download_update_dialog_message_success" translatable="true">Lista de blocat a fost descărcată cu succes.</string>
     <string name="download_update_dialog_failure_message" translatable="true">Serverele noastre sunt nefuncționale sau conexiunea nu a fost realizată. Încearcă din nou mai târziu.</string>
     <string name="download_update_dialog_trylater_title" translatable="true">Nu se poate actualiza acum</string>
-    <string name="connection_http3" translatable="true">HTTP3</string>
     <string name="settings_ip_network_heading" translatable="true">Alege versiunea IP</string>
     <string name="settings_ip_network_desc" translatable="true">Alege o versiune de Internet Protocol.</string>
-    <string name="settings_ptrans_heading" translatable="true">Forțează ieșirea IPv4</string>
-    <string name="settings_ptrans_desc" translatable="true">Convertește în dispozitiv traficul de ieșire IPv6 la IPv4. Activează dacă ești conectat la o rețea exclusiv IPv4.</string>
     <string name="settings_connectivity_checks" translatable="true">Execută verificări de conectivitate</string>
     <string name="settings_connectivity_checks_desc" translatable="true">Sunt trimise verificări de conectivitate pentru a determina disponibilitatea.</string>
     <string name="settings_allow_lan_heading" translatable="true">Nu direcționa IP-urile private (experimental)</string>
     <string name="settings_allow_lan_desc" translatable="true">Exclude direcționările LAN, loopback, multicast și link-local din tunelul VPN al DNS Control.</string>
     <string name="settings_exclude_proxy_apps_desc" translatable="true">Când este dezactivat, exclude aplicațiile proxy (SOCKS5, HTTP, DNS) din tunelul VPN al DNS Control.</string>
-    <string name="settings_allow_bypass_heading" translatable="true">Activează vizibilitatea rețelei</string>
-    <string name="settings_allow_bypass_desc" translatable="true">Permite aplicațiilor să acceseze toate rețelele disponibile. La nevoie, aceste aplicații pot ocoli tunelul VPN DNS Control. Unele aplicații de audio/video conferință precum Zoom și Meet au nevoie de asta pentru a funcționa corespunzător.</string>
     <string name="settings_lock_down_mode_desc" translatable="true">Anumite opțiuni sunt dezactivate când VPN e în modul lockdown. <u>Vezi setările VPN</u>.</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">Nu pot fi setate proxy-uri când VPN rulează în modul DNS-only.</string>
     <string name="settings_socks5_heading" translatable="true">Setări Proxy SOCKS5</string>
@@ -325,7 +277,6 @@
     <string name="dns_proxy_remove_dialog_title" translatable="true">Elimini DNS Proxy?</string>
     <string name="always_on_dialog_lockdown_stop_message" translatable="true">DNS Control rulează VPN în modul <i>Lockdown</i>. Oprirea acestuia va duce la pierderea conexiunii internet pe acest profil de utilizator. Vrei să continui?</string>
     <string name="refresh_complete" translatable="true"><!-- use dc_refresh_toast -->Lista aplicațiilor reactualizată.</string>
-    <string name="show_logs_disabled_network_message" translatable="true">Înregistrarea conexiunilor a fost dezactivată. Pentru reactivare, mergi la <i>Setări</i> și selectează <i>Activează jurnalele pe dispozitiv</i></string>
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="orbot_bs_status_4" translatable="true">Setare Tor-ca-Proxy (Orbot) dintr-un singur click.</string>
     <string name="orbot_stop_dialog_message" translatable="true">DNS Control a oprit transmiterea conexiunilor prin Orbot, dar e posibil ca Orbot să ruleze încă în fundal.</string>
@@ -375,34 +326,23 @@
     <string name="settings_notification_dialog_option_2" translatable="true">\nDNS / DNS + Firewall:\nArată 2 butoane pentru a schimba rapid între modul DNS cu economie de baterie și modul DNS + Firewall obișnuit.</string>
     <string name="settings_locale_desc" translatable="true">Alege limba preferată</string>
     <string name="settings_locale_dialog_title" translatable="true">Alege limba preferată</string>
-    <string name="settings_locale_dialog_neutral" translatable="true">Ajută la traducerea acestei aplicații</string>
     <string name="settings_biometeric_heading" translatable="true">Activează blocarea aplicației</string>
     <string name="settings_selected_theme" translatable="true">Tema curentă: %1$s</string>
     <string name="settings_protocol_translation_dns_inactive" translatable="true">Alege modul DNS/DNS+Firewall pentru a activa această setare</string>
     <string name="settings_default_dns_heading" translatable="true">Alege fallback DNS</string>
     <string name="settings_default_dns_desc" translatable="true">În cazurile rare când DNS-ul preferat de utilizator nu este găsit, se utilizează fallback DNS.</string>
-    <string name="settings_pcap_heading" translatable="true">Capturare pachet</string>
-    <string name="settings_pcap_dialog_title" translatable="true">PCAP</string>
-    <string name="settings_pcap_dialog_option_3" translatable="true">Ieșire la dosarul Download</string>
-    <string name="pcap_failure_toast" translatable="true">Crearea fișierului pcap nu a reușit. Încearcă din nou!</string>
     <string name="apps_icon_content_desc" translatable="true">Icon aplicație</string>
     <string name="firewall_status_excluded" translatable="true">excluse din dns și firewall</string>
     <string name="firewall_status_isolate" translatable="true">izolate</string>
     <string name="firewall_status_whitelisted" translatable="true">ocolesc regulile generale ale firewall-ului</string>
     <string name="firewall_status_bypass_dns_firewall" translatable="true">ocolesc regulile dns și firewall</string>
     <string name="firewall_status_block_unmetered" translatable="true">blocate în rețelele necontorizate (wifi)</string>
-    <string name="hs_biometeric_failed" translatable="true">Autentificare biometrică nereușită</string>
-    <string name="hs_biometeric_error" translatable="true">Eroare la autentificarea biometrică</string>
     <string name="firewall_card_status_active" translatable="true">%1$s aplicații</string>
-    <string name="firewall_card_text_active" translatable="true">%1$s blocate\n%2$s cu ocolire\n%3$s excluse\n%4$s izolate</string>
     <string name="firewall_card_text_inactive" translatable="true">Activează modul Firewall.</string>
-    <string name="settings_pcap_dialog_option_2" translatable="true">Ieșire la Logcat</string>
     <string name="firewall_status_block_metered" translatable="true">blocate în rețelele contorizate (mobile)</string>
-    <string name="ct_bs_app_info_error" translatable="true">Nu găsesc informații despre aplicație</string>
     <string name="hs_biometeric_title" translatable="true">Deblochează DNS Control</string>
     <string name="hs_biometeric_desc" translatable="true">Folosește autentificarea biometrică pentru a debloca DNS Control</string>
     <string name="settings_theme_desc" translatable="true">Temă întunecată/luminoasă</string>
-    <string name="settings_go_log_desc" translatable="true">În scop de depanare</string>
     <string name="settings_rinr_heading" translatable="true">Loopback (experimental)</string>
     <string name="settings_rinr_desc_enabled" translatable="true">Direcționează traficul propriu al DNS Control prin tunel. Dacă nu te pricepi, lasă-l \"Închis\".</string>
     <string name="settings_app_notification_persistent_desc" translatable="true">Faceți notificarea permanentă</string>
@@ -414,7 +354,6 @@
     <string name="settings_http_proxy_toast_success" translatable="true">Proxy-ul HTTP este setat</string>
     <string name="settings_dns_proxy_dialog_header" translatable="true">Setează Proxy SOCKS5</string>
     <string name="settings_dns_proxy_dialog_app" translatable="true">Aplicație</string>
-    <string name="settings_http_proxy_dialog_title" translatable="true">Server URL personalizat</string>
     <string name="settings_http_proxy_error_text2" translatable="true">Portul nu e valid</string>
     <string name="settings_dns_proxy_dialog_port_number" translatable="true">Număr port</string>
     <string name="settings_dns_proxy_dialog_positive_btn" translatable="true">Setează</string>
@@ -423,74 +362,44 @@
     <string name="settings_socks_forwarding_desc" translatable="true">Înaintare la %1$s:%2$s, %3$s</string>
     <string name="settings_theme_dialog_themes_1" translatable="true">Setat de sistem</string>
     <string name="settings_biometric_desc" translatable="true">Securizează aplicația prin blocarea ecranului</string>
-    <string name="dns_card_latency_active" translatable="true">%1$sms</string>
     <string name="dns_card_latency_inactive" translatable="true">Activează modul DNS.</string>
     <string name="firewall_card_universal_rules" translatable="true">%1$s reguli generale</string>
     <string name="rules_card_domain_count" translatable="true">%1$s reguli pe domeniu</string>
     <string name="apps_card_ips_count" translatable="true">%1$s reguli pe IP &amp; Port</string>
-    <string name="logs_card_network_count" translatable="true">conexiuni %1$s</string>
-    <string name="logs_card_dns_count" translatable="true">cereri %1$s</string>
     <string name="hsf_downtime" translatable="true">(inactiv de %1$s)</string>
     <string name="logs_card_duration" translatable="true">de: %1$s</string>
     <string name="hsf_vpn_prepare_failure" translatable="true">Permisiunea de creare a VPN nu a fost acordată sau există o altă aplicație în modul VPN permanent.</string>
     <string name="hsf_notification_permission_failure" translatable="true">Permite notificările în Setări</string>
-    <string name="hsf_start_dialog_header" translatable="true">Start %1$s</string>
-    <string name="hsf_start_dialog_message" translatable="true">Ești la un singur pas de un Android protejat și securizat: observă instant activitatea în rețea, blochează websiteuri, IP-uri și aplicații dăunătoare.</string>
-    <string name="hsf_start_dialog_positive" translatable="true">Start</string>
-    <string name="hsf_whats_new_chip_text" translatable="true">Noutăți</string>
-    <string name="hsf_proxy_chip_text" translatable="true">Proxy activ</string>
-    <string name="hsf_packet_capture_chip_text" translatable="true">Capturare pachete activă</string>
-    <string name="hsf_blocklist_chip_text_no_data" translatable="true">Activează RDNS+</string>
     <string name="hsf_exclude_error" translatable="true">Excluderea nu e posibilă în modul VPN lockdown</string>
-    <string name="hsf_packet_capture_chip_disabled_toast" translatable="true">Capturarea pachetelor dezactivată</string>
-    <string name="hsf_whats_new_remove_text" translatable="true">Se închide…</string>
-    <string name="hsf_blocklist_updating_text" translatable="true">Se activează…</string>
-    <string name="hsf_chip_appearance" translatable="true">Tema: %1$s</string>
     <string name="lbl_battery_optimization" translatable="true">Optimizare baterie</string>
     <string name="battery_optimization_dialog_heading" translatable="true">Dezactivare %1$s</string>
     <string name="dc_block_heading" translatable="true">Reguli</string>
-    <string name="dc_other_dns_heading" translatable="true">Tip</string>
     <string name="dc_custom_dns_radio" translatable="true">Alte DNS</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_entries" translatable="true">%1$s intrări »</string>
     <string name="dc_local_block_heading" translatable="true">Liste de blocat de pe dispozitiv</string>
     <string name="hsf_pause_vpn_failure" translatable="true">DNS Control nu poate fi pus în pauză deoarece e inactiv</string>
     <string name="dc_custom_block_heading" translatable="true">Reguli domeniu</string>
-    <string name="dc_dns_website_heading" translatable="true">Arată icon-urile website-urilor în jurnalul DNS (experimental)</string>
-    <string name="dc_dns_website_desc" translatable="true">Colectează icon-uri de website de la <i>nextdns.io</i> și <i>duckduckgo.com</i>. Consumă până la 350Mb spațiu memorie</string>
     <string name="dc_check_update_desc" translatable="true">Verifică actualizarea listelor de blocat o dată la <i>trei</i> zile</string>
     <string name="dc_proxy_dns_heading" translatable="true">Niciodată Proxy DNS</string>
     <string name="dc_proxy_dns_desc" translatable="true">Nu utiliza DNS peste proxy-uri permanente WireGuard, SOCKS5, HTTP.</string>
     <string name="dc_dns_leaks_heading" translatable="true">Previne scurgerile DNS</string>
     <string name="dc_check_update_heading" translatable="true">Atenționare actualizări liste de blocat</string>
-    <string name="about_bug_report_desc" translatable="true">jurnal erori prin e-mail</string>
-    <string name="about_bug_no_log_dialog_positive_btn" translatable="true">Trimite e-mail</string>
     <string name="about_settings_app_info" translatable="true">Informații aplicație</string>
     <string name="about_mail_to_string" translatable="true">e-mail la:</string>
     <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_subject" translatable="true">[DNS Control]: raportare bug</string>
     <string name="about_mail_bugreport_share_title" translatable="true">Selectează provider-ul de e-mail</string>
     <string name="app_info_error" translatable="true">Nu pot deschide Informații Aplicație.</string>
-    <string name="private_dns_error" translatable="true">Nu pot deschide ecranul DNS Privat.</string>
     <string name="intent_launch_error" translatable="true">Nu pot deschide %1$s</string>
-    <string name="no_browser_error" translatable="true">Nu pot deschide pagina web în browser.</string>
-    <string name="log_file_not_available" translatable="true">Nu s-a găsit raportul de erori</string>
-    <string name="error_loading_log_file" translatable="true">Eroare la deschiderea fișierului jurnal</string>
-    <string name="collecting_logs_progress_text" translatable="true">Se capturează…</string>
-    <string name="logs_disclaimer" translatable="true">Se arată primele 20.000 caractere</string>
     <string name="vpn_profile_error" translatable="true">Nu pot deschide profilul VPN.</string>
     <string name="cd_dns_crypt_title" translatable="true">Rezolvatori</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">DoH</string>
     <string name="cd_custom_doh_url_name" translatable="true">DoH %1$s</string>
-    <string name="cd_custom_doh_dialog_title" translatable="true">Server URL personalizat</string>
-    <string name="cd_custom_dns_proxy_title" translatable="true">Proxy DNS personalizat</string>
     <string name="hsf_vpn_dialog_header" translatable="true">Atenție!</string>
     <string name="hsf_vpn_dialog_message" translatable="true">DNS Control cere permisiunea de a stabili o VPN locală pentru a cripta cererile DNS ale dispozitivului, a implementa monitorizarea rețelei și a impune regulile Firewall-ului.\n\nDNS Control nu colectează informații și nu vă spionează în nici un fel.</string>
-    <string name="hsf_proxy_chip_removed_toast" translatable="true">Proxy eliminat</string>
     <string name="restrict_dialog_message" translatable="true"><i>%1$s</i> poate duce la pierderea conexiunii. Modifică setarea pentru a permite DNS Control să folosească datele și alte resurse când rulează în background.</string>
     <string name="dc_local_block_desc_1" translatable="true">Alege din peste 195 liste de blocat. Click aici pentru descărcarea sau configurarea lor.</string>
     <string name="dc_dns_leaks_desc" translatable="true">Când este activat, DNS Control capturează toate pachetele la portul 53 și le înaintează la un endpoint setat de utilizator</string>
-    <string name="about_bug_report" translatable="true">Raportare bug</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Trimite e-mail</string>
     <string name="notification_screen_error" translatable="true">Nu pot deschide ecranul Notificări Aplicație.</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">Proxy</string>
@@ -505,7 +414,6 @@
     <string name="cd_dns_crypt_name" translatable="true">DNSCrypt %1$s</string>
     <string name="cd_dns_crypt_relay_name" translatable="true">Releu DNS %1$s</string>
     <string name="cd_dns_crypt_dialog_heading" translatable="true">Adaugă Rezolvatorul sau Releul DNSCrypt</string>
-    <string name="cd_dns_crypt_dialog_title" translatable="true">Adaugă Rezolvatorul sau Releul DNSCrypt</string>
     <string name="cd_dns_crypt_resolver_heading" translatable="true">Rezolvator</string>
     <string name="cd_dns_crypt_relay_heading" translatable="true">Releu</string>
     <string name="cd_dns_crypt_dialog_stamp" translatable="true">DNS stamp</string>
@@ -522,19 +430,7 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s alte aplicații</string>
     <string name="ctbs_block_other_apps" translatable="true">Regulile aplicate pentrur %1$s vor fi, de asemenea, aplicate pentru %2$s alte aplicații</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">Înapoi</string>
-    <string name="dns_log_dialog_positive" translatable="true">Șterge jurnalele</string>
-    <string name="dns_btm_sheet_dialog_message" translatable="true"><Data><![CDATA[ <h3><u><font size="8">%1$s</font></u>: %2$s liste de blocat</h3>%3$s.<br/><br/>]]></Data></string>
-    <string name="dns_btm_sheet_dialog_ips" translatable="true"><Data><![CDATA[ %1$s %2$s <br/>]]></Data></string>
-    <string name="dns_btm_sheet_chip" translatable="true">+%1$s alte IP-uri</string>
-    <string name="dns_btm_sheet_chip_no_answer" translatable="true">Fără răspuns</string>
-    <string name="dns_btm_resolved_crypt" translatable="true">rezolvat &lt;u&gt;anonim&lt;/u&gt; %1$s de %2$s via %3$s</string>
-    <string name="dns_btm_resolved_doh" translatable="true">rezolvat %1$s de %2$s</string>
-    <string name="dns_btm_resolved_doh_no_server" translatable="true">rezolvat %1$s</string>
-    <string name="dns_btm_latency_ms" translatable="true">%1$ss</string>
-    <string name="dns_btm_record_type" translatable="true">Tip cerere: %1$s</string>
     <string name="hs_download_positive_default" translatable="true">ok</string>
-    <string name="hs_download_positive_play_store" translatable="true">Actualizare completă</string>
-    <string name="hs_download_positive_website" translatable="true">Vizitează website</string>
     <string name="hs_download_negative_default" translatable="true">Amintește-mi mai târziu</string>
     <string name="cd_dns_crypt_dialog_name" translatable="true">Nume</string>
     <string name="dns_proxy_dialog_message_no_app" translatable="true">Adresă IP: %1$s\n\nNumăr port: %2$s</string>
@@ -564,8 +460,6 @@
     <string name="univ_firewall_heading" translatable="true">Reguli universale pentru firewall</string>
     <string name="app_ip_domain_rules" translatable="true">Reguli de IP/domeniu per aplicație</string>
     <string name="app_ip_domain_rules_desc" translatable="true">Modifică regulile de IP/Domeniu pentru fiecare aplicație.</string>
-    <string name="dns_connected_rethink_plus" translatable="true">Conectat. Se utilizează lista de blocat %1$s</string>
-    <string name="dns_connected_no_count" translatable="true">Conectat</string>
     <string name="dns_connected" translatable="true">Conectat</string>
     <string name="dns_info_positive" translatable="true">Ok</string>
     <string name="dns_info_neutral" translatable="true">Copiază</string>
@@ -573,7 +467,6 @@
     <string name="dns_proxy_dialog_message" translatable="true">Nume aplicație: %1$s\n\nAdresă IP: %2$s\n\nNumăr port: %3$s</string>
     <string name="dns_query_latency" translatable="true">%1$sms</string>
     <string name="dns_proxy_name" translatable="true">Nume Proxy</string>
-    <string name="dns_proxy_app" translatable="true">Aplicație</string>
     <string name="dns_proxy_ip_address" translatable="true">Adresă IP</string>
     <string name="dns_proxy_port" translatable="true">Număr Port</string>
     <string name="fapps_filter_filter_heading" translatable="true">Tip</string>
@@ -597,10 +490,7 @@
     <string name="fapps_firewall_filter_desc_category" translatable="true"><![CDATA[Arată aplicațiile <u>%1$s</u> %2$s în categoriile: %3$s]]></string>
     <string name="rules_load_failure_heading" translatable="true">Notă</string>
     <string name="network_log_app_name_unknown" translatable="true">Necunoscut</string>
-    <string name="dns_proxy_connection_failure_lockdown" translatable="true">Excluderea %1$s din %2$s în modul lockdown poate cauza probleme de conectare la internet.</string>
     <string name="accessibility_notification_content" translatable="true">Serviciul de accesibilitate DNS Control s-a oprit sau blocat. Ca urmare, aplicațiile în fundal nu mai sunt blocate. Tap pentru a reactiva.</string>
-    <string name="other_dns_list_tab2" translatable="true">Dnscrypt</string>
-    <string name="other_dns_list_tab3" translatable="true">Proxy Dns</string>
     <string name="firewall_rule_block_app_exception" translatable="true">Eroare</string>
     <string name="firewall_rule_block_ip_desc" translatable="true"><![CDATA[O regulă firewall setată de utilizator blochează <i>IP-ul destinație</i>.<br/><br/> Pentru a schimba, mergi la tab-ul <i>Firewall per Aplicație</i>.]]></string>
     <string name="firewall_rule_bypass_universal_ip_desc" translatable="true"><![CDATA[Această conexiune a fost permisă pentru că <i>IP-ul destinație</i> este setat să ocolească toate regulile firewall.<br/><br/> Pentru a schimba, mergi la <i>Reguli IP<i> în tab-ul <i>Universal</i>.]]></string>
@@ -631,9 +521,6 @@
     <string name="network_log_app_name_unnamed" translatable="true">Fără nume (%1$s)</string>
     <string name="dns_crypt_connection_failure" translatable="true">Eroare de conectare la serverul DNSCrypt.</string>
     <string name="dns_proxy_connection_failure" translatable="true">Eroare de conectare la serverul DNS Proxy.</string>
-    <string name="dns_proxy_toast_parameter" translatable="true">Proxy DNS</string>
-    <string name="socks5_proxy_toast_parameter" translatable="true">Proxy SOCKS5</string>
-    <string name="orbot_toast_parameter" translatable="true">Tor-ca-proxy</string>
     <string name="system_dns_connection_failure" translatable="true">Imposibil de determinat serverul DNS curent</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
     <string name="update_complete_snack_message" translatable="true">Noua versiune descărcată.</string>
@@ -642,8 +529,6 @@
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Descărcare</string>
     <string name="settings_local_blocklist_version" translatable="true">Versiune: v%1$s</string>
     <string name="accessibility_failure_toast" translatable="true">Serviciul de accesibilitate DNS Control s-a oprit sau blocat. Ca urmare, aplicațiile în fundal nu mai sunt blocate.</string>
-    <string name="coming_soon_toast" translatable="true">în curând</string>
-    <string name="toast_allow_bypass_disabled" translatable="true">%1$s este deactivat dacă proxy-urile sunt active</string>
     <string name="pause_text" translatable="true">în pauză</string>
     <string name="pause_desc" translatable="true">Notă: %1$s aplicații blocate vor fi protejate de firewall în continuare.</string>
     <string name="other_dns_list_tab1" translatable="true">DoH</string>
@@ -734,7 +619,6 @@
     <string name="cd_remove_dialog_message" translatable="true">Șterge domeniul din configurația salvată.</string>
     <string name="cd_deleted_toast" translatable="true">Șterge toate regulile de domeniu</string>
     <string name="cd_no_rules_text" translatable="true">Nu există reguli de domeniu.</string>
-    <string name="cd_dialog_edit_title" translatable="true">Editare regulă de domeniu</string>
     <string name="cd_toast_edit" translatable="true">Editat</string>
     <string name="cd_dialog_title" translatable="true">Adaugă regulă de domeniu</string>
     <string name="cd_dialog_desc" translatable="true">URL sau nume de domeniu cu un metacaracter optional: *.test.com, test.com/test</string>
@@ -767,7 +651,6 @@
     <string name="invalid_file_error" translatable="true">fișierul nu e valid</string>
     <string name="routing_remaining_apps" translatable="true">Se direcționează aplicațiile rămase</string>
     <string name="rt_filter_parent_selected" translatable="true">Selectat</string>
-    <string name="radio_max_btn" translatable="true">🪂 Max</string>
     <string name="rt_filter_desc" translatable="true"><![CDATA[Se arată listele de blocat <u>%1$s</u>]]></string>
     <string name="bsrf_sub_group_heading" translatable="true">Subgrup</string>
     <string name="cd_dialog_edittext_hint" translatable="true">Introdu %1$s</string>
@@ -776,8 +659,6 @@
     <string name="ada_noapp_dialog_message" translatable="true">Nu există informații despre aplicație. Posibil să fi fost dezinstalată?</string>
     <string name="ada_noapp_dialog_positive" translatable="true">Okay</string>
     <string name="ada_firewall_status" translatable="true"><![CDATA[Această aplicație <b><i>%1$s</i></b>.]]></string>
-    <string name="ada_ip_connection_count_zero" translatable="true">0 adrese IP</string>
-    <string name="ada_ip_no_connection" translatable="true">Nu există înregistrări în jurnal pentru această categorie.</string>
     <string name="ada_app_status_whitelist" translatable="true">va ocoli regulile universale de firewall</string>
     <string name="ada_app_status_isolate" translatable="true">este izolată; sunt permise numai IP-urile și domeniile de încredere</string>
     <string name="ada_app_status_exclude" translatable="true">este exclusă de la dns și firewall</string>
@@ -785,27 +666,18 @@
     <string name="ada_app_status_block_wifi" translatable="true">este blocată în rețelele necontorizate (wifi)</string>
     <string name="ada_app_status_block" translatable="true">este blocată</string>
     <string name="ada_app_status_allow" translatable="true">este permisă</string>
-    <string name="ada_ip_connection_count" translatable="true">Conectată la adresele IP %1$s</string>
     <string name="ada_app_status_bypass_dns_firewall" translatable="true">va ocoli regulile universale de dns și firewall</string>
     <string name="ada_app_status_unknown" translatable="true">este necunoscută</string>
     <string name="ada_firewall_title" translatable="true">Reguli de firewall pentru această aplicație</string>
-    <string name="ada_network_log_title" translatable="true">Jurnal de rețea pentru această aplicație</string>
-    <string name="ada_app_firewall" translatable="true">Firewall</string>
     <string name="ada_app_metered" translatable="true">Contorizat</string>
     <string name="ada_app_unmetered" translatable="true">Necontorizat</string>
     <string name="ada_app_bypass_univ" translatable="true">Ocolire Universală</string>
     <string name="ada_app_bypass_dns_firewall" translatable="true">Ocolire DNS și Firewall</string>
     <string name="ada_app_exclude" translatable="true">Exclude</string>
     <string name="ada_app_isolate" translatable="true">Izolează</string>
-    <string name="ada_app_dns_settings" translatable="true">Setări DNS</string>
-    <string name="ada_delete_logs_dialog_title" description="Appears as dialog title to clear the logs in app specific screen" translatable="true">Șterge jurnalele</string>
-    <string name="ada_delete_logs_dialog_desc" description="Appears as dialog description to clear the logs in app specific screen" translatable="true">Șterge toate jurnalele pentru această aplicație.</string>
     <string name="bypass_dns_firewall_tooltip">%1$s funcționează doar cu DNS-ul DNS Control</string>
     <string name="exclude_apps_from_proxy">Exclude aplicația la toate proxy-urile</string>
     <string name="exclude_apps_from_proxy_failure_toast">Această aplicație ocolește proxy-urile</string>
-    <string name="bsac_title_desc" translatable="true">Regulile se aplică numai pentru această aplicație.</string>
-    <string name="bsdl_block_desc" translatable="true">Blochează, permite &lt;u&gt;acest domeniu&lt;/u&gt;</string>
-    <string name="bsdl_blocked_desc" translatable="true">%1$s blocată de %2$s</string>
     <string name="network_dns" translatable="true">DNS sistem</string>
     <string name="notif_download_content_title" translatable="true">Descărcare listă de blocat pe dispozitiv</string>
     <string name="notif_download_content_text" translatable="true">Descărcare în progres…</string>
@@ -824,9 +696,6 @@
     <string name="rt_edit_dialog_positive" translatable="true">Editare</string>
     <string name="rt_download_start" translatable="true">Se descarcă liste de blocat…</string>
     <string name="rt_download" translatable="true">Descărcare liste de blocat</string>
-    <string name="rt_chip_update_available" translatable="true">Actualizare disponibilă</string>
-    <string name="rt_chip_check_update" translatable="true">Verifică pentru actualizare</string>
-    <string name="rt_re_download" translatable="true">Re-descărcare liste de blocat</string>
     <string name="rt_list_simple_btn_txt" translatable="true">Simplu</string>
     <string name="lbl_advanced" translatable="true">Avansat</string>
     <string name="lbbs_enabled" translatable="true">Activată</string>
@@ -847,11 +716,8 @@
     <string name="brbs_backup_dialog_failure_title" translatable="true">Nu s-a realizat copia de rezervă</string>
     <string name="brbs_backup_dialog_failure_positive" translatable="true">Reîncearcă crearea unei copii de rezervă</string>
     <string name="brbs_backup_dialog_failure_message" translatable="true">Nu s-a realizat copia de rezervă. Mai încerci o dată?</string>
-    <string name="radio_sky_btn" translatable="true">⛅ Sky</string>
     <string name="rt_filter_hint" translatable="true">Se arată <u>toate</u> listele de blocat</string>
     <string name="rt_filter_desc_subgroups" translatable="true"><![CDATA[Se arată listele de blocat <u>%1$s</u>în grupul: %2$s și subgrupul: %3$s]]></string>
-    <string name="rethink_sky_desc" translatable="true">280+ locații; uptime ridicat; resolver stub rulând pe cloudflare.com</string>
-    <string name="rethink_max_desc" translatable="true">50+ locații; mai multă intimitate; resolver recursiv rulând pe fly.io</string>
     <string name="dc_setting_dns_cache_heading" translatable="true">Booster DNS</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Grupează cererile, memorează răspunsurile, rezolvă cu promptitudine erorile</string>
     <string name="dc_refresh_toast" translatable="true">Reîmprospătare completă</string>
@@ -862,14 +728,6 @@
     <string name="brbs_backup_complete_toast" translatable="true">Copie de rezervă reușită</string>
     <string name="brbs_restore_no_uri_toast" translatable="true">Restaurare nereușită, încearcă din nou</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s liste de blocat</string>
-    <string name="ssv_most_contacted_countries_heading" description="This label will appear on the stats screen as a header for most visited domains by country" translatable="true">Cele mai contactate tari</string>
-    <string name="ssv_most_contacted_domain_heading" description="This label will appear on the stats screen as a header for most visited domains" translatable="true">Cele mai contactate domenii</string>
-    <string name="ssv_app_blocked_heading" description="This label will appear on the stats screen as a header for blocked applications." translatable="true">Cele mai blocate aplicatii</string>
-    <string name="ssv_app_network_activity_heading" description="This label will appear on the stats screen as a header for allowed apps." translatable="true">Cele mai permise aplicatii</string>
-    <string name="ssv_most_blocked_domain_heading" description="This label will appear on the stats screen as a header for most blocked domains" translatable="true">Cele mai blocate domenii</string>
-    <string name="ssv_most_contacted_ips_heading" description="This label will appear on the stats screen as a header for most visited ips" translatable="true">Cele mai contactate IP-uri</string>
-    <string name="ssv_most_blocked_ips_heading" description="This label will appear on the stats screen as a header for most blocked ips" translatable="true">Cele mai blocate IP-uri</string>
-    <string name="ssv_most_blocked_countries_heading" description="This label will appear on the stats screen as a header for most blocked domains by country" translatable="true">Cele mai blocate tari</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Pornește DNS Control pentru a începe</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Valoarea nu e validă</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Numărul nu e valid</string>
@@ -880,11 +738,8 @@
     <string name="bad_config_reason_syntax_error" translatable="true">Eroare de sintaxă</string>
     <string name="bad_config_reason_unknown_attribute" translatable="true">Atribut necunoscut</string>
     <string name="bad_config_reason_unknown_section" translatable="true">Secțiune necunoscută</string>
-    <string name="key_length_explanation_binary" translatable="true">: cheile WireGuard trebuie să fie pe 32 bytes</string>
-    <string name="key_length_explanation_hex" translatable="true">: cheile hex WireGuard trebuie să conțină 64 caractere (32 bytes)</string>
     <string name="key_length_explanation_base64" translatable="true">: cheile base64 WireGuard trebuie să conțină 44 caractere (32 bytes)</string>
     <string name="key_contents_error" translatable="true">Caracter incorect în cheie</string>
-    <string name="key_length_error" translatable="true">lungimea cheii nu este cea corectă</string>
     <string name="parse_error_inet_address" translatable="true">Adresa IP</string>
     <string name="parse_error_inet_endpoint" translatable="true">Endpoint</string>
     <string name="parse_error_inet_network" translatable="true">Rețea IP</string>
@@ -902,12 +757,8 @@
     <string name="bad_extension_error" translatable="true">Fișierul trebuie să fie .conf sau .zip</string>
     <string name="setup_wireguard" translatable="true">Instalare WireGuard</string>
     <string name="wireguard_description" translatable="true">WireGuard ca proxy.</string>
-    <string name="new_warp_config_desc" translatable="true">Obține configurația WARP de la server</string>
-    <string name="new_warp_error_toast" translatable="true">Nu se poate obține configurația WARP</string>
-    <string name="new_warp_invalid_config_toast" translatable="true">Configurația WARP nu e validă</string>
     <string name="one_wg_dialog_desc" translatable="true">Toate conexiunile, de la toate aplicațiile, inclusiv DNS, vor fi direcționate la o singură VPN WireGuard activă. Dacă există alte VPN WireGuard active, vor fi oprite.</string>
     <string name="catch_all_wg_dialog_desc" translatable="true">Toate conexiunile și aplicațiile nedirecționate prin alte VPN WireGuard vor fi direcționate prin aceasta.</string>
-    <string name="one_wg_error_toast" translatable="true">Pentru a comuta la Avansate, oprește WireGuard în modul Simplu</string>
     <string name="add_remove_apps" translatable="true">Adaugă / Elimină (%1$s aplicații)</string>
     <string name="add_peer" translatable="true">Adaugă Pereche</string>
     <string name="config_delete_dialog_desc" translatable="true">Sigur dorești să elimini această configurație VPN WireGuard?</string>
@@ -917,7 +768,6 @@
     <string name="include_all_app_wg_dialog_desc" translatable="true">Utilizezi această VPN WireGuard pentru toate aplicațiile?</string>
     <string name="exclude_all_app_wg_dialog_title" translatable="true">Exclude toate aplicațiile</string>
     <string name="exclude_all_app_wg_dialog_desc" translatable="true">Excluzi toate aplicațiile de la această VPN WireGuard?</string>
-    <string name="wireguard_enabled_failure" translatable="true">Împiedică alte proxy-uri active să activeze WireGuard</string>
     <string name="wireguard_disable_failure" translatable="true">\"WireGuard Permanent\" nu poate fi închis</string>
     <string name="wireguard_apps_proxy_map_desc" translatable="true">parte a %1$s</string>
     <string name="wg_apps_dialog_title_include" translatable="true">Include %1$s aplicații</string>
@@ -926,11 +776,9 @@
     <string name="dc_local_block_enabled" translatable="true">Activat</string>
     <string name="lbl_hop" translatable="true">Relee</string>
     <string name="lbl_manual" translatable="true">Manual</string>
-    <string name="lbl_bootstrap" translatable="true">Rezervă</string>
     <string name="lbl_test" translatable="true">Test</string>
     <string name="lbl_protos" translatable="true">protos</string>
     <string name="lbl_experimental" translatable="true">(experimental)</string>
-    <string name="lbl_service_providers" translatable="true">Furnizori de Internet</string>
     <string name="wireguard_title" translatable="true">Internet securizat prin WireGuard</string>
     <string name="wireguard_desc" translatable="true">Criptează traficul tău de internet prin WireGuard. Alege diferite rute pentru diferite aplicații.</string>
     <string name="firewall_title" translatable="true">Protejează sistemul Android prin Firewall</string>
@@ -938,8 +786,6 @@
     <string name="dns_title" translatable="true">Blochează reclame și malware prin DNS</string>
     <string name="dns_desc" translatable="true">Alege din peste 190 liste pentru a bloca reclame, trackers și malware.</string>
     <string name="status_no_network" translatable="true">fără rețea</string>
-    <string name="conn_track_clear_rule_logs_title" translatable="true">Ștergi înregistrările pentru această regulă?</string>
-    <string name="conn_track_clear_rule_logs_message" translatable="true">Aceasta va șterge numai înregistrările pentru regula de firewall curentă. Operația e ireversibilă. Vrei să continui?</string>
     <string name="settings_mobile_metered_heading" translatable="true">Contorizează rețelele mobile</string>
     <string name="settings_mobile_metered_desc" translatable="true">Consideră contorizate numai rețelele mobile, iar celelalte necontorizate.</string>
     <string name="settings_theme_dialog_themes_5" translatable="true">Luminos Plus</string>
@@ -955,7 +801,6 @@
     <string name="dc_filtering_heading" translatable="true">Filtrare</string>
     <string name="cd_split_dns_heading" translatable="true">DNS ramificat (experimental)</string>
     <string name="cd_split_dns_desc" translatable="true">Redirecționează cererile DNS de la aplicațiile care folosesc proxy către serverele DNS proxy.</string>
-    <string name="univ_firewall_rule_11" translatable="true">Blochează toate conexiunile la localhost</string>
     <string name="univ_delete_domain_dialog_title" translatable="true">Elimini toate regulile de domeniu?</string>
     <string name="univ_delete_domain_dialog_message" translatable="true">Eliminarea acestor reguli va permite oricărei aplicații să se conecteze la domeniile blocate în prezent.</string>
     <string name="firewall_rule_private_dns" translatable="true">DNS privat</string>
@@ -968,8 +813,6 @@
     <string name="firewall_rule_lockdown_wg_desc" translatable="true"><![CDATA[Această conexiune a fost blocată pentru că WireGuard este pus în <i>izolare</i>.<br/><br/> Pentru a modifica, mergi la setările <i>WireGuard</i>.]]></string>
     <string name="wireguard_disable_failure_relay" translatable="true">\"Releul WireGuard\" nu poate fi închis</string>
     <string name="config_invalid_desc" translatable="true">Configurare WireGuard incorectă</string>
-    <string name="console_log_title" translatable="true">Jurnale aplicații</string>
-    <string name="console_log_desc" translatable="true">Jurnalele pot conține informații sensibile.</string>
     <string name="do_not_randomize_listen_port_title" translatable="true">Nu lăsa la întâmplare porturile de ascultare WireGuard</string>
     <string name="do_not_randomize_listen_port_desc" translatable="true">În modul Avansat, păstrează porturile de ascultare WireGuard fixe (nu la întâmplare).</string>
     <string name="endpoint_independent_mapping_title" translatable="true">Mapare Endpoint-Independent</string>
@@ -978,7 +821,6 @@
     <string name="anti_censorship_desc" translatable="true">Alege din variatele tehnici anti-cenzură.</string>
     <string name="tcp_keep_alive_title" translatable="true">Scurtare durată TCP activ</string>
     <string name="tcp_keep_alive_desc" translatable="true">Închide rapid socket-urile TCP fără activitate recentă.</string>
-    <string name="ac_title" translatable="true">anti-cenzură</string>
     <string name="ac_desc" translatable="true">Uneltele anti-cenzură pot garanta libertatea internetului, dar s-ar putea să nu funcționeze peste tot. Încercare efectuată doar pe conexiuni non-proxy.</string>
     <string name="ac_never_split_desc" translatable="true">Nu modifica pachetele.</string>
     <string name="ac_split_auto_desc" translatable="true">Modifică pachetele la nevoie.</string>
@@ -1001,17 +843,13 @@
     <string name="hop_error_toast_msg_3" translatable="true">Pentru utilizarea releelor, dezactivează \"Numai date mobile\" sau SSID</string>
     <string name="mode_change_error_proxy_enabled" translatable="true">Nu se poate schimba modul când proxy este în uz. Apasă pentru &lt;u&gt;editarea setărilor proxy&lt;/u&gt;.</string>
     <string name="blocklist_not_available_toast" translatable="true">Pentru actualizarea listelor, descarcă ultima versiune a aplicației.</string>
-    <string name="lbl_ultra_secure" translatable="true">ultra securizat</string>
     <string name="adv_set_dial_timeout_title" translatable="true">Timp de așteptare pentru inactivitate</string>
     <string name="adv_set_dial_timeout_desc" translatable="true">Închide socket-urile TCP și UDP în așteptare după această perioadă.</string>
-    <string name="no_stats_available" translatable="true">Fără statistici</string>
     <string name="hop_failure_toast" translatable="true">Eroare retransmitere: %1$s -&gt; %2$s</string>
     <string name="wg_setting_use_on_mobile" translatable="true">Numai pe date mobile</string>
     <string name="wg_setting_use_on_mobile_desc" translatable="true">Utilizează acest VPN WireGuard cu date mobile.</string>
     <string name="hop_add_remove_title" translatable="true">Adaugă / Elimină releu</string>
     <string name="bypasses_network_restrictions" translatable="true">Verificările de accesibilitate ocolesc toate restricțiile de rețea. În modul <i>Auto</i>, DNS Control utilizează la întâmplare IP-uri și nume-gazdă conectate anterior.</string>
-    <string name="most_contacted_asn" translatable="true">Cei mai contactați ISP</string>
-    <string name="most_blocked_asn" translatable="true">Cei mai blocați ISP</string>
     <string name="adv_tasker_dialog_msg" translatable="true">Introdu numele pachetelor (separate prin virgulă) admise să pornească sau să oprească DNS Control.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Instructiuni:\n Extras cerute la transmitere:\n • Key: expeditor\n • Value: Numele de pachet al aplicației solicitante\n\n Exemplu: key:expeditor value:com.termux\n\n Acțiuni suportate:\n • Start VPN – com.celzero.bravedns.intent.action.VPN_START\n • Stop VPN – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Introdu numele de pachet (example: net.dinglisch.android.taskerm)</string>
@@ -1020,15 +858,12 @@
     <string name="adv_taster_title" translatable="true">Automatizare</string>
     <string name="adv_taster_desc" translatable="true">Configurează aplicațiile care pot porni sau opri DNS Control.</string>
     <string name="top_active_conns" translatable="true">Top conexiuni active</string>
-    <string name="load_more" translatable="true">Încarcă tot</string>
     <string name="close_conns_dialog_title" translatable="true">Închide conexiunile</string>
     <string name="close_conns_dialog_desc" translatable="true">Închizi toate conexiunile pentru %1$s?</string>
     <string name="local_blocklist_delete_desc" translatable="true">Ștergi listele de blocat de pe dispozitiv?</string>
     <string name="fail_open_network_title" translatable="true">Blocaj la pierderea rețelei</string>
     <string name="fail_open_network_desc" translatable="true">Când este activat, DNS Control blochează toate datele când conectivitatea este întreruptă, ca în <i>Modul Avion</i>.</string>
     <string name="close_all" translatable="true">Închide tot</string>
-    <string name="processing_dialog_title" translatable="true">Procesare</string>
-    <string name="processing_dialog_desc" translatable="true">Te rog să aștepți până procesăm cererea ta.</string>
     <string name="wg_mobile_only_hop_err" translatable="true">Modul Date-Mobile nu este acceptat pentru retransmitere</string>
     <string name="vpn_policy_auto_desc" translatable="true">Reacționează la schimbări importante ale rețelei și conectivității.</string>
     <string name="vpn_policy_sensitive" translatable="true">Sensibil</string>
@@ -1036,9 +871,6 @@
     <string name="vpn_policy_relaxed" translatable="true">Relaxat</string>
     <string name="vpn_policy_relaxed_desc" translatable="true">Reacționează la schimbările interesante ale rețelei și conectivității.</string>
     <string name="vpn_policy_title" translatable="true">Politica la schimbările de conexiune</string>
-    <string name="title_database_dump" translatable="true">Bază date</string>
-    <string name="copied_clipboard" translatable="true">Copiat</string>
-    <string name="lbl_default" translatable="true">Prestabilit</string>
     <string name="lbl_action" translatable="true">Acțiune</string>
     <string name="lbl_connect" translatable="true">Conectare</string>
     <string name="lbl_criteria" translatable="true">Criteriu</string>
@@ -1054,13 +886,11 @@
     <string name="ssid_location_error" translatable="true">Activare serviciul Locație</string>
     <string name="ssid_permission_error_action" translatable="true">Acordă permisiune</string>
     <string name="ssid_location_error_action" translatable="true">Activează locația</string>
-    <string name="wg_ssid_and_mobile_err" translatable="true">Nu se pot utiliza ambele %1$s și %2$s</string>
     <string name="wg_ssid_dialog_description" translatable="true">%1$s această VPN Wireguard când este <i>activ</i> identificatorul Wi-Fi (%2$s) %3$s.</string>
     <string name="wg_ssid_input_hint" translatable="true">Introdu identificatorul Wi-Fi (%1$s)</string>
     <string name="wg_ssid_type_exact" translatable="true">Potrivire exactă</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Potrivire parțială</string>
     <string name="wg_ssid_invalid_error" translatable="true">Identificatorii Wi-Fi (%1$s) trebuie să conțină cel mult 32 caractere..</string>
-    <string name="wg_ssid_delete_confirmation" translatable="true">Ștergi %1$s?</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Program stabilitate</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capturează înregistrările erorilor pentru îmbunătățirea stabilității.</string>
     <string name="tombstone_app_title" translatable="true">Memorează aplicațiile dezinstalate</string>
@@ -1074,7 +904,6 @@
     <string name="settings_jumbo_packets_desc" translatable="true">Folosește <i>pachete jumbo</i> în tunelul VPN al DNS Control.</string>
     <string name="settings_tunnel_metered" translatable="true">Contorizat întotdeauna</string>
     <string name="settings_tunnel_metered_desc" translatable="true">Marchează tunelul VPN al DNS Control ca și contorizat pentru ca aplicațiile să folosească mai puține date mobile. Atenție: Asta poate determina aplicațiile să oprească descărcările și încărcările masive, cum ar fi copiile de rezervă.</string>
-    <string name="stability_program_toast" translatable="true">Înscris în <i>programul de stabilitate</i> pentru <i>caracteristici experimentale</i>.</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Auto (toate tipurile)</string>
     <plurals name="server_count">
         <item quantity="one">%1$d server</item>
@@ -1087,23 +916,16 @@
         <item quantity="few">%d perechi</item>
         <item quantity="other">%d perechi</item>
     </plurals>
-    <string name="lbl_paused" translatable="true">În repaus</string>
     <string name="tour_btn_finish">Am înțeles</string>
     <string name="lbl_saving" translatable="true">Se salvează…</string>
-    <string name="lbl_expired" translatable="true">Expirat</string>
-    <string name="lbl_cancelled" translatable="true">Anulat</string>
     <string name="config_delete_all_dialog_desc" translatable="true">Ești sigur că vrei să ștergi TOATE configurațiile VPN WireGuard? Acțiunea este IREVERSIBILĂ.</string>
-    <string name="fs_configure_logs_desc" translatable="true">Vizualizare cereri DNS și înregistrări conexiune</string>
     <string name="fs_configure_others_desc" translatable="true">Aspect, notificări și altele</string>
     <string name="fs_configure_proxy_desc" translatable="true">Rutare WireGuard, SOCKS5 și HTTP proxy</string>
     <string name="config_delete_all_dialog_title" translatable="true">Șterge tot</string>
     <string name="fs_configure_advanced_desc" translatable="true">Instrumente de dezvoltare și diagnosticare</string>
     <string name="fs_configure_network_desc" translatable="true">Modul tunel VPN și preferințe de rețea</string>
-    <string name="lbl_plan" translatable="true">Plan</string>
     <string name="fs_configure_apps_desc" translatable="true">Reguli firewall per aplicație și politica de rețea</string>
-    <string name="lbl_grace_period" translatable="true">Perioadă de grație</string>
     <string name="tour_btn_skip">Sari peste tur</string>
     <string name="stability_program_snackbar_msg" translatable="true">Programul de stabilitate activat. Rapoartele de erori ajută la îmbunătățirea funcționalităților experimentale.</string>
     <string name="stability_program_snackbar_disable" translatable="true">Dezactivează</string>
-    <string name="lbl_expires_on" translatable="true">Expiră la</string>
 </resources>

@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_about" translatable="true">Om</string>
     <string name="title_settings" translatable="true">Indstillinger</string>
-    <string name="title_statistics" translatable="true">Statistik</string>
     <string name="pause_title_desc" translatable="true">tager en lur…</string>
     <string name="settings_title_desc" translatable="true">En yderst brugerdefinerbar DNS og Firewall</string>
-    <string name="about_title_desc" translatable="true">Opdag og blokér netværkssikkerhedstrusler</string>
     <string name="txt_home" translatable="true">Hjem</string>
     <string name="accessibility_service_description" translatable="true">DNS Control bruger tilgængelighedstjenester til at opdage baggrundsapplikationer og sætte en firewall op. DNS Control indsamler eller sælger ingen oplysninger.</string>
     <string name="next" translatable="true">Næste</string>
@@ -16,15 +13,12 @@
     <string name="lbl_dismiss" translatable="true">Afvis</string>
     <string name="lbl_all" translatable="true">Alle</string>
     <string name="lbl_allowed" translatable="true">Tilladt</string>
-    <string name="lbl_maybe_blocked" translatable="true">Måske blokeret</string>
     <string name="lbl_blocked" translatable="true">Blokeret</string>
     <string name="lbl_disabled" translatable="true">Deaktiveret</string>
     <string name="lbl_domain" translatable="true">Domæne</string>
     <string name="lbl_wildcard" translatable="true">Wildcard</string>
     <string name="lbl_action_required" translatable="true">Handling krævet</string>
-    <string name="lbl_rules" translatable="true">regler</string>
     <string name="lbl_configure" translatable="true">Konfigurér</string>
-    <string name="lbl_logs" translatable="true">logfiler</string>
     <string name="lbl_network" translatable="true">netværk</string>
     <string name="lbl_create" translatable="true">Opret</string>
     <string name="lbl_qr_code" translatable="true">QR-kode</string>
@@ -33,7 +27,6 @@
     <string name="lbl_public_key" translatable="true">Offentlig nøgle</string>
     <string name="lbl_addresses" translatable="true">Adresser</string>
     <string name="lbl_dns_servers" translatable="true">DNS-servere</string>
-    <string name="lbl_applications" translatable="true">Applikationer</string>
     <string name="lbl_ip_rules" translatable="true">IP-regler</string>
     <string name="lbl_domain_rules" translatable="true">Domæneregler</string>
     <string name="lbl_delete" translatable="true">Slet</string>
@@ -63,12 +56,8 @@
     <string name="lbl_optional" translatable="true">(valgfri)</string>
     <string name="lbl_allowed_ips" translatable="true">Tilladte IP\'er</string>
     <string name="lbl_save" translatable="true">gem</string>
-    <string name="lbl_cache" translatable="true">Cache</string>
-    <string name="lbl_status" translatable="true">Status</string>
     <string name="lbl_remove" translatable="true">Fjern</string>
-    <string name="lbl_last" translatable="true">Sidst</string>
     <string name="lbl_starting" translatable="true">Starter</string>
-    <string name="lbl_overall" translatable="true">Samlet</string>
     <string name="lbl_stopped" translatable="true">Stoppet</string>
     <string name="lbl_idle" translatable="true">Inaktiv</string>
     <string name="lbl_private" translatable="true">privat</string>
@@ -82,17 +71,14 @@
     <string name="lbl_test" translatable="true">test</string>
     <string name="lbl_protos" translatable="true">protos</string>
     <string name="lbl_experimental" translatable="true">(eksperimentel)</string>
-    <string name="lbl_service_providers" translatable="true">Serviceudbydere</string>
     <string name="lbl_hop" translatable="true">Relæer</string>
     <string name="lbl_manual" translatable="true">Vejledning</string>
-    <string name="lbl_default" translatable="true">Standard</string>
     <string name="lbl_action" translatable="true">Handling</string>
     <string name="lbl_connect" translatable="true">Tilslut</string>
     <string name="lbl_criteria" translatable="true">Kriterier</string>
     <string name="memory_notification_text">DNS Control oplever lav hukommelse. Systemhandlinger kan være begrænsede.</string>
     <string name="slide_2_title" translatable="true">Velkommen</string>
     <string name="slide_2_desc" translatable="true">DNS Control er den nemmeste måde at overvåge netværksaktivitet, omgå internetcensur og beskyt apps med en firewall på din Android-enhed.</string>
-    <string name="slide_1_title" translatable="true">Gratis og open source</string>
     
     <string name="wireguard_title" translatable="true">Sikkert internet med WireGuard</string>
     <string name="wireguard_desc" translatable="true">Kryptér din internettrafik med WireGuard. Vælg forskellige ruter for forskellige apps.</string>
@@ -105,7 +91,6 @@
     <string name="bypass_universal" translatable="true">omgå universel</string>
     <string name="exclude" translatable="true">ekskludér</string>
     <string name="isolate" translatable="true">isolér</string>
-    <string name="untracked" translatable="true">ikke tracket</string>
     <string name="bypass_dns_firewall" translatable="true">omgå dns &amp; firewall</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification." translatable="true">Advarsel: DNS Control er blevet deaktiveret</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification." translatable="true">Tryk for at ændre beskyttelsesindstilling</string>
@@ -155,24 +140,8 @@
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control bruger tilgængelighedstjenester til at spore, hvilke apps der er i brug (i forgrunden) mod dem, der ikke er i brug (i baggrunden).\n\nDNS Control indsamler ikke oplysninger eller spionerer på dig på nogen som helst måde.</string>
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">DNS Control tilgængelighedstjeneste er stoppet eller brudt sammen. <i><b>Gå til indstillinger og gennemtving et stop</b></i> DNS Control og opstart igen for at bruge <i>Blokér alle apps, der ikke er i brug</i>-funktionen.\n\nDNS Control bruger tilgængelighedstjenester til at spore, hvilke apps der er i brug (i forgrunden) mod dem, der ikke er i brug (i baggrunden).</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">Kunne ikke åbne tilgængelighedsindstillinger. Prøv igen senere!</string>
-    <string name="brave_dns_connect_mode_change_firewall" translatable="true">Vælg tilstand.</string>
-    <string name="brave_dns_connect_mode_change_dns" translatable="true">Vælg tilstand.</string>
     <string name="default_dns_name" translatable="true">RDNS standard</string>
     <string name="custom_url_error_invalid_url" translatable="true">Ugyldig URL</string>
-    <string name="conn_track_clear_logs_title" translatable="true">Slet alle netværkslogfiler?</string>
-    <string name="conn_track_clear_logs_message" translatable="true">Dette sletter kun netværkslogfiler, men ikke firewall-regler. Dette kan ikke omgøres. Vil du fortsætte?</string>
-    <string name="conn_track_clear_rule_logs_title" translatable="true">Slet logfiler for denne regel?</string>
-    <string name="conn_track_clear_rule_logs_message" translatable="true">Dette vil kun slette netværkslogfiler for den aktuelle firewall-regel. Dette kan ikke omgøres. Vil du fortsætte?</string>
-    <string name="dns_query_clear_logs_title" translatable="true">Slet alle DNS-logfiler?</string>
-    <string name="dns_query_clear_logs_message" translatable="true">Dette sletter DNS-logfiler på enhenden. Dette kan ikke omgøres. Vil du fortsætte?</string>
-    <string name="bsct_app_info" translatable="true">App-information</string>
-    <string name="bsct_block_ip" translatable="true">Blokér, stol på &lt;u&gt;denne IP&lt;/u&gt; for &lt;u&gt;denne app&lt;/u&gt;</string>
-    <string name="bsct_block_domain" translatable="true">Blokér, stol på &lt;u&gt;domæne(r)&lt;/u&gt; for &lt;u&gt;denne app&lt;/u&gt;</string>
-    <string name="bsct_block" translatable="true">Blokér, omgå, ekskludér, isolér &lt;u&gt;denne app&lt;/u&gt;</string>
-    <string name="bsct_conn_block_desc" translatable="true">blokerede %1$s af %2$s</string>
-    <string name="bsct_conn_block_desc_device" translatable="true">blokerede %1$s på enheden</string>
-    <string name="bsct_conn_desc_allowed" translatable="true">tilladt på %1$s%2$s</string>
-    <string name="bsct_conn_desc_blocked" translatable="true">blokeret på %1$s%2$s</string>
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;: Blokerer en app fra at forbinde til internettet.\n&lt;u&gt;#2&lt;/u&gt;: Blokerer enhver app fra tilslutning til en bestemt IP.\n&lt;u&gt;#3&lt;/u&gt;: Blokerer alle forbindelser, når enheden er låst (Universel firewall).\n&lt;u&gt;#4&lt;/u&gt;: Blokerer enhver app, der ikke er i brug (Universel firewall).\n&lt;u&gt;#5&lt;/u&gt;: Blokerer forbindelser, når kildeapp\'en er ukendt (Universel firewall).\n&lt;u&gt;#6&lt;/u&gt;: Blokerer al UDP-trafik undtagen DNS (Universel firewall).\n&lt;u&gt;#7&lt;/u&gt;: Blokér forbindelser, når DNS omgås (Universel firewall).</string>
     <string name="always_on_dialog_heading" translatable="true">Deaktivér \"Altid på-VPN\"</string>
     <string name="always_on_dialog" translatable="true">\"Altid på-VPN\" er aktiveret på denne enhed. For at starte DNS Control skal du gå til indstillinger og deaktivere \"Altid på-VPN\".</string>
