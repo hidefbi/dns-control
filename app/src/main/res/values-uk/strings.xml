@@ -21,7 +21,6 @@
     <string name="private_dns_dialog_heading">Вимкнути Приватний DNS</string>
     <string name="accessibility_service_description">DNS Control використовує службу спеціальних можливостей для виявлення та блокування фонових застосунків. DNS Control не збирає та не продає жодної інформації.</string>
     <string name="slide_2_desc">DNS Control - це найпростіший спосіб моніторингу мережевої активності, обходу інтернет-цензури та брандмауерів на вашому Android пристрої.</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="allow">дозволити</string>
     <string name="bypass_universal">універсальний обхід</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification.">Натисніть, щоб змінити налаштування захисту</string>
@@ -335,7 +334,6 @@
     <string name="settings_orbot_install_desc" translatable="true">Натисніть тут, щоб встановити Orbot</string>
     <string name="settings_orbot_desc" translatable="true">Orbot в режимі без VPN з HTTPS/SOCKS5.</string>
     <string name="orbot_stop_dialog_neutral" translatable="true">Змінити DNS</string>
-    <string name="relative_time_yesterday" translatable="true">Вчора</string>
     <string name="orbot_bs_status_4" translatable="true">Налаштування Tor-as-a-Proxy (Orbot) одним кліком.</string>
     <string name="orbot_stop_dialog_message" translatable="true">DNS Control припинив переадресацію з\'єднань до Orbot, але Orbot, можливо, працює у фоновому режимі.</string>
     <string name="orbot_title" translatable="true">Orbot і проксі</string>
@@ -343,7 +341,6 @@
     <string name="orbot_status_arg_3" translatable="true">DNS і TCP</string>
     <string name="orbot_bs_status_3" translatable="true">Пересилання %1$s до Orbot, HTTP-проксі також встановлено.</string>
     <string name="settings_orbot_header" translatable="true">Orbot\t❯</string>
-    <string name="relative_time_today" translatable="true">Сьогодні</string>
     <string name="orbot_bs_status_trying_connect" translatable="true">Налаштування Orbot…</string>
     <string name="orbot_none" translatable="true">Ні (за замовчуванням)</string>
     <string name="orbot_none_desc" translatable="true">Нічого з перерахованого вище.</string>
@@ -456,7 +453,6 @@
     <string name="settings_theme_dialog_themes_1" translatable="true">З Системи</string>
     <string name="settings_notification_dialog_option_3" translatable="true">\nНемає:\nНе відображає кнопку.\n</string>
     <string name="settings_protocol_translation_dns_inactive" translatable="true">Перемикач режимів DNS/Фаєрвол+DNS, оберіть налаштування</string>
-    <string name="about_mail_to_string" translatable="true">Посилання mailTO:</string>
     <string name="settings_exclude_proxy_apps_heading" translatable="true">Застосунки переадресації проксі-серверів зі зворотним зв\'язком</string>
     <string name="settings_exclude_proxy_apps_desc" translatable="true">Коли цей параметр вимкнено, супроводження застосунків до проксі-серверів (SОСКS5, НТТР, DNS) виключається з VPN-тунелів DNS Control\'s.</string>
     <string name="settings_ip_dialog_ipv4" translatable="true">IPv4 (стандарт)</string>
@@ -524,8 +520,6 @@
     <string name="firewall_status_whitelisted" translatable="true">оминає універсальні правила фаєрволу</string>
     <string name="firewall_status_bypass_dns_firewall" translatable="true">оминає правила DNS та фаєрвола</string>
     <string name="dc_check_update_heading" translatable="true">Запитувати про оновлення блок листа</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">Оберіть провайдера e-mail</string>
     <string name="intent_launch_error" translatable="true">Не вдалося запустити %1$s</string>
     <string name="cd_dns_proxy_error_text_3" translatable="true">Недійсний порт</string>
     <string name="cd_dns_crypt_name_default" translatable="true">DNSCrypt - протокол шифрования DNS-трафика</string>

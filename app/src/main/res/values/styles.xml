@@ -740,14 +740,6 @@
         <item name="android:background">@drawable/bg_bottom_sheet_dialog_fragment</item>
     </style>
 
-    <style name="App.Dialog.NoDim" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="buttonBarPositiveButtonStyle">@style/App.AlertDialog.PositiveButton</item>
-        <item name="buttonBarNegativeButtonStyle">@style/App.AlertDialog.NegativeButton</item>
-        <item name="buttonBarNeutralButtonStyle">@style/App.AlertDialog.NeutralButton</item>
-    </style>
 
 
     <style name="App.AlertDialog.PositiveButton" parent="Widget.Material3.Button.TextButton.Dialog">
@@ -1022,15 +1014,6 @@
         <item name="chipBackgroundColor">?attr/homeScreenBtnBackground</item>
     </style>
 
-    <style name="ShapeAppearance.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">1dp</item>
-        <item name="cornerRadius">1dp</item>
-        <item name="chipCornerRadius">1dp</item>
-        <item name="android:textSize">14sp</item>
-        <item name="chipMinHeight">40dp</item>
-        <item name="chipMinTouchTargetSize">40dp</item>
-    </style>
 
     <style name="TextAppearance.Heading.HomeScreen" parent="TextAppearance.Material3.HeadlineMedium.Emphasized">
         <item name="android:layout_gravity">center</item>
@@ -1134,7 +1117,20 @@
         AlphaDark  : Purple 200 — good contrast on dark/black surfaces.
         AlphaLight : Purple 700 — sufficient contrast on white/light surfaces.
     -->
-    <style name="ThemeOverlay.App.AlphaDark" parent="">
+
+
+
+
+
+        <style name="App.Dialog.NoDim" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="buttonBarPositiveButtonStyle">@style/App.AlertDialog.PositiveButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/App.AlertDialog.NegativeButton</item>
+        <item name="buttonBarNeutralButtonStyle">@style/App.AlertDialog.NeutralButton</item>
+    </style>
+        <style name="ThemeOverlay.App.AlphaDark" parent="">
         <item name="colorPrimary">@color/alpha_accent_dark</item>
         <item name="colorAccent">@color/alpha_accent_dark</item>
         <item name="android:colorAccent">@color/alpha_accent_dark</item>
@@ -1142,8 +1138,7 @@
         <item name="controlActivated">@color/alpha_accent_dark</item>
         <item name="secondaryTextColor">@color/alpha_accent_dark</item>
     </style>
-
-    <style name="ThemeOverlay.App.AlphaLight" parent="">
+        <style name="ThemeOverlay.App.AlphaLight" parent="">
         <item name="colorPrimary">@color/alpha_accent_light</item>
         <item name="colorAccent">@color/alpha_accent_light</item>
         <item name="android:colorAccent">@color/alpha_accent_light</item>
@@ -1153,7 +1148,5 @@
         <item name="homeScreenBtnGradientEnd">@color/alpha_accent_light</item>
         <item name="homeScreenBtnGradientStart">@color/alpha_accent_light</item>
     </style>
-
-
 
 </resources>

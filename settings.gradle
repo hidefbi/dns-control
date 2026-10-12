@@ -3,4 +3,3 @@ plugins {
 }
 rootProject.name='rethink'
 include ':app'
-include ':benchmark'

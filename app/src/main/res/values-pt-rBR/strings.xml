@@ -18,7 +18,6 @@
     <string name="settings_ip_text_ipv46">Automático</string>
     <string name="settings_notification_dialog_option_2">\nDNS / DNS + Firewall\nMostrar dois botões para alternar rapidamente entre o modo DNS para economia de bateria e modo normal DNS + Firewall.</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
     <string name="app_info_error">Não foi possível iniciar as informações do aplicativo.</string>
     <string name="vpn_profile_error">Não foi possível iniciar o perfil VPN.</string>
     <string name="cd_dns_proxy_mode_external">Externo</string>
@@ -30,7 +29,6 @@
     <string name="firewall_card_status_active">%1$s aplicativos</string>
     <string name="hsf_vpn_dialog_header">Atenção!</string>
     <string name="dc_custom_dns_radio">Outros DNS</string>
-    <string name="about_mail_to_string">para:</string>
     <string name="dc_entries">%1$s entradas »</string>
     <string name="dc_local_block_heading">Listas de bloqueio no dispositivo</string>
     <string name="dc_rethink_dns_radio">Rethink DNS</string>
@@ -38,7 +36,6 @@
     <string name="dc_custom_block_heading">Regras de domínio</string>
     <string name="dc_block_heading">regras</string>
     <string name="about_settings_app_info">Detalhes do aplicativo</string>
-    <string name="about_mail_bugreport_share_title">Selecionar provedor de e-mail</string>
     <string name="hs_download_positive_default">ok</string>
     <string name="univ_firewall_rule_10">Bloquear todos, exceto aplicativos e IPs ignorados</string>
     <string name="univ_delete_firewall_dialog_message">Ao excluir estas regras você permitirá a qualquer aplicativo conectar-se aos IPs atualmente bloqueados.</string>
@@ -113,7 +110,6 @@
     <string name="brbs_restore_dialog_failure_message">Não foi possível restaurar. Tente novamente?</string>
     <string name="brbs_restore_dialog_failure_positive">Repetir restauração</string>
     <string name="brbs_restore_complete_toast">Restauração concluída, reiniciando o aplicativo…</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="block">Bloquear</string>
     <string name="status_no_internet">sem internet</string>
     <string name="title_settings">Configurações</string>
@@ -541,8 +537,6 @@
     <string name="brbs_backup_complete_toast">Backup concluído</string>
     <string name="brbs_restore_no_uri_toast">Falha na restauração; tentar novamente</string>
     <string name="settings_app_notification_a13_heading">Notificação do aplicativo</string>
-    <string name="relative_time_today">Hoje</string>
-    <string name="relative_time_yesterday">Ontem</string>
     <string name="settings_app_notification_a13_desc">Ativar permissão de notificação para o aplicativo</string>
     <string name="hsf_notification_permission_failure">Ativar permissão de notificação em Configurações</string>
     <string name="rt_filter_parent_selected">Selecionado</string>

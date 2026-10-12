@@ -10,7 +10,6 @@
     <string name="slide_2_title">歡迎</string>
     <string name="slide_2_desc">DNS Control 是現 Android 裝置上最易使用的監測網路活動、繞過網路審查與攔截應用程式的防火牆軟體。</string>
     <string name="accessibility_service_description">請授權 DNS Control 使用無障礙服務，以偵測並攔截背景應用程式。 DNS Control 並不會竊取或販賣您的任何資訊。</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="bypass_universal">無條件放行</string>
     <string name="exclude">排除</string>
     <string name="isolate">隔離</string>
@@ -396,9 +395,6 @@
     <string name="dc_check_update_desc">每<i>三</i>天檢查有無攔截清單更新</string>
     <string name="about_bug_report_dialog_positive_btn">寄送電子郵件</string>
     <string name="about_settings_app_info">應用程式資料</string>
-    <string name="about_mail_to_string">mailto:</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title">選擇電子郵件供應商</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="vpn_profile_error">無法開啟 VPN 設定。</string>
     <string name="app_info_error">無法開啟應用程式資訊。</string>
@@ -551,8 +547,6 @@
     <string name="notification_screen_error">無法開啟應用程式通知區。</string>
     <string name="intent_launch_error">無法開啟 %1$s</string>
     <string name="firewall_rule_block_univ_ip">IP / 埠（全域）</string>
-    <string name="relative_time_today">今天</string>
-    <string name="relative_time_yesterday">昨天</string>
     <string name="settings_app_notification_a13_desc">啟用此應用程式的通知權限</string>
     <string name="settings_app_notification_a13_heading">應用程式通知</string>
     <string name="ci_trust_initial">信</string>

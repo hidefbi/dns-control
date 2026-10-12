@@ -23,7 +23,6 @@
     <string name="slide_2_title" translatable="true">Maligayang pagdating</string>
     <string name="slide_2_desc" translatable="true">Ang DNS Control ay ang pinakamadaling paraan upang magmonitor ng network activity, mag-bypass ng Internet censorship, at firewall apps sa iyong Android device.</string>
     
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="allow" translatable="true">pahintulutan</string>
     <string name="block" translatable="true">harangan</string>
     <string name="title_settings" translatable="true">Mga Setting</string>

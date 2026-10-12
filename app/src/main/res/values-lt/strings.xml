@@ -149,7 +149,6 @@
     <string name="dc_check_update_heading">Priminti atnaujinti blokavimo sąrašus</string>
     <string name="dc_check_update_desc">Patikrinti, ar nėra blokavimo sąrašų atnaujinimų, kartą per <i>tris</i> dienas</string>
     <string name="about_settings_app_info">Programėlės informacija</string>
-    <string name="about_mail_bugreport_share_title">Pasirinkti el. pašto paslaugų teikėją</string>
     <string name="cd_dns_crypt_title">sprendikliai</string>
     <string name="cd_custom_doh_url_name_default">DoH</string>
     <string name="cd_custom_doh_url_name">DoH %1$s</string>
@@ -325,7 +324,6 @@
     <string name="brbs_backup_complete_toast">Atsarginės kopijos kūrimas baigtas</string>
     <string name="slide_2_desc">DNS Control yra lengviausias būdas stebėti tinklo veiklą, apeiti interneto cenzūrą ir ugniasienės programėles jūsų Android įrenginyje.</string>
     <string name="slide_2_title">Sveiki</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="allow">leisti</string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">apsaugota</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">neapsaugota</string>
@@ -414,8 +412,6 @@
     <string name="app_info_error">Nepavyko paleisti programėlės informacijos.</string>
     <string name="about_bug_report_dialog_positive_btn">Siųsti el. laišką</string>
     <string name="vpn_profile_error">Nepavyko paleisti VPN profilio.</string>
-    <string name="about_mail_to_string">mailto:</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="cd_dns_proxy_mode_internal">Vidinis</string>
     <string name="cd_custom_dns_proxy_name_default">Įgaliotasis serveris</string>
@@ -551,8 +547,6 @@
     <string name="notif_download_cancel_content">Atsisiuntimas atšauktas.</string>
     <string name="rt_filter_parent_selected">Pasirinkti</string>
     <string name="rt_filter_hint">Rodomi <u>visi</u> blokavimo sąrašai</string>
-    <string name="relative_time_today">Šiandien</string>
-    <string name="relative_time_yesterday">Vakar</string>
     <string name="settings_app_notification_a13_heading">Programėlės pranešimas</string>
     <string name="settings_app_notification_a13_desc">Įjungti pranešimų leidimą programėlei</string>
     <string name="private_dns_dialog_heading">Išjungti privatų DNS</string>

@@ -74,7 +74,6 @@
     <string name="dns_crypt_url_remove_success">DNSCrypt resolver usunięty.</string>
     <string name="brbs_restore_no_uri_toast">Przywracanie nie powiodło się; spróbuj ponownie</string>
     <string name="slide_2_title">Witaj</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="isolate">izoluj</string>
     <string name="alert_permission_accessibility">Pozwolenie - Dostępność</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;: Blokuje aplikację przed połączeniem się z Internetem. \n &lt;u&gt;#2&lt;/u&gt;: Blokuje każdej aplikacji możliwość łączenia się z określonym IP. \n &lt;u&gt;#3&lt;/u&gt;: Blokuje wszystkie połączenia, gdy urządzenie jest zablokowane (Universal Firewall). \n &lt;u&gt;#4&lt;/u&gt;: Blokuje każdą aplikację, która nie jest używana (Universal Firewall). \n &lt;u&gt;#5&lt;/u&gt;: Blokuje połączenia, gdy źródło aplikacji jest nieznane (Universal Firewall). \n &lt;u&gt;#6&lt;/u&gt;: Blokuje cały ruch UDP z wyjątkiem DNS (Universal Firewall). \n &lt;u&gt;#7&lt;/u&gt;: Blokuje połączenia, gdy DNS jest omijany (Universal Firewall).</string>
@@ -99,7 +98,6 @@
     <string name="app_mode_dns_firewall" translatable="true">DNS i Firewall (domyślnie)</string>
     <string name="app_mode_firewall" translatable="true">Firewall</string>
     <string name="app_mode_choose" translatable="true">Wybierz tryb</string>
-    <string name="relative_time_today" translatable="true">Dziś</string>
     <string name="lbl_cancel" translatable="true">Anuluj</string>
     <string name="lbl_domain" translatable="true">Domena</string>
     <string name="dns_proxy_remove_success" translatable="true">Usunięto serwer proxy DNS.</string>
@@ -146,7 +144,6 @@
     <string name="lbl_domain_rules" translatable="true">Reguły Domen</string>
     <string name="download_update_dialog_message_ok" translatable="true">Jesteś już na najnowszej wersji.</string>
     <string name="download_update_dialog_message_success" translatable="true">Pobrano listy blokowania.</string>
-    <string name="relative_time_yesterday" translatable="true">Wczoraj</string>
     <string name="settings_ip_network_heading" translatable="true">Wybierz wersję IP</string>
     <string name="settings_ip_network_desc" translatable="true">Wybierz jedną z wersji protokołu internetowego.</string>
     <string name="settings_lock_down_mode_desc" translatable="true">Niektóre opcje są wyłączone, gdy VPN jest w trybie blokady. <u>Zobacz Ustawienia sieci VPN</u>.</string>
@@ -218,9 +215,6 @@
     <string name="hsf_vpn_dialog_message" translatable="true">DNS Control potrzebuje pozwolenia na skonfigurowanie lokalnej sieci VPN w celu szyfrowania żądań DNS urządzenia, wdrożenia monitora sieci i egzekwowania reguł zapory. \n \nDNS Control nie zbiera żadnych informacji ani nie szpieguje użytkownika w żaden sposób.</string>
     <string name="hsf_exclude_error" translatable="true">Wykluczenie nie jest możliwe w trybie blokady VPN</string>
     <string name="about_settings_app_info" translatable="true">Informacje o aplikacji</string>
-    <string name="about_mail_to_string" translatable="true">Napisz do:</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">Wybierz dostawcę poczty elektronicznej</string>
     <string name="intent_launch_error" translatable="true">Licz nie uruchamiaj %1$s</string>
     <string name="settings_http_proxy_error_text1" translatable="true">Zakres portów powinien wynosić od 1024 do 65535</string>
     <string name="settings_dns_proxy_dialog_positive_btn" translatable="true">ustaw</string>

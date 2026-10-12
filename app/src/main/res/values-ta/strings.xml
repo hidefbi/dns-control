@@ -81,7 +81,6 @@
     <string name="status_protected_with_proxy_private_dns">பதிலாள் மற்றும் தனியார் டிஎன்எச் மூலம் பாதுகாக்கப்படுகிறது</string>
     <string name="block">தொகுதி</string>
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline.">காத்திருக்கிறது</string>
-    <string name="rdns_plus" translatable="false">ஆர்டிஎன்எஸ் கூடுதல்</string>
     <string name="status_dns_server_down">டிஎன்எச் சர்வர் செயலிழந்தது</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1 &lt;/u&gt;: இணையத்துடன் இணைப்பதில் இருந்து ஒரு பயன்பாட்டைத் தடுக்கிறது. \n&lt;u&gt;#2 &lt;/u&gt;: ஒரு குறிப்பிட்ட ஐபியுடன் இணைப்பதைத் தடுக்கிறது. \n&lt;u&gt;#3 &lt;/u&gt;: சாதனம் பூட்டப்படும்போது அனைத்து இணைப்புகளையும் தடுக்கிறது (யுனிவர்சல் ஃபயர்வால்). \n&lt;u&gt;#4 &lt;/u&gt;: பயன்பாட்டில் இல்லாத எந்த பயன்பாட்டையும் தடுக்கிறது (யுனிவர்சல் ஃபயர்வால்). \n&lt;u&gt;#5 &lt;/u&gt;: மூல பயன்பாடு தெரியாதபோது இணைப்புகளைத் தடுக்கிறது (யுனிவர்சல் ஃபயர்வால்). \n&lt;u&gt;#6 &lt;/u&gt;: டி.என்.எச் (யுனிவர்சல் ஃபயர்வால்) தவிர அனைத்து யுடிபி போக்குவரத்தையும் தடுக்கிறது. \n&lt;u&gt;#7 &lt;/u&gt;: டி.என்.எச் புறக்கணிக்கப்படும்போது இணைப்புகளைத் தடுக்கவும் (யுனிவர்சல் ஃபயர்வால்).</string>
     <string name="always_on_dialog_lockdown_stop_message">ரீடிங்க் <i> பூட்டுதல் </i> பயன்முறையில் VPN ஐ இயக்குகிறது. அதை நிறுத்துவது இந்த பயனர் சுயவிவரத்தில் இணைய இணைப்பை இழக்க நேரிடும். எப்படியும் தொடர விரும்புகிறீர்களா?</string>
@@ -108,7 +107,6 @@
     <string name="settings_ip_dialog_ipv46" translatable="true">ஆட்டோ (சோதனை)</string>
     <string name="settings_ip_text_ipv4" translatable="true">ஐபிவி 4</string>
     <string name="dc_proxy_dns_heading" translatable="true">ஒருபோதும் பதிலாள் டி.என்</string>
-    <string name="about_mail_subject" translatable="true">[மறுபரிசீலனை]:</string>
     <string name="vpn_profile_error" translatable="true">VPN சுயவிவரத்தைத் தொடங்க முடியவில்லை.</string>
     <string name="notification_screen_error" translatable="true">பயன்பாட்டு அறிவிப்புத் திரையைத் தொடங்க முடியவில்லை.</string>
     <string name="intent_launch_error" translatable="true">எண்ண வேண்டாம் %1$s</string>
@@ -188,7 +186,6 @@
     <string name="bypass_dns_firewall" translatable="true">பைபாச் டி.என்.எச் மற்றும் ஃபயர்வால்</string>
     <string name="hybrid_mode_with_proxy_notification_title" translatable="true">பாதுகாக்கப்பட்டது! டி.என்.எச் + ஃபயர்வால் + ப்ராக்சியுடன் இணைக்கப்பட்டுள்ளது.</string>
     <string name="dns_proxy_remove_dialog_title" translatable="true">டிஎன்எச் ப்ராக்சியை நீக்கவா?</string>
-    <string name="relative_time_today" translatable="true">இன்று</string>
     <string name="settings_ip_network_desc" translatable="true">இணைய நெறிமுறை பதிப்புகளுக்கு இடையே தேர்வு செய்யவும்.</string>
     <string name="settings_http_proxy_desc" translatable="true">%1$s க்கு பகிர்தல்</string>
     <string name="hsf_stop_btn_state" translatable="true">நிறுத்து</string>
@@ -282,7 +279,6 @@
     <string name="dc_local_block_desc_1" translatable="true">195+ பிளாக்லிச்ட்களிலிருந்து தேர்வு செய்யவும். பிளாக்லிச்ட்களை பதிவிறக்கம் செய்ய அல்லது உள்ளமைக்க இங்கே சொடுக்கு செய்க.</string>
     <string name="dc_custom_block_heading" translatable="true">டொமைன் விதிகள்</string>
     <string name="dc_proxy_dns_desc" translatable="true">எப்போதும் வயர் கார்ட், சாக்ச் 5, HTTP ப்ராக்சிகள் மீது டி.என்.எச்.</string>
-    <string name="about_mail_to_string" translatable="true">மெயில்டோ:</string>
     <string name="cd_dns_proxy_error_text_1" translatable="true">தவறான ஐபி முகவரி</string>
     <string name="cd_dns_crypt_name_default" translatable="true">Dnscrypt</string>
     <string name="cd_dns_crypt_name" translatable="true">Dnscrypt %1$s</string>
@@ -474,7 +470,6 @@
     <string name="dc_check_update_desc" translatable="true">ஒவ்வொரு <i> மூன்று </i> நாட்களுக்கு ஒரு முறை பிளாக்லிச்ட் புதுப்பிப்புகளைச் சரிபார்க்கவும்</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">மின்னஞ்சல் அனுப்பு</string>
     <string name="about_settings_app_info" translatable="true">பயன்பாட்டு செய்தி</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">மின்னஞ்சல் வழங்குநரைத் தேர்ந்தெடுக்கவும்</string>
     <string name="ctbs_block_other_apps" translatable="true">%1$s க்கு பயன்படுத்தப்படும் விதிகள் %2$s பிற பயன்பாடுகளுக்கும் பொருந்தும்</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">திரும்பிச் செல்லுங்கள்</string>
     <string name="hs_download_positive_default" translatable="true">சரி</string>
@@ -727,7 +722,6 @@
     <string name="import_error" translatable="true">சுரங்கப்பாதையை இறக்குமதி செய்ய முடியவில்லை: %s</string>
     <string name="catch_all_wg_dialog_title" translatable="true">எப்போதும்</string>
     <string name="add_remove_apps" translatable="true">சேர்க்க / அகற்று (%1$s பயன்பாடுகள்)</string>
-    <string name="relative_time_yesterday" translatable="true">நேற்று</string>
     <string name="settings_connectivity_checks" translatable="true">இணைப்பு சோதனைகளைச் செய்யுங்கள்</string>
     <string name="settings_exclude_proxy_apps_heading" translatable="true">லூப் பேக் பதிலாள் முன்னோக்கி பயன்பாடுகள்</string>
     <string name="settings_exclude_proxy_apps_desc" translatable="true">முடக்கப்பட்டால், ரெதிங்கின் விபிஎன் சுரங்கப்பாதையில் இருந்து பதிலாள் (SOCKS5, HTTP, DNS) முன்னோக்கி பயன்பாடுகளை விலக்குகிறது.</string>

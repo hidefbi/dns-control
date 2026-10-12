@@ -30,7 +30,6 @@
     <string name="alert_firewall_accessibility_exception">Falha ao abrir as definições de acessibilidade. Tente mais tarde!</string>
     <string name="always_on_dialog_positive_btn">Ir para definições</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;: Bloqueia a ligação de uma aplicação à Internet. \n &lt;u&gt;#2&lt;/u&gt;: Bloqueia a ligação de todas as aplicações a um determinado IP. \n &lt;u&gt;##3&lt;/u&gt;: Bloqueia todas as ligações quando o dispositivo está bloqueado (firewall universal). \n &lt;u&gt;#4&lt;/u&gt;: Bloqueia qualquer aplicação que não esteja a ser utilizada (firewall universal). \n &lt;u&gt;##5&lt;/u&gt;: Bloqueia as ligações quando a aplicação de origem é desconhecida (firewall universal). \n&lt;u&gt;##6&lt;/u&gt;: Bloqueia todo o tráfego UDP exceto DNS (firewall universal). \n &lt;u&gt;#7&lt;/u&gt;: Bloqueia ligações quando o DNS é ignorado (firewall universal).</string>
-    <string name="relative_time_yesterday">Ontem</string>
     <string name="always_on_dialog_heading">Desativar VPN sempre ativa</string>
     <string name="always_on_dialog">A opção \"VPN sempre ativa\" está ativada neste dispositivo. Para iniciar DNS Control, aceda às definições da VPN Android e desative a opção \"VPN sempre ativa\".</string>
     <string name="always_on_dialog_stop_heading">VPN sempre ativa</string>
@@ -136,7 +135,6 @@
     <string name="app_mode_dns_low_battery">DNS (economizar bateria)</string>
     <string name="app_mode_firewall">Firewall</string>
     <string name="app_mode_choose">Escolha o modo</string>
-    <string name="relative_time_today">Hoje</string>
     <string name="settings_app_notification_a13_heading">Notificação da aplicação</string>
     <string name="settings_app_notification_a13_desc">Ativar permissão de notificação para a aplicação</string>
     <string name="settings_http_proxy_error_text1">O intervalo de portas deve ser entre 1024 e 65535</string>
@@ -234,7 +232,6 @@
     <string name="settings_orbot_heading">Configurar Orbot</string>
     <string name="settings_general_header">Geral</string>
     <string name="settings_import_export_heading">Backup e restauro</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="settings_ip_network_heading">Escolha a versão do IP</string>
     <string name="settings_socks5_desc">Encaminhar ligações para o \'endpoint\' SOCKS5.</string>
     <string name="orbot_download_link_website" translatable="false">https://github.com/guardianproject/orbot/releases</string>
@@ -258,8 +255,6 @@
     <string name="dc_custom_block_heading">Regras de domínio</string>
     <string name="about_bug_report_dialog_positive_btn">Enviar e-mail</string>
     <string name="about_settings_app_info">Info da aplicação</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title">Selecione a aplicação de e-mail</string>
     <string name="dc_custom_dns_radio">Outro DNS</string>
     <string name="dc_rethink_dns_radio">Rethink DNS</string>
     <string name="dc_entries">%1$s entradas »</string>
@@ -269,7 +264,6 @@
     <string name="dc_dns_leaks_desc">Se ativa, DNS Control captura todos os pacotes na porta 53 e encaminha-os para um \'endpoint\' DNS definido pelo utilizador</string>
     <string name="dc_check_update_heading">Avisar sobre atualização das listas de bloqueio</string>
     <string name="dc_check_update_desc">Procurar atualizações das listas de bloqueio a cada <i>três</i> dias</string>
-    <string name="about_mail_to_string">mailto:</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="app_info_error">Não foi possível ver as informação da aplicação.</string>
     <string name="vpn_profile_error">Não foi possível iniciar o perfil VPN.</string>

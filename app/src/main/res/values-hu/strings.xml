@@ -115,8 +115,6 @@
     <string name="doh_custom_url_remove_success" translatable="true">Végpont törölve.</string>
     <string name="dns_crypt_custom_url_remove_dialog_title" translatable="true">Törli a DNSCrypt feloldót?</string>
     <string name="download_update_dialog_message" translatable="true">Az alkalmazás új verziója letölthető a weboldalról. Szeretné folytatni?</string>
-    <string name="relative_time_today" translatable="true">Ma</string>
-    <string name="relative_time_yesterday" translatable="true">Tegnap</string>
     <string name="settings_ip_network_desc" translatable="true">Válasszon az Internetes Protocol verziók között.</string>
     <string name="settings_orbot_desc" translatable="true">Orbot nem-VPN üzemmódban van HTTPS/SOCKS5 használatával.</string>
     <string name="settings_ip_dialog_title" translatable="true">IP verzió kiválasztása</string>
@@ -366,9 +364,6 @@
     <string name="dc_proxy_dns_desc" translatable="true">Ne továbbítsa a DNS-forgalmat proxy-n keresztül, ha folyamatosan aktív WireGuard, SOCKS5 vagy HTTP proxy-t használ.</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Email küldése</string>
     <string name="about_settings_app_info" translatable="true">Alkalmazás adatai</string>
-    <string name="about_mail_to_string" translatable="true">e-mail indítása:</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">E-mail szolgáltató kiválasztása</string>
     <string name="app_info_error" translatable="true">Nem sikerült megnyitni az alkalmazás adatait.</string>
     <string name="vpn_profile_error" translatable="true">Nem sikerült elindítani a VPN-profilt.</string>
     <string name="notification_screen_error" translatable="true">Nem sikerült megnyitni az alkalmazás értesítési képernyőjét.</string>

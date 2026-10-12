@@ -16,7 +16,6 @@
     <string name="lbl_ip_rules" translatable="true">IP ルール</string>
     <string name="lbl_domain_rules" translatable="true">ドメインルール</string>
     
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="allow" translatable="true">許可</string>
     <string name="firewall_mode_notification_title" translatable="true">保護されています！ファイアウォールに接続しています。</string>
     <string name="hybrid_mode_notification_title" translatable="true">保護されています！ DNS とファイアウォールに接続しています。</string>
@@ -104,8 +103,6 @@
     <string name="app_mode_firewall" translatable="true">ファイアウォール</string>
     <string name="app_mode_dns_firewall" translatable="true">DNSとファイアウォール（デフォルト）</string>
     <string name="app_mode_choose" translatable="true">モードの選択</string>
-    <string name="relative_time_today" translatable="true">今日</string>
-    <string name="relative_time_yesterday" translatable="true">昨日</string>
     <string name="settings_ip_network_heading" translatable="true">IP バージョンの選択</string>
     <string name="settings_ip_network_desc" translatable="true">インターネットプロトコルのバージョンを選択します。</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">VPNがDNSのみモードまたはロックダウンモードで実行されている場合、プロキシを設定できません。<u>VPN設定に移動</u></string>
@@ -364,9 +361,6 @@
     <string name="settings_http_proxy_desc" translatable="true">%1$s に転送する</string>
     <string name="firewall_status_block_unmetered" translatable="true">定額制 (wifi) ネットワークでブロック</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">メールを送信</string>
-    <string name="about_mail_to_string" translatable="true">メール宛先:</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">メールプロバイダを選択する</string>
     <string name="pause_text" translatable="true">一時停止</string>
     <string name="pause_desc" translatable="true">注: %1$s ブロックされたアプリは引き続きファイアウォールで保護されます。</string>
     <string name="other_dns_list_tab1" translatable="true">DoH</string>

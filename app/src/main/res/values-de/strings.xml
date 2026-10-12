@@ -12,7 +12,6 @@
     <string name="finish">Fertig</string>
     <string name="slide_2_desc">DNS Control ist das einfachste Mittel, um Netzwerkaktivitäten zu überwachen, Internetzensur zu umgehen und Apps auf deinem Android-Gerät mit einer Firewall einzudämmen.</string>
     
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="block">Blockieren</string>
     <string name="dns_mode_notification_title">Geschützt! Verbunden mit schnellem und sicherem DNS.</string>
     <string name="firewall_mode_notification_title">Geschützt! Verbunden mit der Firewall.</string>
@@ -91,7 +90,6 @@
     <string name="local_blocklist_redownload_desc">Die geräteinternen Blocklisten sind bereits auf dem neuesten Stand (%1$s).</string>
     <string name="download_update_dialog_message_success">Download der Blockliste erfolgreich.</string>
     <string name="info_dialog_url_copy_toast_msg">URL kopiert</string>
-    <string name="relative_time_yesterday">Gestern</string>
     <string name="orbot_http_desc">Baut einen HTTP-CONNECT-Tunnel zu Orbot auf.</string>
     <string name="orbot_stop_dialog_message">DNS Control hat aufgehört Verbindungen zu Orbot weiterzuleiten, aber Orbot läuft vielleicht noch im Hintergrund.</string>
     <string name="orbot_explanation">Orbot ist eine kostenlose Proxy-App, die es anderen Apps ermöglicht, das Internet &lt;u&gt;sicherer&lt;/u&gt; zu nutzen.\nOrbot verwendet &lt;u&gt;Tor&lt;/u&gt;, um deinen Internetverkehr zu verschlüsseln, was dir dabei hilft, &lt;u&gt;Zensur zu umgehen&lt;/u&gt; und dich gegen Formen der &lt;u&gt;Netzwerküberwachung&lt;/u&gt; zu verteidigen, die die persönliche Freiheit und Privatsphäre bedrohen.\n&lt;u&gt;TCP Proxy&lt;/u&gt;: DNS Control leitet nur TCP-Verbindungen von &lt;i&gt;eingeschlossenen&lt;/i&gt; Apps an Orbot weiter.\n&lt;u&gt;HTTP Proxy&lt;/u&gt;: DNS Control &lt;i&gt;stellt&lt;/i&gt; einen HTTP CONNECT-Tunnel zu Orbot &lt;i&gt;her&lt;/i&gt; und leitet nur TCP-Verbindungen von &lt;i&gt;eingeschlossenen&lt;/i&gt; Apps weiter.</string>
@@ -114,7 +112,6 @@
     <string name="search_custom_domains"><font size="12">Domänennamen suchen</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">Suche in Blocklisten</font></string>
     <string name="app_mode_choose">Modus wählen</string>
-    <string name="relative_time_today">Heute</string>
     <string name="app_mode_dns_firewall">DNS und Firewall (Standard)</string>
     <string name="orbot_install_dialog_message">Orbot bringt die Eigenschaften und Funktionen von Tor auf Android.</string>
     <string name="dns_mode_info_explanation_new">DNS-Anfragen überwachen, blockieren und verschlüsseln.</string>
@@ -461,9 +458,6 @@
     <string name="dc_dns_leaks_desc">Wenn aktiviert, fängt DNS Control alle Pakete an Port 53 ab und leitet sie an den festgelegten DNS-Endpunkt weiter</string>
     <string name="dc_check_update_desc">Alle <i>drei</i> Tage auf Aktualisierungen der Blocklisten prüfen</string>
     <string name="about_settings_app_info">App-Info</string>
-    <string name="about_mail_to_string">mailto:</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title">E-Mail-Anbieter auswählen</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="app_info_error">App-Info konnte nicht gestartet werden.</string>
     <string name="vpn_profile_error">Das VPN-Profil konnte nicht gestartet werden.</string>

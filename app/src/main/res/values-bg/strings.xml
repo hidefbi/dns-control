@@ -28,7 +28,6 @@
     <string name="skip">Пропускане</string>
     <string name="finish">Завърши</string>
     <string name="slide_2_title">Добре дошли</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="allow">позволи</string>
     <string name="block">блокирай</string>
     <string name="bypass_universal">универсален байпас</string>
@@ -183,7 +182,6 @@
     <string name="search_universal_ips" translatable="true"><font size="12">Търсене на IP адреси</font></string>
     <string name="search_proxy_add_apps" translatable="true">Търсене на приложения по име</string>
     <string name="app_mode_dns_low_battery" translatable="true">DNS (пестене на батерията)</string>
-    <string name="relative_time_today" translatable="true">Днес</string>
     <string name="settings_ip_network_desc" translatable="true">Изберете между версиите на интернет протокола.</string>
     <string name="settings_ip_network_heading" translatable="true">Изберете IP версия</string>
     <string name="settings_connectivity_checks_desc" translatable="true">Проверките за свързаност се изпращат, за да се установи достъпността.</string>
@@ -196,7 +194,6 @@
     <string name="dns_crypt_relay_remove_success" translatable="true">DNSCrypt Релето е изтрито.</string>
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="blocklist_update_check_failure" translatable="true">Нещо се е объркало. Опитайте отново по-късно!</string>
-    <string name="relative_time_yesterday" translatable="true">Вчера</string>
     <string name="settings_allow_lan_heading" translatable="true">Не маршрутизирайте частни IP адреси (експериментално)</string>
     <string name="orbot_stop_dialog_message" translatable="true">DNS Control е спрял да препраща връзки към Orbot, но Orbot може да работи във фонов режим.</string>
     <string name="refresh_complete" translatable="true"><!-- use dc_refresh_toast --> Повторното синхронизиране на списъка с приложения е завършено.</string>

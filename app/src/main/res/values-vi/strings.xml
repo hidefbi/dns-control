@@ -51,7 +51,6 @@
     <string name="ssv_see_more" translatable="true">Hiển thị tất cả</string>
     
     <string name="slide_2_desc" translatable="true">DNS Control là cách dễ nhất để giám sát hoạt động mạng, vượt qua kiểm duyệt Internet và các ứng dụng tường lửa trên thiết bị Android của bạn.</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="hybrid_mode_notification_title" translatable="true">Được bảo vệ! Đã kết nối với DNS + Tường lửa.</string>
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline." translatable="true">đang chờ</string>
     <string name="status_dns_server_down" translatable="true">máy chủ dns ngừng hoạt động</string>
@@ -130,8 +129,6 @@
     <string name="info_dialog_copy_toast_msg" translatable="true">Đã sao chép địa chỉ IP.</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">Đã sao chép URL</string>
     <string name="app_mode_choose" translatable="true">Chọn chế độ</string>
-    <string name="relative_time_today" translatable="true">Hôm nay</string>
-    <string name="relative_time_yesterday" translatable="true">Hôm qua</string>
     <string name="settings_ip_network_heading" translatable="true">Chọn phiên bản IP</string>
     <string name="settings_ip_network_desc" translatable="true">Chọn giữa các phiên bản Giao thức Internet.</string>
     <string name="settings_proxy_header" translatable="true">Proxy</string>
@@ -306,7 +303,6 @@
     <string name="settings_lock_down_proxy_desc" translatable="true">Không thể thiết lập proxy khi VPN đang chạy ở chế độ chỉ DNS.</string>
     <string name="settings_general_customize" translatable="true">Tuỳ chỉnh</string>
     <string name="hsf_vpn_dialog_message" translatable="true">DNS Control cần có quyền thiết lập VPN cục bộ để mã hoá các yêu cầu DNS, triển khai trình giám sát mạng và thực thi các quy tắc tường lửa.\n\nDNS Control không thu thập thông tin hay theo dõi bạn dưới bất kì hình thức nào.</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">Chọn nhà cung cấp email</string>
     <string name="hsf_pause_vpn_failure" translatable="true">Không thể dừng: DNS Control đang không hoạt động</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_block_heading" translatable="true">Các quy tắc</string>
@@ -322,7 +318,6 @@
     <string name="cd_dns_proxy_error_text_2" translatable="true">Phạm vi cổng phải từ 1024–65535</string>
     <string name="ctbs_app_info_not_available_toast" translatable="true">Không tìm thấy trang cài đặt ứng dụng</string>
     <string name="cd_dns_crypt_dialog_name" translatable="true">Tên</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
     <string name="app_info_error" translatable="true">Không thể khởi chạy Thông tin ứng dụng.</string>
     <string name="cd_custom_dns_proxy_default_app" translatable="true">Không có</string>
     <string name="cd_dns_proxy_error_text_1" translatable="true">Địa chỉ IP không hợp lệ</string>
@@ -363,7 +358,6 @@
     <string name="hsf_vpn_prepare_failure" translatable="true">Quyền VPN bị thiếu hoặc một ứng dụng khác đang ở chế độ \"Luôn bật VPN\".</string>
     <string name="hsf_notification_permission_failure" translatable="true">Bật quyền thông báo từ màn hình Cài đặt</string>
     <string name="settings_default_dns_heading" translatable="true">Chọn DNS dự phòng</string>
-    <string name="about_mail_to_string" translatable="true">mailto:</string>
     <string name="network_log_app_name_unknown" translatable="true">Không rõ</string>
     <string name="rules_load_failure_heading" translatable="true">Ghi chú</string>
     <string name="rules_load_failure_desc" translatable="true">Không tìm thấy quy tắc tường lửa nào</string>

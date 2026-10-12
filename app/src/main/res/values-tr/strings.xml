@@ -18,7 +18,6 @@
     <string name="bypass_universal">Genel Olarak Atla</string>
     <string name="isolate">İzole Et</string>
     <string name="slide_2_title">Hoş Geldiniz</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="exclude">Hariç tut</string>
     <string name="slide_2_desc">DNS Control, Android aygıtınızda ağ etkinliğini izlemenin, İnternet sansürünü ve güvenlik duvarı uygulamalarını atlamanın en kolay yoludur.</string>
     <string name="allow">İzin ver</string>
@@ -80,7 +79,6 @@
     <string name="settings_custom_downloader_heading">Uygulama içi indiriciyi kullanın</string>
     <string name="settings_socks5_dialog_hint_port">Bağlantı noktası</string>
     <string name="settings_ip_dialog_title">IP sürümünü seçin</string>
-    <string name="about_mail_bugreport_share_title">E-posta sağlayıcısını seçin</string>
     <string name="cd_dns_crypt_dialog_heading">DNSCrypt Çözümleyici veya Aktarıcı Ekleme</string>
     <string name="univ_firewall_rule_1">Cihaz kilitliyken tüm uygulamaları engelleyin</string>
     <string name="univ_firewall_rule_7">IPv6\'da IPv4\'ü engelleyin (deneysel)</string>
@@ -129,7 +127,6 @@
     <string name="firewall_rule_block_app">Uygulama Engellendi</string>
     <string name="cd_toast_added">Alan adı başarıyla eklendi</string>
     <string name="rt_dialog_neutral">Devam Et</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
     <string name="brbs_backup_dialog_title">Yedek alın</string>
     <string name="download_update_dialog_failure_message">Sunucularımız kapalı ya da bağlantı kurulamadı. Lütfen bir süre sonra tekrar deneyin.</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
@@ -269,7 +266,6 @@
     <string name="notif_channed_desc_download">Aygıt içi blok listeleri için İndirme İlerlemesi Uyarısı</string>
     <string name="ci_dialog_edittext_hint">IP adresi, alt ağ veya bağlantı noktası</string>
     <string name="lbbs_configure">Yapılandır</string>
-    <string name="about_mail_to_string">mailto:</string>
     <string name="brbs_restore_dialog_failure_message">Geri yüklenemedi. Tekrar deneyelim mi?</string>
     <string name="always_on_dialog_positive">Dur</string>
     <string name="refresh_complete"><!-- use dc_refresh_toast --> Uygulama listesinin yeniden senkronizasyonu tamamlandı.</string>
@@ -544,7 +540,6 @@
     <string name="notif_download_cancel_content">İndirme iptal edildi.</string>
     <string name="rt_filter_parent_selected">Seçili</string>
     <string name="rt_filter_hint"><u>Tüm</u> engelleme listeleri gösteriliyor</string>
-    <string name="relative_time_today">Bugün</string>
     <string name="settings_app_notification_a13_desc">Uygulama için bildirim iznini etkinleştirin</string>
     <string name="hsf_notification_permission_failure">Ayarlar ekranından bildirim iznini etkinleştirin</string>
     <string name="settings_app_notification_a13_heading">Uygulama Bildirimi</string>
@@ -554,7 +549,6 @@
     <string name="firewall_rule_block_univ_ip">IP / Bağlantı Noktası (Evrensel)</string>
     <string name="rt_filter_desc"><![CDATA[<u>%1$s</u> engelleme listesi gösteriliyor]]></string>
     <string name="rt_filter_desc_subgroups"><![CDATA[<u>%1$s</u> engelleme listesi gösteriliyor, grup: %2$s ve alt grup: %3$s]]></string>
-    <string name="relative_time_yesterday">Dün</string>
     <string name="private_dns_dialog_heading">Özel DNS\'yi kapatın</string>
     <string name="private_dns_dialog_desc">DNS Control\'in DNS ayarları Android\'in Özel DNS\'i tarafından geçersiz kılınır. \n \nDNS Control\'in DNS\'sini kullanmak için Android Ayarları\'na gidin ve Özel DNS\'i kapatın.</string>
     <string name="private_dns_dialog_positive">Ayarlara git</string>

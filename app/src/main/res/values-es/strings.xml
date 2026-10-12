@@ -6,7 +6,6 @@
     <string name="firewall_rule_isolate">Aislamiento</string>
     <string name="firewall_rule_block_udp_ntp_desc"><![CDATA[Una regla del cortafuegos activada por el usuario bloqueó esta conexión <i>UDP</i>.<br><br> Para modificarla, ve a la pestaña <i>Global</i>.]]></string>
     <string name="firewall_rule_bypass_universal_ip">IP omitida</string>
-    <string name="about_mail_bugreport_share_title">Seleccione el proveedor de correo electrónico</string>
     <string name="cd_dns_proxy_error_text_2">El rango de puertos debe ser de 1024 a 65535</string>
     <string name="cd_custom_dns_proxy_default_app">Ninguno</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
@@ -44,8 +43,6 @@
     <string name="app_mode_dns_firewall">DNS y Cortafuegos (por defecto)</string>
     <string name="app_mode_firewall">Cortafuegos</string>
     <string name="settings_app_notification_a13_heading">Notificación de la aplicación</string>
-    <string name="relative_time_today">Hoy</string>
-    <string name="relative_time_yesterday">Ayer</string>
     <string name="settings_http_proxy_desc">Reenviando a %1$s</string>
     <string name="settings_http_proxy_error_text1">El rango de puertos debe ser desde 1024 a 65535</string>
     <string name="settings_http_proxy_error_text2">Puerto no válido</string>
@@ -85,7 +82,6 @@
     <string name="accessibility_service_description">DNS Control utiliza el servicio de accesibilidad para detectar y bloquear aplicaciones en segundo plano. DNS Control no recopila ni vende ninguna información.</string>
     <string name="finish">Finalizar</string>
     <string name="slide_2_desc">DNS Control es la forma más fácil de supervisar la actividad de la red, evitar la censura de Internet y controlar las aplicaciones de su dispositivo Android.</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="allow">Permitir</string>
     <string name="block">Bloquear</string>
     <string name="exclude">Excluir</string>
@@ -357,8 +353,6 @@
     <string name="dc_dns_leaks_heading">Evitar las fugas de DNS</string>
     <string name="dc_check_update_desc">Comprueba las actualizaciones de la lista de bloqueo una vez cada <i>tres</i> días</string>
     <string name="about_bug_report_dialog_positive_btn">Enviar correo electrónico</string>
-    <string name="about_mail_to_string">a:</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
     <string name="app_info_error">No se pudo iniciar la información de la aplicación.</string>
     <string name="vpn_profile_error">No se pudo iniciar el perfil VPN.</string>
     <string name="cd_doh_dialog_resolver_url">URL del servidor de resoluciones</string>

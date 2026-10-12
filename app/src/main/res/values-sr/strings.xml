@@ -152,8 +152,6 @@
     <string name="info_dialog_copy_toast_msg" translatable="true">IP адреса је ископирана.</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">URL је ископиран</string>
     <string name="public_key_copy_toast_msg" translatable="true">Јавни кључ је ископиран.</string>
-    <string name="relative_time_today" translatable="true">Данас</string>
-    <string name="relative_time_yesterday" translatable="true">Јуче</string>
     <string name="settings_ip_network_heading" translatable="true">Изабери IP верзију</string>
     <string name="settings_ip_network_desc" translatable="true">Изабери између верзија интернет протокола.</string>
     <string name="settings_connectivity_checks" translatable="true">Изврши провере повезивости</string>
@@ -293,9 +291,6 @@
     <string name="dc_proxy_dns_desc" translatable="true">Не проксуј DNS преко увек укљученог WireGuard-а, SOCKS5, HTTP проксија.</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Пошаљи е-поруку</string>
     <string name="about_settings_app_info" translatable="true">Информације о апликацији</string>
-    <string name="about_mail_to_string" translatable="true">mailto:</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">Изабери провајдера е-поште</string>
     <string name="vpn_profile_error" translatable="true">Није било могуће покренути VPN профил.</string>
     <string name="intent_launch_error" translatable="true">Није било могуће покренути %1$s</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">Прокси</string>

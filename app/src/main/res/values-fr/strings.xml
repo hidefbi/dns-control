@@ -5,7 +5,6 @@
     <string name="pause_title_desc">faire une sieste…</string>
     <string name="notification_action_resume_vpn">REPRENDRE</string>
     
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="block">bloquer</string>
     <string name="isolate">confiner</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification.">Appuyez sur pour modifier le paramètre de protection</string>
@@ -339,7 +338,6 @@
     <string name="configure_dns_connected_doh_status">DNS over HTTPS</string>
     <string name="app_mode_dns_firewall">DNS et pare-feu (par défaut)</string>
     <string name="orbot_app_issue">Impossible de lancer Orbot. Est-il installé ?</string>
-    <string name="about_mail_to_string">mailto :</string>
     <string name="settings_socks_forwarding_desc">Transmission à %1$s:%2$s, %3$s</string>
     <string name="fapps_info_dialog_positive_btn">D’accord</string>
     <string name="ctbs_block_other_apps">Les règles appliquées pour %1$s seront également applicables pour %2$s autres applications</string>
@@ -359,7 +357,6 @@
     <string name="dns_crypt_relay_remove_dialog_message">Supprimer le relais DNSCrypt de la configuration enregistrée.</string>
     <string name="local_blocklist_redownload">À jour !</string>
     <string name="orbot_socks5_desc">Renvoie toutes les connexions TCP vers Orbot.</string>
-    <string name="about_mail_subject">[DNS Control] :</string>
     <string name="cd_doh_dialog_resolver_name">Nom du résolveur</string>
     <string name="settings_notification_heading">Choisir l’action de notification</string>
     <string name="firewall_rule_block_ip_univ_desc"><![CDATA[Une règle de pare-feu définie par l’utilisateur a bloqué <i>l’IP de destination / le port</i>.<br/><br/> Pour la modifier, allez sur l’onglet <i>Global</i>.]]></string>
@@ -416,7 +413,6 @@
     <string name="orbot_bs_status_3">Transfert de %1$s à Orbot, proxy HTTP également configuré.</string>
     <string name="search_firewall_all_apps"><font size="12">Recherche d’applis par uid, nom</font></string>
     <string name="settings_proxy_header">proxy</string>
-    <string name="about_mail_bugreport_share_title">Sélectionnez le fournisseur d’e-mail</string>
     <string name="cd_custom_dns_proxy_name">Proxy %1$s</string>
     <string name="cd_dnscrypt_relay_heading">Relais</string>
     <string name="always_on_dialog_positive">Arrêter</string>
@@ -545,8 +541,6 @@
     <string name="intent_launch_error">Impossible de lancer %1$s</string>
     <string name="notification_screen_error">Impossible de lancer l’écran de notification de l’application.</string>
     <string name="hsf_notification_permission_failure">Activer l’autorisation de notification depuis les paramètres d’Android</string>
-    <string name="relative_time_today">Aujourd’hui</string>
-    <string name="relative_time_yesterday">Hier</string>
     <string name="settings_app_notification_a13_desc">Activer les notifications pour l’application</string>
     <string name="settings_app_notification_a13_heading">Notifications</string>
     <string name="notif_download_cancel_content">Téléchargement annulé.</string>

@@ -159,7 +159,6 @@
     <string name="dns_title" translatable="true">Block Ads &amp; Malware with DNS</string>
     <string name="dns_desc" translatable="true">Choose from 190+ lists to stop ads, trackers, and malware.</string>
 
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
 
     <string-array name="firewall_rules">
         <item>Allow</item>
@@ -407,8 +406,6 @@
 
 
 
-    <string name="relative_time_today" translatable="true">Today</string>
-    <string name="relative_time_yesterday" translatable="true">Yesterday</string>
 
     <!-- Settings Fragment strings -->
     <string name="settings_ip_network_heading" translatable="true">Choose IP version</string>
@@ -721,9 +718,6 @@
 
 
     <string name="about_settings_app_info" translatable="true">App Info</string>
-    <string name="about_mail_to_string" translatable="true">mailto:</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">Select email provider</string>
     <string name="about_version_install_source" translatable="false">%1$s (%2$s)</string>
 
     <string name="app_info_error" translatable="true">Could not launch App info.</string>
@@ -1677,7 +1671,6 @@
 
     <string name="country_ssid_empty_state" translatable="false">No SSIDs configured yet</string>
 
-    <string name="lbl_not_set" translatable="false">Not set</string>
 
     <!-- Peer Count -->
     <plurals name="peer_count">
@@ -1768,10 +1761,6 @@
 
 
     <!-- Duration labels for one-time purchase plan cards -->
-    <plurals name="duration_years" translatable="false">
-        <item quantity="one">%d Year</item>
-        <item quantity="other">%d Years</item>
-    </plurals>
 
     <!-- Rethink+ step -->
     <!-- Label shown in the golden badge strip inside the tooltip card -->

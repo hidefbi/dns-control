@@ -187,7 +187,6 @@
     <string name="settings_theme_heading" translatable="true">Vzhled</string>
     <string name="settings_rinr_heading" translatable="true">Loopback (experimentální)</string>
     <string name="settings_default_dns_heading" translatable="true">Vybrat záložní DNS</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
     <string name="vpn_profile_error" translatable="true">Nelze otevřít VPN profil.</string>
     <string name="cd_custom_dns_proxy_name" translatable="true">Proxy %1$s</string>
     <string name="fapps_unmetered_unblock_dialog_title" translatable="true">Povolit v neomezené síti</string>
@@ -230,7 +229,6 @@
     <string name="info_dialog_url_copy_toast_msg" translatable="true">URL zkopírována</string>
     <string name="public_key_copy_toast_msg" translatable="true">Veřejný klíč zkopírován.</string>
     <string name="app_mode_choose" translatable="true">Vyberte mód</string>
-    <string name="relative_time_today" translatable="true">Dnes</string>
     <string name="settings_ip_network_desc" translatable="true">Zvolte mezi verzemi internetového protokolu.</string>
     <string name="settings_allow_lan_heading" translatable="true">Neroutovat privátní IP (experimentální)</string>
     <string name="settings_allow_lan_desc" translatable="true">Vynechat LAN, loopback, multicast, link-local z tunelu DNS Control VPN.</string>
@@ -359,8 +357,6 @@
     <string name="dc_dns_leaks_desc" translatable="true">Je-li zapnuto, DNS Control zachytává všechny pakety na portu 53 a přesměrovává je na uživatelsky zvolené DNS</string>
     <string name="dc_check_update_heading" translatable="true">Upozornit na aktualizaci blokovacích seznamů</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Poslat email</string>
-    <string name="about_mail_to_string" translatable="true">mailto:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">Vyberte poskytovatele e-mailu</string>
     <string name="app_info_error" translatable="true">Nelze spustit informace o aplikaci.</string>
     <string name="notification_screen_error" translatable="true">Nelze otevřít obrazovku s oznámeními aplikace.</string>
     <string name="intent_launch_error" translatable="true">Nelze spustit %1$s</string>
@@ -606,7 +602,6 @@
     <string name="doh_custom_url_remove_dialog_message" translatable="true">Smazat DNS over HTTPS endpoint z uložené konfigurace.</string>
     <string name="dns_crypt_custom_url_remove_dialog_title" translatable="true">Smazat DNSCrypt resolver?</string>
     <string name="dns_crypt_url_remove_dialog_message" translatable="true">Smazat DNSCrypt resolver z uložené konfigurace.</string>
-    <string name="relative_time_yesterday" translatable="true">Včera</string>
     <string name="settings_connectivity_checks" translatable="true">Provádět kontroly připojení</string>
     <string name="settings_connectivity_checks_desc" translatable="true">Ke zjištění dosažitelnosti jsou odesílány testy připojení.</string>
     <string name="orbot_explanation" translatable="true">Orbot je bezplatná proxy aplikace, která umožňuje ostatním aplikacím používat internet více &lt;u&gt;bezpečně&lt;/u&gt;.&lt;br/&gt;\nOrbot využívá &lt;u&gt;Tor&lt;/u&gt; k šifrování vašeho internetového provozu, což pomáhá &lt;u&gt;obejít cenzuru&lt;/u&gt; a chránit před formami &lt;u&gt;sledování sítě&lt;/u&gt;, které ohrožují osobní svobodu a soukromí.&lt;br/&gt;\n&lt;u&gt;TCP Proxy&lt;/u&gt;: DNS Control přeposílá pouze TCP spojení &lt;i&gt;zahrnutých&lt;/i&gt; aplikací do Orbotu.\n&lt;u&gt;HTTP Proxy&lt;/u&gt;: DNS Control &lt;i&gt;vytváří&lt;/i&gt; HTTP CONNECT tunel do Orbotu a přeposílá pouze TCP spojení &lt;i&gt;zahrnutých&lt;/i&gt; aplikací.</string>

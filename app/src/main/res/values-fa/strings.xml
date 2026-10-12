@@ -43,7 +43,6 @@
     <string name="notification_action_dns_mode">DNS</string>
     <string name="skip">رد شدن</string>
     <string name="apps_info_title">برنامه ها</string>
-    <string name="rdns_plus" translatable="false">RDNS پلاس</string>
     <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">dns خصوصی فعال است</string>
     <string name="status_protected_with_http" translatable="true">محافظت شده با http پروکسی</string>
     <string name="lbl_configure" translatable="true">پیکربندی</string>
@@ -139,8 +138,6 @@
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">جستجوی فهرست‌های مسدود</font></string>
     <string name="app_mode_choose" translatable="true">حالت را انتخاب کنید</string>
     <string name="download_update_dialog_title" translatable="true">به‌روزرسانی جدید!</string>
-    <string name="relative_time_today" translatable="true">امروز</string>
-    <string name="relative_time_yesterday" translatable="true">دیروز</string>
     <string name="settings_allow_lan_heading" translatable="true">IP های خصوصی را مسیریابی نکنید (آزمایشی)</string>
     <string name="settings_allow_lan_desc" translatable="true">حذف LAN، Loopback و مسیرهای پیوند محلی از تونل VPN DNS Control.</string>
     <string name="settings_ip_network_heading" translatable="true">نسخه IP را انتخاب کنید</string>
@@ -400,9 +397,6 @@
     <string name="dc_use_sys_dns_undelegated_heading" translatable="true">از DNS سیستم برای دامنه‌های واگذار نشده استفاده کنید</string>
     <string name="dc_use_sys_dns_undelegated_desc" translatable="true">برای دامنه‌های بدون مجوز مانند <i>.Lan</i>، <i>.داخلی</i> و غیره از DNS سیستم استفاده کنید.</string>
     <string name="dc_filtering_heading" translatable="true">فیلتر کردن</string>
-    <string name="about_mail_to_string" translatable="true">ایمیل به:</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">انتخاب ارائه‌دهنده ایمیل</string>
     <string name="app_info_error" translatable="true">راه‌اندازی اطلاعات برنامه ممکن نبود.</string>
     <string name="vpn_profile_error" translatable="true">امکان راه‌اندازی پروفایل VPN وجود ندارد.</string>
     <string name="notification_screen_error" translatable="true">صفحه اعلان‌های برنامه باز نشد.</string>

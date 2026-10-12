@@ -45,13 +45,11 @@
     <string name="firewall_card_text_inactive">ফায়ারওয়াল মোড সক্ষম করুন।</string>
     <string name="lbl_proceed">আরম্ভ করুন</string>
     <string name="hsf_pause_vpn_failure">বিরতি দেওয়া যাবে না: রিথিঙ্কডিএনএস সক্রিয় নয়</string>
-    <string name="about_mail_to_string">mailto:</string>
     <string name="cd_custom_doh_url_name">DoH %1$s</string>
     <string name="cd_custom_dns_proxy_name_default">Proxy</string>
     <string name="cd_custom_dns_proxy_default_app">কেউ না</string>
     <string name="cd_dns_proxy_mode_internal">অভ্যন্তরীণ</string>
     <string name="univ_firewall_rule_6">ডিফল্টরূপে নতুন ইনস্টল করা অ্যাপগুলিকে ব্লক করুন</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="download_update_dialog_message_ok_title">আপ টু ডেট !</string>
     <string name="app_mode_dns_firewall">DNS এবং ফায়ারওয়াল (ডিফল্ট)</string>
     <string name="orbot_http">হাইপারটেক্সট ট্রান্সফার প্রটোকল প্রক্সি</string>
@@ -166,7 +164,6 @@
     <string name="settings_theme_heading">চেহারা</string>
     <string name="dc_entries">%1$s এন্ট্রি 🔗</string>
     <string name="about_settings_app_info">অ্যাপের তথ্য</string>
-    <string name="about_mail_bugreport_share_title">ইমেল প্রদানকারী নির্বাচন করুন</string>
     <string name="dns_info_neutral">অনুলিপি</string>
     <string name="dns_proxy_desc_no_app" translatable="false">%1$s:%2$s</string>
     <string name="fapps_filter_parent_installed">ইনস্টলকৃত</string>
@@ -212,7 +209,6 @@
     <string name="settings_theme_dialog_themes_4">সত্যিকারের কালো</string>
     <string name="settings_notification_desc2">DNS / DNS + ফায়ারওয়াল</string>
     <string name="dc_rethink_dns_radio">RethinkDNS</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
     <string name="cd_dns_crypt_name">DNSCrypt %1$s</string>
     <string name="univ_firewall_rule_3">উৎস অ্যাপ অজানা হলে ব্লক করুন</string>
     <string name="fapps_filter_categories_heading">Categories</string>

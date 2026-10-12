@@ -30,7 +30,6 @@
     <string name="settings_orbot_desc">Orbot menggunakan HTTPS/SOCKS5 dalam mode non-VPN.</string>
     <string name="always_on_dialog_stop_heading">VPN Selalu-Menyala</string>
     <string name="univ_firewall_dialog_title">Hapus aturan IP?</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="always_on_dialog_positive_btn">Masuk ke Pengaturan</string>
     <string name="app_mode_choose">Pilih mode</string>
     <string name="orbot_both_desc">Semua di atas.</string>
@@ -106,8 +105,6 @@
     <string name="cd_dns_crypt_name">DNSCrypt %1$s</string>
     <string name="firewall_rules">Aturan-aturan Jaringan</string>
     <string name="notif_channel_firewall_alerts">Peringatan Firewall</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title">Pilih penyedia email</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
     <string name="build__flavor_play_store">play</string>
     <string name="cd_dns_crypt_name_default">DNSCrypt</string>
@@ -470,8 +467,6 @@
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen">Blokir konten dewasa &amp; pembajakan, perjudian &amp; kencan online, dan media sosial.</string>
     <string name="cd_no_rule_initial">N</string>
     <string name="download_update_dialog_title">Pembaruan Baru!</string>
-    <string name="relative_time_today">Hari ini</string>
-    <string name="relative_time_yesterday">Kemarin</string>
     <string name="settings_app_notification_a13_heading">Pemberitahuan Aplikasi</string>
     <string name="settings_app_notification_a13_desc">Mengaktifkan izin pemberitahuan untuk aplikasi</string>
     <string name="settings_notification_dialog_option_3">\nTidak ada:\nTidak menampilkan tombol.\n</string>
@@ -517,7 +512,6 @@
     <string name="hsf_notification_permission_failure">Aktifkan izin pemberitahuan dari Layar Pengaturan</string>
     <string name="hs_btm_sheet_lock_down">Tidak dapat mengubah mode saat VPN dalam keadaan <i>lockdown</i>. Ketuk untuk &lt;u&gt;mengedit pengaturan VPN&lt;/u&gt;.</string>
     <string name="firewall_rule_isolate">Isolasi (Aplikasi)</string>
-    <string name="about_mail_to_string">mailto:</string>
     <string name="dc_check_update_heading">Ingatkan untuk memperbarui daftar blokir</string>
     <string name="cd_custom_dns_proxy_default_app">Tidak ada</string>
     <string name="fapps_firewall_filter_hint">Menampilkan semua aplikasi</string>

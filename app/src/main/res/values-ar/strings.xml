@@ -172,7 +172,6 @@
     <string name="settings_https_disabled_error">متصل بـ %1$s. قم بإيقاف تشغيله للمتابعة.</string>
     <string name="settings_http_proxy_desc">إعادة توجيه إلى %1$s</string>
     <string name="settings_socks5_dialog_hint_ip">عنوان الإنترنت (IP address)</string>
-    <string name="about_mail_bugreport_share_title">حدد مزود البريد الإلكتروني</string>
     <string name="cd_dns_crypt_name_default">DNSCrypt</string>
     <string name="ctbs_block_other_apps">القواعد المطبقة على %1$s ستنطبق أيضًا على تطبيقات أخرى %2$s</string>
     <string name="univ_firewall_rule_4">حظر UDP باستثناء DNS و NTP</string>
@@ -322,7 +321,6 @@
     <string name="dc_local_block_desc_1">اختر من بين 195+ قائمة حظر. انقر هنا لتنزيل أو تكوين قوائم الحظر.</string>
     <string name="about_bug_report_dialog_positive_btn">أرسل بريد الكتروني</string>
     <string name="lbl_add">أضِف</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
     <string name="fapps_metered_block_dialog_title">كتلة على المقننة</string>
     <string name="copy_clipboard_label">عنوان الرابط</string>
     <string name="settings_local_blocklist_version">الإصدار %1$s</string>
@@ -474,7 +472,6 @@
     <string name="status_no_internet">لا يوجد إنترنت</string>
     <string name="orbot_bs_status_1">إعادة توجيه %1$s اتصالات إلى Orbot.</string>
     <string name="slide_2_desc">تطبيق DNS Control هو أسهل طريقة لمراقبة نشاط الشبكة، وتجاوز الرقابة على الإنترنت، وتطبيقات جدار الحماية على جهازك الأندرويد.</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="pause_mode_notification_title">مُلبث! سيستمر منع اتصال التطبيقات المحظورة.</string>
     <string name="status_protected_with_proxy_private_dns">محمي بواسطة وكيل و dns خاص</string>
     <string name="dns_mode_notification_title">محمي! متصل بـ DNS السريع والآمن.</string>
@@ -537,7 +534,6 @@
     <string name="orbot_website_link" translatable="false">https://guardianproject.info/apps/org.torproject.android/</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
     <string name="cd_blocked_initial">B</string>
-    <string name="about_mail_to_string">mailto:</string>
     <string name="cd_dns_crypt_name">DNSCrypt %1$s</string>
     <string name="ci_blocked_initial">B</string>
     <string name="notification_screen_error">تعذر تشغيل شاشة إشعار التطبيق.</string>
@@ -550,10 +546,8 @@
     <string name="rt_filter_hint">إظهار <u> كل قوائم الحظر </u></string>
     <string name="rt_filter_desc"><![CDATA[إظهار قوائم الحظر <u> %1$s </u>]]></string>
     <string name="rt_filter_desc_subgroups"><![CDATA[عرض قوائم الحظر <u> %1$s </u> في المجموعة: %2$s والمجموعة الفرعية: %3$s]]></string>
-    <string name="relative_time_today">اليوم</string>
     <string name="settings_app_notification_a13_desc">فعّل إذن الإشعار للتطبيق</string>
     <string name="hsf_notification_permission_failure">فعّل إذن الإشعار من شاشة الإعدادات</string>
-    <string name="relative_time_yesterday">الامس</string>
     <string name="settings_app_notification_a13_heading">إشعار التطبيق</string>
     <string name="private_dns_dialog_heading">قم بإيقاف تشغيل DNS الخاص</string>
     <string name="private_dns_dialog_positive">اذهب للاعدادات</string>

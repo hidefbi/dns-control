@@ -27,7 +27,6 @@
     <string name="orbot_status_arg_3">DNS og TCP</string>
     <string name="slide_2_desc">DNS Control lar deg holde øye med din nettverksaktivitet, omgå sensur på Internett, og legge til brannmur for programmer.</string>
     
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="dns_explanation_dns_connected">Tilkoblet til Rethink</string>
     <string name="dns_explanation_firewall_connected">Tilkoblet til brannmur</string>
     <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Tilkoblet til Rethink og brannmur</string>
@@ -109,9 +108,6 @@
     <string name="dc_dns_leaks_heading">Forhindre DNS-lekkasjer</string>
     <string name="about_bug_report_dialog_positive_btn">E-post</string>
     <string name="about_settings_app_info">Programinfo</string>
-    <string name="about_mail_to_string">mailto:</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title">Velg e-posttilbyder</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="download_update_dialog_failure_title">Noe gikk galt.</string>
     <string name="univ_ip_delete_dialog_positive">Slett alle</string>
@@ -387,8 +383,6 @@
     <string name="firewall_status_excluded">utelatt fra DNS og brannmur</string>
     <string name="firewall_status_whitelisted">omgår universelle brannmursregler</string>
     <string name="firewall_card_text_inactive">Skru på brannmursmodus.</string>
-    <string name="relative_time_today">I dag</string>
-    <string name="relative_time_yesterday">I går</string>
     <string name="settings_http_proxy_error_text1">Portområde skal være fra 1024–65535</string>
     <string name="settings_theme_dialog_themes_1">Satt av systemet</string>
     <string name="firewall_status_unknown">ukjent</string>

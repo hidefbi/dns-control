@@ -151,13 +151,10 @@
     <string name="firewall_status_whitelisted">omzeilt universele firewall regels</string>
     <string name="settings_ip_network_desc">Kies tussen Internet Protocol versies.</string>
     <string name="slide_2_title">Welkom</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="slide_2_desc">DNS Control is de eenvoudigste manier om netwerkactiviteiten te controleren, internetcensuur te omzeilen en firewall-apps op uw Android-toestel te gebruiken.</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">Waarschuwing: DNS Control is gedeactiveerd</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification.">Tik om de beveiligingsinstelling te wijzigen</string>
     <string name="search_firewall_all_apps"><font size="12">Apps zoeken op uid, naam</font></string>
-    <string name="relative_time_today">Vandaag</string>
-    <string name="relative_time_yesterday">Gisteren</string>
     <string name="settings_lock_down_mode_desc">Kan geen bypass toestaan, of proxies instellen wanneer VPN in lockdown modus draait. <u>Ga naar VPN instellingen</u>.</string>
     <string name="settings_proxy_header">proxy</string>
     <string name="settings_socks5_heading">SOCKS5-proxy instellen</string>
@@ -213,7 +210,6 @@
     <string name="univ_firewall_rule_5">Blokkeren wanneer DNS wordt omzeild</string>
     <string name="dc_check_update_desc">Controleer eenmaal per <i>drie</i> dagen of de blocklist is bijgewerkt</string>
     <string name="about_settings_app_info">App-informatie</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
     <string name="about_version_install_source" translatable="false">%1$s (%2$s)</string>
     <string name="notification_screen_error">Kan App Notificatie scherm niet starten.</string>
     <string name="app_info_error">Kon App info niet starten.</string>
@@ -302,8 +298,6 @@
     <string name="hsf_exclude_error">Uitsluiten niet mogelijk in VPN-lockdownsmodus</string>
     <string name="dc_custom_block_heading">Individuele domeinen toestaan of weigeren</string>
     <string name="about_bug_report_dialog_positive_btn">Verzend e-mail</string>
-    <string name="about_mail_to_string">mailto:</string>
-    <string name="about_mail_bugreport_share_title">Selecteer e-mailprovider</string>
     <string name="vpn_profile_error">Kon VPN profiel niet starten.</string>
     <string name="hs_download_negative_default">Herinner me later</string>
     <string name="univ_firewall_rule_3">Blokkeren wanneer bron-app onbekend is</string>

@@ -61,7 +61,6 @@
     <string name="next">下一步</string>
     <string name="finish">搞掂</string>
     <string name="slide_2_title">歡迎</string>
-    <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">警告： DNS Control 已被停用</string>
     <string name="dns_mode_notification_title">保護緊！連線咗去快速而且安全嘅 DNS。</string>
     <string name="firewall_mode_notification_title">保護緊！連線咗去防火牆。</string>
@@ -246,9 +245,6 @@
     <string name="dc_check_update_heading">攔截清單更新時提示</string>
     <string name="about_bug_report_dialog_positive_btn">發送電郵</string>
     <string name="about_settings_app_info">App 資料</string>
-    <string name="about_mail_to_string">mailto:</string>
-    <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title">揀電郵供應商</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="app_info_error">打開唔到 app 資訊。</string>
     <string name="vpn_profile_error">打開唔到 VPN 配置。</string>
@@ -548,8 +544,6 @@
     <string name="notif_download_cancel_content">下載取消咗。</string>
     <string name="rt_filter_parent_selected">揀咗嘅</string>
     <string name="rt_filter_hint">顯示緊<u>所有</u>攔截清單</string>
-    <string name="relative_time_today">今日</string>
-    <string name="relative_time_yesterday">尋日</string>
     <string name="settings_app_notification_a13_heading">應用程式通知</string>
     <string name="settings_app_notification_a13_desc">准許應用程式嘅通知權限</string>
     <string name="hsf_notification_permission_failure">由設定區准許應用程式通知權限</string>

@@ -129,8 +129,6 @@
     <string name="download_update_dialog_title" translatable="true">Actualizare nouă!</string>
     <string name="download_update_dialog_failure_title" translatable="true">Ceva n-a mers bine!</string>
     <string name="app_mode_firewall" translatable="true">Firewall</string>
-    <string name="relative_time_today" translatable="true">Astazi</string>
-    <string name="relative_time_yesterday" translatable="true">Ieri</string>
     <string name="settings_proxy_header" translatable="true">Proxy</string>
     <string name="orbot" translatable="true">Orbot</string>
     <string name="orbot_http" translatable="true">Proxy HTTP</string>
@@ -386,9 +384,6 @@
     <string name="dc_dns_leaks_heading" translatable="true">Previne scurgerile DNS</string>
     <string name="dc_check_update_heading" translatable="true">Atenționare actualizări liste de blocat</string>
     <string name="about_settings_app_info" translatable="true">Informații aplicație</string>
-    <string name="about_mail_to_string" translatable="true">e-mail la:</string>
-    <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">Selectează provider-ul de e-mail</string>
     <string name="app_info_error" translatable="true">Nu pot deschide Informații Aplicație.</string>
     <string name="intent_launch_error" translatable="true">Nu pot deschide %1$s</string>
     <string name="vpn_profile_error" translatable="true">Nu pot deschide profilul VPN.</string>

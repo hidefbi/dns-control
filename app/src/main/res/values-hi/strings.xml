@@ -11,7 +11,6 @@
     <string name="slide_2_title">स्वागतम्</string>
     <string name="slide_2_desc">रीथिंक नेटवर्क गतिविधि की निगरानी करने, इंटरनेट सेंसरशिप को बायपास करने, और आपके एंड्रॉइड डिवाइस पर ऐप्स फ़ायरवॉल करने का सबसे आसान तरीका है।</string>
     
-    <string name="rdns_plus" translatable="false">आरडीएनएस प्लस</string>
     <string name="allow">अनुमति दें</string>
     <string name="block">ब्लॉक करें</string>
     <string name="bypass_universal">यूनवर्सल बायपास</string>
@@ -278,8 +277,6 @@
     <string name="info_dialog_copy_toast_msg" translatable="true">आईपी पता कॉपी किया गया।</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">यूआरएल कॉपी किया गया</string>
     <string name="app_mode_choose" translatable="true">मोड चुनें</string>
-    <string name="relative_time_yesterday" translatable="true">कल</string>
-    <string name="relative_time_today" translatable="true">आज</string>
     <string name="settings_app_notification_a13_heading" translatable="true">ऐप अधिसूचना</string>
     <string name="settings_http_proxy_error_text1" translatable="true">पोर्ट रेंज 1024-65535 में होनी चाहिए</string>
     <string name="settings_http_proxy_error_text2" translatable="true">अमान्य पोर्ट</string>
@@ -326,8 +323,6 @@
     <string name="hsf_uptime" translatable="false">(सक्रिय: %1$s; प्रोटोस्: %2$s; टाइप: %3$s)</string>
     <string name="dc_dns_leaks_desc" translatable="true">सक्षम होने पर, रीथिंक पोर्ट 53 पर सभी पैकेटों को पकड़ता है और इसे उपयोगकर्ता-सेट डीएनएस एंडपॉइंट पर फोरवर्ड करता है</string>
     <string name="dc_check_update_heading" translatable="true">ब्लॉकलिस्ट अपडेट पर संकेत दे</string>
-    <string name="about_mail_to_string" translatable="true">मेलटो:</string>
-    <string name="about_mail_subject" translatable="true">[रीथिंक]:</string>
     <string name="about_version_install_source" translatable="false">वर्जन%1$s (%2$s)</string>
     <string name="cd_dns_crypt_title" translatable="true">रिजॉलवर</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">प्राक्सी नाम</string>
@@ -481,7 +476,6 @@
     <string name="dc_block_heading" translatable="true">नियम</string>
     <string name="dc_local_block_desc_1" translatable="true">195+ ब्लॉकलिस्ट में से चुनें। ब्लॉकलिस्ट को डाउनलोड या कॉन्फ़िगर करने के लिए यहां क्लिक करें।</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">ईमेल भेजें</string>
-    <string name="about_mail_bugreport_share_title" translatable="true">ईमेल प्रदाता चुनें</string>
     <string name="app_info_error" translatable="true">ऐप्लिकेशन की जानकारी लॉन्च नहीं की जा सकी।</string>
     <string name="notification_screen_error" translatable="true">ऐप अधिसूचना स्क्रीन लॉन्च नहीं कर सका।</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">डीओएच</string>
