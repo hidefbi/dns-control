@@ -37,7 +37,10 @@ jobs:
           test -n "$ANDROID_HOME" || { echo "ANDROID_HOME not set on runner"; exit 1; }
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           test -x "$SDKMANAGER" || SDKMANAGER=$(command -v sdkmanager)
-          yes | "$SDKMANAGER" --licenses > /dev/null
+          "$SDKMANAGER" --version
+          # the preinstalled cmdline-tools index may predate android-37: refresh it first
+          "$SDKMANAGER" --update
+          yes | "$SDKMANAGER" --licenses > /dev/null || true
           "$SDKMANAGER" "platforms;android-37" "build-tools;36.0.0"
 
       - name: Decode release keystore
