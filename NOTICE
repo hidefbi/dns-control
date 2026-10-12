@@ -16,6 +16,8 @@ Modifications in this fork (summary):
 - Replaced the built-in DoH/DoT presets and changed encrypted-DNS failure
   handling so that it does not fall back to system DNS.
 - Removed the packet-capture and Go log-level settings.
+- Changed the application ID to com.hidefbi.dnscontrol so the fork is listed
+  separately from the upstream app. The Java namespace is unchanged.
 - Removed the bug-report collector (logcat and app-exit dumps), the Go log and
   crash file readers, the memory profiler, and the events screen.
 - Replaced the launcher and adaptive icons. The earlier artwork included the

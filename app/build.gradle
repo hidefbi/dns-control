@@ -96,7 +96,9 @@ android {
     namespace 'com.celzero.bravedns'
 
     defaultConfig {
-        applicationId "com.celzero.bravedns"
+        // Own application ID so this fork installs alongside, and is listed separately from,
+        // the upstream app. The Java namespace stays unchanged.
+        applicationId "com.hidefbi.dnscontrol"
         minSdkVersion(23)
         targetSdkVersion(37)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

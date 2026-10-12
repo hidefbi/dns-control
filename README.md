@@ -53,6 +53,10 @@ Run unit tests with:
 
 ## Changes from upstream
 
+The application ID is `com.hidefbi.dnscontrol`, so this fork installs alongside
+the upstream app and is listed under its own name and author. The Java package
+name is unchanged.
+
 See [NOTICE](NOTICE) for a summary. In short: log storage, log viewers and bug
 report collection are removed, several screens and background features are removed, DNS presets are
 replaced, and encrypted DNS failures no longer fall back to system DNS.
