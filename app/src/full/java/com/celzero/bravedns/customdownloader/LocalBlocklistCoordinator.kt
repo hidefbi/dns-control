@@ -23,6 +23,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.VpnService
+import android.system.Os
 import android.os.SystemClock
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
@@ -45,15 +46,18 @@ import com.celzero.bravedns.util.Utilities.blocklistDownloadBasePath
 import com.celzero.bravedns.util.Utilities.calculateMd5
 import com.celzero.bravedns.util.Utilities.getTagValueFromJson
 import com.celzero.bravedns.util.Utilities.tempDownloadBasePath
+import org.json.JSONObject
 import okhttp3.ResponseBody
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.io.BufferedInputStream
 import java.io.File
+import java.io.FileInputStream
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import java.security.MessageDigest
 import java.util.concurrent.CancellationException
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
@@ -159,11 +163,29 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
             return false
         }
 
-        Constants.ONDEVICE_BLOCKLISTS_IN_APP.forEachIndexed { idx, onDeviceBlocklistsMetadata ->
-            val id = generateCustomDownloadId()
+        // clear leftovers of an earlier attempt, so a half-written file is never reused
+        file.listFiles()?.forEach { it.delete() }
 
-            downloadStatuses[id] = DownloadStatus.RUNNING
+        // fetch the manifest and its signature first; the manifest tells which files changed
+        val ordered = Constants.ONDEVICE_BLOCKLISTS_IN_APP.sortedBy {
+            if (isManifestFile(it.filename)) 0 else 1
+        }
+        var reuseChecked = false
+        ordered.forEachIndexed { idx, onDeviceBlocklistsMetadata ->
+            if (!reuseChecked && !isManifestFile(onDeviceBlocklistsMetadata.filename)) {
+                reuseUnchangedFiles(file, persistentState.localBlocklistTimestamp)
+                reuseChecked = true
+            }
+
             val filePath = file.absolutePath + onDeviceBlocklistsMetadata.filename
+            if (File(filePath).isFile) {
+                // already present: either reused from the installed set or downloaded above
+                Logger.i(LOG_TAG_DOWNLOAD, "Skipping download, file reused: ${onDeviceBlocklistsMetadata.filename}")
+                return@forEachIndexed
+            }
+
+            val id = generateCustomDownloadId()
+            downloadStatuses[id] = DownloadStatus.RUNNING
 
             Logger.i(
                 LOG_TAG_DOWNLOAD,
@@ -386,6 +408,72 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
         }
     }
 
+    private fun isManifestFile(filename: String): Boolean {
+        return filename == Constants.ONDEVICE_BLOCKLIST_FILE_INDEX ||
+            filename == Constants.ONDEVICE_BLOCKLIST_FILE_INDEX_SIG
+    }
+
+    /**
+     * Reuses files from the installed set whose size and sha256 match the new manifest, so that
+     * they are not downloaded again. Files are hard-linked (no extra space), with a copy as fallback.
+     * Anything that does not match is left out and downloaded. The new set is still fully verified
+     * (signature and hashes) before it is activated, so a wrong reuse cannot be activated.
+     */
+    private fun reuseUnchangedFiles(tempDir: File, installedTs: Long) {
+        try {
+            val manifest = File(tempDir.absolutePath + Constants.ONDEVICE_BLOCKLIST_FILE_INDEX)
+            if (!manifest.isFile) return
+
+            val files = JSONObject(manifest.readText()).optJSONObject("files") ?: return
+            val installedDir = File(blocklistDownloadBasePath(context, LOCAL_BLOCKLIST_DOWNLOAD_FOLDER_NAME, installedTs))
+            if (!installedDir.isDirectory) return
+
+            var reused = 0
+            Constants.ONDEVICE_BLOCKLISTS_IN_APP.forEach { meta ->
+                // index.json and its signature are not listed in the manifest's files
+                val expected = files.optJSONObject(meta.url) ?: return@forEach
+                val old = File(installedDir.absolutePath + meta.filename)
+                if (!old.isFile || old.length() != expected.optLong("size", -1L)) return@forEach
+                if (!sha256Hex(old).equals(expected.optString("sha256"), ignoreCase = true)) return@forEach
+
+                val target = File(tempDir.absolutePath + meta.filename)
+                if (linkOrCopy(old, target)) reused++
+            }
+            Logger.i(LOG_TAG_DOWNLOAD, "Reused $reused unchanged blocklist file(s) from set $installedTs")
+        } catch (e: Exception) {
+            // not fatal: every file is then downloaded as before
+            Logger.w(LOG_TAG_DOWNLOAD, "Could not reuse installed blocklist files: ${e.message}", e)
+        }
+    }
+
+    private fun linkOrCopy(src: File, dst: File): Boolean {
+        if (dst.exists()) dst.delete()
+        return try {
+            Os.link(src.absolutePath, dst.absolutePath)
+            true
+        } catch (e: Exception) {
+            try {
+                src.copyTo(dst, true).isFile
+            } catch (e2: Exception) {
+                Logger.w(LOG_TAG_DOWNLOAD, "Copy failed for ${src.name}: ${e2.message}", e2)
+                false
+            }
+        }
+    }
+
+    private fun sha256Hex(f: File): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        FileInputStream(f).use { ins ->
+            val buf = ByteArray(1 shl 16)
+            while (true) {
+                val n = ins.read(buf)
+                if (n < 0) break
+                md.update(buf, 0, n)
+            }
+        }
+        return md.digest().joinToString("") { "%02x".format(it) }
+    }
+
     private fun isDownloadComplete(dir: File): Boolean {
         var result = false
         var total: Int? = 0
@@ -435,8 +523,10 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
 
             from.listFiles()?.forEach {
                 val dest = File(to.absolutePath + File.separator + it.name)
-                val result = it.copyTo(dest, true)
-                if (!result.isFile) {
+                // rename is atomic and needs no extra space; copy only if rename fails
+                if (dest.exists()) dest.delete()
+                val moved = it.renameTo(dest) || it.copyTo(dest, true).isFile
+                if (!moved) {
                     Logger.d(LOG_TAG_DOWNLOAD, "Copy failed from ${it.path} to ${dest.path}")
                     return false
                 }

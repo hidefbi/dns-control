@@ -48,8 +48,12 @@ app version code and the timestamp of your current set to the download host.
 A check only detects that an update exists; it does not download anything. You
 start the download from the local blocklists screen.
 
-A download fetches the whole set (all six files listed below), not only the
-changed parts. Updating by hand therefore downloads the full set again.
+A download first fetches the small manifest (`index.json` and its signature).
+Each file that is already installed and whose size and SHA-256 match the new
+manifest is reused and not downloaded again. Only changed files are downloaded.
+Because `trie` is a single file, any change to the lists means it is downloaded
+again. The Android Download Manager option (turned off by default) always
+downloads the full set.
 
 Before a new set is activated, the app verifies it:
 
