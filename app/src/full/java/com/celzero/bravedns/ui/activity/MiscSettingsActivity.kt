@@ -81,6 +81,7 @@ import com.celzero.bravedns.util.Utilities.isAtleastS
 import com.celzero.bravedns.util.Utilities.isAtleastT
 import com.celzero.bravedns.util.Utilities.isFdroidFlavour
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
+import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
@@ -452,6 +453,16 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                 }
             }
             logEvent("Auto start on boot set to $b")
+        }
+
+        b.donateBtcCopy.setOnClickListener {
+            UIUtils.clipboardCopy(this, getString(R.string.donate_btc_address), getString(R.string.donate_btc_label))
+            showToastUiCentered(this, getString(R.string.donate_copied), Toast.LENGTH_SHORT)
+        }
+
+        b.donateEthCopy.setOnClickListener {
+            UIUtils.clipboardCopy(this, getString(R.string.donate_eth_address), getString(R.string.donate_eth_label))
+            showToastUiCentered(this, getString(R.string.donate_copied), Toast.LENGTH_SHORT)
         }
 
         b.settingsTaskerRl.setOnClickListener {

@@ -2480,4 +2480,8 @@ ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-
     <string name="donate_btc_address" translatable="false">bc1q34tccx8ttkqdpaywugmdvhamqmc9uhh9qttqn7</string>
     <string name="donate_eth_label" translatable="true">ETH</string>
     <string name="donate_eth_address" translatable="false">0x21ac40d9afec1e6fd3c0abe730911da4a03d1d98</string>
+    <string name="donate_repo_label" translatable="true">Source code</string>
+    <string name="donate_copy_btc" translatable="true">Copy BTC address</string>
+    <string name="donate_copy_eth" translatable="true">Copy ETH address</string>
+    <string name="donate_copied" translatable="true">Address copied</string>
 </resources>
