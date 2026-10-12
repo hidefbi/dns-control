@@ -112,6 +112,23 @@ add it manually in the app on your phone (DNSCrypt and ODoH screens).
 - ODoH target servers: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
 - ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md
 
+## Download
+
+Signed release APKs are published on the
+[Releases page](https://github.com/hidefbi/dns-control/releases).
+
+Latest release: [v0.0.673](https://github.com/hidefbi/dns-control/releases/tag/v0.0.673)
+(package `com.hidefbi.dnscontrol`, versionCode 673).
+
+To check a download:
+
+- APK SHA-256 for v0.0.673: `5f6e21f48669da7b929c026c35acb6145dc2f30aa63f45cd7e9e56540e194c68`
+  (`shasum -a 256 DNS-Control-v0.0.673.apk`)
+- Signing certificate SHA-256: `f06abe97928a05566812a4d3e45881b9bf30f2a242cae263b481c39a9075261f`
+  (`apksigner verify --print-certs DNS-Control-v0.0.673.apk`, from the Android SDK build-tools)
+
+Install only if both values match. The app is not on Google Play.
+
 ## Requirements
 
 - Android 6.0 (API 23) or newer
