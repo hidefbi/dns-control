@@ -37,7 +37,6 @@ import java.util.Optional
  */
 class WgInterface private constructor(builder: Builder) {
 
-
     // Defensively copy to ensure immutability even if the Builder is reused.
     private val addresses: Set<InetNetwork> =
         Collections.unmodifiableSet(LinkedHashSet(builder.addresses)) // The collection is already immutable.
@@ -349,10 +348,6 @@ class WgInterface private constructor(builder: Builder) {
         return sb.toString()
     }
 
-    fun getClientId(): Optional<String> {
-        return clientId
-    }
-
     fun getJc(): Optional<Int> {
         return jc
     }
@@ -432,28 +427,13 @@ class WgInterface private constructor(builder: Builder) {
             return this
         }
 
-        fun addAddresses(addresses: Collection<InetNetwork>?): Builder {
-            this.addresses.addAll(addresses!!)
-            return this
-        }
-
         fun addDnsServer(dnsServer: InetAddress): Builder {
             dnsServers.add(dnsServer)
             return this
         }
 
-        fun addDnsServers(dnsServers: Collection<InetAddress>?): Builder {
-            this.dnsServers.addAll(dnsServers!!)
-            return this
-        }
-
         fun addDnsSearchDomain(dnsSearchDomain: String): Builder {
             dnsSearchDomains.add(dnsSearchDomain)
-            return this
-        }
-
-        fun addDnsSearchDomains(dnsSearchDomains: Collection<String>?): Builder {
-            this.dnsSearchDomains.addAll(dnsSearchDomains!!)
             return this
         }
 
@@ -528,11 +508,6 @@ class WgInterface private constructor(builder: Builder) {
 
         fun excludeApplication(application: String): Builder {
             excludedApplications.add(application)
-            return this
-        }
-
-        fun excludeApplications(applications: Collection<String>?): Builder {
-            applications?.let { excludedApplications.addAll(it) }
             return this
         }
 

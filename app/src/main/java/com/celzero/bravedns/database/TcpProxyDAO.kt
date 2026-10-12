@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.database
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -33,9 +32,6 @@ interface TcpProxyDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(tcpProxyEndpoints: TcpProxyEndpoint): Long
-
-    @Query("select * from TcpProxyEndpoint")
-    fun getTcpProxiesLiveData(): PagingSource<Int, TcpProxyEndpoint>
 
     @Query("select * from TcpProxyEndpoint") fun getTcpProxies(): List<TcpProxyEndpoint>
 

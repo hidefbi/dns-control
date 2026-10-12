@@ -16,7 +16,6 @@
 package com.celzero.bravedns.customdownloader
 
 import android.content.Context
-import android.net.Uri
 import com.celzero.bravedns.R
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_OKHTTP
@@ -99,12 +98,6 @@ class RetrofitManager {
         fun getBlocklistBaseBuilder(isRinRActive: Boolean): Retrofit.Builder {
             return Retrofit.Builder()
                 .baseUrl(Constants.DOWNLOAD_BASE_URL + "/")
-                .client(okHttpClient(isRinRActive))
-        }
-
-        fun getIpInfoBaseBuilder(isRinRActive: Boolean): Retrofit.Builder {
-            return Retrofit.Builder()
-                .baseUrl(Constants.IP_INFO_BASE_URL)
                 .client(okHttpClient(isRinRActive))
         }
 

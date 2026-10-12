@@ -96,7 +96,6 @@ class CustomDomainAdapter(
             }
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         adapter = this
         if (viewType == R.layout.list_item_custom_all_domain) {
@@ -361,7 +360,6 @@ class CustomDomainAdapter(
                         b.customDomainAppIconIv
                     )
 
-
                     b.customDomainLabelTv.text = customDomain.domain
 
                     // update status in desc and status flag (N/B/W)
@@ -374,7 +372,6 @@ class CustomDomainAdapter(
 
                     b.customDomainExpandIcon.setOnClickListener {
                         showButtonsBottomSheet(customDomain)
-                        //toggleActionsUi()
                     }
 
                     b.customDomainContainer.setOnClickListener {
@@ -522,7 +519,6 @@ class CustomDomainAdapter(
 
             b.customDomainExpandIcon.setOnClickListener {
                 showButtonsBottomSheet(customDomain)
-                //toggleActionsUi()
             }
 
             b.customDomainContainer.setOnClickListener {

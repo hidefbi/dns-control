@@ -406,7 +406,6 @@ object TunFlowManager : KoinComponent {
                     // is not known. override uid with INVALID_UID to force a preflow() call
                     // on Android P and above, the uid for private dns is also DNS.uid (AID_DNS)
                     // which we should not override and let it out as it is
-                    // if (uid == AndroidUidConfig.DNS.uid) { uid = INVALID_UID }
                     // the above check is disabled in v055y
                     Backend.Base
                     // do not add the trackedCids for dns entries as there will not be any
@@ -430,7 +429,6 @@ object TunFlowManager : KoinComponent {
 
         if (trapVpnDns) {
             // see the comment above for the reasoning #trapVpnDns
-            // if (uid == AndroidUidConfig.DNS.uid) { uid = INVALID_UID }
             // the above check is disabled in v055y
             // android R+, uid will be there for dns request as well
             logd("flow: dns-request, returning ${Backend.Base}, $uid, $connId, $domains")
@@ -439,7 +437,6 @@ object TunFlowManager : KoinComponent {
         processFirewallRequest(ctx, cm, d, anyRealIpBlocked, blocklists ?: "", isSplApp, rinr, isAlg)
 
         if (cm.isBlocked) {
-            // return Ipn.Block, no need to check for other rules
             logd("flow: received rule: block, returning Ipn.Block, $connId, $uid, $domains")
             return persistAndConstructFlowResponse(ctx, cm, Backend.Block, connId, uid)
         }
@@ -520,7 +517,6 @@ object TunFlowManager : KoinComponent {
         processFirewallRequest(ctx, cm, "", false, "", rinr = rinr, isAlg = false)
 
         if (cm.isBlocked) {
-            // return Ipn.Block, no need to check for other rules
             logd("inflow: received rule: block, returning Ipn.Block, $connId, $uid")
             return persistAndConstructFlowResponse(ctx, cm, Backend.Block, connId, uid)
         }

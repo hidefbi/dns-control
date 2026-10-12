@@ -102,7 +102,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         // update block-free dns ui
     }
 
-
     private fun initView() {
         // init animation
         initAnimation()
@@ -291,17 +290,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         b.dcSplitDnsSwitch.isChecked = true
         b.dcSplitDnsSwitch.isEnabled = true
         b.dcSplitDnsSwitch.isClickable = true
-    }
-
-    private fun disableSplitDnsUi() {
-        b.dcSplitDnsTxt.alpha = 0.5f
-        b.dcSplitDnsDesc.alpha = 0.5f
-        b.dcSplitDnsIcon.alpha = 0.25f
-        b.dcSplitDnsRl.isEnabled = false
-        b.dcSplitDnsRl.isClickable = false
-        b.dcSplitDnsSwitch.isChecked = false
-        b.dcSplitDnsSwitch.isEnabled = false
-        b.dcSplitDnsSwitch.isClickable = false
     }
 
     private fun updateSpiltDns() {

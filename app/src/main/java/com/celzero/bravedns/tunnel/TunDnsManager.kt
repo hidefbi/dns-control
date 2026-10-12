@@ -471,7 +471,6 @@ object TunDnsManager: KoinComponent {
         val tidCsv = tid.first.split(",").joinToString(",") { appendDnsCacheIfNeeded(it) }
         val secCsv = if (tid.second.isNotEmpty()) tid.second.split(",").joinToString(",") { appendDnsCacheIfNeeded(it) } else ""
 
-        // if (uid == rethinkUid && !rinr) { opts.pidcsv = Backend.Base }
         // firestack is already expected to bypass proxies for rethink uid when rinr is false
         // for rethink over origin internal case, no matter what the proxyId is set, if the
         // transport is set to default in that case, the proxyId will be ignored in firestack
@@ -627,7 +626,6 @@ object TunDnsManager: KoinComponent {
             }
         }
     }
-
 
     private fun isAnyWgDns(tid: List<String>): Boolean {
         // RPN ids are gone; WireGuard ids are the only wg-prefixed transport

@@ -47,9 +47,6 @@ interface RethinkLocalFileTagDao {
     @Query("Update RethinkLocalFileTag set isSelected = :isSelected where value in (:list) ")
     fun updateTags(list: Set<Int>, isSelected: Int)
 
-    @Query("Update RethinkLocalFileTag set isSelected = :isSelected where value = :value")
-    fun updateSelectedTag(value: Int, isSelected: Int)
-
     @Query(
         "select value, uname, vname, `group`, subg, url as urls, show, entries, pack, level, simpleTagId, isSelected  from RethinkLocalFileTag"
     )
@@ -67,14 +64,6 @@ interface RethinkLocalFileTagDao {
         query: String,
         selected: Set<Int>,
         subg: Set<String>
-    ): PagingSource<Int, RethinkLocalFileTag>
-
-    @Query(
-        "select * from RethinkLocalFileTag where isSelected in (:selected) and (vname like :query or `group` like :query or subg like :query) and (pack not like '%dead%' and pack not like '%ignore%') order by `group`  desc"
-    )
-    fun getLocalFileTagsGroup(
-        query: String,
-        selected: Set<Int>
     ): PagingSource<Int, RethinkLocalFileTag>
 
     @Query(

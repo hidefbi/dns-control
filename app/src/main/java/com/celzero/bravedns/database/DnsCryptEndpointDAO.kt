@@ -63,10 +63,6 @@ interface DnsCryptEndpointDAO {
 
     @Query("select count(*) from DNSCryptEndpoint") fun getCount(): Int
 
-    @Transaction
-    @Query("update DNSCryptEndpoint set isSelected = 1 where id = :liveServerID")
-    fun updateConnectionStatus(liveServerID: Int)
-
     @Transaction @Query("update DNSCryptEndpoint set isSelected=0") fun updateFailingConnections()
 
     @Query("select * from DNSCryptEndpoint order by dnsCryptName asc")

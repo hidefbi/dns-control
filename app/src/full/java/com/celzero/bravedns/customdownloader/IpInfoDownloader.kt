@@ -25,11 +25,6 @@ object IpInfoDownloader : KoinComponent {
 
     private val db by inject<IpInfoRepository>()
 
-    @Suppress("UNUSED_PARAMETER")
-    suspend fun fetchIpInfoIfRequired(ipToLookup: String) {
-        // no-op: remote ip-info lookup removed
-    }
-
     suspend fun getIpInfo(ip: String): IpInfo? {
         return db.getIpInfo(ip)
     }

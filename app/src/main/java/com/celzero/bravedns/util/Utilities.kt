@@ -18,7 +18,6 @@ package com.celzero.bravedns.util
 import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
 import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
 import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.AccessibilityServiceInfo
@@ -63,8 +62,6 @@ import com.celzero.bravedns.util.Constants.Companion.UNSPECIFIED_IP_IPV4
 import com.celzero.bravedns.util.Constants.Companion.UNSPECIFIED_IP_IPV6
 import com.google.common.net.InternetDomainName
 import com.google.gson.JsonParser
-import inet.ipaddr.HostName
-import inet.ipaddr.IPAddress
 import inet.ipaddr.IPAddressString
 import kotlinx.coroutines.launch
 import okio.HashingSink
@@ -233,40 +230,6 @@ object Utilities {
         return String(Character.toChars(firstHalf)) + String(Character.toChars(secondHalf))
     }
 
-    @Suppress("ReturnCount", "TooGenericExceptionCaught")
-    fun normalizeIp(ipstr: String?): InetAddress? {
-        if (ipstr.isNullOrEmpty()) return null
-
-        try {
-            val ipAddress: IPAddress = HostName(ipstr).asAddress() ?: return null
-            val ip = ipAddress.toInetAddress()
-
-            // no need to check if IP is not of type IPv6
-            if (!IPUtil.isIpV6(ipAddress)) return ip
-
-            val ipv4 = IPUtil.ip4in6(ipAddress)
-
-            return if (ipv4 != null) {
-                ipv4.toInetAddress()
-            } else {
-                ip
-            }
-        } catch (e: Exception) { // not expected
-            Logger.e(LOG_TAG_VPN, "err normalizing ip $ipstr ${e.message}", e)
-        }
-        return null
-    }
-
-    fun makeAddressPair(countryCode: String?, ipAddress: String?): String {
-        return if (ipAddress.isNullOrEmpty()) {
-            "--" // to avoid translation set to "--"
-        } else if (countryCode == null) {
-            ipAddress
-        } else {
-            String.format("%s (%s)", countryCode, ipAddress)
-        }
-    }
-
     fun convertLongToTime(time: Long, template: String): String {
         val date = Date(time)
         return SimpleDateFormat(template, Locale.ENGLISH).format(date)
@@ -381,29 +344,6 @@ object Utilities {
             Logger.w(LOG_TAG_APP_DB, "app not available $pi" + e.message, e)
         }
         return metadata
-    }
-
-    fun isFreshInstall(ctx: Context): Boolean {
-        try {
-            with(
-                if (isAtleastT()) {
-                    ctx.packageManager.getPackageInfo(
-                        ctx.packageName,
-                        PackageManager.PackageInfoFlags.of(PackageManager.GET_META_DATA.toLong())
-                    )
-                } else {
-                    ctx.packageManager.getPackageInfo(ctx.packageName, PackageManager.GET_META_DATA)
-                }
-            ) {
-                return firstInstallTime == lastUpdateTime
-            }
-        } catch (e: PackageManager.NameNotFoundException) {
-            // assign value as true as the package name not found, should not be the
-            // case but some devices seems to return package not found immediately
-            // after install
-            Logger.w(LOG_TAG_APP_DB, "app not found ${ctx.packageName}" + e.message, e)
-            return true
-        }
     }
 
     @Suppress("ReturnCount", "TooGenericExceptionCaught")
@@ -605,14 +545,6 @@ object Utilities {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
     }
 
-    fun isAtleastV(): Boolean {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM
-    }
-
-    fun isAtleast36(): Boolean {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.BAKLAVA
-    }
-
     fun isAtleast37(): Boolean {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN
     }
@@ -648,7 +580,6 @@ object Utilities {
         if (!isPlayStoreFlavour() && !isWebsiteFlavour()) return false
         return getApplicationInfo(context, PKG_NAME_PLAY_STORE)?.enabled == true
     }
-
 
     /** Returns true when the app is built with the "alpha" build type. */
     fun isAlphaBuild(): Boolean {
@@ -700,10 +631,6 @@ object Utilities {
             which
     }
 
-    fun oldLocalBlocklistDownloadDir(ctx: Context, timestamp: Long): String {
-        return ctx.filesDir.canonicalPath + File.separator + timestamp + File.separator
-    }
-
     fun hasLocalBlocklists(ctx: Context, timestamp: Long): Boolean {
         val a =
             Constants.ONDEVICE_BLOCKLISTS_ADM.all {
@@ -732,19 +659,6 @@ object Utilities {
             return File(localBlocklist)
         } catch (e: IOException) {
             Logger.e(LOG_TAG_VPN, "err fetching local blocklist: " + e.message, e)
-            null
-        }
-    }
-
-    fun blocklistDir(ctx: Context?, which: String, timestamp: Long): File? {
-        if (ctx == null) {
-            Logger.v(LOG_TAG_UI, "Context is null, returning null")
-            return null
-        }
-        return try {
-            File(blocklistDownloadBasePath(ctx, which, timestamp))
-        } catch (e: IOException) {
-            Logger.e(LOG_TAG_VPN, "Could not fetch blocklist path: " + e.message, e)
             null
         }
     }
@@ -850,15 +764,6 @@ object Utilities {
         return connectivityManager.getLinkProperties(activeNetwork)
     }
 
-    fun removeBeginningTrailingCommas(value: String): String {
-        return value.removePrefix(",").dropLastWhile { it == ',' }
-    }
-
-    fun getDnsPort(port: Int): Int {
-        if (port > 65535 || port <= 0) return 53
-        return port
-    }
-
     // generates a user-specified number of random bytes, converts it to hexadecimal, and then
     // provides the hexadecimal value as a string
     fun getRandomString(length: Int): String {
@@ -960,19 +865,6 @@ object Utilities {
         }
 
         return true // versions are equal
-    }
-
-    fun writeToFile(file: File, content: ByteArray): Boolean {
-        return try {
-            file.outputStream().use { output ->
-                output.write(content)
-                output.flush()
-            }
-            true
-        } catch (e: IOException) {
-            Logger.e(LOG_TAG_VPN, "err writing to file ${file.path}, ${e.message}", e)
-            false
-        }
     }
 
     fun getIpForUrl(context: Context, url: String): String? {

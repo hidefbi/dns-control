@@ -29,7 +29,6 @@ import android.view.animation.Animation
 import android.view.animation.RotateAnimation
 import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.content.ContextCompat

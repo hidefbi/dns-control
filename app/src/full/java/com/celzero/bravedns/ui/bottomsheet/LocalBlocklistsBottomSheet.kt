@@ -21,7 +21,6 @@ import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Configuration
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -49,7 +48,6 @@ import com.celzero.bravedns.util.Constants.Companion.LOCAL_BLOCKLIST_DOWNLOAD_FO
 import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.Themes.Companion.getBottomSheetCurrentTheme
 import com.celzero.bravedns.util.UIUtils.fetchToggleBtnColors
-import com.celzero.bravedns.util.UIUtils.openUrl
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.blocklistCanonicalPath
 import com.celzero.bravedns.util.Utilities.convertLongToTime
@@ -475,8 +473,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
         b.lbbsEnable.setOnClickListener { enableBlocklist() }
 
         b.lbbsConfigure.setOnClickListener { invokeRethinkActivity() }
-
-
 
         b.lbbsDownload.setOnClickListener { showDownloadDialog(isRedownload = false) }
 

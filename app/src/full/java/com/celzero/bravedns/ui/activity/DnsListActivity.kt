@@ -16,7 +16,6 @@
 package com.celzero.bravedns.ui.activity
 
 import android.content.Context
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import androidx.core.view.WindowInsetsControllerCompat

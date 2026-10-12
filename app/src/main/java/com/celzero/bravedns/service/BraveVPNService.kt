@@ -151,7 +151,6 @@ import java.util.concurrent.atomic.AtomicInteger
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.math.abs
 import kotlin.math.min
-import kotlin.random.Random
 import kotlin.time.Duration.Companion.milliseconds
 
 class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, NetworkLifecycleObserver.Listener, Bridge, OnSharedPreferenceChangeListener {
@@ -237,10 +236,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         // route v4 in v6 only networks?
         const val ROUTE4IN6 = true
 
-        // subscription check interval in milliseconds 1 hour
-        // TODO: increase it to 6 hours?
-        private const val PLUS_CHECK_INTERVAL = 6 * 60 * 60 * 1000L
-
         private const val DATA_STALL_THRESHOLD_MS = 30 * 1000L // 30 seconds
 
         // vpnRoutes are only used for diagnostics, the current implementation will taken
@@ -251,8 +246,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     private val isLockDownPrevious = AtomicBoolean(false)
 
     private lateinit var connTracer: ConnectionTracer
-
-    private val rand: Random = Random
 
     private val appConfig by inject<AppConfig>()
     private val orbotHelper by inject<OrbotHelper>()
@@ -1851,7 +1844,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         vpnAdapter?.setTunMode(opts)
     }
 
-
     private suspend fun restartVpn(
         ctx: Context,
         opts: AppConfig.TunnelOptions,
@@ -2276,10 +2268,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                 vpnRestartTrigger.value = reason
                 // not needed as the refresh is done in go, TODO: remove below code later
                 // only after set links and routes, wg can be refreshed
-                // if (isRoutesChanged) {
-                // Logger.v(LOG_TAG_VPN, "refresh wg after network change")
-                // refreshProxies()
-                // }
             }
         } else {
             // update the network mtu even though no restart is needed
@@ -2371,9 +2359,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         val mtuChanged = !useMaxMtu && tunMtu != min(new.minMtu, aux.mtu)
         val mtuChangedReason = "max{$useMaxMtu} tun{$tunMtu} net[${old.minMtu}->${new.minMtu}] aux[${overlayNetworks.mtu}->${aux.mtu}] chg = !useMaxMtu && tunMtu != min(new.minMtu, aux.mtu)"
 
-        // val auxHas4 = aux.has4 || aux.failOpen
-        // val auxHas6 = aux.has6 || aux.failOpen
-
         val (builderHas4, builderHas6) = builderRoutes // current tunnel routes v4/v6?
 
         // when the nws are null from the connection monitor, then consider the builder routes
@@ -2400,8 +2385,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
 
         if (new.useActive) {
             cm.activeNetwork?.let { activ ->
-                // val tunWants4 = activHas4 && auxHas4
-                // val tunWants6 = activHas6 && auxHas6
                 val activHas4 = isNetworkSame(new.ipv4Net.firstOrNull()?.network, activ)
                 val activHas6 = isNetworkSame(new.ipv6Net.firstOrNull()?.network, activ)
                 val oldActivHas4 = isNetworkSame(old.ipv4Net.firstOrNull()?.network, activ)
@@ -2425,12 +2408,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             } // active network null, fallthrough to check for netChanged
         }
         // check if ipv6 or ipv4 routes are different in old and new networks
-        // val oldHas6 = old.ipv6Net.isNotEmpty() || tunHas6
-        // val oldHas4 = old.ipv4Net.isNotEmpty() || tunHas4
-        // val newHas6 = new.ipv6Net.isNotEmpty()
-        // val newHas4 = new.ipv4Net.isNotEmpty()
-        // val tunWants4 = newHas4 && auxHas4
-        // val tunWants6 = newHas6 && auxHas6
         // check if the first networks are different to urge rebinds where necessary (ex: WireGuard)
         val oldFirst6 = old.ipv6Net.firstOrNull()?.network
         val newFirst6 = new.ipv6Net.firstOrNull()?.network
@@ -2891,7 +2868,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                     mutable = false
                 )
 
-            // val mtu = mtu() // get mtu from the underlyingnetworks
             var builder: Builder = newBuilder().setSession("Rethink").setMtu(mtu)
 
             // set the PendingIntent to an activity for users to configure the vpn connection.
@@ -2947,7 +2923,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             }
 
             // nw engine expects the fd to be non-blocking
-            // builder.setBlocking(false)
 
             Logger.i(
                 LOG_TAG_VPN,
@@ -3365,7 +3340,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
 
     private suspend fun <T> ioCtx(s: String, f: suspend () -> T): T =
         withContext(CoroutineName(s) + Dispatchers.IO) { f() }
-
 
     private fun io(s: String, f: suspend () -> Unit) =
         vpnScope.launch(CoroutineName(s) + Dispatchers.IO) { f() }
@@ -4006,7 +3980,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         return prevDns.joinToString()
     }
 
-
     private fun generalStats(): String {
         return appConfig.stats()
     }
@@ -4181,6 +4154,5 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         // return the current underlying networks in the vpn adapter
         return tunUnderlyingNetworks.isEmpty()
     }
-
 
 }

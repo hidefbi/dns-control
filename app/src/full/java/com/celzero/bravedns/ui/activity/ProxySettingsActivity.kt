@@ -62,7 +62,6 @@ import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.ui.bottomsheet.OrbotBottomSheet
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.OrbotHelper
-import com.celzero.bravedns.util.SnackbarHelper.capitalizeWords
 import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.Themes.Companion.getCurrentTheme
 import com.celzero.bravedns.util.UIUtils

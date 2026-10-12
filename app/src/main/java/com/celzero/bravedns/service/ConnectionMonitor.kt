@@ -342,7 +342,6 @@ class ConnectionMonitor(private val context: Context, private val networkListene
         }
     }
 
-
     /**
      * Fetches the SSID for the given network if it's a WiFi network.
      *
@@ -581,7 +580,6 @@ class ConnectionMonitor(private val context: Context, private val networkListene
             return a
         }
 
-
         fun netId(nwHandle: Long?): Long {
             if (nwHandle == null) {
                 return -1L
@@ -782,7 +780,6 @@ class ConnectionMonitor(private val context: Context, private val networkListene
             }
         }
     }
-
 
     // Always called from the main thread
     suspend fun onVpnStop() {
@@ -1072,62 +1069,6 @@ class ConnectionMonitor(private val context: Context, private val networkListene
             var has4 = false
             var has6 = false
 
-            /*lp?.routes?.forEach { route ->
-                val dst = route.destination
-                val addr = dst.address
-                val prefix = dst.prefixLength
-
-                when (addr) {
-                    is Inet4Address -> {
-                        val octet = addr.address.map { it.toInt() and 0xFF }
-
-                        val isPrivate =
-                            (octet[0] == 10) ||
-                                    (octet[0] == 172 && octet[1] in 16..31) ||
-                                    (octet[0] == 192 && octet[1] == 168)
-
-                        val isLoopback = (octet[0] == 127)
-                        val isLinkLocal = (octet[0] == 169 && octet[1] == 254)
-                        val isMulticast = (octet[0] in 224..239)
-                        val isSelf = (prefix == 32)
-
-                        if (!isPrivate && !isLoopback && !isLinkLocal && !isMulticast && !isSelf) {
-                            has4 = true
-                            Logger.vv(
-                                LOG_TAG_CONNECTION,
-                                "determineVpnProtos2; adding IPv4 route: $route"
-                            )
-                        }
-                    }
-
-                    is Inet6Address -> {
-                        val bytes = addr.address
-                        val firstByte = bytes[0].toInt() and 0xFF
-                        val secondByte = bytes[1].toInt() and 0xFF
-
-                        val isULA = (firstByte and 0xFE) == 0xFC          // fd00::/8
-                        val isLinkLocal =
-                            (firstByte == 0xFE) && ((secondByte and 0xC0) == 0x80)  // fe80::/10
-                        val isSelf = (prefix == 128)
-
-                        if (!isULA && !isLinkLocal && !isSelf) {
-                            has6 = true
-                            Logger.vv(
-                                LOG_TAG_CONNECTION,
-                                "determineVpnProtos2; adding IPv6 route: $route"
-                            )
-                        }
-                    }
-                }
-
-                Logger.vv(
-                    LOG_TAG_CONNECTION,
-                    "determineVpnProtos2; for $route, has4? $has4, has6? $has6"
-                )
-
-                if (has4 && has6) return@forEach
-            } */
-
             if (!has4 && !has6) {
                 lp?.routes?.forEach rloop@{
                     // ref: androidxref.com/9.0.0_r3/xref/frameworks/base/core/java/android/net/RouteInfo.java#328
@@ -1139,10 +1080,6 @@ class ConnectionMonitor(private val context: Context, private val networkListene
                     has4 = hasDefaultRoute4
                     has6 = hasDefaultRoute6
 
-                    /*Logger.v(
-                        LOG_TAG_CONNECTION,
-                        "determineVpnProtos; for $it, has4? $has4, has6? $has6, ${it.destination}, ${it.gateway}, ${it.isDefaultRoute}, ${it.`interface`}"
-                    )*/
                     if (has4 && has6) return@rloop
                 }
             }
@@ -1781,7 +1718,6 @@ class ConnectionMonitor(private val context: Context, private val networkListene
 
             return newNetworks
         }
-
 
         /**
          * Checks if the given network has internet capability.

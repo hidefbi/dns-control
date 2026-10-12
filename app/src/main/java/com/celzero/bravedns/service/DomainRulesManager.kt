@@ -277,44 +277,6 @@ object DomainRulesManager : KoinComponent {
         }
     }
 
-    fun getProxyForDomain(uid: Int, domain: String): Pair<String, String> {
-        try {
-            val key = mkTrieKey(domain, uid)
-            var proxyId = ""
-            var proxyCC = ""
-            val match = trie.get(key)
-            if (match.isNullOrEmpty()) {
-                return Pair("", "")
-            }
-            val parts = match.split(KV_SEP)
-
-            if (parts.size <= 2) return Pair("", "")
-
-            // not expecting index out of bounds here, as the value is constructed while inserting
-            // still adding try-catch to avoid any crashes
-            // status:proxyId:proxyCC
-            proxyId = parts[1]
-            proxyCC = parts[2]
-
-            // empty proxyId means no proxy rule for the domain, check for wildcard
-            if (proxyId.isNotEmpty() || proxyCC.isNotEmpty()) {
-                return Pair(proxyId, proxyCC)
-            } else {
-                val wild = trie.getAny(key)
-                if (wild.isNullOrEmpty()) return Pair("", "")
-
-                val wildParts = wild.split(KV_SEP)
-                if (wildParts.size <= 2) return Pair("", "")
-
-                proxyId = wildParts[1]
-                proxyCC = wildParts[2]
-                return Pair(proxyId, proxyCC)
-            }
-        } catch (_: Exception) {
-            return Pair("", "")
-        }
-    }
-
     fun isDomainTrusted(d: String?): Boolean {
         val st = elapsedRealtime()
         if (d.isNullOrEmpty()) {
@@ -333,19 +295,6 @@ object DomainRulesManager : KoinComponent {
         dbInsertOrUpdate(cd)
         updateTrie(cd)
         maybeUpdateTrustedMap(cd.uid, cd.domain, Status.TRUST)
-    }
-
-    suspend fun changeStatus(
-        domain: String,
-        uid: Int,
-        ips: String,
-        type: DomainType,
-        status: Status
-    ) {
-        val cd = mkCustomDomain(domain, uid, ips, type, status.id)
-        dbInsertOrUpdate(cd)
-        updateTrie(cd)
-        maybeUpdateTrustedMap(uid, domain, status)
     }
 
     suspend fun block(domain: String, uid: Int, ips: String = "", type: DomainType) {
@@ -576,7 +525,6 @@ object DomainRulesManager : KoinComponent {
         load()
     }
 
-
     fun isWildCardEntry(url: String): Boolean {
         return wcRegex.matcher(url).matches()
     }
@@ -628,12 +576,6 @@ object DomainRulesManager : KoinComponent {
             // case: plain domain (no schema, no wildcard), eg., example.com
             else -> trimmedInput
         }
-    }
-
-    // this is to create a custom domain entry where user want to add proxy without any
-    // rules set, this is created for the new ui, should be made generic
-    fun makeCustomDomain(uid: Int, domain: String): CustomDomain {
-        return mkCustomDomain(domain, uid, "", DomainType.DOMAIN, Status.NONE.id)
     }
 
     private fun mkCustomDomain(

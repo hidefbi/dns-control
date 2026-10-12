@@ -90,9 +90,6 @@ class Transaction {
                 }
             }
 
-            fun fromOrdinal(ordinal: Int): TransportType {
-                return TransportType.entries[ordinal]
-            }
         }
     }
 }

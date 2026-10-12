@@ -65,13 +65,6 @@ interface ProxyApplicationMappingDAO {
     @Query("select count(packageName) from ProxyApplicationMapping where proxyId = :id")
     fun getAppCountByIdLiveData(id: String): LiveData<Int>
 
-    @Query("select count(packageName) from ProxyApplicationMapping where proxyId = :id")
-    fun getSelectedAppsCountLiveData(id: String): LiveData<Int>
-
-    // unselected: apps in mapping table that are not using this proxyId
-    @Query("select count(packageName) from ProxyApplicationMapping where proxyId != :id")
-    fun getUnselectedAppsCountLiveData(id: String): LiveData<Int>
-
     @Query("update ProxyApplicationMapping set proxyName = :proxyName where proxyId = :proxyId")
     fun updateProxyNameForProxyId(proxyId: String, proxyName: String)
 

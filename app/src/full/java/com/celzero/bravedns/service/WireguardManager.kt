@@ -54,8 +54,6 @@ object WireguardManager : KoinComponent {
     private val appConfig: AppConfig by inject()
     private val persistentState: PersistentState by inject()
 
-    // 120 sec + 5 sec buffer
-    const val WG_HANDSHAKE_TIMEOUT = 125 * DateUtils.SECOND_IN_MILLIS
     const val WG_UPTIME_THRESHOLD = 5 * DateUtils.SECOND_IN_MILLIS
 
     const val NOTIF_CHANNEL_ID_WIREGUARD_ALERTS = "WireGuard_Alerts"
@@ -72,7 +70,6 @@ object WireguardManager : KoinComponent {
 
     // retrieve last added config id
     private var lastAddedConfigId = 0
-
 
     // invalid config id
     const val INVALID_CONF_ID = -1
@@ -565,7 +562,6 @@ object WireguardManager : KoinComponent {
         return suffix.isNotEmpty() && suffix.toIntOrNull() != null
     }
 
-
     private fun isEligibleForNetwork(id: Int, usesMobileNw: Boolean, ssid: String, mobileOnlySetting: Boolean, ssidEnabled: Boolean): Boolean {
         if (!mobileOnlySetting && !ssidEnabled) return true
 
@@ -799,7 +795,6 @@ object WireguardManager : KoinComponent {
             VpnController.notifyConnectionMonitor()
         }
     }
-
 
     suspend fun updateCatchAllConfig(id: Int, isEnabled: Boolean) {
         val config = configs.find { it.getId() == id }

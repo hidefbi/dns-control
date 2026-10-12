@@ -53,9 +53,6 @@ class ConnectionTracer(ctx: Context) {
                 // workaround for ICMP/ICMPv6
                 // commenting this out as the workaround is not working as expected
                 // revisit if a better workaround is found
-                /* protocol = Protocol.UDP.protocolType
-                updatedDstPort = 0
-                updatedSrcPort = 0 // sourcePort is 0 for ICMP/ICMPv6, still setting for clarity */
                 return uid
             }
 

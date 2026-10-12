@@ -41,23 +41,9 @@ object FirebaseErrorReporting : KoinComponent {
     }
 
     /**
-     * Check if Firebase Crashlytics is available - Always false for fdroid variant
-     */
-    fun isAvailable(): Boolean {
-        return false
-    }
-
-    /**
      * Log a custom message - no-op for fdroid variant
      */
     fun log(msg: String) {
-        // no-op: firebase not available in fdroid variant
-    }
-
-    /**
-     * Record a non-fatal exception - no-op for fdroid variant
-     */
-    fun recordException(throwable: Throwable) {
         // no-op: firebase not available in fdroid variant
     }
 
@@ -68,10 +54,4 @@ object FirebaseErrorReporting : KoinComponent {
         // no-op: firebase not available in fdroid variant
     }
 
-    /**
-     * Set custom key-value pairs - no-op for fdroid variant
-     */
-    fun setCustomKey(key: String, value: String) {
-        // no-op: firebase not available in fdroid variant
-    }
 }

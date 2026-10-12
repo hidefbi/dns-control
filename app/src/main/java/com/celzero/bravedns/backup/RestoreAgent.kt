@@ -39,8 +39,6 @@ import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.AppDatabase
 import com.celzero.bravedns.database.LogDatabase
 import com.celzero.bravedns.service.PersistentState
-import com.celzero.bravedns.service.RethinkBlocklistManager
-import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.deleteRecursive
 import org.koin.core.component.KoinComponent
@@ -116,7 +114,6 @@ class RestoreAgent(val context: Context, workerParams: WorkerParameters) :
 
             // copy SharedPreferences file to its directory,
             // if shared pref copy is succeeds then proceed to database restore else
-            // return failed
             if (!restoreSharedPreferencesFromFile(tempDir.path)) {
                 Logger.w(LOG_TAG_BACKUP_RESTORE, "failed to restore shared pref, return failure")
                 return false

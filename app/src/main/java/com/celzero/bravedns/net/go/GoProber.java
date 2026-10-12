@@ -34,25 +34,5 @@ public class GoProber extends Prober {
     @Override
     public void probe(String url, Callback callback) {
         // no-op
-        // query()
-        /*new Thread(() -> {
-            String dohIPs = GoVpnAdapter.Companion.getIpString(context, url);
-            try {
-                backend.DNSTransport transport = null; //Intra.newDoHTransport(PROBER_TAG, url, dohIPs);
-                if (transport == null) {
-                    callback.onCompleted(false);
-                    return;
-                }
-                final DNSSummary summary = new backend.DNSSummary();
-                byte[] response = transport.query("", QUERY_DATA, summary);
-                if (response != null && response.length > 0) {
-                    callback.onCompleted(true);
-                    return;
-                }
-                callback.onCompleted(false);
-            } catch (Exception e) {
-                callback.onCompleted(false);
-            }
-        }, "GoProber-probe").start();*/
     }
 }

@@ -139,11 +139,6 @@ class AdvancedSettingActivity : BaseActivity(R.layout.activity_advanced_setting)
             persistentState.nwEngExperimentalFeatures = isChecked
         }
 
-        b.settingsClearResidueRl.setOnClickListener {
-            // TODO: show list of files to be deleted and confirm deletion
-            // clearResidueAfterConfirmation()
-        }
-
         b.settingsAutoDialRl.setOnClickListener {
             b.dvAutoDialSwitch.isChecked = !b.dvAutoDialSwitch.isChecked
         }

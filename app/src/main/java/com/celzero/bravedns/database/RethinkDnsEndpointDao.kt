@@ -16,13 +16,11 @@ limitations under the License.
 
 package com.celzero.bravedns.database
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Transaction
 import androidx.room.Update
 import com.celzero.bravedns.database.RethinkDnsEndpoint.Companion.RETHINK_DEFAULT
 import com.celzero.bravedns.util.Constants.Companion.MISSING_UID
@@ -51,22 +49,8 @@ interface RethinkDnsEndpointDao {
     @Query("update RethinkDnsEndpoint set isActive = 0 where uid = :uid")
     fun removeAppWiseDns(uid: Int)
 
-    @Transaction
-    @Query("select * from RethinkDnsEndpoint where uid =  $MISSING_UID order by isActive desc")
-    fun getRethinkEndpoints(): PagingSource<Int, RethinkDnsEndpoint>
-
-    @Transaction
-    @Query("select * from RethinkDnsEndpoint order by isActive desc")
-    fun getAllRethinkEndpoints(): PagingSource<Int, RethinkDnsEndpoint>
-
     @Query("select isActive from RethinkDnsEndpoint where uid = :uid")
     fun isAppWiseDnsEnabled(uid: Int): Boolean?
-
-    @Transaction
-    @Query(
-        "select * from RethinkDnsEndpoint where name like :query or url like :query and uid = $MISSING_UID order by isActive desc"
-    )
-    fun getRethinkEndpointsByName(query: String): PagingSource<Int, RethinkDnsEndpoint>
 
     @Query("select * from RethinkDnsEndpoint where isActive = 1 and uid = $MISSING_UID LIMIT 1")
     fun getConnectedEndpoint(): RethinkDnsEndpoint?

@@ -33,7 +33,6 @@ import com.celzero.bravedns.ui.activity.AppInfoActivity
 import com.celzero.bravedns.ui.activity.AppInfoActivity.Companion.INTENT_UID
 import com.celzero.bravedns.ui.activity.AppListActivity
 import com.celzero.bravedns.ui.activity.AppLockActivity
-import com.celzero.bravedns.ui.activity.FragmentHostActivity
 import com.celzero.bravedns.ui.activity.MiscSettingsActivity.BioMetricType
 import com.celzero.bravedns.ui.activity.PauseActivity
 import com.celzero.bravedns.ui.activity.WgMainActivity

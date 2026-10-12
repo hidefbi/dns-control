@@ -100,36 +100,6 @@ enum class ResourceRecordTypes(val value: Int, val desc: String) {
             return map[value.hashCode()] ?: UNKNOWN
         }
 
-        fun mayContainIP(value: Int): Boolean {
-            return when (value) {
-                A.value,
-                AAAA.value,
-                CNAME.value,
-                HTTPS.value,
-                SVCB.value -> true
-                else -> false
-            }
-        }
-
-        fun mayContainIp(desc: String): Boolean {
-            return when (desc) {
-                A.desc,
-                AAAA.desc,
-                CNAME.desc,
-                HTTPS.desc,
-                SVCB.desc -> true
-                else -> false
-            }
-        }
-
-        fun getHandledTypes(): Set<String> {
-            val list =
-                enumValues<ResourceRecordTypes>().filter {
-                    it == A || it == AAAA || it == CNAME || it == HTTPS || it == SVCB
-                }
-            return list.map { it.desc }.toSet()
-        }
-
         fun isQtypeAllowed(qtype: Int, allowedTypes: Set<ResourceRecordTypes>): Boolean {
             val type = getTypeName(qtype)
             return allowedTypes.contains(type)

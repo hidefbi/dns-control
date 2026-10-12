@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-
 object Logger {
 
     private var logLevel: Long = LoggerLevel.NONE.id
@@ -27,28 +26,16 @@ object Logger {
     const val LOG_TAG_CONNECTION = "ConnectivityEvents"
     const val LOG_TAG_DNS = "DnsManager"
     const val LOG_TAG_FIREWALL = "FirewallManager"
-    const val LOG_BATCH_LOGGER = "BatchLogger"
     const val LOG_TAG_APP_DB = "AppDatabase"
     const val LOG_TAG_DOWNLOAD = "DownloadManager"
     const val LOG_TAG_UI = "RethinkUI"
     const val LOG_TAG_SCHEDULER = "JobScheduler"
-    const val LOG_TAG_BUG_REPORT = "BugReport"
     const val LOG_TAG_BACKUP_RESTORE = "BackupRestore"
-    const val LOG_PROVIDER = "BlocklistProvider"
     const val LOG_TAG_PROXY = "ProxyLogs"
     const val LOG_QR_CODE = "QrCodeFromFileScanner"
-    const val LOG_GO_LOGGER = "GoLog"
-    const val LOG_GO_LOGGER_V2 = "GoLogV2"
-    const val LOG_GO_LOGGER_V1 = "GoLogV1"
-    const val LOG_TAG_APP_OPS = "AppOpsService"
-    const val LOG_IAB = "InAppBilling"
     const val LOG_TAG_APP = "ExceptionHandler"
     const val LOG_OKHTTP = "OkHttp"
     const val LOG_FIREBASE = "FirebaseErrorReporting"
-
-    const val WIRELOG_FILE_NAME = "wirelogs.txt"
-    const val WIRELOG_MAX_SIZE_BYTES = 3 * 1024 * 1024L // 3 MB
-    const val WIRELOG_FOLDER_NAME = "logs"
 
     // github.com/celzero/firestack/blob/bce8de917f/intra/log/logger.go#L76
     enum class LoggerLevel(val id: Long) {
@@ -121,20 +108,6 @@ object Logger {
             }
         }
 
-        fun toLoggerLevel(): LoggerLevel {
-            return when (this) {
-                VERY_VERBOSE -> VERY_VERBOSE
-                VERBOSE -> VERBOSE
-                DEBUG -> DEBUG
-                INFO -> INFO
-                WARN -> WARN
-                ERROR -> ERROR
-                STACKTRACE -> STACKTRACE
-                USR -> USR
-                NONE -> NONE
-            }
-        }
-
         fun stacktrace(): Boolean {
             return this == STACKTRACE
         }
@@ -156,36 +129,12 @@ object Logger {
     fun e(tag: String, message: String, e: Exception? = null) = Unit
     fun crash(tag: String, message: String, e: Exception? = null) = Unit
 
-    fun updateConfigLevel(level: Long) { logLevel = LoggerLevel.NONE.id }
-
     fun throwableToException(throwable: Throwable): Exception {
         return if (throwable is Exception) {
             throwable
         } else {
             Exception(throwable)
         }
-    }
-
-    fun goLog(message: String, type: LoggerLevel) = Unit
-
-    fun goLog2(message: String, type: LoggerLevel) = Unit
-
-    fun goLog3(message: String, type: LoggerLevel): Nothing? = null
-
-    /**
-     * Single-character prefix for a log line, matching the level chars written by the
-     * Go runtime (see [LoggerLevel.fromChar]). Centralised so [dbWrite] and the
-     * batch-oriented [makeGoLog] never drift apart.
-     */
-    private fun levelChar(level: LoggerLevel): String = when (level) {
-        LoggerLevel.VERY_VERBOSE -> "Y"
-        LoggerLevel.VERBOSE -> "V"
-        LoggerLevel.DEBUG -> "D"
-        LoggerLevel.INFO -> "I"
-        LoggerLevel.WARN -> "W"
-        LoggerLevel.ERROR -> "E"
-        LoggerLevel.STACKTRACE -> "F"
-        else -> "V"
     }
 
     suspend fun wireLog(message: String) = Unit

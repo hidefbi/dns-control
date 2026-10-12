@@ -18,7 +18,6 @@ package com.celzero.bravedns.data
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.DnsCryptEndpoint
@@ -75,7 +74,6 @@ internal constructor(
 
         const val BOOTSTRAP_DNS_IF_NET_DNS_EMPTY = "9.9.9.9,2620:fe::fe"
 
-        const val DNS_CRYPT_INDEX = '4'
     }
 
     init {
@@ -126,14 +124,6 @@ internal constructor(
         }
 
         companion object {
-            fun getMode(id: Int): BraveMode {
-                return when (id) {
-                    DNS.mode -> DNS
-                    FIREWALL.mode -> FIREWALL
-                    DNS_FIREWALL.mode -> DNS_FIREWALL
-                    else -> DNS_FIREWALL
-                }
-            }
         }
     }
 
@@ -160,10 +150,6 @@ internal constructor(
 
         fun isDnsProxy(): Boolean {
             return this == DNS_PROXY
-        }
-
-        fun isRethinkRemote(): Boolean {
-            return this == RETHINK_REMOTE
         }
 
         fun isSystemDns(): Boolean {
@@ -221,21 +207,10 @@ internal constructor(
             return this == ORBOT
         }
 
-        fun isTunProxySocks5(): Boolean {
-            return this == SOCKS5
-        }
-
-        fun isTunProxyHttps(): Boolean {
-            return this == HTTPS
-        }
-
         fun isTunProxyWireguard(): Boolean {
             return this == WIREGUARD
         }
 
-        fun isTunProxyTcp(): Boolean {
-            return this == TCP
-        }
     }
 
     // Provider - Custom - SOCKS5, Http proxy setup.
@@ -257,14 +232,6 @@ internal constructor(
 
         fun isProxyProviderOrbot(): Boolean {
             return ORBOT.name == name
-        }
-
-        fun isProxyProviderWireguard(): Boolean {
-            return WIREGUARD.name == name
-        }
-
-        fun isProxyProviderTcp(): Boolean {
-            return TCP.name == name
         }
 
         companion object {
@@ -303,10 +270,6 @@ internal constructor(
 
         fun isProxyTypeTcp(): Boolean {
             return TCP.name == name
-        }
-
-        fun isProxyTypeNone(): Boolean {
-            return NONE.name == name
         }
 
         fun isProxyTypeWireguard(): Boolean {
@@ -548,30 +511,6 @@ internal constructor(
             dt == DnsType.ODOH)
     }
 
-    suspend fun switchRethinkDnsToMax() {
-        rethinkDnsEndpointRepository.switchToMax()
-        if (isRethinkDnsConnected()) {
-            onDnsChange(DnsType.RETHINK_REMOTE)
-        }
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "RethinkDNS switched to MAX",
-            "RethinkDNS endpoint switched to MAX, prev: ${persistentState.connectedDnsName}"
-        )
-    }
-
-    suspend fun switchRethinkDnsToSky() {
-        rethinkDnsEndpointRepository.switchToSky()
-        if (isRethinkDnsConnected()) {
-            onDnsChange(DnsType.RETHINK_REMOTE)
-        }
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "RethinkDNS switched to SKY",
-            "RethinkDNS endpoint switched to SKY, prev: ${persistentState.connectedDnsName}"
-        )
-    }
-
     fun changeBraveMode(braveMode: Int) {
         persistentState.braveMode = braveMode
         braveModeObserver.postValue(braveMode)
@@ -711,22 +650,6 @@ internal constructor(
         )
     }
 
-    suspend fun handleRethinkChanges(rethinkDnsEndpoint: RethinkDnsEndpoint) {
-        // if previous connection was rethink, then remove the connection from database
-        if (getDnsType() != DnsType.RETHINK_REMOTE) {
-            removeConnectionStatus()
-        }
-
-        val prev = persistentState.connectedDnsName
-        rethinkDnsEndpointRepository.update(rethinkDnsEndpoint)
-        onDnsChange(DnsType.RETHINK_REMOTE)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "RethinkDNS endpoint changed",
-            "RethinkDNS endpoint changed to ${rethinkDnsEndpoint.name}, prev: $prev"
-        )
-    }
-
     suspend fun handleDnsProxyChanges(dnsProxyEndpoint: DnsProxyEndpoint) {
         // if the prev connection was not dns proxy, then remove the connection status from database
         if (getDnsType() != DnsType.DNS_PROXY) {
@@ -765,10 +688,6 @@ internal constructor(
         )
     }
 
-    suspend fun getOrbotDnsProxyEndpoint(): DnsProxyEndpoint? {
-        return dnsProxyEndpointRepository.getOrbotDnsEndpoint()
-    }
-
     suspend fun handleDnsrelayChanges(endpoint: DnsCryptRelayEndpoint) {
         dnsCryptRelayEndpointRepository.update(endpoint)
         persistentState.dnsCryptRelays.postValue(
@@ -792,10 +711,6 @@ internal constructor(
 
     suspend fun getRemoteRethinkEndpoint(): RethinkDnsEndpoint? {
         return rethinkDnsEndpointRepository.getConnectedEndpoint()
-    }
-
-    suspend fun getRethinkDefaultEndpoint(): RethinkDnsEndpoint? {
-        return rethinkDnsEndpointRepository.getDefaultRethinkEndpoint()
     }
 
     /**
@@ -891,14 +806,6 @@ internal constructor(
 
     suspend fun insertODoHEndpoint(endpoint: ODoHEndpoint) {
         oDoHEndpointRepository.insertAsync(endpoint)
-    }
-
-    suspend fun insertReplaceEndpoint(endpoint: RethinkDnsEndpoint) {
-        rethinkDnsEndpointRepository.insertWithReplace(endpoint)
-    }
-
-    suspend fun updateRethinkEndpoint(name: String, url: String, count: Int) {
-        rethinkDnsEndpointRepository.updateEndpoint(name, url, count)
     }
 
     suspend fun insertDnsproxyEndpoint(endpoint: DnsProxyEndpoint) {
@@ -1077,11 +984,6 @@ internal constructor(
         return proxyProvider.isProxyProviderOrbot()
     }
 
-    fun isWgEnabled(): Boolean {
-        val proxyProvider = ProxyProvider.getProxyProvider(persistentState.proxyProvider)
-        return proxyProvider.isProxyProviderWireguard()
-    }
-
     fun isProxyEnabled(): Boolean {
         val proxyProvider = ProxyProvider.getProxyProvider(persistentState.proxyProvider)
         if (proxyProvider.isProxyProviderNone()) return false
@@ -1100,22 +1002,10 @@ internal constructor(
             (proxyProvider.isProxyProviderNone() || proxyProvider.isProxyProviderCustom())
     }
 
-    fun canEnableWireguardProxy(): Boolean {
-        val proxyProvider = ProxyProvider.getProxyProvider(persistentState.proxyProvider)
-        return !getBraveMode().isDnsMode() &&
-            (proxyProvider.isProxyProviderNone() || proxyProvider.isProxyProviderWireguard())
-    }
-
     fun canEnableHttpProxy(): Boolean {
         val proxyProvider = ProxyProvider.getProxyProvider(persistentState.proxyProvider)
         return !getBraveMode().isDnsMode() &&
             (proxyProvider.isProxyProviderNone() || proxyProvider.isProxyProviderCustom())
-    }
-
-    fun canEnableTcpProxy(): Boolean {
-        val proxyProvider = ProxyProvider.getProxyProvider(persistentState.proxyProvider)
-        return !getBraveMode().isDnsMode() &&
-            (proxyProvider.isProxyProviderNone() || proxyProvider.isProxyProviderTcp())
     }
 
     fun canEnableOrbotProxy(): Boolean {
@@ -1201,7 +1091,4 @@ internal constructor(
 
         return sb.toString()
     }
-
-    val connectedProxy: LiveData<ProxyEndpoint?> =
-        proxyEndpointRepository.getConnectedProxyLiveData()
 }

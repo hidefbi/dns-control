@@ -67,7 +67,6 @@ import com.celzero.bravedns.wireguard.WgHopManager
 import com.celzero.firestack.backend.Backend
 import com.celzero.firestack.backend.Client
 import com.celzero.firestack.backend.DNSResolver
-import com.celzero.firestack.backend.GoMetrics
 import com.celzero.firestack.backend.NetStat
 import com.celzero.firestack.backend.Proxies
 import com.celzero.firestack.backend.RDNS
@@ -137,7 +136,6 @@ class GoVpnAdapter : KoinComponent {
             return
         }
 
-        // setTcpProxyIfNeeded()
         // no need to add default in init as it is already added in connect
         // addDefaultTransport(appConfig.getDefaultDns())
         // TODO: ideally the values required for transport, alg and rdns should be set in the
@@ -1169,7 +1167,6 @@ class GoVpnAdapter : KoinComponent {
         } catch (e: Exception) {
             Logger.e(LOG_TAG_VPN, "$TAG err adding wireguard proxy: ${e.message}", e)
             // do not auto remove failed wg proxy, let the user decide hop UI
-            // WireguardManager.disableConfig(id)
             showWireguardFailureToast(
                 e.message ?: context.getString(R.string.wireguard_connection_error)
             )
@@ -1792,7 +1789,6 @@ class GoVpnAdapter : KoinComponent {
             // convert list to comma separated string, as Intra expects as csv
             val sysDnsStr = systemDns.filter { it?.isNotEmpty() == true }.joinToString(",")
             // below code is commented out, add the code to set the system dns via resolver
-            // val transport = Intra.newDNSProxy("ID", dnsProxy.host, dnsProxy.port.toString())
             // tunnel?.resolver?.addSystemDNS(transport)
             Logger.i(LOG_TAG_VPN, "$TAG set system dns: $sysDnsStr")
             // no need to send the dnsProxy.port for the below method, as it is not expecting port
@@ -2100,7 +2096,6 @@ class GoVpnAdapter : KoinComponent {
             // depth to include the file trace, 9 - max, 0 - min
             val depth = if (includeFileTrace) 9 else 0
             Intra.logLevel(goLogLevel, consoleLogLevel, depth)
-            //Intra.logLevel(goLogLevel, consoleLogLevel)
             Logger.i(LOG_TAG_VPN, "$TAG set go-log level: $l1, $l2, $depth")
         }
 
@@ -2131,16 +2126,6 @@ class GoVpnAdapter : KoinComponent {
             }
         }
 
-        fun getGoMetrics(): GoMetrics? {
-            return try {
-                val stat = Intra.goMet()
-                Logger.i(LOG_TAG_VPN, "$TAG net stat: $stat")
-                stat
-            } catch (e: Exception) {
-                Logger.e(LOG_TAG_VPN, "$TAG err getting net stat: ${e.message}")
-                null
-            }
-        }
     }
 
     suspend fun p50(id: String): Long {
@@ -2384,7 +2369,6 @@ class GoVpnAdapter : KoinComponent {
             // modified from overall experimental settings to only wireguard experimental settings
             Intra.experimentalWireGuard(value)
             // refresh proxies on experimental settings change (required for wireguard)
-            //refreshOrReAddProxies()
             Logger.i(LOG_TAG_VPN, "$TAG set experimental settings: $value")
             logEvent(
                 Severity.LOW,

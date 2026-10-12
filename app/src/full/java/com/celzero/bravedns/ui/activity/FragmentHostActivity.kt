@@ -18,7 +18,6 @@ package com.celzero.bravedns.ui.activity
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
-import android.content.Intent
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
@@ -39,24 +38,6 @@ class FragmentHostActivity : BaseActivity(R.layout.activity_fragment_host) {
         private const val EXTRA_FRAGMENT_ARGUMENTS = "extra_fragment_arguments"
         private const val STATE_FRAGMENT_CLASS_NAME = "state_fragment_class_name"
 
-        /**
-         * Helper function to create an intent to show any fragment
-         * @param context Context to start activity
-         * @param fragmentClass Class of the Fragment to load
-         * @param args optional Bundle of arguments to pass to fragment
-         */
-        fun createIntent(
-            context: Context,
-            fragmentClass: Class<out Fragment>,
-            args: Bundle? = null
-        ): Intent {
-            val intent = Intent(context, FragmentHostActivity::class.java)
-            intent.putExtra(EXTRA_FRAGMENT_CLASS_NAME, fragmentClass.name)
-            if (args != null) {
-                intent.putExtra(EXTRA_FRAGMENT_ARGUMENTS, args)
-            }
-            return intent
-        }
     }
 
     private var fragmentClassName: String? = null

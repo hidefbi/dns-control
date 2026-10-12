@@ -85,7 +85,6 @@ class UniversalFirewallSettingsActivity :
         // now, the firewall rule (block ipv4 in ipv6) is hidden from user action.
         // decide whether we need to add this back in universal settings
         // uncomment the below code if enabled
-        // includeView.firewallCheckIpv4Check.isChecked = persistentState.filterIpv4inIpv6
         b.firewallBlockHttpCheck.isChecked = persistentState.getBlockHttpConnections()
         b.firewallUnivLockdownCheck.isChecked = persistentState.getUniversalLockdown()
 
@@ -158,14 +157,6 @@ class UniversalFirewallSettingsActivity :
         // now, the firewall rule (block ipv4 in ipv6) is hidden from user action.
         // decide whether we need to add this back in universal settings
         // uncomment the below code if enabled
-
-        /* includeView.firewallCheckIpv4Check.setOnCheckedChangeListener { _, b ->
-            persistentState.filterIpv4inIpv6 = b
-        }
-
-        includeView.firewallCheckIpv4Txt.setOnClickListener {
-            toggle(includeView.firewallCheckIpv4Check, persistentState::filterIpv4inIpv6)
-        } */
 
         b.firewallBlockHttpCheck.setOnCheckedChangeListener { _, checked ->
             persistentState.setBlockHttpConnections(checked)

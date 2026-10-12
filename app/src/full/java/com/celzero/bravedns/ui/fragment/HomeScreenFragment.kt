@@ -144,16 +144,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         private const val MAX_PROXY_POLL_DELAY_MS = 10_000L
         private const val TEXT_FADE_DURATION_MS = 150L
 
-        // Time calculation constants
-        private const val MILLISECONDS_PER_SECOND = 1000L
         private const val SECONDS_PER_MINUTE = 60L
-        private const val MINUTES_PER_HOUR = 60L
-        private const val HOURS_PER_DAY = 24L
-        private const val DAYS_PER_MONTH = 30.0
-
-        // Sponsorship calculation constants
-        private const val BASE_AMOUNT_PER_MONTH = 0.60
-        private const val ADDITIONAL_AMOUNT_PER_MONTH = 0.20
 
         // DNS latency thresholds (milliseconds)
         private const val LATENCY_VERY_FAST_MAX = 19L
@@ -350,9 +341,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             )
         }
 
-
-
-
         b.fhsCardAppsTv.setOnClickListener {
             openRethinkAppInfoIfNeeded()
         }
@@ -372,15 +360,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         }
     }
 
-
-
-
     private fun logEvent(type: EventType, msg: String, details: String) {
         io {
             eventLogger.log(type, Severity.LOW, msg, EventSource.UI, true, details)
         }
     }
-
 
     private fun handlePause() {
         if (!VpnController.hasTunnel()) {
@@ -873,7 +857,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         return s == Transaction.Status.BAD_QUERY || s == Transaction.Status.BAD_RESPONSE || s == Transaction.Status.NO_RESPONSE || s == Transaction.Status.SEND_FAIL || s == Transaction.Status.CLIENT_ERROR || s == Transaction.Status.INTERNAL_ERROR || s == Transaction.Status.TRANSPORT_ERROR
     }
 
-
     private fun unobserveProxyStates() {
         // Must remove from the distinctUntilChanged() wrapper we registered on, not from the
         // raw getProxyStatus() LiveData. Previously this called removeObservers() on the wrong
@@ -1006,7 +989,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private fun updateUiWithDnsStates(dnsStatus: Int? = null) {
         // Check if view is available before accessing binding
         if (view == null || !isAdded) return
-
 
         val statusId = UIUtils.getDnsStatusStringRes(dnsStatus)
 
@@ -1266,7 +1248,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         syncDnsStatus()
         handleLockdownModeIfNeeded()
         startTrafficStats()
-        //maybeShowGracePeriodDialog()
         handleRethinkAppStatus()
     }
 

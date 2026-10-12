@@ -157,7 +157,6 @@ internal constructor(
             val pxm = ProxyManager.load()
             val wgm = WireguardManager.load(forceRefresh = false)
             val hm = WgHopManager.load(forceRefresh = false)
-            // val tm = TcpProxyHelper.load() // no need to load tcp-proxy mapping now (055v)
 
             Logger.i(
                 LOG_TAG_APP_DB,
@@ -524,7 +523,6 @@ internal constructor(
             return
         }
 
-        // ProxyManager.purgeDupsBeforeRefresh()
         val canTombstone = persistentState.tombstoneApps
         // remove the apps from proxy mapping which are not tracked by app info repository
         // this will just sync the proxy mapping with the app info repository
@@ -1023,7 +1021,6 @@ internal constructor(
     private fun determineAppCategory(ai: ApplicationInfo): String {
         // fetchCategory returns  category from an unofficial PlayStore endpoint.
         // disabled for now until there's clarity on its legality
-        // val category = fetchCategory(appInfo.packageInfo)
         val cat = fetchCategory()
 
         if (!PlayStoreCategory.OTHER.name.equals(cat, ignoreCase = true)) {
@@ -1068,35 +1065,6 @@ internal constructor(
         return PlayStoreCategory.OTHER.name
 
     }
-
-    /*
-    private val CAT_SIZE = 9
-    private val CATEGORY_STRING = "category/"
-    private val CATEGORY_GAME_STRING = "GAME_" // All games start with this prefix
-
-    private fun parseAndExtractCategory(url: String): String? {
-        return try {
-            val text = Jsoup.connect(url).get()?.select("a[itemprop=genre]") ?: return null
-            val href = text.attr("abs:href")
-
-            if (href != null && href.length > 4 && href.contains(CATEGORY_STRING)) {
-                getCategoryTypeByHref(href)
-            } else {
-                PlayStoreCategory.OTHER.name
-            }
-        } catch (e: Exception) {
-            Logger.w(LOG_TAG, "Parse Category" + e.message, e)
-            //TODO handle error
-            PlayStoreCategory.OTHER.name
-        }
-    }
-
-    private fun getCategoryTypeByHref(href: String): String? {
-        val appCategoryType = href.substring(href.indexOf(CATEGORY_STRING) + CAT_SIZE, href.length)
-        return if (appCategoryType.contains(CATEGORY_GAME_STRING)) {
-            PlayStoreCategory.GENERAL_GAMES_CATEGORY_NAME
-        } else appCategoryType
-    }*/
 
     private fun io(s: String, f: suspend () -> Unit) =
         CoroutineScope(CoroutineName(s) + Dispatchers.IO).launch { f() }

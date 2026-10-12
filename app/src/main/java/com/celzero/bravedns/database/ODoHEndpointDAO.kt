@@ -40,12 +40,6 @@ interface ODoHEndpointDAO {
     @Query("select * from ODoHEndpoint order by isSelected desc")
     fun getODoHEndpointLiveData(): PagingSource<Int, ODoHEndpoint>
 
-    @Transaction
-    @Query(
-        "select * from ODoHEndpoint where resolver like :query or name like :query order by isSelected desc"
-    )
-    fun getODoHEndpointLiveDataByName(query: String): PagingSource<Int, ODoHEndpoint>
-
     @Query("delete from ODoHEndpoint where modifiedDataTime < :date")
     fun deleteOlderData(date: Long)
 

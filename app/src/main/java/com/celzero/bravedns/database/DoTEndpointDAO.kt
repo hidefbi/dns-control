@@ -40,12 +40,6 @@ interface DoTEndpointDAO {
     @Query("select * from DoTEndpoint order by isSelected desc")
     fun getDoTEndpointLiveData(): PagingSource<Int, DoTEndpoint>
 
-    @Transaction
-    @Query(
-        "select * from DoTEndpoint where url like :query or name like :query order by isSelected desc"
-    )
-    fun getDoTEndpointLiveDataByName(query: String): PagingSource<Int, DoTEndpoint>
-
     @Query("delete from DoTEndpoint where modifiedDataTime < :date") fun deleteOlderData(date: Long)
 
     @Query("delete from DoTEndpoint") fun clearAllData()

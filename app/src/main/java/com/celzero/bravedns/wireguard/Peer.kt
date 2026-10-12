@@ -94,10 +94,6 @@ class Peer private constructor(builder: Builder) {
         return endpoint
     }
 
-    fun getEndpointText(): Optional<String> {
-        return unresolvedEndpoint
-    }
-
     /**
      * Returns the peer's pre-shared key.
      *
@@ -230,11 +226,6 @@ class Peer private constructor(builder: Builder) {
 
         fun addAllowedIp(allowedIp: InetNetwork): Builder {
             allowedIps.add(allowedIp)
-            return this
-        }
-
-        fun addAllowedIps(allowedIps: Collection<InetNetwork>?): Builder {
-            this.allowedIps.addAll(allowedIps!!)
             return this
         }
 

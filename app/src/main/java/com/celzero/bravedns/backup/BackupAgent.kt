@@ -18,7 +18,6 @@ package com.celzero.bravedns.backup
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_BACKUP_RESTORE
 import android.content.Context
-import android.content.SharedPreferences
 import android.net.Uri
 import android.database.sqlite.SQLiteDatabase
 import android.os.SystemClock
@@ -51,7 +50,6 @@ import java.io.BufferedOutputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
-import java.io.IOException
 import java.io.InputStream
 import org.json.JSONObject
 import java.io.OutputStream

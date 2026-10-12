@@ -124,8 +124,6 @@ class RethinkBlocklistFragment :
         fun newInstance() = RethinkBlocklistFragment()
 
         const val RETHINK_BLOCKLIST_TYPE = "RethinkBlocklistType"
-        const val RETHINK_BLOCKLIST_NAME = "RethinkBlocklistName"
-        const val RETHINK_BLOCKLIST_URL = "RethinkBlocklistUrl"
 
         private val selectedFileTags: MutableLiveData<MutableSet<Int>> = MutableLiveData()
 
@@ -863,7 +861,6 @@ class RethinkBlocklistFragment :
         b.lbDownloadProgress.visibility = View.GONE
         b.lbDownloadBtn.text = getString(R.string.rt_download)
         hideDownloadUi()
-        // showConfigureUi()
         hasBlocklist()
         b.lbListToggleGroup.check(R.id.lb_simple_toggle_btn)
         showToastUiCentered(

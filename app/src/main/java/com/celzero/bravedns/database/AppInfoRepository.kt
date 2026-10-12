@@ -17,7 +17,6 @@ package com.celzero.bravedns.database
 
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
-import android.database.Cursor
 import android.database.sqlite.SQLiteConstraintException
 import com.celzero.bravedns.data.DataUsage
 
@@ -105,10 +104,6 @@ class AppInfoRepository(private val appInfoDAO: AppInfoDAO) {
         return appInfoDAO.getTempAllowedApps().filter { it.tempAllowExpiryTime > now }
     }
 
-    fun getAllTempAllowedAppsPaged(now: Long): androidx.paging.PagingSource<Int, AppInfo> {
-        return appInfoDAO.getTempAllowedAppsPaged(now)
-    }
-
     suspend fun clearTempAllowByUid(uid: Int) {
         appInfoDAO.clearTempAllowByUid(uid, System.currentTimeMillis())
     }
@@ -133,10 +128,6 @@ class AppInfoRepository(private val appInfoDAO: AppInfoDAO) {
         return appInfoDAO.insert(appInfo)
     }
 
-    fun getAppsCursor(): Cursor {
-        return appInfoDAO.getAllAppDetailsCursor()
-    }
-
     fun cpDelete(uid: Int): Int {
         return appInfoDAO.deleteByUid(uid)
     }
@@ -159,13 +150,6 @@ class AppInfoRepository(private val appInfoDAO: AppInfoDAO) {
 
     suspend fun exemptRethinkApp() {
         appInfoDAO.exemptRethinkApp()
-    }
-
-    /**
-     * Blocking variant for use from non-coroutine contexts (eg: Guava cache removal listeners).
-     */
-    fun clearTempAllowByUidBlocking(uid: Int) {
-        appInfoDAO.clearTempAllowByUid(uid, System.currentTimeMillis())
     }
 
     /**

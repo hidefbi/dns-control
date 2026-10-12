@@ -40,7 +40,6 @@ object ProxyManager : KoinComponent {
     const val ID_HTTP_BASE = "HTTP"
     const val ID_NONE = "SYSTEM" // no proxy
 
-    const val TCP_PROXY_NAME = "Rethink-Proxy"
     const val ORBOT_PROXY_NAME = "Orbot"
 
     // we are using ProxyAppMapTuple instead of ProxyApplicationMapping for the pamSet as the equals
@@ -81,13 +80,6 @@ object ProxyManager : KoinComponent {
             return this == HTTP
         }
 
-        fun isOrbotSocks5(): Boolean {
-            return this == ORBOT_SOCKS5
-        }
-
-        fun isOrbotHttp(): Boolean {
-            return this == ORBOT_HTTP
-        }
     }
 
     private val pamSet = CopyOnWriteArraySet<ProxyAppMapTuple>()
@@ -194,18 +186,6 @@ object ProxyManager : KoinComponent {
     suspend fun removeProxyId(proxyId: String) {
         // alias to removing this proxy mapping from all apps
         setNoProxyForAllAppsForProxy(proxyId)
-    }
-
-    suspend fun getAllSelectedApps(): Set<ProxyAppMapTuple> {
-        // return all apps that are part of some proxy
-        return pamSet.filter { it.proxyId != "" }
-            .map { ProxyAppMapTuple(it.uid, it.packageName, it.proxyId) }
-            .toSet()
-    }
-
-    suspend fun getAppsCountForProxy(proxyId: String): Int {
-        // return the count of apps that are part of the proxy
-        return pamSet.count { it.proxyId == proxyId }
     }
 
     suspend fun deleteApps(m: Collection<FirewallManager.AppInfoTuple>) {

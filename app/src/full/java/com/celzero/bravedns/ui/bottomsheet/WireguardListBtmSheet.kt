@@ -145,7 +145,6 @@ class WireguardListBtmSheet :
     }
 
     private fun init() {
-        //b.title.text = getString(R.string.select_wireguard_proxy)
         when (type) {
             InputType.DOMAIN -> {
                 b.ipDomainInfo.visibility = View.VISIBLE
@@ -156,7 +155,6 @@ class WireguardListBtmSheet :
                 b.ipDomainInfo.text = ci?.ipAddress
             }
             InputType.APP -> {
-                // initApp()
             }
         }
 
@@ -172,7 +170,6 @@ class WireguardListBtmSheet :
                     processIp(conf)
                 }
                 InputType.APP -> {
-                    // processApp(selectedItem)
                 }
             }
         }
@@ -268,7 +265,6 @@ class WireguardListBtmSheet :
                         }
 
                         InputType.APP -> {
-                            // bb.endpointCheck.isChecked = item == appInfo?.proxyId
                         }
                     }
                 } else {
@@ -286,7 +282,6 @@ class WireguardListBtmSheet :
                         }
 
                         InputType.APP -> {
-                            // bb.endpointCheck.isChecked = item == appInfo?.proxyId
                         }
                     }
                 }

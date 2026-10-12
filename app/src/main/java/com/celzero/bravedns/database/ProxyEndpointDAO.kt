@@ -17,7 +17,6 @@ limitations under the License.
 package com.celzero.bravedns.database
 
 import androidx.lifecycle.LiveData
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -33,12 +32,6 @@ interface ProxyEndpointDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE) fun insert(proxyEndpoint: ProxyEndpoint)
 
     @Delete fun delete(proxyEndpoint: ProxyEndpoint)
-
-    @Query("select * from ProxyEndpoint where proxyMode = 1 order by isSelected desc")
-    fun getDNSProxyEndpointLiveData(): PagingSource<Int, ProxyEndpoint>
-
-    @Query("select * from ProxyEndpoint where proxyName like :query order by isSelected desc")
-    fun getDNSProxyEndpointLiveDataByType(query: String): PagingSource<Int, ProxyEndpoint>
 
     @Query("update ProxyEndpoint set isSelected = 0 where isSelected = 1")
     fun removeConnectionStatus()
@@ -59,7 +52,6 @@ interface ProxyEndpointDAO {
 
     @Query("select * from ProxyEndpoint where proxyMode = 1 and isSelected = 1")
     suspend fun getConnectedHttpProxy(): ProxyEndpoint?
-
 
     @Query("select * from ProxyEndpoint where isSelected = 1 and (proxyMode = 2 or proxyMode = 3)")
     suspend fun getConnectedOrbotProxy(): ProxyEndpoint?

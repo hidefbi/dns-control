@@ -25,11 +25,6 @@ import retrofit2.http.Streaming
 
 interface IBlocklistDownload {
 
-    /*@Headers(
-        "Accept-Encoding: gzip",
-        "Content-Type: application/octet-stream",
-        "Accept: application/wasm"
-    )*/
     // above accept-encoding header is automatically sent by OkHttp, no need to add our headers
     // for gzip. ref: https://github.com/square/okhttp/issues/2132
     @GET("{fileName}")

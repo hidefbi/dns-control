@@ -300,17 +300,6 @@ object ConnectivityCheckHelper {
     }
 
     /**
-     * Legacy methods for backward compatibility
-     */
-    @Deprecated("Use checkTcpConnection instead", ReplaceWith("checkTcpConnection(nw, host, 80, \"80\")"))
-    private suspend fun tcp80(nw: Network?, host: String): Boolean =
-        checkTcpConnection(nw, host, HTTP_PORT, "80")
-
-    @Deprecated("Use checkTcpConnection instead", ReplaceWith("checkTcpConnection(nw, host, 53, \"53\")"))
-    private suspend fun tcp53(nw: Network?, host: String): Boolean =
-        checkTcpConnection(nw, host, DNS_PORT, "53")
-
-    /**
      * Safe socket closing utility
      */
     private fun closeQuietly(closeable: Closeable?) {
@@ -328,7 +317,4 @@ object ConnectivityCheckHelper {
         return if (this in Int.MIN_VALUE..Int.MAX_VALUE) this.toInt() else default
     }
 
-    // Legacy alias for backward compatibility
-    @Deprecated("Use closeQuietly instead", ReplaceWith("closeQuietly(closeable)"))
-    private fun clos(closeable: Closeable?) = closeQuietly(closeable)
 }

@@ -49,8 +49,5 @@ enum class Protocol(val protocolType: Int) {
     companion object {
         private val map = entries.associateBy(Protocol::protocolType)
 
-        fun getProtocolName(protocolType: Int): Protocol {
-            return map[protocolType] ?: OTHER
-        }
     }
 }

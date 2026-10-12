@@ -19,13 +19,9 @@ import android.os.SystemClock
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.Severity
-import com.celzero.bravedns.service.ProxyManager.ID_HTTP_BASE
-import com.celzero.bravedns.service.ProxyManager.ID_ORBOT_BASE
-import com.celzero.bravedns.service.ProxyManager.ID_S5_BASE
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
-import com.celzero.firestack.backend.Backend
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
