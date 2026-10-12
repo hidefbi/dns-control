@@ -2475,7 +2475,7 @@ ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-
     <!-- Donation block shown at the bottom of the home screen settings sheet -->
     <string name="donate_section_title" translatable="true">Support this project</string>
     <string name="donate_section_desc" translatable="true">Free, open-source and optional. Donations do not unlock features or imply support.</string>
-    <string name="donate_repo_url" translatable="false">https://github.com/hidefbi/bbb-dnscontrol</string>
+    <string name="donate_repo_url" translatable="false">https://github.com/hidefbi/dns-control</string>
     <string name="donate_btc_label" translatable="true">BTC</string>
     <string name="donate_btc_address" translatable="false">bc1q34tccx8ttkqdpaywugmdvhamqmc9uhh9qttqn7</string>
     <string name="donate_eth_label" translatable="true">ETH</string>
