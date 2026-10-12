@@ -41,32 +41,45 @@ a blocking service. Blocking is applied to DNS queries only; it does not block
 traffic to a server whose address an app already has, and it cannot see inside
 encrypted content.
 
-### Updates
+### Updates and verification
 
-The app checks for a newer blocklist version about every 3 days. The check
-sends the app version code and the timestamp of your current lists to the
-download host. The app then tells you that an update is available; the download
-starts only when you choose it.
+The app checks for a newer blocklist set about every 3 days. The check sends the
+app version code and the timestamp of your current set to the download host.
+A check only detects that an update exists; it does not download anything. You
+start the download from the local blocklists screen.
 
-Each download includes an `index.json` file and an `index.json.sig` signature
-file. This fork does not verify the signature in its own code, so treat the
-download host as the trust point.
+A download fetches the whole set (all six files listed below), not only the
+changed parts. Updating by hand therefore downloads the full set again.
 
-### Download sizes
+Before a new set is activated, the app verifies it:
 
-These are the sizes of the files published on the download host at the time of
-writing. They change whenever the lists are rebuilt.
+- `index.json` must carry a valid ECDSA P-256 / SHA-256 signature in
+  `index.json.sig`, made with the project's key (the public key is compiled into
+  the app).
+- The `blocklists`, `basicconfig`, `rank` and `trie` files must match the size
+  and SHA-256 hash recorded in `index.json`.
+- The set's sequence number must match the update being installed and must not
+  be older than the last accepted set (this blocks rollback to an older set).
+
+If any check fails, the new set is discarded and the current one stays active.
+
+### Download size
+
+The published set is 77,523,948 bytes (about 77.5 MB, or 73.9 MiB). Sizes are
+for the set published at the time of writing and change with each rebuild.
 
 | File | Size | Purpose |
 |---|---|---|
-| `trie` | about 69 MB (71,423,522 bytes) | Compressed domain trie used for matching |
-| `rank` | about 5.8 MB (6,026,360 bytes) | Rank data for the lists |
-| `blocklists` | about 42 KB (42,158 bytes) | List of included blocklists and tags |
-| `index.json` | about 31 KB (31,459 bytes) | Index of the files and their versions |
-| `index.json.sig` | 96 bytes | Signature for the index |
+| `trie` | 71,423,522 bytes (about 71.4 MB) | Compressed domain trie used for matching |
+| `rank` | 6,026,360 bytes (about 6.0 MB) | Rank data for the lists |
+| `blocklists` | 42,158 bytes | Included blocklists and tags |
+| `index.json` | 31,459 bytes | Manifest: file sizes, hashes, sequence, sources |
+| `index.json.sig` | 96 bytes | Signature for the manifest |
 | `basicconfig` | 353 bytes | Basic configuration |
 
-A full download is about 75 MB, so use Wi-Fi or check your data plan first.
+While a download is in progress, the phone temporarily needs about twice this
+space, because the files are first written to the downloads folder and then
+copied into the app's storage.
 
 ### Sources and licenses
 
