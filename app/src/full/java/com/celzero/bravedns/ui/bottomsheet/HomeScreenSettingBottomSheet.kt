@@ -99,7 +99,7 @@ class HomeScreenSettingBottomSheet : BottomSheetDialogFragment() {
     override fun onStart() {
         super.onStart()
         dialog?.useTransparentNoDimBackground()
-        // open fully expanded so the content at the bottom (donation block) is reachable
+        // open fully expanded so the content at the bottom of the sheet is reachable
         (dialog as? BottomSheetDialog)?.behavior?.apply {
             skipCollapsed = true
             state = BottomSheetBehavior.STATE_EXPANDED
