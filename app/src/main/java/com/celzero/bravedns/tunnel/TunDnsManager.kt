@@ -505,20 +505,9 @@ object TunDnsManager: KoinComponent {
             // so no need to append BlockFree again
             return preferredId // ex: CT+Preferred,Fixed
         }
-        // case when userPreferredId is Alg, then return BlockFree + tid
+        // case when userPreferredId is Alg, then return the preferred id as it is
         // tid can be System / ProxyId / Preferred
-        return if (isRethinkDnsEnabled()) {
-            val tr1 = Backend.BlockFree
-            val tr2 = preferredId.first // ideally, it should be Preferred
-            val p = Pair(tr1, tr2)
-            p
-        } else {
-            preferredId
-        }
-    }
-
-    private fun isRethinkDnsEnabled(): Boolean {
-        return appConfig.isRethinkDnsConnected() && !WireguardManager.oneWireGuardEnabled()
+        return preferredId
     }
 
     private fun canUseDnsCacheOnTransportId(userPreferredId: String): Boolean {

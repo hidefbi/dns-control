@@ -687,10 +687,6 @@ internal constructor(
         handleDoHChanges(endpoint)
     }
 
-    fun isRethinkDnsConnected(): Boolean {
-        return getDnsType() == DnsType.RETHINK_REMOTE
-    }
-
     suspend fun enableSystemDns() {
         if (getDnsType() != DnsType.SYSTEM_DNS) {
             removeConnectionStatus()
