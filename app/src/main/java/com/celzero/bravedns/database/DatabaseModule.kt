@@ -43,7 +43,6 @@ object DatabaseModule {
         single { get<AppDatabase>().wgHopMapDao() }
 
         single { get<LogDatabase>().ipInfoDao() }
-        single { get<LogDatabase>().eventDao() }
     }
     private val repositoryModule = module {
         single { get<AppDatabase>().appInfoRepository() }

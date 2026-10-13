@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.database.EventDao
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.Severity
@@ -43,7 +42,7 @@ import com.celzero.bravedns.database.Severity
  * )
  * ```
  */
-class EventLogger(private val eventDao: EventDao) {
+class EventLogger {
     fun log(type: EventType, severity: Severity = Severity.LOW, message: String, source: EventSource, userAction: Boolean = false, details: String? = null) = Unit
     fun logLow(type: EventType, message: String, source: EventSource, userAction: Boolean = false, details: String? = null) = Unit
     fun logMedium(type: EventType, message: String, source: EventSource, userAction: Boolean = false, details: String? = null) = Unit

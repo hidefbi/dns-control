@@ -25,13 +25,13 @@ import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 /**
- * Holds only non-traffic data: cached IP metadata (used by WireGuard/endpoint screens) and the
- * app event log. Connection, DNS and console logs are no longer persisted; their tables are
- * dropped by [MIGRATION_15_16].
+ * Holds only non-traffic data: cached IP metadata (used by WireGuard/endpoint screens).
+ * Connection, DNS, console and app event logs are no longer persisted; their tables are dropped
+ * by [MIGRATION_15_16] and [MIGRATION_16_17].
  */
 @Database(
-    entities = [IpInfo::class, Event::class],
-    version = 16,
+    entities = [IpInfo::class],
+    version = 17,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -45,6 +45,9 @@ abstract class LogDatabase : RoomDatabase() {
         private val LEGACY_LOG_TABLES =
             listOf("ConnectionTracker", "DnsLogs", "DNSLogs", "RethinkLog")
 
+        // Event log table removed in v17; the app no longer records events.
+        private const val LEGACY_EVENTS_TABLE = "Events"
+
         @Suppress("DEPRECATION")
         fun buildDatabase(context: Context): LogDatabase {
             return Room.databaseBuilder(
@@ -53,7 +56,7 @@ abstract class LogDatabase : RoomDatabase() {
                     LOGS_DATABASE_NAME
                 )
                 .setJournalMode(JournalMode.AUTOMATIC)
-                .addMigrations(MIGRATION_15_16)
+                .addMigrations(MIGRATION_15_16, MIGRATION_16_17)
                 .fallbackToDestructiveMigration() // recreate the database if no migration is found
                 .build()
         }
@@ -66,11 +69,16 @@ abstract class LogDatabase : RoomDatabase() {
                     }
                 }
             }
+
+        private val MIGRATION_16_17: Migration =
+            object : Migration(16, 17) {
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    db.execSQL("DROP TABLE IF EXISTS `$LEGACY_EVENTS_TABLE`")
+                }
+            }
     }
 
     abstract fun ipInfoDao(): IpInfoDAO
-
-    abstract fun eventDao(): EventDao
 
     fun ipInfoRepository() = IpInfoRepository(ipInfoDao())
 
