@@ -6,6 +6,10 @@ on:
   push:
     tags:
       - "v*"
+  # manual run to test the build and signature checks on a branch. The version check
+  # requires the in-app versionName to equal the ref name, so a branch run stops before
+  # the GitHub Release step and never publishes.
+  workflow_dispatch:
 
 permissions:
   contents: write
