@@ -30,16 +30,12 @@ import com.celzero.bravedns.database.DoHEndpoint
 import com.celzero.bravedns.database.DoHEndpointRepository
 import com.celzero.bravedns.database.DoTEndpoint
 import com.celzero.bravedns.database.DoTEndpointRepository
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.ODoHEndpoint
 import com.celzero.bravedns.database.ODoHEndpointRepository
 import com.celzero.bravedns.database.ProxyEndpoint
 import com.celzero.bravedns.database.ProxyEndpointRepository
 import com.celzero.bravedns.database.RethinkDnsEndpoint
 import com.celzero.bravedns.database.RethinkDnsEndpointRepository
-import com.celzero.bravedns.database.Severity
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.InternetProtocol
 import com.celzero.bravedns.util.InternetProtocol.Companion.getInternetProtocol
@@ -59,8 +55,7 @@ internal constructor(
     private val doTEndpointRepository: DoTEndpointRepository,
     private val oDoHEndpointRepository: ODoHEndpointRepository,
     private val proxyEndpointRepository: ProxyEndpointRepository,
-    private val persistentState: PersistentState,
-    private val eventLogger: EventLogger
+    private val persistentState: PersistentState
 ) {
     private val braveModeObserver: MutableLiveData<Int> = MutableLiveData()
     private var customSocks5Endpoint: ProxyEndpoint? = null
@@ -600,15 +595,6 @@ internal constructor(
 
         doHEndpointRepository.update(doHEndpoint)
         onDnsChange(DnsType.DOH)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "DoH endpoint changed",
-            "DoH endpoint changed to ${doHEndpoint.dohName}, prev: ${persistentState.connectedDnsName}"
-        )
-    }
-
-    private suspend fun logEvent(type: EventType, msg: String, details: String) {
-        eventLogger.log(type, Severity.LOW, msg, EventSource.UI, true, details)
     }
 
     suspend fun handleDoTChanges(doTEndpoint: DoTEndpoint) {
@@ -620,11 +606,6 @@ internal constructor(
         val prev = persistentState.connectedDnsName
         doTEndpointRepository.update(doTEndpoint)
         onDnsChange(DnsType.DOT)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "DoT endpoint changed",
-            "DoT endpoint changed to ${doTEndpoint.name}, prev: $prev"
-        )
     }
 
     // invoked when the selected ODoH relay changes; re-applies the transport if ODoH is active
@@ -643,11 +624,6 @@ internal constructor(
         val prev = persistentState.connectedDnsName
         oDoHEndpointRepository.update(oDoHEndpoint)
         onDnsChange(DnsType.ODOH)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "ODoH endpoint changed",
-            "ODoH endpoint changed to ${oDoHEndpoint.name}, prev: $prev"
-        )
     }
 
     suspend fun handleDnsProxyChanges(dnsProxyEndpoint: DnsProxyEndpoint) {
@@ -659,11 +635,6 @@ internal constructor(
         val prev = persistentState.connectedDnsName
         dnsProxyEndpointRepository.update(dnsProxyEndpoint)
         onDnsChange(DnsType.DNS_PROXY)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "DNS Proxy endpoint changed",
-            "DNS Proxy endpoint changed to ${dnsProxyEndpoint.proxyName}, prev: $prev"
-        )
     }
 
     suspend fun isOrbotDns(): Boolean {
@@ -681,11 +652,6 @@ internal constructor(
         val prev = persistentState.connectedDnsName
         dnsCryptEndpointRepository.update(dnsCryptEndpoint)
         onDnsChange(DnsType.DNSCRYPT)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "DNSCrypt endpoint changed",
-            "DNSCrypt endpoint changed to ${dnsCryptEndpoint.dnsCryptName}, prev: $prev"
-        )
     }
 
     suspend fun handleDnsrelayChanges(endpoint: DnsCryptRelayEndpoint) {
@@ -694,11 +660,6 @@ internal constructor(
             PersistentState.DnsCryptRelayDetails(endpoint, endpoint.isSelected)
         )
 
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "DNSCrypt Relay endpoint changed",
-            "DNSCrypt Relay endpoint changed to ${endpoint.dnsCryptRelayURL}, isSelected: ${endpoint.isSelected}"
-        )
     }
 
     suspend fun removeDnscryptRelay(stamp: String) {
@@ -738,11 +699,6 @@ internal constructor(
 
         val prev = persistentState.connectedDnsName
         onDnsChange(DnsType.SYSTEM_DNS)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "System DNS enabled",
-            "System DNS enabled, prev: $prev"
-        )
     }
 
     fun isSystemDns(): Boolean {

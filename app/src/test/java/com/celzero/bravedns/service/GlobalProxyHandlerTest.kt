@@ -54,7 +54,6 @@ import java.util.concurrent.ConcurrentHashMap
 class GlobalProxyHandlerTest : KoinTest {
 
     private lateinit var context: Context
-    private val mockEventLogger: EventLogger = mockk(relaxed = true)
 
     private val proxies: ConcurrentHashMap<String, GlobalProxyHandler.ProxyEntry>
         get() = getPrivateField<ConcurrentHashMap<String, GlobalProxyHandler.ProxyEntry>>(
@@ -69,7 +68,6 @@ class GlobalProxyHandlerTest : KoinTest {
         startKoin {
             modules(module {
                 single { context }
-                single { mockEventLogger }
             })
         }
 
@@ -147,7 +145,6 @@ class GlobalProxyHandlerTest : KoinTest {
 
         coVerify(exactly = 0) { VpnController.addWireGuardProxy(any(), any()) }
         assertNull(proxies["wg1"])
-        verify { mockEventLogger.log(any(), any(), any(), any(), any(), any()) }
     }
 
     @Test

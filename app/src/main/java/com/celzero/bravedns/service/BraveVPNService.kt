@@ -63,8 +63,6 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.RethinkDnsApplication.Companion.DEBUG
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.AppInfo
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.RefreshDatabase
 import com.celzero.bravedns.net.go.GoVpnAdapter
 import com.celzero.bravedns.net.manager.ConnectionTracer
@@ -166,7 +164,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     // performs the heavier connectivity/VPN orchestration.
     private val networkLifecycleObserver: NetworkLifecycleObserver =
         NetworkLifecycleObserver(this, this)
-    private val eventLogger by inject<EventLogger>()
 
     private val userPresentReceiver: UserPresentReceiver = UserPresentReceiver()
 
@@ -1043,15 +1040,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                 .collect { reason ->
                     Logger.v(LOG_TAG_VPN, "RESTART; new restart request: $reason")
                     restartVpnWithNewAppConfig(reason)
-                    io("eventLogger") {
-                        eventLogger.logHigh(
-                            EventType.VPN_RESTART,
-                            "Vpn Restart",
-                            EventSource.VPN,
-                            userAction = false,
-                            details = "reason: $reason"
-                        )
-                    }
                 }
         }
     }
@@ -1134,8 +1122,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                     // it indicates that something is out of whack (as in, connection monitor
                     // exists, vpn service exists, but the underlying adapter doesn't...
                     updateTun(opts)
-                    eventLogger.logLow(EventType.VPN_START, "restart existing vpn from onStartCommand",
-                        EventSource.VPN, userAction = false, details = "opts: $opts")
                 }
             } else {
                 io("startVpn") {
@@ -1148,8 +1134,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                         observeVpnRestartRequests()
                         // call this *after* a new vpn is created #512
                         uiCtx("observers") { observeChanges() }
-                        eventLogger.logLow(EventType.VPN_START, "start new vpn from onStartCommand",
-                            EventSource.VPN, userAction = false, details = "opts: $opts")
                     }
                 }
             }
@@ -1705,10 +1689,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         if (!userInitiated) notifyUserOnVpnFailure()
         io(reason) {
             stopVpnAdapter()
-            eventLogger.logHigh(
-                EventType.VPN_STOP, "vpn service destroyed",
-                EventSource.SERVICE, userAction = userInitiated, details = "vpn destroyed"
-            )
         }
         stopSelf()
         Logger.i(LOG_TAG_VPN, "stopped vpn adapter & service: $reason, $userInitiated")
@@ -2086,8 +2066,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
 
         val reason = "nwDisconnect"
         vpnRestartTrigger.value = reason
-        eventLogger.logMedium(EventType.SYSTEM_EVENT, "network disconnected, restart vpn",
-            EventSource.SERVICE, userAction = false, details = "networks: ${networks.ipv4Net.size + networks.ipv6Net.size}")
         // pause mobile-only wgs on no network
         pauseMobileOnlyWireGuardOnNoNw()
         pauseSsidEnabledWireGuardOnNoNw()
@@ -2281,8 +2259,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             // WireGuard may fail to connect to the server when the network changes.
             Logger.i(LOG_TAG_VPN, "$TAG ssid/bound-nws changed, refresh wg if needed")
             refreshOrPauseOrResumeOrReAddProxies() // takes care of adding the proxies if missing in tun
-            eventLogger.logLow(EventType.PROXY_REFRESH, "refresh/pause/resume/readd proxies",
-                EventSource.SERVICE, userAction = false, "nwChange, $isBoundNetworksChanged, ssidChanged: $isSsidChanged, ssid: ${networks.activeSsid}, refresh/pause/resume/readd proxies")
         }
 
         underlyingNetworks?.ipv4Net?.forEach {

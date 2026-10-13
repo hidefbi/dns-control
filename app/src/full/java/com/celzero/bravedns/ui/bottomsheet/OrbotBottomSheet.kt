@@ -34,12 +34,8 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.WgIncludeAppsAdapter
 import com.celzero.bravedns.animation.Rotate3dAnimation
 import com.celzero.bravedns.data.AppConfig
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.BottomSheetOrbotBinding
 import com.celzero.bravedns.databinding.DialogInfoRulesLayoutBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.ProxyManager
@@ -75,7 +71,6 @@ class OrbotBottomSheet : BottomSheetDialogFragment() {
     private val persistentState by inject<PersistentState>()
     private val appConfig by inject<AppConfig>()
     private val orbotHelper by inject<OrbotHelper>()
-    private val eventLogger by inject<EventLogger>()
     private val mappingViewModel: ProxyAppsMappingViewModel by viewModel()
 
     companion object {
@@ -335,10 +330,6 @@ class OrbotBottomSheet : BottomSheetDialogFragment() {
         io {
             val isOrbotDns = appConfig.isOrbotDns()
             uiCtx { showStopOrbotDialog(isOrbotDns) }
-            logEvent(
-                "Orbot Stopped",
-                "User stopped Orbot from Orbot Bottom Sheet"
-            )
         }
     }
 
@@ -540,10 +531,6 @@ class OrbotBottomSheet : BottomSheetDialogFragment() {
 
                 if (VpnController.hasTunnel()) {
                     orbotHelper.startOrbot(type)
-                    logEvent(
-                        "Orbot Started with type: $type",
-                        "User started Orbot from Orbot Bottom Sheet with type: $type"
-                    )
                 } else {
                     Utilities.showToastUiCentered(
                         requireContext(),
@@ -626,10 +613,6 @@ class OrbotBottomSheet : BottomSheetDialogFragment() {
 
         okBtn.setOnClickListener { dialog.dismiss() }
         dialog.show()
-    }
-
-    private fun logEvent(msg: String, details: String) {
-        eventLogger.log(EventType.PROXY_SWITCH, Severity.LOW, msg, EventSource.UI, false, details)
     }
 
     private suspend fun uiCtx(f: suspend () -> Unit) {

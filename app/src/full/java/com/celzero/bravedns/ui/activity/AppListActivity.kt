@@ -40,12 +40,8 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.FirewallAppListAdapter
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.RefreshDatabase
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.ActivityAppListBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.ui.bottomsheet.FirewallAppFilterBottomSheet
@@ -69,7 +65,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class AppListActivity :
     BaseActivity(R.layout.activity_app_list), SearchView.OnQueryTextListener {
     private val persistentState by inject<PersistentState>()
-    private val eventLogger by inject<EventLogger>()
     private val b by viewBinding(ActivityAppListBinding::bind)
 
     private val appInfoViewModel: AppInfoViewModel by viewModel()
@@ -681,7 +676,6 @@ class AppListActivity :
             io { appInfoViewModel.updateMeteredStatus(false) }
         }
         resetFirewallIcons(BlockType.METER)
-        logEvent("Bulk metered rule update performed, isMetered: $metered")
     }
 
     private fun updateUnmeteredBulk() {
@@ -696,7 +690,6 @@ class AppListActivity :
             io { appInfoViewModel.updateUnmeteredStatus(false) }
         }
         resetFirewallIcons(BlockType.UNMETER)
-        logEvent("Bulk unmetered rule update performed, isUnmetered: $unmeter")
     }
 
     private fun updateBypassBulk() {
@@ -711,7 +704,6 @@ class AppListActivity :
             io { appInfoViewModel.updateBypassStatus(false) }
         }
         resetFirewallIcons(BlockType.BYPASS)
-        logEvent("Bulk bypass rule update performed, isBypass: $bypass")
     }
 
     private fun updateBypassDnsFirewallBulk() {
@@ -726,7 +718,6 @@ class AppListActivity :
             io { appInfoViewModel.updateBypassDnsFirewall(false) }
         }
         resetFirewallIcons(BlockType.BYPASS_DNS_FIREWALL)
-        logEvent("Bulk bypass DNS firewall rule update performed, isBypassDnsFirewall: $bypassDnsFirewall")
     }
 
     private fun updateExcludedBulk() {
@@ -741,7 +732,6 @@ class AppListActivity :
             io { appInfoViewModel.updateExcludeStatus(false) }
         }
         resetFirewallIcons(BlockType.EXCLUDE)
-        logEvent("Bulk exclude rule update performed, isExclude: $exclude")
     }
 
     private fun updateLockdownBulk() {
@@ -756,7 +746,6 @@ class AppListActivity :
             io { appInfoViewModel.updateLockdownStatus(false) }
         }
         resetFirewallIcons(BlockType.LOCKDOWN)
-        logEvent("Bulk lockdown rule update performed, isLockdown: $lockdown")
     }
 
     private fun isInitTag(view: View): Boolean {
@@ -809,7 +798,7 @@ class AppListActivity :
     }
 
     private fun initListAdapter() {
-        val recyclerAdapter = FirewallAppListAdapter(this, this, eventLogger)
+        val recyclerAdapter = FirewallAppListAdapter(this, this)
         b.ffaAppList.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(this)
         b.ffaAppList.layoutManager = layoutManager
@@ -844,10 +833,6 @@ class AppListActivity :
 
     private fun refreshDatabase() {
         io { refreshDatabase.refresh(RefreshDatabase.ACTION_REFRESH_INTERACTIVE) }
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "App list, bulk change", EventSource.UI, false, details)
     }
 
     private fun io(f: suspend () -> Unit) {

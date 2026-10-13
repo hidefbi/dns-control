@@ -34,16 +34,12 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.RethinkDnsApplication.Companion.DEBUG
 import com.celzero.bravedns.adapter.CustomDomainAdapter
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.DialogAddCustomDomainBinding
 import com.celzero.bravedns.databinding.DialogImportConfirmBinding
 import com.celzero.bravedns.databinding.FragmentCustomDomainBinding
 import com.celzero.bravedns.service.DomainRulesManager
 import com.celzero.bravedns.service.DomainRulesManager.isValidDomain
 import com.celzero.bravedns.service.DomainRulesManager.isWildCardEntry
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.ui.activity.CustomRulesActivity
 import com.celzero.bravedns.util.Constants.Companion.INTENT_UID
@@ -65,7 +61,6 @@ class CustomDomainFragment :
     private lateinit var adapter: CustomDomainAdapter
 
     private val viewModel by inject<CustomDomainViewModel>()
-    private val eventLogger by inject<EventLogger>()
 
     private var uid = UID_EVERYBODY
     private var rule = CustomRulesActivity.RULES.APP_SPECIFIC_RULES
@@ -144,7 +139,7 @@ class CustomDomainFragment :
 
     private fun setupAppSpecificRules(rule: CustomRulesActivity.RULES) {
         observeCustomRules()
-        adapter = CustomDomainAdapter(requireContext(), this, rule, eventLogger)
+        adapter = CustomDomainAdapter(requireContext(), this, rule)
         b.cdaRecycler.adapter = adapter
         viewModel.setUid(uid)
         viewModel.customDomains.observe(viewLifecycleOwner) {
@@ -173,7 +168,7 @@ class CustomDomainFragment :
 
     private fun setupAllRules(rule: CustomRulesActivity.RULES) {
         observeAllRules()
-        adapter = CustomDomainAdapter(requireContext(), this, rule, eventLogger)
+        adapter = CustomDomainAdapter(requireContext(), this, rule)
         b.cdaRecycler.adapter = adapter
         viewModel.allDomainRules.observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
@@ -370,7 +365,6 @@ class CustomDomainFragment :
             resources.getString(R.string.cd_toast_added),
             Toast.LENGTH_SHORT
         )
-        logEvent("Added domain: $domain, Type: $type, Status: $status, UID: $uid")
     }
 
     override fun onQueryTextSubmit(query: String): Boolean {
@@ -394,14 +388,11 @@ class CustomDomainFragment :
                 if (selectedItems.isNotEmpty()) {
                     uiCtx { adapter.clearSelection() }
                     DomainRulesManager.deleteRules(selectedItems)
-                    logEvent("Deleted domains: $selectedItems, Rule: $rule, UID: $uid")
                 } else {
                     if (rule == CustomRulesActivity.RULES.APP_SPECIFIC_RULES) {
                         DomainRulesManager.deleteRulesByUid(uid)
-                        logEvent("Deleted all domains for UID: $uid")
                     } else {
                         DomainRulesManager.deleteAllRules()
-                        logEvent("Deleted all custom domain rules")
                     }
                 }
             }
@@ -523,11 +514,6 @@ class CustomDomainFragment :
             .setPositiveButton(getString(R.string.fapps_info_dialog_positive_btn)) { d, _ -> d.dismiss() }
             .create()
             .show()
-        logEvent("Import complete: imported=${summary.imported}, duplicates=${summary.duplicates}, invalid=${summary.invalid}, uid=$uid")
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "Custom Domain", EventSource.UI, false, details)
     }
 
     private fun io(f: suspend () -> Unit) {

@@ -33,13 +33,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.R
 import com.celzero.bravedns.customdownloader.IpInfoDownloader
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.database.WgConfigFiles
 import com.celzero.bravedns.databinding.ListItemWgOneInterfaceBinding
 import com.celzero.bravedns.net.doh.Transaction
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.ProxyManager
 import com.celzero.bravedns.service.VpnController
@@ -60,7 +56,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class OneWgConfigAdapter(private val context: Context, private val listener: DnsStatusListener, private val eventLogger: EventLogger) :
+class OneWgConfigAdapter(private val context: Context, private val listener: DnsStatusListener) :
     PagingDataAdapter<WgConfigFiles, OneWgConfigAdapter.WgInterfaceViewHolder>(DIFF_CALLBACK) {
 
     private var lifecycleOwner: LifecycleOwner? = null
@@ -492,7 +488,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
                     )
                 }
             }
-            logEvent("One-WireGuard enabled", "WG ID: ${config.id}")
         }
 
         // Shows an "invalid config" AlertDialog when an Activity context is
@@ -534,7 +529,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
             config.oneWireGuard = false
             WireguardManager.disableConfig(config.toImmutable())
             uiCtx { listener.onDnsStatusChanged() }
-            logEvent("One-WireGuard disabled", "WG ID: ${config.id}")
         }
 
         private fun launchConfigDetail(id: Int) {
@@ -552,10 +546,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
             intent.putExtra(INTENT_EXTRA_WG_TYPE, WgConfigDetailActivity.WgType.ONE_WG.value)
             context.startActivity(intent)
         }
-    }
-
-    private fun logEvent(msg: String, details: String) {
-        eventLogger.log(EventType.PROXY_SWITCH, Severity.LOW, msg, EventSource.UI, false, details)
     }
 
     private suspend fun uiCtx(f: suspend () -> Unit) {

@@ -36,11 +36,7 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.OneWgConfigAdapter
 import com.celzero.bravedns.adapter.WgConfigAdapter
 import com.celzero.bravedns.data.AppConfig
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.ActivityWireguardMainBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.WireguardManager
 import com.celzero.bravedns.ui.BaseActivity
@@ -69,7 +65,6 @@ class WgMainActivity :
     private val b by viewBinding(ActivityWireguardMainBinding::bind)
     private val persistentState by inject<PersistentState>()
     private val appConfig by inject<AppConfig>()
-    private val eventLogger by inject<EventLogger>()
 
     private var wgConfigAdapter: WgConfigAdapter? = null
     private var oneWgConfigAdapter: OneWgConfigAdapter? = null
@@ -109,7 +104,6 @@ class WgMainActivity :
                                     )
                                     Logger.e(LOG_TAG_PROXY, it.toString())
                                 }
-                                logEvent("Wireguard import", "imported from file")
                             }
                         } else {
                             val message =
@@ -162,7 +156,6 @@ class WgMainActivity :
                             Toast.LENGTH_LONG
                         )
                         Logger.e(LOG_TAG_PROXY, it.toString())
-                        logEvent("Wireguard import", "imported via QR scanner")
                     }
                 }
             }
@@ -242,7 +235,7 @@ class WgMainActivity :
         val layoutManager = LinearLayoutManager(this)
         b.wgGeneralInterfaceList.layoutManager = layoutManager
 
-        wgConfigAdapter = WgConfigAdapter(this, this, persistentState.splitDns, eventLogger)
+        wgConfigAdapter = WgConfigAdapter(this, this, persistentState.splitDns)
         wgConfigViewModel.interfaces.observe(this) { wgConfigAdapter?.submitData(lifecycle, it) }
         b.wgGeneralInterfaceList.adapter = wgConfigAdapter
     }
@@ -251,7 +244,7 @@ class WgMainActivity :
         val layoutManager = LinearLayoutManager(this)
         b.oneWgInterfaceList.layoutManager = layoutManager
 
-        oneWgConfigAdapter = OneWgConfigAdapter(this, this, eventLogger)
+        oneWgConfigAdapter = OneWgConfigAdapter(this, this)
         wgConfigViewModel.interfaces.observe(this) { oneWgConfigAdapter?.submitData(lifecycle, it) }
         b.oneWgInterfaceList.adapter = oneWgConfigAdapter
     }
@@ -399,10 +392,6 @@ class WgMainActivity :
         builder.setPositiveButton(delText) { _, _ ->
             io {
                 WireguardManager.deleteAllConfigs()
-                logEvent(
-                    "Delete All WireGuard configs",
-                    "User deleted all WireGuard configs"
-                )
                 uiCtx {
                     Utilities.showToastUiCentered(
                         this,
@@ -436,10 +425,6 @@ class WgMainActivity :
                 io {
                     if (WireguardManager.canDisableAllActiveConfigs()) {
                         WireguardManager.disableAllActiveConfigs()
-                        logEvent(
-                            "Wireguard disable",
-                            "all configs from toggle switch; isOneWgToggle: $isOneWgToggle"
-                        )
                         uiCtx {
                             this.observeDnsName()
                             if (isOneWgToggle) {
@@ -497,10 +482,6 @@ class WgMainActivity :
         b.importFab.visibility = View.GONE
         b.qrCodeFab.visibility = View.GONE
         b.deleteAllFab.visibility = View.GONE
-    }
-
-    private fun logEvent(msg: String, details: String) {
-        eventLogger.log(EventType.PROXY_SWITCH, Severity.LOW, msg, EventSource.UI, false, details)
     }
 
     private fun io(f: suspend () -> Unit) {

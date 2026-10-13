@@ -38,16 +38,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.CustomDomain
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.DialogAddCustomDomainBinding
 import com.celzero.bravedns.databinding.ListItemCustomAllDomainBinding
 import com.celzero.bravedns.databinding.ListItemCustomDomainBinding
 import com.celzero.bravedns.service.DomainRulesManager
 import com.celzero.bravedns.service.DomainRulesManager.isValidDomain
 import com.celzero.bravedns.service.DomainRulesManager.isWildCardEntry
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.ui.activity.CustomRulesActivity
 import com.celzero.bravedns.ui.bottomsheet.CustomDomainRulesBtmSheet
@@ -64,8 +60,7 @@ import kotlinx.coroutines.withContext
 class CustomDomainAdapter(
     val context: Context,
     val fragment: Fragment,
-    val rule: CustomRulesActivity.RULES,
-    val eventLogger: EventLogger
+    val rule: CustomRulesActivity.RULES
 ) :
     PagingDataAdapter<CustomDomain, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
 
@@ -331,7 +326,6 @@ class CustomDomainAdapter(
                 Toast.LENGTH_SHORT
             )
         }
-        logEvent("Custom domain insert/update $domain, status: $status")
     }
 
     inner class CustomDomainViewHolderWithHeader(private val b: ListItemCustomAllDomainBinding) :
@@ -636,10 +630,6 @@ class CustomDomainAdapter(
     private fun showButtonsBottomSheet(customDomain: CustomDomain) {
         val bottomSheetFragment = CustomDomainRulesBtmSheet.newInstance(customDomain)
         bottomSheetFragment.show(fragment.parentFragmentManager, bottomSheetFragment.tag)
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "Custom Domain", EventSource.UI, false, details)
     }
 
     private fun io(f: suspend () -> Unit) {

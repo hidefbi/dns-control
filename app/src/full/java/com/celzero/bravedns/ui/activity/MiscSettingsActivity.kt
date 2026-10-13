@@ -53,12 +53,8 @@ import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.RefreshDatabase
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.ActivityMiscSettingsBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.ui.LauncherSwitcher
@@ -99,7 +95,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
     private val persistentState by inject<PersistentState>()
     private val appConfig by inject<AppConfig>()
     private val rdb by inject<RefreshDatabase>()
-    private val eventLogger by inject<EventLogger>()
 
     private var isThemeChanged: Boolean = false
     private lateinit var notificationPermissionResult: ActivityResultLauncher<String>
@@ -391,7 +386,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         b.settingsActivityCheckUpdateSwitch.setOnCheckedChangeListener { _: CompoundButton,
                                                                          b: Boolean ->
             persistentState.checkForAppUpdate = b
-            logEvent("Check for app update set to $b")
         }
 
 
@@ -417,7 +411,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         b.settingsActivityAppNotificationPersistentSwitch.setOnCheckedChangeListener { _: CompoundButton,
                                                                                        b: Boolean ->
             persistentState.persistentNotification = b
-            logEvent("Persistent notification set to $b")
         }
 
         b.settingsActivityImportExportRl.setOnClickListener { invokeImportExport() }
@@ -452,7 +445,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                     SnackbarHelper.showStabilityProgram(b.root, persistentState)
                 }
             }
-            logEvent("Auto start on boot set to $b")
         }
 
         b.donateBtcCopy.setOnClickListener {
@@ -468,7 +460,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         b.settingsTaskerRl.setOnClickListener {
             showAppTriggerPackageDialog(this , onPackageSet = { packageName ->
                 persistentState.appTriggerPackages = packageName
-                logEvent("App trigger package set to $packageName")
             })
         }
 
@@ -478,7 +469,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
 
         b.dvIpInfoSwitch.setOnCheckedChangeListener { _, isChecked ->
             persistentState.downloadIpInfo = isChecked
-            logEvent("Download ipinfo inc set to $isChecked")
         }
 
         // Firebase error reporting toggle
@@ -498,7 +488,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         b.tombstoneAppSwitch.setOnCheckedChangeListener { _, isChecked ->
             persistentState.tombstoneApps = isChecked
             io { rdb.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
-            logEvent("Tombstone apps set to $isChecked")
         }
 
     }
@@ -516,7 +505,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             b.settingsFirebaseErrorReportingSwitch.isChecked = false
             persistentState.firebaseErrorReportingEnabled = false
         }
-        logEvent("Firebase error reporting enabled set to $isChecked")
     }
 
 
@@ -573,11 +561,9 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             if (bioMetricType.enabled()) {
                 Logger.i(LOG_TAG_UI, "biometric auth enabled, switching to app lock alias")
                 LauncherSwitcher.switchLauncherAlias(applicationContext, APP_LOCK_ALIAS, HOME_ALIAS)
-                logEvent("biometric auth enabled with type: $bioMetricType")
             } else {
                 Logger.i(LOG_TAG_UI, "biometric auth disabled, switching to home alias")
                 LauncherSwitcher.switchLauncherAlias(applicationContext, HOME_ALIAS, APP_LOCK_ALIAS)
-                logEvent("biometric auth disabled")
             }
         }
         alertBuilder.create().show()
@@ -609,7 +595,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                 val locale = Locale.forLanguageTag(languages.getOrDefault(item, "en-US"))
                 AppCompatDelegate.setApplicationLocales(LocaleListCompat.create(locale))
             }
-            logEvent("App locale changed to $tag")
         }
         alertBuilder.create().show()
     }
@@ -755,7 +740,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
 
             persistentState.theme = which
             isThemeChanged = true
-            logEvent("App theme changed, theme id: $theme")
             when (which) {
                 Themes.SYSTEM_DEFAULT.id -> {
                     if (isDarkThemeOn()) {
@@ -838,7 +822,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                     persistentState.notificationActionType = NotificationActionType.NONE.action
                 }
             }
-            logEvent("Notification action type set to ${NotificationActionType.getNotificationActionType(which)}")
         }
         alertBuilder.create().show()
     }
@@ -885,7 +868,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                     b.settingsActivityAppNotificationSwitch.isChecked = false
                     invokeAndroidNotificationSetting()
                 }
-                logEvent("Notification permission granted: $it")
             }
     }
 
@@ -994,10 +976,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         for (v in views) v.isEnabled = false
 
         delay(ms, lifecycleScope) { for (v in views) v.isEnabled = true }
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.UI_TOGGLE, Severity.LOW, "Misc settings", EventSource.UI, false, details)
     }
 
     private fun io(f: suspend () -> Unit) = lifecycleScope.launch(Dispatchers.IO) { f() }

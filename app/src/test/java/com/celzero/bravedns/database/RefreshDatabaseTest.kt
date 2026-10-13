@@ -4,7 +4,6 @@ import android.app.NotificationManager
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.PersistentState
@@ -28,7 +27,6 @@ class RefreshDatabaseTest {
     private lateinit var refreshDatabase: RefreshDatabase
     private val context = mockk<Context>(relaxed = true)
     private val persistentState = mockk<PersistentState>(relaxed = true)
-    private val eventLogger = mockk<EventLogger>(relaxed = true)
     private val packageManager = mockk<PackageManager>(relaxed = true)
     private val notificationManager = mockk<NotificationManager>(relaxed = true)
 
@@ -61,9 +59,7 @@ class RefreshDatabaseTest {
         every { context.getSystemService(any<String>()) } returns notificationManager
         refreshDatabase = RefreshDatabase(
             context,
-            persistentState,
-            eventLogger
-        )
+            persistentState)
     }
 
     @After

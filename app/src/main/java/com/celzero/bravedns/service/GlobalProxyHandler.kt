@@ -16,9 +16,6 @@
 package com.celzero.bravedns.service
 
 import android.os.SystemClock
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
@@ -30,7 +27,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -69,7 +65,6 @@ object GlobalProxyHandler : KoinComponent {
     // exponential backoff base (1 min): delays of 1, 2, 4, 8, 16 min
     private const val BACKOFF_BASE_MS = 60 * 1000L
 
-    private val eventLogger: EventLogger by inject()
 
     class ProxyEntry(@Volatile var addedAtElapsed: Long) {
         @Volatile var attempts: Int = 0
@@ -161,14 +156,6 @@ object GlobalProxyHandler : KoinComponent {
         if (entry.attempts >= MAX_ATTEMPTS) {
             proxies.remove(id)
             Logger.w(LOG_TAG_PROXY, "$TAG giving up on $id after $MAX_ATTEMPTS attempts")
-            eventLogger.log(
-                type = EventType.TUN_UPDATE,
-                severity = Severity.HIGH,
-                message = "proxy re-add failed: $id",
-                source = EventSource.VPN,
-                userAction = false,
-                details = "gave up after $MAX_ATTEMPTS attempts"
-            )
             return
         }
 

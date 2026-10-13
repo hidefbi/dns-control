@@ -26,11 +26,7 @@ import android.widget.Toast
 import androidx.core.view.WindowInsetsControllerCompat
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.ActivityAntiCensorshipBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.util.Themes
@@ -46,7 +42,6 @@ class AntiCensorshipActivity : BaseActivity(R.layout.activity_anti_censorship) {
     val b by viewBinding(ActivityAntiCensorshipBinding::bind)
 
     private val persistentState by inject<PersistentState>()
-    private val eventLogger by inject<EventLogger>()
 
     private fun Context.isDarkThemeOn(): Boolean {
         return resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK ==
@@ -344,7 +339,6 @@ class AntiCensorshipActivity : BaseActivity(R.layout.activity_anti_censorship) {
                     RetryStrategies.RETRY_WITH_SPLIT.mode
                 handleRetryMode(true, defaultRetry, showToast = false)
             }
-            logEvent("Anti-censorship dial strategy changed to ${ds.mode}")
         } else {
             // no-op
         }
@@ -378,7 +372,6 @@ class AntiCensorshipActivity : BaseActivity(R.layout.activity_anti_censorship) {
             updateRetryStrategy(m)
             disableRetryRadioButtons(m)
             if (shouldShowToast) Utilities.showToastUiCentered(this, getString(R.string.ac_toast_retry_disabled), Toast.LENGTH_LONG)
-            logEvent("Anti-censorship retry strategy changed to $m")
         } else {
             // no-op
         }
@@ -448,7 +441,4 @@ class AntiCensorshipActivity : BaseActivity(R.layout.activity_anti_censorship) {
         }
     }
 
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.UI_TOGGLE, Severity.LOW, "Anti-censorship UI", EventSource.UI, false, details)
-    }
 }

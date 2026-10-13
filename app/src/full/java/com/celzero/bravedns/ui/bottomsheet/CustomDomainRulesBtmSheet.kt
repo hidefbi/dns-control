@@ -20,13 +20,8 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.CustomDomain
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
-import com.celzero.bravedns.database.WgConfigFilesImmutable
 import com.celzero.bravedns.databinding.BottomSheetCustomDomainsBinding
 import com.celzero.bravedns.service.DomainRulesManager
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.Constants.Companion.UID_EVERYBODY
@@ -52,7 +47,6 @@ class CustomDomainRulesBtmSheet :
         { "Binding accessed outside of view lifecycle" }
 
     private val persistentState by inject<PersistentState>()
-    private val eventLogger by inject<EventLogger>()
 
     private lateinit var cd: CustomDomain
 
@@ -252,17 +246,14 @@ class CustomDomainRulesBtmSheet :
 
     private suspend fun whitelist(cd: CustomDomain) {
         DomainRulesManager.trust(cd)
-        logEvent("Whitelisted custom domain rule for ${cd.domain}")
     }
 
     private suspend fun block(cd: CustomDomain) {
         DomainRulesManager.block(cd)
-        logEvent("Blocked custom domain rule for ${cd.domain}")
     }
 
     private suspend fun noRule(cd: CustomDomain) {
         DomainRulesManager.noRule(cd)
-        logEvent("Domain rule for ${cd.domain} is set to no rule")
     }
 
     data class ToggleBtnUi(val txtColor: Int, val bgColor: Int)
@@ -344,7 +335,6 @@ class CustomDomainRulesBtmSheet :
                 requireContext().getString(R.string.cd_toast_deleted),
                 Toast.LENGTH_SHORT
             )
-            logEvent("Deleted custom domain rule for ${cd.domain}")
             dismiss()
         }
 
@@ -352,15 +342,6 @@ class CustomDomainRulesBtmSheet :
             // no-op
         }
         builder.create().show()
-    }
-
-    private fun showWgListBtmSheet(data: List<WgConfigFilesImmutable?>) {
-        Logger.v(LOG_TAG_UI, "$TAG show wg list(${data.size} for ${cd.domain}")
-        val bottomSheetFragment = WireguardListBtmSheet.newInstance(WireguardListBtmSheet.InputType.DOMAIN, cd, data, this)
-        bottomSheetFragment.show(
-            requireActivity().supportFragmentManager,
-            bottomSheetFragment.tag
-        )
     }
 
     private fun io(f: suspend () -> Unit) {
@@ -390,10 +371,6 @@ class CustomDomainRulesBtmSheet :
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         Logger.v(LOG_TAG_UI, "$TAG onDismiss; domain: ${cd.domain}")
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "Custom Domain", EventSource.UI, false, details)
     }
 
 }

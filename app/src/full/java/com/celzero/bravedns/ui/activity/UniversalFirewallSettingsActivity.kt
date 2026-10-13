@@ -26,14 +26,9 @@ import android.provider.Settings
 import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.core.view.WindowInsetsControllerCompat
-import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.ActivityUniversalFirewallSettingsBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.util.BackgroundAccessibilityService
@@ -42,17 +37,12 @@ import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastQ
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
 class UniversalFirewallSettingsActivity :
     BaseActivity(R.layout.activity_universal_firewall_settings) {
     private val b by viewBinding(ActivityUniversalFirewallSettingsBinding::bind)
     private val persistentState by inject<PersistentState>()
-    private val eventLogger by inject<EventLogger>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         theme.applyStyle(Themes.getCurrentTheme(isDarkThemeOn(), persistentState.theme), true)
@@ -94,7 +84,6 @@ class UniversalFirewallSettingsActivity :
     private fun setupClickListeners() {
         b.firewallAllAppsCheck.setOnCheckedChangeListener { _, checked ->
             persistentState.setBlockWhenDeviceLocked(checked)
-            logEvent("Univ firewall device locked mode changed toggled to $checked")
         }
 
         b.firewallAllAppsTxt.setOnClickListener {
@@ -105,7 +94,6 @@ class UniversalFirewallSettingsActivity :
             _: CompoundButton,
             checked: Boolean ->
             persistentState.setBlockUnknownConnections(checked)
-            logEvent("Univ firewall unknown connection mode changed toggled to $checked")
         }
 
         b.firewallUnknownConnectionModeTxt.setOnClickListener {
@@ -117,7 +105,6 @@ class UniversalFirewallSettingsActivity :
             _: CompoundButton,
             checked: Boolean ->
             persistentState.setUdpBlocked(checked)
-            logEvent("Univ firewall UDP connection mode changed toggled to $checked")
         }
 
         b.firewallUdpConnectionModeTxt.setOnClickListener {
@@ -137,7 +124,6 @@ class UniversalFirewallSettingsActivity :
 
         b.firewallDisallowDnsBypassModeCheck.setOnCheckedChangeListener { _, checked ->
             persistentState.setDisallowDnsBypass(checked)
-            logEvent("Univ firewall DNS bypass mode changed toggled to $checked")
         }
 
         b.firewallDisallowDnsBypassModeTxt.setOnClickListener {
@@ -147,7 +133,6 @@ class UniversalFirewallSettingsActivity :
 
         b.firewallBlockNewAppCheck.setOnCheckedChangeListener { _, checked ->
             persistentState.setBlockNewlyInstalledApp(checked)
-            logEvent("Univ firewall new app block mode changed toggled to $checked")
         }
 
         b.firewallBlockNewAppTxt.setOnClickListener {
@@ -160,7 +145,6 @@ class UniversalFirewallSettingsActivity :
 
         b.firewallBlockHttpCheck.setOnCheckedChangeListener { _, checked ->
             persistentState.setBlockHttpConnections(checked)
-            logEvent("Univ firewall HTTP block mode changed toggled to $checked")
         }
 
         b.firewallBlockHttpTxt.setOnClickListener {
@@ -169,7 +153,6 @@ class UniversalFirewallSettingsActivity :
 
         b.firewallBlockMeteredCheck.setOnCheckedChangeListener { _, b ->
             persistentState.setBlockMeteredConnections(b)
-            logEvent("Univ firewall metered connection block mode changed toggled to $b")
         }
 
         b.firewallBlockMeteredTxt.setOnClickListener {
@@ -178,7 +161,6 @@ class UniversalFirewallSettingsActivity :
 
         b.firewallUnivLockdownCheck.setOnCheckedChangeListener { _, b ->
             persistentState.setUniversalLockdown(b)
-            logEvent("Univ firewall universal lockdown mode changed toggled to $b")
         }
 
         b.firewallUnivLockdownTxt.setOnClickListener {
@@ -209,7 +191,6 @@ class UniversalFirewallSettingsActivity :
 
         if (isAccessibilityServiceFunctional) {
             persistentState.setBlockAppWhenBackground(true)
-            logEvent("Univ firewall background mode changed toggled to $isChecked")
             b.firewallBackgroundModeCheck.isChecked = true
             return
         }
@@ -217,7 +198,6 @@ class UniversalFirewallSettingsActivity :
         showPermissionAlert()
         b.firewallBackgroundModeCheck.isChecked = false
         persistentState.setBlockAppWhenBackground(false)
-        logEvent("Univ firewall background mode change to $isChecked failed due to accessibility service not enabled")
     }
 
     override fun onResume() {
@@ -299,15 +279,4 @@ class UniversalFirewallSettingsActivity :
         }
     }
 
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "Univ firewall setting", EventSource.UI, false, details)
-    }
-
-    private fun io(f: suspend () -> Unit): Job {
-        return lifecycleScope.launch(Dispatchers.IO) { f() }
-    }
-
-    private suspend fun uiCtx(f: suspend () -> Unit) {
-        withContext(Dispatchers.Main) { f() }
-    }
 }

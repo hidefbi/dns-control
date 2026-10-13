@@ -32,13 +32,9 @@ import android.view.animation.RotateAnimation
 import android.widget.Toast
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.BottomSheetHomeScreenBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.ui.activity.ProxySettingsActivity
@@ -67,7 +63,6 @@ class HomeScreenSettingBottomSheet : BottomSheetDialogFragment() {
 
     private val appConfig by inject<AppConfig>()
     private val persistentState by inject<PersistentState>()
-    private val eventLogger by inject<EventLogger>()
 
     private lateinit var animation: Animation
 
@@ -226,10 +221,6 @@ class HomeScreenSettingBottomSheet : BottomSheetDialogFragment() {
             if (!b.bsHomeScreenRefreshIcon.isEnabled) return@setOnClickListener
             b.bsHomeScreenRefreshIcon.isEnabled = false
             b.bsHomeScreenRefreshIcon.startAnimation(animation)
-            logEvent(
-                "refresh triggered",
-                "User triggered refresh from home screen btmsht"
-            )
             ui {
                 var success = false
                 try {
@@ -383,10 +374,6 @@ class HomeScreenSettingBottomSheet : BottomSheetDialogFragment() {
                 getString(R.string.dns_explanation_connected)
             }
         }
-    }
-
-    private fun logEvent(msg: String, details: String) {
-        eventLogger.log(EventType.UI_SETTING_CHANGED, Severity.LOW, msg, EventSource.UI, false, details)
     }
 
     private fun ui(f: suspend () -> Unit) {

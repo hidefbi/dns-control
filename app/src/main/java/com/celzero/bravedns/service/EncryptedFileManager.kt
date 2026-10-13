@@ -22,11 +22,7 @@ import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.UserNotAuthenticatedException
 import androidx.security.crypto.EncryptedFile
 import androidx.security.crypto.MasterKey
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import java.io.File
 import java.io.FileNotFoundException
 import java.nio.charset.StandardCharsets
@@ -81,8 +77,6 @@ object EncryptedFileManager : KoinComponent {
     // (see [write] / [writeViaTempFile]).
     private const val TEMP_FILE_SUFFIX = ".write.tmp"
 
-    // Inject EventLogger for critical failure logging
-    private val eventLogger by inject<EventLogger>()
 
     /**
      * Maps raw exceptions to typed EncryptionException with event logging
@@ -143,24 +137,8 @@ object EncryptedFileManager : KoinComponent {
         if (isRecoverable) {
             // Expected during app install/update cycles; log at LOW for traceability,
             // not as an error.
-            eventLogger.log(
-                type = EventType.PROXY_ERROR,
-                severity = Severity.LOW,
-                message = message,
-                source = EventSource.SYSTEM,
-                userAction = false,
-                details = details
-            )
             Logger.w(LOG_TAG, "$message: ${cryptoException.message}")
         } else {
-            eventLogger.log(
-                type = EventType.PROXY_ERROR,
-                severity = Severity.CRITICAL,
-                message = message,
-                source = EventSource.SYSTEM,
-                userAction = false,
-                details = details
-            )
             Logger.e(LOG_TAG, "$message: ${cryptoException.message}")
         }
         return cryptoException

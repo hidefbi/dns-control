@@ -34,14 +34,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.OneWgConfigAdapter.DnsStatusListener
 import com.celzero.bravedns.customdownloader.IpInfoDownloader
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.database.WgConfigFiles
 import com.celzero.bravedns.database.WgConfigFilesImmutable
 import com.celzero.bravedns.databinding.ListItemWgGeneralInterfaceBinding
 import com.celzero.bravedns.net.doh.Transaction
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.ProxyManager
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
 import com.celzero.bravedns.service.VpnController
@@ -67,7 +63,7 @@ import androidx.core.view.isVisible
 import com.celzero.bravedns.service.IpRulesManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-class WgConfigAdapter(private val context: Context, private val listener: DnsStatusListener, private val splitDns: Boolean, private val eventLogger: EventLogger) :
+class WgConfigAdapter(private val context: Context, private val listener: DnsStatusListener, private val splitDns: Boolean) :
     PagingDataAdapter<WgConfigFiles, WgConfigAdapter.WgInterfaceViewHolder>(DIFF_CALLBACK) {
 
     private var lifecycleOwner: LifecycleOwner? = null
@@ -612,7 +608,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
 
             if (WireguardManager.canDisableConfig(cfg)) {
                 WireguardManager.disableConfig(cfg)
-                logEvent("Wireguard disable", "Disabled WireGuard config: ${cfg.name} (id: ${cfg.id})")
             } else {
                 if (cfg.isCatchAll) {
                     uiCtx {
@@ -695,7 +690,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
             }
 
             WireguardManager.enableConfig(cfg)
-            logEvent("Wireguard enable", "Enabled WireGuard config: ${cfg.name} (id: ${cfg.id})")
             uiCtx { listener.onDnsStatusChanged() }
         }
 
@@ -739,16 +733,8 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
         }
     }
 
-    private fun logEvent(msg: String, details: String) {
-        eventLogger.log(EventType.PROXY_SWITCH, Severity.LOW, msg, EventSource.UI, false, details)
-    }
-
     private suspend fun uiCtx(f: suspend () -> Unit) {
         withContext(Dispatchers.Main) { f() }
-    }
-
-    private suspend fun <T> ioCtx(f: suspend () -> T): T {
-        return withContext(Dispatchers.IO) { f() }
     }
 
     private fun io(f: suspend () -> Unit): Job? {

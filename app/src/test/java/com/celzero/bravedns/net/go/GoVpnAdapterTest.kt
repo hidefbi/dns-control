@@ -13,7 +13,6 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.service.BraveVPNService
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.firestack.backend.DNSResolver
 import com.celzero.firestack.backend.DNSTransport
@@ -65,7 +64,6 @@ class GoVpnAdapterTest : KoinTest {
     private lateinit var context: Context
     private lateinit var persistentState: PersistentState
     private lateinit var appConfig: AppConfig
-    private lateinit var eventLogger: EventLogger
 
     @Before
     fun setUp() {
@@ -74,9 +72,7 @@ class GoVpnAdapterTest : KoinTest {
         context = RuntimeEnvironment.getApplication()
         persistentState = mockk(relaxed = true)
         appConfig = mockk(relaxed = true)
-        eventLogger = mockk(relaxed = true)
 
-        every { eventLogger.log(any(), any(), any(), any(), any(), any()) } just Runs
         every { appConfig.getDnsType() } returns AppConfig.DnsType.DOH
         every { persistentState.localBlocklistStamp } returns ""
 
@@ -122,10 +118,6 @@ class GoVpnAdapterTest : KoinTest {
         GoVpnAdapter::class.java.getDeclaredField("appConfig\$delegate").apply {
             isAccessible = true
             set(adapter, lazy { appConfig })
-        }
-        GoVpnAdapter::class.java.getDeclaredField("eventLogger\$delegate").apply {
-            isAccessible = true
-            set(adapter, lazy { eventLogger })
         }
 
         GoVpnAdapter::class.java.getDeclaredField("context").apply {

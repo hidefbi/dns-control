@@ -37,7 +37,6 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.database.AppInfoRepository.Companion.NO_PACKAGE_PREFIX
 import com.celzero.bravedns.receiver.NotificationActionReceiver
 import com.celzero.bravedns.service.DomainRulesManager
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.FirewallManager.NOTIF_CHANNEL_ID_FIREWALL_ALERTS
 import com.celzero.bravedns.service.FirewallManager.TOMBSTONE_EXPIRY_TIME_MS
@@ -71,8 +70,7 @@ import kotlin.random.Random
 class RefreshDatabase
 internal constructor(
     private var ctx: Context,
-    private val persistentState: PersistentState,
-    private val eventLogger: EventLogger
+    private val persistentState: PersistentState
 ) {
 
     companion object {
@@ -183,7 +181,6 @@ internal constructor(
                 }
             }
             if (trackedApps.size != installedApps.size) {
-                logEvent(Severity.LOW, "app refresh", "installed apps: ${installedApps.size}, tracked apps: ${trackedApps.size}, restore? ${action == ACTION_REFRESH_RESTORE}")
             }
             Logger.i(
                 LOG_TAG_APP_DB,
@@ -207,7 +204,6 @@ internal constructor(
             printAll(packagesToDelete, "packagesToDelete")
             printAll(packagesToUpdate, "packagesToUpdate")
 
-            logEvent(Severity.LOW, "app refresh details", "sizes: rmv: ${packagesToDelete.size}; add: ${packagesToAdd.size}; update: ${packagesToUpdate.size}, tombstone: ${packagesToTombstone.size}, action: $action, tombstoneEnabled? $canTombstone")
             Logger.i(
                 LOG_TAG_APP_DB,
                 "sizes: rmv: ${packagesToDelete.size}; add: ${packagesToAdd.size}; update: ${packagesToUpdate.size}, tombstone: ${packagesToTombstone.size}, action: $action, tombstoneEnabled? $canTombstone"
@@ -469,7 +465,6 @@ internal constructor(
                     oldUid
                 }
                 FirewallManager.updateUidAndResetTombstone(oldUid, newUid, pkg)
-                logEvent(Severity.MEDIUM, "tombstone app", "reset tombstone for non-app $pkg, uid: $newUid")
                 Logger.i(LOG_TAG_APP_DB, "insertApp: $uid is tombstoned, but app info is null (non-app)")
                 return
             }
@@ -485,10 +480,8 @@ internal constructor(
         if (ai != null) {
             // uid may be different from the one in ai, if the app is installed in a different user
             insertApp(ai)
-            logEvent(Severity.LOW, "new app installed", "inserted app ${ai.packageName}, uid: ${ai.uid}")
         } else {
             insertUnknownApp(uid)
-            logEvent(Severity.MEDIUM, "new unknown app installed", "inserted unknown app, uid: $uid")
         }
         showNewAppNotificationIfNeeded(FirewallManager.AppInfoTuple(uid, pkg))
     }
@@ -1050,10 +1043,6 @@ internal constructor(
 
     private fun replaceUnderscore(s: String): String {
         return s.replace("_", " ")
-    }
-
-    private suspend fun logEvent(severity: Severity, msg: String, details: String) {
-        eventLogger.log(EventType.APP_REFRESH, severity, msg, EventSource.MANAGER, false, details)
     }
 
     private fun printAll(c: Collection<FirewallManager.AppInfoTuple>, tag: String) {

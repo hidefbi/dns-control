@@ -20,12 +20,7 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.CustomIp
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
-import com.celzero.bravedns.database.WgConfigFilesImmutable
 import com.celzero.bravedns.databinding.BottomSheetCustomIpsBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.IpRulesManager.IpRuleStatus
@@ -56,7 +51,6 @@ class CustomIpRulesBtmSheet :
         { "Binding accessed outside of view lifecycle" }
 
     private val persistentState by inject<PersistentState>()
-    private val eventLogger by inject<EventLogger>()
     private lateinit var ci: CustomIp
 
     private fun isDarkThemeOn(): Boolean {
@@ -298,7 +292,6 @@ class CustomIpRulesBtmSheet :
         val copy = orig.deepCopy()
         // status and modified time will be set in updateRule
         IpRulesManager.updateBypass(copy)
-        logEvent("Set IP ${copy.ipAddress} to bypass universal")
         return copy
     }
 
@@ -306,7 +299,6 @@ class CustomIpRulesBtmSheet :
         Logger.i(LOG_TAG_UI, "$TAG: set ${orig.ipAddress} to bypass app")
         val copy = orig.deepCopy()
         IpRulesManager.updateTrust(copy)
-        logEvent("Set IP ${copy.ipAddress} to trust")
         return copy
     }
 
@@ -314,7 +306,6 @@ class CustomIpRulesBtmSheet :
         Logger.i(LOG_TAG_UI, "$TAG: block ${orig.ipAddress}")
         val copy = orig.deepCopy()
         IpRulesManager.updateBlock(copy)
-        logEvent("Blocked IP ${copy.ipAddress}")
         return copy
     }
 
@@ -322,7 +313,6 @@ class CustomIpRulesBtmSheet :
         Logger.i(LOG_TAG_UI, "$TAG: no rule for ${orig.ipAddress}")
         val copy = orig.deepCopy()
         IpRulesManager.updateNoRule(copy)
-        logEvent("Set no rule for IP ${copy.ipAddress}")
         return copy
     }
 
@@ -381,14 +371,6 @@ class CustomIpRulesBtmSheet :
         }
     }
 
-    private fun showWgListBtmSheet(data: List<WgConfigFilesImmutable?>) {
-        val bottomSheetFragment = WireguardListBtmSheet.newInstance(WireguardListBtmSheet.InputType.IP, ci, data, this)
-        bottomSheetFragment.show(
-            requireActivity().supportFragmentManager,
-            bottomSheetFragment.tag
-        )
-    }
-
     private fun showDialogForDelete() {
         val builder = MaterialAlertDialogBuilder(requireContext(), R.style.App_Dialog_NoDim)
         builder.setTitle(R.string.univ_firewall_dialog_title)
@@ -402,7 +384,6 @@ class CustomIpRulesBtmSheet :
                 Toast.LENGTH_SHORT
             )
             dismiss()
-            logEvent("Deleted custom IP rule for ${ci.ipAddress}")
         }
 
         builder.setNegativeButton(requireContext().getString(R.string.lbl_cancel)) { _, _ ->
@@ -429,10 +410,6 @@ class CustomIpRulesBtmSheet :
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
         Logger.v(LOG_TAG_UI, "$TAG: onDismiss; ip: ${ci.ipAddress}")
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "Custom IP", EventSource.UI, false, details)
     }
 
     private fun io(f: suspend () -> Unit) {

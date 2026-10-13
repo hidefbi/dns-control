@@ -25,7 +25,6 @@ import com.celzero.bravedns.adapter.OneWgConfigAdapter.DnsStatusListener
 import com.celzero.bravedns.database.WgConfigFiles
 import com.celzero.bravedns.database.WgHopMap
 import com.celzero.bravedns.net.doh.Transaction
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.ProxyManager
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
 import com.celzero.bravedns.service.VpnController
@@ -95,7 +94,6 @@ class WgConfigAdapterTest : KoinTest {
     @MockK private lateinit var mockWgInterface: WgInterface
 
     @MockK
-    private lateinit var eventLogger: EventLogger
 
     @Before
     fun setup() {
@@ -135,7 +133,6 @@ class WgConfigAdapterTest : KoinTest {
         // Setup UIUtils mock
         every { UIUtils.getProxyStatusStringRes(any()) } returns android.R.string.ok
         every { UIUtils.fetchColor(any(), any()) } returns 0xFF000000.toInt()
-        every { eventLogger.log(any(), any(), any(), any()) } just Runs
 
         // Setup lifecycle mocks
         every { mockLifecycleOwner.lifecycle } returns mockLifecycle
@@ -162,8 +159,8 @@ class WgConfigAdapterTest : KoinTest {
         every { mockViewHolder.cancelJobIfAny() } just Runs
 
         // Create real adapters for integration tests
-        realAdapter = WgConfigAdapter(context, mockDnsStatusListener, false, eventLogger)
-        realOneWgAdapter = OneWgConfigAdapter(context, mockDnsStatusListener, eventLogger)
+        realAdapter = WgConfigAdapter(context, mockDnsStatusListener, false)
+        realOneWgAdapter = OneWgConfigAdapter(context, mockDnsStatusListener)
     }
 
     @After

@@ -22,8 +22,7 @@ import org.koin.dsl.module
 object ServiceModule {
     private val serviceModules = module {
         single { PersistentState(androidContext()) }
-        single { EventLogger() }
-        single { RefreshDatabase(androidContext(), get(), get()) }
+        single { RefreshDatabase(androidContext(), get()) }
     }
 
     val modules = listOf(serviceModules)

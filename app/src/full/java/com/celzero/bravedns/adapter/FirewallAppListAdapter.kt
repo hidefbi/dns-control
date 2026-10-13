@@ -35,11 +35,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.AppInfo
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.ListItemFirewallAppBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.FirewallManager.updateFirewallStatus
 import com.celzero.bravedns.service.ProxyManager
@@ -57,8 +53,7 @@ import java.util.concurrent.TimeUnit
 
 class FirewallAppListAdapter(
     private val context: Context,
-    private val lifecycleOwner: LifecycleOwner,
-    private val eventLogger: EventLogger
+    private val lifecycleOwner: LifecycleOwner
 ) : PagingDataAdapter<AppInfo, FirewallAppListAdapter.AppListViewHolder>(DIFF_CALLBACK), SectionedAdapter {
 
     private val packageManager: PackageManager = context.packageManager
@@ -368,7 +363,6 @@ class FirewallAppListAdapter(
                         FirewallManager.ConnectionStatus.METERED)
                 }
             }
-            logEvent("UID: ${appInfo.uid}, App: ${appInfo.appName}, New FW status: ${FirewallManager.connectionStatus(appInfo.uid)}")
         }
 
         private suspend fun toggleWifi(
@@ -401,7 +395,6 @@ class FirewallAppListAdapter(
                         FirewallManager.ConnectionStatus.UNMETERED)
                 }
             }
-            logEvent("UID: ${appInfo.uid}, App: ${appInfo.appName}, New FW status: ${FirewallManager.connectionStatus(appInfo.uid)}")
         }
 
         private fun openAppDetailActivity(uid: Int) {
@@ -462,10 +455,6 @@ class FirewallAppListAdapter(
         Utilities.delay(delay, lifecycleOwner.lifecycleScope) {
             for (v in views) v.isEnabled = true
         }
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "App list, rule change", EventSource.UI, false, details)
     }
 
     private suspend fun uiCtx(f: suspend () -> Unit) {

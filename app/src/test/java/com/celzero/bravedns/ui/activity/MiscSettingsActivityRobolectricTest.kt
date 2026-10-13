@@ -26,7 +26,6 @@ import androidx.test.core.app.ApplicationProvider
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.RefreshDatabase
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.NotificationActionType
 import io.mockk.Runs
@@ -86,7 +85,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
     private lateinit var mockPersistentState: PersistentState
     private lateinit var mockAppConfig: AppConfig
     private lateinit var mockRdb: RefreshDatabase
-    private lateinit var mockEventLogger: EventLogger
 
     private val testDispatcher = UnconfinedTestDispatcher()
 
@@ -101,7 +99,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         mockPersistentState = mockk(relaxed = true)
         mockAppConfig       = mockk(relaxed = true)
         mockRdb             = mockk(relaxed = true)
-        mockEventLogger     = mockk(relaxed = true)
 
         // Provide just enough stubs so initView() succeeds without crashes
         every { mockPersistentState.theme }                         returns 0
@@ -126,7 +123,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
                 single<PersistentState> { mockPersistentState }
                 single<AppConfig>       { mockAppConfig }
                 single<RefreshDatabase> { mockRdb }
-                single<EventLogger>     { mockEventLogger }
             })
         }
 
@@ -233,7 +229,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         assertNotNull(GlobalContext.get().get<PersistentState>())
         assertNotNull(GlobalContext.get().get<AppConfig>())
         assertNotNull(GlobalContext.get().get<RefreshDatabase>())
-        assertNotNull(GlobalContext.get().get<EventLogger>())
     }
 
     // =====================================================================================

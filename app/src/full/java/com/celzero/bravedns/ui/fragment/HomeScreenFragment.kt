@@ -48,13 +48,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.AppInfo
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.FragmentHomeScreenBinding
 import com.celzero.bravedns.net.doh.Transaction
 import com.celzero.bravedns.service.DomainRulesManager
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.PersistentState
@@ -113,7 +109,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
     private val persistentState by inject<PersistentState>()
     private val appConfig by inject<AppConfig>()
-    private val eventLogger by inject<EventLogger>()
 
     private var isVpnActivated: Boolean = false
 
@@ -255,31 +250,16 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         b.fhsCardFirewallLl.setOnClickListener {
             Logger.v(LOG_TAG_UI, "$TAG: click event on firewall card")
             startFirewallActivity(FirewallActivity.Tabs.UNIVERSAL.screen)
-            logEvent(
-                EventType.UI_NAVIGATION,
-                "HomeScreen: Firewall card clicked",
-                "Navigating to FirewallActivity from HomeScreenFragment"
-            )
         }
 
         b.fhsCardAppsCv.setOnClickListener {
             Logger.v(LOG_TAG_UI, "$TAG: click event on apps card")
             startAppsActivity()
-            logEvent(
-                EventType.UI_NAVIGATION,
-                "HomeScreen: Apps card clicked",
-                "Navigating to AppListActivity from HomeScreenFragment"
-            )
         }
 
         b.fhsCardDnsLl.setOnClickListener {
             Logger.v(LOG_TAG_UI, "$TAG: click event on dns card")
             startDnsActivity(DnsDetailActivity.Tabs.CONFIGURE.screen)
-            logEvent(
-                EventType.UI_NAVIGATION,
-                "HomeScreen: DNS card clicked",
-                "Navigating to DnsDetailActivity from HomeScreenFragment"
-            )
         }
 
         b.homeFragmentBottomSheetIcon.setOnClickListener {
@@ -289,21 +269,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             delay(TimeUnit.MILLISECONDS.toMillis(UI_DELAY_MS), lifecycleScope) {
                 b.homeFragmentBottomSheetIcon.isEnabled = true
             }
-            logEvent(
-                EventType.UI_NAVIGATION,
-                "HomeScreen: Bottom sheet icon clicked",
-                "Opening HomeScreen settings bottom sheet from HomeScreenFragment"
-            )
         }
 
         b.homeFragmentPauseIcon.setOnClickListener {
             Logger.v(LOG_TAG_UI, "$TAG: click event on pause icon")
             handlePause()
-            logEvent(
-                EventType.UI_NAVIGATION,
-                "HomeScreen: Pause icon clicked",
-                "Opening PauseActivity from HomeScreenFragment"
-            )
         }
 
         b.fhsDnsOnOffBtn.setOnClickListener {
@@ -314,11 +284,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                     b.homeFragmentBottomSheetIcon.isEnabled = true
                 }
             }
-            logEvent(
-                EventType.UI_TOGGLE,
-                "HomeScreen: Main DNS On/Off button clicked",
-                "Toggling VPN state from HomeScreenFragment"
-            )
         }
 
         appConfig.getBraveModeObservable().observe(viewLifecycleOwner) {
@@ -334,11 +299,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             } else {
                 startActivity(ScreenType.PROXY)
             }
-            logEvent(
-                EventType.UI_NAVIGATION,
-                "HomeScreen: Proxy card clicked",
-                "Navigating to wg: ${appConfig.isWireGuardEnabled()}  from HomeScreenFragment"
-            )
         }
 
         b.fhsCardAppsTv.setOnClickListener {
@@ -357,12 +317,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             startActivity(intent)
         } else {
             // no-op
-        }
-    }
-
-    private fun logEvent(type: EventType, msg: String, details: String) {
-        io {
-            eventLogger.log(type, Severity.LOW, msg, EventSource.UI, true, details)
         }
     }
 
@@ -1980,10 +1934,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
     private suspend fun uiCtx(f: suspend () -> Unit) {
         withContext(Dispatchers.Main) { f() }
-    }
-
-    private suspend fun ioCtx(f: suspend () -> Unit) {
-        withContext(Dispatchers.IO) { f() }
     }
 
     private fun ui(n: String, f: suspend () -> Unit): Job {

@@ -361,14 +361,6 @@
     <color name="primaryTextBG">#FDFDFD</color>
     <color name="primaryLightColorTextBG">#BFFDFDFD</color>
 
-    <!-- Event Severity Colors -->
-    <!-- Green -->
-    <!-- Yellow/Amber -->
-    <!-- Orange -->
-    <!-- Red -->
-
-    <!-- Subscription Status Colors -->
-
     <!-- Guided Tour: overlay scrim (semi-transparent dark/light) -->
     <!-- Dark themes: near-black with 82% opacity -->
     <color name="tourOverlayDark">#D1000000</color>

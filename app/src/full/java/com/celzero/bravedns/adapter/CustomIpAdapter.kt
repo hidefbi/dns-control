@@ -37,13 +37,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.CustomIp
-import com.celzero.bravedns.database.EventSource
-import com.celzero.bravedns.database.EventType
-import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.databinding.DialogAddCustomIpBinding
 import com.celzero.bravedns.databinding.ListItemCustomAllIpBinding
 import com.celzero.bravedns.databinding.ListItemCustomIpBinding
-import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.ui.activity.CustomRulesActivity
@@ -62,7 +58,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class CustomIpAdapter(private val context: Context, private val type: CustomRulesActivity.RULES, private val eventLogger: EventLogger) :
+class CustomIpAdapter(private val context: Context, private val type: CustomRulesActivity.RULES) :
     PagingDataAdapter<CustomIp, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
 
     private val selectedItems = mutableSetOf<CustomIp>()
@@ -645,11 +641,6 @@ class CustomIpAdapter(private val context: Context, private val type: CustomRule
         if (ipString == null) return // invalid ip (ui error shown already)
 
         io { IpRulesManager.replaceIpRule(prev, ipString, port, status, "", "") }
-        logEvent("Updated Custom IP rule: Prev[$prev], New[IP: $ipString, Port: ${port ?: "0"}, Status: $status]")
-    }
-
-    private fun logEvent(details: String) {
-        eventLogger.log(EventType.FW_RULE_MODIFIED, Severity.LOW, "Custom IP", EventSource.UI, false, details)
     }
 
     private suspend fun ioCtx(f: suspend () -> Unit) {
