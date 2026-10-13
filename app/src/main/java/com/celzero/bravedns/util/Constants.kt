@@ -218,7 +218,6 @@ class Constants {
         const val UNSPECIFIED_PORT = 0
 
         // Invalid port number
-        const val INVALID_PORT = -1
 
         // intent for settings->vpn screen
         const val ACTION_VPN_SETTINGS_INTENT = "android.net.vpn.SETTINGS"

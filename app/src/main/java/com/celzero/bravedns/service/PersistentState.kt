@@ -25,7 +25,6 @@ import com.celzero.bravedns.ui.activity.AntiCensorshipActivity
 import com.celzero.bravedns.data.BlockFreeDnsMode
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.Constants.Companion.INIT_TIME_MS
-import com.celzero.bravedns.util.Constants.Companion.INVALID_PORT
 import com.celzero.bravedns.util.FirebaseErrorReporting
 import com.celzero.bravedns.util.InternetProtocol
 import com.celzero.bravedns.util.ResourceRecordTypes
@@ -99,9 +98,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
 
         const val GO_MAX_MEMORY = "go_max_memory"
 
-        // SAF tree URI (content://...) of the directory chosen by the user to store
-        // memory-profile heap dumps. Empty when the user hasn't picked a location yet.
-        const val MEMORY_PROFILE_DIR_URI = "memory_profile_dir_uri"
     }
 
     // when vpn is started by the user, this is set to true; set to false when user stops
@@ -149,16 +145,8 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // the version (which is a unix timestamp) of the current on-device blocklist files
     var localBlocklistTimestamp by longPref("local_block_list_downloaded_time").withDefault<Long>(0)
 
-    // user set http proxy port
-    var httpProxyPort by intPref("http_proxy_port").withDefault<Int>(INVALID_PORT)
 
-    // user set http proxy ip / hostname
-    var httpProxyHostAddress by
-        stringPref("http_proxy_ipaddress").withDefault<String>("http://127.0.0.1:8118")
 
-    // whether apps subject to the RethinkDNS VPN tunnel can bypass the tunnel on-demand
-    // default: false
-    var allowBypass by booleanPref("allow_bypass").withDefault<Boolean>(false)
 
     // user set among AppConfig.DnsType enum
     // was RETHINK_REMOTE (Rethink-DoH, author preset) by default; since all preset DNS
@@ -382,9 +370,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // 0 - auto, 1 - relaxed, 2 - aggressive, 3 - fixed
     var vpnBuilderPolicy by intPref("tun_network_handling_policy").withDefault<Int>(0)
 
-    // Block-free DNS: stored as "TYPE::url" e.g. "DOH::https://dns.google/dns-query"
-    // Empty string means no block-free DNS configured
-    var blockFreeDns by stringPref("block_free_dns").withDefault<String>("")
 
     // DNS bypass mode for block-free DNS: 1=fallback, 2=global, 3=auto
     // Default is FALLBACK on Android < 11 (API < 30), AUTO on Android 11+
@@ -402,13 +387,7 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     var firebaseUserToken by stringPref("firebase_user_token").withDefault("")
     var firebaseUserTokenTimestamp by longPref("firebase_user_token_timestamp").withDefault(0L)
 
-    // Name of the last tombstone file that was successfully reported to Firebase Crashlytics.
-    // Used on app restart to skip files already uploaded and to decide which files to delete.
-    var lastReportedTombstoneFile by stringPref("last_reported_tombstone_file").withDefault("")
 
-    // Persisted SAF tree URI of the directory where memory-profile heap dumps are written.
-    // Empty string means the user has not yet chosen a location.
-    var memoryProfileDirUri by stringPref(MEMORY_PROFILE_DIR_URI).withDefault("")
 
     // experimental feature to use max mtu
     var useMaxMtu by booleanPref("use_max_mtu").withDefault<Boolean>(false)
@@ -426,7 +405,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     var wireguardPlainFileMigrationDone by booleanPref("wg_plain_file_migration_done").withDefault<Boolean>(false)
 
 
-    var appTestMode by booleanPref("app_test_mode").withDefault<Boolean>(false)
 
     // -1 = no override; any other value is a ProtoTranslationMode.id to force in DEBUG mode
     var advSettingForcePTModeId by intPref("adv_setting_force_pt_mode_id").withDefault<Int>(-1)
@@ -696,8 +674,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
 
 
 
-    // timestamp of the last successful /g/device registration call.
-    var deviceRegistrationTimestamp by longPref("device_registration_timestamp").withDefault<Long>(0L)
 
     // whether the guided tour has been completed; false = show the tour
     var guidedTourCompleted by booleanPref("guided_tour_completed").withDefault<Boolean>(false)
