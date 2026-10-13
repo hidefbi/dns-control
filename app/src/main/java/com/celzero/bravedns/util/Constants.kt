@@ -106,8 +106,6 @@ class Constants {
         // url to download the rethinkdns apk file
 
         // base-url for rethinkdns
-        const val RETHINK_BASE_URL_SKY = "https://sky.rethinkdns.com/"
-        const val RETHINK_BASE_URL_MAX = "https://max.rethinkdns.com/"
 
         // rethinkdns sponsor link
 
@@ -235,7 +233,6 @@ class Constants {
         const val PKG_NAME_PLAY_STORE = "com.android.vending"
 
         // max endpoint
-        const val MAX_ENDPOINT = "max"
 
         // The UID used to be generic uid used to block IP addresses which are intended to
         // block for all the applications.
@@ -254,10 +251,7 @@ class Constants {
             val type: String
         )
 
-        const val BLOCK_FREE_DNS_MAX = "https://max.rethinkdns.com/dns-query"
-        const val BLOCK_FREE_DNS_SKY = "https://sky.rethinkdns.com/dns-query"
 
-        const val BLOCK_FREE_DNS_ZERO = "https://zero.rethinkdns.com/dns-query"
 
         // all preset dns entries removed per user request — this list intentionally left
         // empty so the "quick pick" screen shows nothing but the custom-DNS entry option.
