@@ -33,11 +33,6 @@
     <string name="dns_crypt_custom_url_remove_dialog_title">¿Borrar el servidor de resoluciones DNSCrypt?</string>
     <string name="dns_crypt_relay_remove_dialog_message">Borra el repetidor DNSCrypt de la configuración guardada.</string>
     <string name="refresh_complete"><!-- use dc_refresh_toast --> Resincronización de la lista de aplicaciones completada.</string>
-    <string name="download_update_dialog_title">¡Nueva actualización!</string>
-    <string name="download_update_dialog_trylater_title">No se puede actualizar ahora</string>
-    <string name="download_update_dialog_failure_title">¡Se ha producido un problema!</string>
-    <string name="download_update_dialog_message_ok_title">¡Al día!</string>
-    <string name="download_update_dialog_message_ok">Ya está en la última versión.</string>
     <string name="download_update_dialog_message_success">Descarga exitosa de la lista de bloqueo.</string>
     <string name="search_firewall_all_apps"><font size="12">Buscar aplicaciones por UID, nombre</font></string>
     <string name="app_mode_dns_firewall">DNS y Cortafuegos (por defecto)</string>
@@ -141,8 +136,6 @@
     <string name="ctbs_app_info_not_available_toast">No se encontró la página de configuración de la aplicación</string>
     <string name="ctbs_block_other_apps">Las normas aplicadas para %1$s también serán aplicables para %2$s u otras aplicaciones</string>
     <string name="ctbs_dialog_negative_btn">Atrás</string>
-    <string name="hs_download_positive_default">aceptar</string>
-    <string name="hs_download_negative_default">Recordarme más tarde</string>
     <string name="univ_firewall_rule_7">Bloqueo de IPv4 en IPv6 (en pruebas)</string>
     <string name="univ_firewall_rule_3">Bloquear cuando la aplicación de origen es desconocida</string>
     <string name="univ_firewall_rule_4">Bloquear UDP excepto DNS y NTP</string>
@@ -189,8 +182,6 @@
     <string name="system_dns_connection_failure">No se puede determinar el servidor DNS actual</string>
     <string name="settings_local_blocklist_version">Versión: %1$s</string>
     <string name="copy_clipboard_label">URL</string>
-    <string name="update_complete_snack_message">Nueva versión descargada.</string>
-    <string name="update_complete_action_snack">REINICIAR</string>
     <string name="settings_local_blocklist_in_use">%1$s listas de bloqueo en uso</string>
     <string name="settings_local_blocklist_dialog_positive">Descargar</string>
     <string name="accessibility_notification_content">El servicio de accesibilidad de DNS Control se ha detenido o ha fallado. Ya no bloquea las aplicaciones en segundo plano. Pulse para volver a activarlo.</string>
@@ -310,7 +301,6 @@
     <string name="configure_dns_connected_doh_status">DNS sobre HTTPS</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="http_proxy_dialog_heading">Establecer CONEXIÓN proxy HTTP(S)</string>
-    <string name="download_update_dialog_trylater_message">La actualización no puede ejecutarse en este momento, por favor inténtelo de nuevo más tarde.</string>
     <string name="blocklist_update_check_failure">Algo ha ido mal. ¡Vuelve a intentarlo de nuevo!</string>
     <string name="search_custom_domains"><font size="12">Buscar nombres de dominio</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">Buscar en las listas de bloqueo</font></string>
@@ -463,7 +453,6 @@
     <string name="settings_proxy_header">Proxy</string>
     <string name="orbot">Orbot</string>
     <string name="settings_autostart_bootup_heading">Arranque automático al encender (en pruebas)</string>
-    <string name="settings_check_update_heading">Buscar actualizaciones de la aplicación</string>
     <string name="settings_custom_downloader_heading">Utilizar el descargador de la aplicación</string>
     <string name="next">Siguiente</string>
     <string name="orbot_http_desc">Establece un túnel de CONEXIÓN HTTP con Orbot.</string>
@@ -489,7 +478,6 @@
     <string name="orbot_install_dialog_message">Orbot lleva las características y funcionalidades de Tor a Android.</string>
     <string name="orbot_install_dialog_neutral">sitio web</string>
     <string name="settings_autostart_bootup_desc">Al encender el dispositivo, se iniciará DNS Control si se estaba ejecutando antes de apagarlo.</string>
-    <string name="settings_check_update_desc">Comprueba automáticamente las actualizaciones de la aplicación una vez a la semana.</string>
     <string name="settings_https_desc">Reenvía las conexiones al punto final de la CONEXIÓN HTTP(S).</string>
     <string name="status_dns_error">error de dns</string>
     <string name="settings_socks5_disabled_error">Conectado a %1$s. Apágalo para continuar.</string>
@@ -545,8 +533,6 @@
     <string name="local_blocklist_download">Descargar las listas de bloqueo</string>
     <string name="local_blocklist_download_desc">¿Quiere descargar las listas de bloqueo (unos 60 MB) para utilizar esta función?</string>
     <string name="dns_proxy_remove_dialog_message">Borra el Proxy DNS de la configuración guardada.</string>
-    <string name="download_update_dialog_message">Una nueva versión de la aplicación está disponible para su descarga en el sitio web. ¿Quiere continuar?</string>
-    <string name="download_update_dialog_failure_message">O bien nuestros servidores están caídos o no se ha podido establecer la conexión. Por favor, inténtelo de nuevo mas tarde.</string>
     <string name="fapps_info_dialog_message">Bloquea las aplicaciones para que no se conecten a Internet. Limitando el acceso a Internet se evita el uso de datos injustificado y se ahorra batería.</string>
     <string name="firewall_rule_device_lock_desc"><![CDATA[Esta conexión fue bloqueada porque el <i>dispositivo estaba bloqueado</i> en ese momento.<br><br> Para cambiar este comportamiento, ve a la pestaña <i>Global</i>.]]></string>
     <string name="firewall_rule_bypass_universal_ip_desc"><![CDATA[Esta conexión se ha permitido porque la <i>IP destino</i> está configurada para omitir todas las reglas globales del cortafuegos.<br/><br/> Para modificarla, ve a <i>Reglas IP</i> en la pestaña <i>Global</i>.]]></string>

@@ -72,7 +72,6 @@
     <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Подключен к RethinkDNS и брандмауэру</string>
     <string name="universal_firewall_explanation">Применяйте правила брандмауэра для всех приложений на основе событий устройства, например, применяйте брандмауэр, когда устройство заблокировано или когда определенное приложение не используется.</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
-    <string name="download_update_dialog_message_ok_title">Актуально!</string>
     <string name="orbot_download_link_website" translatable="false">https://github.com/guardianproject/orbot/releases</string>
     <string name="settings_proxy_header">прокси</string>
     <string name="settings_dns_proxy_dialog_username">Имя пользователя</string>
@@ -100,7 +99,6 @@
     <string name="hsf_vpn_dialog_header">Внимание!</string>
     <string name="cd_dns_crypt_name_default">DNSCrypt</string>
     <string name="cd_dns_crypt_dialog_name">Имя</string>
-    <string name="hs_download_positive_default">ok</string>
     <string name="notif_dialog_pause_dialog_neutral">Показать</string>
     <string name="build__flavor_fdroid">fdroid</string>
     <string name="ci_delete">удалить</string>
@@ -166,22 +164,15 @@
     <string name="firewall_rules">Сетевые правила</string>
     <string name="cd_custom_dns_proxy_default_app">Ничего</string>
     <string name="dns_info_positive">Ok</string>
-    <string name="download_update_dialog_title">Новое обновление!</string>
-    <string name="download_update_dialog_trylater_title">Не могу обновить сейчас</string>
-    <string name="download_update_dialog_trylater_message">Обновление не может быть выполнено прямо сейчас, повторите попытку позже.</string>
     <string name="search_rethinkplus_file_tag"><font size="12">Поиск списков блокировки</font></string>
     <string name="app_mode_dns_firewall">DNS и брандмауэр (по умолчанию)</string>
     <string name="download_update_dialog_message_success">Список блокировки успешно загружен.</string>
     <string name="info_dialog_copy_toast_msg">IP-адрес скопирован.</string>
     <string name="info_dialog_url_copy_toast_msg">URL скопирован</string>
-    <string name="download_update_dialog_failure_message">Либо наши серверы не работают, либо не удалось установить соединение. Пожалуйста, повторите попытку через некоторое время.</string>
-    <string name="download_update_dialog_failure_title">Что-то пошло не так!</string>
     <string name="search_universal_ips"><font size="12">Поиск IP</font></string>
-    <string name="download_update_dialog_message">Новая версия приложения доступна для загрузки с сайта. Вы хотите продолжить?</string>
     <string name="search_custom_domains"><font size="12">Поиск доменных имен</font></string>
     <string name="configure_dns_connected_doh_status">DNS через HTTPS</string>
     <string name="configure_dns_connected_dns_proxy_status">DNS-прокси</string>
-    <string name="download_update_dialog_message_ok">Вы уже используете последнюю версию.</string>
     <string name="http_proxy_dialog_heading">Установить HTTP(S) CONNECT прокси</string>
     <string name="app_mode_dns_low_battery">DNS (экономия заряда батареи)</string>
     <string name="search_firewall_all_apps"><font size="12">Поиск приложений по uid, имени</font></string>
@@ -198,11 +189,9 @@
     <string name="fapps_firewall_filter_desc_category"><![CDATA[Показаны <u>%1$s</u> %2$s приложений в категориях: %3$s]]></string>
     <string name="dns_proxy_connection_failure">Ошибка подключения к DNS Proxy серверу.</string>
     <string name="system_dns_connection_failure">Невозможно определить текущий DNS-сервер</string>
-    <string name="update_complete_snack_message">Загружена новая версия.</string>
     <string name="settings_local_blocklist_version">Версия: %1$s</string>
     <string name="accessibility_failure_toast">Служба доступности DNS Control остановилась или завершилась сбоем. Блокировка фоновых приложений больше не выполняется.</string>
     <string name="pause_text">пауза</string>
-    <string name="update_complete_action_snack">ПЕРЕЗАПУСТИТЬ</string>
     <string name="accessibility_notification_content">Служба доступности DNS Control остановилась или завершилась сбоем. Блокировка фоновых приложений больше не выполняется. Нажмите для повторного включения.</string>
     <string name="pause_desc">Примечание: %1$s заблокированные приложения будут продолжать блокироваться.</string>
     <string name="firewall_rule_block_ip">IP / Порт</string>
@@ -430,7 +419,6 @@
     <string name="app_info_error">Не удалось запустить приложение Информация.</string>
     <string name="vpn_profile_error">Не удалось запустить профиль VPN.</string>
     <string name="intent_launch_error">Граф не запускается %1$s</string>
-    <string name="hs_download_negative_default">Напомнить позже</string>
     <string name="univ_firewall_rule_1">Блокировка всех приложений при блокировке устройства</string>
     <string name="univ_firewall_rule_4">Блокировать UDP, кроме DNS и NTP</string>
     <string name="univ_firewall_rule_5">Блокировать при обходе DNS</string>
@@ -495,7 +483,6 @@
     <string name="orbot_install_dialog_message">Orbot переносит возможности и функциональность Tor на Android.</string>
     <string name="orbot_bs_status_trying_connect">Настройка Orbot…</string>
     <string name="settings_socks5_disabled_error">Подключен к %1$s. Выключите его, чтобы продолжить.</string>
-    <string name="settings_check_update_desc">Автоматически проверять наличие обновлений приложения раз в неделю.</string>
     <string name="settings_orbot_heading">Настройка Orbot</string>
     <string name="settings_autostart_bootup_heading">Автозапуск приложения при включении устройства (экспериментально)</string>
     <string name="orbot_none_desc">Ничего из вышеперечисленного.</string>
@@ -520,7 +507,6 @@
     <string name="settings_https_heading">Настройка HTTP(S) CONNECTпрокси</string>
     <string name="orbot_http">HTTP-прокси</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
-    <string name="settings_check_update_heading">Проверять наличие обновлений</string>
     <string name="orbot_install_dialog_title">Установить Orbot?</string>
     <string name="settings_socks5_vpn_disabled_error">Запустите DNS Control, чтобы продолжить работу.</string>
     <string name="settings_orbot_notification_content">Сбой при запуске Tor-as-a-Proxy. Откройте приложение Orbot, чтобы запустить его вручную.</string>

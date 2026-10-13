@@ -126,8 +126,6 @@
     <string name="private_dns_dialog_positive" translatable="true">Mergi la Setări</string>
     <string name="dns_act_configure_tab" translatable="true">Configureaza</string>
     <string name="configure_dns_connected_doh_status" translatable="true">DNS peste HTTPS</string>
-    <string name="download_update_dialog_title" translatable="true">Actualizare nouă!</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Ceva n-a mers bine!</string>
     <string name="app_mode_firewall" translatable="true">Firewall</string>
     <string name="settings_proxy_header" translatable="true">Proxy</string>
     <string name="orbot" translatable="true">Orbot</string>
@@ -136,7 +134,6 @@
     <string name="orbot_install_dialog_title" translatable="true">Instalezi Orbot?</string>
     <string name="orbot_install_dialog_neutral" translatable="true">website</string>
     <string name="settings_general_customize" translatable="true">Personalizare</string>
-    <string name="settings_check_update_heading" translatable="true">Caută actualizări</string>
     <string name="settings_theme_heading" translatable="true">Aspect</string>
     <string name="settings_dns_proxy_dialog_hostname" translatable="true">Nume gazdă</string>
     <string name="settings_app_list_default_app" translatable="true">Nici una</string>
@@ -198,7 +195,6 @@
     <string name="always_on_dialog" translatable="true">\"VPN Permanent\" este activat pe acest dispozitiv. Pentru a porni DNS Control, mergi la setările aplicației și dezactivează \"VPN Permanent\".</string>
     <string name="always_on_dialog_stop_heading" translatable="true">VPN Permanent</string>
     <string name="firewall_act_universal_tab" translatable="true">Universal</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Nu se poate actualiza acum, încearcă din nou mai târziu.</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Caută aplicații după uid, nume</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">Caută IP-uri</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Caută nume de domeniu</font></string>
@@ -237,12 +233,7 @@
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS Proxy</string>
     <string name="http_proxy_dialog_heading" translatable="true">Alege HTTP(S) CONNECT Proxy</string>
     <string name="http_proxy_dialog_desc" translatable="true">Setează URL de forma &lt;protocol&gt;://&lt;username&gt;:&lt;password&gt;@&lt;domain-or-ip&gt;:&lt;port&gt;&lt;path&gt;. Examplu: http://proxy.example.com:8080/</string>
-    <string name="download_update_dialog_message" translatable="true">O noua versiune a aplicației este disponibilă pentru descărcare de pe website. Începi descărcarea?</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Actualizat!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Ai deja ultima versiune.</string>
     <string name="download_update_dialog_message_success" translatable="true">Lista de blocat a fost descărcată cu succes.</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Serverele noastre sunt nefuncționale sau conexiunea nu a fost realizată. Încearcă din nou mai târziu.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Nu se poate actualiza acum</string>
     <string name="settings_ip_network_heading" translatable="true">Alege versiunea IP</string>
     <string name="settings_ip_network_desc" translatable="true">Alege o versiune de Internet Protocol.</string>
     <string name="settings_connectivity_checks" translatable="true">Execută verificări de conectivitate</string>
@@ -300,7 +291,6 @@
     <string name="orbot_explanation" translatable="true">Orbot este o aplicație proxy gratuită care permite altor aplicații să folosească internetul mult mai &lt;u&gt;sigur&lt;/u&gt;.\nOrbot folosește &lt;u&gt;Tor&lt;/u&gt; pentru a cripta traficul tău de internet și astfel te ajută să &lt;u&gt;ocolești cenzura&lt;/u&gt; și să eviți diferitele forme de &lt;u&gt;supraveghere în rețea&lt;/u&gt; care pun în pericol libertatea și intimitatea personală\n&lt;u&gt;TCP Proxy&lt;/u&gt;: DNS Control direcționează numai conexiunile TCP ale aplicațiilor &lt;i&gt;adăugate&lt;/i&gt; la Orbot.\n&lt;u&gt;HTTP Proxy&lt;/u&gt;: DNS Control &lt;i&gt;instalează&lt;/i&gt; tunelul HTTP CONNECT la Orbot și direcționează numai conexiunile TCP ale aplicațiilor &lt;i&gt;adăugate&lt;/i&gt;.</string>
     <string name="settings_network_all_networks" translatable="true">Folosește toate rețelele disponibile (experimental)</string>
     <string name="settings_network_all_networks_desc" translatable="true">Când este activat, DNS Control folosește toate rețelele disponibile pentru conectarea la internet. Dacă nu, folosește orice rețea indicată ca <i>activă</i> de Android.</string>
-    <string name="settings_check_update_desc" translatable="true">Verifică automat pentru actualizări săptămânal.</string>
     <string name="settings_custom_downloader_heading" translatable="true">Folosește downloader-ul aplicației</string>
     <string name="settings_custom_downloader_desc" translatable="true">Dacă e dezactivat, se folosește <i>Download Manager</i> al Android</string>
     <string name="settings_import_export_desc" translatable="true">Efectuează manual copie de rezervă sau restaurare a setărilor și datelor din aplicații.</string>
@@ -425,8 +415,6 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s alte aplicații</string>
     <string name="ctbs_block_other_apps" translatable="true">Regulile aplicate pentrur %1$s vor fi, de asemenea, aplicate pentru %2$s alte aplicații</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">Înapoi</string>
-    <string name="hs_download_positive_default" translatable="true">ok</string>
-    <string name="hs_download_negative_default" translatable="true">Amintește-mi mai târziu</string>
     <string name="cd_dns_crypt_dialog_name" translatable="true">Nume</string>
     <string name="dns_proxy_dialog_message_no_app" translatable="true">Adresă IP: %1$s\n\nNumăr port: %2$s</string>
     <string name="dns_proxy_dialog_header_dns" translatable="true">Adaugă Proxy DNS</string>
@@ -518,8 +506,6 @@
     <string name="dns_proxy_connection_failure" translatable="true">Eroare de conectare la serverul DNS Proxy.</string>
     <string name="system_dns_connection_failure" translatable="true">Imposibil de determinat serverul DNS curent</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
-    <string name="update_complete_snack_message" translatable="true">Noua versiune descărcată.</string>
-    <string name="update_complete_action_snack" translatable="true">REPORNIRE</string>
     <string name="settings_local_blocklist_in_use" translatable="true">Se utilizează lista de blocat %1$s</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Descărcare</string>
     <string name="settings_local_blocklist_version" translatable="true">Versiune: v%1$s</string>

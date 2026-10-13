@@ -79,7 +79,6 @@
     <string name="logs_card_duration" translatable="true">%1$s óta</string>
     <string name="hsf_vpn_dialog_message" translatable="true">AA DNS Control engedélyt kér egy helyi VPN létrehozására, hogy titkosítsa az eszköz DNS-kéréseit, lehetővé tegye a hálózati forgalom megfigyelését, valamint érvényesítse a tűzfalszabályokat.\n\nA DNS Control nem gyűjt semmilyen adatot Önnel kapcsolatban, és semmilyen módon nem figyeli vagy követi Önt.</string>
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;: Megakadályozza, hogy egy alkalmazás csatlakozzon az internethez.\n&lt;u&gt;#2&lt;/u&gt;: Megakadályozza, hogy bármely alkalmazás csatlakozzon egy adott IP-címhez.\n&lt;u&gt;#3&lt;/u&gt;: Minden kapcsolatot blokkol, amikor az eszköz zárolva van (Univerzális tűzfal).\n&lt;u&gt;#4&lt;/u&gt;: Blokkolja azokat az alkalmazásokat, amelyek nincsenek használatban (Univerzális tűzfal).\n&lt;u&gt;#5&lt;/u&gt;: Blokkolja a kapcsolatokat, ha a forrásalkalmazás ismeretlen (Univerzális tűzfal).\n&lt;u&gt;#6&lt;/u&gt;: Blokkolja az összes UDP-forgalmat, kivéve a DNS-t (Univerzális tűzfal).\n&lt;u&gt;#7&lt;/u&gt;: Blokkolja a kapcsolatokat, ha a DNS megkerülésre kerül (Univerzális tűzfal).</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Vagy a szervereink nem elérhetők, vagy a kapcsolat nem jött létre. Kérjük, próbálja meg később.</string>
     <string name="settings_connectivity_checks_desc" translatable="true">Kapcsolódási ellenőrzések elküldésre kerülnek a hozzáférhetőség megállapítására.</string>
     <string name="settings_allow_lan_desc" translatable="true">Zárja ki a helyi hálózati (LAN), visszacsatolási (loopback), multicast és helyi (link-local) útvonalakat a DNS Control VPN-alagútjából.</string>
     <string name="orbot_bs_status_1" translatable="true">A %1$s kapcsolatok továbbítása az Orbot-hoz.</string>
@@ -94,7 +93,6 @@
     <string name="settings_socks_forwarding_default_desc" translatable="true">Kapcsolatok továbbítása a SOCKS5 végpontra.</string>
     <string name="settings_notification_dialog_title" translatable="true">Értesítési művelet kiválasztása</string>
     <string name="settings_notification_dialog_option_3" translatable="true">\nNincs:\nNem jelenít meg gombot.\n</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">A frissítés most nem hajtható végre, kérjük, próbálja meg később újra.</string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Blokkoló listák keresése</font></string>
     <string name="info_dialog_copy_toast_msg" translatable="true">IP-cím másolva.</string>
     <string name="firewall_status_allow" translatable="true">engedélyezett</string>
@@ -114,7 +112,6 @@
     <string name="notification_action_resume_vpn" translatable="true">FOLYTATÁS</string>
     <string name="doh_custom_url_remove_success" translatable="true">Végpont törölve.</string>
     <string name="dns_crypt_custom_url_remove_dialog_title" translatable="true">Törli a DNSCrypt feloldót?</string>
-    <string name="download_update_dialog_message" translatable="true">Az alkalmazás új verziója letölthető a weboldalról. Szeretné folytatni?</string>
     <string name="settings_ip_network_desc" translatable="true">Válasszon az Internetes Protocol verziók között.</string>
     <string name="settings_orbot_desc" translatable="true">Orbot nem-VPN üzemmódban van HTTPS/SOCKS5 használatával.</string>
     <string name="settings_ip_dialog_title" translatable="true">IP verzió kiválasztása</string>
@@ -130,9 +127,6 @@
     <string name="blocklist_update_check_failure" translatable="true">Valami hiba történt. Próbálja meg később újra!</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS proxy</string>
     <string name="http_proxy_dialog_heading" translatable="true">HTTP(S) proxy beállítása</string>
-    <string name="download_update_dialog_title" translatable="true">Új frissítés!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Ön már a legújabb verziót használja.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Valami hiba történt!</string>
     <string name="settings_https_desc" translatable="true">A kapcsolatokat továbbítsa a HTTP(S) CONNECT végpontra.</string>
     <string name="orbot_socks5_desc" translatable="true">Minden TCP kapcsolatot továbbít az Orbot-hoz.</string>
     <string name="orbot_both" translatable="true">TCP + HTTP proxy</string>
@@ -147,7 +141,6 @@
     <string name="settings_socks5_disabled_error" translatable="true">Csatlakozva a következőhöz: %1$s. A folytatáshoz kapcsolja ki.</string>
     <string name="settings_orbot_disabled_error" translatable="true">Kapcsolja ki a HTTP(S) és/vagy SOCKS5 proxyt, hogy folytathassa a Tor mint proxy beállítását.</string>
     <string name="settings_https_disabled_error" translatable="true">Csatlakozva a következőhöz: %1$s. A folytatáshoz kapcsolja ki.</string>
-    <string name="settings_check_update_heading" translatable="true">Frissítések keresése az alkalmazáshoz</string>
     <string name="settings_custom_downloader_heading" translatable="true">Alkalmazáson belüli letöltő használata</string>
     <string name="settings_import_export_desc" translatable="true">Kézi biztonsági mentés vagy az alkalmazás adatainak és beállításainak visszaállítása.</string>
     <string name="settings_import_export_heading" translatable="true">Biztonsági mentés és visszaállítás</string>
@@ -259,9 +252,7 @@
     <string name="local_blocklist_redownload" translatable="true">Naprakész!</string>
     <string name="blocklist_update_check_not_required" translatable="true">A blokkoló listák már a legfrissebb verzióból származnak.</string>
     <string name="http_proxy_dialog_desc" translatable="true">Állítson be egy URL-t a következő formátumban:&lt;protocol&gt;://&lt;felhasználónév&gt;:&lt;jelszó&gt;@&lt;domain-vagy-ip&gt;:&lt;port&gt;&lt;elérési út&gt;Példa: http://proxy.example.com:8080/</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Naprakész!</string>
     <string name="download_update_dialog_message_success" translatable="true">A blokklista letöltése sikerült.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Jelenleg nem frissíthető</string>
     <string name="search_custom_domains" translatable="true"><font size="12">Domain nevek keresése</font></string>
     <string name="app_mode_firewall" translatable="true">Tűzfal</string>
     <string name="public_key_copy_toast_msg" translatable="true">Nyilvános kulcs másolva.</string>
@@ -292,7 +283,6 @@
     <string name="settings_general_header" translatable="true">Általános</string>
     <string name="settings_network_all_networks" translatable="true">Az összes elérhető hálózat használata (kísérleti)</string>
     <string name="settings_network_all_networks_desc" translatable="true">Ha engedélyezve van, a DNS Control az összes elérhető hálózatot használja az internethez való csatlakozáshoz. Ha nem, akkor azt a hálózatot használja, amelyet az Android a <i>aktívnak ítél</i>.</string>
-    <string name="settings_check_update_desc" translatable="true">Hetente egyszer automatikusan ellenőrizze az alkalmazásfrissítéseket.</string>
     <string name="settings_rinr_desc_disabled" translatable="true">Irányítsa vissza a DNS Control saját forgalmát – például a tiltólista letöltéseket, kapcsolatellenőrzéseket, DNS-kapcsolatokat – az alagúton (VPN-en) keresztül.</string>
     <string name="settings_http_proxy_error_text1" translatable="true">A porttartománynak 1024-65535 között kell lennie</string>
     <string name="settings_http_proxy_error_text2" translatable="true">Érvénytelen Port</string>
@@ -400,8 +390,6 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s más alkalmazás(ok)</string>
     <string name="ctbs_block_other_apps" translatable="true">A(z) %1$s-hez alkalmazott szabályok %2$s másik alkalmazásra is érvényesek lesznek</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">Vissza</string>
-    <string name="hs_download_positive_default" translatable="true">ok</string>
-    <string name="hs_download_negative_default" translatable="true">Emlékeztessen később</string>
     <string name="univ_firewall_rule_1" translatable="true">Az összes alkalmazás blokkolása zárolt eszköz esetén</string>
     <string name="univ_firewall_rule_2" translatable="true">A nem használt alkalmazások blokkolása</string>
     <string name="univ_firewall_rule_3" translatable="true">Blokkolás, ha a forrás alkalmazás ismeretlen</string>
@@ -483,8 +471,6 @@
     <string name="dns_proxy_connection_failure" translatable="true">Hiba a DNS-proxykiszolgálóhoz való csatlakozáskor.</string>
     <string name="system_dns_connection_failure" translatable="true">Nem lehet meghatározni az aktuális DNS-kiszolgálót</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
-    <string name="update_complete_snack_message" translatable="true">Új verzió letöltve.</string>
-    <string name="update_complete_action_snack" translatable="true">ÚJRAINDÍTÁS</string>
     <string name="settings_local_blocklist_in_use" translatable="true">%1$s használatban lévő tiltólisták</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Letöltés</string>
     <string name="settings_local_blocklist_version" translatable="true">Verzió: %1$s</string>

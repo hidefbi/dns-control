@@ -141,7 +141,6 @@
     <string name="dns_crypt_relay_remove_dialog_title" translatable="true">Smazat DNSCrypt Relay?</string>
     <string name="dns_crypt_relay_remove_success" translatable="true">DNSCrypt Relay byl smazán.</string>
     <string name="dns_proxy_remove_dialog_message" translatable="true">Smazat DNS Proxy z uložené konfigurace.</string>
-    <string name="download_update_dialog_message" translatable="true">Nová verze aplikace je k dispozici ke stažení z webu. Přejete si pokračovat?</string>
     <string name="settings_socks5_desc" translatable="true">Přesměrovat připojení na SOCKS5 endpoint.</string>
     <string name="orbot_install_dialog_title" translatable="true">Nainstalovat Orbot?</string>
     <string name="settings_orbot_notification_action" translatable="true">Otevřít Orbot</string>
@@ -164,7 +163,6 @@
     <string name="bsrf_clear_filter" translatable="true">Vymazat</string>
     <string name="crypt_relay_france" translatable="true">Anonymizovaný DNS relay v Paříži, Francie, poskytováno https://cryptostrom.is/.</string>
     <string name="dns_crypt_url_remove_success" translatable="true">DNSCrypt resolver byl smazán.</string>
-    <string name="download_update_dialog_title" translatable="true">Nová aktualizace!</string>
     <string name="settings_http_proxy_error_text3" translatable="true">Hostname je prázdný</string>
     <string name="apps_card_ips_count" translatable="true">%1$s IP &amp; Port pravidel</string>
     <string name="fapps_unblock_dialog_title" translatable="true">Povolit aplikace</string>
@@ -182,7 +180,6 @@
     <string name="orbot_socks5_desc" translatable="true">Přesměrovává veškerá TCP připojení do Orbotu.</string>
     <string name="orbot_http" translatable="true">HTTP Proxy</string>
     <string name="orbot_none_desc" translatable="true">Nic z uvedeného.</string>
-    <string name="settings_check_update_heading" translatable="true">Vyhledat aktualizace aplikace</string>
     <string name="settings_app_notification_a13_desc" translatable="true">Povolte oprávnění pro oznámení aplikace</string>
     <string name="settings_theme_heading" translatable="true">Vzhled</string>
     <string name="settings_rinr_heading" translatable="true">Loopback (experimentální)</string>
@@ -212,13 +209,7 @@
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS Proxy</string>
     <string name="http_proxy_dialog_heading" translatable="true">Nastavit HTTP(S) CONNECT Proxy</string>
     <string name="http_proxy_dialog_desc" translatable="true">Nastavte URL ve formátu &lt;protocol&gt;://&lt;username&gt;:&lt;password&gt;@&lt;domain-or-ip&gt;:&lt;port&gt;&lt;path&gt;. Příklad: http://proxy.example.com:8080/</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Nejnovější verze!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Již máte nejnovější verzi.</string>
     <string name="download_update_dialog_message_success" translatable="true">Blokovací seznamy úspěšně staženy.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Něco se pokazilo!</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Naše servery mohou být nedostupné, nebo se nelze připojit. Zkuste to prosím znovu za chvíli.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Teď to nelze provést</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Aktualizaci nyní není možné provést, zkuste to prosím později.</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Hledat aplikace podle UID či jména</font></string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Hledat blokovací seznamy</font></string>
     <string name="search_proxy_add_apps" translatable="true">Hledat aplikace podle jména</string>
@@ -273,7 +264,6 @@
     <string name="settings_autostart_bootup_desc" translatable="true">Po zapnutí zařízení spustí DNS Control, pokud běžel před vypnutím.</string>
     <string name="settings_network_all_networks" translatable="true">Využívat všechny dostupné sítě (experimentální)</string>
     <string name="settings_network_all_networks_desc" translatable="true">Je-li zapnuto, DNS Control používá všechny dostupné sítě k připojení k internetu. Jinak použije tu, kterou Android označí za „aktivní“.</string>
-    <string name="settings_check_update_desc" translatable="true">Automaticky vyhledávat aktualizace jednou týdně.</string>
     <string name="settings_import_export_heading" translatable="true">Záloha &amp; Obnova</string>
     <string name="settings_import_export_desc" translatable="true">Ruční záloha nebo obnova dat a nastavení aplikace.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">Oznámení aplikace</string>
@@ -379,7 +369,6 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s dalších aplikací</string>
     <string name="ctbs_block_other_apps" translatable="true">Pravidla pro %1$s se vztahují i na další %2$s aplikací</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">Zpět</string>
-    <string name="hs_download_positive_default" translatable="true">OK</string>
     <string name="univ_firewall_rule_1" translatable="true">Blokovat všechny aplikace, když je zařízení uzamčené</string>
     <string name="univ_delete_firewall_dialog_title" translatable="true">Smazat všechna IP pravidla?</string>
     <string name="univ_delete_firewall_dialog_message" translatable="true">Smazáním těchto pravidel povolíte libovolné aplikaci připojení k aktuálně blokovaným IP.</string>
@@ -431,8 +420,6 @@
     <string name="dns_crypt_connection_failure" translatable="true">Chyba při připojování k DNSCrypt serveru.</string>
     <string name="dns_proxy_connection_failure" translatable="true">Chyba při připojování k DNS Proxy serveru.</string>
     <string name="system_dns_connection_failure" translatable="true">Nelze zjistit aktuální DNS server</string>
-    <string name="update_complete_snack_message" translatable="true">Nová verze byla stažena.</string>
-    <string name="update_complete_action_snack" translatable="true">RESTART</string>
     <string name="settings_local_blocklist_in_use" translatable="true">Používá se %1$s blokovacích seznamů</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Stáhnout</string>
     <string name="settings_local_blocklist_version" translatable="true">Verze: v%1$s</string>
@@ -624,7 +611,6 @@
     <string name="cd_dns_proxy_error_text_1" translatable="true">Neplatná IP adresa</string>
     <string name="cd_dns_proxy_error_text_2" translatable="true">Rozsah portů 1024–65535</string>
     <string name="cd_dns_proxy_error_text_3" translatable="true">Neplatný port</string>
-    <string name="hs_download_negative_default" translatable="true">Připomenout později</string>
     <string name="univ_firewall_rule_2" translatable="true">Blokovat aplikaci, pokud není použita</string>
     <string name="univ_firewall_rule_3" translatable="true">Blokovat, pokud je zdrojová aplikace neznámá</string>
     <string name="univ_firewall_rule_4" translatable="true">Blokovat UDP kromě DNS a NTP</string>

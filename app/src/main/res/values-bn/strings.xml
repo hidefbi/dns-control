@@ -50,7 +50,6 @@
     <string name="cd_custom_dns_proxy_default_app">কেউ না</string>
     <string name="cd_dns_proxy_mode_internal">অভ্যন্তরীণ</string>
     <string name="univ_firewall_rule_6">ডিফল্টরূপে নতুন ইনস্টল করা অ্যাপগুলিকে ব্লক করুন</string>
-    <string name="download_update_dialog_message_ok_title">আপ টু ডেট !</string>
     <string name="app_mode_dns_firewall">DNS এবং ফায়ারওয়াল (ডিফল্ট)</string>
     <string name="orbot_http">হাইপারটেক্সট ট্রান্সফার প্রটোকল প্রক্সি</string>
     <string name="orbot_download_link_website" translatable="false">https://github.com/guardianproject/orbot/releases</string>
@@ -80,7 +79,6 @@
     <string name="univ_firewall_rule_10">বাইপাস করা অ্যাপ এবং আইপি ছাড়া সব ব্লক করুন</string>
     <string name="hybrid_mode_info_title">DNS + ফায়ারওয়াল</string>
     <string name="alert_permission_accessibility">অনুমতি - অ্যাক্সেসযোগ্যতা</string>
-    <string name="download_update_dialog_trylater_title">এখনই আপডেট করা যাচ্ছে না</string>
     <string name="info_dialog_url_copy_toast_msg">ইউআরএল কপি করা হয়েছে</string>
     <string name="orbot_both_desc">উপরের সবগুলো.</string>
     <string name="orbot_install_dialog_positive">ইনস্টল করুন</string>
@@ -125,7 +123,6 @@
     <string name="doh_custom_url_remove_success">এন্ডপয়েন্ট মুছে ফেলা হয়েছে।</string>
     <string name="local_blocklist_redownload_desc">ডিভাইসে ব্লকলিস্টগুলি ইতিমধ্যেই সর্বশেষ সংস্করণ v%1$s এ রয়েছে৷</string>
     <string name="configure_dns_connected_doh_status">এইচটিটিপিএস এর উপর ডিএনএস</string>
-    <string name="download_update_dialog_trylater_message">আপডেটটি এখনই কার্যকর করা যাবে না, অনুগ্রহ করে পরে আবার চেষ্টা করুন।</string>
     <string name="settings_ip_network_desc">ইন্টারনেট প্রোটোকল সংস্করণগুলির মধ্যে নির্বাচন করুন।</string>
     <string name="orbot">অরবট</string>
     <string name="orbot_status_arg_2">TCP</string>
@@ -146,7 +143,6 @@
     <string name="orbot_bs_status_trying_connect">অরবট সেট আপ করা হচ্ছে…</string>
     <string name="settings_socks5_vpn_disabled_error">এগিয়ে যেতে DNS Control শুরু করুন।</string>
     <string name="settings_autostart_bootup_heading">পাওয়ার-আপে অটো-স্টার্ট (পরীক্ষামূলক)</string>
-    <string name="settings_check_update_desc">সপ্তাহে একবার অ্যাপ আপডেটের জন্য স্বয়ংক্রিয়ভাবে পরীক্ষা করুন।</string>
     <string name="settings_http_proxy_error_text3">হোস্টনাম খালি</string>
     <string name="settings_notification_dialog_title">বিজ্ঞপ্তি কর্ম চয়ন করুন</string>
     <string name="cd_dns_crypt_title">সমাধানকারী</string>
@@ -169,14 +165,12 @@
     <string name="fapps_filter_parent_installed">ইনস্টলকৃত</string>
     <string name="status_protected_with_socks5_private_dns">মোজা 5 এবং ব্যক্তিগত ডিএনএস দিয়ে সুরক্ষিত</string>
     <string name="always_on_dialog_positive">বন্ধ</string>
-    <string name="download_update_dialog_failure_title">কিছু সমস্যা হয়েছে!</string>
     <string name="orbot_none_desc">উপরের কেউই না.</string>
     <string name="orbot_install_activity_error" translatable="false">কিছু ভুল হয়েছে, কিছুক্ষণ পরে চেষ্টা করুন</string>
     <string name="firewall_status_blocked">অবরুদ্ধ</string>
     <string name="cd_dns_proxy_error_text_1">অবৈধ আইপি ঠিকানা</string>
     <string name="cd_dns_crypt_dialog_name">নাম</string>
     <string name="cd_doh_dialog_resolver_url">সমাধানকারী URL</string>
-    <string name="hs_download_positive_default">ঠিক আছে</string>
     <string name="univ_view_blocked_ip">আইপি এবং পোর্টের নিয়ম</string>
     <string name="univ_accessibility_dialog_positive">প্রদান</string>
     <string name="univ_accessibility_dialog_negative">অস্বীকার</string>
@@ -202,7 +196,6 @@
     <string name="dns_proxy_ip_address">আইপি ঠিকানা</string>
     <string name="status_no_internet">কোন ইন্টারনেট নেই</string>
     <string name="dns_crypt_relay_remove_success">DNSCrypt রিলে মুছে ফেলা হয়েছে।</string>
-    <string name="download_update_dialog_message_ok">আপনি ইতিমধ্যেই সর্বশেষ সংস্করণে রয়েছেন৷</string>
     <string name="orbot_app_issue">অরবট চালু করা যায়নি। এটা ইনস্টল করা হয়?</string>
     <string name="orbot_install_dialog_neutral">ওয়েবসাইট</string>
     <string name="settings_dns_proxy_dialog_hostname">হোস্ট নাম</string>
@@ -228,9 +221,7 @@
     <string name="firewall_mode_info_title">ফায়ারওয়াল</string>
     <string name="always_on_dialog_stop_heading">সর্বদা-চালু VPN</string>
     <string name="local_blocklist_redownload">আপ টু ডেট !</string>
-    <string name="download_update_dialog_title">নতুন আপডেট!</string>
     <string name="settings_socks5_heading">SOCKS5 প্রক্সি সেটআপ করুন</string>
-    <string name="settings_check_update_heading">অ্যাপ আপডেটের জন্য চেক করুন</string>
     <string name="settings_http_proxy_error_text2">অবৈধ পোর্ট</string>
     <string name="settings_dns_proxy_dialog_port_number">পোর্ট নাম্বার</string>
     <string name="firewall_status_isolate">তালাবদ্ধ</string>
@@ -292,8 +283,6 @@
     <string name="blocklist_update_check_failure">কিছু ভুল হয়েছে. পরে আবার চেষ্টা করুন!</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="orbot_socks5_desc">অরবোটে সমস্ত TCP সংযোগ ফরোয়ার্ড করে।</string>
-    <string name="download_update_dialog_message">অ্যাপটির একটি নতুন সংস্করণ ওয়েবসাইট থেকে ডাউনলোডের জন্য উপলব্ধ। আপনি কি এগিয়ে যেতে চান?</string>
-    <string name="download_update_dialog_failure_message">হয় আমাদের সার্ভার ডাউন বা সংযোগ স্থাপন করা যায়নি. কিছুক্ষণ পরে আবার চেষ্টা করুন.</string>
     <string name="settings_ip_network_heading">আইপি সংস্করণ চয়ন করুন</string>
     <string name="settings_socks5_desc">SOCKS5 এন্ডপয়েন্টে কানেকশন ফরোয়ার্ড করুন।</string>
     <string name="orbot_website_link" translatable="false">https://guardianproject.info/apps/org.torproject.android/</string>
@@ -333,7 +322,6 @@
     <string name="ct_ip_details" translatable="false">%1$s (%2$s)</string>
     <string name="ctbs_app_info_not_available_toast">অ্যাপ সেটিংস পৃষ্ঠা পাওয়া যায়নি</string>
     <string name="ctbs_dialog_negative_btn">পূর্বাবস্থায় যান</string>
-    <string name="hs_download_negative_default">আমাকে পরে মনে করিয়ে দিবেন</string>
     <string name="univ_delete_firewall_dialog_title">সমস্ত আইপি নিয়ম মুছে ফেলবেন?</string>
     <string name="univ_ip_delete_dialog_positive">সব মুছে দিন</string>
     <string name="dns_proxy_dialog_message_no_app">আইপি ঠিকানা: %1$s \n \nপোর্ট নম্বর: %2$s</string>
@@ -342,7 +330,6 @@
     <string name="notif_channel_firewall_alerts">ফায়ারওয়াল সতর্কতা</string>
     <string name="category_name_others">অন্যান্য</string>
     <string name="ada_app_status_exclude">ডিএনএস এবং ফায়ারওয়াল থেকে বাদ দেওয়া হয়</string>
-    <string name="update_complete_snack_message">নতুন সংস্করণ ডাউনলোড করা হয়েছে।</string>
     <string name="pause_text">পজ হয়েছে</string>
     <string name="pause_desc">দ্রষ্টব্য: %1$s ব্লক করা অ্যাপগুলি ফায়ারওয়াল করা চালিয়ে যাবে।</string>
     <string name="hs_btm_sheet_lock_down">VPN <i>লকডাউন</i> হলে মোড পরিবর্তন করা যাবে না। <u>VPN সেটিংস সম্পাদনা করতে </u> ট্যাপ করুন।</string>
@@ -504,7 +491,6 @@
     <string name="ci_bypass_universal_txt">বাইপাস ইউনিভার্সাল</string>
     <string name="rt_list_simple_btn_txt">সহজ</string>
     <string name="brbs_backup_dialog_failure_message">ব্যাকআপ করা যায়নি। আবার চেষ্টা করুন?</string>
-    <string name="update_complete_action_snack">আবার শুরু</string>
     <string name="firewall_rule_trusted_ip">বাইপাসড আইপি (অ্যাপ)</string>
     <string name="firewall_rule_block_ip_univ_desc"><![CDATA[একটি ব্যবহারকারী-সেট ফায়ারওয়াল নিয়ম <i>গন্তব্য আইপি / পোর্ট</i>কে ব্লক করেছে।<br/><br/> পরিবর্তন করতে <i>ইউনিভার্সাল</i> ট্যাবে যান]]></string>
     <string name="firewall_rule_trusted_ip_desc"><![CDATA[এই সংযোগের অনুমতি দেওয়া হয়েছিল কারণ <i>গন্তব্য IP</i> অ্যাপ-নির্দিষ্ট নিয়মগুলিকে বাইপাস করার জন্য সেট করা হয়েছে।<br/><br/> পরিবর্তন করতে <i>অ্যাপ-নির্দিষ্ট ফায়ারওয়াল</i> স্ক্রিনে যান।]]></string>

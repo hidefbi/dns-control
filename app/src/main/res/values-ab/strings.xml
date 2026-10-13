@@ -112,15 +112,7 @@
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNSProxy</string>
     <string name="http_proxy_dialog_heading" translatable="true">HTTP(S) CONNECT Ашәахәырақәа Адаҟәаныршәлара</string>
     <string name="http_proxy_dialog_desc" translatable="true">URL аҧшаауа аформа, &lt;protocol&gt;://&lt;username&gt;:&lt;password&gt;@&lt;domain-or-ip&gt;:&lt;port&gt;&lt;path&gt;. Амиҩы: http://proxy.example.com:8080/</string>
-    <string name="download_update_dialog_title" translatable="true">Ҭыжьра!</string>
-    <string name="download_update_dialog_message" translatable="true">Аппарат аҿыц аверсиа ашәырҧшәакала адҵәыуалаала иаанарput. Уаҧхьатәуа акун?</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Амшәашәа!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Уыцылаз дырлыхъус ауарда, сыцылаз дырлыхъус ауарда.</string>
     <string name="download_update_dialog_message_success" translatable="true">Аблоклист атоуп иашшьахәхеит.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Ишимкибжьы!</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Або ауга сэуакуа зыхьыуа ауасара, мамзацәа акьырызхуаз акьыра. Азыҳәа, ашьҭахь иагьырхәа.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Алашьахау иашвҭалымшны</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Ашәахьа ауи иалацәажәаşan, аха акралра ашәаҳә уахтәатәыҟа.</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Амҵәатәқәа рыԥшаара uid, адҳәалала</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">IP-қәа ашәахә</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Аҧсуа абиԥшқәа</font></string>
@@ -182,8 +174,6 @@
     <string name="settings_autostart_bootup_heading" translatable="true">Ауто-ашьаҧхара амҵәышә ашьаҧхара (ашәахәратә)</string>
     <string name="settings_autostart_bootup_desc" translatable="true">Ашәахәра ацымпылърала, иаахәа, уи иаалырхәаз еиҳа акәын ашәахәала.</string>
     <string name="settings_network_all_networks" translatable="true">Асеира зегIа-зегIа рхыԥшны (а eksperimental)</string>
-    <string name="settings_check_update_heading" translatable="true">Апликациақәа рҿынтәкала даԥсалаа</string>
-    <string name="settings_check_update_desc" translatable="true">Ауп naҧ шəахәмала аҧшәамҭақәа рҧхьаҧшра.</string>
     <string name="settings_custom_downloader_heading" translatable="true">Ашәахәаҧшра ашьҭышьҭыҟә</string>
     <string name="settings_custom_downloader_desc" translatable="true">Ако иҧыжьымкәа, иуадаҩым акәымкәам Андроит ихаҭыррала иузаауа «Download Manager»</string>
     <string name="settings_import_export_heading" translatable="true">Ацәыхра &amp; Ажьырæхә</string>
@@ -315,8 +305,6 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s егьых апхьадара</string>
     <string name="ctbs_block_other_apps" translatable="true">%1$s-зы ҳасабтларалара ацәажәалара %2$s адгьылбӏасқәа егьырԥшлар</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">Ҭахыжь</string>
-    <string name="hs_download_positive_default" translatable="true">Ассаламу гIалайкум</string>
-    <string name="hs_download_negative_default" translatable="true">Ҭахыжьыуала</string>
     <string name="univ_firewall_rule_1" translatable="true">Амшәашәытәҵәҟьоуп жәҩнқә зегьы, амобил амоскышәҟны ианҵоуа</string>
     <string name="univ_firewall_rule_2" translatable="true">Аппаратқәа рынҵәа аколлективизация аамҭазы рҟаҵара ашкол рылхнышәра ашкол ашкол рылхнышәра ашкол рылхнышәра ашкол рылхнышәра</string>
     <string name="univ_firewall_rule_3" translatable="true">Ашәа иалагалара аура ауадаҩым апликациақәа рҟынтә</string>
@@ -392,8 +380,6 @@
     <string name="dns_proxy_connection_failure" translatable="true">Ашәахәҭрақәқәлара АДНС Прокси ашәҟәы иаԥшырцәразы.</string>
     <string name="system_dns_connection_failure" translatable="true">Амшын ашәахәаҧшра ашәымҭашәаз</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
-    <string name="update_complete_snack_message" translatable="true">Арыц ҳарҵәааит.</string>
-    <string name="update_complete_action_snack" translatable="true">АТӘАЛАРА АҞӘКӘҦШ</string>
     <string name="settings_local_blocklist_in_use" translatable="true">%1$s ашәыхьақәҵәақәа рыхәмарра</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Ашәахәатәи</string>
     <string name="settings_local_blocklist_version" translatable="true">Агәамҭа: v%1$s</string>

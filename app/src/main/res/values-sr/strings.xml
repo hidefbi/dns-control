@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="local_blocklist_redownload_desc" translatable="true">Блоклиста на уређају је већ на последњој верзији v%1$s.</string>
-    <string name="download_update_dialog_message" translatable="true">Нова верзија апликације је доступна за преузимање са веб сајта. Да ли желите да наставите?</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Већ сте на последњој верзији.</string>
     <string name="search_universal_ips" translatable="true"><font size="12">Претражи IP-јеве</font></string>
     <string name="title_settings" translatable="true">Подешавања</string>
     <string name="pause_title_desc" translatable="true">одмарам…</string>
@@ -133,15 +131,9 @@
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS прокси</string>
     <string name="http_proxy_dialog_desc" translatable="true">URL формулара подешавања, &lt;протокол&gt;://&lt;корисничко-име&gt;:&lt;лозинка&gt;@&lt;домен-или-ip&gt;:&lt;порт&gt;&lt;путања&gt;. Пример: http://proksi.primer.com:8080/</string>
-    <string name="download_update_dialog_title" translatable="true">Ново издање!</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Ажурна је!</string>
     <string name="private_dns_dialog_desc" translatable="true">DNS Control-ова DNS подешавања су преписана Андроидовим приватним DNS-ом.\n\nДа би сте користили DNS Control-ов DNS идите на Андроид подешавања и искључите \"Приватни DNS\".</string>
     <string name="http_proxy_dialog_heading" translatable="true">Подеси HTTP(S) CONNECT прокси</string>
     <string name="download_update_dialog_message_success" translatable="true">Успешно преузимање блоклисте.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Нешто је пошло по злу!</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Или наши сервери нису доступни или конекција није могла бити успостављена. Молим вас покушајте поново после неког времена.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Надоградња није могућа у овом тренутку</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Надоградња се тренутно не може извршити, молим вас покушајте поново касније.</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Претражи апликације по uid, имену</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Претражи имена домена</font></string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Претражи блоклисте</font></string>
@@ -190,8 +182,6 @@
     <string name="settings_general_customize" translatable="true">прилагоди</string>
     <string name="settings_autostart_bootup_heading" translatable="true">Аутоматски покрени при покретању телефона (експериментално)</string>
     <string name="settings_network_all_networks" translatable="true">Користи све доступне мреже (експериментално)</string>
-    <string name="settings_check_update_heading" translatable="true">Провери надоградње апликације</string>
-    <string name="settings_check_update_desc" translatable="true">Аутоматски проверавај за надоградње апликације једном недељно.</string>
     <string name="settings_custom_downloader_heading" translatable="true">Користи преузимач у апликацији</string>
     <string name="settings_custom_downloader_desc" translatable="true">Уколико је онемогућено, користи се Андроидов уграђени <i>менаџер преузимања</i></string>
     <string name="settings_app_notification_a13_heading" translatable="true">Обавештења апликације</string>
@@ -316,8 +306,6 @@
     <string name="cd_dns_alg_desc" translatable="true">Додели јединствену IP по DNS захтеву</string>
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s остале апликације</string>
     <string name="ctbs_block_other_apps" translatable="true">Правила примењена за %1$s ће такође бити применљива за %2$s осталих апликација</string>
-    <string name="hs_download_positive_default" translatable="true">у реду</string>
-    <string name="hs_download_negative_default" translatable="true">Подсети ме касније</string>
     <string name="univ_firewall_rule_1" translatable="true">Блокирај све апликације када је уређај закључан</string>
     <string name="univ_firewall_rule_2" translatable="true">Блокирај све апликације које нису у употреби</string>
     <string name="univ_firewall_rule_4" translatable="true">Блокирај UDP осим DNS и NTP</string>
@@ -375,8 +363,6 @@
     <string name="rules_load_failure_heading" translatable="true">Белешка</string>
     <string name="system_dns_connection_failure" translatable="true">Не може се утврдити тренутни DNS сервер</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
-    <string name="update_complete_snack_message" translatable="true">Преузета је нова верзија.</string>
-    <string name="update_complete_action_snack" translatable="true">ПОКРЕНИ ПОНОВО</string>
     <string name="settings_local_blocklist_in_use" translatable="true">%1$s блок листи је у употреби</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Преузми</string>
     <string name="settings_local_blocklist_version" translatable="true">Верзија: v%1$s</string>

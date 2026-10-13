@@ -63,9 +63,6 @@
     <string name="always_on_dialog_positive" translatable="true">עצור</string>
     <string name="private_dns_dialog_positive" translatable="true">מעבר להגדרות</string>
     <string name="firewall_act_universal_tab" translatable="true">אוניברסליים</string>
-    <string name="download_update_dialog_failure_title" translatable="true">משהו השתבש!</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">לא ניתן לעדכן כרגע</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">לא ניתן לבצע את העדכון כעת, אנא נסה שוב מאוחר יותר.</string>
     <string name="app_mode_firewall" translatable="true">חומת אש</string>
     <string name="app_mode_dns_firewall" translatable="true">DNS וחומת אש (ברירת מחדל)</string>
     <string name="info_dialog_copy_toast_msg" translatable="true">כתובת ה-IP הועתקה.</string>
@@ -136,15 +133,10 @@
     <string name="brbs_backup_dialog_positive" translatable="true">גיבוי</string>
     <string name="brbs_restore_dialog_title" translatable="true">שחזר גיבוי</string>
     <string name="always_on_dialog_positive_btn" translatable="true">מעבר להגדרות</string>
-    <string name="download_update_dialog_failure_message" translatable="true">השרתים שלנו מושבתים או שלא ניתן היה ליצור חיבור. אנא נסה שוב מאוחר יותר.</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">מעודכן!</string>
     <string name="always_on_dialog" translatable="true">\"VPN תמיד פועל\" מאופשר במכשיר זה. כדי להפעיל את DNS Control, עבור אל אפליקציית ההגדרות והשבת את \"VPN תמיד פועל\".</string>
     <string name="univ_delete_firewall_dialog_title" translatable="true">למחוק את כל כללי ה-IP?</string>
     <string name="univ_firewall_dialog_message" translatable="true">מחיקת כלל זה תאפשר לכלל האפליקציות להתחבר ל-IP זה. האם אתה רוצה להמשיך?</string>
-    <string name="download_update_dialog_message_ok" translatable="true">אתה כבר משתמש בגרסה העדכנית ביותר.</string>
     <string name="settings_dns_proxy_dialog_username" translatable="true">שם משתמש</string>
-    <string name="download_update_dialog_title" translatable="true">עדכון חדש!</string>
-    <string name="download_update_dialog_message" translatable="true">גרסה חדשה של האפליקציה זמינה להורדה מהאתר. האם אתה רוצה להמשיך?</string>
     <string name="download_update_dialog_message_success" translatable="true">הורדת רשימת החסימה הצליחה.</string>
     <string name="orbot_install_dialog_title" translatable="true">להתקין Orbot?</string>
     <string name="settings_network_all_networks_desc" translatable="true">כאשר מופעל, DNS Control משתמש בכל הרשתות הזמינות כדי להתחבר לאינטרנט. אם לא, הוא משתמש בכל הרשת שנחשבת ל-<i>פעילה</i> על ידי אנדרואיד.</string>
@@ -395,8 +387,6 @@
     <string name="settings_notification_dialog_option_2" translatable="true">\n\nDNS / DNS + חומת אש:\n\nמציג שני לחצנים למעבר מהיר בין מצב DNS חיסכון בסוללה למצב DNS + חומת אש רגיל.</string>
     <string name="dc_dns_leaks_desc" translatable="true">כאשר מופעל, DNS Control לוכד את כל החבילות בפיתחה 53 ומעביר אותן לנקודת קצה של DNS שהוגדרה על ידי המשתמש</string>
     <string name="hsf_notification_permission_failure" translatable="true">אפשר הרשאת התראות ממסך ההגדרות</string>
-    <string name="settings_check_update_heading" translatable="true">בדוק אם יש עדכוני אפליקציה</string>
-    <string name="settings_check_update_desc" translatable="true">בדוק אוטומטית אם יש עדכוני אפליקציה פעם בשבוע.</string>
     <string name="settings_custom_downloader_heading" translatable="true">השתמש בכלי ההורדה שבתוך האפליקציה</string>
     <string name="settings_import_export_heading" translatable="true">גיבוי ושחזור</string>
     <string name="settings_app_notification_a13_heading" translatable="true">התראת אפליקציה</string>
@@ -429,7 +419,6 @@
     <string name="cd_doh_dialog_resolver_name" translatable="true">שם פותר</string>
     <string name="cd_doh_dialog_checkbox_desc" translatable="true">אל תאמת אישורי TLS של שרת (אפשר רק אם אתה יודע מה אתה עושה)</string>
     <string name="cd_dns_alg_heading" translatable="true">סינון DNS מתקדם (ניסיוני)</string>
-    <string name="hs_download_positive_default" translatable="true">בסדר</string>
     <string name="univ_firewall_rule_6" translatable="true">חסום אפליקציות שהותקנו לאחרונה כברירת מחדל</string>
     <string name="univ_firewall_rule_7" translatable="true">חסימת IPv4 ב-IPv6 (ניסיוני)</string>
     <string name="univ_firewall_rule_10" translatable="true">חסום הכל חוץ מיישומים וכתובות עם מעקף</string>
@@ -437,7 +426,6 @@
     <string name="cd_dns_crypt_name" translatable="true">DNSCrypt %1$s</string>
     <string name="univ_firewall_rule_1" translatable="true">חסום את כל האפליקציות כשהמכשיר נעול</string>
     <string name="univ_firewall_rule_4" translatable="true">חסום UDP למעט DNS ו-NTP</string>
-    <string name="hs_download_negative_default" translatable="true">הזכר לי מאוחר יותר</string>
     <string name="univ_firewall_rule_2" translatable="true">חסום כל אפליקציה שאינה בשימוש</string>
     <string name="univ_firewall_rule_3" translatable="true">חסום כאשר אפליקציית המקור אינה ידועה</string>
     <string name="univ_firewall_rule_5" translatable="true">חסום כאשר הDNS נעקף</string>
@@ -507,14 +495,12 @@
     <string name="fapps_firewall_filter_hint" translatable="true">מציג את כל האפליקציות</string>
     <string name="fapps_firewall_filter_desc_category" translatable="true"><![CDATA[אפליקציות מוצגות: <u>%1$s</u>%2$s בקטגוריות: %3$s]]></string>
     <string name="fapps_firewall_filter_desc" translatable="true"><![CDATA[אפילקציות מוצגות: <u>%1$s</u>%2$s]]></string>
-    <string name="update_complete_action_snack" translatable="true">הפעל מחדש</string>
     <string name="intent_launch_error" translatable="true">לא יכל להפעיל %1$s</string>
     <string name="cd_dns_alg_desc" translatable="true">הקצאת IP מיוחד לכל שאילתת DNS</string>
     <string name="rules_load_failure_heading" translatable="true">הערה</string>
     <string name="fapps_bypass_dns_firewall_dialog_message" translatable="true">לעקוף כללי DNS וחומת אש אוניברסליים בשביל היישומים <i>הרשומים</i>\?</string>
     <string name="other_dns_list_tab1" translatable="true">DoH</string>
     <string name="rules_load_failure_desc" translatable="true">לא נמצאו כללי חומת אש</string>
-    <string name="update_complete_snack_message" translatable="true">גרסה חדשה הורדה.</string>
     <string name="pause_text" translatable="true">מושהה</string>
     <string name="accessibility_failure_toast" translatable="true">שירות הנגישות של DNS Control עצר או קרס. כבר לא חוסם אפליקציות שברקע.</string>
     <string name="accessibility_notification_content" translatable="true">שירות הנגישות של DNS Control נעצר או קרס. כבר לא חוסם אפליקציות שברקע. יש ללחוץ כדי לאפשר מחדש.</string>

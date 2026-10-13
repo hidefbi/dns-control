@@ -376,15 +376,7 @@
     <string name="http_proxy_dialog_heading" translatable="true">Set HTTP(S) CONNECT Proxy</string>
     <string name="http_proxy_dialog_desc" translatable="true">Setup URL of form, &lt;protocol>://&lt;username>:&lt;password>@&lt;domain-or-ip>:&lt;port>&lt;path>. Example: http://proxy.example.com:8080/</string>
 
-    <string name="download_update_dialog_title" translatable="true">New Update!</string>
-    <string name="download_update_dialog_message" translatable="true">A new version of the app is available for download from the website. Do you want to proceed?</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Up-to-date!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">You are already on the latest version.</string>
     <string name="download_update_dialog_message_success" translatable="true">Blocklist download successful.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Something went wrong!</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Either our servers are down or connection could not be established. Please try again after sometime.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Can\'t update right now</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">The update cannot be executed right now, please try again later.</string>
 
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Search apps by uid, name</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">Search IPs</font></string>
@@ -504,8 +496,6 @@
     <string name="settings_network_all_networks" translatable="true">Use all available networks</string>
     <string name="settings_network_all_networks_desc" translatable="true">When enabled, DNS Control uses all available networks to connect to Internet. If not, it uses whichever network is deemed <i>active</i> by Android.</string>
 
-    <string name="settings_check_update_heading" translatable="true">Check for app updates</string>
-    <string name="settings_check_update_desc" translatable="true">Automatically check for app updates once a week.</string>
 
     <string name="settings_custom_downloader_heading" translatable="true">Use in-app downloader</string>
     <string name="settings_custom_downloader_desc" translatable="true">If disabled, Android\'s built-in <i>Download Manager</i> is used</string>
@@ -787,9 +777,7 @@
 
 
     <!-- Home Screen activity -->
-    <string name="hs_download_positive_default" translatable="true">ok</string>
 
-    <string name="hs_download_negative_default" translatable="true">Remind me later</string>
 
     <!-- Universal Firewall-->
     <string name="univ_firewall_rule_1" translatable="true">Block all apps when device is locked</string>
@@ -915,8 +903,6 @@
 
     <string name="copy_clipboard_label" translatable="true">URL</string>
 
-    <string name="update_complete_snack_message" translatable="true">New version downloaded.</string>
-    <string name="update_complete_action_snack" translatable="true">RESTART</string>
 
     <string name="settings_local_blocklist_in_use" translatable="true">%1$s blocklists in-use</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Download</string>

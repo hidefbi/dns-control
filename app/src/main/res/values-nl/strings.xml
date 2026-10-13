@@ -19,8 +19,6 @@
     <string name="settings_general_header">algemeen</string>
     <string name="configure_dns_connected_doh_status">DNS over HTTPS</string>
     <string name="configure_dns_connected_dns_proxy_status">DNS Proxy</string>
-    <string name="download_update_dialog_failure_message">Onze servers liggen plat of de verbinding kon niet tot stand worden gebracht. Probeer het na enige tijd opnieuw.</string>
-    <string name="download_update_dialog_trylater_message">De update kan nu niet worden uitgevoerd, probeer het later nog eens.</string>
     <string name="search_universal_ips"><font size="12">IP\'s zoeken</font></string>
     <string name="search_custom_domains"><font size="12">Domeinnamen zoeken</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">Bloklijsten zoeken</font></string>
@@ -73,10 +71,7 @@
     <string name="local_blocklist_redownload_desc">On-device blocklists zijn al op de laatste versie v%1$s.</string>
     <string name="blocklist_update_check_failure">Er ging iets mis. Probeer het later nog eens!</string>
     <string name="http_proxy_dialog_heading">HTTP(S)-proxy instellen</string>
-    <string name="download_update_dialog_title">Nieuwe update!</string>
-    <string name="download_update_dialog_message">Een nieuwe versie van de app is te downloaden van de website. Wilt u doorgaan?</string>
     <string name="download_update_dialog_message_success">Blocklist download succesvol.</string>
-    <string name="download_update_dialog_failure_title">Iets ging fout!</string>
     <string name="info_dialog_url_copy_toast_msg">URL gekopieerd</string>
     <string name="app_mode_choose">Kies de modus</string>
     <string name="title_settings">Instellingen</string>
@@ -116,8 +111,6 @@
     <string name="settings_orbot_disabled_error">Schakel HTTP(S) en/of SOCKS5 proxy uit om door te gaan met Tor-as-a-proxy setup.</string>
     <string name="settings_orbot_notification_action">Orbot openen</string>
     <string name="settings_network_all_networks">Alle beschikbare netwerken gebruiken (experimenteel)</string>
-    <string name="settings_check_update_heading">Controleren op app-updates</string>
-    <string name="settings_check_update_desc">Automatisch controleren op app-updates eenmaal per week.</string>
     <string name="settings_custom_downloader_heading">Gebruik in-app downloader</string>
     <string name="settings_import_export_desc">Maak handmatig een back-up of herstel de gegevens en instellingen van de app.</string>
     <string name="settings_app_notification_a13_heading">App melding</string>
@@ -191,7 +184,6 @@
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;: Blokkeert een app om verbinding te maken met het internet. \n &lt;u&gt;#2&lt;/u&gt;: Blokkeert een app om verbinding te maken met een bepaald IP-adres. \n &lt;u&gt;#3&lt;/u&gt;: Blokkeert alle verbindingen wanneer het apparaat is vergrendeld (Universal Firewall). \n &lt;u&gt;#4&lt;/u&gt;: Blokkeert elke app die niet in gebruik is (Universal Firewall). \n &lt;u&gt;#5&lt;/u&gt;: Blokkeert verbindingen wanneer bron app onbekend is (Universal Firewall). \n &lt;u&gt;#6&lt;/u&gt;: Blokkeert alle UDP verkeer behalve DNS (Universal Firewall). \n &lt;u&gt;#7&lt;/u&gt;: Blokkeert verbindingen wanneer DNS wordt omzeild (Universal Firewall).</string>
     <string name="firewall_act_universal_tab">Universele</string>
     <string name="always_on_dialog">\"Always-On VPN\" is ingeschakeld op dit apparaat. Om DNS Control te starten, ga naar Instellingen app en schakel \"Always-on VPN\" uit.</string>
-    <string name="download_update_dialog_message_ok">Je zit al op de laatste versie.</string>
     <string name="firewall_rule_foreground">App Niet in gebruik</string>
     <string name="univ_firewall_rule_1">Alle apps blokkeren wanneer het apparaat is vergrendeld</string>
     <string name="dc_local_block_desc_1">Kies uit 185+ blocklists. Klik hier om bloklijsten te downloaden of te configureren.</string>
@@ -217,7 +209,6 @@
     <string name="cd_custom_doh_url_name">DoH %1$s</string>
     <string name="cd_doh_dialog_heading">DNS over HTTPS toevoegen</string>
     <string name="ct_ip_details" translatable="false">%1$s (%2$s)</string>
-    <string name="hs_download_positive_default">ok</string>
     <string name="univ_firewall_rule_2">Blokkeer elke app die niet in gebruik is</string>
     <string name="univ_firewall_rule_6">Nieuw geïnstalleerde apps standaard blokkeren</string>
     <string name="univ_ip_delete_toast_success">Alle IP-regels verwijderd.</string>
@@ -236,7 +227,6 @@
     <string name="fapps_info_dialog_positive_btn">Oke</string>
     <string name="network_log_app_name_unknown">Onbekend</string>
     <string name="rules_load_failure_desc">Geen firewall regels gevonden</string>
-    <string name="update_complete_snack_message">Nieuwe versie gedownload.</string>
     <string name="pause_desc">Opmerking: %1$s geblokkeerde apps blijven geblokkeerd.</string>
     <string name="network_log_app_name_unnamed">Naamloos (%1$s)</string>
     <string name="system_dns_connection_failure">Kan de huidige DNS-server niet bepalen</string>
@@ -267,7 +257,6 @@
     <string name="local_blocklist_download">Bloklijsten downloaden</string>
     <string name="refresh_complete"><!-- use dc_refresh_toast --> App-lijst opnieuw gesynchroniseerd.</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
-    <string name="download_update_dialog_trylater_title">Ik kan nu niet updaten</string>
     <string name="accessibility_service_description">DNS Control gebruikt de toegankelijkheidsdienst om achtergrondtoepassingen te detecteren en firewallen. DNS Control verzamelt of verkoopt geen informatie.</string>
     <string name="finish">Einde</string>
     
@@ -299,7 +288,6 @@
     <string name="dc_custom_block_heading">Individuele domeinen toestaan of weigeren</string>
     <string name="about_bug_report_dialog_positive_btn">Verzend e-mail</string>
     <string name="vpn_profile_error">Kon VPN profiel niet starten.</string>
-    <string name="hs_download_negative_default">Herinner me later</string>
     <string name="univ_firewall_rule_3">Blokkeren wanneer bron-app onbekend is</string>
     <string name="univ_firewall_rule_4">UDP blokkeren behalve DNS en NTP</string>
     <string name="univ_firewall_rule_7">IPv4 blokkeren in IPv6 (experimenteel)</string>
@@ -326,7 +314,6 @@
     <string name="dns_crypt_connection_failure">Fout bij de verbinding met de DNSCrypt-server.</string>
     <string name="dns_proxy_connection_failure">Fout bij verbinding met DNS Proxy server.</string>
     <string name="copy_clipboard_label">URL</string>
-    <string name="update_complete_action_snack">HERSTARTEN</string>
     <string name="settings_local_blocklist_dialog_positive">Download</string>
     <string name="other_dns_list_tab1">DoH</string>
     <string name="firewall_rule_block_app_new_install">Nieuwe app</string>
@@ -406,7 +393,6 @@
     <string name="dot_custom_url_remove_dialog_message" translatable="true">Verwijder de DNS over TLS endpoint van de opgeslagen configuratie.</string>
     <string name="settings_connectivity_checks_desc" translatable="true">Connectiviteitschecks worden verstuurd om bereikbaarheid te garanderen.</string>
     <string name="orbot_no_app_toast" translatable="true">Voeg te minste één app toe om Orbot aan te zetten</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Up-to-date!</string>
     <string name="settings_locale_dialog_title" translatable="true">Voorkeurstaal kiezen</string>
     <string name="public_key_copy_toast_msg" translatable="true">Publieke sleutel gekopieerd.</string>
     <string name="notif_channel_desc_vpn_notification" translatable="true">Informeren wanneer DNS Control actief is en op de achtergrond draait</string>

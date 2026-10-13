@@ -13,7 +13,6 @@
     <string name="lbl_advanced">متقدم</string>
     <string name="dns_crypt_relay_remove_dialog_message">احذف مرحل DNSCrypt من التكوين المحفوظ.</string>
     <string name="orbot_install_dialog_title">تثبيت Orbot؟</string>
-    <string name="settings_check_update_desc">تحقق تلقائيًا من تحديثات التطبيق مرة واحدة في الأسبوع.</string>
     <string name="hsf_vpn_prepare_failure">إما إذن VPN مفقود ، أو أن هناك تطبيقًا آخر في وضع VPN قيد التشغيل دائمًا.</string>
     <string name="fapps_firewall_filter_excluded">مستبعد</string>
     <string name="rt_list_simple_btn_txt">بسيط</string>
@@ -23,12 +22,10 @@
     <string name="cd_dialog_title">إضافة قاعدة النطاق</string>
     <string name="brbs_backup_dialog_failure_message">تعذر النسخ الاحتياطي. حاول مرة أخرى؟</string>
     <string name="settings_socks5_dialog_hint_password">كلمة السر (اختيارية)</string>
-    <string name="hs_download_negative_default">ذكرني لاحقا</string>
     <string name="ci_dialog_title">أضف IP / Port Rule</string>
     <string name="ada_app_status_block_md">محظور على شبكات (الجوال) التي تم قياسها</string>
     <string name="app_mode_dns_low_battery">DNS (موفر البطارية)</string>
     <string name="settings_socks_forwarding_desc_no_app">إعادة توجيه إلى %1$s: %2$s</string>
-    <string name="hs_download_positive_default">موافق</string>
     <string name="fapps_firewall_filter_desc_category"><![CDATA[إظهار تطبيقات <u> %1$s </u> %2$s في الفئات: %3$s]]></string>
     <string name="dns_firewall_mode_info_explanation_new">كل ما سبق + تجاوز الرقابة على الإنترنت.</string>
     <string name="cd_doh_dialog_resolver_name">اسم المحلل</string>
@@ -101,7 +98,6 @@
     <string name="dc_check_update_heading">موجه في تحديثات قائمة الحظر</string>
     <string name="cd_dns_crypt_dialog_heading">أضف محلل أو مرحل DNSCrypt</string>
     <string name="univ_delete_firewall_dialog_title">حذف كل قواعد IP؟</string>
-    <string name="update_complete_snack_message">تم تنزيل إصدار جديد.</string>
     <string name="firewall_rule_block_ip">آي بي / منفذ (التطبيق)</string>
     <string name="firewall_rule_exempt_app_bypass_univ">التطبيق الذي تم تجاوزه</string>
     <string name="firewall_rule_exempt_dns_proxied">وكيل DNS</string>
@@ -130,7 +126,6 @@
     <string name="fapps_unmetered_block_dialog_title">منع على غير المقاييس</string>
     <string name="fapps_unmetered_unblock_dialog_message">هل تريد السماح بالاتصالات على شبكة (WiFi) غير محدودة القياس لتطبيقات <i> المدرجة </i>؟</string>
     <string name="rules_load_failure_reload">إعادة تحميل</string>
-    <string name="update_complete_action_snack">إعادة بدء</string>
     <string name="firewall_rule_block_http">HTTP غير آمن</string>
     <string name="notif_dialog_pause_dialog_neutral">عرض</string>
     <string name="notif_channel_desc_vpn_failure">أبلغ عندما يتم إيقاف DNS Control بواسطة Android أو بواسطة تطبيق VPN آخر</string>
@@ -165,7 +160,6 @@
     <string name="status_protected_with_private_dns">محمي بـ dns خاص</string>
     <string name="always_on_dialog_neutral">الإعدادات</string>
     <string name="dns_crypt_relay_remove_dialog_title">حذف DNSCrypt Relay؟</string>
-    <string name="download_update_dialog_title">تحديث جديد!</string>
     <string name="settings_proxy_header">وكيل</string>
     <string name="settings_https_disabled_error">متصل بـ %1$s. قم بإيقاف تشغيله للمتابعة.</string>
     <string name="settings_http_proxy_desc">إعادة توجيه إلى %1$s</string>
@@ -190,7 +184,6 @@
     <string name="apps_info_title">التطبيقات</string>
     <string name="firewall_act_universal_tab">عالمي</string>
     <string name="download_update_dialog_message_success">تم تنزيل قائمة الحظر بنجاح.</string>
-    <string name="download_update_dialog_trylater_message">لا يمكن تنفيذ التحديث الآن ، يرجى المحاولة مرة أخرى لاحقًا.</string>
     <string name="search_rethinkplus_file_tag"><font size="12"> البحث في قوائم الحظر </font></string>
     <string name="app_mode_firewall">جدار الحماية</string>
     <string name="app_mode_dns_firewall">DNS وجدار الحماية (المبدئي)</string>
@@ -236,7 +229,6 @@
     <string name="exclude">استثني</string>
     <string name="dns_explanation_firewall_connected">متصل بجدار الحماية</string>
     <string name="doh_custom_url_remove_dialog_message">احذف DNS عبر نقطة نهاية Https من التكوين المحفوظ.</string>
-    <string name="download_update_dialog_message_ok_title">حتى الآن!</string>
     <string name="orbot_none_desc">لا شيء مما بالأعلى.</string>
     <string name="settings_autostart_bootup_desc">عند تشغيل الجهاز ، ابدأ DNS Control إذا كان يعمل قبل إيقاف التشغيل.</string>
     <string name="settings_http_proxy_toast_success">تم تعيين وكيل HTTP</string>
@@ -309,7 +301,6 @@
     <string name="ci_dialog_error_invalid_ip">عنوان IP أو الشبكة الفرعية أو المنفذ غير صالح.</string>
     <string name="dns_act_configure_tab">كوِّن</string>
     <string name="local_blocklist_download_desc">هل تريد تنزيل قوائم الحظر (حوالي 60 ميجابايت) لاستخدام هذه الميزة؟</string>
-    <string name="download_update_dialog_message_ok">أنت بالفعل على أحدث إصدار.</string>
     <string name="orbot_install_dialog_neutral">موقع الكتروني</string>
     <string name="settings_orbot_header">أوربوت ❯</string>
     <string name="settings_network_all_networks_desc">عند التمكين ، يستخدم DNS Control جميع الشبكات المتاحة للاتصال بالإنترنت. إذا لم يكن كذلك ، فإنه يستخدم أي شبكة يعتبرها <i> نشطة </i> بواسطة Android.</string>
@@ -329,7 +320,6 @@
     <string name="dc_dns_proxy" translatable="false">وكيل DNS</string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">محمي</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
-    <string name="download_update_dialog_trylater_title">لا يمكن التحديث الآن</string>
     <string name="search_firewall_all_apps"><font size="12"> ابحث في التطبيقات باستخدام uid أو الاسم </font></string>
     <string name="settings_ip_network_desc">اختر من بين إصدارات بروتوكول الإنترنت.</string>
     <string name="orbot_bs_status_3">إعادة توجيه %1$s إلى Orbot ، تم تعيين وكيل HTTP أيضًا.</string>
@@ -494,17 +484,13 @@
     <string name="always_on_dialog_lockdown_stop_message">يقوم DNS Control بتشغيل VPN في وضع <i> الإغلاق </i>. قد يؤدي إيقافه إلى فقدان الإتصال بالأنترنت في ملف تعريف المستخدم هذا. هل تريد المتابعة على أية حال؟</string>
     <string name="dns_crypt_custom_url_remove_dialog_title">حذف محلل DNSCrypt؟</string>
     <string name="dns_crypt_url_remove_dialog_message">احذف محلل DNSCrypt من التكوين المحفوظ.</string>
-    <string name="download_update_dialog_failure_title">هناك خطأ ما !</string>
-    <string name="download_update_dialog_failure_message">إما أن خوادمنا معطلة أو لا يمكن إنشاء الاتصال. من فضلك حاول مرة أخرى بعد بعض من الوقت.</string>
     <string name="dns_explanation_dns_connected">متصل بـ RethinkDNS</string>
     <string name="settings_http_proxy_error_text1">يجب أن يتراوح نطاق المنفذ بين 1024 و 65535</string>
     <string name="local_blocklist_redownload_desc">قوائم الحظر على الجهاز موجودة بالفعل في أحدث إصدار %1$s.</string>
     <string name="blocklist_update_check_failure">هناك خطأ ما. حاول مرة أخرى في وقت لاحق!</string>
     <string name="orbot_stop_dialog_dns_message">تم إعداد DNS Control لإعادة توجيه استعلامات DNS إلى Orbot. قم بالتغيير على النحو المطلوب.</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt; # 1 &lt;/u&gt;: حظر أي تطبيق من الاتصال بالإنترنت. \n&lt;u&gt; # 2 &lt;/u&gt;: حظر أي تطبيق من الاتصال برقم اي بي معين. \n&lt;u&gt; # 3 &lt;/u&gt;: حظر جميع الاتصالات عند قفل الجهاز (جدار الحماية الشامل). \n&lt;u&gt; # 4 &lt;/u&gt;: حظر اتصال أي تطبيق ليس قيد الاستخدام (جدار الحماية الشامل). \n&lt;u&gt; # 5 &lt;/u&gt;: حظر الاتصالات عندما يكون مصدر التطبيق غير معروف (جدار الحماية الشامل). \n&lt;u&gt; # 6 &lt;/u&gt;: حظر جميع حركات مرور بروتوكول مخطط بيانات المستخدم (UDP) باستثناء نظام أسماء النطاقات (جدار الحماية الشامل). \n&lt;u&gt; # 7 &lt;/u&gt;: حظر الاتصالات عند تجاوز نظام أسماء النطاقات (جدار الحماية الشامل).</string>
-    <string name="download_update_dialog_message">يتوفر إصدار جديد من التطبيق للتنزيل من موقع الويب. هل تريد المتابعة؟</string>
     <string name="search_custom_domains"><font size="12">ابحث في أسماء النطاقات</font></string>
-    <string name="settings_check_update_heading">تحقق من وجود تحديثات التطبيق</string>
     <string name="settings_ip_dialog_title">اختر إصدار IP</string>
     <string name="settings_notification_desc">تظهر أزرار الإجراءات مع إشعار DNS Control: %1$s</string>
     <string name="settings_protocol_translation_dns_inactive">حول إلى وضع DNS/DNS+Firewall لتفعيل هذا الإعداد</string>

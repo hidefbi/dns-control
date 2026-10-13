@@ -109,7 +109,6 @@
     <string name="about_bug_report_dialog_positive_btn">E-post</string>
     <string name="about_settings_app_info">Programinfo</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
-    <string name="download_update_dialog_failure_title">Noe gikk galt.</string>
     <string name="univ_ip_delete_dialog_positive">Slett alle</string>
     <string name="univ_ip_delete_toast_success">Slettet alle IP-regler.</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
@@ -124,7 +123,6 @@
     <string name="univ_view_blocked_ip">IP og port-regler</string>
     <string name="search_universal_ips"><font size="12">Søk etter IP-er</font></string>
     <string name="cd_dns_crypt_dialog_name">Navn</string>
-    <string name="hs_download_positive_default">OK</string>
     <string name="local_blocklist_download">Last ned svartelister</string>
     <string name="cd_dns_crypt_dialog_desc">Beskrivelse (valgfritt)</string>
     <string name="blocklist_update_check_not_required">Svartelistene er allerede siste versjon.</string>
@@ -164,7 +162,6 @@
     <string name="univ_firewall_rule_2">Blokker alle programmer som ikke er i bruk</string>
     <string name="firewall_rule_block_udp_ntp">UDP blokkert</string>
     <string name="cd_dialog_title">Legg til domene</string>
-    <string name="hs_download_negative_default">Minn meg på dette senere</string>
     <string name="network_log_app_name_unknown">Ukjent</string>
     <string name="dns_proxy_connection_failure">Kunne ikke koble til DNS-mellomtjener.</string>
     <string name="copy_clipboard_label">Nettadresse</string>
@@ -240,7 +237,6 @@
     <string name="hsf_stop_btn_state">Stopp</string>
     <string name="dns_connected">Tilkoblet</string>
     <string name="dns_info_positive">OK</string>
-    <string name="update_complete_snack_message">Ny versjon nedlastet.</string>
     <string name="fapps_firewall_filter_desc"><![CDATA[Viser <u>%1$s</u> %2$s programmer]]></string>
     <string name="cd_toast_added">Domene lagt til</string>
     <string name="cd_dialog_edittext_hint">Skriv inn %1$s</string>
@@ -287,7 +283,6 @@
     <string name="lbbs_configure">Sett opp</string>
     <string name="brbs_backup_dialog_positive">Sikkerhetskopier</string>
     <string name="rules_load_failure_heading">Merknad</string>
-    <string name="update_complete_action_snack">Start igjen</string>
     <string name="rt_download">Last ned svartelister</string>
     <string name="dc_local_block_enabled">Påskrudd</string>
     <string name="brbs_restore_dialog_failure_title">Gjenoppretting mislyktes</string>
@@ -351,7 +346,6 @@
     <string name="bsrf_clear_filter">Tøm</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;: Blokker alle programmer fra å koble til Internett \n &lt;u&gt;#2&lt;/u&gt;: Blokkerer alle programmer fra å koble til en gitt IP. \n &lt;u&gt;#3&lt;/u&gt;: Blokkerer alle tilkoblinger når enheten er låst (universell brannmur). \n &lt;u&gt;#4&lt;/u&gt;: Blokkerer alle tilkoblinger når kildeprogrammet er ukjent (universell brannmur). \n &lt;u&gt;#5&lt;/u&gt;: Blokkerer tilkoblinger når kildeprogrammet er ukjent (universell brannmur). \n &lt;u&gt;#6&lt;/u&gt;: Blokkerer all UDP-trafikk, unntatt DNS (universell brannmur). \n &lt;u&gt;#7&lt;/u&gt;: Blokkerer tilkoblinger når DNS omgås (universell brannmur).</string>
     <string name="download_update_dialog_message_success">Svarteliste nedlastet.</string>
-    <string name="download_update_dialog_message">Last ned ny versjon av programmet fra nettsiden?</string>
     <string name="orbot_socks5">Kun-TCP-mellomtjener</string>
     <string name="dc_local_block_desc_1">Velg mellom 185+ svartelister. Klikk her for å laste ned eller sette opp svartelister.</string>
     <string name="firewall_rule_block_unmetered">Ikke kvotebasert (Wi-Fi)</string>
@@ -363,7 +357,6 @@
     <string name="alert_permission_accessibility">Tilgang</string>
     <string name="new_app_bulk_notification_content">DNS Control blokkerte %1$s nye programmer. Trykk for å vise eller endre.</string>
     <string name="ctbs_app_other_apps">%1$s og %2$s program(mer) til</string>
-    <string name="download_update_dialog_message_ok">Du har allerede nyeste versjon.</string>
     <string name="firewall_rule_block_app_desc"><![CDATA[En brukervalgt brannmursregel blokkerte dette <i>programmet</i>.<br/><br/> Endre dette fra <i>Alle programmer</i>-fanen.]]></string>
     <string name="orbot_bs_status_3">Videresender %1$s til Orbot. HTTP-mellomtjener også satt.</string>
     <string name="dc_check_update_desc">Se etter endringer i svartelister hver <i>tredje</i> dag</string>
@@ -387,14 +380,11 @@
     <string name="apps_card_ips_count">%1$s IP- og portregler</string>
     <string name="private_dns_dialog_positive">Gå til innstillinger</string>
     <string name="univ_firewall_dialog_message">Fortsett ved å slette denne regelen og la ethvert program koble til denne IP-en?</string>
-    <string name="download_update_dialog_trylater_title">Kan ikke oppdatere akkurat nå</string>
-    <string name="download_update_dialog_trylater_message">Oppdateringen kan ikke kjøres akkurat nå. Prøv igjen senere.</string>
     <string name="settings_app_notification_a13_heading">Programmerknad</string>
     <string name="firewall_mode_notification_title">Beskyttet. Tilkoblet brannmur.</string>
     <string name="orbot_none_desc">Ingen av ovennevnte.</string>
     <string name="pause_mode_notification_title">Pauset. Blokkerte programmer vil forbli bak brannmur.</string>
     <string name="firewall_status_blocked">blokkert</string>
     <string name="settings_proxy_header">mellomtjener</string>
-    <string name="settings_check_update_heading">Se etter nye programversjoner</string>
     <string name="firewall_status_allow">tillatt</string>
 </resources>
