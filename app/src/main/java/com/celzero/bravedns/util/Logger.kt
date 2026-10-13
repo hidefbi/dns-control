@@ -111,8 +111,6 @@ object Logger {
         }
     }
 
-    fun crash(tag: String, message: String, e: Exception? = null) = Unit
-
     fun throwableToException(throwable: Throwable): Exception {
         return if (throwable is Exception) {
             throwable
@@ -120,11 +118,5 @@ object Logger {
             Exception(throwable)
         }
     }
-
-    suspend fun wireLog(message: String) = Unit
-
-    fun log(tag: String, msg: String, type: LoggerLevel, e: Exception? = null) = Unit
-
-    private fun dbWrite(tag: String, msg: String, level: LoggerLevel, e: Exception? = null) = Unit
 }
 

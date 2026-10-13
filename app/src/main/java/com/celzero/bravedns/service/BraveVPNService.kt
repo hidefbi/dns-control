@@ -16,8 +16,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.ForegroundServiceStartNotAllowedException
@@ -2714,7 +2712,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             }
             return establish
         } catch (e: Exception) {
-            Logger.crash(LOG_TAG_VPN, e.message ?: "err establishVpn", e)
             return null
         }
     }

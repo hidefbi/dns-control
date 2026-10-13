@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_APP_UPDATE
 import android.app.UiModeManager
 import android.content.Context
 import android.content.Intent
@@ -406,7 +404,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
                     installStateUpdatedListener
                 ) // Might be play updater or web updater
             } catch (e: Exception) {
-                Logger.crash(LOG_TAG_APP_UPDATE, "err in app update check: ${e.message}", e)
                 runOnUiThread {
                     showDownloadDialog(
                         AppUpdater.InstallSource.STORE,

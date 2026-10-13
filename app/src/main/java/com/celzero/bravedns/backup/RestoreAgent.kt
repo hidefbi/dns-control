@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.backup
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_BACKUP_RESTORE
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.pm.PackageInfo
@@ -139,11 +137,6 @@ class RestoreAgent(val context: Context, workerParams: WorkerParameters) :
 
             return true
         } catch (e: Exception) {
-            Logger.crash(
-                LOG_TAG_BACKUP_RESTORE,
-                "exception during restore process, reason? ${e.message}",
-                e
-            )
             return false
         } finally {
             inputStream?.close()
@@ -285,11 +278,6 @@ class RestoreAgent(val context: Context, workerParams: WorkerParameters) :
             val metadata = stream.bufferedReader().use { it.readText() }
             isVersionSupported(metadata)
         } catch (ex: Exception) {
-            Logger.crash(
-                LOG_TAG_BACKUP_RESTORE,
-                "err while restoring metadata, reason? ${ex.message}",
-                ex
-            )
             false
         } finally {
             try {
@@ -332,11 +320,6 @@ class RestoreAgent(val context: Context, workerParams: WorkerParameters) :
             // there is only one database), so do not consider the backups prior to that
             return version >= minVersionSupported && persistentState.appVersion >= version
         } catch (e: Exception) {
-            Logger.crash(
-                LOG_TAG_BACKUP_RESTORE,
-                "error while reading metadata, reason? ${e.message}",
-                e
-            )
             return false
         }
     }

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.database
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -206,10 +204,8 @@ internal constructor(
             // must be called after updateExistingPackagesIfNeeded
             refreshDomainRules(packagesToUpdate)
         } catch (e: SQLiteConstraintException) {
-            Logger.crash(LOG_TAG_APP_DB, "db constraint violation during refresh; notifying user", e)
             showDatabaseCorruptionNotification()
         } catch (e: RuntimeException) {
-            Logger.crash(LOG_TAG_APP_DB, e.message ?: "refresh err", e)
             throw e
         } finally {
             notifyEmptyFirewallRulesIfNeeded()

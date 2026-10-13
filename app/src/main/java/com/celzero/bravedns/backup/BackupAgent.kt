@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.backup
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_BACKUP_RESTORE
 import android.content.Context
 import android.net.Uri
 import android.database.sqlite.SQLiteDatabase
@@ -122,11 +120,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
 
             return zipAndCopyToDestination(tempDir, backupFileUri)
         } catch (e: Exception) {
-            Logger.crash(
-                LOG_TAG_BACKUP_RESTORE,
-                "exception during backup process, reason? ${e.message}",
-                e
-            )
             return false
         } finally {
             for (filePath in filesPathToZip) {
@@ -187,11 +180,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
             filesPathToZip.add(metadataFile.absolutePath)
             return true
         } catch (e: Exception) {
-            Logger.crash(
-                LOG_TAG_BACKUP_RESTORE,
-                "exception while creating meta data file, ${e.message}",
-                e
-            )
             return false
         }
     }

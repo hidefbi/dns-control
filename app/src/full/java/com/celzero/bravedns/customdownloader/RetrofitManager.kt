@@ -17,16 +17,10 @@ package com.celzero.bravedns.customdownloader
 
 import android.content.Context
 import com.celzero.bravedns.R
-import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.RethinkDnsApplication.Companion.DEBUG
 import com.celzero.bravedns.util.Constants
-import com.celzero.bravedns.util.Daemons
-import com.celzero.bravedns.util.Utilities
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
 import okhttp3.Dns
 import okhttp3.HttpUrl.Companion.toHttpUrl
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.dnsoverhttps.DnsOverHttps
 import retrofit2.Retrofit
@@ -58,39 +52,6 @@ class RetrofitManager {
             FALLBACK_DNS
         }
 
-        // Single-thread dispatcher dedicated to fire-and-forget log I/O so that
-        // log writes never block OkHttp's network threads.
-        private val logScope = CoroutineScope(Daemons.make("RayIdLogger"))
-
-        /** Captures Cloudflare's cf-ray header for request tracing. */
-        val rayIdInterceptor = Interceptor { chain ->
-            val request = chain.request()
-            val reqTime = System.currentTimeMillis()
-
-            // Log request line asynchronously
-            logScope.launch {
-                val ts = Utilities.convertLongToTime(reqTime, Constants.TIME_FORMAT_4)
-                val msg = "$ts --> ${request.method} ${request.url}"
-                Logger.wireLog(msg)
-            }
-
-            val response = chain.proceed(request)
-            val respTime = System.currentTimeMillis()
-
-            try {
-                val cfRay = response.header("cf-ray")
-
-                logScope.launch {
-                    val ts = Utilities.convertLongToTime(respTime, Constants.TIME_FORMAT_4)
-                    val prefix = "$ts <-- ${response.code} ${request.method} ${request.url}"
-                    val msg = if (cfRay != null) "$prefix | cf-ray: $cfRay" else "$prefix | no-ray"
-                    Logger.wireLog(msg)
-                }
-            } catch (e: Exception) {
-            }
-            response
-        }
-
         fun getBlocklistBaseBuilder(isRinRActive: Boolean): Retrofit.Builder {
             return Retrofit.Builder()
                 .baseUrl(Constants.DOWNLOAD_BASE_URL + "/")
@@ -103,9 +64,6 @@ class RetrofitManager {
             b.readTimeout(READ_TIMEOUT_MINUTES, TimeUnit.MINUTES)
             b.writeTimeout(WRITE_TIMEOUT_MINUTES, TimeUnit.MINUTES)
             b.retryOnConnectionFailure(true)
-            // Always active: captures cf-ray header; never logs
-            // request headers (cid / did / sessionToken stay out of logs).
-            b.addInterceptor(rayIdInterceptor)
             // If unset, the system-wide default DNS will be used.
             // no need to add custom dns if rinr is not active, as the connections will be routed
             // through the default dns
@@ -160,7 +118,6 @@ class RetrofitManager {
                     }
                     dns?.let { providers.add(it) }
                 } catch (e: Exception) {
-                    Logger.crash(Logger.LOG_TAG_DOWNLOAD, "err; custom dns: ${e.message}", e)
                 }
             }
             return if (providers.isEmpty()) null else FallbackDns(providers)

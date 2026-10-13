@@ -17,7 +17,6 @@
 package com.celzero.bravedns.net.go
 
 import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -1163,7 +1162,6 @@ class GoVpnAdapter : KoinComponent {
             try {
                 return Intra.newDefaultDNS(Backend.DNS53, fallbackDns, "")
             } catch (e: Exception) {
-                Logger.crash(LOG_TAG_VPN, "$TAG err add $fallbackDns dns: ${e.message}", e)
                 return null
             }
         }
@@ -1523,7 +1521,6 @@ class GoVpnAdapter : KoinComponent {
             }
             return tunnel.resolver
         } catch (e: Exception) {
-            Logger.crash(LOG_TAG_VPN, "$TAG err get resolver: ${e.message}", e)
         }
         return null
     }

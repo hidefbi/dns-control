@@ -28,8 +28,6 @@ import com.celzero.bravedns.util.Constants.Companion.INVALID_UID
 import com.celzero.bravedns.util.Constants.Companion.UID_EVERYBODY
 import com.celzero.bravedns.util.IPUtil
 import com.celzero.bravedns.util.KnownPorts
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import com.celzero.bravedns.util.OrbotHelper
 import com.celzero.bravedns.util.Protocol
 import com.celzero.bravedns.util.Utilities.isMissingOrInvalidUid
@@ -360,7 +358,6 @@ object TunFirewallManager : KoinComponent {
             logd("no firewall rule($connId), uid=${params.connInfo.uid}")
             FirewallRuleset.RULE0
         } catch (iex: Exception) {
-            Logger.crash(LOG_TAG_VPN, "unexpected err in firewall()($connId), block anyway", iex)
             FirewallRuleset.RULE1C
         }
         return res
