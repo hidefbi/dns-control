@@ -66,7 +66,6 @@ import com.celzero.bravedns.util.Utilities.delay
 import com.celzero.bravedns.util.Utilities.isAtleastQ
 import com.celzero.bravedns.util.Utilities.isAtleastS
 import com.celzero.bravedns.util.Utilities.isAtleastT
-import com.celzero.bravedns.util.Utilities.isFdroidFlavour
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
@@ -163,16 +162,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
     }
 
     private fun initView() {
-
-        if (isFdroidFlavour()) {
-            b.settingsActivityCheckUpdateRl.visibility = View.GONE
-            b.dividerCheckUpdate.visibility = View.GONE
-        } else {
-            b.settingsActivityCheckUpdateRl.visibility = View.VISIBLE
-            b.dividerCheckUpdate.visibility = View.VISIBLE
-            // check for app updates
-            b.settingsActivityCheckUpdateSwitch.isChecked = persistentState.checkForAppUpdate
-        }
 
         // add ipInfo inc to the desc
         b.genSettingsIpInfoDesc.text =
@@ -358,17 +347,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
     }
 
     private fun setupClickListeners() {
-        b.settingsActivityCheckUpdateRl.setOnClickListener {
-            b.settingsActivityCheckUpdateSwitch.isChecked =
-                !b.settingsActivityCheckUpdateSwitch.isChecked
-        }
-
-        b.settingsActivityCheckUpdateSwitch.setOnCheckedChangeListener { _: CompoundButton,
-                                                                         b: Boolean ->
-            persistentState.checkForAppUpdate = b
-        }
-
-
         b.settingsActivityThemeRl.setOnClickListener {
             enableAfterDelay(CLICK_DELAY_SHORT_MS, b.settingsActivityThemeRl)
             showThemeDialog()

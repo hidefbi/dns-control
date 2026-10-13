@@ -108,7 +108,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         every { mockPersistentState.downloadIpInfo }                returns false
         every { mockPersistentState.tombstoneApps }                 returns false
         every { mockPersistentState.persistentNotification }        returns false
-        every { mockPersistentState.checkForAppUpdate }             returns false
         every { mockPersistentState.goLoggerLevel }                 returns 4L
         every { mockPersistentState.appTriggerPackages }            returns ""
         every { mockPersistentState.shouldRequestNotificationPermission } returns false
@@ -605,25 +604,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
             assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
         }
     }
-
-    // =====================================================================================
-    // 8. isFdroidFlavour – check-update section hidden
-    // =====================================================================================
-
-    @Test
-    fun fdroidFlavour_firebaseSectionIsGone() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            activity.findViewById<View>(R.id.settings_activity_check_update_rl)?.let {
-                assertEquals("CheckUpdate RL must be GONE for fdroid", View.GONE, it.visibility)
-            }
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    // =====================================================================================
-    // =====================================================================================
 
     // =====================================================================================
     // 10. displayNotificationActionUi – text reflects persisted action type
