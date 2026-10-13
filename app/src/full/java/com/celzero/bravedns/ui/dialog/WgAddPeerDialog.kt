@@ -165,7 +165,6 @@ class WgAddPeerDialog(
             } catch (e: Throwable) {
                 resetSaveButton()
                 val ex = Logger.throwableToException(e)
-                Logger.e(Logger.LOG_TAG_PROXY, "Error while adding peer", ex)
                 Utilities.showToastUiCentered(
                     activity,
                     ErrorMessages[activity, e],

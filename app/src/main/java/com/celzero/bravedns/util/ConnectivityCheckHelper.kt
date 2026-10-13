@@ -1,6 +1,5 @@
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_CONNECTION
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.TrafficStats
@@ -23,7 +22,6 @@ import java.net.Socket
 object ConnectivityCheckHelper {
 
     private const val CONN_TYPE = "auto"
-    private const val TAG = "ConnCheckHelper"
     private const val DEFAULT_TIMEOUT = 500 // ms
     private const val HTTP_PORT = 80
     private const val DNS_PORT = 53
@@ -72,10 +70,6 @@ object ConnectivityCheckHelper {
         success: Boolean,
         nw: Network?
     ) {
-        Logger.v(
-            LOG_TAG_CONNECTION,
-            "$TAG $operation, id($id): $target, ok? $success, nw: ${nw?.networkHandle}, netid: ${netId(nw?.networkHandle)}"
-        )
     }
 
     /**
@@ -204,7 +198,6 @@ object ConnectivityCheckHelper {
             val success = probeConnectivity(listOf(ipOrUrl), config) ||
                     performFallbackCheck(config, ipOrUrl)
 
-            Logger.i(LOG_TAG_CONNECTION, "$TAG probeIpOrUrl: $ipOrUrl, ok? $success, cap: $activeNwCapabilities")
             return ProbeResult(ipOrUrl, success, activeNwCapabilities)
         }
 
@@ -214,10 +207,6 @@ object ConnectivityCheckHelper {
                     performFallbackCheck(networkConfig, ipOrUrl)
 
             if (success) {
-                Logger.i(
-                    LOG_TAG_CONNECTION,
-                    "$TAG probeIpOrUrl: $ipOrUrl, ok? $success, netid: ${netId(nw.network.networkHandle)}, cap: ${nw.capabilities}"
-                )
                 ProbeResult(ipOrUrl, true, nw.capabilities)
             } else {
                 null
@@ -245,17 +234,11 @@ object ConnectivityCheckHelper {
             val isConnected = socket.isConnected
             val isBound = socket.isBound
 
-            Logger.d(
-                LOG_TAG_CONNECTION,
-                "$TAG tcp$portName: $host, ${nw?.networkHandle}, netid: ${netId(nw?.networkHandle)}, connected: $isConnected, bound: $isBound"
-            )
             return true
         } catch (e: IOException) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG err tcp$portName: ${e.message}")
             val cause = e.cause
             return cause is ErrnoException && cause.errno == ECONNREFUSED
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG err tcp$portName: ${e.message}")
             return false
         } finally {
             closeQuietly(socket)
@@ -272,13 +255,8 @@ object ConnectivityCheckHelper {
             val result = checkTcpConnection(nw, host, HTTP_PORT, "80") ||
                     checkTcpConnection(nw, host, DNS_PORT, "53")
 
-            Logger.d(
-                LOG_TAG_CONNECTION,
-                "$TAG $host isReachable on network ${nw?.networkHandle}, netid: ${netId(nw?.networkHandle)}: $result"
-            )
             result
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG err isReachableTcpUdp: ${e.message}")
             false
         }
     }
@@ -291,10 +269,8 @@ object ConnectivityCheckHelper {
             @Suppress("DEPRECATION")
             TrafficStats.setThreadStatsTag(Thread.currentThread().id.toIntOrDefault())
             val result = InetAddress.getByName(host).isReachable(DEFAULT_TIMEOUT)
-            Logger.d(LOG_TAG_CONNECTION, "$TAG $host isReachable via ICMP: $result")
             result
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG err isReachable: ${e.message}")
             false
         }
     }
@@ -306,7 +282,6 @@ object ConnectivityCheckHelper {
         try {
             closeable?.close()
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG Error closing resource: ${e.message}")
         }
     }
 

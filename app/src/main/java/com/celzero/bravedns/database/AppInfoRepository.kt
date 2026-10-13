@@ -15,8 +15,6 @@ limitations under the License.
 */
 package com.celzero.bravedns.database
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
 import android.database.sqlite.SQLiteConstraintException
 import com.celzero.bravedns.data.DataUsage
 
@@ -46,7 +44,6 @@ class AppInfoRepository(private val appInfoDAO: AppInfoDAO) {
         return try {
             appInfoDAO.updateUid(oldUid, pkg, newUid, modifiedTs)
         } catch (_: SQLiteConstraintException) {
-            Logger.w(LOG_TAG_APP_DB, "updateUid constraint violation; old=($oldUid,$pkg) -> new=$newUid; deleting stale old entry")
             appInfoDAO.deletePackage(oldUid, pkg)
             0
         }

@@ -16,8 +16,6 @@
 package com.celzero.bravedns
 import com.celzero.bravedns.database.LogDatabase
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_SCHEDULER
 import android.app.Application
 import android.content.pm.ApplicationInfo
 import android.os.StrictMode
@@ -73,7 +71,6 @@ class RethinkDnsApplication : Application() {
     }
 
     private suspend fun scheduleJobs() {
-        Logger.d(LOG_TAG_SCHEDULER, "Schedule job")
         // database refresh to keep app data up to date
         get<ScheduleManager>().scheduleDatabaseRefreshJob()
         get<WorkScheduler>().scheduleDataUsageJob()

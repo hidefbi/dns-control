@@ -15,9 +15,6 @@
  */
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.Intent
 import android.text.format.DateUtils
@@ -70,7 +67,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
 
     companion object {
         private const val DELAY_MS = 1500L
-        private const val TAG = "WgCfgAdapter"
         private val DIFF_CALLBACK =
             object : DiffUtil.ItemCallback<WgConfigFiles>() {
 
@@ -259,7 +255,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
                 }
             }
 
-            Logger.d(LOG_TAG_UI, "$TAG ip: $ip, stats-addr: ${addr}, configId: $configId")
 
             if (ip.isNullOrBlank()) {
                 uiCtx { b.interfaceFlagText.visibility = View.GONE }
@@ -275,7 +270,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
                     b.interfaceFlagText.visibility = View.GONE
                 }
             }
-            Logger.d(LOG_TAG_UI, "$TAG cc: ${ipInfo?.countryCode}, flag? ${b.interfaceFlagText.isVisible}, ipInfo: $ipInfo")
         }
 
         fun cancelJobIfAny() {
@@ -430,10 +424,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
                                     .replaceFirstChar(Char::titlecase), humanReadableLastOk
                             )
                         }
-                        Logger.d(
-                            LOG_TAG_UI,
-                            "$TAG DNS failing, status updated to failing with stroke color chipTextNegative, lastok:${stats?.lastOK}, since:${stats?.since}, humanReadableLastOk:$humanReadableLastOk"
-                        )
                     } else {
                         // if dns status is not failing, then update the proxy status
                         updateProxyStatusUi(statusPair, stats)
@@ -516,7 +506,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
             val statusText = getStatusText(status, humanReadableLastOk, stats, statusPair.second)
 
             b.interfaceStatus.text = statusText
-            Logger.d(LOG_TAG_UI, "$TAG status updated to $statusText (${status?.id} - ${status?.name}) with stroke color $strokeColor, lastok:${stats?.lastOK}, since:${stats?.since}, humanReadableLastOk:$humanReadableLastOk")
         }
 
         private fun isDnsError(statusId: Int?): Boolean {
@@ -593,7 +582,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
 
         private suspend fun disableWgIfPossible(cfg: WgConfigFilesImmutable) {
             if (!VpnController.hasTunnel()) {
-                Logger.i(LOG_TAG_PROXY, "$TAG VPN not active, cannot enable WireGuard")
                 uiCtx {
                     Utilities.showToastUiCentered(
                         context,
@@ -636,7 +624,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
         private suspend fun enableWgIfPossible(cfg: WgConfigFilesImmutable) {
 
             if (!VpnController.hasTunnel()) {
-                Logger.i(LOG_TAG_PROXY, "$TAG VPN not active, cannot enable WireGuard")
                 uiCtx {
                     Utilities.showToastUiCentered(
                         context,
@@ -651,7 +638,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
 
             // checks only for app mode, so show appropriate error message if not enabled
             if (!WireguardManager.canEnableProxy()) {
-                Logger.i(LOG_TAG_PROXY, "$TAG not in DNS+Firewall mode, cannot enable WireGuard")
                 uiCtx {
                     // reset the check box
                     b.interfaceSwitch.isChecked = false
@@ -666,7 +652,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
 
             if (WireguardManager.oneWireGuardEnabled()) {
                 // this should not happen, ui is disabled if one wireGuard is enabled
-                Logger.w(LOG_TAG_PROXY, "$TAG one wireGuard is already enabled")
                 uiCtx {
                     // reset the check box
                     b.interfaceSwitch.isChecked = false
@@ -680,7 +665,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
             }
 
             if (!WireguardManager.isValidConfig(cfg.id)) {
-                Logger.i(LOG_TAG_PROXY, "$TAG invalid WireGuard config")
                 uiCtx {
                     // reset the check box
                     b.interfaceSwitch.isChecked = false

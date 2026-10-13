@@ -83,7 +83,6 @@ class CoFactory<T>(
         return try {
             dispatch(f).await()
         } catch (e: Exception) {
-            Logger.v(Logger.LOG_TAG_VPN, "err in tryDispatch: ${e.message}")
             default
         }
     }

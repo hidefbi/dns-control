@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.scheduler
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
 import com.celzero.bravedns.service.VpnController
 import kotlinx.coroutines.CoroutineName
@@ -38,7 +36,6 @@ class WgProxyPingController(private val scope: CoroutineScope) {
     @Volatile private var schedulerJob: Job? = null
 
     companion object {
-        private const val TAG = "WgProxyPingController"
     }
 
     // startTime is a val, captured once in startPing and never modified.
@@ -47,7 +44,6 @@ class WgProxyPingController(private val scope: CoroutineScope) {
     }
 
     fun startPing(proxyId: String) {
-        Logger.vv(LOG_TAG_PROXY, "$TAG request to start ping: $proxyId, already active proxies=${activeProxies.keys}")
         val existing = activeProxies[proxyId]
 
         val newConfig = PingConfig(startTime = System.currentTimeMillis())
@@ -56,19 +52,12 @@ class WgProxyPingController(private val scope: CoroutineScope) {
 
         ensureScheduler()
         if (existing != null) {
-            Logger.vv(LOG_TAG_PROXY, "$TAG restarted ping timer for $proxyId; " +
-                    "first ping in ~${intervalMs / 1000}s, " +
-                    "duration window reset to ${durationMs / 1000}s from now")
         } else {
-            Logger.vv(LOG_TAG_PROXY, "$TAG started ping for $proxyId; " +
-                    "first ping in ~${intervalMs / 1000}s, " +
-                    "then every ${intervalMs / 1000}s for ${durationMs / 1000}s")
         }
     }
 
     fun stopPing(proxyId: String) {
         activeProxies.remove(proxyId)
-        Logger.vv(LOG_TAG_PROXY, "$TAG stopped ping for $proxyId")
 
         if (activeProxies.isEmpty()) stopScheduler()
     }
@@ -76,7 +65,6 @@ class WgProxyPingController(private val scope: CoroutineScope) {
     fun stopAll() {
         activeProxies.clear()
         stopScheduler()
-        Logger.vv(LOG_TAG_PROXY, "$TAG stopped all ping jobs")
     }
 
     private fun ensureScheduler() {
@@ -106,7 +94,6 @@ class WgProxyPingController(private val scope: CoroutineScope) {
 
             // skip if a previous ping coroutine is still running (prevents overlap).
             if (config.running) {
-                Logger.vv(LOG_TAG_PROXY, "$TAG tick skipped for $proxyId: ping already in-flight")
                 continue
             }
 
@@ -115,20 +102,14 @@ class WgProxyPingController(private val scope: CoroutineScope) {
 
             // enforce a minimum delay of intervalMs before the very first ping.
             if (elapsed < intervalMs) {
-                Logger.vv(LOG_TAG_PROXY, "$TAG tick: $proxyId waiting for first ping; " +
-                        "starts in ~${(intervalMs - elapsed) / 1000}s")
                 continue
             }
 
             if (elapsed >= durationMs) {
-                Logger.vv(LOG_TAG_PROXY, "$TAG ping window expired for $proxyId, removing")
                 activeProxies.remove(proxyId)
                 continue
             }
 
-            Logger.vv(LOG_TAG_PROXY, "$TAG tick for $proxyId: " +
-                    "elapsed=${elapsed / 1000}s, remaining=${remaining / 1000}s " +
-                    "(window=${durationMs / 1000}s, interval=${intervalMs / 1000}s)")
 
             // set running to true before launching so that even if the coroutine is scheduled
             // immediately, the next tick iteration already sees it as running
@@ -138,7 +119,6 @@ class WgProxyPingController(private val scope: CoroutineScope) {
                 try {
                     pingProxy(proxyId)
                 } catch (e: Exception) {
-                    Logger.w(LOG_TAG_PROXY, "$TAG ping failed: $proxyId err=${e.message}")
                 } finally {
                     activeProxies[proxyId]?.running = false
                 }
@@ -157,6 +137,5 @@ class WgProxyPingController(private val scope: CoroutineScope) {
             }
         }
 
-        Logger.vv(LOG_TAG_PROXY, "$TAG ping triggered: $proxyId at ${System.currentTimeMillis()}")
     }
 }

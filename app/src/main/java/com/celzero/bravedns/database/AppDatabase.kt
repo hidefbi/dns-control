@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.database
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -98,10 +96,6 @@ abstract class AppDatabase : RoomDatabase() {
             //   "Bad database header, unable to read 4 bytes at offset 60" (user_version).
             val dbFile = context.applicationContext.getDatabasePath(DATABASE_NAME)
             if (dbFile.exists() && !isValidSQLiteFile(dbFile)) {
-                Logger.i(
-                    LOG_TAG_APP_DB,
-                    "Corrupt DB file detected (${dbFile.length()} bytes); deleting to allow asset re-copy"
-                )
                 dbFile.delete()
                 // remove sidecar files so a stale wal/shm cannot resurrect broken state
                 context.applicationContext.getDatabasePath("$DATABASE_NAME-wal").delete()
@@ -158,17 +152,14 @@ abstract class AppDatabase : RoomDatabase() {
             object : Callback() {
                 override fun onCreate(db: SupportSQLiteDatabase) {
                     super.onCreate(db)
-                    Logger.i(LOG_TAG_APP_DB, "Database created, ${db.version}")
                 }
 
                 override fun onDestructiveMigration(db: SupportSQLiteDatabase) {
                     super.onDestructiveMigration(db)
-                    Logger.i(LOG_TAG_APP_DB, "Database destructively migrated, ${db.version}")
                 }
 
                 override fun onOpen(db: SupportSQLiteDatabase) {
                     super.onOpen(db)
-                    Logger.i(LOG_TAG_APP_DB, "Database opened, ${db.version}")
                 }
             }
 
@@ -860,7 +851,6 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL(
                         "UPDATE DnsCryptEndpoint set dnsCryptURL = 'sdns://AQMAAAAAAAAAEjE0OS4xMTIuMTEyLjk6ODQ0MyBnyEe4yHWM0SAkVUO-dWdG3zTfHYTAC4xHA2jfgh2GPhkyLmRuc2NyeXB0LWNlcnQucXVhZDkubmV0' where id = 4"
                     )
-                    Logger.i(LOG_TAG_APP_DB, "Migrating to version 20")
                 }
             }
 
@@ -955,7 +945,6 @@ abstract class AppDatabase : RoomDatabase() {
                         "INSERT INTO ProxyEndpoint (proxyName, proxyMode, proxyType, proxyAppName, proxyIP, userName, password, proxyPort, isSelected, isCustom, isUDP, modifiedDataTime, latency) VALUES('HTTP Orbot', 3, 'NONE', 'org.torproject.android', '', '', '', 0, 0, 0, 0, 0, 0)"
                     )
                     db.execSQL("DROP TABLE IF EXISTS ProxyEndpoint_backup")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_20_21: added DoT and ODoH endpoints")
                 }
             }
 
@@ -969,9 +958,7 @@ abstract class AppDatabase : RoomDatabase() {
                                 "ALTER TABLE WgConfigFiles ADD COLUMN isLockdown INTEGER NOT NULL DEFAULT 0"
                             )
                         }
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_21_22: added isLockdown column")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "isLockdown column already exists, ignore")
                     }
                     try {
                         if (!doesColumnExistInTable(db, "WgConfigFiles", "isCatchAll")) {
@@ -979,9 +966,7 @@ abstract class AppDatabase : RoomDatabase() {
                                 "ALTER TABLE WgConfigFiles ADD COLUMN isCatchAll INTEGER NOT NULL DEFAULT 0"
                             )
                         }
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_21_22: added isCatchAll column")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "isCatchAll column already exists, ignore")
                     }
                     try {
                         if (!doesColumnExistInTable(db, "WgConfigFiles", "oneWireGuard")) {
@@ -989,9 +974,7 @@ abstract class AppDatabase : RoomDatabase() {
                                 "ALTER TABLE WgConfigFiles ADD COLUMN oneWireGuard INTEGER NOT NULL DEFAULT 0"
                             )
                         }
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_21_22: added oneWireGuard column")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "oneWireGuard column already exists, ignore")
                     }
                 }
             }
@@ -1002,7 +985,6 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL(
                         "ALTER TABLE AppInfo ADD COLUMN isProxyExcluded INTEGER NOT NULL DEFAULT 0"
                     )
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_22_23: added isProxyExcluded column")
                 }
             }
 
@@ -1054,26 +1036,22 @@ abstract class AppDatabase : RoomDatabase() {
                         db.execSQL("ALTER TABLE CustomDomain ADD COLUMN proxyId TEXT NOT NULL DEFAULT ''")
                         db.execSQL("ALTER TABLE CustomDomain ADD COLUMN proxyCC TEXT NOT NULL DEFAULT ''")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "proxyId, proxyCC; columns already exist, ignore")
                     }
 
                     try {
                         db.execSQL("ALTER TABLE CustomIp ADD COLUMN proxyId TEXT NOT NULL DEFAULT ''")
                         db.execSQL("ALTER TABLE CustomIp ADD COLUMN proxyCC TEXT NOT NULL DEFAULT ''")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "proxyId, proxyCC; columns already exist, ignore")
                     }
 
                     try {
                         db.execSQL("ALTER TABLE AppInfo ADD COLUMN tombstoneTs INTEGER NOT NULL DEFAULT 0")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "tombstoneTs: column already exists, ignore")
                     }
 
                     try {
                         db.execSQL("ALTER TABLE WgConfigFiles ADD COLUMN useOnlyOnMetered INTEGER NOT NULL DEFAULT 0")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "useOnlyOnMetered: column already exists, ignore")
                     }
 
                     db.execSQL(
@@ -1116,14 +1094,11 @@ abstract class AppDatabase : RoomDatabase() {
                     try {
                         db.execSQL("ALTER TABLE WgConfigFiles ADD COLUMN ssidEnabled INTEGER NOT NULL DEFAULT 0")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_25_26: ssidEnabled already exists")
                     }
                     try {
                         db.execSQL("ALTER TABLE WgConfigFiles ADD COLUMN ssids TEXT NOT NULL DEFAULT ''")
                     } catch (_: Exception) {
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_25_26: ssids already exists")
                     }
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_25_26: added ssidEnabled & ssids columns")
                 }
             }
 
@@ -1137,7 +1112,6 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL("ALTER TABLE WgConfigFiles_new RENAME TO WgConfigFiles")
                     // insert new columns with default values (modifiedTs)
                     db.execSQL("ALTER TABLE WgConfigFiles ADD COLUMN modifiedTs INTEGER NOT NULL DEFAULT 0")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_26_27: removed isLockdown column")
                     db.execSQL(
                         """
                                            CREATE TABLE IF NOT EXISTS CountryConfig (
@@ -1152,7 +1126,6 @@ abstract class AppDatabase : RoomDatabase() {
                                            )
                                            """.trimIndent()
                     )
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_26_27: created CountryConfig table")
                 }
             }
 
@@ -1163,9 +1136,7 @@ abstract class AppDatabase : RoomDatabase() {
                     try {
                         db.execSQL("ALTER TABLE AppInfo ADD COLUMN modifiedTs INTEGER NOT NULL DEFAULT 0")
                         // Backfill all existing rows with 0 (already done by DEFAULT 0)
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_27_28: added modifiedTs column to AppInfo")
                     } catch (e: Exception) {
-                        Logger.e(LOG_TAG_APP_DB, "MIGRATION_27_28: modifiedTs column already exists, ignore", e)
                     }
                 }
             }
@@ -1177,9 +1148,7 @@ abstract class AppDatabase : RoomDatabase() {
                     try {
                         db.execSQL("ALTER TABLE AppInfo ADD COLUMN tempAllowEnabled INTEGER NOT NULL DEFAULT 0")
                         db.execSQL("ALTER TABLE AppInfo ADD COLUMN tempAllowExpiryTime INTEGER NOT NULL DEFAULT 0")
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_28_29: added tempAllowEnabled, tempAllowExpiryTime to AppInfo")
                     } catch (e: Exception) {
-                        Logger.e(LOG_TAG_APP_DB, "MIGRATION_28_29: temp allow columns already exist, ignore", e)
                     }
 
                     // Safety: drop RpnWinServers if it exists from any prior development build
@@ -1219,7 +1188,6 @@ abstract class AppDatabase : RoomDatabase() {
                     )
                     db.execSQL("CREATE INDEX IF NOT EXISTS index_CountryConfig_cc ON CountryConfig(cc)")
                     db.execSQL("CREATE INDEX IF NOT EXISTS index_CountryConfig_isActive ON CountryConfig(isActive)")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_28_29: recreated CountryConfig with final schema")
 
                     // SubscriptionStatus: audit / billing columns
                     // Each ALTER is guarded individually so a partial prior run cannot leave
@@ -1249,9 +1217,7 @@ abstract class AppDatabase : RoomDatabase() {
                     // WgConfigFiles: isLockdown column
                     try {
                         db.execSQL("ALTER TABLE WgConfigFiles ADD COLUMN isLockdown INTEGER NOT NULL DEFAULT 0")
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_28_29: added isLockdown to WgConfigFiles")
                     } catch (e: Exception) {
-                        Logger.e(LOG_TAG_APP_DB, "MIGRATION_28_29: isLockdown already exists in WgConfigFiles, ignore", e)
                     }
                 }
             }
@@ -1272,9 +1238,7 @@ abstract class AppDatabase : RoomDatabase() {
                         db.execSQL(
                             "ALTER TABLE CountryConfig ADD COLUMN hopEnabled INTEGER NOT NULL DEFAULT 0"
                         )
-                        Logger.i(LOG_TAG_APP_DB, "MIGRATION_29_30: added selectionCount, isFavourite, hopEnabled to CountryConfig")
                     } catch (e: Exception) {
-                        Logger.e(LOG_TAG_APP_DB, "MIGRATION_29_30: columns already exist, ignore", e)
                     }
                 }
             }
@@ -1296,7 +1260,6 @@ abstract class AppDatabase : RoomDatabase() {
                         )
                         """.trimIndent()
                     )
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_30_31: created Sponsor table")
                 }
             }
 
@@ -1306,7 +1269,6 @@ abstract class AppDatabase : RoomDatabase() {
             object : Migration(35, 36) {
                 override fun migrate(db: SupportSQLiteDatabase) {
                     db.execSQL("DROP TABLE IF EXISTS CountryConfig")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_35_36: dropped CountryConfig")
                 }
             }
 
@@ -1316,7 +1278,6 @@ abstract class AppDatabase : RoomDatabase() {
                 override fun migrate(db: SupportSQLiteDatabase) {
                     db.execSQL("DROP TABLE IF EXISTS RethinkRemoteFileTag")
                     db.execSQL("DROP TABLE IF EXISTS RemoteBlocklistPacksMap")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_34_35: dropped remote blocklist tables")
                 }
             }
 
@@ -1330,7 +1291,6 @@ abstract class AppDatabase : RoomDatabase() {
                     )
                     db.execSQL("DELETE FROM DoHEndpoint WHERE id = 5 AND dohName = 'RethinkDNS Plus'")
                     db.execSQL("DELETE FROM RethinkDnsEndpoint WHERE name = 'RDNS Plus'")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_33_34: removed RDNS Plus")
                 }
             }
 
@@ -1340,7 +1300,6 @@ abstract class AppDatabase : RoomDatabase() {
                 override fun migrate(db: SupportSQLiteDatabase) {
                     // billing-only table; nothing reads it any more
                     db.execSQL("DROP TABLE IF EXISTS Sponsor")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_32_33: dropped Sponsor")
                 }
             }
 
@@ -1350,7 +1309,6 @@ abstract class AppDatabase : RoomDatabase() {
                     db.execSQL("DROP TABLE IF EXISTS RpnProxy")
                     db.execSQL("DROP TABLE IF EXISTS SubscriptionStatus")
                     db.execSQL("DROP TABLE IF EXISTS SubscriptionStateHistory")
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_31_32: dropped RpnProxy, SubscriptionStatus, SubscriptionStateHistory")
                 }
             }
 
@@ -1361,7 +1319,6 @@ abstract class AppDatabase : RoomDatabase() {
             object : Migration(36, 37) {
                 override fun migrate(db: SupportSQLiteDatabase) {
                     seedPresetDnsEndpoints(db)
-                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_36_37: replaced built-in DoH/DoT presets")
                 }
             }
 

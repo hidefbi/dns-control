@@ -15,9 +15,6 @@
  */
 package com.celzero.bravedns.ui.bottomsheet
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DNS
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.res.Configuration
@@ -76,7 +73,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
     companion object {
         // Alpha values for button states
         private const val BUTTON_ALPHA_DISABLED = 0.5f
-        private const val TAG = "LocalBlocklistsBottomSheet"
     }
 
     override fun getTheme(): Int =
@@ -124,7 +120,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
         dialog?.window?.let { window ->
             Themes.applyBottomSheetSystemBarAppearance(window, isDarkThemeOn(), persistentState.theme)
         }
-        Logger.i(LOG_TAG_DNS, "$TAG; onViewCreated")
         updateLocalBlocklistUi()
         init()
         initializeObservers()
@@ -165,7 +160,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
 
     private fun initializeObservers() {
         appDownloadManager.downloadRequired.observe(viewLifecycleOwner) {
-            Logger.i(LOG_TAG_DNS, "$TAG; Check for blocklist update, status: $it")
             if (it == null) return@observe
 
             handleDownloadStatus(it)
@@ -430,7 +424,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
 
     private fun updateLocalBlocklistUi() {
         if (persistentState.blocklistEnabled) {
-            Logger.v(LOG_TAG_UI, "$TAG; blocklist enabled")
             enableBlocklistUi()
             return
         }
@@ -486,7 +479,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun enableBlocklist() {
-        Logger.v(LOG_TAG_UI, "Enabling blocklists")
         if (persistentState.blocklistEnabled) {
             removeBraveDnsLocal()
             updateLocalBlocklistUi()
@@ -569,10 +561,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
             viewLifecycleOwner
         ) { workInfoList ->
             val workInfo = workInfoList?.getOrNull(0) ?: return@observe
-            Logger.i(
-                Logger.LOG_TAG_DOWNLOAD,
-                "WorkManager state: ${workInfo.state} for ${LocalBlocklistCoordinator.CUSTOM_DOWNLOAD}"
-            )
             if (
                 WorkInfo.State.ENQUEUED == workInfo.state ||
                     WorkInfo.State.RUNNING == workInfo.state
@@ -601,10 +589,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
             viewLifecycleOwner
         ) { workInfoList ->
             val workInfo = workInfoList?.getOrNull(0) ?: return@observe
-            Logger.i(
-                Logger.LOG_TAG_DOWNLOAD,
-                "WorkManager state: ${workInfo.state} for ${DownloadConstants.DOWNLOAD_TAG}"
-            )
             if (
                 WorkInfo.State.ENQUEUED == workInfo.state ||
                     WorkInfo.State.RUNNING == workInfo.state
@@ -629,10 +613,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
             if (workInfoList != null && workInfoList.isNotEmpty()) {
                 val workInfo = workInfoList[0]
                 if (workInfo.state == WorkInfo.State.SUCCEEDED) {
-                    Logger.i(
-                        Logger.LOG_TAG_DOWNLOAD,
-                        "AppDownloadManager Work Manager completed - ${DownloadConstants.FILE_TAG}"
-                    )
                     onDownloadSuccess()
                     workManager.pruneWork()
                 } else if (
@@ -642,15 +622,7 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
                     onDownloadFail()
                     workManager.pruneWork()
                     workManager.cancelAllWorkByTag(DownloadConstants.FILE_TAG)
-                    Logger.i(
-                        Logger.LOG_TAG_DOWNLOAD,
-                        "AppDownloadManager Work Manager failed - ${DownloadConstants.FILE_TAG}"
-                    )
                 } else {
-                    Logger.i(
-                        Logger.LOG_TAG_DOWNLOAD,
-                        "AppDownloadManager Work Manager - ${DownloadConstants.FILE_TAG}, ${workInfo.state}"
-                    )
                 }
             }
         }

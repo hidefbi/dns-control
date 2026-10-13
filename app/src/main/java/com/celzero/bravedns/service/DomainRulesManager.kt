@@ -15,15 +15,11 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DNS
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import android.content.Context
 import android.os.SystemClock.elapsedRealtime
 import android.util.Patterns
 import androidx.lifecycle.LiveData
 import com.celzero.bravedns.R
-import com.celzero.bravedns.RethinkDnsApplication.Companion.DEBUG
 import com.celzero.bravedns.database.CustomDomain
 import com.celzero.bravedns.database.CustomDomainRepository
 import com.celzero.bravedns.util.Constants
@@ -141,7 +137,6 @@ object DomainRulesManager : KoinComponent {
             // not cause any issues, but to avoid unnecessary entries in the trie, skipping these
             // entries
             if (cd.uid < 0 && cd.uid != Constants.UID_EVERYBODY) {
-                Logger.i(LOG_TAG_DNS, "skipping domain rule for uid: ${cd.uid}")
                 return@forEach
             }
             val key = mkTrieKey(cd.domain, cd.uid)
@@ -151,12 +146,10 @@ object DomainRulesManager : KoinComponent {
             if (cd.proxyCC.isNotEmpty()) selectedCCs.add(cd.proxyCC)
         }
         val trieLen = trie.len()
-        Logger.i(LOG_TAG_DNS, "DomainRulesManager: loaded $trieLen rules from db")
         return trieLen
     }
 
     fun getAllUniqueCCs(): List<String> {
-        Logger.v(LOG_TAG_DNS, "getAllUniqueCCs: $selectedCCs")
         return selectedCCs.toList()
     }
 
@@ -179,21 +172,17 @@ object DomainRulesManager : KoinComponent {
         // check if the domain is added in custom domain list
         when (val rule = getDomainRule(domain, uid)) {
             Status.TRUST -> {
-                Logger.d(LOG_TAG_DNS, "DomainRulesManager.getDomainRule($domain, uid=$uid) exact-trusted, time: ${elapsedRealtime() - st} ms")
                 return Status.TRUST
             }
             Status.BLOCK -> {
-                Logger.d(LOG_TAG_DNS, "DomainRulesManager.getDomainRule($domain, uid=$uid) exact-blocked, time: ${elapsedRealtime() - st} ms")
                 return Status.BLOCK
             }
             Status.NONE -> {
-                Logger.d(LOG_TAG_DNS, "DomainRulesManager.getDomainRule($domain, uid=$uid) exact-none, time: ${elapsedRealtime() - st} ms")
             }
         }
 
         // check if the received domain is matching with the custom wildcard
         val wc = matchesWildcard(domain, uid)
-        Logger.d(LOG_TAG_DNS, "DomainRulesManager.matchesWildcard($domain, uid=$uid) status=$wc, time: ${elapsedRealtime() - st} ms")
         return wc
     }
 
@@ -202,12 +191,10 @@ object DomainRulesManager : KoinComponent {
         val match = trie.getAny(key) // matches the longest prefix
         if (match.isNullOrEmpty()) {
             // no match found, return NONE
-            if (DEBUG) Logger.vv(LOG_TAG_DNS, "matchesWildcard: $domain($uid), no match found")
             return Status.NONE
         }
         val status = match.split(KV_SEP)[0]
         val res = Status.getStatus(status.toIntOrNull())
-        if (DEBUG) Logger.vv(LOG_TAG_DNS, "matchesWildcard: $domain($uid), res: $res")
         return res
     }
 
@@ -216,12 +203,10 @@ object DomainRulesManager : KoinComponent {
         val match = trie.get(key)
         if (match.isNullOrEmpty()) {
             // no match found, return NONE
-            if (DEBUG) Logger.vv(LOG_TAG_DNS, "domain rule for $key, no match found")
             return Status.NONE
         }
         val status = match.split(KV_SEP)[0]
         val res = Status.getStatus(status.toIntOrNull())
-        if (DEBUG) Logger.vv(LOG_TAG_DNS, "domain rule for $key, res: $res")
         return res
     }
 
@@ -280,12 +265,10 @@ object DomainRulesManager : KoinComponent {
     fun isDomainTrusted(d: String?): Boolean {
         val st = elapsedRealtime()
         if (d.isNullOrEmpty()) {
-            Logger.d(LOG_TAG_DNS, "DomainRulesManager.isDomainTrusted(empty) for $d, time: ${elapsedRealtime() - st} ms")
             return false
         }
         val domain = d.lowercase(Locale.ROOT)
         val res = trustedTrie.hasAny(domain)
-        Logger.d(LOG_TAG_DNS, "DomainRulesManager.isDomainTrusted($domain) result=$res, time: ${elapsedRealtime() - st} ms")
         return res
     }
 
@@ -412,7 +395,6 @@ object DomainRulesManager : KoinComponent {
     suspend fun deleteRulesByUid(uid: Int) {
         db.deleteRulesByUid(uid)
         val rulesDeleted = trie.delAll(uid.toString())
-        Logger.i(LOG_TAG_DNS, "rules deleted from trie for $uid: $rulesDeleted")
         clearTrustedMap(uid)
     }
 
@@ -461,7 +443,6 @@ object DomainRulesManager : KoinComponent {
                 updateUid(uid, newUid)
             }
         }
-        Logger.i(LOG_TAG_FIREWALL, "domain rules updated")
     }
 
     suspend fun updateUid(uid: Int, newUid: Int) {
@@ -474,11 +455,9 @@ object DomainRulesManager : KoinComponent {
     private suspend fun rehydrateFromDB(uid: Int) {
         val doms = db.getDomainsByUID(uid)
         if (doms.isEmpty()) {
-            Logger.w(LOG_TAG_DNS, "rehydrate: zero domains for uid: $uid in db")
             return
         }
 
-        Logger.i(LOG_TAG_DNS, "rehydrate: rehydrating ${doms.size} domains for uid: $uid")
         // process longer domains first
         val selector: (String) -> Int = { str -> str.length }
         val desc = doms.sortedByDescending { selector(it.domain) }
@@ -497,9 +476,7 @@ object DomainRulesManager : KoinComponent {
     suspend fun setCC(cd: CustomDomain, cc: String) {
         cd.proxyCC = cc
         val newCd = CustomDomain(cd.domain, cd.uid, cd.ips, cd.type, cd.status, cd.proxyId, cc, cd.modifiedTs, 0L, cd.version)
-        Logger.d(LOG_TAG_DNS, "setCC: updating domain: ${cd.domain} to cc: $cc")
         db.update(cd, newCd)
-        Logger.i(LOG_TAG_DNS, "setCC: updated domain: ${cd.domain} to $cc")
         rehydrateFromDB(cd.uid)
     }
 
@@ -507,18 +484,15 @@ object DomainRulesManager : KoinComponent {
         cd.proxyId = proxyId
         val newCd = CustomDomain(cd.domain, cd.uid, cd.ips, cd.type, cd.status, proxyId, cd.proxyCC, cd.modifiedTs, 0L, cd.version)
         db.update(cd, newCd)
-        Logger.i(LOG_TAG_DNS, "setProxyId: updated domain: ${cd.domain} to $proxyId")
         rehydrateFromDB(cd.uid)
     }
 
     suspend fun tombstoneRulesByUid(oldUid: Int) {
-        Logger.i(LOG_TAG_FIREWALL, "tombstone rules for uid: $oldUid")
         // here tombstone means negating the uid of the rule
         // this is used when the app is uninstalled, so that the rules are not deleted
         // but the uid is set to (-1 * uid), so that the rules are not applied
         val newUid = if (oldUid > 0) -1 * oldUid else oldUid
         if (oldUid == newUid) {
-            Logger.w(LOG_TAG_FIREWALL, "tombstone: same uids, old: $oldUid, new: $newUid, no-op")
             return
         }
         db.tombstoneRulesByUid(oldUid, newUid)

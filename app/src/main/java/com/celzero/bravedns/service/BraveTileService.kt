@@ -16,7 +16,6 @@ limitations under the License.
 
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
 import android.app.PendingIntent
 import android.app.UiModeManager
 import android.content.Intent
@@ -50,7 +49,6 @@ class BraveTileService : TileService(), KoinComponent {
         try {
             persistentState.vpnEnabledLiveData.observeForever(tileObserver)
         } catch (e: Exception) {
-            Logger.w(Logger.LOG_TAG_UI, "Tile: err in observing VPN state", e)
         }
     }
 
@@ -73,7 +71,6 @@ class BraveTileService : TileService(), KoinComponent {
         try {
             persistentState.vpnEnabledLiveData.removeObserver(tileObserver)
         } catch (e: Exception) {
-            Logger.w(Logger.LOG_TAG_UI, "Tile: err in removing observer", e)
         }
         super.onDestroy()
     }
@@ -120,10 +117,8 @@ class BraveTileService : TileService(), KoinComponent {
             } catch (e: UnsupportedOperationException) {
                 // starting activity from TileService using an Intent is not allowed
                 // use PendingIntent instead
-                Logger.w(Logger.LOG_TAG_UI, "Tile: unsupported operation, use send()", e)
                 pendingIntent.send()
             } catch (e: Exception) {
-                Logger.w(Logger.LOG_TAG_UI, "Tile: err in starting activity", e)
             }
         }
     }

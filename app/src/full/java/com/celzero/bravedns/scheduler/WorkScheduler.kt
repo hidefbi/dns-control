@@ -16,8 +16,6 @@
 
 package com.celzero.bravedns.scheduler
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_SCHEDULER
 import android.content.Context
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
@@ -38,7 +36,6 @@ class WorkScheduler(val context: Context) {
         fun isWorkRunning(context: Context, tag: String): Boolean {
             val instance = WorkManager.getInstance(context)
             val statuses: ListenableFuture<List<WorkInfo>> = instance.getWorkInfosByTag(tag)
-            Logger.i(LOG_TAG_SCHEDULER, "Job $tag already running check")
             return try {
                 var running = false
                 val workInfos = statuses.get()
@@ -48,13 +45,10 @@ class WorkScheduler(val context: Context) {
                 for (workStatus in workInfos) {
                     running = workStatus.state == WorkInfo.State.RUNNING
                 }
-                Logger.i(LOG_TAG_SCHEDULER, "Job $tag already running? $running")
                 running
             } catch (e: ExecutionException) {
-                Logger.e(LOG_TAG_SCHEDULER, "error on status check ${e.message}", e)
                 false
             } catch (e: InterruptedException) {
-                Logger.e(LOG_TAG_SCHEDULER, "error on status check ${e.message}", e)
                 false
             }
         }
@@ -64,7 +58,6 @@ class WorkScheduler(val context: Context) {
         fun isWorkScheduled(context: Context, tag: String): Boolean {
             val instance = WorkManager.getInstance(context)
             val statuses: ListenableFuture<List<WorkInfo>> = instance.getWorkInfosByTag(tag)
-            Logger.i(LOG_TAG_SCHEDULER, "Job $tag already scheduled check")
             return try {
                 var running = false
                 val workInfos = statuses.get()
@@ -76,13 +69,10 @@ class WorkScheduler(val context: Context) {
                         workStatus.state == WorkInfo.State.RUNNING ||
                                 workStatus.state == WorkInfo.State.ENQUEUED
                 }
-                Logger.i(LOG_TAG_SCHEDULER, "Job $tag already scheduled? $running")
                 running
             } catch (e: ExecutionException) {
-                Logger.e(LOG_TAG_SCHEDULER, "error on status check ${e.message}", e)
                 false
             } catch (e: InterruptedException) {
-                Logger.e(LOG_TAG_SCHEDULER, "error on status check ${e.message}", e)
                 false
             }
         }
@@ -92,7 +82,6 @@ class WorkScheduler(val context: Context) {
     fun scheduleBlocklistUpdateCheckJob() {
         // if (isWorkScheduled(context.applicationContext, BLOCKLIST_UPDATE_CHECK_JOB_TAG)) return
 
-        Logger.i(LOG_TAG_SCHEDULER, "Scheduled blocklist update check")
         val blocklistUpdateCheck =
             PeriodicWorkRequest.Builder(
                 BlocklistUpdateCheckJob::class.java,
@@ -110,7 +99,6 @@ class WorkScheduler(val context: Context) {
     }
 
     fun scheduleDataUsageJob() {
-        Logger.i(LOG_TAG_SCHEDULER, "Data usage job scheduled")
         val workRequest =
             PeriodicWorkRequest.Builder(
                 DataUsageUpdater::class.java,

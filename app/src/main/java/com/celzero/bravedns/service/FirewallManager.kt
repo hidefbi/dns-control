@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
@@ -343,7 +341,6 @@ object FirewallManager : KoinComponent {
                         runCatching {
                             db.clearTempAllowByUidIfExpiryBlocking(uid, expiry)
                         }.onFailure { t ->
-                            Logger.e(LOG_TAG_FIREWALL, "err clearing expired temp allow: ${t.message}", t as? Exception)
                         }
                     }
                 }
@@ -380,7 +377,6 @@ object FirewallManager : KoinComponent {
         val apps = try {
             db.getTempAllowedApps()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_FIREWALL, "err hydrate temp allows: ${e.message}", e)
             emptyList()
         }
 
@@ -392,7 +388,6 @@ object FirewallManager : KoinComponent {
                 try {
                     db.clearTempAllowByUidIfExpiry(ai.uid, expiry)
                 } catch (e: Exception) {
-                    Logger.e(LOG_TAG_FIREWALL, "err clearing stale temp allow: ${e.message}", e)
                 }
                 return@forEach
             }
@@ -444,7 +439,6 @@ object FirewallManager : KoinComponent {
             }
         }
         db.tombstoneApp(uid, newUid, packageName, ts)
-        Logger.d(LOG_TAG_FIREWALL, "tombstone app: $packageName, uid: $uid, ts: $ts, newUid: $newUid")
         informObservers()
     }
 
@@ -468,7 +462,6 @@ object FirewallManager : KoinComponent {
         try {
             db.deleteAll()
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_FIREWALL, "clearAllApps failed", e)
         }
         informObservers()
     }
@@ -500,12 +493,10 @@ object FirewallManager : KoinComponent {
                     it.packageName == packageName && it.tombstoneTs > 0L
                 }
             } catch (e: NoSuchElementException) {
-                Logger.w(LOG_TAG_FIREWALL, "isTombstone iterator fault, using fallback: ${e.message}")
                 appInfos.asMap().values.flatten().any {
                     it.packageName == packageName && it.tombstoneTs > 0L
                 }
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_FIREWALL, "isTombstone failed: ${e.message}", e)
                 false
             }
         }
@@ -720,7 +711,6 @@ object FirewallManager : KoinComponent {
         // while updating the package reset the tombstone timestamp
         var cacheok = false
         val appInfo = getAppInfoByUid(oldUid)
-        Logger.i(LOG_TAG_FIREWALL, "updateUidAndResetTombstone: $oldUid -> $newUid; has? ${appInfo?.packageName} == $pkg")
         val now = System.currentTimeMillis()
         var mutatedAi: AppInfo? = null
         var originalTombstoneTs = 0L
@@ -745,7 +735,6 @@ object FirewallManager : KoinComponent {
         val dbok = try {
             db.updateUid(oldUid, newUid, pkg)
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_FIREWALL, "updateUid failed for ($oldUid, $pkg) -> $newUid; attempting delete+insert fallback", e)
             try {
                 val ai = getAppInfoByUid(newUid)
                 if (ai != null) {
@@ -756,7 +745,6 @@ object FirewallManager : KoinComponent {
                     0
                 }
             } catch (e2: Exception) {
-                Logger.w(LOG_TAG_FIREWALL, "updateUid fallback also failed", e2)
                 // Rollback cache mutation to stay consistent with DB (which still has oldUid)
                 if (cacheok && mutatedAi != null) {
                     mutex.withLock {
@@ -765,12 +753,10 @@ object FirewallManager : KoinComponent {
                         mutatedAi.tombstoneTs = originalTombstoneTs
                         appInfos.put(oldUid, mutatedAi)
                     }
-                    Logger.w(LOG_TAG_FIREWALL, "rolled back cache for $pkg: $newUid -> $oldUid")
                 }
                 0
             }
         }
-        Logger.d(LOG_TAG_FIREWALL, "update: $pkg; $oldUid -> $newUid; c? $cacheok; db? $dbok")
         informObservers()
     }
 
@@ -785,11 +771,9 @@ object FirewallManager : KoinComponent {
         val apps = try {
             db.getAppInfo()
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_FIREWALL, "load db failed", e)
             return 0
         }
         if (apps.isEmpty()) {
-            Logger.w(LOG_TAG_FIREWALL, "no apps found in db, no app-based rules to load")
             return 0
         }
 
@@ -802,10 +786,6 @@ object FirewallManager : KoinComponent {
     }
 
     fun untrackForegroundApps() {
-        Logger.i(
-            LOG_TAG_FIREWALL,
-            "launcher in the foreground, clear foreground uids: $foregroundUids"
-        )
         foregroundUids.clear()
     }
 
@@ -815,15 +795,10 @@ object FirewallManager : KoinComponent {
                 val appInfo = appInfos[uid]
 
                 if (appInfo.isEmpty()) {
-                    Logger.i(
-                        LOG_TAG_FIREWALL,
-                        "No such app $uid to update 'dis/allow' firewall rule"
-                    )
                     return@io
                 }
             }
             val isAppUid = AndroidUidConfig.isUidAppRange(uid)
-            Logger.d(LOG_TAG_FIREWALL, "app in foreground; uid($uid)? $isAppUid")
 
             // Only track packages within app uid range.
             if (!isAppUid) return@io
@@ -839,10 +814,6 @@ object FirewallManager : KoinComponent {
         // should be blocked.
         val locked = keyguardManager?.isKeyguardLocked == true
         val inForegroundList = foregroundUids.contains(uid)
-        Logger.d(
-            LOG_TAG_FIREWALL,
-            "is app $uid foreground? ${!locked && inForegroundList}, isLocked? $locked, in foreground list? $inForegroundList"
-        )
         return !locked && inForegroundList
     }
 
@@ -850,7 +821,6 @@ object FirewallManager : KoinComponent {
         try {
             db.updateFirewallStatusByUid(uid, FirewallStatus.NONE.id, connectionStatus.id)
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_FIREWALL, "updateFirewalledApps db failed for uid $uid", e)
             return
         }
         invalidateFirewallStatus(uid, FirewallStatus.NONE, connectionStatus)
@@ -861,29 +831,21 @@ object FirewallManager : KoinComponent {
         firewallStatus: FirewallStatus,
         connectionStatus: ConnectionStatus
     ) {
-        Logger.i(
-            LOG_TAG_FIREWALL,
-            "Apply firewall rule for uid: ${uid}, ${firewallStatus.name}, ${connectionStatus.name}"
-        )
         if (isUnknownPackage(uid) && firewallStatus.isExclude()) {
-            Logger.w(LOG_TAG_FIREWALL, "Cannot exclude unknown package: $uid")
             return
         }
 
         try {
             db.updateFirewallStatusByUid(uid, firewallStatus.id, connectionStatus.id)
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_FIREWALL, "updateFirewallStatus db failed for uid $uid", e)
             return
         }
         invalidateFirewallStatus(uid, firewallStatus, connectionStatus)
     }
 
     suspend fun updateTempAllowStatus(uid: Int, durationMinutes: Int = TEMP_ALLOW_DEFAULT_MINUTES) {
-        Logger.i(LOG_TAG_FIREWALL, "Apply temporary allow for uid: $uid for $durationMinutes minutes")
 
         if (durationMinutes <= 0) {
-            Logger.w(LOG_TAG_FIREWALL, "Invalid duration ($durationMinutes) for uid $uid, reverting temp allow")
             revertTempAllow(uid)
             return
         }
@@ -895,16 +857,13 @@ object FirewallManager : KoinComponent {
 
         scheduleTempAllowExpiryIfPossible()
 
-        Logger.i(LOG_TAG_FIREWALL, "Temporary allow applied for uid: $uid, expires at: $expiryTime")
     }
 
     private suspend fun revertTempAllow(uid: Int) {
-        Logger.i(LOG_TAG_FIREWALL, "Reverting temporary allow for uid: $uid")
 
         try {
             db.clearTempAllowByUid(uid)
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_FIREWALL, "revertTempAllow db failed for uid $uid", e)
             return
         }
         tempAllowCache.invalidate(uid)
@@ -912,7 +871,6 @@ object FirewallManager : KoinComponent {
         // schedule/cancel based on remaining entries (DB is source of truth)
         scheduleTempAllowExpiryIfPossible()
 
-        Logger.i(LOG_TAG_FIREWALL, "Temporary allow reverted for uid: $uid")
     }
 
     suspend fun isTempAllowed(uid: Int): Boolean {
@@ -1008,7 +966,6 @@ object FirewallManager : KoinComponent {
             try {
                 db.updateProxyExcluded(uid, isProxyExcluded)
             } catch (e: Exception) {
-                Logger.w(LOG_TAG_FIREWALL, "updateIsProxyExcluded db failed for uid $uid", e)
                 return@io
             }
             val now = System.currentTimeMillis()
@@ -1027,10 +984,8 @@ object FirewallManager : KoinComponent {
             return try {
                 appInfos.values().filter { it.tombstoneTs > 0L }
             } catch (e: NoSuchElementException) {
-                Logger.w(LOG_TAG_FIREWALL, "getTombstoneApps iterator fault, using fallback: ${e.message}")
                 appInfos.asMap().values.flatten().filter { it.tombstoneTs > 0L }
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_FIREWALL, "getTombstoneApps failed: ${e.message}", e)
                 emptyList()
             }
         }
@@ -1040,13 +995,11 @@ object FirewallManager : KoinComponent {
         try {
             db.exemptRethinkApp()
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_FIREWALL, "exemptRethinkApp db failed for uid $rethinkUid", e)
             return
         }
         mutex.withLock {
             val appInfo = appInfos[rethinkUid].firstOrNull()
             if (appInfo == null) {
-                Logger.e(LOG_TAG_FIREWALL, "appInfo is null for uid: $rethinkUid")
                 return@withLock
             }
 
@@ -1104,7 +1057,6 @@ object FirewallManager : KoinComponent {
                 snapshot.toList()
             }
         } catch (e: NoSuchElementException) {
-            Logger.w(LOG_TAG_FIREWALL, "snapshot retry after iterator fault: ${e.message}")
 
             // Strategy 2: Try flattening from asMap (creates new view)
             try {
@@ -1116,7 +1068,6 @@ object FirewallManager : KoinComponent {
                     flattened.toList()
                 }
             } catch (e2: Exception) {
-                Logger.w(LOG_TAG_FIREWALL, "snapshot flatten failed: ${e2.message}")
 
                 // Strategy 3: Iterate keys individually (most defensive)
                 try {
@@ -1125,7 +1076,6 @@ object FirewallManager : KoinComponent {
                         val keys = try {
                             appInfos.keySet().toList()  // Snapshot keys first
                         } catch (ke: Exception) {
-                            Logger.w(LOG_TAG_FIREWALL, "snapshot keySet failed: ${ke.message}")
                             emptyList<Int>()
                         }
                         for (uid in keys) {
@@ -1134,19 +1084,16 @@ object FirewallManager : KoinComponent {
                                 result.addAll(infos)
                             } catch (ge: Exception) {
                                 // Skip this UID if it causes issues
-                                Logger.d(LOG_TAG_FIREWALL, "snapshot skipped uid $uid: ${ge.message}")
                             }
                         }
                         result.toList()
                     }
                 } catch (e3: Exception) {
                     // Strategy 4: Last resort - return empty list (graceful degradation)
-                    Logger.e(LOG_TAG_FIREWALL, "snapshot all fallbacks failed: ${e3.message}", e3)
                     emptyList()
                 }
             }
         } catch (e: ConcurrentModificationException) {
-            Logger.w(LOG_TAG_FIREWALL, "snapshot concurrent modification: ${e.message}")
             // Retry once with fresh attempt using asMap approach
             try {
                 mutex.withLock {
@@ -1157,12 +1104,10 @@ object FirewallManager : KoinComponent {
                     result.toList()
                 }
             } catch (retry: Exception) {
-                Logger.e(LOG_TAG_FIREWALL, "snapshot retry failed: ${retry.message}", retry)
                 emptyList()
             }
         } catch (e: Exception) {
             // Catch-all for any unexpected exceptions
-            Logger.e(LOG_TAG_FIREWALL, "snapshot unexpected error: ${e.message}", e)
             emptyList()
         }
     }
@@ -1173,7 +1118,6 @@ object FirewallManager : KoinComponent {
         try {
             appInfosLiveData.postValue(snapshotAppInfos())
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_FIREWALL, "informObservers failed: ${e.message}", e)
             // Post empty list to prevent observers from hanging
             appInfosLiveData.postValue(emptyList())
         }

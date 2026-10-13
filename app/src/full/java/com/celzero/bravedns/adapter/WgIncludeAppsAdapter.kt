@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.Context
 import android.content.DialogInterface
 import android.content.pm.PackageManager
@@ -91,7 +89,6 @@ class WgIncludeAppsAdapter(
     override fun onBindViewHolder(holder: IncludedAppInfoViewHolder, position: Int) {
         // Guard against stale positions during layout pass after data change
         if (position < 0 || position >= itemCount) {
-            Logger.w(LOG_TAG_PROXY, "Invalid position $position for itemCount $itemCount")
             return
         }
         val apps: ProxyApplicationMapping = getItem(position) ?: return
@@ -117,26 +114,17 @@ class WgIncludeAppsAdapter(
                 val isProxyExcluded = FirewallManager.isAppExcludedFromProxy(itemUid)
                 val hasInternetPerm = mapping.hasInternetPermission(packageManager)
                 val iconDrawable = getIcon(context, itemPackageName, itemAppName)
-                Logger.d(LOG_TAG_PROXY, "INCLUDE(${mapping.appName}): $isIncludedInCurrent, $isProxyExcluded, $proxyName, $proxyId, $proxyIdsForApp, $isIncludedInCurrent")
                 uiCtx {
                     // Update UI synchronously on the main thread
                     // enable/disable UI based on exclusion
                     // is still valid and bound to the same item
                     if (bindingAdapterPosition == RecyclerView.NO_POSITION) {
-                        Logger.w(
-                            LOG_TAG_PROXY,
-                            "ViewHolder recycled, skipping UI update for uid: $itemUid"
-                        )
                         return@uiCtx
                     }
 
                     // double-check
                     val currentItem = getItem(bindingAdapterPosition)
                     if (currentItem?.uid != itemUid) {
-                        Logger.w(
-                            LOG_TAG_PROXY,
-                            "ViewHolder rebound to different item, skipping update for uid: $itemUid"
-                        )
                         return@uiCtx
                     }
 
@@ -173,20 +161,12 @@ class WgIncludeAppsAdapter(
             b.wgIncludeCard.setOnClickListener {
                 val isIncluded = !b.wgIncludeAppListCheckbox.isChecked
                 b.wgIncludeAppListCheckbox.isChecked = isIncluded
-                Logger.i(
-                    LOG_TAG_PROXY,
-                    "wgIncludeAppListContainer- ${mapping.appName}, $isIncluded"
-                )
                 updateInterfaceDetails(mapping, isIncluded && !isProxyExcluded)
             }
 
             b.wgIncludeAppListCheckbox.setOnCheckedChangeListener(null)
             b.wgIncludeAppListCheckbox.setOnClickListener {
                 val isIncluded = b.wgIncludeAppListCheckbox.isChecked
-                Logger.i(
-                    LOG_TAG_PROXY,
-                    "wgIncludeAppListCheckbox- ${mapping.appName}, $isIncluded"
-                )
                 updateInterfaceDetails(mapping, isIncluded && !isProxyExcluded)
             }
         }
@@ -238,10 +218,8 @@ class WgIncludeAppsAdapter(
             io {
                 if (include) {
                     addProxyToApp(mapping.uid, mapping.packageName, proxyId, proxyName)
-                    Logger.i(LOG_TAG_PROXY, "Included app: ${mapping.uid}, $proxyId, $proxyName")
                 } else {
                     removeProxyFromApp(mapping.uid, mapping.packageName, proxyId)
-                    Logger.i(LOG_TAG_PROXY, "Removed app: ${mapping.uid}, $proxyId, $proxyName")
                 }
                 uiCtx { refresh() }
             }

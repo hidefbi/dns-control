@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -65,7 +63,6 @@ class CustomIpAdapter(private val context: Context, private val type: CustomRule
     private var isSelectionMode = false
 
     companion object {
-        private const val TAG = "CustomIpAdapter"
         private val DIFF_CALLBACK =
             object : DiffUtil.ItemCallback<CustomIp>() {
 
@@ -113,7 +110,6 @@ class CustomIpAdapter(private val context: Context, private val type: CustomRule
                 holder.update(customIp)
             }
             else -> {
-                Logger.w(LOG_TAG_UI, "$TAG unknown view holder in CustomDomainRulesAdapter")
                 return
             }
         }
@@ -146,7 +142,6 @@ class CustomIpAdapter(private val context: Context, private val type: CustomRule
                 notifyItemRangeChanged(0, itemCount)
             }
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "$TAG error clearing selection: ${e.message}", e)
         }
     }
 
@@ -282,7 +277,6 @@ class CustomIpAdapter(private val context: Context, private val type: CustomRule
                         notifyItemRangeChanged(0, itemCount)
                     }
                 } catch (e: Exception) {
-                    Logger.e(LOG_TAG_UI, "$TAG error in long click: ${e.message}", e)
                 }
                 true
             }
@@ -462,7 +456,6 @@ class CustomIpAdapter(private val context: Context, private val type: CustomRule
                         notifyItemRangeChanged(0, itemCount)
                     }
                 } catch (e: Exception) {
-                    Logger.e(LOG_TAG_UI, "$TAG error in long click: ${e.message}", e)
                 }
                 true
             }
@@ -627,7 +620,6 @@ class CustomIpAdapter(private val context: Context, private val type: CustomRule
                 dBind.daciFailureTextView.visibility = View.VISIBLE
                 return@ui
             }
-            Logger.i(LOG_TAG_UI, "$TAG ip: $ip, port: $port, status: $status")
             updateCustomIp(customIp, ip, port, status)
         }
     }

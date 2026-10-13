@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
 import android.content.Context
 import com.celzero.bravedns.util.Constants.Companion.WIREGUARD_FOLDER_NAME
 import java.io.File
@@ -27,7 +26,6 @@ import java.nio.charset.StandardCharsets
  * WireGuard private keys are never persisted as plaintext on disk.
  */
 object WireguardConfigFileManager {
-    private const val LOG_TAG = "WgConfigFileMgr"
 
     /**
      * Returns the directory used for WireGuard config files.
@@ -104,7 +102,6 @@ object WireguardConfigFileManager {
         return try {
             file.readText(StandardCharsets.UTF_8).contains("[Interface]", ignoreCase = true)
         } catch (_: IOException) {
-            Logger.w(LOG_TAG, "cannot determine if file is plaintext: ${file.absolutePath}")
             false
         }
     }

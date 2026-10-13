@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.ActivityNotFoundException
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -164,7 +163,6 @@ object UIUtils {
                 context.getString(R.string.vpn_profile_error),
                 Toast.LENGTH_SHORT
             )
-            Logger.w(Logger.LOG_TAG_VPN, "Failure opening app info: ${e.message}", e)
         }
     }
 
@@ -178,7 +176,6 @@ object UIUtils {
                 context.getString(R.string.intent_launch_error, url),
                 Toast.LENGTH_SHORT
             )
-            Logger.w(LOG_TAG_UI, "activity not found ${e.message}", e)
         }
     }
 
@@ -191,7 +188,6 @@ object UIUtils {
         } catch (e: ActivityNotFoundException) {
             val msg = context.getString(R.string.intent_launch_error, settings)
             Utilities.showToastUiCentered(context, msg, Toast.LENGTH_SHORT)
-            Logger.w(Logger.LOG_TAG_VPN, "err opening android setting: ${e.message}", e)
             false
         }
     }
@@ -209,7 +205,6 @@ object UIUtils {
                 context.getString(R.string.app_info_error),
                 Toast.LENGTH_SHORT
             )
-            Logger.w(LOG_TAG_UI, "activity not found ${e.message}", e)
         }
     }
 
@@ -243,7 +238,6 @@ object UIUtils {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         } catch (e: Exception) { // ActivityNotFoundException | NullPointerException
-            Logger.w(Logger.LOG_TAG_FIREWALL, "Failure calling app info: ${e.message}", e)
             Utilities.showToastUiCentered(
                 context,
                 context.getString(R.string.ctbs_app_info_not_available_toast),
@@ -446,7 +440,6 @@ object SnackbarHelper {
             message == lastMessage &&
             (now - lastShownAt) < THROTTLE_MS
         ) {
-            Logger.d(LOG_TAG_UI, "SnackbarHelper: suppressed duplicate '${message.take(40)}'")
             return
         }
 
@@ -517,7 +510,6 @@ object SnackbarHelper {
         lastMessage = message
         lastShownAt = now
         snackbar.show()
-        Logger.d(LOG_TAG_UI, "SnackbarHelper: showing '${message.take(60)}'")
     }
 
     /** Dismiss the currently visible Snackbar, if any. */
@@ -547,7 +539,6 @@ object SnackbarHelper {
             action = {
                 persistentState.firebaseErrorReportingEnabled = false
                 FirebaseErrorReporting.setEnabled(false)
-                Logger.i(LOG_TAG_UI, "Stability program disabled by user via snackbar")
             },
             forceShow = true
         )

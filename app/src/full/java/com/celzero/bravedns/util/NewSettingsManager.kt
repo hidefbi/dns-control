@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import com.celzero.bravedns.service.PersistentState
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -51,14 +50,12 @@ object NewSettingsManager: KoinComponent {
     fun clearAll() {
         persistentState.newSettings = ""
         persistentState.newSettingsSeen = ""
-        Logger.v(LOG_TAG_UI, "NewSettingsManager: cleared all new settings")
     }
 
     fun handleNewSettings() {
         if (isExpired()) {
             // reset all new settings
             clearAll()
-            Logger.v(LOG_TAG_UI, "NewSettingsManager: new settings expired, resetting all settings")
         }
     }
 }

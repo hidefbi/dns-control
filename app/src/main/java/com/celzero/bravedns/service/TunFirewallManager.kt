@@ -83,7 +83,6 @@ object TunFirewallManager : KoinComponent {
     }
 
     private fun logd(msg: String) {
-        Logger.d(LOG_TAG_VPN, "TunFirewallManager; $msg")
     }
 
     internal suspend fun firewall(params: FirewallParameters): FirewallRuleset {
@@ -364,7 +363,6 @@ object TunFirewallManager : KoinComponent {
             Logger.crash(LOG_TAG_VPN, "unexpected err in firewall()($connId), block anyway", iex)
             FirewallRuleset.RULE1C
         }
-        Logger.vv(LOG_TAG_VPN, "firewall: connId: $connId, rule: $res")
         return res
     }
 
@@ -566,12 +564,10 @@ object TunFirewallManager : KoinComponent {
     ): Boolean {
         if (dst.isEmpty()) {
             val isActiveCellular = isActiveIfaceCellular(underlyingNetworks, connectivityManager)
-            Logger.vv(LOG_TAG_VPN, "empty destination ip, active cellular? $isActiveCellular")
             return isActiveCellular
         }
         val dest = IPAddressString(dst)
         if (dest.isEmpty) {
-            Logger.e(LOG_TAG_VPN, "invalid destination IP: $dst")
             return isActiveIfaceCellular(underlyingNetworks, connectivityManager)
         }
 
@@ -592,7 +588,6 @@ object TunFirewallManager : KoinComponent {
             }
         // if there are no network to be bound given a destination IP, fallback to active network
         if (cap == null) {
-            Logger.e(LOG_TAG_VPN, "no network to be bound for $dst, use active network")
             return isActiveIfaceCellular(underlyingNetworks, connectivityManager)
         }
         return cap.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
@@ -605,7 +600,6 @@ object TunFirewallManager : KoinComponent {
     ): Boolean {
         val dest = IPAddressString(dst)
         if (dest.isEmpty) {
-            Logger.e(LOG_TAG_VPN, "invalid destination IP: $dst")
             return isActiveIfaceMetered(underlyingNetworks, connectivityManager)
         }
 
@@ -628,7 +622,6 @@ object TunFirewallManager : KoinComponent {
 
         // if there are no network to be bound given a destination IP, fallback to active network
         if (cap == null) {
-            Logger.e(LOG_TAG_VPN, "no network to be bound for $dst, use active network")
             return isActiveIfaceMetered(underlyingNetworks, connectivityManager)
         }
         return !cap.hasCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)
@@ -674,7 +667,6 @@ object TunFirewallManager : KoinComponent {
         if (!persistentState.getBlockAppWhenBackground()) return false
 
         if (!accessibilityServiceFunctional) {
-            Logger.w(LOG_TAG_VPN, "accessibility service not functional, disable bg-block")
             onAccessibilityFailure?.invoke()
             return false
         }

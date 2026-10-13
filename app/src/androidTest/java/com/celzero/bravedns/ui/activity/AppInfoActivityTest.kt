@@ -53,12 +53,10 @@ class AppInfoActivityTest {
 
     private lateinit var context: Context
     private var testUid: Int = INVALID_UID
-    private val testTag = "AppInfoActivityTest"
     private val maxAcceptableLoadTime = 5000L // 5 seconds max
 
     @Before
     fun setUp() {
-        Logger.d(testTag, "Setting up comprehensive test environment")
         context = ApplicationProvider.getApplicationContext()
 
         // Get a valid UID for testing - use the current app's UID
@@ -66,16 +64,13 @@ class AppInfoActivityTest {
             val packageInfo = context.packageManager.getPackageInfo(context.packageName, 0)
             packageInfo.applicationInfo?.uid ?: 1000
         } catch (e: PackageManager.NameNotFoundException) {
-            Logger.e(testTag, "Failed to get test UID", e)
             1000 // fallback UID
         }
 
-        Logger.d(testTag, "Test setup completed with UID: $testUid")
     }
 
     @After
     fun tearDown() {
-        Logger.d(testTag, "Tearing down test environment")
         // Force garbage collection to clean up after performance tests
         System.gc()
     }
@@ -84,7 +79,6 @@ class AppInfoActivityTest {
 
     @Test
     fun testLaunchesSuccessfullyWithValidUid() {
-        Logger.d(testTag, "Testing successful launch with valid UID")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use { scenario ->
@@ -96,12 +90,10 @@ class AppInfoActivityTest {
                 assertFalse("Activity should not be destroyed", activity.isDestroyed)
             }
         }
-        Logger.d(testTag, "Successful launch test completed")
     }
 
     @Test
     fun testLaunchWithInvalidUid() {
-        Logger.d(testTag, "Testing launch with invalid UID")
         val intent = createInvalidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use { scenario ->
@@ -112,12 +104,10 @@ class AppInfoActivityTest {
                 assertNotNull("Activity should not be null", activity)
             }
         }
-        Logger.d(testTag, "Invalid UID test completed")
     }
 
     @Test
     fun testUiElementsAreDisplayedWithValidData() {
-        Logger.d(testTag, "Testing UI elements display with valid data")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use {
@@ -148,10 +138,8 @@ class AppInfoActivityTest {
                 checkElementWithFallback(R.id.aad_ip_block_card, "IP block card")
                 checkElementWithFallback(R.id.aad_domain_block_card, "domain block card")
 
-                Logger.d(testTag, "UI elements display test completed successfully")
 
             } catch (e: Exception) {
-                Logger.e(testTag, "UI elements test failed", e)
                 fail("UI elements test failed: ${e.message}")
             }
         }
@@ -159,7 +147,6 @@ class AppInfoActivityTest {
 
     @Test
     fun testUiElementsContentAndInteractions() {
-        Logger.d(testTag, "Testing UI element interactions")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use {
@@ -177,19 +164,15 @@ class AppInfoActivityTest {
                 performSafeClick(R.id.aad_app_info_icon, "app info icon")
                 performSafeClick(R.id.aad_close_conns_chip, "close connections chip")
 
-                Logger.d(testTag, "UI interactions test completed successfully")
 
             } catch (e: Exception) {
-                Logger.e(testTag, "UI interactions test failed", e)
                 // Don't fail the test for interaction issues, just log them
-                Logger.w(testTag, "Some interactions may not be available in current state")
             }
         }
     }
 
     @Test
     fun testAppSettingsToggleStates() {
-        Logger.d(testTag, "Testing app settings toggle states")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use {
@@ -208,19 +191,15 @@ class AppInfoActivityTest {
                     checkToggleState(id)
                 }
 
-                Logger.d(testTag, "App settings toggle test completed")
 
             } catch (e: Exception) {
-                Logger.e(testTag, "App settings test failed", e)
                 // Don't fail for settings that might not be available for test app
-                Logger.w(testTag, "Some settings may not be available for test app")
             }
         }
     }
 
     @Test
     fun testActivityHandlesConfigurationChanges() {
-        Logger.d(testTag, "Testing configuration change handling")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use { scenario ->
@@ -237,10 +216,8 @@ class AppInfoActivityTest {
                 onView(withId(R.id.aad_app_detail_name))
                     .check(matches(isDisplayed()))
 
-                Logger.d(testTag, "Configuration change test completed")
 
             } catch (e: Exception) {
-                Logger.e(testTag, "Configuration change test failed", e)
                 fail("Activity failed to handle configuration changes: ${e.message}")
             }
         }
@@ -250,7 +227,6 @@ class AppInfoActivityTest {
 
     @Test
     fun testLaunchWithMissingUidExtra() {
-        Logger.d(testTag, "Testing launch with missing UID extra")
         val intent = Intent(context, AppInfoActivity::class.java)
         // Intentionally not setting the UID extra
 
@@ -260,15 +236,12 @@ class AppInfoActivityTest {
             scenario.onActivity { activity ->
                 assertNotNull("Activity should not be null", activity)
                 // Activity should handle missing UID gracefully
-                Logger.d(testTag, "Activity launched successfully without UID")
             }
         }
-        Logger.d(testTag, "Missing UID test completed")
     }
 
     @Test
     fun testLaunchWithNegativeUid() {
-        Logger.d(testTag, "Testing launch with negative UID")
         val intent = Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, -1)
         }
@@ -278,15 +251,12 @@ class AppInfoActivityTest {
 
             scenario.onActivity { activity ->
                 assertNotNull("Activity should not be null", activity)
-                Logger.d(testTag, "Activity handled negative UID gracefully")
             }
         }
-        Logger.d(testTag, "Negative UID test completed")
     }
 
     @Test
     fun testLaunchWithZeroUid() {
-        Logger.d(testTag, "Testing launch with zero UID")
         val intent = Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, 0)
         }
@@ -296,15 +266,12 @@ class AppInfoActivityTest {
 
             scenario.onActivity { activity ->
                 assertNotNull("Activity should not be null", activity)
-                Logger.d(testTag, "Activity handled zero UID gracefully")
             }
         }
-        Logger.d(testTag, "Zero UID test completed")
     }
 
     @Test
     fun testLaunchWithVeryLargeUid() {
-        Logger.d(testTag, "Testing launch with very large UID")
         val intent = Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, Integer.MAX_VALUE)
         }
@@ -314,15 +281,12 @@ class AppInfoActivityTest {
 
             scenario.onActivity { activity ->
                 assertNotNull("Activity should not be null", activity)
-                Logger.d(testTag, "Activity handled large UID gracefully")
             }
         }
-        Logger.d(testTag, "Large UID test completed")
     }
 
     @Test
     fun testLaunchWithSystemAppUid() {
-        Logger.d(testTag, "Testing launch with system app UID")
         val systemUid = 1000 // System UID
 
         val intent = Intent(context, AppInfoActivity::class.java).apply {
@@ -334,15 +298,12 @@ class AppInfoActivityTest {
 
             scenario.onActivity { activity ->
                 assertNotNull("Activity should not be null", activity)
-                Logger.d(testTag, "Activity handled system UID gracefully")
             }
         }
-        Logger.d(testTag, "System UID test completed")
     }
 
     @Test
     fun testActivityStateWithMultipleIntents() {
-        Logger.d(testTag, "Testing activity behavior with multiple different intents")
 
         // Test with valid UID first
         val validIntent = Intent(context, AppInfoActivity::class.java).apply {
@@ -366,12 +327,10 @@ class AppInfoActivityTest {
                 assertNotNull("Activity should still be valid after intent change", activity)
             }
         }
-        Logger.d(testTag, "Multiple intents test completed")
     }
 
     @Test
     fun testActivityLifecycleStates() {
-        Logger.d(testTag, "Testing activity lifecycle states")
         val intent = Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, testUid)
         }
@@ -393,12 +352,10 @@ class AppInfoActivityTest {
                 assertTrue("Activity should handle pause gracefully", activity.lifecycle.currentState.isAtLeast(androidx.lifecycle.Lifecycle.State.STARTED))
             }
         }
-        Logger.d(testTag, "Lifecycle states test completed")
     }
 
     @Test
     fun testMemoryPressureHandling() {
-        Logger.d(testTag, "Testing activity behavior under memory pressure")
         val intent = Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, testUid)
         }
@@ -411,12 +368,10 @@ class AppInfoActivityTest {
                 assertFalse("Activity should not be finishing after memory pressure", activity.isFinishing)
             }
         }
-        Logger.d(testTag, "Memory pressure test completed")
     }
 
     @Test
     fun testActivityWithEmptyIntentExtras() {
-        Logger.d(testTag, "Testing activity with empty intent extras")
         val intent = Intent(context, AppInfoActivity::class.java).apply {
             // Add empty extras bundle
             putExtras(android.os.Bundle())
@@ -427,15 +382,12 @@ class AppInfoActivityTest {
 
             scenario.onActivity { activity ->
                 assertNotNull("Activity should not be null", activity)
-                Logger.d(testTag, "Activity handled empty extras gracefully")
             }
         }
-        Logger.d(testTag, "Empty extras test completed")
     }
 
     @Test
     fun testActivityErrorRecovery() {
-        Logger.d(testTag, "Testing activity error recovery scenarios")
         val intent = Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, testUid)
         }
@@ -447,9 +399,7 @@ class AppInfoActivityTest {
                     onView(withId(R.id.aad_app_detail_name))
                         .check(matches(anyOf(isDisplayed(), not(isDisplayed()))))
 
-                    Logger.d(testTag, "Activity recovered from potential UI access errors")
                 } catch (e: Exception) {
-                    Logger.w(testTag, "Expected error during UI access: ${e.message}")
                     // This is expected for some edge cases
                 }
 
@@ -457,14 +407,12 @@ class AppInfoActivityTest {
                 assertFalse("Activity should not be finishing after error", activity.isFinishing)
             }
         }
-        Logger.d(testTag, "Error recovery test completed")
     }
 
     // ========== PERFORMANCE TESTS ==========
 
     @Test
     fun testActivityLaunchPerformance() {
-        Logger.d(testTag, "Testing activity launch performance")
         val intent = createValidIntent()
 
         val launchTime = measureTimeMillis {
@@ -476,7 +424,6 @@ class AppInfoActivityTest {
             }
         }
 
-        Logger.d(testTag, "Activity launch time: ${launchTime}ms")
         assertTrue(
             "Activity launch time ($launchTime ms) should be under $maxAcceptableLoadTime ms",
             launchTime < maxAcceptableLoadTime
@@ -485,7 +432,6 @@ class AppInfoActivityTest {
 
     @Test
     fun testUiRenderingPerformance() {
-        Logger.d(testTag, "Testing UI rendering performance")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use { scenario ->
@@ -499,11 +445,9 @@ class AppInfoActivityTest {
                     onView(withId(R.id.aad_pkg_name))
                         .check(matches(anyOf(isDisplayed(), not(isDisplayed()))))
                 } catch (e: Exception) {
-                    Logger.w(testTag, "Some UI elements may not be rendered yet: ${e.message}")
                 }
             }
 
-            Logger.d(testTag, "UI rendering time: ${renderTime}ms")
             assertTrue(
                 "UI rendering time ($renderTime ms) should be reasonable",
                 renderTime < 3000L
@@ -513,14 +457,12 @@ class AppInfoActivityTest {
 
     @Test
     fun testMultipleActivityInstancesPerformance() {
-        Logger.d(testTag, "Testing performance with multiple activity instances")
         val intent = createValidIntent()
         val instances = 3
         val scenarios = mutableListOf<ActivityScenario<AppInfoActivity>>()
 
         val totalTime = measureTimeMillis {
             repeat(instances) { i ->
-                Logger.d(testTag, "Launching instance $i")
                 val scenario = ActivityScenario.launch<AppInfoActivity>(intent)
                 scenarios.add(scenario)
 
@@ -533,9 +475,7 @@ class AppInfoActivityTest {
         // Clean up
         scenarios.forEach { it.close() }
 
-        Logger.d(testTag, "Total time for $instances instances: ${totalTime}ms")
         val avgTime = totalTime / instances
-        Logger.d(testTag, "Average time per instance: ${avgTime}ms")
 
         assertTrue(
             "Average launch time ($avgTime ms) should be reasonable",
@@ -545,7 +485,6 @@ class AppInfoActivityTest {
 
     @Test
     fun testConfigurationChangePerformance() {
-        Logger.d(testTag, "Testing configuration change performance")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use { scenario ->
@@ -559,7 +498,6 @@ class AppInfoActivityTest {
                 }
             }
 
-            Logger.d(testTag, "Configuration changes time: ${configTime}ms")
             assertTrue(
                 "Configuration changes time ($configTime ms) should be reasonable",
                 configTime < 10000L // 10 seconds for 3 recreations
@@ -569,13 +507,11 @@ class AppInfoActivityTest {
 
     @Test
     fun testMemoryUsageStability() {
-        Logger.d(testTag, "Testing memory usage stability")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use { scenario ->
             scenario.onActivity { activity ->
                 val initialMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
-                Logger.d(testTag, "Initial memory usage: ${initialMemory / 1024 / 1024} MB")
 
                 // Simulate some activity operations
                 repeat(10) {
@@ -587,15 +523,12 @@ class AppInfoActivityTest {
                         // Small delay to allow operations to complete
                         Thread.sleep(100)
                     } catch (e: Exception) {
-                        Logger.w(testTag, "UI operation failed: ${e.message}")
                     }
                 }
 
                 val finalMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()
-                Logger.d(testTag, "Final memory usage: ${finalMemory / 1024 / 1024} MB")
 
                 val memoryIncrease = finalMemory - initialMemory
-                Logger.d(testTag, "Memory increase: ${memoryIncrease / 1024 / 1024} MB")
 
                 // Memory increase should be reasonable (less than 50MB)
                 assertTrue(
@@ -608,7 +541,6 @@ class AppInfoActivityTest {
 
     @Test
     fun testInteractionResponseTimes() {
-        Logger.d(testTag, "Testing interaction response times")
         val intent = createValidIntent()
 
         ActivityScenario.launch<AppInfoActivity>(intent).use { scenario ->
@@ -628,11 +560,9 @@ class AppInfoActivityTest {
                         // Small delay to allow response
                         Thread.sleep(100)
                     } catch (e: Exception) {
-                        Logger.w(testTag, "Element $elementId not available for interaction: ${e.message}")
                     }
                 }
 
-                Logger.d(testTag, "Response time for element $elementId: ${responseTime}ms")
                 assertTrue(
                     "Interaction response time should be quick",
                     responseTime < 1000L
@@ -646,14 +576,12 @@ class AppInfoActivityTest {
     private fun createValidIntent(): Intent {
         return Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, testUid)
-            Logger.d(testTag, "Created valid intent with UID: $testUid")
         }
     }
 
     private fun createInvalidIntent(): Intent {
         return Intent(context, AppInfoActivity::class.java).apply {
             putExtra(AppInfoActivity.INTENT_UID, INVALID_UID)
-            Logger.d(testTag, "Created invalid intent with UID: $INVALID_UID")
         }
     }
 
@@ -664,9 +592,7 @@ class AppInfoActivityTest {
                 withEffectiveVisibility(Visibility.GONE),
                 withEffectiveVisibility(Visibility.INVISIBLE)
             )))
-            Logger.d(testTag, "Element $elementName found and checked")
         } catch (e: Exception) {
-            Logger.w(testTag, "Element $elementName not found or not accessible: ${e.message}")
         }
     }
 
@@ -678,9 +604,7 @@ class AppInfoActivityTest {
             )))
 
             onView(withId(id)).perform(click())
-            Logger.d(testTag, "Successfully clicked $elementName")
         } catch (e: Exception) {
-            Logger.w(testTag, "Could not click $elementName: ${e.message}")
         }
     }
 
@@ -692,7 +616,6 @@ class AppInfoActivityTest {
                 withEffectiveVisibility(Visibility.GONE)
             )))
         } catch (e: Exception) {
-            Logger.w(testTag, "Toggle state check failed for ID $id: ${e.message}")
         }
     }
 }

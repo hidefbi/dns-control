@@ -16,9 +16,6 @@
 
 package com.celzero.bravedns.download
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DNS
-import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
@@ -93,10 +90,6 @@ class AppDownloadManager(
         val response = checkBlocklistUpdate(ts, persistentState.appVersion, retryCount = 0, persistentState.routeRethinkInRethink)
         // if received response for update is null
         if (response == null) {
-            Logger.w(
-                LOG_TAG_DNS,
-                "blocklist update is check response is null for ${type.name}, ts: $ts, app version: ${persistentState.appVersion}"
-            )
             downloadRequired.postValue(DownloadManagerStatus.FAILURE)
             return
         }
@@ -110,10 +103,6 @@ class AppDownloadManager(
         }
 
         val updatableTs = getDownloadableTimestamp(response)
-        Logger.i(
-            LOG_TAG_DNS,
-            "Updatable ts: $updatableTs, current ts: $ts, blocklist type: ${type.name}"
-        )
 
         if (updatableTs == INIT_TIME_MS) {
             downloadRequired.postValue(DownloadManagerStatus.FAILURE)
@@ -149,13 +138,11 @@ class AppDownloadManager(
         try {
             val downloadIdsStr = persistentState.androidDownloadManagerIds
             if (downloadIdsStr.isEmpty()) {
-                Logger.i(LOG_TAG_DOWNLOAD, "no andr-down-mgr downloads to cancel")
                 return
             }
 
             val downloadIds = downloadIdsStr.split(",").mapNotNull { it.toLongOrNull() }
             if (downloadIds.isEmpty()) {
-                Logger.i(LOG_TAG_DOWNLOAD, "no valid download IDs found to cancel")
                 return
             }
 
@@ -166,17 +153,13 @@ class AppDownloadManager(
                     val removed = downloadManager.remove(downloadId)
                     if (removed > 0) {
                         cancelledCount++
-                        Logger.i(LOG_TAG_DOWNLOAD, "cancelled download with id: $downloadId")
                     }
                 } catch (e: Exception) {
-                    Logger.w(LOG_TAG_DOWNLOAD, "failed to cancel download id: $downloadId", e)
                 }
             }
 
             persistentState.androidDownloadManagerIds = ""
-            Logger.i(LOG_TAG_DOWNLOAD, "cancelled $cancelledCount andr-down-mgr downloads")
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_DOWNLOAD, "err cancelling andr-down-mgr downloads", e)
         }
     }
 
@@ -199,10 +182,6 @@ class AppDownloadManager(
         val response = checkBlocklistUpdate(currentTs, persistentState.appVersion, retryCount = 0, persistentState.routeRethinkInRethink)
         // if received response for update is null
         if (response == null) {
-            Logger.w(
-                LOG_TAG_DNS,
-                "local blocklist update check is null, ts: $currentTs, app version: ${persistentState.appVersion}"
-            )
             return DownloadManagerStatus.FAILURE
         }
 
@@ -211,21 +190,15 @@ class AppDownloadManager(
 
         // no need to proceed if the current and received timestamp is same
         if (updatableTs <= currentTs && isBlocklistAvailable && !isRedownload) {
-            Logger.i(
-                LOG_TAG_DNS,
-                "local blocklist update not required, current ts: $currentTs, updatable ts: $updatableTs"
-            )
             return DownloadManagerStatus.NOT_REQUIRED
         } else {
             // no-op
         }
 
         if (persistentState.useCustomDownloadManager) {
-            Logger.i(LOG_TAG_DNS, "initiating local blocklist download with custom download mgr")
             return initiateCustomDownloadManager(updatableTs)
         }
 
-        Logger.i(LOG_TAG_DNS, "initiating local blocklist download with Android download mgr")
         return initiateAndroidDownloadManager(updatableTs)
     }
 
@@ -235,17 +208,14 @@ class AppDownloadManager(
             WorkScheduler.isWorkScheduled(context, DOWNLOAD_TAG) ||
                 WorkScheduler.isWorkScheduled(context, FILE_TAG)
         ) {
-            Logger.i(LOG_TAG_DNS, "local blocklist download is already in progress, returning")
             return DownloadManagerStatus.FAILURE
         }
 
-        Logger.i(LOG_TAG_DNS, "local blocklist download is not in progress, starting the download")
         purge(context, timestamp, DownloadType.LOCAL)
         val downloadIds = LongArray(ONDEVICE_BLOCKLISTS_ADM.count())
         ONDEVICE_BLOCKLISTS_ADM.forEachIndexed { i, it ->
             val fileName = it.filename
             // url: https://dl.rethinkdns.com/update/blocklists?tstamp=1696197375609&vcode=33
-            Logger.d(LOG_TAG_DOWNLOAD, "v: ($timestamp), f: $fileName, u: $it.url")
             downloadIds[i] = enqueueDownload(it.url, fileName, timestamp.toString())
             if (downloadIds[i] == INVALID_DOWNLOAD_ID) {
                 return DownloadManagerStatus.FAILURE
@@ -344,11 +314,9 @@ class AppDownloadManager(
                     fileName
                 )
                 val downloadId = downloadManager.enqueue(this)
-                Logger.d(LOG_TAG_DOWNLOAD, "filename: $fileName, downloadID: $downloadId")
                 return downloadId
             }
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_DOWNLOAD, "Exception while downloading the file: $fileName", e)
         }
         return INVALID_DOWNLOAD_ID
     }

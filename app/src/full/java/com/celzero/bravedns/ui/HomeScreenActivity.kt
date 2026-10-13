@@ -17,9 +17,6 @@ package com.celzero.bravedns.ui
 
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_APP_UPDATE
-import com.celzero.bravedns.util.Logger.LOG_TAG_BACKUP_RESTORE
-import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.app.UiModeManager
 import android.content.Context
 import android.content.Intent
@@ -54,7 +51,6 @@ import com.celzero.bravedns.backup.BackupHelper.Companion.BACKUP_FILE_EXTN
 import com.celzero.bravedns.backup.BackupHelper.Companion.INTENT_RESTART_APP
 import com.celzero.bravedns.backup.BackupHelper.Companion.INTENT_SCHEME
 import com.celzero.bravedns.backup.RestoreAgent
-import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.RefreshDatabase
 import com.celzero.bravedns.service.AppUpdater
 import com.celzero.bravedns.service.BraveVPNService
@@ -98,7 +94,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     private val persistentState by inject<PersistentState>()
     private val appUpdateManager by inject<AppUpdater>()
     private val rdb by inject<RefreshDatabase>()
-    private val appConfig by inject<AppConfig>()
 
     // TODO: see if this can be replaced with a more robust solution
     // keep track of when app went to background
@@ -115,7 +110,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         super.onCreate(savedInstanceState)
 
         if (isAtleastO_MR1()) {
-            Logger.vv(LOG_TAG_UI, "Setting up window insets for Android 27+")
             ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.nav_view)) { view, insets ->
                 val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
                 view.updatePadding(bottom = systemBars.bottom) // Add bottom padding to keep icons visible
@@ -161,7 +155,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         // if app is coming from background, don't reset the activity stack
         if (appInBackground) {
             appInBackground = false
-            Logger.d(LOG_TAG_UI, "app restored from background, maintaining activity stack")
         }
     }
 
@@ -185,17 +178,14 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             intent.scheme?.equals(INTENT_SCHEME) == true &&
             intent.data?.path?.contains(BACKUP_FILE_EXTN) == true
         ) {
-            Logger.i(LOG_TAG_UI, "handleIntent: backup intent")
             handleRestoreProcess(intent.data)
         } else if (intent.scheme?.equals(INTENT_SCHEME) == true) {
-            Logger.i(LOG_TAG_UI, "handleIntent: restore intent")
             showToastUiCentered(
                 this,
                 getString(R.string.brbs_restore_no_uri_toast),
                 Toast.LENGTH_SHORT
             )
         } else if (intent.getBooleanExtra(INTENT_RESTART_APP, false)) {
-            Logger.i(LOG_TAG_UI, "Restart from restore, so refreshing app database...")
             io { rdb.refresh(RefreshDatabase.ACTION_REFRESH_RESTORE) }
         }
     }
@@ -252,7 +242,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     }
 
     private fun startRestore(fileUri: Uri) {
-        Logger.i(LOG_TAG_BACKUP_RESTORE, "invoke worker to initiate the restore process")
         val data = Data.Builder()
         data.putString(BackupHelper.DATA_BUILDER_RESTORE_URI, fileUri.toString())
 
@@ -275,10 +264,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         // observer for custom download manager worker
         workManager.getWorkInfosByTagLiveData(RestoreAgent.TAG).observe(this) { workInfoList ->
             val workInfo = workInfoList?.getOrNull(0) ?: return@observe
-            Logger.i(
-                LOG_TAG_BACKUP_RESTORE,
-                "WorkManager state: ${workInfo.state} for ${RestoreAgent.TAG}"
-            )
             if (WorkInfo.State.SUCCEEDED == workInfo.state) {
                 showToastUiCentered(
                     this,
@@ -367,10 +352,8 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         if (persistentState.appVersion != 0) {
             // if app version is not 0, then it means the app is updated
             NewSettingsManager.initializeNewSettings()
-            Logger.i(LOG_TAG_UI, "app version already set, so its update, showing new settings")
         }
         val version = getLatestVersion()
-        Logger.i(LOG_TAG_UI, "new version detected, updating the app version, version: $version")
         persistentState.appVersion = version
         persistentState.showWhatsNewChip = true
         persistentState.appUpdateTimeTs = System.currentTimeMillis()
@@ -395,7 +378,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     }
 
     private fun getLatestVersion(): Int {
-        Logger.i(LOG_TAG_UI, "base version code: ${BuildConfig.BASE_VERSION_CODE}")
         return BuildConfig.BASE_VERSION_CODE
     }
 
@@ -406,7 +388,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         val diff = System.currentTimeMillis() - persistentState.lastAppUpdateCheck
 
         val daysElapsed = TimeUnit.MILLISECONDS.toDays(diff)
-        Logger.i(LOG_TAG_UI, "App update check initiated, number of days: $daysElapsed")
         if (daysElapsed <= 1L) return
 
         checkForUpdate()
@@ -428,18 +409,15 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         //  alpha testers get updates via direct distribution, take to the url
         if (Utilities.isAlphaBuild()) {
             if (isInteractive == AppUpdater.UserPresent.INTERACTIVE) {
-                Logger.i(LOG_TAG_APP_UPDATE, "update check skipped for alpha build")
                 openUrl(this, ALPHA_UPDATE_CHECK_URL)
                 return
             } else {
-                Logger.i(LOG_TAG_APP_UPDATE, "non interactive update check skipped for alpha build")
                 return
             }
         }
 
         // Check updates only for play store / website version. Not fDroid.
         if (!isPlayStoreFlavour() && !isWebsiteFlavour()) {
-            Logger.i(LOG_TAG_APP_UPDATE, "update check not for ${BuildConfig.FLAVOR}")
             return
         }
 
@@ -469,7 +447,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
                         installStateUpdatedListener
                     ) // Always web updater
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_APP_UPDATE, "Error in app (web) update check: ${e.message}", e)
                 runOnUiThread {
                     showDownloadDialog(
                         AppUpdater.InstallSource.OTHER,
@@ -493,7 +470,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     private val installStateUpdatedListener =
         object : AppUpdater.InstallStateListener {
             override fun onStateUpdate(state: AppUpdater.InstallState) {
-                Logger.i(LOG_TAG_UI, "InstallStateUpdatedListener: state: " + state.status)
                 when (state.status) {
                     AppUpdater.InstallStatus.DOWNLOADED -> {
                         // CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
@@ -572,7 +548,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             snack.setActionTextColor(ContextCompat.getColor(this, R.color.primaryLightColorText))
             snack.show()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "err showing update complete snackbar: ${e.message}", e)
         }
     }
 
@@ -648,7 +623,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             val dialog = builder.create()
             dialog.show()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "err showing download dialog: ${e.message}", e)
         }
     }
 
@@ -657,11 +631,9 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         try {
             appUpdateManager.unregisterListener(installStateUpdatedListener)
         } catch (e: IllegalArgumentException) {
-            Logger.w(LOG_TAG_DOWNLOAD, "Unregister receiver exception")
         }
         // mark that app is going to background
         appInBackground = true
-        Logger.v(LOG_TAG_UI, "home screen activity is stopped, app going to background")
     }
 
     private fun handleOnBackPressed() {
@@ -698,14 +670,12 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
 
     private fun setupNavigationItemSelectedListener() {
         val btmNavView = findViewById<BottomNavigationView>(R.id.nav_view) ?: run {
-            Logger.w(LOG_TAG_UI, "setupNavigationItemSelectedListener: BottomNavigationView not found")
             return
         }
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_container) as? NavHostFragment
         val navController = navHostFragment?.navController ?: run {
-            Logger.w(LOG_TAG_UI, "setupNavigationItemSelectedListener: NavController not found")
             return
         }
 

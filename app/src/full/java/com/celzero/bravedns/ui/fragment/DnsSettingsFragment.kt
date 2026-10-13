@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.ui.fragment
 
-import com.celzero.bravedns.util.Logger
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -411,10 +410,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
             if (enabled) {
                 get<WorkScheduler>().scheduleBlocklistUpdateCheckJob()
             } else {
-                Logger.i(
-                    Logger.LOG_TAG_SCHEDULER,
-                    "Cancel all the work related to blocklist update check"
-                )
                 WorkManager.getInstance(requireContext().applicationContext)
                     .cancelAllWorkByTag(BLOCKLIST_UPDATE_CHECK_JOB_TAG)
             }

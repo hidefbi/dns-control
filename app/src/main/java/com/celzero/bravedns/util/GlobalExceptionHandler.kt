@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_APP
 import android.content.Context
 import com.celzero.bravedns.service.PersistentState
 import kotlinx.coroutines.CoroutineScope
@@ -47,7 +46,6 @@ class GlobalExceptionHandler private constructor(
          */
         fun initialize(ctx: Context) {
             if (instance != null) {
-                Logger.w(LOG_TAG_APP, "err-handler already initialized")
                 return
             }
 
@@ -55,7 +53,6 @@ class GlobalExceptionHandler private constructor(
             instance = GlobalExceptionHandler(defaultHandler, ctx.applicationContext)
             Thread.setDefaultUncaughtExceptionHandler(instance)
 
-            Logger.i(LOG_TAG_APP, "err-handler initialized successfully")
         }
 
         /**
@@ -67,15 +64,12 @@ class GlobalExceptionHandler private constructor(
     override fun uncaughtException(thread: Thread, throwable: Throwable) {
         try {
             val exception = Logger.throwableToException(throwable)
-            Logger.e(LOG_TAG_APP, "uncaught exception in thread ${thread.name}", exception)
 
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_APP, "err while handling uncaught exception", e)
         } finally {
             // Call the default handler to ensure proper app termination
             defaultHandler?.uncaughtException(thread, throwable) ?: run {
                 // If no default handler, terminate the process
-                Logger.e(LOG_TAG_APP, "no default exception handler found, terminating process")
                 exitProcess(1)
             }
         }

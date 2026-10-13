@@ -1,7 +1,5 @@
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.ExistingWorkPolicy
@@ -32,14 +30,12 @@ class TempAllowExpiryWorker(
         try {
             val cleared = db.clearAllExpiredTempAllowsBlocking(now)
             if (cleared > 0) {
-                Logger.i(LOG_TAG_FIREWALL, "TempAllowExpiryWorker cleared $cleared expired temp-allow entries")
             }
 
             // schedule the next nearest expiry
             scheduleNext(applicationContext)
             Result.success()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_FIREWALL, "TempAllowExpiryWorker failed: ${e.message}", e)
             Result.retry()
         }
     }
@@ -81,7 +77,6 @@ class TempAllowExpiryWorker(
             WorkManager.getInstance(context)
                 .enqueueUniqueWork(UNIQUE_WORK_NAME, ExistingWorkPolicy.REPLACE, req)
 
-            Logger.d(LOG_TAG_FIREWALL, "TempAllowExpiryWorker scheduled in ${delayMs}ms")
         }
     }
 }

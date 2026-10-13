@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.Context
 import android.content.Intent
 import android.text.format.DateUtils
@@ -67,7 +65,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
 
     companion object {
         private const val DELAY_MS = 1500L
-        private const val TAG = "OneWgCfgAdapter"
         private val DIFF_CALLBACK =
             object : DiffUtil.ItemCallback<WgConfigFiles>() {
 
@@ -427,7 +424,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
 
         private suspend fun enableWgIfPossible(config: WgConfigFiles) {
             if (!VpnController.hasTunnel()) {
-                Logger.i(LOG_TAG_PROXY, "$TAG VPN not active, cannot enable WireGuard")
                 uiCtx {
                     Utilities.showToastUiCentered(
                         context,
@@ -442,7 +438,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
 
             // checks only for app mode, so show appropriate error message if not enabled
             if (!WireguardManager.canEnableProxy()) {
-                Logger.i(LOG_TAG_PROXY, "not in DNS+Firewall mode, cannot enable WireGuard")
                 uiCtx {
                     // reset the check box
                     b.oneWgCheck.isChecked = false
@@ -456,7 +451,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
             }
 
             if (!WireguardManager.isValidConfig(config.id)) {
-                Logger.i(LOG_TAG_PROXY, "invalid WireGuard config")
                 uiCtx {
                     // reset the check box
                     b.oneWgCheck.isChecked = false
@@ -469,12 +463,10 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
             // out for the newly selected one rather than blocking the user with an error.
             var replacedOthers = false
             if (WireguardManager.isAnyOtherOneWgEnabled(config.id)) {
-                Logger.i(LOG_TAG_PROXY, "another one-wg config is active; replacing it")
                 WireguardManager.disableOtherOneWireGuardConfigs(config.id)
                 replacedOthers = true
             }
 
-            Logger.i(LOG_TAG_PROXY, "enabling WireGuard, id: ${config.id}")
             WireguardManager.updateOneWireGuardConfig(config.id, owg = true)
             config.oneWireGuard = true
             WireguardManager.enableConfig(config.toImmutable())
@@ -512,7 +504,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
 
         private suspend fun disableWgIfPossible(config: WgConfigFiles) {
             if (!VpnController.hasTunnel()) {
-                Logger.i(LOG_TAG_PROXY, "VPN not active, cannot disable WireGuard")
                 uiCtx {
                     // reset the check box
                     b.oneWgCheck.isChecked = true
@@ -524,7 +515,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
                 return
             }
 
-            Logger.i(LOG_TAG_PROXY, "disabling WireGuard, id: ${config.id}")
             WireguardManager.updateOneWireGuardConfig(config.id, owg = false)
             config.oneWireGuard = false
             WireguardManager.disableConfig(config.toImmutable())

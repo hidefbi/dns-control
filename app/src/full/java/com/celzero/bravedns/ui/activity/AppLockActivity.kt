@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.app.ComponentCaller
 import android.app.UiModeManager
 import android.content.Context
@@ -52,7 +50,6 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
     private lateinit var biometricPrompt: BiometricPrompt
 
     companion object {
-        private const val TAG = "AppLockUi"
         const val APP_LOCK_ALIAS = ".ui.activity.LauncherAliasAppLock"
         const val HOME_ALIAS = ".ui.LauncherAliasHome"
     }
@@ -76,11 +73,9 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
         }
 
         if (!isBiometricEnabled() || isAppRunningOnTv()) {
-            Logger.v(LOG_TAG_UI, "$TAG biometric authentication disabled or running on TV")
 
             // if the app lock alias is enabled, switch to home alias
             if (!LauncherSwitcher.isAliasEnabled(applicationContext, APP_LOCK_ALIAS)) {
-                Logger.v(LOG_TAG_UI, "$TAG switching launcher alias to home")
                 startHomeActivity()
                 return
             }
@@ -105,10 +100,8 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
                 delay
             }
 
-        Logger.d(LOG_TAG_UI, "$TAG timeout: $delay, last auth: $lastAuthTime")
         val timeSinceLastAuth = abs(SystemClock.elapsedRealtime() - lastAuthTime)
         if (timeSinceLastAuth < TimeUnit.MINUTES.toMillis(delay)) {
-            Logger.i(LOG_TAG_UI, "$TAG biometric auth skipped, time since last auth: $timeSinceLastAuth")
             startHomeActivity()
             return
         }
@@ -122,14 +115,11 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
     }
 
     private fun showBiometricPrompt() {
-        Logger.v(LOG_TAG_UI, "$TAG showing biometric prompt")
         executor = ContextCompat.getMainExecutor(this)
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
                 override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
                     super.onAuthenticationError(errorCode, errString)
-                    Logger.i(LOG_TAG_UI, "$TAG auth error(code: $errorCode): $errString")
-                    Logger.v(LOG_TAG_UI, "$TAG biometric auth err, finishing activity")
                     showToastUiCentered(this@AppLockActivity, errString.toString(), Toast.LENGTH_SHORT)
                     finishAffinity()
                 }
@@ -142,7 +132,6 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    Logger.i(LOG_TAG_UI, "$TAG biometric authentication failed")
                 }
             })
 
@@ -161,7 +150,6 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
     }
 
     private fun startHomeActivity() {
-        Logger.v(LOG_TAG_UI, "$TAG starting home activity")
         val intent = Intent(this, HomeScreenActivity::class.java).apply {
             putExtras(intent)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

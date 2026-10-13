@@ -18,7 +18,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_QR_CODE
 import android.content.ContentResolver
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -83,7 +82,6 @@ class QrCodeFromFileScanner(
     }
 
     private fun doScan(data: Uri): Result? {
-        Logger.d(LOG_QR_CODE, "Starting to scan an image: $data")
         contentResolver.openInputStream(data).use { inputStream ->
             val originalBitmap =
                 BitmapFactory.decodeStream(inputStream)
@@ -91,13 +89,8 @@ class QrCodeFromFileScanner(
 
             return try {
                 scanBitmapForResult(originalBitmap).also {
-                    Logger.d(LOG_QR_CODE, "Found result in original image")
                 }
             } catch (e: Exception) {
-                Logger.e(
-                    LOG_QR_CODE,
-                    "Original image scan finished with error: $e, will try downscaled image"
-                )
                 val scaleBitmap = downscaleBitmap(originalBitmap, 500)
                 scanBitmapForResult(originalBitmap).also { scaleBitmap.recycle() }
             } finally {

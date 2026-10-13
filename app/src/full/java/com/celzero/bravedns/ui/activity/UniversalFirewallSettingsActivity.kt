@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -228,10 +226,6 @@ class UniversalFirewallSettingsActivity :
                 BackgroundAccessibilityService::class.java
             )
 
-        Logger.d(
-            LOG_TAG_FIREWALL,
-            "backgroundEnabled? ${persistentState.getBlockAppWhenBackground()}, isServiceEnabled? $isAccessibilityServiceEnabled, isServiceRunning? $isAccessibilityServiceRunning"
-        )
         val isAccessibilityServiceFunctional =
             isAccessibilityServiceRunning && isAccessibilityServiceEnabled
 
@@ -275,7 +269,6 @@ class UniversalFirewallSettingsActivity :
                 getString(R.string.alert_firewall_accessibility_exception),
                 Toast.LENGTH_SHORT
             )
-            Logger.e(LOG_TAG_FIREWALL, "Failure accessing accessibility settings: ${e.message}", e)
         }
     }
 

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -53,7 +51,6 @@ class GenericHopAdapter(
 ) : RecyclerView.Adapter<GenericHopAdapter.HopViewHolder>() {
 
     companion object {
-        private const val TAG = "GenericHopAdapter"
     }
 
     private var isAttached = false
@@ -68,7 +65,6 @@ class GenericHopAdapter(
 
     override fun onBindViewHolder(holder: HopViewHolder, position: Int) {
         if (position < 0 || position >= itemCount) {
-            Logger.w(LOG_TAG_UI, "$TAG; Invalid position $position for itemCount $itemCount")
             return
         }
         holder.update(hopItems[position])
@@ -239,7 +235,6 @@ class GenericHopAdapter(
                 if (selectedId == config.getId()) {
                     val srcConfig = WireguardManager.getConfigById(srcId)
                     if (srcConfig == null) {
-                        Logger.i(LOG_TAG_UI, "$TAG; source config($srcId) not found to hop")
                         uiCtx {
                             b.wgHopListDescTv.text = context.getString(R.string.lbl_inactive)
                         }
@@ -287,7 +282,6 @@ class GenericHopAdapter(
             val srcConfig = WireguardManager.getConfigById(srcId)
             val mapping = WireguardManager.getConfigFilesById(config.getId())
             if (srcConfig == null || mapping == null) {
-                Logger.i(LOG_TAG_UI, "$TAG; source config($srcId) not found to hop")
                 uiCtx {
                     if (!isAttached) return@uiCtx
                     Utilities.showToastUiCentered(context, context.getString(R.string.config_invalid_desc), Toast.LENGTH_LONG)
@@ -309,7 +303,6 @@ class GenericHopAdapter(
             uiCtx {
                 showProgressIndicator()
             }
-            Logger.d(LOG_TAG_UI, "$TAG; init, hop: ${srcConfig.getId()} -> ${config.getId()}, isChecked? $isChecked")
             val src = ProxyManager.ID_WG_BASE + srcConfig.getId()
             val hop = ProxyManager.ID_WG_BASE + config.getId()
             val currMap = WgHopManager.getMapBySrc(src)

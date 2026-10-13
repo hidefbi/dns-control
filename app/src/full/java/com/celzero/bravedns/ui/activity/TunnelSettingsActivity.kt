@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Configuration
@@ -512,7 +510,6 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
                 // No action needed on start tracking
                 // This can be used to show a toast or a message if needed
                 // For now, we will just log the start of tracking
-                Logger.v(LOG_TAG_UI, "Dialer timeout seekbar tracking started")
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
@@ -529,7 +526,6 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                Logger.v(LOG_TAG_UI, "Socket buffer size seekbar tracking started")
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
@@ -561,7 +557,6 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             dialog.setCanceledOnTouchOutside(true)
             dialog.show()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "err opening CustomLanIpDialog: ${e.message}", e)
             showToastUiCentered(
                 this,
                 getString(R.string.custom_lan_ip_open_error),

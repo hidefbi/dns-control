@@ -16,8 +16,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.content.Context
 import android.content.Intent
 import android.net.Network
@@ -105,7 +103,6 @@ object VpnController : KoinComponent {
         val b = rvpn
         // if the tunnel has the go-adapter then there's nothing to do
         if (b?.hasTunnel() == true) {
-            Logger.w(LOG_TAG_VPN, "braveVPNService is already on, resending vpn enabled state")
             return
         }
         // below check is to avoid multiple calls to start the vpn when always-on is enabled
@@ -115,7 +112,6 @@ object VpnController : KoinComponent {
         // another is to check whether the vpn is already running.
         // todo: see whether changing the persistent state is really necessary.
         if (b != null && autoAttempt) {
-            Logger.i(LOG_TAG_VPN, "vpn service already running, no need to start")
             return
         }
         try {
@@ -129,14 +125,11 @@ object VpnController : KoinComponent {
             ContextCompat.startForegroundService(context, startServiceIntent)
 
             onConnectionStateChanged(vpnState)
-            Logger.i(LOG_TAG_VPN, "VPNController; Start(sync) executed")
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_VPN, "VPNController; Start(sync) failed, ${e.message}")
         }
     }
 
     fun stop(reason: String, context: Context, userInitiated: Boolean = true) {
-        Logger.i(LOG_TAG_VPN, "VPN Controller stop with context: $context")
         vpnState = null
         onConnectionStateChanged(null)
         rvpn?.signalStopService(reason, userInitiated)
@@ -278,7 +271,6 @@ object VpnController : KoinComponent {
         val finalProto =
             if (!proto.first && !proto.second) {
                 val failOpen = !persistentState.stallOnNoNetwork
-                Logger.i(LOG_TAG_VPN, "both v4 and v6 false, setting $failOpen")
                 Pair(failOpen, failOpen)
             } else {
                 proto

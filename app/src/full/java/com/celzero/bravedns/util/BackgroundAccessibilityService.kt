@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import android.accessibilityservice.AccessibilityService
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -41,7 +40,6 @@ class BackgroundAccessibilityService : AccessibilityService(), KoinComponent {
     }
 
     override fun onInterrupt() {
-        Logger.w(LOG_TAG_FIREWALL, "BackgroundAccessibilityService Interrupted")
     }
 
     override fun onDestroy() {
@@ -78,9 +76,6 @@ class BackgroundAccessibilityService : AccessibilityService(), KoinComponent {
             } else {
                 event.eventType == AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED
             }
-        Logger.d(
-            LOG_TAG_FIREWALL,
-            "onAccessibilityEvent: ${event.packageName}, ${event.eventType}, $hasContentChanged")
 
         if (!hasContentChanged) return
 

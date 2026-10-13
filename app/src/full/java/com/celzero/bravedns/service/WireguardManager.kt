@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.Context
 import android.text.format.DateUtils
 import com.celzero.bravedns.backup.BackupHelper.Companion.TEMP_WG_DIR
@@ -90,7 +88,6 @@ object WireguardManager : KoinComponent {
         migrateEncryptedConfigsIfNeeded()
 
         if (!forceRefresh && configs.isNotEmpty()) {
-            Logger.i(LOG_TAG_PROXY, "configs already loaded; returning...")
             return configs.size
         }
         // go through all files in the wireguard directory and load them
@@ -104,7 +101,6 @@ object WireguardManager : KoinComponent {
             // WireGuard configs are encrypted at rest. Legacy plaintext files are migrated
             // in-place to encrypted storage before parsing.
             if (!ensureEncryptedConfigFile(path)) {
-                Logger.w(LOG_TAG_PROXY, "wg config missing or undecryptable: $path")
                 if (it.isActive) {
                     val inactive = it.copy(isActive = false, oneWireGuard = false)
                     mappings.remove(it)
@@ -118,11 +114,9 @@ object WireguardManager : KoinComponent {
                 val bytes = WireguardConfigFileManager.read(applicationContext, File(path))
                 Config.parse(ByteArrayInputStream(bytes))
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_PROXY, "Config parse failure for wg config: $path", e)
                 continue
             }
             if (config == null) {
-                Logger.e(LOG_TAG_PROXY, "err loading wg config: $path, invalid config")
                 // TODO: delete the warp config from the wireguard directory
                 // below code should be removed post v055o
                 if ((it.id == WARP_ID && it.name == WARP_NAME) || (it.id == SEC_WARP_ID && it.name == SEC_WARP_NAME)) {
@@ -138,7 +132,6 @@ object WireguardManager : KoinComponent {
                         .setInterface(config.getInterface())
                         .addPeers(config.getPeers())
                         .build()
-                Logger.d(LOG_TAG_PROXY, "read wg config: ${it.id}, ${it.name}")
                 configs.add(c)
             }
         }
@@ -188,12 +181,10 @@ object WireguardManager : KoinComponent {
     suspend fun deleteResidueWgs() {
         val wgs = db.getWarpSecWarpConfig()
         if (wgs.isEmpty()) {
-            Logger.i(LOG_TAG_PROXY, "no residue wg configs to delete")
             return
         }
         wgs.forEach {
             if (it.name == SEC_WARP_NAME || it.name == WARP_NAME) {
-                Logger.i(LOG_TAG_PROXY, "deleting residue wg config: ${it.id}, ${it.name}")
                 deleteConfig(it.id)
             }
         }
@@ -207,7 +198,6 @@ object WireguardManager : KoinComponent {
     fun getConfigById(id: Int): Config? {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "getConfigById: wg not found: $id, ${configs.size}")
         }
         return config
     }
@@ -215,7 +205,6 @@ object WireguardManager : KoinComponent {
     fun getConfigFilesById(id: Int): WgConfigFilesImmutable? {
         val config = mappings.find { it.id == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "getConfigFilesById: wg not found: $id, ${configs.size}")
         }
         return config
     }
@@ -259,7 +248,6 @@ object WireguardManager : KoinComponent {
             }
             return false
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_PROXY, "err while checking active config: ${e.message}")
         }
         return false
     }
@@ -268,16 +256,11 @@ object WireguardManager : KoinComponent {
         io {
             val map = mappings.find { it.id == unmapped.id }
             if (map == null) {
-                Logger.e(
-                    LOG_TAG_PROXY,
-                    "enableConfig: wg not found, id: ${unmapped.id}, ${mappings.size}"
-                )
                 return@io
             }
 
             val config = configs.find { it.getId() == map.id }
             if (config == null) {
-                Logger.w(LOG_TAG_PROXY, "config not found: ${map.id}")
                 return@io
             }
 
@@ -304,7 +287,6 @@ object WireguardManager : KoinComponent {
             val proxyProvider = AppConfig.ProxyProvider.WIREGUARD
             appConfig.addProxy(proxyType, proxyProvider)
             VpnController.addWireGuardProxy(ID_WG_BASE + map.id)
-            Logger.i(LOG_TAG_PROXY, "enable wg config: ${map.id}, ${map.name}")
         }
     }
 
@@ -315,7 +297,6 @@ object WireguardManager : KoinComponent {
     fun isValidConfig(id: Int): Boolean {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "canEnableConfig: wg not found, id: ${id}, ${configs.size}")
             return false
         }
         return true
@@ -329,10 +310,6 @@ object WireguardManager : KoinComponent {
     suspend fun disableOtherOneWireGuardConfigs(currentId: Int) {
         val others = mappings.filter { it.oneWireGuard && it.isActive && it.id != currentId }
         if (others.isEmpty()) return
-        Logger.i(
-            LOG_TAG_PROXY,
-            "disable other one-wg configs: ${others.map { it.id }}, keep: $currentId"
-        )
         others.forEach {
             disableConfig(it)
             updateOneWireGuardConfig(it.id, false)
@@ -359,7 +336,6 @@ object WireguardManager : KoinComponent {
     fun getConfigName(id: Int): String {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "getConfigName: wg not found, id: ${id}, ${configs.size}")
             return ""
         }
         return config.getName()
@@ -376,16 +352,11 @@ object WireguardManager : KoinComponent {
     fun disableConfig(unmapped: WgConfigFilesImmutable) {
         val m = mappings.find { it.id == unmapped.id }
         if (m == null) {
-            Logger.e(
-                LOG_TAG_PROXY,
-                "disableConfig: wg not found, id: ${unmapped.id}, ${mappings.size}"
-            )
             return
         }
 
         val config = configs.find { it.getId() == unmapped.id }
         if (config == null) {
-            Logger.w(LOG_TAG_PROXY, "config not found: ${unmapped.id}")
             return
         }
 
@@ -417,7 +388,6 @@ object WireguardManager : KoinComponent {
         }
         // directly remove the proxy from the tunnel, instead of calling updateTun
         io { VpnController.removeWireGuardProxy(newMap.id) }
-        Logger.i(LOG_TAG_PROXY, "disable wg config: ${newMap.id}, ${newMap.name}")
         return
     }
 
@@ -430,24 +400,20 @@ object WireguardManager : KoinComponent {
         val config = if (id == INVALID_CONF_ID) null else mappings.find { it.id == id }
 
         if (config == null) {
-            Logger.d(LOG_TAG_PROXY, "config null($idStr) no need to proceed, return empty")
             return false
         }
 
         val lockdown = config.isLockdown
 
         if (lockdown && isEligibleForNetwork(id, usesMobileNw, ssid, config.useOnlyOnMetered, config.ssidEnabled)) {
-            Logger.d(LOG_TAG_PROXY, "lockdown wg for $type => return $idStr")
             return true // no need to proceed further for lockdown
         }
 
         // check if the config is active and if it can be used on this network
         if (config.isActive && isEligibleForNetwork(id, usesMobileNw, ssid, config.useOnlyOnMetered, config.ssidEnabled)) {
-            Logger.d(LOG_TAG_PROXY, "active wg for $type => add $idStr")
             return true
         }
 
-        Logger.v(LOG_TAG_PROXY, "wg for $type not active or not eligible nw, return empty, for id: $idStr, usesMtrdNw: $usesMobileNw, ssid: $ssid")
         return false
     }
 
@@ -476,7 +442,6 @@ object WireguardManager : KoinComponent {
         if (oneWireGuardEnabled()) {
             val id = getOneWireGuardProxyId()
             if (id == null || id == INVALID_CONF_ID) {
-                Logger.e(LOG_TAG_PROXY, "canAdd: one-wg not found, id: $id, return empty")
                 return emptyList()
             }
 
@@ -484,7 +449,6 @@ object WireguardManager : KoinComponent {
             // add default to the list, can route check is done in go-tun
             // let one-wg use wg-dns no need to add the default to the list
             if (default.isNotEmpty()) proxyIds.add(default)
-            Logger.i(LOG_TAG_PROXY, "one-wg enabled, return $proxyIds")
             return proxyIds
         }
 
@@ -506,13 +470,11 @@ object WireguardManager : KoinComponent {
         // used on this network, then the traffic must be blocked; lockdown overrides the
         // catch-all configs and the default proxy
         if (wgProxyIdsForApp.any { isLockdownConfig(it) } && proxyIds.none { isLockdownConfig(it) }) {
-            Logger.i(LOG_TAG_PROXY, "lockdown wg for app($uid) not eligible on this nw, return block")
             return listOf(Backend.Block)
         }
 
         // if any of the chosen proxy is lockdown, then no need to proceed further
         if (isAnyProxyLockdown(proxyIds)) {
-            Logger.i(LOG_TAG_PROXY, "lockdown wg for app($uid) => return $proxyIds")
             return proxyIds
         }
 
@@ -524,18 +486,10 @@ object WireguardManager : KoinComponent {
                 !proxyIds.contains(ID_WG_BASE + it.id)
             ) {
                 proxyIds.add(ID_WG_BASE + it.id)
-                Logger.i(
-                    LOG_TAG_PROXY,
-                    "catch-all config is active: ${it.id}, ${it.name} => add ${ID_WG_BASE + it.id}"
-                )
             }
         }
 
         if (proxyIds.isEmpty()) {
-            Logger.i(
-                LOG_TAG_PROXY,
-                "no proxy ids found for $uid, $ip, $port, $domain; returning $default"
-            )
             return if (default.isEmpty()) emptyList() else listOf(default)
         }
 
@@ -552,7 +506,6 @@ object WireguardManager : KoinComponent {
         // the proxyIds list will contain the ip-app specific, domain-app specific, app specific,
         // universal ip, universal domain, catch-all and default configs in the order of priority
         // the go-tun will check the routing based on the order of the list
-        Logger.i(LOG_TAG_PROXY, "returning proxy ids for $uid, $ip, $port, $domain: $proxyIds")
         return proxyIds
     }
 
@@ -577,7 +530,6 @@ object WireguardManager : KoinComponent {
     private fun matchesSsidListForConfig(id: Int, ssid: String): Boolean {
         val config = mappings.find { it.id == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "matchesSsidListForConfig: wg not found, id: $id, ${mappings.size}")
             return false
         }
         return matchesSsidList(config.ssids, ssid)
@@ -595,7 +547,6 @@ object WireguardManager : KoinComponent {
         return try {
             text.matches(Regex(regexPattern, RegexOption.IGNORE_CASE)) || text.contains(pattern, ignoreCase = true)
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_PROXY, "Invalid wildcard pattern: $pattern, error: ${e.message}")
             false
         }
     }
@@ -649,14 +600,12 @@ object WireguardManager : KoinComponent {
             val configId = id.substring(ID_WG_BASE.length)
             configId.toIntOrNull() ?: INVALID_CONF_ID
         } catch (_: Exception) {
-            Logger.i(LOG_TAG_PROXY, "err converting string id to int: $id")
             INVALID_CONF_ID
         }
     }
 
     suspend fun addConfig(config: Config?, name: String = ""): Config? {
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "err adding config")
             return null
         }
         // increment the id and add the config
@@ -671,7 +620,6 @@ object WireguardManager : KoinComponent {
                 .addPeers(config.getPeers())
                 .build()
         writeConfigAndUpdateDb(cfg)
-        Logger.d(LOG_TAG_PROXY, "config added: ${config.getId()}, ${config.getName()}")
         return config
     }
 
@@ -694,7 +642,6 @@ object WireguardManager : KoinComponent {
         val name = configName.ifEmpty { "wg$id" }
         val cfg = Config.Builder().setId(id).setName(name).setInterface(wgInterface).build()
         writeConfigAndUpdateDb(cfg)
-        Logger.d(LOG_TAG_PROXY, "interface added for config: $id, $name")
         return cfg
     }
 
@@ -707,7 +654,6 @@ object WireguardManager : KoinComponent {
         // update the interface for the config
         val config = configs.find { it.getId() == configId }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "updateInterface: wg not found, id: $configId, ${configs.size}")
             return null
         }
         cfg =
@@ -717,7 +663,6 @@ object WireguardManager : KoinComponent {
                 .setInterface(wgInterface)
                 .addPeers(config.getPeers())
                 .build()
-        Logger.i(LOG_TAG_PROXY, "updating interface for config: $configId, ${config.getName()}")
         val cfgId = ID_WG_BASE + configId
         if (configName != config.getName()) {
             ProxyManager.updateProxyNameForProxyId(cfgId, configName)
@@ -732,12 +677,10 @@ object WireguardManager : KoinComponent {
 
     suspend fun deleteConfig(id: Int) {
         val cf = mappings.find { it.id == id }
-        Logger.i(LOG_TAG_PROXY, "deleteConfig start: $id, ${cf?.name}, ${cf?.configPath}")
 
         // delete the config file
         val config = configs.find { it.getId() == id }
         if (cf?.isActive == true) {
-            Logger.e(LOG_TAG_PROXY, "wg config is active for id: $id")
             disableConfig(cf)
         }
 
@@ -767,10 +710,8 @@ object WireguardManager : KoinComponent {
         val config = configs.find { it.getId() == id }
         val map = mappings.find { it.id == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "updateLockdownConfig: wg not found, id: $id, ${configs.size}")
             return
         }
-        Logger.i(LOG_TAG_PROXY, "updating lockdown for config: $id, ${config.getPeers()}")
         db.updateLockdownConfig(id, isLockdown)
         val m = mappings.find { it.id == id } ?: return
         mappings.remove(m)
@@ -799,10 +740,8 @@ object WireguardManager : KoinComponent {
     suspend fun updateCatchAllConfig(id: Int, isEnabled: Boolean) {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "updateCatchAllConfig: wg not found, id: $id, ${configs.size}")
             return
         }
-        Logger.i(LOG_TAG_PROXY, "updating catch all for config: $id, ${config.getName()}")
         db.updateCatchAllConfig(id, isEnabled)
         val m = mappings.find { it.id == id } ?: return
         mappings.remove(m)
@@ -829,10 +768,8 @@ object WireguardManager : KoinComponent {
     suspend fun updateOneWireGuardConfig(id: Int, owg: Boolean) {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "update one wg: id($id) not found, size: ${configs.size}")
             return
         }
-        Logger.i(LOG_TAG_PROXY, "update one wg, id: $id, ${config.getName()} to $owg")
         db.updateOneWireGuardConfig(id, owg)
         val m = mappings.find { it.id == id } ?: return
         mappings.remove(m)
@@ -857,10 +794,8 @@ object WireguardManager : KoinComponent {
     suspend fun updateUseOnMobileNetworkConfig(id: Int, useMobileNw: Boolean) {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "update useMobileNw: wg not found, id: $id, ${configs.size}")
             return
         }
-        Logger.i(LOG_TAG_PROXY, "updating useMobileNw as $useMobileNw for config: $id, ${config.getName()}")
         db.updateMobileConfig(id, useMobileNw)
         val m = mappings.find { it.id == id } ?: return
         mappings.remove(m)
@@ -890,14 +825,12 @@ object WireguardManager : KoinComponent {
     suspend fun updateSsidEnabled(id: Int, ssidEnabled: Boolean) {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "update ssid: wg not found, id: $id, ${configs.size}")
             return
         }
         val m = mappings.find { it.id == id } ?: return
         // this can be disabled/enabled multiple times, based on the user permission so check
         // before updating
         if (m.ssidEnabled == ssidEnabled) {
-            Logger.i(LOG_TAG_PROXY, "ssidEnabled is already $ssidEnabled for config: $id, ${config.getName()}")
             return
         }
 
@@ -919,7 +852,6 @@ object WireguardManager : KoinComponent {
                 m.ssids
             )
         mappings.add(newMap)
-        Logger.i(LOG_TAG_PROXY, "updated ssidEnabled as $ssidEnabled for config: $id, ${config.getName()}")
         if (m.isActive) {
             // trigger connection monitor to update the SSID info
             if (ssidEnabled) VpnController.notifyConnectionMonitor(enforcePolicyChange = true)
@@ -932,10 +864,8 @@ object WireguardManager : KoinComponent {
     suspend fun updateSsids(id: Int, ssids: String) {
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "update ssids: wg not found, id: $id, ${configs.size}")
             return
         }
-        Logger.i(LOG_TAG_PROXY, "updating ssids as $ssids for config: $id, ${config.getName()}")
         db.updateSsids(id, ssids)
         val m = mappings.find { it.id == id } ?: return
         mappings.remove(m)
@@ -967,7 +897,6 @@ object WireguardManager : KoinComponent {
         val cfg: Config
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "addPeer: wg not found, id: $id, ${configs.size}")
             return
         }
         val peers = config.getPeers() ?: mutableListOf()
@@ -980,7 +909,6 @@ object WireguardManager : KoinComponent {
                 .setInterface(config.getInterface())
                 .addPeers(newPeers)
                 .build()
-        Logger.i(LOG_TAG_PROXY, "adding peer for config: $id, ${cfg.getName()}, ${newPeers.size}")
         writeConfigAndUpdateDb(cfg)
     }
 
@@ -989,12 +917,10 @@ object WireguardManager : KoinComponent {
         val cfg: Config
         val config = configs.find { it.getId() == id }
         if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "deletePeer: wg not found, id: $id, ${configs.size}")
             return
         }
         val peers = config.getPeers()?.toMutableList()
         if (peers == null) {
-            Logger.e(LOG_TAG_PROXY, "peers not found for config: $id")
             return
         }
         val isRemoved =
@@ -1004,10 +930,6 @@ object WireguardManager : KoinComponent {
                         it.getAllowedIps() == peer.getAllowedIps() &&
                         it.getPreSharedKey() == peer.getPreSharedKey()
             }
-        Logger.d(
-            LOG_TAG_PROXY,
-            "new peers: ${peers.size}, ${peer.getPublicKey().base64()} is removed? $isRemoved"
-        )
         cfg =
             Config.Builder()
                 .setId(config.getId())
@@ -1015,7 +937,6 @@ object WireguardManager : KoinComponent {
                 .setInterface(config.getInterface())
                 .addPeers(peers)
                 .build()
-        Logger.i(LOG_TAG_PROXY, "deleting peer for config: $id, ${cfg.getName()}")
         writeConfigAndUpdateDb(cfg)
     }
 
@@ -1033,11 +954,9 @@ object WireguardManager : KoinComponent {
             WireguardConfigFileManager.write(applicationContext, parsedCfg, fileName)
         } catch (e: java.io.IOException) {
             // I/O failure - cannot save config
-            Logger.e(LOG_TAG_PROXY, "I/O failure writing wg config: ${cfg.getId()}", e)
             throw e // Bubble up to caller
         }
         val path = getConfigFilePath() + fileName
-        Logger.i(LOG_TAG_PROXY, "writing wg config to file: $path")
         val file = db.isConfigAdded(cfg.getId())
         if (file == null) {
             val wgf =
@@ -1143,7 +1062,6 @@ object WireguardManager : KoinComponent {
             sb.append("   N/A\n")
         }
         val s = sb.toString()
-        Logger.d(LOG_TAG_PROXY, "wg stats: $s")
         return sb.toString()
     }
 
@@ -1160,11 +1078,9 @@ object WireguardManager : KoinComponent {
 
     suspend fun restoreProcessRetrieveWireGuardConfigs() {
         val count = db.getWgConfigs().size
-        Logger.i(LOG_TAG_PROXY, "restoreProcessRetrieveWireGuardConfigs: db wg entries count: $count")
         clearLoadedConfigs()
         performRestore()
         val loadedCount = load(forceRefresh = true)
-        Logger.i(LOG_TAG_PROXY, "restoreProcessRetrieveWireGuardConfigs: completed, loaded $loadedCount configs")
     }
 
     suspend fun performRestore() {
@@ -1175,26 +1091,16 @@ object WireguardManager : KoinComponent {
             val dbconfs = db.getWgConfigs()
 
             val tempFiles = tempDir.listFiles()?.filter { it.name.endsWith(".conf") } ?: emptyList()
-            Logger.i(
-                LOG_TAG_PROXY,
-                "performRestore: temp dir .conf files: ${tempFiles.size} (${tempFiles.joinToString { it.name }}), db size: ${dbconfs.size}"
-            )
 
             if (tempFiles.isEmpty() && dbconfs.isEmpty()) {
-                Logger.i(LOG_TAG_PROXY, "performRestore: no temp files and no db entries, nothing to restore")
                 return
             }
 
             if (tempFiles.isEmpty()) {
-                Logger.w(LOG_TAG_PROXY, "performRestore: db has ${dbconfs.size} entries but no temp .conf files found, cannot restore")
                 return
             }
 
             if (dbconfs.isEmpty()) {
-                Logger.w(
-                    LOG_TAG_PROXY,
-                    "performRestore: ${tempFiles.size} temp .conf files found but db has 0 entries. Files cannot be restored without db metadata. Preserving temp files for manual recovery."
-                )
                 return
             }
 
@@ -1206,9 +1112,7 @@ object WireguardManager : KoinComponent {
                 // move the file to the wireguard directory with the name available in the database
                 val file = File(tempDir, "${c.id}.conf")
                 if (file.exists()) {
-                    Logger.i(LOG_TAG_PROXY, "performRestore: file exists: ${file.absolutePath} (${file.length()} bytes), proceed restore for config ${c.id}/${c.name}")
                 } else {
-                    Logger.w(LOG_TAG_PROXY, "performRestore: no matching wg file for db entry ${c.id}/${c.name}, expected: ${file.absolutePath}, deleting config entry")
                     db.deleteConfig(c.id)
                     return@forEach
                 }
@@ -1238,27 +1142,16 @@ object WireguardManager : KoinComponent {
             }
 
             if (unmatchedFiles.isNotEmpty()) {
-                Logger.w(
-                    LOG_TAG_PROXY,
-                    "performRestore: ${unmatchedFiles.size} temp .conf files unmatched to any db entry: ${unmatchedFiles.joinToString()}. Preserving temp dir for manual recovery."
-                )
                 // do not delete temp dir, unmatched files may be needed
                 return
             }
 
-            Logger.i(LOG_TAG_PROXY, "performRestore: successfully restored ${restoredIds.size} configs, cleaning up temp dir")
             val isResidueDeleted = Utilities.deleteRecursive(tempDir)
             if (isResidueDeleted) {
-                Logger.i(LOG_TAG_PROXY, "deleted residue temp wg files: ${tempDir.absolutePath}")
             } else {
-                Logger.w(
-                    LOG_TAG_PROXY,
-                    "failed to delete residue temp wg files: ${tempDir.absolutePath}"
-                )
                 tempDir.deleteRecursively()
             }
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_PROXY, "performRestore: err restoring wg configs, ${e.message}", e)
         }
     }
 

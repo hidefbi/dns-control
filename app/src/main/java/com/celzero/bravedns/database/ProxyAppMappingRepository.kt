@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.database
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.database.sqlite.SQLiteConstraintException
 
 class ProxyAppMappingRepository(
@@ -57,13 +55,11 @@ class ProxyAppMappingRepository(
 
     suspend fun updateUidForApp(oldUid: Int, newUid: Int, packageName: String) {
         if (oldUid == newUid) {
-            Logger.w(LOG_TAG_PROXY, "updateUidForApp: oldUid == newUid ($oldUid) for $packageName; skipping")
             return
         }
         try {
             proxyApplicationMappingDAO.updateUidForApp(oldUid, newUid, packageName)
         } catch (_: SQLiteConstraintException) {
-            Logger.w(LOG_TAG_PROXY, "updateUidForApp constraint violation; old=$oldUid -> new=$newUid pkg=$packageName; attempting delete+insert fallback")
             val existing = proxyApplicationMappingDAO.getProxiesForApp(oldUid, packageName)
             proxyApplicationMappingDAO.deleteApp(oldUid, packageName)
             existing.forEach { mapping ->
@@ -77,7 +73,6 @@ class ProxyAppMappingRepository(
         try {
             proxyApplicationMappingDAO.tombstoneApp(oldUid, newUid)
         } catch (_: SQLiteConstraintException) {
-            Logger.w(LOG_TAG_PROXY, "tombstoneApp constraint violation; oldUid=$oldUid -> newUid=$newUid; skipping tombstone")
         }
     }
 

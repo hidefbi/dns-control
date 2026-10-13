@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -120,10 +118,6 @@ class AdvancedSettingActivity : BaseActivity(R.layout.activity_advanced_setting)
                         AppConfig.ProtoTranslationMode.entries[which - 1].id
                 }
                 updatePtModeDescription()
-                Logger.i(
-                    LOG_TAG_UI,
-                    "AdvSetting; pt mode override set to ${items[which]}"
-                )
             }
             .create()
             .show()
@@ -164,7 +158,6 @@ class AdvancedSettingActivity : BaseActivity(R.layout.activity_advanced_setting)
                         val maxMemBytes = maxMemMb.toLong() * 1024 * 1024
                         persistentState.goMaxMemory = maxMemBytes
                         updateMaxMemoryValueText(maxMemMb)
-                        Logger.i(LOG_TAG_UI, "AdvSetting; goMaxMemory set to $maxMemMb ($maxMemBytes)")
                     }
                 }
 

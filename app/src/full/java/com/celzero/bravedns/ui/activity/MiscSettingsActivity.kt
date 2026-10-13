@@ -15,9 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.Manifest
 import android.app.LocaleManager
 import android.content.ActivityNotFoundException
@@ -52,7 +49,6 @@ import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
-import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.RefreshDatabase
 import com.celzero.bravedns.databinding.ActivityMiscSettingsBinding
 import com.celzero.bravedns.service.PersistentState
@@ -93,7 +89,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
     private val b by viewBinding(ActivityMiscSettingsBinding::bind)
 
     private val persistentState by inject<PersistentState>()
-    private val appConfig by inject<AppConfig>()
     private val rdb by inject<RefreshDatabase>()
 
     private var isThemeChanged: Boolean = false
@@ -209,7 +204,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                         currentAppLocales[0]?.displayName ?: getString(R.string.settings_locale_desc)
                     }
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_UI, "error getting app locales for Android T+", e)
                 b.settingsLocaleDesc.text = getString(R.string.settings_locale_desc)
             }
         } else {
@@ -559,10 +553,8 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                 }
             }
             if (bioMetricType.enabled()) {
-                Logger.i(LOG_TAG_UI, "biometric auth enabled, switching to app lock alias")
                 LauncherSwitcher.switchLauncherAlias(applicationContext, APP_LOCK_ALIAS, HOME_ALIAS)
             } else {
-                Logger.i(LOG_TAG_UI, "biometric auth disabled, switching to home alias")
                 LauncherSwitcher.switchLauncherAlias(applicationContext, HOME_ALIAS, APP_LOCK_ALIAS)
             }
         }
@@ -613,9 +605,7 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                   xpp.next()
               }
           } catch (e: XmlPullParserException) {
-              Logger.e(LOG_TAG_UI, "error parsing locale_config.xml", e)
           } catch (e: IOException) {
-              Logger.e(LOG_TAG_UI, "error parsing locale_config.xml", e)
           }
 
           return LocaleListCompat.forLanguageTags(tagsList.joinToString(","))
@@ -639,7 +629,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
 
       private fun invokeImportExport() {
           if (this.isFinishing || this.isDestroyed) {
-              Logger.w(LOG_TAG_UI, "err opening bkup btmsheet, activity is destroyed")
               return
           }
 
@@ -859,11 +848,9 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             registerForActivityResult(ActivityResultContracts.RequestPermission()) {
                 persistentState.shouldRequestNotificationPermission = it
                 if (it) {
-                    Logger.i(LOG_TAG_VPN, "User allowed notification permission for the app")
                     b.settingsActivityAppNotificationRl.visibility = View.VISIBLE
                     b.settingsActivityAppNotificationSwitch.isChecked = true
                 } else {
-                    Logger.w(LOG_TAG_VPN, "User rejected notification permission for the app")
                     b.settingsActivityAppNotificationRl.visibility = View.VISIBLE
                     b.settingsActivityAppNotificationSwitch.isChecked = false
                     invokeAndroidNotificationSetting()
@@ -886,11 +873,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         try {
             notificationPermissionResult.launch(Manifest.permission.POST_NOTIFICATIONS)
         } catch (e: ActivityNotFoundException) {
-            Logger.e(
-                LOG_TAG_VPN,
-                "ActivityNotFoundException while requesting notification permission: ${e.message}",
-                e
-            )
             showToastUiCentered(
                 this,
                 getString(R.string.blocklist_update_check_failure),
@@ -899,11 +881,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             // Fallback: try opening notification settings directly
             invokeAndroidNotificationSetting()
         } catch (e: Exception) {
-            Logger.e(
-                LOG_TAG_VPN,
-                "err while requesting notification permission: ${e.message}",
-                e
-            )
             showToastUiCentered(
                 this,
                 getString(R.string.blocklist_update_check_failure),
@@ -931,7 +908,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                 getString(R.string.notification_screen_error),
                 Toast.LENGTH_SHORT
             )
-            Logger.w(LOG_TAG_UI, "activity not found ${e.message}", e)
         }
     }
 

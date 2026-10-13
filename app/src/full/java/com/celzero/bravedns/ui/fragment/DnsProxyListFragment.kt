@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.ui.fragment
 
-import com.celzero.bravedns.util.Logger
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.View
@@ -241,7 +240,6 @@ class DnsProxyListFragment : Fragment(R.layout.fragment_dns_proxy_list) {
                     errorTxt.text = getString(R.string.cd_dns_proxy_error_text_2)
                 }
             } catch (e: NumberFormatException) {
-                Logger.w(Logger.LOG_TAG_UI, "Error: ${e.message}", e)
                 errorTxt.text = getString(R.string.cd_dns_proxy_error_text_3)
                 isPortValid = false
             }
@@ -249,14 +247,12 @@ class DnsProxyListFragment : Fragment(R.layout.fragment_dns_proxy_list) {
             if (isPortValid && validIps.isNotEmpty()) {
                 // Store all valid IPs as comma-separated string in one endpoint
                 val ipString = validIps.joinToString(",")
-                Logger.d(Logger.LOG_TAG_UI, "new values inserted into DNSProxy: $name with ${validIps.size} IPs")
                 io {
                     insertDNSProxyEndpointDB(mode, name, appName, ipString, port)
                 }
                 persistentState.excludeAppsInProxy = !excludeAppCheckBox.isChecked
                 dialog.dismiss()
             } else {
-                Logger.i(Logger.LOG_TAG_UI, "cannot insert invalid dns-proxy IPs: $name, $appName")
             }
         }
 
@@ -301,7 +297,6 @@ class DnsProxyListFragment : Fragment(R.layout.fragment_dns_proxy_list) {
                     latency = 0
                 )
             appConfig.insertDnsproxyEndpoint(dnsProxyEndpoint)
-            Logger.d(Logger.LOG_TAG_UI, "Insert into DNSProxy database: $packageName, $port")
         }
     }
 

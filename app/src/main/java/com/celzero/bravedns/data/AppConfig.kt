@@ -335,7 +335,6 @@ internal constructor(
             DnsType.DOT.type -> DnsType.DOT
             DnsType.ODOH.type -> DnsType.ODOH
             else -> {
-                Logger.w(LOG_TAG_VPN, "Invalid dns type mode: ${persistentState.dnsType}")
                 DnsType.DOH
             }
         }
@@ -861,10 +860,6 @@ internal constructor(
                 setProxy(ProxyType.HTTP, removeProvider)
                 return
             } else {
-                Logger.w(
-                    LOG_TAG_VPN,
-                    "invalid remove proxy call, type: ${removeType.name}, provider: ${removeProvider.name}"
-                )
             }
         } else {
             removeAllProxies()
@@ -892,7 +887,6 @@ internal constructor(
     fun getTunProxyMode(): TunProxyMode {
         val type = persistentState.proxyType
         val provider = persistentState.proxyProvider
-        Logger.d(LOG_TAG_VPN, "selected proxy type: $type, with provider as $provider")
 
         if (ProxyProvider.WIREGUARD.name == provider) {
             return TunProxyMode.WIREGUARD

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -93,7 +91,6 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
 
     companion object {
         const val INTENT_UID = "UID"
-        private const val TAG = "AppInfoActivity"
 
         // Temp allow duration constants
         private const val TEMP_ALLOW_DURATION_MINUTES = 15
@@ -114,7 +111,6 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
         }
 
         uid = intent.getIntExtra(INTENT_UID, INVALID_UID)
-        Logger.d(LOG_TAG_UI, "AppInfoActivity, intent uid: $uid")
         onBackPressedDispatcher.addCallback(this, warningBackCallback)
 
         if (savedInstanceState?.getBoolean(IS_WARNING_ACKNOWLEDGED, false) == true) {
@@ -245,7 +241,6 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
 
     private fun displayDataUsage() {
         if (!::appInfo.isInitialized) {
-            Logger.w(LOG_TAG_UI, "AppInfo not initialized yet in displayDataUsage")
             // Set default values when appInfo is not available
             b.aadDataUsageStatus.text = getString(R.string.two_argument,
                 getString(R.string.symbol_upload, "0 B"),
@@ -318,7 +313,6 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
 
         b.aadAppInfoIcon.setOnClickListener {
             if (!::appInfo.isInitialized) {
-                Logger.w(LOG_TAG_UI, "AppInfo not initialized yet in aadAppInfoIcon click listener, using uid: $uid")
                 showToastUiCentered(
                     this,
                     this.getString(R.string.ctbs_app_info_not_available_toast),
@@ -483,7 +477,6 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
 
         b.aadCloseConnsChip.setOnClickListener {
             if (!::appInfo.isInitialized) {
-                Logger.w(LOG_TAG_UI, "AppInfo not initialized yet in aadCloseConnsChip click listener, using uid: $uid")
                 showCloseConnectionDialog(uid, "Unknown App")
                 return@setOnClickListener
             }
@@ -562,7 +555,6 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
             io {
                 val pkg = FirewallManager.getPackageNameByAppName(appNames[position])
                 uiCtx {
-                    Logger.i(LOG_TAG_UI, "AppInfoActivity, package name: $pkg")
                     openAndroidAppInfo(ctx, pkg)
                 }
             }
@@ -831,14 +823,12 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
     }
 
     private fun showCloseConnectionDialog(uid: Int, appName: String) {
-        Logger.v(LOG_TAG_UI, "$TAG show close connection dialog for uid: $uid")
         val dialog = MaterialAlertDialogBuilder(this, R.style.App_Dialog_NoDim)
             .setTitle(this.getString(R.string.close_conns_dialog_title))
             .setMessage(getString(R.string.close_conns_dialog_desc, appName))
             .setPositiveButton(R.string.lbl_proceed) { _, _ ->
                 // close the connection
                 VpnController.closeConnectionsIfNeeded(uid, "app-info-dialog-manual-close")
-                Logger.i(LOG_TAG_UI, "$TAG closed connection for uid: $uid")
                 showToastUiCentered(this, getString(R.string.config_add_success_toast), Toast.LENGTH_LONG)
             }
             .setNegativeButton(R.string.lbl_cancel, null)
@@ -860,7 +850,6 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
 
     private fun guardAppInfoInitialized(listenerName: String, block: () -> Unit) {
         if (!::appInfo.isInitialized) {
-            Logger.w(LOG_TAG_UI, "AppInfo not initialized yet in $listenerName click listener, using uid: $uid")
             showToastUiCentered(
                 this,
                 this.getString(R.string.ctbs_app_info_not_available_toast),

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
@@ -38,14 +36,11 @@ object LauncherSwitcher {
     fun switchLauncherAlias(context: Context, toAlias: String, fromAlias: String) {
         val pm = context.packageManager
 
-        Logger.v(LOG_TAG_UI, "$TAG switching launcher alias from $fromAlias to $toAlias")
         if (toAlias == fromAlias) {
-            Logger.w(LOG_TAG_UI, "$TAG both aliases are the same. No switch needed.")
             return
         }
 
         try {
-            Logger.i(LOG_TAG_UI, "$TAG disabling alias: $fromAlias, enabling alias: $toAlias")
             // temporarily enable the new one before disabling the old one
             pm.setComponentEnabledSetting(
                 ComponentName(context.packageName, toAlias),
@@ -61,11 +56,8 @@ object LauncherSwitcher {
                     PackageManager.DONT_KILL_APP
                 )
             }, DELAY_MILLIS)
-            Logger.i(LOG_TAG_UI, "$TAG launcher switched from $fromAlias to $toAlias")
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "$TAG err to switch launcher alias", e)
         }
-        Logger.i(LOG_TAG_UI, "$TAG launcher alias switch completed: $fromAlias -> $toAlias")
     }
 
     /**
@@ -75,7 +67,6 @@ object LauncherSwitcher {
         val pm = context.packageManager
         val state = pm.getComponentEnabledSetting(ComponentName(context.packageName, aliasName))
         val isEnabled = state == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
-        Logger.i(LOG_TAG_UI, "$TAG alias $aliasName enabled state: $state, isEnabled: $isEnabled")
         return isEnabled
     }
 }

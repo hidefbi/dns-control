@@ -1,7 +1,5 @@
 package com.celzero.bravedns.ui.bottomsheet
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.DialogInterface
 import android.content.res.Configuration
 import android.os.Bundle
@@ -57,7 +55,6 @@ class WireguardListBtmSheet :
         get() = if (type == InputType.APP) obj as? AppInfo else null
 
     companion object {
-        private const val TAG = "WglBtmSht"
         private const val ARG_INPUT_TYPE = "input_type"
         private const val ARG_OBJECT = "object"
         private const val ARG_CONFS = "confs"
@@ -121,12 +118,10 @@ class WireguardListBtmSheet :
 
         // Retrieve arguments
         val typeId = arguments?.getInt(ARG_INPUT_TYPE) ?: run {
-            Logger.e(LOG_TAG_UI, "$TAG InputType not found in arguments, dismissing")
             dismiss()
             return
         }
         type = InputType.entries.firstOrNull { it.id == typeId } ?: run {
-            Logger.e(LOG_TAG_UI, "$TAG Invalid InputType: $typeId, dismissing")
             dismiss()
             return
         }
@@ -140,7 +135,6 @@ class WireguardListBtmSheet :
         dialog?.window?.let { window ->
             Themes.applyBottomSheetSystemBarAppearance(window, isDarkThemeOn(), persistentState.theme)
         }
-        Logger.v(LOG_TAG_UI, "$TAG: view created")
         init()
     }
 
@@ -161,7 +155,6 @@ class WireguardListBtmSheet :
         val lst = confs.map { it }
         b.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         val adapter = RecyclerViewAdapter(lst) { conf ->
-            Logger.v(LOG_TAG_UI, "$TAG: Item clicked: ${conf?.name ?: "None"}")
             when (type) {
                 InputType.DOMAIN -> {
                     processDomain(conf)
@@ -181,7 +174,6 @@ class WireguardListBtmSheet :
         io {
             val domain = cd
             if (domain == null) {
-                Logger.w(LOG_TAG_UI, "$TAG: Custom domain is null")
                 return@io
             }
             if (conf == null) {
@@ -193,7 +185,6 @@ class WireguardListBtmSheet :
                 domain.proxyId = id
             }
             val name = conf?.name ?: getString(R.string.settings_app_list_default_app)
-            Logger.v(LOG_TAG_UI, "$TAG: wg-endpoint set to $name for ${domain.domain}")
             uiCtx {
                 Utilities.showToastUiCentered(
                     requireContext(),
@@ -208,7 +199,6 @@ class WireguardListBtmSheet :
         io {
             val ip = ci
             if (ip == null) {
-                Logger.w(LOG_TAG_UI, "$TAG: Custom IP is null")
                 return@io
             }
             if (conf == null) {
@@ -220,7 +210,6 @@ class WireguardListBtmSheet :
                 ip.proxyId = id
             }
             val name = conf?.name ?: getString(R.string.settings_app_list_default_app)
-            Logger.v(LOG_TAG_UI, "$TAG: wg-endpoint set to $name for ${ip.ipAddress}")
             uiCtx {
                 Utilities.showToastUiCentered(
                     requireContext(),
@@ -310,7 +299,6 @@ class WireguardListBtmSheet :
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        Logger.v(LOG_TAG_UI, "$TAG: Dismissed, input: ${type.name}")
         listener?.let { l ->
             when (type) {
                 InputType.DOMAIN -> {

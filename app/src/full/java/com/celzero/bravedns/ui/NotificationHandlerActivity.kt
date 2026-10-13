@@ -15,9 +15,6 @@
  */
 package com.celzero.bravedns.ui
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -127,7 +124,6 @@ class NotificationHandlerActivity: BaseActivity() {
     }
 
     private fun trampoline(trampolineType: TrampolineType, intent: Intent) {
-        Logger.i(LOG_TAG_UI, "act on notification, notification type: $trampolineType")
         when (trampolineType) {
             TrampolineType.ACCESSIBILITY_SERVICE_FAILURE_DIALOG -> {
                 handleAccessibilitySettings()
@@ -184,7 +180,6 @@ class NotificationHandlerActivity: BaseActivity() {
     private fun launchFirewallActivityAndFinish(recvIntent: Intent) {
         // TODO: handle the app lock state then launch firewall activity
         val uid = recvIntent.getIntExtra(Constants.NOTIF_INTENT_EXTRA_APP_UID, Int.MIN_VALUE)
-        Logger.d(LOG_TAG_VPN, "notification intent - new app installed, uid: $uid")
         if (uid > 0) {
             val intent = Intent(this, AppInfoActivity::class.java)
             intent.putExtra(INTENT_UID, uid)

@@ -23,8 +23,6 @@ import com.celzero.bravedns.util.AndroidUidConfig
 import com.celzero.bravedns.util.Constants.Companion.INVALID_UID
 import com.celzero.bravedns.util.Constants.Companion.UID_EVERYBODY
 import com.celzero.bravedns.util.KnownPorts
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import com.celzero.bravedns.util.ResourceRecordTypes
 import com.celzero.bravedns.util.Utilities.isAtleastR
 import com.celzero.firestack.backend.Backend
@@ -80,23 +78,18 @@ object TunDnsManager: KoinComponent {
     }
 
     private fun logv(msg: String) {
-        Logger.v(LOG_TAG_VPN, "$TAG $msg")
     }
 
     private fun logd(msg: String) {
-        Logger.d(LOG_TAG_VPN, "$TAG $msg")
     }
 
     private fun log(msg: String) {
-        Logger.i(LOG_TAG_VPN, "$TAG $msg")
     }
 
     private fun logw(msg: String) {
-        Logger.w(LOG_TAG_VPN, "$TAG $msg")
     }
 
     private fun loge(msg: String, e: Exception? = null) {
-        Logger.e(LOG_TAG_VPN, "$TAG $msg", e)
     }
 
     private fun getUid(uidStr: String): Int {
@@ -712,32 +705,6 @@ object TunDnsManager: KoinComponent {
             return
         }
         logd("onResponse: $summary, rethinkUid: $rethinkUid")
-        Logger.vv(
-            LOG_TAG_VPN,
-            "onResponse obj: " +
-                    "id: ${summary.id}, " +
-                    "type: ${summary.type}, " +
-                    "uid: ${summary.uid}, " +
-                    "lat: ${summary.latency}, " +
-                    "qname: ${summary.qName}, " +
-                    "qtype: ${summary.qType}, " +
-                    "targets: ${summary.targets}, " +
-                    "cached: ${summary.cached}, " +
-                    "rdata: ${summary.rData}, " +
-                    "rcode: ${summary.rCode}, " +
-                    "rttl: ${summary.rTtl}, " +
-                    "server: ${summary.server}, " +
-                    "pid: ${summary.pid}, " +
-                    "rpid: ${summary.rpid}, " +
-                    "status: ${summary.status}, " +
-                    "blocklists: ${summary.blocklists}, " +
-                    "blockedTarget: ${summary.blockedTarget}, " +
-                    "upstreamBlocks: ${summary.upstreamBlocks}, " +
-                    "do: ${summary.`do`}, " +
-                    "ad: ${summary.ad}, " +
-                    "msg: ${summary.msg}, " +
-                    "region: ${summary.region}"
-        )
         if (!DEBUG) {
             if (summary.id.contains(Backend.Fixed)) {
                 return
@@ -761,25 +728,15 @@ object TunDnsManager: KoinComponent {
         val uid = try {
             params.smm.uid.toInt()
         } catch (e: NumberFormatException) {
-            Logger.e(
-                LOG_TAG_VPN,
-                "onUpstreamAnswer: invalid uid ${params.smm.uid}, error: ${e.message}"
-            )
             return dnsOptsFactory()
         }
 
         val isAnyPortRule = IpRulesManager.isPortRuleSetForIp(params.ipcsv, uid) ||
             IpRulesManager.isPortRuleSetForIp(params.ipcsv, UID_EVERYBODY)
         if (isAnyPortRule) {
-            Logger.i(LOG_TAG_VPN, "onUpstreamAnswer: port-based rule exists for ip: ${params.ipcsv}, returning prev DNSOpts()")
             return dnsOptsFactory()
         }
-        Logger.vv(
-            LOG_TAG_VPN,
-            "onUpstreamAnswer: init, ${params.id}, sum: ${params.smm}, ipcsv: ${params.ipcsv}, opts: ${params.rcvdDnsOpts}"
-        )
         if (params.ipcsv.isEmpty()) {
-            Logger.e(LOG_TAG_VPN, "onUpstreamAnswer: empty ipcsv, returning prev DNSOpts()")
             return dnsOptsFactory()
         }
         if (appConfig.getBraveMode().isDnsMode()) {
@@ -789,7 +746,6 @@ object TunDnsManager: KoinComponent {
         val isTransportDnsFixed =
             params.rcvdDnsOpts.tidcsv.contains(Backend.Fixed) || params.rcvdDnsOpts.tidseccsv.contains(Backend.Fixed)
         if (isTransportDnsFixed) {
-            Logger.i(LOG_TAG_VPN, "onUpstreamAnswer: fixed transport, returning prev DNSOpts()")
             return dnsOptsFactory()
         }
 
@@ -798,20 +754,12 @@ object TunDnsManager: KoinComponent {
             val result = dnsOptsFactory().apply {
                 tidcsv = Backend.BlockAll
                 noblock = false
-                Logger.vv(
-                    LOG_TAG_VPN,
-                    "onUpstreamAnswer: block dns for unknown app, original tid: $id, bypass tid: [$tidcsv, $tidseccsv], ipcsv: ${params.ipcsv}"
-                )
             }
             return result
         }
 
         val firstDestIp = params.ipcsv.split(",").firstOrNull()
         if (firstDestIp.isNullOrEmpty()) {
-            Logger.e(
-                LOG_TAG_VPN,
-                "onUpstreamAnswer: empty rdata for ${params.smm.qName}, ipcsv: ${params.ipcsv} uid: $uid"
-            )
             return dnsOptsFactory()
         }
         val userId = FirewallManager.userId(uid)
@@ -915,10 +863,6 @@ object TunDnsManager: KoinComponent {
                 tidseccsv = buildTidCsv(tidSec, pidCsv)
 
                 noblock = true
-                Logger.vv(
-                    LOG_TAG_VPN,
-                    "onUpstreamAnswer: bypass rule: $rule, original tid: $id, bypass tid: [$tidcsv], [$tidseccsv], pid: $pidCsv connInfo: $connInfo, ipcsv: ${params.ipcsv}"
-                )
             }
             return result
         }

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
@@ -60,7 +58,6 @@ class FragmentHostActivity : BaseActivity(R.layout.activity_fragment_host) {
             ?: intent.getStringExtra(EXTRA_FRAGMENT_CLASS_NAME)
 
         if (fragmentClassName == null) {
-            Logger.e(LOG_TAG_UI, "Fragment class name not provided, finishing activity")
             finish()
             return
         }
@@ -78,19 +75,16 @@ class FragmentHostActivity : BaseActivity(R.layout.activity_fragment_host) {
                     fragmentClassName!!
                 ).apply {
                     if (arguments != null) this.arguments = arguments
-                    Logger.i(LOG_TAG_UI, "Loading fragment: $fragmentClassName with arguments: $arguments")
                 }
 
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commit()
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_UI, "Error instantiating fragment: $fragmentClassName", e)
                 finish()
             }
         } else {
             // Fragment will be automatically restored by FragmentManager
-            Logger.i(LOG_TAG_UI, "Restoring fragment: $fragmentClassName from savedInstanceState")
         }
     }
 

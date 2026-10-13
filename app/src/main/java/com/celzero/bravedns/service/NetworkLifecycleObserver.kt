@@ -23,8 +23,6 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.net.wifi.WifiInfo
 import android.net.wifi.WifiManager
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_CONNECTION
 import com.celzero.bravedns.util.Utilities.isAtleastS
 
 /**
@@ -97,7 +95,6 @@ class NetworkLifecycleObserver(
 
     private fun createCallback(resolveSsid: Boolean): ConnectivityManager.NetworkCallback {
         val label = if (resolveSsid) "wifi(ssid)" else "cellular"
-        Logger.d(LOG_TAG_CONNECTION, "$TAG; createCallback($label), inclLocationInfo? ${resolveSsid && isAtleastS()}")
         return if (resolveSsid && isAtleastS()) {
             object : ConnectivityManager.NetworkCallback(FLAG_INCLUDE_LOCATION_INFO) {
                 override fun onAvailable(network: Network) =
@@ -189,16 +186,11 @@ class NetworkLifecycleObserver(
      */
     private fun getNetworkSSID(network: Network?, cap: NetworkCapabilities?): String? {
         if (network == null) {
-            Logger.d(LOG_TAG_CONNECTION, "$TAG; getNetworkSSID: network is null")
             return null
         }
 
         // Only WiFi networks carry an SSID.
         if (cap?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) != true) {
-            Logger.d(
-                LOG_TAG_CONNECTION,
-                "$TAG; getNetworkSSID: network ${network.networkHandle} is not WiFi"
-            )
             return null
         }
 
@@ -208,10 +200,6 @@ class NetworkLifecycleObserver(
                 if (transportInfo is WifiInfo) {
                     extractCleanSsid(transportInfo.ssid)?.let { return it }
                 }
-                Logger.v(
-                    LOG_TAG_CONNECTION,
-                    "$TAG; getNetworkSSID: transportInfo not WifiInfo (${transportInfo?.javaClass?.simpleName}) for ${network.networkHandle}, falling back to WifiManager"
-                )
             }
 
             val wm = wifiManager
@@ -228,16 +216,10 @@ class NetworkLifecycleObserver(
                 extractCleanSsid(wifiInfo.ssid)?.let { return it }
             }
 
-            Logger.d(
-                LOG_TAG_CONNECTION,
-                "$TAG; getNetworkSSID: SSID unavailable for ${network.networkHandle}, wmInfo? ${wifiInfo != null}"
-            )
             return null
         } catch (e: SecurityException) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; getNetworkSSID SecurityException", e)
             return null
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; getNetworkSSID err", e)
             return null
         }
     }
@@ -255,10 +237,6 @@ class NetworkLifecycleObserver(
         ssid: String?,
         transport: String
     ) {
-        Logger.d(
-            LOG_TAG_CONNECTION,
-            "$TAG; ${eventType.name}, transport: $transport, nwHandle: ${network.networkHandle}, ssid: $ssid"
-        )
         listener.onNetworkEvent(network, eventType, ssid)
     }
 
@@ -272,15 +250,12 @@ class NetworkLifecycleObserver(
      */
     fun start(): Boolean {
         if (wifiCallback != null || cellularCallback != null) {
-            Logger.d(LOG_TAG_CONNECTION, "$TAG; already started, ignoring start()")
             return true
         }
-        Logger.i(LOG_TAG_CONNECTION, "$TAG; start()")
         val manager = connectivityManager
             ?: (context.applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE)
                 as? ConnectivityManager)?.also { connectivityManager = it }
         if (manager == null) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; ConnectivityManager unavailable")
             return false
         }
         // (Re)enable forwarding before any callback is registered, so that the new
@@ -296,9 +271,7 @@ class NetworkLifecycleObserver(
             manager.registerNetworkCallback(wifiNetworkRequest, wifiCb)
             wifiCallback = wifiCb
             wifiRegistered = true
-            Logger.i(LOG_TAG_CONNECTION, "$TAG; wifi callback registered, inclLocationInfo? ${isAtleastS()}")
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; err registering wifi callback", e)
         }
 
         // Cellular registration is attempted regardless of the WiFi outcome.
@@ -306,25 +279,20 @@ class NetworkLifecycleObserver(
         try {
             manager.registerNetworkCallback(cellularNetworkRequest, cellCb)
             cellularCallback = cellCb
-            Logger.i(LOG_TAG_CONNECTION, "$TAG; cellular callback registered")
         } catch (e: Exception) {
             if (wifiRegistered) {
                 // Roll back the WiFi callback so start() stays atomic when Cellular
                 // fails alongside a successful WiFi registration.
-                Logger.w(LOG_TAG_CONNECTION, "$TAG; err registering cellular callback, rolling back wifi", e)
                 wifiCallback = null
                 try {
                     manager.unregisterNetworkCallback(wifiCb)
                 } catch (e2: Exception) {
-                    Logger.w(LOG_TAG_CONNECTION, "$TAG; err rolling back wifi callback", e2)
                 }
             } else {
-                Logger.w(LOG_TAG_CONNECTION, "$TAG; err registering cellular callback", e)
             }
             return false
         }
 
-        Logger.i(LOG_TAG_CONNECTION, "$TAG; start() ok, wifi? $wifiRegistered, cellular? true")
         return true
     }
 
@@ -342,15 +310,12 @@ class NetworkLifecycleObserver(
         wifiCallback = null
         cellularCallback = null
         if (cbs.isEmpty()) {
-            Logger.d(LOG_TAG_CONNECTION, "$TAG; stop() no-op, not started")
             return
         }
-        Logger.i(LOG_TAG_CONNECTION, "$TAG; stop(), unregistering ${cbs.size} callback/s")
         for (cb in cbs) {
             try {
                 manager?.unregisterNetworkCallback(cb)
             } catch (e: Exception) {
-                Logger.w(LOG_TAG_CONNECTION, "$TAG; err unregistering callback", e)
             }
         }
         // Intentionally NOT clearing connectivityManager / wifiManager: these are
@@ -360,6 +325,5 @@ class NetworkLifecycleObserver(
 
     companion object {
         private const val UNKNOWN_SSID = "<unknown ssid>"
-        private const val TAG = "NetworkLifecycleObserver"
     }
 }

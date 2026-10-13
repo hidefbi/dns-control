@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -53,7 +51,6 @@ class LocalBlocklistActivity : BaseActivity(R.layout.fragment_rethink_basic) {
             window.isNavigationBarContrastEnforced = false
         }
 
-        Logger.v(LOG_TAG_UI, "init local blocklist activity")
         val fragment = RethinkBlocklistFragment.newInstance()
         fragment.arguments = Bundle().apply {
             putInt(RETHINK_BLOCKLIST_TYPE, RethinkBlocklistManager.RethinkBlocklistType.LOCAL.ordinal)

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_CONNECTION
 import android.content.Context
 import android.net.ConnectivityDiagnosticsManager
 import android.net.Network
@@ -46,7 +44,6 @@ class DiagnosticsManager(
     }
 
     private fun logd(message: String) {
-        Logger.d(LOG_TAG_CONNECTION, "$TAG; $message")
     }
 
     private var cdm: ConnectivityDiagnosticsManager? = null
@@ -93,7 +90,6 @@ class DiagnosticsManager(
             logd("$TAG; ---end additional info---")
 
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; err logging additional info", e)
         }
     }
 
@@ -106,10 +102,8 @@ class DiagnosticsManager(
         if (dm == ConnectivityDiagnosticsManager.DataStallReport.DETECTION_METHOD_TCP_METRICS || dm == ConnectivityDiagnosticsManager.DataStallReport.DETECTION_METHOD_DNS_EVENTS) {
             val period = report.stallDetails.getString(ConnectivityDiagnosticsManager.DataStallReport.KEY_TCP_METRICS_COLLECTION_PERIOD_MILLIS)
             val failRate = report.stallDetails.getString(ConnectivityDiagnosticsManager.DataStallReport.KEY_TCP_PACKET_FAIL_RATE)
-            Logger.d(LOG_TAG_CONNECTION, "$TAG; data stall suspected, method: $dm, cap: ${cap.transportInfo?.toString()}, lp-routes: ${lp.routes}, period: $period, failRate: $failRate")
             scope.launch { listener.maybeNetworkStall() }
         } else {
-            Logger.d(LOG_TAG_CONNECTION, "$TAG; data stall suspected, invalid detection method? $dm, cap: ${cap.transportInfo?.toString()}, lp-routes: ${lp.routes}")
         }
     }
 
@@ -130,7 +124,6 @@ class DiagnosticsManager(
         if (!isAtleastS()) return
 
         if (cdm != null) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; already registered")
             return
         }
 
@@ -140,7 +133,6 @@ class DiagnosticsManager(
             cdm?.registerConnectivityDiagnosticsCallback(diagRequest, executor, this)
             logd("$TAG; nw diags mgr registered")
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; err reg diagnostics mgr", e)
         }
     }
 
@@ -151,7 +143,6 @@ class DiagnosticsManager(
             cdm?.unregisterConnectivityDiagnosticsCallback(this)
             logd("$TAG; nw diags mgr unregistered")
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; err unreg diagnostics mgr", e)
         }
     }
 }

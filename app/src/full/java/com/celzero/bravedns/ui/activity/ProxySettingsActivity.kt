@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -281,7 +279,6 @@ class ProxySettingsActivity : BaseActivity(R.layout.fragment_proxy_configure) {
                     try {
                         appConfig.getHttpProxyDetails()
                     } catch (e: Exception) {
-                        Logger.e(LOG_TAG_PROXY, "err fetching HTTP proxy details: ${e.message}", e)
                         null
                     }
                 if (endpoint == null) {
@@ -454,11 +451,6 @@ class ProxySettingsActivity : BaseActivity(R.layout.fragment_proxy_configure) {
                 try {
                     appConfig.getHttpProxyDetails()
                 } catch (e: Exception) {
-                    Logger.e(
-                        LOG_TAG_PROXY,
-                        "Error fetching HTTP proxy details in displayHttpProxyUi: ${e.message}",
-                        e,
-                    )
                     null
                 }
             if (endpoint == null) {
@@ -517,7 +509,6 @@ class ProxySettingsActivity : BaseActivity(R.layout.fragment_proxy_configure) {
                 wgStatus +=
                     getString(R.string.ci_ip_label, it.getName(), statusText.padStart(1, ' ')) +
                         "\n"
-                Logger.d(LOG_TAG_PROXY, "current proxy status for $id: $statusText")
             }
             wgStatus = wgStatus.trimEnd()
             uiCtx { b.settingsActivityWireguardDesc.text = wgStatus }
@@ -828,7 +819,6 @@ class ProxySettingsActivity : BaseActivity(R.layout.fragment_proxy_configure) {
                     errorTxt.text = getString(R.string.settings_http_proxy_error_text1)
                 }
             } catch (e: NumberFormatException) {
-                Logger.w(LOG_TAG_PROXY, "err: ${e.message}", e)
                 errorTxt.text = getString(R.string.settings_http_proxy_error_text2)
                 isValid = false
             }
@@ -1131,12 +1121,10 @@ class ProxySettingsActivity : BaseActivity(R.layout.fragment_proxy_configure) {
         isUdp: Boolean,
     ): ProxyEndpoint? {
         if (ip.isNullOrEmpty()) {
-            Logger.w(LOG_TAG_PROXY, "cannot construct proxy with values ip: $ip, port: $port")
             return null
         }
 
         if (mode == ProxyManager.ProxyMode.SOCKS5 && (!isValidPort(port))) {
-            Logger.w(LOG_TAG_PROXY, "cannot construct proxy with values ip: $ip, port: $port")
             return null
         }
 

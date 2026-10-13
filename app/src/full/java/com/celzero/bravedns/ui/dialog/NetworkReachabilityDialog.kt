@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.dialog
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.app.Activity
 import android.content.res.ColorStateList
 import android.graphics.drawable.Drawable
@@ -234,7 +232,6 @@ class NetworkReachabilityDialog(activity: Activity,
                     setButtonsEnabled(true)
                 }
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_UI , "NwReachability; testConnections error: ${e.message}", e)
                 uiCtx {
                     binding.errorMessage.text =
                         context.getString(R.string.blocklist_update_check_failure)
@@ -250,7 +247,6 @@ class NetworkReachabilityDialog(activity: Activity,
         return try {
             VpnController.probeIpOrUrl(ipOrUrl, useAuto)
         } catch (e: Exception) {
-            Logger.d(LOG_TAG_UI, "NwReachability; probeIpOrUrl err: ${e.message}")
             null
         }
     }

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_CONNECTION
 import android.net.Network
 import com.celzero.firestack.intra.Controller
 
@@ -26,27 +24,22 @@ class ProbeController(val networkHandle: Long, val nw: Network?): Controller {
         if (networkHandle == -1L || nw == null) {
             // no need to bind, just protect the fd
             VpnController.protectFdForConnectivityChecks(fd)
-            Logger.i(LOG_TAG_CONNECTION, "bind4: no networkHandle or nw, fd: $fd, addr: $addrport")
             return
         }
         val bound = VpnController.bindToNwForConnectivityChecks(nw, fd)
-        Logger.i(LOG_TAG_CONNECTION, "bind4: bound?$bound, fd: $fd, addr: $addrport, nw: $networkHandle, ${netId(networkHandle)})")
     }
 
     override fun bind6(who: String?, addrport: String?, fd: Long) {
         if (networkHandle == -1L || nw == null) {
             // no need to bind, just protect the fd
             VpnController.protectFdForConnectivityChecks(fd)
-            Logger.i(LOG_TAG_CONNECTION, "bind6: no networkHandle or nw, fd: $fd, addr: $addrport")
             return
         }
         val bound = VpnController.bindToNwForConnectivityChecks(nw, fd)
-        Logger.i(LOG_TAG_CONNECTION, "bind6: bound?$bound, fd: $fd, addr: $addrport, nw: $networkHandle, ${netId(networkHandle)})")
     }
 
     override fun protect(who: String?, fd: Long) {
         VpnController.protectFdForConnectivityChecks(fd)
-        Logger.i(LOG_TAG_CONNECTION, "protect: who: $who fd: $fd, nw: $networkHandle, ${netId(networkHandle)})")
     }
 
     fun netId(nwHandle: Long?): Long {

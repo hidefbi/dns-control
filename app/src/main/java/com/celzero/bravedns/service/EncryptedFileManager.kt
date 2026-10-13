@@ -16,7 +16,6 @@
 @file:Suppress("DEPRECATION")
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
 import android.content.Context
 import android.security.keystore.KeyPermanentlyInvalidatedException
 import android.security.keystore.UserNotAuthenticatedException
@@ -65,7 +64,6 @@ sealed class EncryptionException(message: String, cause: Throwable? = null) : Ex
 }
 
 object EncryptedFileManager : KoinComponent {
-    private const val LOG_TAG = "EncryptedFileManager"
 
     // Constants for clearing Tink keyset stored in SharedPreferences.
     // These match the package-private constants in androidx.security.crypto.EncryptedFile
@@ -85,7 +83,6 @@ object EncryptedFileManager : KoinComponent {
         // Missing files are not crypto failures; return an I/O classification without spamming critical events.
         if (e is FileNotFoundException) {
             val ex = EncryptionException.IOError(e)
-            Logger.w(LOG_TAG, "$operation missing file: $file; ${e.message}")
             return ex
         }
         val cryptoException = when (e) {
@@ -137,9 +134,7 @@ object EncryptedFileManager : KoinComponent {
         if (isRecoverable) {
             // Expected during app install/update cycles; log at LOW for traceability,
             // not as an error.
-            Logger.w(LOG_TAG, "$message: ${cryptoException.message}")
         } else {
-            Logger.e(LOG_TAG, "$message: ${cryptoException.message}")
         }
         return cryptoException
     }
@@ -160,11 +155,8 @@ object EncryptedFileManager : KoinComponent {
             )
             if (prefs.contains(TINK_KEYSET_KEY)) {
                 prefs.edit { remove(TINK_KEYSET_KEY) }
-                Logger.w(LOG_TAG, "Cleared corrupted Tink keyset from SharedPreferences; " +
-                        "future writes will create a fresh keyset, existing encrypted files are unrecoverable")
             }
         } catch (e: Exception) {
-            Logger.e(LOG_TAG, "Failed to clear corrupted Tink keyset", e)
         }
     }
 
@@ -214,8 +206,6 @@ object EncryptedFileManager : KoinComponent {
             }
         } catch (e: Exception) {
             if (isKeysetCorruption(e)) {
-                Logger.w(LOG_TAG, "Keyset corruption detected during read of ${file.absolutePath}, " +
-                        "clearing corrupted state for future writes", e)
                 destroyCorruptedKeyset(ctx)
             }
             throw handleCriticalException(e, "Read file", file.absolutePath)
@@ -250,7 +240,6 @@ object EncryptedFileManager : KoinComponent {
      */
     @Throws(EncryptionException::class)
     fun write(ctx: Context, data: ByteArray, file: File): Boolean {
-        Logger.d(LOG_TAG, "write into ${file.absolutePath}")
         return try {
             // Delete any existing file first; EncryptedFile refuses to overwrite it.
             deleteFile(file)
@@ -259,8 +248,6 @@ object EncryptedFileManager : KoinComponent {
             // The prior delete did not take effect (silent File.delete() failure on
             // external/FUSE storage). Replace the target via temp-file + atomic rename.
             if (isOutputFileAlreadyExists(e)) {
-                Logger.w(LOG_TAG, "Target still exists after delete for ${file.absolutePath}; " +
-                        "using temp-file rename fallback to replace it", e)
                 return writeViaTempFile(ctx, data, file)
             }
             // Recoverable keyset-corruption error. AEADBadTagException happens inside
@@ -285,7 +272,6 @@ object EncryptedFileManager : KoinComponent {
         if (file.delete()) return true
         val gone = !file.exists()
         if (!gone) {
-            Logger.w(LOG_TAG, "Unable to delete existing file: ${file.absolutePath}")
         }
         return gone
     }
@@ -317,7 +303,6 @@ object EncryptedFileManager : KoinComponent {
         // Replace the existing target with the freshly written temp file.
         deleteFile(file)
         if (temp.renameTo(file)) return true
-        Logger.w(LOG_TAG, "First rename failed for ${file.absolutePath}; retrying after delete")
         deleteFile(file)
         if (temp.renameTo(file)) return true
 
@@ -332,14 +317,11 @@ object EncryptedFileManager : KoinComponent {
      * Clears a corrupted Tink keyset and retries the write to [file] with the fresh keyset.
      */
     private fun resetKeysetAndWrite(ctx: Context, data: ByteArray, file: File): Boolean {
-        Logger.w(LOG_TAG, "Keyset corruption detected for ${file.absolutePath}, " +
-                "clearing corrupted state and retrying write")
         destroyCorruptedKeyset(ctx)
         return try {
             deleteFile(file)
             writeInternal(ctx, data, file)
         } catch (retryEx: Exception) {
-            Logger.e(LOG_TAG, "Retry after keyset reset also failed for ${file.absolutePath}", retryEx)
             throw handleCriticalException(retryEx, "Write file (retry)", file.absolutePath)
         }
     }

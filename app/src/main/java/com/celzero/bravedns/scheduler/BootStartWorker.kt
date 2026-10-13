@@ -16,8 +16,6 @@
 
 package com.celzero.bravedns.scheduler
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.content.Context
 import android.net.VpnService
 import androidx.work.CoroutineWorker
@@ -50,43 +48,35 @@ class BootStartWorker(context: Context, params: WorkerParameters) :
         // MY_PACKAGE_REPLACED is intentionally exempt from this check so an app update
         // can restore a previously-running VPN.
         if (eventType != PACKAGE_REPLACED_EVENT && !persistentState.prefAutoStartBootUp) {
-            Logger.i(LOG_TAG_VPN, "auto-start not enabled, skipping boot start, event $eventType")
             return Result.success()
         }
 
         if (!VpnController.state().activationRequested) {
-            Logger.i(LOG_TAG_VPN, "vpn not active before shutdown, skipping boot start, event $eventType")
             return Result.success()
         }
 
         // If always-on is enabled the OS is expected to bring the VPN up on its own.
         if (VpnController.isAlwaysOn(applicationContext)) {
-            Logger.i(LOG_TAG_VPN, "always-on vpn enabled, OS should take care, $eventType")
             return Result.success()
         }
 
         // The app UI (e.g. HomeScreenFragment) may also auto-start the VPN around the same
         // time (app update / process restart). Skip if the VPN is already active.
         if (VpnController.hasTunnel()) {
-            Logger.i(LOG_TAG_VPN, "vpn already active, skipping boot start, event $eventType")
             return Result.success()
         }
 
         val prepareVpnIntent =
             try {
-                Logger.v(LOG_TAG_VPN, "start preparing vpn service")
                 VpnService.prepare(applicationContext)
             } catch (_: NullPointerException) {
-                Logger.w(LOG_TAG_VPN, "device does not support system-wide VPN mode")
                 return Result.success()
             }
 
         if (prepareVpnIntent != null) {
-            Logger.i(LOG_TAG_VPN, "vpn not prepared, skipping boot start, event $eventType")
             return Result.success()
         }
 
-        Logger.i(LOG_TAG_VPN, "attempting to auto-start VPN, event $eventType")
         VpnController.start(applicationContext, autoAttempt = true)
         return Result.success()
     }

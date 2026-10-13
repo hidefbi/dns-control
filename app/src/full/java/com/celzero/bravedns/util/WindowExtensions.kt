@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -60,10 +59,8 @@ fun AppCompatActivity.handleFrostEffectIfNeeded(themeId: Int) {
         // Apply the current system blur state immediately so the first draw is
         // already correct (the attach-listener fires later and handles transitions).
         val enabled = windowManager.isCrossWindowBlurEnabled
-        Logger.v(LOG_TAG_UI, "Blur enabled by system? $enabled")
         updateWindowForBlurs(windowBackgroundDrawable, enabled)
     } else {
-        Logger.v(LOG_TAG_UI, "Blurs not supported, below Android S")
         updateWindowForBlurs(windowBackgroundDrawable, blursEnabled = false)
     }
     // FLAG_DIM_BEHIND is managed inside updateWindowForBlurs, not set unconditionally here.

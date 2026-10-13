@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.bottomsheet
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_BACKUP_RESTORE
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -163,7 +161,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
                 if (intent.resolveActivity(requireContext().packageManager) != null) {
                     backupActivityResult.launch(intent)
                 } else {
-                    Logger.e(LOG_TAG_BACKUP_RESTORE, "No activity found to handle CREATE_DOCUMENT intent")
                     Utilities.showToastUiCentered(
                         requireContext(),
                         getString(R.string.brbs_backup_dialog_failure_message),
@@ -171,7 +168,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
                     )
                 }
             } catch (e: android.content.ActivityNotFoundException) {
-                Logger.e(LOG_TAG_BACKUP_RESTORE, "Activity not found for CREATE_DOCUMENT: ${e.message}")
                 Utilities.showToastUiCentered(
                     requireContext(),
                     getString(R.string.brbs_backup_dialog_failure_message),
@@ -179,7 +175,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
                 )
             }
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_BACKUP_RESTORE, "err opening file picker for backup: ${e.message}")
             Utilities.showToastUiCentered(
                 requireContext(),
                 getString(R.string.brbs_backup_dialog_failure_message),
@@ -196,10 +191,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
             workInfoList ->
             val workInfo = workInfoList?.getOrNull(0) ?: return@observe
 
-            Logger.i(
-                LOG_TAG_BACKUP_RESTORE,
-                "WorkManager state: ${workInfo.state} for ${BackupAgent.TAG}"
-            )
             when (workInfo.state) {
                 WorkInfo.State.SUCCEEDED -> {
                     showBackupSuccessUi()
@@ -224,10 +215,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
         workManager.getWorkInfosByTagLiveData(RestoreAgent.TAG).observe(viewLifecycleOwner) {
             workInfoList ->
             val workInfo = workInfoList?.getOrNull(0) ?: return@observe
-            Logger.i(
-                LOG_TAG_BACKUP_RESTORE,
-                "WorkManager state: ${workInfo.state} for ${RestoreAgent.TAG}"
-            )
             if (WorkInfo.State.SUCCEEDED == workInfo.state) {
                 showRestoreSuccessUi()
                 workManager.pruneWork()
@@ -254,7 +241,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
 
             restoreActivityResult.launch(intent)
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_BACKUP_RESTORE, "err opening file picker: ${e.message}")
             Utilities.showToastUiCentered(
                 requireContext(),
                 getString(R.string.blocklist_update_check_failure),
@@ -272,10 +258,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
                         // result data contains the uri from the file picker
                         var fileUri: Uri? = null
                         result.data?.also { uri -> fileUri = uri.data }
-                        Logger.i(
-                            LOG_TAG_BACKUP_RESTORE,
-                            "activity result for restore process with uri: $fileUri"
-                        )
                         persistUriPermission(fileUri, Intent.FLAG_GRANT_READ_URI_PERMISSION)
                         startRestoreProcess(fileUri)
                     }
@@ -296,10 +278,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
                         // get URI of file created by picker
                         var backupFileUri: Uri? = null
                         result.data?.also { uri -> backupFileUri = uri.data }
-                        Logger.i(
-                            LOG_TAG_BACKUP_RESTORE,
-                            "activity result for backup process with uri: $backupFileUri"
-                        )
                         persistUriPermission(backupFileUri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
                         startBackupProcess(backupFileUri)
                     }
@@ -318,7 +296,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
         try {
             requireContext().contentResolver.takePersistableUriPermission(uri, modeFlags)
         } catch (e: SecurityException) {
-            Logger.w(LOG_TAG_BACKUP_RESTORE, "Could not persist URI permission for $uri", e)
         }
     }
 
@@ -335,10 +312,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
 
     private fun startRestoreProcess(fileUri: Uri?) {
         if (fileUri == null) {
-            Logger.w(
-                LOG_TAG_BACKUP_RESTORE,
-                "uri received from activity result is null, cancel restore process"
-            )
             showRestoreFailureDialog()
             return
         }
@@ -349,10 +322,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
             if (Utilities.isAlphaBuild()) BACKUP_FILE_EXTN_ALPHA else BACKUP_FILE_EXTN
         val fileName = getFileNameFromUri(fileUri)
         if (!fileName.endsWith(expectedExtension)) {
-            Logger.w(
-                LOG_TAG_BACKUP_RESTORE,
-                "invalid backup file selected: $fileName, expected extension: $expectedExtension"
-            )
             Utilities.showToastUiCentered(
                 requireContext(),
                 getString(R.string.brbs_restore_invalid_file, expectedExtension),
@@ -361,7 +330,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
             return
         }
 
-        Logger.i(LOG_TAG_BACKUP_RESTORE, "invoke worker to initiate the restore process")
         val data = Data.Builder()
         data.putString(DATA_BUILDER_RESTORE_URI, fileUri.toString())
 
@@ -380,10 +348,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
 
     private fun startBackupProcess(backupUri: Uri?) {
         if (backupUri == null) {
-            Logger.w(
-                LOG_TAG_BACKUP_RESTORE,
-                "uri received from activity result is null, cancel backup process"
-            )
             showBackupFailureDialog()
             return
         }
@@ -391,7 +355,6 @@ class BackupRestoreBottomSheet : BottomSheetDialogFragment() {
         // stop vpn before beginning the backup process
         BackupHelper.stopVpn(requireContext())
 
-        Logger.i(LOG_TAG_BACKUP_RESTORE, "invoke worker to initiate the backup process")
         val data = Data.Builder()
 
         data.putString(DATA_BUILDER_BACKUP_URI, backupUri.toString())

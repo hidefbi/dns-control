@@ -17,8 +17,6 @@ package com.celzero.bravedns.service
 
 import android.os.SystemClock
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -82,7 +80,6 @@ object GlobalProxyHandler : KoinComponent {
      */
     fun track(id: String) {
         proxies[id] = ProxyEntry(SystemClock.elapsedRealtime())
-        Logger.vv(LOG_TAG_PROXY, "$TAG track $id, total: ${proxies.size}")
     }
 
     /**
@@ -91,7 +88,6 @@ object GlobalProxyHandler : KoinComponent {
      */
     fun untrack(id: String) {
         proxies.remove(id)?.let {
-            Logger.v(LOG_TAG_PROXY, "$TAG untrack $id, total: ${proxies.size}")
         }
     }
 
@@ -107,11 +103,9 @@ object GlobalProxyHandler : KoinComponent {
                 try {
                     checkAndReadd()
                 } catch (e: Exception) {
-                    Logger.w(LOG_TAG_PROXY, "$TAG check failed: ${e.message}")
                 }
             }
         }
-        Logger.i(LOG_TAG_PROXY, "$TAG started, tracking: ${proxies.size}")
     }
 
     /** Stop the periodic checker and forget all tracked proxies. */
@@ -119,7 +113,6 @@ object GlobalProxyHandler : KoinComponent {
         job?.cancel()
         job = null
         proxies.clear()
-        Logger.i(LOG_TAG_PROXY, "$TAG stopped")
     }
 
     /**
@@ -134,7 +127,6 @@ object GlobalProxyHandler : KoinComponent {
             try {
                 processProxy(id, entry, now)
             } catch (e: Exception) {
-                Logger.w(LOG_TAG_PROXY, "$TAG err processing $id: ${e.message}")
             }
         }
     }
@@ -147,7 +139,6 @@ object GlobalProxyHandler : KoinComponent {
         if (isProxyPresent(id)) {
             if (entry.attempts != 0) {
                 entry.attempts = 0
-                Logger.v(LOG_TAG_PROXY, "$TAG proxy present again, attempts reset: $id")
             }
             return
         }
@@ -155,7 +146,6 @@ object GlobalProxyHandler : KoinComponent {
         // (2) attempt budget exhausted: give up on this proxy
         if (entry.attempts >= MAX_ATTEMPTS) {
             proxies.remove(id)
-            Logger.w(LOG_TAG_PROXY, "$TAG giving up on $id after $MAX_ATTEMPTS attempts")
             return
         }
 
@@ -166,13 +156,11 @@ object GlobalProxyHandler : KoinComponent {
         // the config may have been deleted/disabled meanwhile: drop instead of re-adding
         if (!isProxyStillWanted(id)) {
             proxies.remove(id)
-            Logger.i(LOG_TAG_PROXY, "$TAG proxy no longer wanted, dropped: $id")
             return
         }
 
         entry.lastAttemptAtElapsed = now
         entry.attempts++
-        Logger.i(LOG_TAG_PROXY, "$TAG re-adding proxy $id, attempt ${entry.attempts}/$MAX_ATTEMPTS")
         readdProxy(id)
     }
 
@@ -197,7 +185,6 @@ object GlobalProxyHandler : KoinComponent {
                 VpnController.addWireGuardProxy(id, force = true)
             }
             else -> {
-                Logger.w(LOG_TAG_PROXY, "$TAG unknown proxy id, skip re-add: $id")
             }
         }
     }

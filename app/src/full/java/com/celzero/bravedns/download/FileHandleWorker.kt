@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.download
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -57,11 +55,9 @@ class FileHandleWorker(val context: Context, workerParameters: WorkerParameters)
     override suspend fun doWork(): Result {
         try {
             val timestamp = inputData.getLong("blocklistDownloadInitiatedTime", Long.MIN_VALUE)
-            Logger.d(LOG_TAG_DOWNLOAD, "blocklistDownloadInitiatedTime - $timestamp")
 
             // invalid download initiated time
             if (timestamp <= INIT_TIME_MS) {
-                Logger.w(LOG_TAG_DOWNLOAD, "timestamp version invalid $timestamp")
                 return Result.failure()
             }
 
@@ -73,11 +69,6 @@ class FileHandleWorker(val context: Context, workerParameters: WorkerParameters)
 
             return if (response) Result.success(outputData) else Result.failure()
         } catch (e: Exception) {
-            Logger.e(
-                LOG_TAG_DOWNLOAD,
-                "FileHandleWorker Error while moving files to canonical path ${e.message}",
-                e
-            )
         }
         return Result.failure()
     }
@@ -91,21 +82,15 @@ class FileHandleWorker(val context: Context, workerParameters: WorkerParameters)
             val dir =
                 File(BlocklistDownloadHelper.getExternalFilePath(context, timestamp.toString()))
             if (!dir.isDirectory) {
-                Logger.w(
-                    LOG_TAG_DOWNLOAD,
-                    "Abort: file download path ${dir.absolutePath} isn't a directory"
-                )
                 return false
             }
 
             if (!BlocklistVerifier.verify(context, dir, timestamp)) {
-                Logger.e(LOG_TAG_DOWNLOAD, "Abort: signature verification failed, $timestamp")
                 return false
             }
 
             val children = dir.list()
             if (children.isNullOrEmpty()) {
-                Logger.w(LOG_TAG_DOWNLOAD, "Abort: ${dir.absolutePath} is empty directory")
                 return false
             }
 
@@ -117,13 +102,11 @@ class FileHandleWorker(val context: Context, workerParameters: WorkerParameters)
                 val from = dir.absolutePath + File.separator + children[i]
                 val to = localBlocklistFileDownloadPath(context, children[i], timestamp)
                 if (to.isEmpty()) {
-                    Logger.w(LOG_TAG_DOWNLOAD, "Copy failed from $from, to: $to")
                     return false
                 }
                 val result = Utilities.copy(from, to)
 
                 if (!result) {
-                    Logger.w(LOG_TAG_DOWNLOAD, "Copy failed from: $from, to: $to")
                     return false
                 }
             }
@@ -132,10 +115,6 @@ class FileHandleWorker(val context: Context, workerParameters: WorkerParameters)
                     "${context.filesDir.canonicalPath}${File.separator}$timestamp${File.separator}"
                 )
 
-            Logger.i(
-                LOG_TAG_DOWNLOAD,
-                "After copy, dest dir: $destinationDir, ${destinationDir.isDirectory}, ${destinationDir.list()?.count()}"
-            )
 
             if (!hasLocalBlocklists(context, timestamp) || !isDownloadValid(timestamp)) {
                 return false
@@ -152,10 +131,8 @@ class FileHandleWorker(val context: Context, workerParameters: WorkerParameters)
                 LOCAL_BLOCKLIST_DOWNLOAD_FOLDER_NAME,
                 persistentState.localBlocklistTimestamp
             )
-            Logger.i(LOG_TAG_DOWNLOAD, "FileHandleWorker, copyFiles success? $result")
             return true
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_DOWNLOAD, "FileHandleWorker Copy exception: ${e.message}", e)
         }
         return false
     }
@@ -196,15 +173,9 @@ class FileHandleWorker(val context: Context, workerParameters: WorkerParameters)
                 getTagValueFromJson(path + Constants.ONDEVICE_BLOCKLIST_FILE_BASIC_CONFIG, "tdmd5")
             val remoteRdmd5 =
                 getTagValueFromJson(path + Constants.ONDEVICE_BLOCKLIST_FILE_BASIC_CONFIG, "rdmd5")
-            Logger.d(
-                LOG_TAG_DOWNLOAD,
-                "tdmd5: $tdmd5, rdmd5: $rdmd5, remotetd: $remoteTdmd5, remoterd: $remoteRdmd5"
-            )
             val isDownloadValid = tdmd5 == remoteTdmd5 && rdmd5 == remoteRdmd5
-            Logger.i(LOG_TAG_DOWNLOAD, "FileHandleWorker, isDownloadValid? $isDownloadValid")
             return isDownloadValid
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_DOWNLOAD, "FileHandleWorker, isDownloadValid err: ${e.message}", e)
         }
         return false
     }

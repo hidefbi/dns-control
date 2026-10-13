@@ -16,8 +16,6 @@
 package com.celzero.bravedns.service
 
 import com.celzero.bravedns.data.AppConfig
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import com.celzero.bravedns.database.AppInfo
 import com.celzero.bravedns.database.ProxyAppMappingRepository
 import com.celzero.bravedns.database.ProxyApplicationMapping
@@ -115,12 +113,10 @@ object ProxyManager : KoinComponent {
         pamSet.add(baseTuple)
         val pam = ProxyApplicationMapping(uid, packageName, appName, "", true, "")
         db.insert(pam)
-        Logger.i(LOG_TAG_PROXY, "ensureBaseRow: created base row for $packageName ($uid)")
     }
 
     suspend fun setProxyIdForAllApps(proxyId: String, proxyName: String) {
         if (!isValidProxyPrefix(proxyId)) {
-            Logger.e(LOG_TAG_PROXY, "Invalid proxy id: $proxyId")
             return
         }
         // FirewallManager is the source of truth for "all apps"; iterate it instead of the proxy
@@ -141,7 +137,6 @@ object ProxyManager : KoinComponent {
                 db.insert(pam)
             }
         }
-        Logger.i(LOG_TAG_PROXY, "added proxy $proxyId to all apps")
     }
 
     suspend fun updateProxyNameForProxyId(proxyId: String, proxyName: String) {
@@ -151,7 +146,6 @@ object ProxyManager : KoinComponent {
 
     suspend fun setProxyIdForUnselectedApps(proxyId: String, proxyName: String) {
         if (!isValidProxyPrefix(proxyId)) {
-            Logger.e(LOG_TAG_PROXY, "Invalid proxy id: $proxyId")
             return
         }
         // add this proxy only to apps that do not yet have it. Iterate FirewallManager (source of
@@ -168,7 +162,6 @@ object ProxyManager : KoinComponent {
                 db.insert(pam)
             }
         }
-        Logger.i(LOG_TAG_PROXY, "added proxy $proxyId to unselected apps")
     }
 
     suspend fun setNoProxyForAllAppsForProxy(proxyId: String) {
@@ -180,7 +173,6 @@ object ProxyManager : KoinComponent {
         toRemove.forEach {
             db.deleteMapping(it.uid, it.packageName, it.proxyId)
         }
-        Logger.i(LOG_TAG_PROXY, "removed proxy $proxyId from all apps")
     }
 
     suspend fun removeProxyId(proxyId: String) {
@@ -216,10 +208,8 @@ object ProxyManager : KoinComponent {
             // No mapping exists for this package (the proxyId="" base row was lost).
             val ai = FirewallManager.getAppInfoByUidAndPackage(uid, packageName)
             if (ai == null) {
-                Logger.w(LOG_TAG_PROXY, "updateApp: no map and no fw app for $packageName ($uid); skip")
                 return
             }
-            Logger.w(LOG_TAG_PROXY, "updateApp: map not found for $packageName; creating base row for uid=$uid")
             ensureBaseRow(uid, packageName, ai.appName)
             return
         }
@@ -238,16 +228,13 @@ object ProxyManager : KoinComponent {
         pamSet.removeAll(m)
         pamSet.addAll(newTuples)
 
-        Logger.i(LOG_TAG_PROXY, "updateApp: uid=$uid pkg=$packageName")
     }
 
     suspend fun addNewApp(appInfo: AppInfo?, proxyId: String = "", proxyName: String = "") {
         if (appInfo == null) {
-            Logger.e(LOG_TAG_PROXY, "AppInfo is null, cannot add to proxy")
             return
         }
         if (pamSet.any { it.uid == appInfo.uid && it.packageName == appInfo.packageName && it.proxyId == proxyId }) {
-            Logger.i(LOG_TAG_PROXY, "App already exists in proxy mapping with proxyId=$proxyId: ${appInfo.appName}")
             return
         }
         val pam =
@@ -262,7 +249,6 @@ object ProxyManager : KoinComponent {
         val pamTuple = ProxyAppMapTuple(appInfo.uid, appInfo.packageName, proxyId)
         pamSet.add(pamTuple)
         db.insert(pam)
-        Logger.i(LOG_TAG_PROXY, "Adding app for mapping: ${pam.appName}, ${pam.uid}")
     }
 
     private fun deleteFromCache(uid: Int, packageName: String) {
@@ -275,7 +261,6 @@ object ProxyManager : KoinComponent {
     suspend fun deleteApp(uid: Int, packageName: String) {
         deleteFromCache(uid, packageName)
         db.deleteApp(uid, packageName)
-        Logger.i(LOG_TAG_PROXY, "deleting app for mapping: $uid, $packageName")
     }
 
     suspend fun deleteAppIfNeeded(uid: Int, packageName: String) {
@@ -286,32 +271,27 @@ object ProxyManager : KoinComponent {
             return
         } else {
             // the app can be tombstoned, so do not delete the app from the mapping
-            Logger.i(LOG_TAG_PROXY, "deleteAppIfNeeded: app($uid, $packageName) is available in firewall manager, not deleting, tombstone: ${fm.tombstoneTs}")
         }
     }
 
     suspend fun deleteAppByPkgName(packageName: String) {
         val toRemove = pamSet.filter { it.packageName == packageName }
         if (toRemove.isEmpty()) {
-            Logger.i(LOG_TAG_PROXY, "deleteAppByPkgName: app not found in proxy mapping: $packageName")
             return
         }
         pamSet.removeAll(toRemove.toSet())
         // delete the app from the database
         db.deleteAppByPkgName(packageName)
-        Logger.i(LOG_TAG_PROXY, "deleting app for mapping by package name: $packageName")
     }
 
     suspend fun clear() {
         pamSet.clear()
         db.deleteAll()
-        Logger.d(LOG_TAG_PROXY, "deleting all apps for mapping")
     }
 
     suspend fun tombstoneApp(oldUid: Int) {
         val newUid = if (oldUid > 0) -1 * oldUid else oldUid
         if (newUid == oldUid) {
-            Logger.w(LOG_TAG_PROXY, "no change in uid, not tombstoning: $oldUid")
             return
         }
         val entries = pamSet.filter { it.uid == oldUid }
@@ -321,12 +301,10 @@ object ProxyManager : KoinComponent {
             }
             db.tombstoneApp(oldUid, newUid)
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_PROXY, "tombstoneApp failed for oldUid=$oldUid; reloading cache", e)
             load()
             return
         }
         load()
-        Logger.i(LOG_TAG_PROXY, "tombstoning app for mapping: $oldUid, $newUid, entries: ${entries.size}")
     }
 
     fun isAnyAppSelected(proxyId: String): Boolean {
@@ -433,7 +411,6 @@ object ProxyManager : KoinComponent {
 
     suspend fun addProxyToApp(uid: Int, packageName: String, proxyId: String, proxyName: String) {
         if (!isValidProxyPrefix(proxyId)) {
-            Logger.e(LOG_TAG_PROXY, "cannot add invalid proxy id: $proxyId")
             return
         }
         val tuple = ProxyAppMapTuple(uid, packageName, proxyId)

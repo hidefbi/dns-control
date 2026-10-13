@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.fragment
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,7 +37,6 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.LocalAdvancedViewAdapter
 import com.celzero.bravedns.adapter.LocalSimpleViewAdapter
 import com.celzero.bravedns.customdownloader.LocalBlocklistCoordinator.Companion.CUSTOM_DOWNLOAD
-import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.data.FileTag
 import com.celzero.bravedns.databinding.FragmentRethinkBlocklistBinding
 import com.celzero.bravedns.download.AppDownloadManager
@@ -78,7 +75,6 @@ class RethinkBlocklistFragment :
 
     private val persistentState by inject<PersistentState>()
     private val appDownloadManager by inject<AppDownloadManager>()
-    private val appConfig by inject<AppConfig>()
 
     private val type = RethinkBlocklistManager.RethinkBlocklistType.LOCAL
 
@@ -157,7 +153,6 @@ class RethinkBlocklistFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Logger.v(LOG_TAG_UI, "init Rethink blocklist fragment")
         init()
         initObservers()
         initClickListeners()
@@ -181,10 +176,6 @@ class RethinkBlocklistFragment :
                     // of overwriting it with "" and losing the user's selection.
                     // The authoritative selection set is `selectedFileTags`; the
                     // stamp is recomputed at Apply time (see setStamp/Apply).
-                    Logger.w(
-                        LOG_TAG_UI,
-                        "skip stamp overwrite: ${it.size} tags selected but stamp encode failed for ${type.name}; keeping modifiedStamp='${modifiedStamp.take(32)}'"
-                    )
                 } else {
                     // user genuinely cleared the selection
                     modifiedStamp = recomputed
@@ -309,10 +300,6 @@ class RethinkBlocklistFragment :
                     else getStamp(tags, type).also { modifiedStamp = it }
 
                 if (stampToApply.isEmpty() && tags.isNotEmpty()) {
-                    Logger.w(
-                        LOG_TAG_UI,
-                        "Apply: cannot encode ${tags.size} selected tags for ${type.name}; stamp stays empty"
-                    )
                 }
                 uiCtx { setStamp(stampToApply); requireActivity().finish() }
             }
@@ -325,7 +312,6 @@ class RethinkBlocklistFragment :
                 val list = RethinkBlocklistManager.getTagsFromStamp(stamp, type)
                 updateSelectedFileTags(list.toMutableSet())
                 setStamp(stamp)
-                Logger.i(LOG_TAG_UI, "revert to old stamp for blocklist type: ${type.name}, $stamp, $list")
                 uiCtx {
                     requireActivity().finish()
                 }
@@ -459,9 +445,7 @@ class RethinkBlocklistFragment :
     }
 
     private fun setStamp(stamp: String?) {
-        Logger.i(LOG_TAG_UI, "set stamp for blocklist type: ${type.name} with $stamp")
         if (stamp == null) {
-            Logger.i(LOG_TAG_UI, "stamp is null")
             return
         }
 
@@ -471,7 +455,6 @@ class RethinkBlocklistFragment :
                 persistentState.localBlocklistStamp = stamp
                 persistentState.numberOfLocalBlocklists = blocklistCount
                 persistentState.blocklistEnabled = true
-                Logger.i(LOG_TAG_UI, "set stamp for local blocklist with $stamp, $blocklistCount")
             }
         }
     }
@@ -605,10 +588,8 @@ class RethinkBlocklistFragment :
     }
 
     private fun isRethinkStampSearch(t: String): Boolean {
-        Logger.vv(LOG_TAG_UI, "isRethinkStampSearch: $t")
         // do not proceed if rethinkdns.com is not available
         if (!t.contains(Constants.RETHINKDNS_DOMAIN)) {
-            Logger.d(LOG_TAG_UI, "rethinkdns.com is not available")
             return false
         }
 
@@ -620,22 +601,18 @@ class RethinkBlocklistFragment :
     }
 
     private fun extractStamp(t: String): String? {
-        Logger.vv(LOG_TAG_UI, "extractStamp: $t")
         // format 1: https://max.rethinkdns.com/1:IAAgAA== (base64 after ":")
         // format 2: //1-acaabaa.max.rethinkdns.com (base32 after "-")
         val base64Match = BASE64_STAMP_REGEX.matcher(t)
         if (base64Match.find()) {
-            Logger.d(LOG_TAG_UI, "extract base64 stamp: ${base64Match.group(1)}")
             return "$RETHINK_STAMP_VERSION:${base64Match.group(1)}"
         }
 
         val base32Match = BASE32_STAMP_REGEX.matcher(t)
         if (base32Match.find()) {
-            Logger.d(LOG_TAG_UI, "extract base32 stamp: ${base32Match.group(1)}")
             return "$RETHINK_STAMP_VERSION-${base32Match.group(1)}"
         }
 
-        Logger.d(LOG_TAG_UI, "extract stamp failed for $t")
         return null
     }
 
@@ -750,10 +727,6 @@ class RethinkBlocklistFragment :
         workManager.getWorkInfosByTagLiveData(CUSTOM_DOWNLOAD).observe(viewLifecycleOwner) {
             workInfoList ->
             val workInfo = workInfoList?.getOrNull(0) ?: return@observe
-            Logger.i(
-                Logger.LOG_TAG_DOWNLOAD,
-                "WorkManager state: ${workInfo.state} for $CUSTOM_DOWNLOAD"
-            )
             if (
                 WorkInfo.State.ENQUEUED == workInfo.state ||
                     WorkInfo.State.RUNNING == workInfo.state
@@ -779,10 +752,6 @@ class RethinkBlocklistFragment :
         workManager.getWorkInfosByTagLiveData(DOWNLOAD_TAG).observe(viewLifecycleOwner) {
             workInfoList ->
             val workInfo = workInfoList?.getOrNull(0) ?: return@observe
-            Logger.i(
-                Logger.LOG_TAG_DOWNLOAD,
-                "WorkManager state: ${workInfo.state} for $DOWNLOAD_TAG"
-            )
             if (
                 WorkInfo.State.ENQUEUED == workInfo.state ||
                     WorkInfo.State.RUNNING == workInfo.state
@@ -806,10 +775,6 @@ class RethinkBlocklistFragment :
             if (workInfoList != null && workInfoList.isNotEmpty()) {
                 val workInfo = workInfoList[0]
                 if (workInfo.state == WorkInfo.State.SUCCEEDED) {
-                    Logger.i(
-                        Logger.LOG_TAG_DOWNLOAD,
-                        "AppDownloadManager Work Manager completed - $FILE_TAG"
-                    )
                     onDownloadSuccess()
                     workManager.pruneWork()
                 } else if (
@@ -818,15 +783,7 @@ class RethinkBlocklistFragment :
                     onDownloadFail()
                     workManager.pruneWork()
                     workManager.cancelAllWorkByTag(FILE_TAG)
-                    Logger.i(
-                        Logger.LOG_TAG_DOWNLOAD,
-                        "AppDownloadManager Work Manager failed - $FILE_TAG"
-                    )
                 } else {
-                    Logger.i(
-                        Logger.LOG_TAG_DOWNLOAD,
-                        "AppDownloadManager Work Manager - $FILE_TAG, ${workInfo.state}"
-                    )
                 }
             }
         }

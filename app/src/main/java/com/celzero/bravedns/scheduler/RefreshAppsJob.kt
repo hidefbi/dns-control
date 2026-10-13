@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.scheduler
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_SCHEDULER
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -30,7 +28,6 @@ class RefreshAppsJob(val context: Context, workerParameters: WorkerParameters) :
     private val refreshDatabase by inject<RefreshDatabase>()
 
     override suspend fun doWork(): Result {
-        Logger.d(LOG_TAG_SCHEDULER, "starting refresh-database job")
         refreshDatabase.refresh(RefreshDatabase.ACTION_REFRESH_AUTO)
         return Result.success()
     }

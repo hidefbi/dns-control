@@ -15,10 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
-import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.AccessibilityServiceInfo
 import android.app.PendingIntent
@@ -134,10 +130,6 @@ object Utilities {
             am.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK)
         for (enabledService in enabledServices) {
             val enabledServiceInfo: ServiceInfo = enabledService.resolveInfo.serviceInfo
-            Logger.i(
-                LOG_TAG_VPN,
-                "Accessibility enabled check for: ${enabledServiceInfo.packageName}"
-            )
             if (
                 enabledServiceInfo.packageName == context.packageName &&
                     enabledServiceInfo.name == service.name
@@ -145,10 +137,6 @@ object Utilities {
                 return true
             }
         }
-        Logger.w(
-            LOG_TAG_VPN,
-            "Accessibility failure, ${context.packageName},  ${service.name}, return size: ${enabledServices.count()}"
-        )
         return false
     }
 
@@ -170,21 +158,11 @@ object Utilities {
                 val componentNameString = colonSplitter.next()
                 val enabledService = ComponentName.unflattenFromString(componentNameString)
                 if (expectedComponentName == enabledService) {
-                    Logger.i(
-                        LOG_TAG_VPN,
-                        "SettingsSecure accessibility enabled for: ${expectedComponentName.packageName}"
-                    )
                     return true
                 }
             }
         } catch (e: Settings.SettingNotFoundException) {
-            Logger.w(
-                LOG_TAG_VPN,
-                "isAccessibilityServiceEnabled err on isAccessibilityServiceEnabledViaSettingsSecure() ${e.message}",
-                e
-            )
         }
-        Logger.w(LOG_TAG_VPN, "accessibility service not enabled via Settings Secure")
         return isAccessibilityServiceEnabled(context, accessibilityService)
     }
 
@@ -207,7 +185,6 @@ object Utilities {
             countryMap = CountryMap(context.assets)
         } catch (e: IOException) {
             // SwallowedException: Exception is logged, countryMap remains null as fallback
-            Logger.e(LOG_TAG_VPN, "err fetching country map ${e.message}", e)
         }
     }
 
@@ -241,7 +218,6 @@ object Utilities {
 
             return ip.isLoopback || ip.isLocal || ip.isAnyLocal || UNSPECIFIED_IP_IPV4.equals(ip)
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_VPN, "err in isLanIpv4 ${e.message}", e)
         }
         return false
     }
@@ -290,13 +266,9 @@ object Utilities {
                 }
             }
         } catch (e: IllegalStateException) {
-            Logger.w(LOG_TAG_VPN, "toast err: ${e.message}")
         } catch (e: IllegalAccessException) {
-            Logger.w(LOG_TAG_VPN, "toast err: ${e.message}")
         } catch (e: IOException) {
-            Logger.w(LOG_TAG_VPN, "toast err: ${e.message}")
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_VPN, "toast err: ${e.message}")
         }
     }
 
@@ -321,7 +293,6 @@ object Utilities {
     }
 
     private fun handleUnsupportedContext(context: Context, message: String, toastLength: Int, isMainThread: Boolean) {
-        Logger.w(LOG_TAG_VPN, "toast err: unsuitable context type")
         if (DEBUG && isMainThread) {
             Toast.makeText(context, message, toastLength).show()
         }
@@ -340,7 +311,6 @@ object Utilities {
                     pm.getPackageInfo(pi, PackageManager.GET_META_DATA)
                 }
         } catch (e: PackageManager.NameNotFoundException) {
-            Logger.w(LOG_TAG_APP_DB, "app not available $pi" + e.message, e)
         }
         return metadata
     }
@@ -355,7 +325,6 @@ object Utilities {
 
             src.copyTo(dest, true)
         } catch (e: Exception) { // Throws NoSuchFileException, IOException
-            Logger.e(LOG_TAG_DOWNLOAD, "err copying file ${e.message}", e)
             return false
         }
 
@@ -377,7 +346,6 @@ object Utilities {
             }
             true
         } catch (e: Exception) { // Catches IOException and other stream-related exceptions
-            Logger.w(LOG_TAG_DOWNLOAD, "err while copying files using streams: ${e.message}, $e")
             false
         }
     }
@@ -400,7 +368,6 @@ object Utilities {
             val alwaysOn = Settings.Secure.getString(context.contentResolver, "always_on_vpn_app")
             context.packageName == alwaysOn
         } catch (e: Exception) { // Catches SecurityException and other Settings-related exceptions
-            Logger.w(LOG_TAG_VPN, "err while retrieving Settings.Secure value ${e.message}")
             if (isAtleastQ()) {
                 vpnService?.isAlwaysOn == true
             } else {
@@ -416,7 +383,6 @@ object Utilities {
             val alwaysOn = Settings.Secure.getString(context.contentResolver, "always_on_vpn_app")
             !TextUtils.isEmpty(alwaysOn) && context.packageName != alwaysOn
         } catch (e: Exception) { // Catches SecurityException and other Settings-related exceptions
-            Logger.w(LOG_TAG_VPN, "err while retrieving Settings.Secure value ${e.message}")
             false
         }
     }
@@ -492,7 +458,6 @@ object Utilities {
             try {
                 updateUi()
             } catch (e: Exception) { // Catches any exception from user-provided updateUi lambda
-                Logger.e(LOG_TAG_VPN, "err in delay fn ${e.message}", e)
             }
         }
     }
@@ -501,9 +466,7 @@ object Utilities {
         try {
             return ctx.packageManager.getPackagesForUid(uid)
         } catch (e: PackageManager.NameNotFoundException) {
-            Logger.w(LOG_TAG_FIREWALL, "package not found: " + e.message)
         } catch (e: SecurityException) {
-            Logger.w(LOG_TAG_FIREWALL, "package not found: " + e.message)
         }
         return null
     }
@@ -576,7 +539,6 @@ object Utilities {
                 ctx.packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
             }
         } catch (e: PackageManager.NameNotFoundException) {
-            Logger.w(LOG_TAG_FIREWALL, "no app info for package name: $packageName")
             null
         }
     }
@@ -596,10 +558,8 @@ object Utilities {
                 } else {
                     fileOrDirectory.delete()
                 }
-            Logger.d(LOG_TAG_DOWNLOAD, "deleteRecursive File : ${fileOrDirectory.path}, $isDeleted")
             return isDeleted
         } catch (e: Exception) { // Catches SecurityException, IOException, etc.
-            Logger.w(LOG_TAG_DOWNLOAD, "err on file delete: ${e.message}", e)
         }
         return false
     }
@@ -637,7 +597,6 @@ object Utilities {
 
             return File(localBlocklist)
         } catch (e: IOException) {
-            Logger.e(LOG_TAG_VPN, "err fetching local blocklist: " + e.message, e)
             null
         }
     }
@@ -646,7 +605,6 @@ object Utilities {
         return try {
             return File(dirPath + fileName)
         } catch (e: IOException) {
-            Logger.e(LOG_TAG_VPN, "Could not fetch blocklist path: " + e.message, e)
             null
         }
     }
@@ -763,9 +721,7 @@ object Utilities {
             val totalBytes = bytes / unit.toDouble().pow(exp.toDouble())
             return String.format(Locale.ROOT, DECIMAL_FORMAT_PATTERN, totalBytes, pre)
         } catch (e: NumberFormatException) {
-            Logger.e(LOG_TAG_DOWNLOAD, "err in humanReadableByteCount: ${e.message}", e)
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_DOWNLOAD, "err in humanReadableByteCount: ${e.message}", e)
         }
         return ""
     }
@@ -793,12 +749,9 @@ object Utilities {
             // Extract the specific tag value
             if (jsonObject.has(tag)) {
                 tagValue = jsonObject.get(tag).asString
-                Logger.i(LOG_TAG_DOWNLOAD, "get tag value: $tagValue, for tag: $tag")
             } else {
-                Logger.i(LOG_TAG_DOWNLOAD, "tag not found: $tag")
             }
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_DOWNLOAD, "err parsing the json file: ${e.message}", e)
         }
         return tagValue
     }

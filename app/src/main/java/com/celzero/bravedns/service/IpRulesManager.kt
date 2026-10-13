@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import android.content.Context
 import androidx.lifecycle.LiveData
 import com.celzero.bravedns.R
@@ -99,7 +97,6 @@ object IpRulesManager : KoinComponent {
     }
 
     private fun logv(msg: String) {
-        Logger.v(LOG_TAG_FIREWALL, msg)
     }
 
     suspend fun load(): Long {
@@ -109,12 +106,10 @@ object IpRulesManager : KoinComponent {
             // not cause any issues, but to avoid unnecessary entries in the trie, skipping these
             // entries
             if (it.uid < 0 && it.uid != Constants.UID_EVERYBODY) {
-                Logger.i(LOG_TAG_FIREWALL, "skipping ip rule for uid: ${it.uid}")
                 return@forEach
             }
             val pair = it.getCustomIpAddress()
             if (pair == null) {
-                Logger.w(LOG_TAG_FIREWALL, "invalid ip address for rule: ${it.ipAddress}")
                 return@forEach
             }
             val ipaddr = pair.first
@@ -123,15 +118,12 @@ object IpRulesManager : KoinComponent {
             val v = treeVal(it.uid, port, it.status, it.proxyId, it.proxyCC)
             if (k != null) {
                 try {
-                    Logger.vv(LOG_TAG_FIREWALL, "iptree.add($k, $v)")
                     iptree.add(k, v)
                     if (it.proxyCC.isNotEmpty()) selectedCCs.add(it.proxyCC)
                 } catch (e: Exception) {
-                    Logger.e(LOG_TAG_FIREWALL, "err iptree.add($k, $v)", e)
                 }
             }
         }
-        Logger.i(LOG_TAG_FIREWALL, "ip rules loaded, count: ${iptree.len()}")
         return iptree.len()
     }
 
@@ -183,7 +175,6 @@ object IpRulesManager : KoinComponent {
                 // the database (see padAndNormalize) but cannot be matched by the
                 // CIDR-only ip trie, so it will not be enforced until edited to a
                 // CIDR-able form.
-                Logger.w(LOG_TAG_FIREWALL, "wildcard '$ipstr' has no single CIDR block; rule stored but not enforced")
             }
             singleBlock?.toCanonicalString()
         } else {
@@ -204,7 +195,6 @@ object IpRulesManager : KoinComponent {
     }
 
     suspend fun removeIpRule(uid: Int, ipstr: String, port: Int) {
-        Logger.i(LOG_TAG_FIREWALL, "ip rule, rmv: $ipstr for uid: $uid")
         if (ipstr.isEmpty()) {
             return
         }
@@ -223,7 +213,6 @@ object IpRulesManager : KoinComponent {
         db.update(ci)
         val ipaddr = normalize(ci.getCustomIpAddress()?.first)
         val k = treeKey(ipaddr)
-        Logger.i(LOG_TAG_FIREWALL, "ip rule, update: $ipaddr for uid: ${ci.uid}; status: ${ci.status}")
 
         if (!k.isNullOrEmpty()) {
             // escape old entries and add updated rule using ci.port (not android attr)
@@ -298,7 +287,6 @@ object IpRulesManager : KoinComponent {
             }
         }
 
-        Logger.i(LOG_TAG_FIREWALL, "hasRule? NO $uid, $ipstr, $port")
         resultsCache.put(ck, IpRuleStatus.NONE)
         return IpRuleStatus.NONE
     }
@@ -329,7 +317,6 @@ object IpRulesManager : KoinComponent {
             }
         }
 
-        Logger.i(LOG_TAG_FIREWALL, "hasProxy? NO $uid, $ipstr, $port")
         return Pair("","")
     }
 
@@ -338,12 +325,10 @@ object IpRulesManager : KoinComponent {
             val ip: IPAddress? = IPAddressString(ipstr).address
             val port: Int = p ?: 0
             if (ip == null) {
-                Logger.w(LOG_TAG_FIREWALL, "Invalid IP address; ip:port $ipstr:$port")
                 return Pair(IPAddressString("0.0.0.0").address, 0)
             }
             return Pair(ip, port)
         } catch (e: Exception) { // AddressStringException, IncompatibleAddressException
-            Logger.w(LOG_TAG_FIREWALL, "Invalid IP address; ip:port $ipstr:$p", e)
             return Pair(IPAddressString("0.0.0.0").address, 0)
         }
     }
@@ -401,7 +386,6 @@ object IpRulesManager : KoinComponent {
             val proxyCC = items[4]
             return TreeVal(uid, port, status, proxyId, proxyCC)
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_FIREWALL, "err converting string to TreeVal: $s, ${e.message}")
             return null
         }
     }
@@ -495,7 +479,6 @@ object IpRulesManager : KoinComponent {
         }
         db.deleteRulesByUid(uid)
         resultsCache.invalidateAll()
-        Logger.i(LOG_TAG_FIREWALL, "deleted all ip rules for uid: $uid")
     }
 
     suspend fun deleteRules(list: List<CustomIp>) {
@@ -554,7 +537,6 @@ object IpRulesManager : KoinComponent {
 
         val ipaddr = customIp.getCustomIpAddress()?.first
         if (ipaddr == null) {
-            Logger.w(LOG_TAG_FIREWALL, "Invalid IP address added")
             customIp.uid = uid
             customIp.ruleType = IPRuleType.IPV4.id
             return customIp
@@ -591,7 +573,6 @@ object IpRulesManager : KoinComponent {
             // null) rather than being silently destroyed.
             return normalize(pair.first) ?: ipStr
         } catch (e: NullPointerException) {
-            Logger.e(Logger.LOG_TAG_VPN, "Invalid IP address added", e)
         }
         return "" // empty ips mean its a port-only rule
     }
@@ -639,10 +620,6 @@ object IpRulesManager : KoinComponent {
     }
 
     suspend fun addIpRule(uid: Int, ipstr: IPAddress, port: Int?, status: IpRuleStatus, proxyId: String, proxyCC: String): CustomIp {
-        Logger.i(
-            LOG_TAG_FIREWALL,
-            "ip rule, add rule for ($uid) ip: $ipstr, $port with status: ${status.name}"
-        )
         val normalizedIp = padAndNormalize(ipstr)
         val c = makeCustomIp(uid, normalizedIp, port, status, wildcard = false, proxyId, proxyCC)
         db.insert(c)
@@ -650,7 +627,6 @@ object IpRulesManager : KoinComponent {
         if (!k.isNullOrEmpty()) {
             iptree.escLike(k, treeValLike(uid, port ?: 0))
             iptree.add(k, treeVal(uid, port ?: 0, status.id, proxyId, proxyCC))
-            Logger.d(LOG_TAG_FIREWALL, "iptree.add($k, ${treeVal(uid, port ?: 0, status.id, proxyId, proxyCC)})")
         }
         resultsCache.invalidateAll()
         return c
@@ -667,14 +643,12 @@ object IpRulesManager : KoinComponent {
         }
         resultsCache.invalidateAll()
         load()
-        Logger.i(LOG_TAG_FIREWALL, "ip rules updated")
     }
 
     suspend fun updateUid(oldUid: Int, newUid: Int) {
         db.updateUid(oldUid, newUid)
         resultsCache.invalidateAll()
         load()
-        Logger.i(LOG_TAG_FIREWALL, "ip rules updated for $oldUid to $newUid")
     }
 
     suspend fun replaceIpRule(
@@ -687,7 +661,6 @@ object IpRulesManager : KoinComponent {
     ) {
         val pair = prevRule.getCustomIpAddress()
         if (pair == null) {
-            Logger.e(LOG_TAG_FIREWALL, "invalid IP address on replaceIpRule ${prevRule.ipAddress}, ${prevRule.port}")
             return
         }
 
@@ -699,10 +672,6 @@ object IpRulesManager : KoinComponent {
         // stale rule.
         val prevIpAddrStr = normalize(prevIpaddr) ?: prevRule.ipAddress
         val newIpAddrStr = padAndNormalize(ipaddr)
-        Logger.i(
-            LOG_TAG_FIREWALL,
-            "ip rule, replace (${prevRule.uid}); ${prevIpAddrStr}:${prevPort}; new: $ipaddr:$port, ${newStatus.name}"
-        )
         val isDeleted = db.deleteRule(prevRule.uid, prevIpAddrStr, prevRule.port)
         if (isDeleted == 0) {
             // delete didn't occur with normalized addr, use ip from prevRule obj
@@ -798,27 +767,23 @@ object IpRulesManager : KoinComponent {
                 ips.validate()
                 ipNet = ips.address
             } catch (e: Exception) {
-                Logger.w(LOG_TAG_FIREWALL, "err: getIpNetPort, ${e.message}", e)
             }
         } else {
             try {
                 ipNet = IPAddressString(h.first).address
                 port = h.second.toIntOrNull() ?: 0
             } catch (e: Exception) {
-                Logger.w(LOG_TAG_FIREWALL, "err: getIpNetPort, ${e.message}", e)
             }
         }
         return Pair(ipNet, port)
     }
 
     suspend fun tombstoneRulesByUid(oldUid: Int) {
-        Logger.i(LOG_TAG_FIREWALL, "tombstone rules for uid: $oldUid")
         // here tombstone means negating the uid of the rule
         // this is used when the app is uninstalled, so that the rules are not deleted
         // but the uid is set to (-1 * uid), so that the rules are not applied
         val newUid = if (oldUid > 0) -1 * oldUid else oldUid
         if (newUid == oldUid) {
-            Logger.w(LOG_TAG_FIREWALL, "tombstone: same uids, old: $oldUid, new: $newUid, no-op")
             return
         }
         db.tombstoneRulesByUid(oldUid, newUid)
@@ -861,8 +826,6 @@ object IpRulesManager : KoinComponent {
                     isAnyTrusted = true
                 }
             }
-            if (!isAnyTrusted) Logger.vv(LOG_TAG_FIREWALL, "isPortRuleSetForIp: $ip, $uid => false")
-            else Logger.i(LOG_TAG_FIREWALL, "isPortRuleSetForIp: $ip, $uid => true")
 
             return isAnyTrusted
         }

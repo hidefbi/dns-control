@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.receiver
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -48,7 +46,6 @@ class NotificationActionReceiver : BroadcastReceiver(), KoinComponent {
     override fun onReceive(context: Context, intent: Intent) {
         // TODO - Move the NOTIFICATION_ACTIONs value to enum
         val action: String? = intent.getStringExtra(Constants.NOTIFICATION_ACTION)
-        Logger.i(LOG_TAG_VPN, "received notification action: $action")
         val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         when (action) {
             OrbotHelper.ORBOT_NOTIFICATION_ACTION_TEXT -> {
@@ -76,7 +73,6 @@ class NotificationActionReceiver : BroadcastReceiver(), KoinComponent {
             Constants.NOTIF_ACTION_NEW_APP_ALLOW -> {
                 val uid = intent.getIntExtra(Constants.NOTIF_INTENT_EXTRA_APP_UID, Int.MIN_VALUE)
                 if (uid < 0) {
-                    Logger.i(LOG_TAG_VPN, "Invalid uid: $uid, on new app allow, ignoring")
                     return
                 }
 
@@ -87,7 +83,6 @@ class NotificationActionReceiver : BroadcastReceiver(), KoinComponent {
             Constants.NOTIF_ACTION_NEW_APP_DENY -> {
                 val uid = intent.getIntExtra(Constants.NOTIF_INTENT_EXTRA_APP_UID, Int.MIN_VALUE)
                 if (uid < 0) {
-                    Logger.i(LOG_TAG_VPN, "Invalid uid: $uid, on new app deny, ignoring")
                     return
                 }
 

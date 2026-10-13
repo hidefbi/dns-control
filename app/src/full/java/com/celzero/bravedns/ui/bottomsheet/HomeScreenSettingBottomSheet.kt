@@ -15,9 +15,6 @@
  */
 package com.celzero.bravedns.ui.bottomsheet
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -133,7 +130,6 @@ class HomeScreenSettingBottomSheet : BottomSheetDialogFragment() {
     private fun initView() {
         b.bsHomeScreenConnectedStatus.text = getConnectionStatus()
         val selectedIndex = appConfig.getBraveMode().mode
-        Logger.d(LOG_TAG_VPN, "Home screen bottom sheet selectedIndex: $selectedIndex")
         updateStatus(selectedIndex)
     }
 
@@ -239,7 +235,6 @@ class HomeScreenSettingBottomSheet : BottomSheetDialogFragment() {
                     }
                     success = true
                 } catch (e: Exception) {
-                    Logger.e(LOG_TAG_VPN, "err refreshing resolvers/proxies: ${e.message}", e)
                 } finally {
                     if (isAdded && isVisible) {
                         b.bsHomeScreenRefreshIcon.isEnabled = true
@@ -259,10 +254,8 @@ class HomeScreenSettingBottomSheet : BottomSheetDialogFragment() {
 
     private fun openProxySettings(screen: String) {
         val intent = if (screen == SCREEN_WG) {
-            Logger.d(LOG_TAG_UI, "hmbs; invoke wireguard settings screen")
             Intent(requireContext(), WgMainActivity::class.java)
         } else {
-            Logger.d(LOG_TAG_UI, "hmbs; invoke proxy settings screen")
             Intent(requireContext(), ProxySettingsActivity::class.java)
         }
         startActivity(intent)

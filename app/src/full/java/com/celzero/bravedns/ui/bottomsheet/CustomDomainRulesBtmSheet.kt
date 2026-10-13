@@ -1,7 +1,5 @@
 package com.celzero.bravedns.ui.bottomsheet
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.content.res.Configuration
@@ -59,7 +57,6 @@ class CustomDomainRulesBtmSheet :
     }
 
     companion object {
-        private const val TAG = "CDRBtmSht"
         private const val ARG_CUSTOM_DOMAIN = "custom_domain"
 
         fun newInstance(customDomain: CustomDomain): CustomDomainRulesBtmSheet {
@@ -96,7 +93,6 @@ class CustomDomainRulesBtmSheet :
         // Retrieve CustomDomain from arguments
         @Suppress("DEPRECATION")
         cd = arguments?.getSerializable(ARG_CUSTOM_DOMAIN) as? CustomDomain ?: run {
-            Logger.e(LOG_TAG_UI, "$TAG CustomDomain not found in arguments, dismissing")
             dismiss()
             return
         }
@@ -105,7 +101,6 @@ class CustomDomainRulesBtmSheet :
             Themes.applyBottomSheetSystemBarAppearance(window, isDarkThemeOn(), persistentState.theme)
         }
 
-        Logger.v(LOG_TAG_UI, "$TAG, view created for ${cd.domain}")
         init()
         initClickListeners()
     }
@@ -135,7 +130,6 @@ class CustomDomainRulesBtmSheet :
                 }
             }
         }
-        Logger.v(LOG_TAG_UI, "$TAG, init for ${cd.domain}, uid: $uid")
         val rules = DomainRulesManager.getDomainRule(cd.domain, uid)
         b.customDomainTv.text = cd.domain
         updateStatusUi(
@@ -362,15 +356,12 @@ class CustomDomainRulesBtmSheet :
                 DomainRulesManager.Status.getStatus(cd.status),
                 cd.modifiedTs
             )
-            Logger.i(LOG_TAG_UI, "$TAG onDismissWg: ${cd.domain}, ${cd.proxyId}")
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "$TAG err in onDismissWg ${e.message}", e)
         }
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        Logger.v(LOG_TAG_UI, "$TAG onDismiss; domain: ${cd.domain}")
     }
 
 }

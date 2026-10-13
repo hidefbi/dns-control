@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.receiver
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -31,14 +29,11 @@ class UserPresentReceiver : BroadcastReceiver() {
         when (intent.action) {
             Intent.ACTION_USER_PRESENT -> {
                 VpnController.screenUnlock()
-                Logger.v(LOG_TAG_UI, "user-present: action user present, inform vpn service")
             }
             Intent.ACTION_SCREEN_OFF -> {
                 VpnController.screenLock()
-                Logger.v(LOG_TAG_UI, "user-present: action screen off, inform vpn service")
             }
             else -> {
-                Logger.v(LOG_TAG_UI, "user-present: unknown action ${intent.action}, skipping")
             }
         }
     }

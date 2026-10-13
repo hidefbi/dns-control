@@ -18,7 +18,6 @@ package com.celzero.bravedns.customdownloader
 import android.content.Context
 import com.celzero.bravedns.R
 import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_OKHTTP
 import com.celzero.bravedns.RethinkDnsApplication.Companion.DEBUG
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.Daemons
@@ -72,7 +71,6 @@ class RetrofitManager {
             logScope.launch {
                 val ts = Utilities.convertLongToTime(reqTime, Constants.TIME_FORMAT_4)
                 val msg = "$ts --> ${request.method} ${request.url}"
-                Logger.d(LOG_OKHTTP, msg)
                 Logger.wireLog(msg)
             }
 
@@ -86,11 +84,9 @@ class RetrofitManager {
                     val ts = Utilities.convertLongToTime(respTime, Constants.TIME_FORMAT_4)
                     val prefix = "$ts <-- ${response.code} ${request.method} ${request.url}"
                     val msg = if (cfRay != null) "$prefix | cf-ray: $cfRay" else "$prefix | no-ray"
-                    Logger.d(LOG_OKHTTP, msg)
                     Logger.wireLog(msg)
                 }
             } catch (e: Exception) {
-                Logger.e(LOG_OKHTTP, "err extracting ray-id from response: ${e.message}", e)
             }
             response
         }
@@ -174,7 +170,6 @@ class RetrofitManager {
             return try {
                 InetAddress.getByName(ip)
             } catch (e: Exception) {
-                Logger.e(Logger.LOG_TAG_DOWNLOAD, "err while getting ip address: ${e.message}", e)
                 throw e
             }
         }
@@ -215,11 +210,6 @@ class RetrofitManager {
             val ctx: Context = try {
                 GlobalContext.get().get<Context>()
             } catch (e: Exception) {
-                Logger.e(
-                    Logger.LOG_TAG_DOWNLOAD,
-                    "err; koin context unavailable, skip host pinning: ${e.message}",
-                    e
-                )
                 return emptyMap()
             }
             val urls: Array<String>
@@ -228,15 +218,10 @@ class RetrofitManager {
                 urls = ctx.resources.getStringArray(R.array.urls)
                 ips = ctx.resources.getStringArray(R.array.ips)
             } catch (e: Exception) {
-                Logger.e(Logger.LOG_TAG_DOWNLOAD, "err; reading server table: ${e.message}", e)
                 return emptyMap()
             }
             if (urls.size != ips.size) {
                 // Mismatched arrays would misalign host<->IP; bail out rather than guess.
-                Logger.e(
-                    Logger.LOG_TAG_DOWNLOAD,
-                    "err; urls (${urls.size}) / ips (${ips.size}) length mismatch; skip host pinning"
-                )
                 return emptyMap()
             }
             val out = mutableMapOf<String, List<InetAddress>>()

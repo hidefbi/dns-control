@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.dialog
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.app.Activity
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -264,14 +262,12 @@ class CustomLanIpDialog(
             // Set the customIpChanged flag if mode changed OR we had custom values and now cleared them
             if (modeChanged) {
                 persistentState.customModeOrIpChanged = true
-                Logger.i(LOG_TAG_UI, "Custom LAN IPs cleared (switched to AUTO)")
             }
 
             hideError()
             Toast.makeText(context, R.string.custom_lan_ip_saved_auto, Toast.LENGTH_SHORT).show()
             dismiss()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "err saving custom lan ip (auto): ${e.message}", e)
             showError(context.getString(R.string.custom_lan_ip_save_error))
         }
     }
@@ -339,14 +335,12 @@ class CustomLanIpDialog(
             // Set the customIpChanged flag if mode changed OR IP values changed
             if (modeChanged || ipValuesChanged) {
                 persistentState.customModeOrIpChanged = true
-                Logger.i(LOG_TAG_UI, "Custom LAN IPs changed - mode changed: $modeChanged, IP values changed: $ipValuesChanged")
             }
 
             hideError()
             Toast.makeText(context, R.string.custom_lan_ip_saved_manual, Toast.LENGTH_SHORT).show()
             dismiss()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "err saving custom lan ip (manual): ${e.message}", e)
             showError(context.getString(R.string.custom_lan_ip_save_error))
         }
     }
@@ -374,7 +368,6 @@ class CustomLanIpDialog(
         // Both must be empty or both must be filled
         if (ip.isEmpty() && prefixText.isEmpty()) return true
         if (ip.isEmpty() || prefixText.isEmpty()) {
-            Logger.w(LOG_TAG_UI, "IPv4 validation failed: both IP and prefix must be provided together")
             return false
         }
 
@@ -382,35 +375,29 @@ class CustomLanIpDialog(
             // Validate IP address
             val addr = IPAddressString(ip).address
             if (addr == null) {
-                Logger.w(LOG_TAG_UI, "IPv4 validation failed: invalid IP address format: $ip")
                 return false
             }
             if (!addr.isIPv4) {
-                Logger.w(LOG_TAG_UI, "IPv4 validation failed: not an IPv4 address: $ip")
                 return false
             }
 
             // Only allow RFC1918 private IPv4 ranges (unique local for IPv4)
             val host = addr.toNormalizedString() // e.g. "10.0.0.1"
             if (!isRfc1918Ipv4(host)) {
-                Logger.w(LOG_TAG_UI, "IPv4 validation failed: not a private/unique local address (must be 10.x.x.x, 172.16-31.x.x, or 192.168.x.x): $host")
                 return false
             }
 
             // Validate prefix length
             val prefix = prefixText.toIntOrNull()
             if (prefix == null) {
-                Logger.w(LOG_TAG_UI, "IPv4 validation failed: invalid prefix length: $prefixText")
                 return false
             }
             if (prefix !in 0..32) {
-                Logger.w(LOG_TAG_UI, "IPv4 validation failed: prefix length must be 0-32, got: $prefix")
                 return false
             }
 
             true
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "IPv4 validation error for $ip/$prefixText: ${e.message}", e)
             false
         }
     }
@@ -419,7 +406,6 @@ class CustomLanIpDialog(
         // Both must be empty or both must be filled
         if (ip.isEmpty() && prefixText.isEmpty()) return true
         if (ip.isEmpty() || prefixText.isEmpty()) {
-            Logger.w(LOG_TAG_UI, "IPv6 validation failed: both IP and prefix must be provided together")
             return false
         }
 
@@ -427,35 +413,29 @@ class CustomLanIpDialog(
             // Validate IP address
             val addr = IPAddressString(ip).address
             if (addr == null) {
-                Logger.w(LOG_TAG_UI, "IPv6 validation failed: invalid IP address format: $ip")
                 return false
             }
             if (!addr.isIPv6) {
-                Logger.w(LOG_TAG_UI, "IPv6 validation failed: not an IPv6 address: $ip")
                 return false
             }
 
             // Only allow Unique Local IPv6 (fc00::/7)
             val host = addr.toNormalizedString() // e.g. "fd00:abcd::1"
             if (!isUlaIpv6(host)) {
-                Logger.w(LOG_TAG_UI, "IPv6 validation failed: not a unique local address (must start with fc or fd): $host")
                 return false
             }
 
             // Validate prefix length
             val prefix = prefixText.toIntOrNull()
             if (prefix == null) {
-                Logger.w(LOG_TAG_UI, "IPv6 validation failed: invalid prefix length: $prefixText")
                 return false
             }
             if (prefix !in 0..128) {
-                Logger.w(LOG_TAG_UI, "IPv6 validation failed: prefix length must be 0-128, got: $prefix")
                 return false
             }
 
             true
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "IPv6 validation error for $ip/$prefixText: ${e.message}", e)
             false
         }
     }

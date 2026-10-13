@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.scheduler
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_SCHEDULER
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -32,7 +30,6 @@ class BlocklistUpdateCheckJob(val context: Context, workerParameters: WorkerPara
     private val persistentState by inject<PersistentState>()
 
     override suspend fun doWork(): Result {
-        Logger.i(LOG_TAG_SCHEDULER, "starting blocklist update check job")
 
         isDownloadRequired(
             persistentState.localBlocklistTimestamp,

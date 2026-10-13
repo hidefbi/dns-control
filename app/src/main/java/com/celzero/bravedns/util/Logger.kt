@@ -23,19 +23,9 @@ object Logger {
 
     const val LOG_TAG_APP_UPDATE = "NonStoreAppUpdater"
     const val LOG_TAG_VPN = "RethinkDnsVpn"
-    const val LOG_TAG_CONNECTION = "ConnectivityEvents"
-    const val LOG_TAG_DNS = "DnsManager"
-    const val LOG_TAG_FIREWALL = "FirewallManager"
     const val LOG_TAG_APP_DB = "AppDatabase"
     const val LOG_TAG_DOWNLOAD = "DownloadManager"
-    const val LOG_TAG_UI = "RethinkUI"
-    const val LOG_TAG_SCHEDULER = "JobScheduler"
     const val LOG_TAG_BACKUP_RESTORE = "BackupRestore"
-    const val LOG_TAG_PROXY = "ProxyLogs"
-    const val LOG_QR_CODE = "QrCodeFromFileScanner"
-    const val LOG_TAG_APP = "ExceptionHandler"
-    const val LOG_OKHTTP = "OkHttp"
-    const val LOG_FIREBASE = "FirebaseErrorReporting"
 
     // github.com/celzero/firestack/blob/bce8de917f/intra/log/logger.go#L76
     enum class LoggerLevel(val id: Long) {
@@ -121,12 +111,6 @@ object Logger {
         }
     }
 
-    fun vv(tag: String, message: String) = Unit
-    fun v(tag: String, message: String) = Unit
-    fun d(tag: String, message: String) = Unit
-    fun i(tag: String, message: String) = Unit
-    fun w(tag: String, message: String, e: Exception? = null) = Unit
-    fun e(tag: String, message: String, e: Exception? = null) = Unit
     fun crash(tag: String, message: String, e: Exception? = null) = Unit
 
     fun throwableToException(throwable: Throwable): Exception {

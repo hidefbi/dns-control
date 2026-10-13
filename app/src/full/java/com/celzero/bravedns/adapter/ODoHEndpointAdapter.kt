@@ -16,8 +16,6 @@ limitations under the License.
 
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DNS
 import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
@@ -175,10 +173,6 @@ class ODoHEndpointAdapter(private val context: Context, private val appConfig: A
         }
 
         private fun updateConnection(endpoint: ODoHEndpoint) {
-            Logger.d(
-                LOG_TAG_DNS,
-                "on-ODoH change ${endpoint.name}, ${endpoint.proxy}, ${endpoint.resolver}, ${endpoint.isSelected}"
-            )
             io {
                 endpoint.isSelected = true
                 appConfig.handleODoHChanges(endpoint)

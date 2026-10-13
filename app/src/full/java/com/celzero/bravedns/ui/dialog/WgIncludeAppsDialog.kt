@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.dialog
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.app.Activity
 import android.app.Dialog
 import android.graphics.PorterDuff
@@ -281,10 +279,8 @@ class WgIncludeAppsDialog(
         ) { _, _ ->
             io {
                 if (toAdd) {
-                    Logger.i(LOG_TAG_PROXY, "Adding all apps to proxy $proxyId, $proxyName")
                     ProxyManager.setProxyIdForAllApps(proxyId, proxyName)
                 } else {
-                    Logger.i(LOG_TAG_PROXY, "Removing all apps from proxy $proxyId, $proxyName")
                     ProxyManager.setNoProxyForAllAppsForProxy(proxyId)
                 }
                 // re-apply current filter to force Paging source reload and UI refresh
@@ -311,7 +307,6 @@ class WgIncludeAppsDialog(
         builder.setCancelable(true)
         builder.setPositiveButton(context.getString(R.string.lbl_include)) { _, _ ->
             io {
-                Logger.i(LOG_TAG_PROXY, "Adding remaining apps to proxy $proxyId, $proxyName")
                 ProxyManager.setProxyIdForUnselectedApps(proxyId, proxyName)
                 // refresh paging / adapter after bulk add
                 withContext(Dispatchers.Main) {

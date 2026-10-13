@@ -15,9 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
@@ -109,7 +106,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
     // SSID permission handling
     private val ssidPermissionCallback = object : SsidPermissionManager.PermissionCallback {
         override fun onPermissionsGranted() {
-            Logger.vv(LOG_TAG_UI, "ssid-callback permissions granted")
             // Check if we need background location too
             if (isAtleastQ() && !SsidPermissionManager.hasBackgroundLocationPermission(this@WgConfigDetailActivity)) {
                 showLocationDisclosureDialog {
@@ -126,7 +122,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
         override fun onPermissionsDenied() {
             // Show dialog asking user to manually enable permissions in settings
-            Logger.vv(LOG_TAG_UI, "ssid-callback permissions denied")
             ui {
                 showPermissionDeniedDialog()
             }
@@ -134,7 +129,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
         override fun onPermissionsRationale() {
             // Show explanation dialog before requesting permissions
-            Logger.vv(LOG_TAG_UI, "ssid-callback permissions rationale")
             ui {
                 showLocationDisclosureDialog {
                     SsidPermissionManager.requestSsidPermissions(this@WgConfigDetailActivity)
@@ -204,7 +198,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        Logger.vv(LOG_TAG_UI, "onRequestPermissionsResult: requestCode=$requestCode")
         // Handle SSID permission results
         SsidPermissionManager.handlePermissionResult(
             requestCode,
@@ -221,7 +214,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
     private fun init() {
         if (!VpnController.hasTunnel()) {
-            Logger.i(LOG_TAG_PROXY, "VPN not active, config may not be available")
             Utilities.showToastUiCentered(
                 this,
                         getString(R.string.settings_socks5_vpn_disabled_error),
@@ -399,7 +391,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
                 try {
                     fetchAndApplyStats(id)
                 } catch (e: Exception) {
-                    Logger.w(LOG_TAG_UI, "stats poll error: ${e.message}")
                 }
                 delay(STATS_POLL_MS.milliseconds)
             }
@@ -421,13 +412,10 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
             var ip6Meta: IPMetadata? = null
             try {
                 val cid = ID_WG_BASE + id
-                Logger.d(LOG_TAG_UI, "resolveClientIps[$id]: live fetch")
                 val client = VpnController.getWgClientInfoById(cid)
                 ip4Meta = client?.iP4()
                 ip6Meta = client?.iP6()
-                Logger.v(LOG_TAG_UI, "client ips resolved for $id: ip4: ${ip4Meta}, ip6: $ip6Meta")
             } catch (e: Exception) {
-                Logger.w(LOG_TAG_UI, "failed to resolve client ips: ${e.message}")
             }
             uiCtx { applyClientIps(ip4Meta, ip6Meta) }
         }
@@ -805,7 +793,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
                         return@io
                     }
                     val hopId = WgHopManager.getHop(configId)
-                    Logger.d(LOG_TAG_PROXY, "hop result: $hopId")
                     val iid = convertStringIdToId(hopId)
                     val hopables = WgHopManager.getHopableWgs(configId)
                     uiCtx {
@@ -835,7 +822,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
             val configId = id.substring(ID_WG_BASE.length)
             configId.toIntOrNull() ?: INVALID_CONF_ID
         } catch (_: Exception) {
-            Logger.i(LOG_TAG_PROXY, "err converting string id to int: $id")
             INVALID_CONF_ID
         }
     }
@@ -864,10 +850,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
             // checks only for app mode, so show appropriate error message if not enabled
             if (!WireguardManager.canEnableProxy()) {
-                Logger.i(
-                    LOG_TAG_PROXY,
-                    "not in DNS+Firewall mode, cannot enable WireGuard"
-                )
                 uiCtx {
                     // reset the check box
                     b.catchAllCheck.isChecked = false
@@ -882,7 +864,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
             if (WireguardManager.oneWireGuardEnabled()) {
                 // this should not happen, ui is disabled if one wireGuard is enabled
-                Logger.w(LOG_TAG_PROXY, "one wireGuard is already enabled")
                 uiCtx {
                     // reset the check box
                     b.catchAllCheck.isChecked = false
@@ -897,7 +878,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
             val config = WireguardManager.getConfigFilesById(configId)
             if (config == null) {
-                Logger.e(LOG_TAG_PROXY, "updateCatchAll: config not found for $configId")
                 uiCtx {
                     // reset the check box
                     b.catchAllCheck.isChecked = false
@@ -1079,7 +1059,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
             hideSsidExtras(editGroup, displayGroup)
             hideErrorLayouts(permissionErrorLayout, locationErrorLayout)
             sw.isEnabled = false
-            Logger.w(LOG_TAG_UI, "setupSsidSection: cfg is null for $configId")
             return
         }
 
@@ -1089,7 +1068,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
             hideErrorLayouts(permissionErrorLayout, locationErrorLayout)
             sw.isEnabled = false
             layout.visibility = View.GONE
-            Logger.w(LOG_TAG_UI, "setupSsidSection: device not supported for SSID feature")
             return
         }
 
@@ -1123,7 +1101,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
             hideSsidExtras(editGroup, displayGroup)
         }
 
-        Logger.d(LOG_TAG_UI, "SSID permissions: $hasPermissions, Location enabled: $isLocationEnabled, checked: ${b.ssidCheck.isChecked}")
         // Show/hide error layouts based on permission and location status
         updateErrorLayouts(hasPermissions, isLocationEnabled, permissionErrorLayout, locationErrorLayout)
 
@@ -1139,13 +1116,11 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
                     showLocationDisclosureDialog {
                         SsidPermissionManager.requestSsidPermissions(this@WgConfigDetailActivity)
                     }
-                    Logger.d(LOG_TAG_UI, "SSID foreground permissions not granted, requesting...")
                     return@setOnCheckedChangeListener
                 } else if (isAtleastQ() && !hasBackground) {
                     showLocationDisclosureDialog {
                         SsidPermissionManager.requestBackgroundLocationPermission(this@WgConfigDetailActivity)
                     }
-                    Logger.d(LOG_TAG_UI, "SSID background permissions not granted, requesting...")
                     return@setOnCheckedChangeListener
                 }
             }
@@ -1156,7 +1131,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
                 showLocationDisclosureDialog {
                     SsidPermissionManager.requestSsidPermissions(this@WgConfigDetailActivity)
                 }
-                Logger.d(LOG_TAG_UI, "Location services not enabled, prompting user...")
                 return@setOnCheckedChangeListener
             }
 
@@ -1186,11 +1160,9 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
                         }
                     }
                 }
-                Logger.i(LOG_TAG_UI, "SSID feature enabled for configId: $configId")
             } else {
                 // Disabling SSID feature
                 hideSsidExtras(editGroup, displayGroup)
-                Logger.i(LOG_TAG_UI, "SSID feature disabled for configId: $configId")
             }
 
             // Update error layouts after state change with current permission status
@@ -1283,7 +1255,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
         // Show permission error if SSID is enabled but permissions are missing
         if (sw.isChecked && !hasPermissions) {
-            Logger.vv(LOG_TAG_UI, "Showing permission error layout")
             permissionErrorLayout.visibility = View.VISIBLE
         } else {
             permissionErrorLayout.visibility = View.GONE
@@ -1291,7 +1262,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
 
         // Show location error if SSID is enabled and has permissions but location is disabled
         if (sw.isChecked && hasPermissions && !isLocationEnabled) {
-            Logger.vv(LOG_TAG_UI, "Showing location error layout")
             locationErrorLayout.visibility = View.VISIBLE
         } else {
             locationErrorLayout.visibility = View.GONE
@@ -1302,7 +1272,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
         permissionErrorLayout: LinearLayout,
         locationErrorLayout: LinearLayout
     ) {
-        Logger.vv(LOG_TAG_UI, "Hiding all SSID error layouts")
         permissionErrorLayout.visibility = View.GONE
         locationErrorLayout.visibility = View.GONE
     }

@@ -3,8 +3,6 @@ package com.celzero.bravedns.download
 import android.content.Context
 import android.util.Base64
 import com.celzero.bravedns.util.Constants
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
 import org.json.JSONObject
 import java.io.File
 import java.io.FileInputStream
@@ -62,7 +60,6 @@ object BlocklistVerifier {
                 }
             }
             prefs.edit().putLong(KEY_SEQ, seq).apply()
-            Logger.i(LOG_TAG_DOWNLOAD, "blocklist signature verified, sequence $seq")
             return true
         } catch (e: Exception) {
             return fail("exception ${e.message}")
@@ -70,7 +67,6 @@ object BlocklistVerifier {
     }
 
     private fun fail(why: String): Boolean {
-        Logger.e(LOG_TAG_DOWNLOAD, "blocklist verification failed: $why")
         return false
     }
 

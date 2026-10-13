@@ -72,17 +72,11 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
     override fun doWork(): Result {
         val backupFileUri = inputData.getString(DATA_BUILDER_BACKUP_URI)?.toUri()
         if (backupFileUri == null) {
-            Logger.w(LOG_TAG_BACKUP_RESTORE, "backup file uri is null, return failure")
             return Result.failure()
         }
 
-        Logger.d(LOG_TAG_BACKUP_RESTORE, "begin backup process with file uri: $backupFileUri")
         val isBackupSucceed = startBackupProcess(backupFileUri)
 
-        Logger.i(
-            LOG_TAG_BACKUP_RESTORE,
-            "completed backup process, is backup successful? $isBackupSucceed"
-        )
         if (isBackupSucceed) {
             startVpn(context)
             return Result.success()
@@ -97,36 +91,21 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
 
             val prefsBackupFile = File(tempDir, SHARED_PREFS_BACKUP_FILE_NAME)
 
-            Logger.d(
-                    LOG_TAG_BACKUP_RESTORE,
-                    "backup process, temp file dir: ${tempDir.path}, prefs backup file: ${prefsBackupFile.path}"
-                )
             processCompleted = saveSharedPreferencesToFile(context, prefsBackupFile)
 
             if (processCompleted) {
-                Logger.d(LOG_TAG_BACKUP_RESTORE, "shared pref backup is added to the temp dir")
             } else {
-                Logger.w(
-                    LOG_TAG_BACKUP_RESTORE,
-                    "failed to add shared pref to temp backup dir, return failure"
-                )
                 return false
             }
 
             // checkpoint databases to flush WAL entries into the main database file
             // so the backup includes all committed data, not just what's in the db file
             appDatabase.checkPoint()
-            Logger.i(LOG_TAG_BACKUP_RESTORE, "database checkpoint completed before backup")
 
             processCompleted = saveDatabasesToFile(tempDir.path)
 
             if (processCompleted) {
-                Logger.d(LOG_TAG_BACKUP_RESTORE, "database backup is added to the temp dir")
             } else {
-                Logger.w(
-                    LOG_TAG_BACKUP_RESTORE,
-                    "failed to add database to temp backup dir, return failure"
-                )
                 return false
             }
 
@@ -137,9 +116,7 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
             processCompleted = createMetaData(tempDir)
 
             if (processCompleted) {
-                Logger.d(LOG_TAG_BACKUP_RESTORE, "metadata is added to the temp dir")
             } else {
-                Logger.w(LOG_TAG_BACKUP_RESTORE, "failed to create metadata file, return failure")
                 return false
             }
 
@@ -166,10 +143,8 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
         // create a copy of a encrypted file to normal file in the temp dir
         // add the file to the zip list
 
-        Logger.d(LOG_TAG_BACKUP_RESTORE, "init backup wireguard configs")
         val dir = File(tempDir, BACKUP_WG_DIR)
         if (!dir.exists()) {
-            Logger.d(LOG_TAG_BACKUP_RESTORE, "creating wireguard backup dir, ${dir.path}")
             dir.mkdirs()
         }
 
@@ -178,7 +153,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
             mappings.forEach { m ->
                 val file = File(m.configPath)
                 if (!file.exists()) {
-                    Logger.w(LOG_TAG_BACKUP_RESTORE, "wg config file missing for ${m.id}, ${m.configPath}")
                     return@forEach
                 }
                 val content = file.readBytes()
@@ -186,24 +160,19 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
                     val tmpWgFile = File(dir, "${m.id}.conf")
                     tmpWgFile.writeBytes(content)
                     filesPathToZip.add(tmpWgFile.absolutePath)
-                    Logger.v(LOG_TAG_BACKUP_RESTORE, "wg ${m.id}.conf added to backup, path: ${tmpWgFile.path}")
                 } else {
-                    Logger.w(LOG_TAG_BACKUP_RESTORE, "empty config for ${m.id}, ${m.configPath}")
                 }
             }
             return true
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_BACKUP_RESTORE, "err while backing up wg config, ${e.message}", e)
         }
         return false
     }
 
     private fun createMetaData(backupDir: File): Boolean {
-        Logger.d(LOG_TAG_BACKUP_RESTORE, "creating meta data file, path: ${backupDir.path}")
         // check if the file exists already, if yes, delete it
         val file = File(backupDir, METADATA_FILENAME)
         if (file.exists()) {
-            Logger.d(LOG_TAG_BACKUP_RESTORE, "metadata file exists, deleting it")
             file.delete()
             filesPathToZip.remove(file.absolutePath)
         }
@@ -234,10 +203,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
     private fun zipAndCopyToDestination(tempDir: File, destUri: Uri): Boolean {
         val bZipSucceeded: Boolean = zip(filesPathToZip, tempDir.path)
 
-        Logger.i(
-            LOG_TAG_BACKUP_RESTORE,
-            "backup zip completed, is success? $bZipSucceeded, proceed to copy $destUri"
-        )
 
         if (bZipSucceeded) {
             val tempZipFile = File(tempDir, TEMP_ZIP_FILE_NAME)
@@ -251,21 +216,12 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
             // write access to the destination dir.
             val copySucceeded: Boolean = copyWithStream(inputStream, outputStream)
             return if (copySucceeded) {
-                Logger.i(
-                    LOG_TAG_BACKUP_RESTORE,
-                    "Copy completed, delete the temp dir ${tempZipFile.path}"
-                )
                 deleteResidue(tempZipFile)
                 true
             } else {
-                Logger.w(
-                    LOG_TAG_BACKUP_RESTORE,
-                    "copy failed to destination dir, path: ${zipFileUri.path}"
-                )
                 false
             }
         } else {
-            Logger.w(LOG_TAG_BACKUP_RESTORE, "backup zip failed, do not proceed")
             return false
         }
     }
@@ -276,10 +232,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
         for (f in files) {
             if (f.name.endsWith("-wal") || f.name.endsWith("-shm") || f.name.endsWith("-journal") ||
                 f.name == "rethink_logs.db") continue
-            Logger.d(
-                    LOG_TAG_BACKUP_RESTORE,
-                    "file ${f.name} found in database dir (${f.absolutePath})"
-                )
             // looks like the journal, shm and wal files are needed for proper restore, so
             // commenting out the below code. still testing it out.
             // TODO: check if the journal files are needed for restore
@@ -346,10 +298,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
 
     private fun backUpFile(backupFilePath: String?, destFilePath: String?): File? {
         if (backupFilePath == null || destFilePath == null) {
-            Logger.w(
-                LOG_TAG_BACKUP_RESTORE,
-                "invalid backup info during db backup, file: $backupFilePath, destination: $destFilePath"
-            )
             return null
         }
         val isCopySuccess = Utilities.copy(backupFilePath, destFilePath)
@@ -360,7 +308,6 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
 
     private fun zip(files: List<String>, zipDirectory: String): Boolean {
         val outputFileName = zipDirectory + File.separator + TEMP_ZIP_FILE_NAME
-        Logger.d(LOG_TAG_BACKUP_RESTORE, "files: $files, output: $outputFileName")
         return try {
             val dest = FileOutputStream(outputFileName)
             val out = ZipOutputStream(BufferedOutputStream(dest))
@@ -377,14 +324,11 @@ class BackupAgent(val context: Context, workerParams: WorkerParameters) :
                     out.write(data, 0, count)
                 }
                 origin.close()
-                Logger.d(LOG_TAG_BACKUP_RESTORE, "$file added to zip, path: $file")
             }
             out.close()
             out.close()
-            Logger.i(LOG_TAG_BACKUP_RESTORE, "$files added to zip")
             true
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_BACKUP_RESTORE, "error while adding files to zip dir, ${e.message}", e)
             false
         }
     }

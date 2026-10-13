@@ -16,9 +16,6 @@ limitations under the License.
 
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DNS
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
@@ -57,7 +54,6 @@ class DohEndpointAdapter(private val context: Context, private val appConfig: Ap
 
     companion object {
         private const val ONE_SEC = 1000L
-        private const val TAG = "DohEndpointAdapter"
         private val DIFF_CALLBACK =
             object : DiffUtil.ItemCallback<DoHEndpoint>() {
                 override fun areItemsTheSame(
@@ -184,7 +180,6 @@ class DohEndpointAdapter(private val context: Context, private val appConfig: Ap
         }
 
         private fun updateConnection(endpoint: DoHEndpoint) {
-            Logger.d(LOG_TAG_DNS, "$TAG update doh; ${endpoint.dohName}, ${endpoint.dohURL}, ${endpoint.isSelected}")
             io {
                 endpoint.isSelected = true
                 appConfig.handleDoHChanges(endpoint)
@@ -193,7 +188,6 @@ class DohEndpointAdapter(private val context: Context, private val appConfig: Ap
 
         private fun deleteEndpoint(id: Int) {
             io {
-                Logger.i(LOG_TAG_DNS, "$TAG delete endpoint; $id")
                 appConfig.deleteDohEndpoint(id)
                 uiCtx {
                     Utilities.showToastUiCentered(
@@ -267,14 +261,12 @@ class DohEndpointAdapter(private val context: Context, private val appConfig: Ap
             if (endpoint.isSelected) {
                 val ips = VpnController.getDnsIps(Backend.Preferred)
                 ip = ips?.split(",")?.firstOrNull()?.trim()?.let { stripPort(it) }
-                Logger.d(LOG_TAG_UI, "ip for doh1: $ip, addr: $ips, url: ${endpoint.dohURL}")
             }
 
             if (ip.isNullOrBlank()) {
                 ip = Utilities.getIpForUrl(context, endpoint.dohURL)
             }
 
-            Logger.d(LOG_TAG_UI, "ip for doh2: $ip, url: ${endpoint.dohURL}")
 
             if (ip.isNullOrBlank()) {
                 uiCtx { b.endpointFlagText.visibility = View.GONE }
@@ -290,7 +282,6 @@ class DohEndpointAdapter(private val context: Context, private val appConfig: Ap
                     b.endpointFlagText.visibility = View.GONE
                 }
             }
-            Logger.d(LOG_TAG_UI, "ip for doh3: $ip, cc: ${ipInfo?.countryCode} url: ${endpoint.dohURL}")
         }
 
         private fun stripPort(addr: String): String {

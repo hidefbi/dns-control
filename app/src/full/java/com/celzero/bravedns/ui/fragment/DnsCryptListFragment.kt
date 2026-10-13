@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.ui.fragment
 
-import com.celzero.bravedns.util.Logger
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Bundle
@@ -153,7 +152,6 @@ class DnsCryptListFragment : Fragment(R.layout.fragment_dns_crypt_list) {
             DnsCryptRelaysDialog(requireActivity(), dnsCryptRelayRecyclerAdapter, themeId)
 
         if (!isAdded && requireActivity().isFinishing) {
-            Logger.w(Logger.LOG_TAG_UI, "DnsCrypt relay, Fragment not added to activity")
             return
         }
 

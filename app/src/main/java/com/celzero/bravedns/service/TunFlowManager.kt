@@ -43,7 +43,6 @@ import com.celzero.bravedns.util.Constants.Companion.INVALID_UID
 import com.celzero.bravedns.util.InternetProtocol
 import com.celzero.bravedns.util.KnownPorts
 import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import com.celzero.bravedns.util.UIUtils.getAccentColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastO
@@ -74,7 +73,6 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
 object TunFlowManager : KoinComponent {
-    private const val TAG = "TunFlowManager"
 
     // Carries references from BraveVPNService that TunFlowManager doesn't own
     class FlowContext(
@@ -103,19 +101,16 @@ object TunFlowManager : KoinComponent {
     // IPv4 VPN constants
     // changing the below ip should require a changes in ConnectionTracer, RethinkLogAdapter
     private const val IPV4_TEMPLATE: String = "10.111.222.%d"
-    private const val IPV4_PREFIX_LENGTH: Int = 24
 
     // IPv6 vpn constants
     // Randomly generated unique local IPv6 unicast subnet prefix, as defined by RFC 4193
     // changing the below ip should require a changes in ConnectionTracer, RethinkLogAdapter
     private const val IPV6_TEMPLATE: String = "fd66:f83a:c650::%d"
-    private const val IPV6_PREFIX_LENGTH: Int = 120
 
     const val VPN_INTERFACE_MTU: Int = 1500
     // TODO: should be different for IPv4 and IPv6, but for now it is same
     // IPv4: 576, IPv6: 1280
     const val MIN_MTU: Int = 1280
-    private const val MAX_MTU: Int = 10000
 
     // Koin-injected dependencies
     private val appConfig by inject<AppConfig>()
@@ -151,18 +146,15 @@ object TunFlowManager : KoinComponent {
     private val activeClosableCidsMutex = Mutex()
 
     private fun logd(msg: String) {
-        Logger.d(LOG_TAG_VPN, "$TAG $msg")
     }
 
     private fun logv(msg: String) {
-        Logger.v(LOG_TAG_VPN, "$TAG $msg")
     }
 
     // no need of go2kt here as it is called from go and just performs db operations
     // requires go2kt if there any calls to go functions
     fun handlePostflow(ctx: FlowContext, s: FlowSummary?) {
         if (s == null) {
-            Logger.i(LOG_TAG_VPN, "received null summary for socket")
             return
         }
 
@@ -218,7 +210,6 @@ object TunFlowManager : KoinComponent {
         logd("onSocketClosed: $s")
 
         if (s.uid.isNullOrEmpty()) {
-            Logger.e(LOG_TAG_VPN, "onSocketClosed: missing uid, summary: $s")
             return
         }
 
@@ -240,7 +231,6 @@ object TunFlowManager : KoinComponent {
             DataUsageTracker.add(key.uid, s.tx, s.rx)
             removeTrackedCid(ctx.scope, s.id, key.uid)
         } catch (e: NumberFormatException) {
-            Logger.e(LOG_TAG_VPN, "onSocketClosed: ${e.message}", e)
         }
     }
 
@@ -253,7 +243,6 @@ object TunFlowManager : KoinComponent {
     ): PreMark {
         val srcIpPort = parseIpAndPort(src)
         val dstIpPort = parseIpAndPort(dst)
-        Logger.d(LOG_TAG_VPN, "preflow: init, uid: $uid, rcvd: $src & $dst, parsed: $srcIpPort & $dstIpPort")
         val newUid = if (uid == INVALID_UID) { // fetch uid only if it is invalid
             val resolvedUid = getUid(
                 ctx,
@@ -268,12 +257,10 @@ object TunFlowManager : KoinComponent {
         } else {
             uid
         }
-        Logger.d(LOG_TAG_VPN, "preflow: $newUid, $srcIpPort, $dstIpPort")
 
         val p = PreMark()
         p.uid = newUid.toString()
         p.isUidSelf = newUid == rethinkUid
-        Logger.i(LOG_TAG_VPN, "preflow: returning uid: ${p.uid} for src: $srcIpPort, dst: $dstIpPort, isRethink? ${p.isUidSelf}")
         return p
     }
 
@@ -539,12 +526,10 @@ object TunFlowManager : KoinComponent {
     fun handleFlowing(m: Mark?) {
         val mark = m
         if (mark == null) {
-            Logger.e(LOG_TAG_VPN, "postFlow: received null mark")
             return
         }
         val cm = getConnTrackerMetaData(m.cid)
         if (cm == null) {
-            Logger.w(LOG_TAG_VPN, "postFlow: no connection metadata found for mark: $mark")
             return
         }
 
@@ -591,7 +576,6 @@ object TunFlowManager : KoinComponent {
         trackedConnMetaData.invalidateAll()
         lastRxTrafficTime = elapsedRealtime()
         lastRethinkBlockReason = -1
-        Logger.i(LOG_TAG_VPN, "$TAG cleared connection-tracking state")
     }
 
     // this method is called when the device is locked, so no need to check for device lock here
@@ -645,7 +629,6 @@ object TunFlowManager : KoinComponent {
 
         val cm = notification.value
         if (cm == null) {
-            Logger.e(LOG_TAG_VPN, "handleExpiredConnMetaData: received null connMetaData")
             return
         }
 
@@ -656,7 +639,6 @@ object TunFlowManager : KoinComponent {
         cm.duration = 0
         cm.synack = 0L
         cm.message = "no metadata"
-        Logger.d(LOG_TAG_VPN, "expired connMetaData, close conns: $cm")
     }
 
     /**
@@ -740,7 +722,6 @@ object TunFlowManager : KoinComponent {
                 recdUid // uid must have been retrieved from procfs by the caller
             }
         }
-        Logger.vv(LOG_TAG_VPN, "getUid: recdUid: $recdUid, protocol: $protocol, srcIp: $srcIp, srcPort: $srcPort, dstIp: $dstIp, dstPort: $dstPort, result: $res")
         return res
     }
 
@@ -839,7 +820,6 @@ object TunFlowManager : KoinComponent {
                 ctx.isActiveIfaceMetered()
             }
         }
-        Logger.vv(LOG_TAG_VPN, "isConnectionMetered: dst: $dst, result: $res")
         return res
     }
 
@@ -948,7 +928,6 @@ object TunFlowManager : KoinComponent {
             return
         }
 
-        Logger.v(LOG_TAG_VPN, "firewall-rule $rule, adding to trackedCids to close, $cid")
         activeClosableCidsMutex.withLock {
             activeClosableCids.add(cid)
         }
@@ -1004,21 +983,12 @@ object TunFlowManager : KoinComponent {
         // no need to handle rethink
         mark.uid = uid.toString()
         if (cm == null) {
-            Logger.i(
-                LOG_TAG_VPN,
-                "flow/inflow: returning mark: $mark for connId: $connId, uid: $uid, cm: null"
-            )
         } else {
-            Logger.i(
-                LOG_TAG_VPN,
-                "flow/inflow: returning mark: $mark for src(${cm.sourceIP}: ${cm.sourcePort}), dest(${cm.destIP}:${cm.destPort}, ${cm.query})"
-            )
         }
         io(ctx.scope, "handleSmartKeepAlive") {
             if (persistentState.smartPersistentKeepalive) {
                 proxyIds.split(",").forEach {
                     if (it.startsWith(ID_WG_BASE)) {
-                        Logger.vv(LOG_TAG_VPN, "wgProxiesToPing: smart keepalive is enabled, curr used proxy: $it")
                         ctx.handleWgProxiesToPing(it)
                     }
                 }
@@ -1115,15 +1085,12 @@ object TunFlowManager : KoinComponent {
             logd("flow/upstream: returning $ids for connId: $connId, uid: $uid, ${connTracker.query}, ${connTracker.destIP}")
             return persistAndConstructFlowResponse(ctx, connTracker, ids, connId, uid, forUpstreamAnswer)
         } else {
-            Logger.vv(LOG_TAG_VPN, "flow/upstream: no wg proxy, fall-through $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
         }
 
         // carry out this check after wireguard, because wireguard has catchAll and lockdown.
         // if no proxy or dns proxy is enabled, return baseOrAutoOrExit
-        Logger.vv(LOG_TAG_VPN, "flow/upstream proxy-enabled? ${appConfig.isProxyEnabled()}, dns-proxy active? ${appConfig.isDnsProxyActive()} for $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
         if (!appConfig.isProxyEnabled() && !appConfig.isDnsProxyActive()) {
             if (isGlobalLockdown) {
-                Logger.vv(LOG_TAG_VPN, "flow/upstream: global lockdown is active(no proxy/dnsproxy), block the traffic for $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
                 connTracker.isBlocked = true
                 connTracker.blockedByRule = FirewallRuleset.RULE17.id
                 return persistAndConstructFlowResponse(ctx, connTracker, Backend.Block, connId, uid, forUpstreamAnswer)
@@ -1146,9 +1113,7 @@ object TunFlowManager : KoinComponent {
             }
 
             val activeIds = ProxyManager.getProxyIdForApp(uid)
-            Logger.vv(LOG_TAG_VPN, "flow/upstream: rcvd proxy details for $packageName $$connId, $uid, ${connTracker.query}, ${connTracker.destIP}, pids: $activeIds")
             if (!activeIds.contains(ProxyManager.ID_ORBOT_BASE)) {
-                Logger.e(LOG_TAG_VPN, "flow/upstream: orbot proxy is enabled but app is not included $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
                 // pass-through
             } else {
                 val pids = ProxyManager.ID_ORBOT_BASE
@@ -1168,11 +1133,9 @@ object TunFlowManager : KoinComponent {
         if (appConfig.isCustomSocks5Enabled()) {
             val endpoint = appConfig.getSocks5ProxyDetails()
             if (endpoint == null) {
-                Logger.e(LOG_TAG_VPN, "flow/upstream: socks5 proxy enabled but endpoint is null $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
             }
             val packageName = FirewallManager.getPackageNameByUid(uid)
             if (endpoint == null) {
-                Logger.e(LOG_TAG_VPN, "flow/upstream: socks5 proxy enabled but endpoint is null $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
             }
             logd("flow/upstream: socks5 proxy is enabled, src: $packageName, ${endpoint?.proxyAppName}, $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
             // do not block the app if the app is set to forward the traffic via socks5 proxy
@@ -1200,7 +1163,6 @@ object TunFlowManager : KoinComponent {
         if (appConfig.isCustomHttpProxyEnabled()) {
             val endpoint = appConfig.getHttpProxyDetails()
             if (endpoint == null) {
-                Logger.e(LOG_TAG_VPN, "flow/upstream: http proxy enabled but endpoint is null for $connId, $uid, ${connTracker.query}, ${connTracker.destIP}")
             }
             val packageName = FirewallManager.getPackageNameByUid(uid)
             // do not block the app if the app is set to forward the traffic via http proxy
@@ -1240,7 +1202,6 @@ object TunFlowManager : KoinComponent {
         }
 
         if (isGlobalLockdown) {
-            Logger.vv(LOG_TAG_VPN, "flow/upstream: global lockdown is active, block the traffic for $connId, $uid, ${connTracker.query}, ${connTracker.destIP}, returning ${Backend.Block}")
             connTracker.isBlocked = true
             connTracker.blockedByRule = FirewallRuleset.RULE17.id
             return persistAndConstructFlowResponse(ctx, connTracker, Backend.Block, connId, uid, forUpstreamAnswer)
@@ -1275,7 +1236,6 @@ object TunFlowManager : KoinComponent {
         if (appConfig.isCustomSocks5Enabled()) {
             val endpoint = appConfig.getSocks5ProxyDetails()
             if (endpoint == null) {
-                Logger.e(LOG_TAG_VPN, "flow: socks5 proxy enabled but endpoint is null")
                 return false
             }
             val packageName = FirewallManager.getPackageNameByUid(uid)
@@ -1290,7 +1250,6 @@ object TunFlowManager : KoinComponent {
         if (appConfig.isCustomHttpProxyEnabled()) {
             val endpoint = appConfig.getHttpProxyDetails()
             if (endpoint == null) {
-                Logger.e(LOG_TAG_VPN, "flow: http proxy enabled but endpoint is null")
             }
             val packageName = FirewallManager.getPackageNameByUid(uid)
             // do not block the app if the app is set to forward the traffic via http proxy

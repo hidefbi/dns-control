@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.download
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
 import android.app.DownloadManager
 import android.content.Context
 import android.os.SystemClock
@@ -52,10 +50,8 @@ class DownloadWatcher(val context: Context, workerParameters: WorkerParameters) 
     private val persistentState by inject<PersistentState>()
 
     override fun doWork(): Result {
-        Logger.i(LOG_TAG_DOWNLOAD, "start download watcher, checking for download status")
         val startTime = inputData.getLong("workerStartTime", 0)
         downloadIds = inputData.getLongArray("downloadIds")?.toMutableList()
-        Logger.d(LOG_TAG_DOWNLOAD, "AppDownloadManager: $startTime, $downloadIds")
 
         if (downloadIds == null || downloadIds?.isEmpty() == true) return Result.failure()
 
@@ -83,9 +79,7 @@ class DownloadWatcher(val context: Context, workerParameters: WorkerParameters) 
     private fun clearStoredDownloadIds() {
         try {
             persistentState.androidDownloadManagerIds = ""
-            Logger.i(LOG_TAG_DOWNLOAD, "cleared stored andr-down-mgr ids")
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_DOWNLOAD, "err clearing stored download ids", e)
         }
     }
 
@@ -101,37 +95,28 @@ class DownloadWatcher(val context: Context, workerParameters: WorkerParameters) 
                 context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
             val cursor = downloadManager.query(query)
             if (cursor == null) {
-                Logger.i(LOG_TAG_DOWNLOAD, "status is $downloadID cursor null")
                 return DOWNLOAD_FAILURE
             }
 
             try {
                 val columnIndex = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)
                 if (columnIndex == -1) {
-                    Logger.i(LOG_TAG_DOWNLOAD, "status is $downloadID column index -1")
                     return DOWNLOAD_FAILURE
                 }
                 if (cursor.moveToFirst()) {
                     val status = cursor.getInt(columnIndex)
 
-                    Logger.d(LOG_TAG_DOWNLOAD, "onReceive status $status $downloadID")
 
                     if (status == DownloadManager.STATUS_SUCCESSFUL) {
                         downloadIdsIterator.remove()
                     } else if (status == DownloadManager.STATUS_FAILED) {
                         val reason = cursor.getInt(columnIndex)
-                        Logger.d(
-                            LOG_TAG_DOWNLOAD,
-                            "download status failure for $downloadID, $reason"
-                        )
                         return DOWNLOAD_FAILURE
                     }
                 } else {
-                    Logger.d(LOG_TAG_DOWNLOAD, "cursor empty")
                     return DOWNLOAD_FAILURE
                 }
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_DOWNLOAD, "failure download: ${e.message}", e)
             } finally {
                 cursor.close()
             }
@@ -139,7 +124,6 @@ class DownloadWatcher(val context: Context, workerParameters: WorkerParameters) 
 
         // send the status as success when the download ids are cleared
         if (downloadIds?.isEmpty() == true) {
-            Logger.i(LOG_TAG_DOWNLOAD, "files downloaded successfully")
             return DOWNLOAD_SUCCESS
         }
 

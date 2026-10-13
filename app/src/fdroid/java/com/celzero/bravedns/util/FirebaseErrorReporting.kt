@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_FIREBASE
 import org.koin.core.component.KoinComponent
 
 /**
@@ -30,14 +29,12 @@ object FirebaseErrorReporting : KoinComponent {
      * Initialize Firebase Crashlytics - no-op for fdroid variant
      */
     fun initialize() {
-        Logger.i(LOG_FIREBASE, "crashlytics not available in fdroid variant")
     }
 
     /**
      * Enable or disable Firebase Crashlytics data collection - no-op for fdroid variant
      */
     fun setEnabled(enabled: Boolean) {
-        Logger.i(LOG_FIREBASE, "crashlytics not available in fdroid variant")
     }
 
     /**

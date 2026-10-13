@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.download
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
 import android.content.Context
 import com.celzero.bravedns.customdownloader.IBlocklistDownload
 import com.celzero.bravedns.customdownloader.RetrofitManager
@@ -41,15 +39,12 @@ class BlocklistDownloadHelper {
     companion object {
         private const val TOTAL_RETRY_COUNT = 3
         fun logd(message: String) {
-            Logger.d(LOG_TAG_DOWNLOAD, message)
         }
 
         fun logi(message: String) {
-            Logger.i(LOG_TAG_DOWNLOAD, message)
         }
 
         fun logw(message: String, exception: Exception) {
-            Logger.w(LOG_TAG_DOWNLOAD, message, exception)
         }
 
         fun isDownloadComplete(context: Context, timestamp: Long): Boolean {

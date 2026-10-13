@@ -18,7 +18,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.ContentResolver
 import android.content.Context
 import android.net.Uri
@@ -149,7 +148,6 @@ object TunnelImporter : KoinComponent {
     suspend fun importTunnel(configText: String, messageCallback: (CharSequence) -> Unit) {
         withContext(Dispatchers.IO) {
             try {
-                Logger.d(LOG_TAG_PROXY, "Importing tunnel: $configText")
                 val config =
                     Config.parse(
                         ByteArrayInputStream(configText.toByteArray(StandardCharsets.UTF_8))
@@ -171,7 +169,6 @@ object TunnelImporter : KoinComponent {
             val error = ErrorMessages[context, throwable]
             message = context.getString(R.string.import_error, error)
             val ex = Logger.throwableToException(throwable)
-            Logger.e(LOG_TAG_PROXY, message, ex)
         }
         // trim the message and take string after ":"
         val idx = message.indexOf(':')

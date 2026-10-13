@@ -15,9 +15,6 @@
  */
 package com.celzero.bravedns.ui.fragment
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.Manifest
 import android.app.Activity
 import android.app.ActivityManager
@@ -125,7 +122,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private var canRethinkBlockItself: Boolean = false
 
     companion object {
-        private const val TAG = "HSFragment"
 
         // UI interaction delays (milliseconds)
         private const val UI_DELAY_MS = 500L
@@ -188,7 +184,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Logger.v(LOG_TAG_UI, "$TAG: init view in home screen fragment")
         initializeValues()
         initializeClickListeners()
         isVpnActivated = VpnController.state().activationRequested
@@ -237,33 +232,27 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                     steps      = GuidedTourManager.homeScreenSteps(),
                     onComplete = {
                         GuidedTourManager.markCompleted(persistentState)
-                        Logger.v(LOG_TAG_UI, "$TAG: guided tour completed")
                     },
                 ).start()
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_UI, "$TAG: failed to start guided tour: ${e.message}", e)
             }
         }
     }
 
     private fun initializeClickListeners() {
         b.fhsCardFirewallLl.setOnClickListener {
-            Logger.v(LOG_TAG_UI, "$TAG: click event on firewall card")
             startFirewallActivity(FirewallActivity.Tabs.UNIVERSAL.screen)
         }
 
         b.fhsCardAppsCv.setOnClickListener {
-            Logger.v(LOG_TAG_UI, "$TAG: click event on apps card")
             startAppsActivity()
         }
 
         b.fhsCardDnsLl.setOnClickListener {
-            Logger.v(LOG_TAG_UI, "$TAG: click event on dns card")
             startDnsActivity(DnsDetailActivity.Tabs.CONFIGURE.screen)
         }
 
         b.homeFragmentBottomSheetIcon.setOnClickListener {
-            Logger.v(LOG_TAG_UI, "$TAG: click event on bottom sheet icon")
             b.homeFragmentBottomSheetIcon.isEnabled = false
             openBottomSheet()
             delay(TimeUnit.MILLISECONDS.toMillis(UI_DELAY_MS), lifecycleScope) {
@@ -272,12 +261,10 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         }
 
         b.homeFragmentPauseIcon.setOnClickListener {
-            Logger.v(LOG_TAG_UI, "$TAG: click event on pause icon")
             handlePause()
         }
 
         b.fhsDnsOnOffBtn.setOnClickListener {
-            Logger.v(LOG_TAG_UI, "$TAG: click event on main button")
             handleMainScreenBtnClickEvent()
             delay(TimeUnit.MILLISECONDS.toMillis(UI_DELAY_MS), lifecycleScope) {
                 if (isAdded) {
@@ -287,13 +274,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         }
 
         appConfig.getBraveModeObservable().observe(viewLifecycleOwner) {
-            Logger.v(LOG_TAG_UI, "$TAG: brave mode changed to $it")
             updateCardsUi()
             syncDnsStatus()
         }
 
         b.fhsCardProxyLl.setOnClickListener {
-            Logger.v(LOG_TAG_UI, "$TAG: click event on proxy card")
             if (appConfig.isWireGuardEnabled()) {
                 startActivity(ScreenType.PROXY_WIREGUARD)
             } else {
@@ -433,11 +418,8 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     }
 
     private fun enableProxyCardIfNeeded() {
-        Logger.vv(LOG_TAG_UI, "$TAG enableProxyCardIfNeeded")
         if (isVpnActivated && !appConfig.getBraveMode().isDnsMode()) {
-            Logger.vv(LOG_TAG_UI, "$TAG enableProxyCardIfNeeded: isVpnActivated")
             val isAnyProxyEnabled = appConfig.isProxyEnabled()
-            Logger.vv(LOG_TAG_UI, "$TAG enableProxyCardIfNeeded: isAnyProxyEnabled=$isAnyProxyEnabled")
             if (isAnyProxyEnabled) {
                 observeProxyStates()
             } else {
@@ -445,7 +427,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 disableProxyCard()
             }
         } else {
-            Logger.vv(LOG_TAG_UI, "$TAG enableProxyCardIfNeeded: isVpnActivated=$isVpnActivated")
             unobserveProxyStates()
             disableProxyCard()
         }
@@ -465,25 +446,19 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private var dnsObserverActive: Boolean = false
 
     private fun observeProxyStates() {
-        Logger.vv(LOG_TAG_UI, "$TAG observeProxyStates")
             if (proxyStatusLiveData != null) {
             // Restart the job here if it is no longer active so the card stays live.
             if (proxyStateListenerJob?.isActive != true) {
                 val lastStatus = proxyStatusLiveData!!.value
-                Logger.vv(LOG_TAG_UI, "$TAG proxy state changed to $lastStatus")
                 if (lastStatus != null && lastStatus != -1) {
-                    Logger.vv(LOG_TAG_UI, "$TAG restarting proxy poll after resume, lastStatus=$lastStatus")
                     startProxyStatePolling(lastStatus)
                 }
             }
             return
         } else {
-            Logger.vv(LOG_TAG_UI, "$TAG observeProxyStates: first time")
         }
         proxyStatusLiveData = persistentState.getProxyStatus()
-        Logger.vv(LOG_TAG_UI, "$TAG proxy state changed to ${proxyStatusLiveData?.value}")
         proxyStatusLiveData?.distinctUntilChanged()?.observe(viewLifecycleOwner) { resId ->
-            Logger.vv(LOG_TAG_UI, "$TAG proxy state changed to $resId")
             if (resId != -1) {
                 startProxyStatePolling(resId)
             } else {
@@ -499,7 +474,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
     private fun startDnsStatePolling() {
         if (dnsStateListenerJob?.isActive == true) {
-            Logger.vv(LOG_TAG_UI, "$TAG cancel prev dns state listener job")
             dnsStateListenerJob?.cancel()
             dnsStateListenerJob = null
         }
@@ -510,7 +484,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 syncDnsStatus()
                 val elapsed = SystemClock.elapsedRealtime() - checkStart
                 val nextDelay = elapsed.coerceIn(MIN_POLL_DELAY_MS, MAX_PROXY_POLL_DELAY_MS)
-                Logger.v(LOG_TAG_UI, "$TAG dns poll: check took ${elapsed}ms, next delay ${nextDelay}ms")
                 kotlinx.coroutines.delay(nextDelay.milliseconds)
             }
             dnsStateListenerJob?.cancel()
@@ -566,7 +539,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
      */
     private fun startProxyStatePolling(resId: Int) {
         if (proxyStateListenerJob?.isActive == true) {
-            Logger.vv(LOG_TAG_UI, "$TAG cancel prev proxy state listener job")
             proxyStateListenerJob?.cancel()
             proxyStateListenerJob = null
         }
@@ -583,7 +555,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 // responsive when the service is fast. Capped at MAX_PROXY_POLL_DELAY_MS
                 // so the card never goes stale for too long.
                 val nextDelay = elapsed.coerceIn(MIN_POLL_DELAY_MS, MAX_PROXY_POLL_DELAY_MS)
-                Logger.v(LOG_TAG_UI, "$TAG proxy poll: check took ${elapsed}ms, next delay ${nextDelay}ms")
                 kotlinx.coroutines.delay(nextDelay.milliseconds)
             }
             proxyStateListenerJob?.cancel()
@@ -626,7 +597,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 var failing = 0
                 var idle = 0
                 val now = System.currentTimeMillis()
-                Logger.v(LOG_TAG_UI, "$TAG active proxies; wg: ${proxies.size}")
 
                 // If no proxies are configured but WireGuard is enabled, show appropriate message
                 if (proxies.isEmpty()) {
@@ -645,7 +615,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                     active = triple.first
                     failing = triple.second
                     idle = triple.third
-                    Logger.v(LOG_TAG_UI, "$TAG wg proxy status: act: $active, fail: $failing, idle: $idle")
                 }
                 uiCtx {
                     if (!isAdded || view == null) return@uiCtx
@@ -683,12 +652,10 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                             getString(R.string.lbl_idle).replaceFirstChar(Char::titlecase)
                         )
                     }
-                    Logger.v(LOG_TAG_UI, "$TAG overall wg proxy status: $text, proxies: ${proxies.size}, active: $active, failing: $failing, idle: $idle")
 
                     // If we have proxies but no status text, something went wrong - show a fallback
                     if (text.isEmpty() && proxies.isNotEmpty()) {
                         b.fhsCardProxyCount.setTextAnimated(getString(R.string.lbl_active))
-                        Logger.w(LOG_TAG_UI, "$TAG proxy status empty but proxies exist, showing fallback active status")
                     } else if (text.isEmpty()) {
                         b.fhsCardProxyCount.setTextAnimated(getString(R.string.lbl_inactive))
                     } else {
@@ -716,7 +683,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         var active = a
         var failing = f
         var idle = i
-        Logger.vv(LOG_TAG_UI, "$TAG init stats check for $proxyId")
 
         val stats = VpnController.getProxyStats(proxyId)
         val statusPair = VpnController.getProxyStatusById(proxyId)
@@ -825,7 +791,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         proxyStateListenerJob?.cancel()
         if (view == null || !isAdded) return
 
-        Logger.w(LOG_TAG_UI, "$TAG disable proxy card, showing inactive")
         b.fhsCardProxyCount.text = getString(R.string.lbl_inactive)
         b.fhsCardOtherProxyCount.visibility = View.VISIBLE
         b.fhsCardOtherProxyCount.text = getString(R.string.lbl_disabled)
@@ -927,13 +892,11 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         // accumulating IO coroutines. The latency block above still runs on every call so the
         // displayed latency is always fresh. Reset in unobserveDnsStates() / onDestroyView().
         if (dnsObserverActive) {
-            Logger.v(LOG_TAG_UI, "$TAG dns observer already registered")
             return
         }
         dnsObserverActive = true
 
         VpnController.getRegionLiveData().distinctUntilChanged().observe(viewLifecycleOwner) {
-            Logger.vv(LOG_TAG_UI, "$TAG region changed to $it")
             if (it != null) {
                 b.fhsCardRegion.text = it.uppercase()
             }
@@ -1037,11 +1000,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                         b.fhsCardAllowedApps.isSelected = true
                     }
                 } catch (e: Exception) { // NoSuchElementException, ConcurrentModification
-                    Logger.e(
-                        LOG_TAG_VPN,
-                        "error retrieving value from appInfos observer ${e.message}",
-                        e
-                    )
                 }
             }
         }
@@ -1082,7 +1040,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private fun batteryOptimizationActive(context: Context): Boolean {
         // check whether or not Battery Permission is Available for Device
         val bph = batteryPermissionHelper.isBatterySaverPermissionAvailable(context = context, onlyIfSupported = true)
-        Logger.d(LOG_TAG_UI, "battery optimization available: $bph")
         return bph
     }
 
@@ -1104,7 +1061,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         builder.setMessage(msg)
         builder.setCancelable(false)
         builder.setPositiveButton(R.string.lbl_proceed) { _, _ ->
-            Logger.v(LOG_TAG_UI, "launch battery optimization settings")
             batteryPermissionHelper.getPermission(requireContext(), open = true, newTask = true)
         }
 
@@ -1119,11 +1075,9 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val isBackgroundRestricted = cm.restrictBackgroundStatus
-        Logger.d(LOG_TAG_UI, "restrict background status: $isBackgroundRestricted")
 
         return if (isAtleastP()) {
             val am = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-            Logger.d(LOG_TAG_UI, "above P, background restricted: ${am.isBackgroundRestricted}")
             am.isBackgroundRestricted ||
                     isBackgroundRestricted == ConnectivityManager.RESTRICT_BACKGROUND_STATUS_ENABLED
         } else {
@@ -1206,11 +1160,9 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     }
 
     private fun handleRethinkAppStatus() {
-        Logger.vv(LOG_TAG_UI, "handleRethinkAppStatus")
         io {
             if (isVpnActivated && shouldShowRethinkWarning()) {
                 canRethinkBlockItself = true
-                Logger.d(LOG_TAG_UI, "canRethinkBlockItself = true, showing warning")
                 uiCtx {
                     val color = ColorUtils.setAlphaComponent(
                         ContextCompat.getColor(requireContext(), R.color.accentBad),
@@ -1223,7 +1175,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 }
             } else {
                 canRethinkBlockItself = false
-                Logger.d(LOG_TAG_UI, "canRethinkBlockItself = false, hiding warning")
                 uiCtx {
                     b.fhsCardAppsCv.strokeWidth = 0
                     b.fhsCardAppsRethinkWarningTv?.visibility = View.GONE
@@ -1289,7 +1240,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         try {
             trafficStatsTicker.cancel()
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_VPN, "error stopping traffic stats ticker", e)
         }
     }
 
@@ -1384,7 +1334,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             // missing. The user must explicitly start the VPN from the home screen button,
             // which requests the permission exactly once.
             if (isAtleast37() && !hasLocalNetworkPermission()) {
-                Logger.i(LOG_TAG_VPN, "skip auto-start: local network permission missing")
                 // Reset the VPN controller and persisted activation state so the
                 // home-screen button reflects that the VPN is off. Without this,
                 // isVpnActivated stays true (the persisted flag was set before the
@@ -1396,7 +1345,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 return
             }
             // this case will happen when the app is updated or crashed
-            Logger.i(LOG_TAG_VPN, "start VPN (previous state)")
             prepareAndStartVpn()
         }
     }
@@ -1467,7 +1415,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     }
 
     private fun startAppsActivity() {
-        Logger.d(LOG_TAG_VPN, "Status : $isVpnActivated , BraveMode: ${appConfig.getBraveMode()}")
 
         // no need to check for app modes to open this activity
         // one use case: https://github.com/celzero/rethink-app/issues/611
@@ -1534,7 +1481,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         // VpnController.start(), so guarding here makes the denial final regardless of
         // which caller (button, auto-start, or VPN-consent result) reached us.
         if (isAtleast37() && !hasLocalNetworkPermission()) {
-            Logger.w(LOG_TAG_VPN, "startVpnService aborted: local network permission missing")
             handleLocalNetworkPermissionDenied()
             return
         }
@@ -1561,7 +1507,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
         if (!persistentState.shouldRequestNotificationPermission) {
             // user rejected notification permission
-            Logger.w(LOG_TAG_VPN, "User rejected notification permission for the app")
             return
         }
 
@@ -1577,7 +1522,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
         val loopback = persistentState.routeRethinkInRethink
         if (!loopback) {
-            Logger.d(LOG_TAG_UI, "$tag not in loopback mode")
             return false
         }
 
@@ -1588,25 +1532,21 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         // TODO: check if rethink is part of any active proxies, if not then we need to show
         // the warning (in case of Proxy lockdown) regardless of proxyExcluded.
         if (isProxyExcluded && isProxyLockdown) {
-            Logger.d(LOG_TAG_UI, "$tag rethink is exempted from proxy but in proxy lockdown mode")
             return true
         }
         val firewallStatus = FirewallManager.FirewallStatus.getStatus(appInfo.firewallStatus)
         val connStatus = FirewallManager.ConnectionStatus.getStatus(appInfo.connectionStatus)
         val isRethinkBlockedOrIsolated = firewallStatus.isIsolate() || !connStatus.allow()
         if (isRethinkBlockedOrIsolated) {
-            Logger.d(LOG_TAG_UI, "$tag rethink is blocked or isolated")
             return true
         }
         val isAppBypass = firewallStatus.bypassUniversal() || firewallStatus.bypassDnsFirewall()
         val count =  persistentState.universalRulesCount.value
         val isAnyUnivRulesEnabled = count != null && count > 0
         if (!isAppBypass && isAnyUnivRulesEnabled) {
-            Logger.d(LOG_TAG_UI, "$tag rethink is not bypassed, and universal firewall is enabled")
             return true
         }
 
-        Logger.d(LOG_TAG_UI, "$tag rethink app, no warning needed, proxyExcluded? $isProxyExcluded, proxyLockdown? $isProxyLockdown, isAppBypass? $isAppBypass, isAnyUnivRulesEnabled? $isAnyUnivRulesEnabled")
         return false
     }
 
@@ -1619,23 +1559,19 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
                 // versions.
                 // VpnService.prepare() is now registered with requireContext() instead of context.
                 // Issue #469
-                Logger.i(LOG_TAG_VPN, "Preparing VPN service")
                 VpnService.prepare(requireContext())
             } catch (e: NullPointerException) {
                 // This exception is not mentioned in the documentation, but it has been encountered
                 // users and also by other developers, e.g.
                 // https://stackoverflow.com/questions/45470113.
-                Logger.e(LOG_TAG_VPN, "Device does not support system-wide VPN mode.", e)
                 return false
             }
         // If the VPN.prepare() is not null, then the first time VPN dialog is shown, Show info
         // dialog before that.
         if (prepareVpnIntent != null) {
-            Logger.i(LOG_TAG_VPN, "VPN service is prepared")
             showFirstTimeVpnDialog(prepareVpnIntent)
             return false
         }
-        Logger.i(LOG_TAG_VPN, "VPN service is prepared, starting VPN service")
         return true
     }
 
@@ -1648,7 +1584,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             try {
                 startForResult.launch(prepareVpnIntent)
             } catch (e: ActivityNotFoundException) {
-                Logger.e(LOG_TAG_VPN, "Activity not found to start VPN service", e)
                 showToastUiCentered(
                     requireContext(),
                     getString(R.string.hsf_vpn_prepare_failure),
@@ -1688,9 +1623,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             registerForActivityResult(ActivityResultContracts.RequestPermission()) {
                 persistentState.shouldRequestNotificationPermission = it
                 if (it) {
-                    Logger.i(LOG_TAG_UI, "User accepted notification permission")
                 } else {
-                    Logger.w(LOG_TAG_UI, "User rejected notification permission")
                     Snackbar.make(
                         requireActivity().findViewById<View>(android.R.id.content).rootView,
                         getString(R.string.hsf_notification_permission_failure),
@@ -1703,12 +1636,10 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         localNetworkPermissionResult =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
                 if (granted) {
-                    Logger.i(LOG_TAG_UI, "User accepted local network permission")
                     // Permission granted; resume the VPN start flow that was deferred in
                     // prepareAndStartVpn().
                     proceedWithVpnStart()
                 } else {
-                    Logger.w(LOG_TAG_UI, "User rejected local network permission")
                     handleLocalNetworkPermissionDenied()
                 }
             }
@@ -1724,7 +1655,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
 
     @RequiresApi(Build.VERSION_CODES.CINNAMON_BUN)
     private fun requestLocalNetworkPermission() {
-        Logger.i(LOG_TAG_UI, "Requesting local network permission before starting VPN")
         localNetworkPermissionResult.launch(Manifest.permission.ACCESS_LOCAL_NETWORK)
     }
 
@@ -1739,7 +1669,6 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
      *     shown and granting must happen from Settings.
      */
     private fun handleLocalNetworkPermissionDenied() {
-        Logger.w(LOG_TAG_VPN, "Local network permission denied; disabling VPN")
         // Disable the VPN itself: stop the service if it is running and reset the persistent
         // activation flag. setVpnEnabled(false) posts to vpnEnabledLiveData, which observeVpnState
         // consumes to set isVpnActivated = false (button flips back to START) and prevents
@@ -1880,11 +1809,9 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         } catch (e: SecurityException) {
             // Fix: Handle SecurityException that can occur when calling getNetworkCapabilities()
             // on certain devices/Android versions or when app lacks proper permissions
-            Logger.e(LOG_TAG_VPN, "SecurityException checking VPN status: ${e.message}", e)
             false
         } catch (e: Exception) {
             // Catch any other unexpected exceptions
-            Logger.e(LOG_TAG_VPN, "err checking VPN status: ${e.message}", e)
             false
         }
     }

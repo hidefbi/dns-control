@@ -97,12 +97,7 @@ class WgHopManagerTest : KoinTest {
             })
         }
 
-        // Mock static Logger calls
         mockkObject(Logger)
-        every { Logger.i(any(), any()) } just Runs
-        every { Logger.d(any(), any()) } just Runs
-        every { Logger.v(any(), any()) } just Runs
-        every { Logger.e(any(), any()) } just Runs
 
         // Mock static WireguardManager and VpnController AFTER Koin is set up
         mockkObject(WireguardManager)
@@ -394,8 +389,6 @@ class WgHopManagerTest : KoinTest {
         // Act & Assert - should not throw
         WgHopManager.printMaps()
 
-        // Verify logger was called
-        verify(atLeast = 1) { Logger.v(LOG_TAG_PROXY, any()) }
     }
 
     @Test
@@ -1167,8 +1160,6 @@ class WgHopManagerTest : KoinTest {
         // Act & Assert - Should not throw any exceptions
         WgHopManager.printMaps()
 
-        // Verify logger interaction
-        verify(atLeast = 1) { Logger.v(any(), any()) }
     }
 
     // Boundary value tests

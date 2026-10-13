@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.backup
 
-import com.celzero.bravedns.util.Logger
 import android.content.Context
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.AppDatabase
@@ -103,12 +102,10 @@ class BackupHelper {
         }
 
         fun stopVpn(context: Context) {
-            Logger.i(Logger.LOG_TAG_BACKUP_RESTORE, "calling vpn stop from backup helper")
             VpnController.stop("bkup", context)
         }
 
         fun startVpn(context: Context) {
-            Logger.i(Logger.LOG_TAG_BACKUP_RESTORE, "calling vpn start from backup helper")
             VpnController.start(context)
         }
 

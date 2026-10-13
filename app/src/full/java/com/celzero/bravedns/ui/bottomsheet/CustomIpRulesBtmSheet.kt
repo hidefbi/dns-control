@@ -1,7 +1,5 @@
 package com.celzero.bravedns.ui.bottomsheet
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.DialogInterface
 import android.content.res.ColorStateList
 import android.content.res.Configuration
@@ -59,7 +57,6 @@ class CustomIpRulesBtmSheet :
     }
 
     companion object {
-        private const val TAG = "CIRBtmSht"
         private const val ARG_CUSTOM_IP = "custom_ip"
 
         fun newInstance(customIp: CustomIp): CustomIpRulesBtmSheet {
@@ -103,7 +100,6 @@ class CustomIpRulesBtmSheet :
             @Suppress("DEPRECATION")
             arguments?.getSerializable(ARG_CUSTOM_IP) as? CustomIp
         } ?: run {
-            Logger.e(LOG_TAG_UI, "$TAG: CustomIp not found in arguments, dismissing")
             dismiss()
             return
         }
@@ -111,7 +107,6 @@ class CustomIpRulesBtmSheet :
         dialog?.window?.let { window ->
             Themes.applyBottomSheetSystemBarAppearance(window, isDarkThemeOn(), persistentState.theme)
         }
-        Logger.v(LOG_TAG_UI, "$TAG: onViewCreated for ${ci.ipAddress}")
         init()
         initClickListeners()
     }
@@ -145,7 +140,6 @@ class CustomIpRulesBtmSheet :
                 }
             }
         }
-        Logger.v(LOG_TAG_UI, "$TAG: init for ${ci.ipAddress}, uid: $uid")
         val rules = IpRuleStatus.getStatus(ci.status)
         b.customIpTv.text = ci.ipAddress
         showBypassUi(uid)
@@ -282,13 +276,11 @@ class CustomIpRulesBtmSheet :
             uiCtx {
                 updateToggleGroup(id)
                 updateStatusUi(id, ci.modifiedDateTime)
-                Logger.v(LOG_TAG_UI, "${TAG}: changeIpStatus: ${ci.ipAddress}, status: ${id.name}")
             }
         }
     }
 
     private suspend fun byPassUniversal(orig: CustomIp): CustomIp {
-        Logger.i(LOG_TAG_UI, "$TAG: set ${orig.ipAddress} to bypass universal")
         val copy = orig.deepCopy()
         // status and modified time will be set in updateRule
         IpRulesManager.updateBypass(copy)
@@ -296,21 +288,18 @@ class CustomIpRulesBtmSheet :
     }
 
     private suspend fun byPassAppRule(orig: CustomIp): CustomIp {
-        Logger.i(LOG_TAG_UI, "$TAG: set ${orig.ipAddress} to bypass app")
         val copy = orig.deepCopy()
         IpRulesManager.updateTrust(copy)
         return copy
     }
 
     private suspend fun blockIp(orig: CustomIp): CustomIp {
-        Logger.i(LOG_TAG_UI, "$TAG: block ${orig.ipAddress}")
         val copy = orig.deepCopy()
         IpRulesManager.updateBlock(copy)
         return copy
     }
 
     private suspend fun noRuleIp(orig: CustomIp): CustomIp {
-        Logger.i(LOG_TAG_UI, "$TAG: no rule for ${orig.ipAddress}")
         val copy = orig.deepCopy()
         IpRulesManager.updateNoRule(copy)
         return copy
@@ -401,15 +390,12 @@ class CustomIpRulesBtmSheet :
             val status = IpRuleStatus.getStatus(cip.status)
             updateToggleGroup(status)
             updateStatusUi(status, cip.modifiedDateTime)
-            Logger.v(LOG_TAG_UI, "$TAG: onDismissWg: ${cip.ipAddress}, ${cip.proxyCC}")
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_UI, "$TAG: err in onDismissWg ${e.message}", e)
         }
     }
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        Logger.v(LOG_TAG_UI, "$TAG: onDismiss; ip: ${ci.ipAddress}")
     }
 
     private fun io(f: suspend () -> Unit) {

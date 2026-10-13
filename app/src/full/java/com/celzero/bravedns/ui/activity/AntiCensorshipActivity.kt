@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
@@ -138,7 +136,6 @@ class AntiCensorshipActivity : BaseActivity(R.layout.activity_anti_censorship) {
                 b.acRadioDesync.isChecked = false
                 b.acDesyncRl.visibility = View.GONE
                 b.acRadioSplitAuto.isChecked = true
-                Logger.i(LOG_TAG_FIREWALL, "Desync mode is not supported in Android 11 and below")
                 return
             } else {
                 b.acRadioDesync.isEnabled = false

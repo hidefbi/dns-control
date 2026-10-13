@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.scheduler
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_SCHEDULER
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
@@ -42,18 +40,14 @@ class DataUsageUpdater(context: Context, workerParams: WorkerParameters) :
             try {
                 val current = appInfoRepository.getDataUsageByUid(uid)
                 if (current == null) {
-                    Logger.w(LOG_TAG_SCHEDULER, "No app info found for uid: $uid, skipping data usage")
                     return@forEach
                 }
                 val upload = current.uploadBytes + bytes.first
                 val download = current.downloadBytes + bytes.second
-                Logger.d(LOG_TAG_SCHEDULER, "Data usage for $uid, $upload, $download")
                 appInfoRepository.updateDataUsageByUid(uid, upload, download)
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_SCHEDULER, "err in data usage updater: ${e.message}", e)
             }
         }
-        Logger.i(LOG_TAG_SCHEDULER, "Data usage updated for ${usage.size} apps")
         return Result.success()
     }
 }

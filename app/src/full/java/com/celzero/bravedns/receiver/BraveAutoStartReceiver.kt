@@ -16,8 +16,6 @@
 
 package com.celzero.bravedns.receiver
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -41,7 +39,6 @@ class BraveAutoStartReceiver : BroadcastReceiver(), KoinComponent {
                 Intent.ACTION_USER_UNLOCKED != intent.action &&
                 Intent.ACTION_MY_PACKAGE_REPLACED != intent.action
         ) {
-            Logger.w(LOG_TAG_VPN, "unhandled broadcast ${intent.action}")
             return
         }
 
@@ -52,7 +49,6 @@ class BraveAutoStartReceiver : BroadcastReceiver(), KoinComponent {
                     intent.action == Intent.ACTION_REBOOT ||
                     intent.action == Intent.ACTION_USER_UNLOCKED)
         ) {
-            Logger.w(LOG_TAG_VPN, "auto-start not enabled: ${persistentState.prefAutoStartBootUp}, skipping")
             return
         }
 
@@ -64,7 +60,6 @@ class BraveAutoStartReceiver : BroadcastReceiver(), KoinComponent {
             else -> "boot(${intent.action})"
         }
 
-        Logger.i(LOG_TAG_VPN, "scheduling boot-start worker after $eventType")
         BootStartWorker.enqueue(context, eventType)
     }
 }

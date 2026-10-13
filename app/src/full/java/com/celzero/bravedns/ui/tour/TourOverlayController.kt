@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.ui.tour
 
-import com.celzero.bravedns.util.Logger
 import android.app.Activity
 import android.graphics.Rect
 import android.util.TypedValue
@@ -51,7 +50,6 @@ class TourOverlayController(
     private val onComplete: () -> Unit,
 ) {
     companion object {
-        private const val TAG = "TourOverlayController"
 
         /** Minimum screen pixels below the spotlight before we flip the tooltip to ABOVE. */
         private const val MIN_SPACE_BELOW_PX = 280
@@ -171,7 +169,6 @@ class TourOverlayController(
         // Find the target view; if it's not laid out yet, wait for the global layout pass
         val target = activity.findViewById<View>(step.targetViewId)
         if (target == null) {
-            Logger.w("TourOverlay", "$TAG: target view ${step.targetViewId} not found, skipping step")
             showStep(index + 1)
             return
         }
@@ -187,7 +184,6 @@ class TourOverlayController(
 
     private fun positionOnView(target: View, step: TourStep) {
         val targetRect = target.globalVisibleRect() ?: run {
-            Logger.w("TourOverlay", "$TAG: target not visible on screen, skipping")
             showStep(currentStepIndex + 1)
             return
         }

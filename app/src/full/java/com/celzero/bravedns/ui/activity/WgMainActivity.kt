@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
@@ -84,7 +82,6 @@ class WgMainActivity :
                     Intent.FLAG_GRANT_READ_URI_PERMISSION
                 )
             } catch (e: SecurityException) {
-                Logger.w(LOG_TAG_PROXY, "Could not persist URI permission for $data", e)
             }
             lifecycleScope.launch {
                 if (QrCodeFromFileScanner.validContentType(contentResolver, data)) {
@@ -92,17 +89,14 @@ class WgMainActivity :
                         val qrCodeFromFileScanner =
                             QrCodeFromFileScanner(contentResolver, QRCodeReader())
                         val result = qrCodeFromFileScanner.scan(data)
-                        Logger.i(LOG_TAG_PROXY, "result: $result, data: $data")
                         if (result != null) {
                             withContext(Dispatchers.Main) {
-                                Logger.i(LOG_TAG_PROXY, "result: ${result.text}")
                                 TunnelImporter.importTunnel(result.text) {
                                     Utilities.showToastUiCentered(
                                         this@WgMainActivity,
                                         it.toString(),
                                         Toast.LENGTH_LONG
                                     )
-                                    Logger.e(LOG_TAG_PROXY, it.toString())
                                 }
                             }
                         } else {
@@ -116,7 +110,6 @@ class WgMainActivity :
                                 message,
                                 Toast.LENGTH_LONG
                             )
-                            Logger.e(LOG_TAG_PROXY, message)
                         }
                     } catch (e: Exception) {
                         val message =
@@ -129,11 +122,9 @@ class WgMainActivity :
                             message,
                             Toast.LENGTH_LONG
                         )
-                        Logger.e(LOG_TAG_PROXY, e.message ?: "err tun import", e)
                     }
                 } else {
                     TunnelImporter.importTunnel(contentResolver, data) {
-                        Logger.e(LOG_TAG_PROXY, it.toString())
                         Utilities.showToastUiCentered(
                             this@WgMainActivity,
                             it.toString(),
@@ -155,7 +146,6 @@ class WgMainActivity :
                             it.toString(),
                             Toast.LENGTH_LONG
                         )
-                        Logger.e(LOG_TAG_PROXY, it.toString())
                     }
                 }
             }
@@ -333,10 +323,8 @@ class WgMainActivity :
             try {
                 tunnelFileImportResultLauncher.launch(IMPORT_LAUNCH_INPUT)
             } catch (e: ActivityNotFoundException) {
-                Logger.e(LOG_TAG_PROXY, "err; anf; while launching file import: ${e.message}", e)
                 Utilities.showToastUiCentered(this, getString(R.string.blocklist_update_check_failure), Toast.LENGTH_SHORT)
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_PROXY, "err while launching file import: ${e.message}", e)
                 Utilities.showToastUiCentered(this, getString(R.string.blocklist_update_check_failure), Toast.LENGTH_SHORT)
             }
         }
@@ -349,10 +337,8 @@ class WgMainActivity :
                         .setPrompt(resources.getString(R.string.lbl_qr_code))
                 )
             } catch (e: ActivityNotFoundException) {
-                Logger.e(LOG_TAG_PROXY, "err; anf while launching QR scanner: ${e.message}", e)
                 Utilities.showToastUiCentered(this, getString(R.string.blocklist_update_check_failure), Toast.LENGTH_SHORT)
             } catch (e: Exception) {
-                Logger.e(LOG_TAG_PROXY, "err while launching QR scanner: ${e.message}", e)
                 Utilities.showToastUiCentered(this, getString(R.string.blocklist_update_check_failure), Toast.LENGTH_SHORT)
             }
         }

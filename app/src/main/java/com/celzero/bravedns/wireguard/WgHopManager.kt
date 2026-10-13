@@ -1,7 +1,5 @@
 package com.celzero.bravedns.wireguard
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import com.celzero.bravedns.database.WgHopMap
 import com.celzero.bravedns.database.WgHopMapRepository
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
@@ -19,7 +17,6 @@ object WgHopManager: KoinComponent {
 
     private val db: WgHopMapRepository by inject()
     private var maps: CopyOnWriteArrayList<WgHopMap> = CopyOnWriteArrayList()
-    private const val TAG = "WgHopMgr"
 
     init {
         io { load(forceRefresh = false) }
@@ -27,13 +24,11 @@ object WgHopManager: KoinComponent {
 
     suspend fun load(forceRefresh: Boolean): Int {
         if (!forceRefresh && maps.isNotEmpty()) {
-            Logger.i(LOG_TAG_PROXY, "$TAG load: already loaded")
             return maps.size
         }
         maps.clear()
         maps = CopyOnWriteArrayList(db.getAllWgs())
         printMaps()
-        Logger.i(LOG_TAG_PROXY, "$TAG load complete: ${maps.size}")
         return maps.size
     }
 
@@ -42,26 +37,21 @@ object WgHopManager: KoinComponent {
         val hopConfig = WireguardManager.getConfigById(toId(map.hop))
 
         if (map.src.isBlank() || map.hop.isBlank()) {
-            Logger.e(LOG_TAG_PROXY, "$TAG add: invalid map with empty source and hop")
             return Pair(false, "Invalid map configuration")
         }
 
         val isAlreadyMapped = maps.any { it.src == map.src && it.hop == map.hop }
         if (isAlreadyMapped) {
-            Logger.i(LOG_TAG_PROXY, "$TAG add: already mapped ${map.src} -> ${map.hop}")
             return Pair(false, "Already mapped ${map.src} -> ${map.hop}")
         }
 
         val canRoute = canRoute(map.src)
         if (!canRoute) {
-            Logger.i(LOG_TAG_PROXY, "$TAG add: cannot route ${map.src} -> ${map.hop}")
             return Pair(false, "Can't route ${map.src} -> ${map.hop}")
         }
 
         if (srcConfig != null && hopConfig != null) {
-            Logger.i(LOG_TAG_PROXY, "$TAG add: ${map.src}(${srcConfig.getName()}) -> ${map.hop}(${hopConfig.getName()})")
             val hop = VpnController.createWgHop(map.src, map.hop)
-            Logger.i(LOG_TAG_PROXY, "$TAG add: ${map.src} -> ${map.hop}, res: ${hop.first}, ${hop.second}")
             if (hop.first) {
                 map.isActive = true
                 db.insert(map)
@@ -71,7 +61,6 @@ object WgHopManager: KoinComponent {
                 return Pair(false, hop.second)
             }
         } else {
-            Logger.i(LOG_TAG_PROXY, "$TAG add: invalid config")
             return Pair(false, "Invalid config")
         }
     }
@@ -80,12 +69,10 @@ object WgHopManager: KoinComponent {
         var res = Pair(false, "Map not found")
         val rmv = maps.remove(map)
         if (!rmv) {
-            Logger.i(LOG_TAG_PROXY, "$TAG delete: map not found in cache")
             return res
         }
         val deleted = db.deleteBySrcAndHop(map.src, map.hop) > 0
         res = VpnController.removeHop(map.src)
-        Logger.i(LOG_TAG_PROXY, "$TAG delete: ${map.src} -> ${map.hop}, res: $res, db? $deleted")
         return res
     }
 
@@ -94,7 +81,6 @@ object WgHopManager: KoinComponent {
         val hop = ID_WG_BASE + hopId
         var res = Pair(false, "removeHop; Map not found")
         val map = maps.find { it.src == src && it.hop == hop }
-        Logger.v(LOG_TAG_PROXY, "$TAG removeHop: $src, $hop, map: $map")
         if (map != null) {
             res = delete(map)
         }
@@ -113,7 +99,6 @@ object WgHopManager: KoinComponent {
                 }
             }
         }
-        Logger.d(LOG_TAG_PROXY, "$TAG hop init: $srcId -> $hopId")
         return if (srcId == hopId) {
             Pair(false, "Can't hop to self")
         } else {
@@ -150,18 +135,15 @@ object WgHopManager: KoinComponent {
         }
         // get the list of active wgs
         val activeWgs = WireguardManager.getActiveConfigs()
-        Logger.d(LOG_TAG_PROXY, "$TAG getHopableWgs activeWgs: $activeWgs")
         // remove the wireguards which are part of other hops
         val filteredWgs = activeWgs.filter { wg ->
             val wgId = wg.getId()
             val isHop = maps.any { toId(it.src) == wgId }
             !isHop
         }
-        Logger.d(LOG_TAG_PROXY, "$TAG getHopableWgs filteredWgs: $filteredWgs")
         possibleHops.addAll(filteredWgs.filter { wg ->
             wg.getId() != toId(srcId) && canRoute(srcId)
         })
-        Logger.i(LOG_TAG_PROXY, "$TAG getHopableWgs possibleHops: ${possibleHops.map { it.getName() }}")
         return possibleHops.toList() // return the immutable list
     }
 
@@ -196,7 +178,6 @@ object WgHopManager: KoinComponent {
         val srcMap = getMapBySrc(idStr)
         if (srcMap.isNotEmpty()) {
             srcMap.forEach { map ->
-                Logger.i(LOG_TAG_PROXY, "$TAG handleWgDelete: deleting map $map")
                 delete(map)
             }
         }
@@ -204,7 +185,6 @@ object WgHopManager: KoinComponent {
         val hopMap = getMapByHop(idStr)
         if (hopMap.isNotEmpty()) {
             hopMap.forEach { map ->
-                Logger.i(LOG_TAG_PROXY, "$TAG handleWgDelete: deleting map $map")
                 delete(map)
             }
         }
@@ -224,7 +204,6 @@ object WgHopManager: KoinComponent {
         // or if the src is already part of any other map as src
         val hopMap = getMapByHop(src)
         val can2 = hopMap.none { it.src == src && it.isActive }
-        Logger.d(LOG_TAG_PROXY, "$TAG canRoute($src) srcMap: $srcMap, can: $can, hopMap: $hopMap, can2: $can2")
         return can && can2
     }
 
@@ -233,13 +212,11 @@ object WgHopManager: KoinComponent {
             val configId = id.substring(ID_WG_BASE.length)
             configId.toIntOrNull() ?: INVALID_CONF_ID
         } catch (e: Exception) {
-            Logger.i(LOG_TAG_PROXY, "$TAG err converting string id to int: $id, ${e.message}")
             INVALID_CONF_ID
         }
     }
 
     fun printMaps() {
-        Logger.v(LOG_TAG_PROXY, "$TAG printMaps: $maps")
     }
 
     private fun io(f: suspend () -> Unit) {
@@ -249,7 +226,6 @@ object WgHopManager: KoinComponent {
             try {
                 f()
             } catch (e: Exception) {
-                Logger.w(LOG_TAG_PROXY, "$TAG background op failed: ${e.message}")
             }
         }
     }

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.adapter
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -69,7 +67,6 @@ class CustomDomainAdapter(
     private lateinit var adapter: CustomDomainAdapter
 
     companion object {
-        private const val TAG = "CustomDomainAdapter"
         private val DIFF_CALLBACK =
             object : DiffUtil.ItemCallback<CustomDomain>() {
                 override fun areItemsTheSame(
@@ -124,7 +121,6 @@ class CustomDomainAdapter(
             }
 
             else -> {
-                Logger.w(LOG_TAG_UI, "unknown view holder in CustomDomainRulesAdapter")
                 return
             }
         }
@@ -142,7 +138,6 @@ class CustomDomainAdapter(
                 notifyItemRangeChanged(0, itemCount)
             }
         } catch (e: Exception) {
-            Logger.e(LOG_TAG_UI, "$TAG error clearing selection: ${e.message}", e)
         }
     }
 
@@ -200,7 +195,6 @@ class CustomDomainAdapter(
         }
 
         dBind.dacdDomainChip.setOnCheckedChangeListener { _, isSelected ->
-            Logger.vv(LOG_TAG_UI, "$TAG domain chip selected: $isSelected")
             if (isSelected) {
                 selectedType = DomainRulesManager.DomainType.DOMAIN
                 dBind.dacdDomainEditText.hint =
@@ -217,7 +211,6 @@ class CustomDomainAdapter(
         }
 
         dBind.dacdWildcardChip.setOnCheckedChangeListener { _, isSelected ->
-            Logger.vv(LOG_TAG_UI, "$TAG wildcard chip selected: $isSelected")
             if (isSelected) {
                 selectedType = DomainRulesManager.DomainType.WILDCARD
                 dBind.dacdDomainEditText.hint =
@@ -269,7 +262,6 @@ class CustomDomainAdapter(
             dBind.dacdFailureText.text =
                 context.getString(R.string.cd_dialog_error_invalid_domain)
             dBind.dacdFailureText.visibility = View.VISIBLE
-            Logger.vv(LOG_TAG_UI, "$TAG invalid domain: $url")
             return
         }
         when (selectedType) {
@@ -278,7 +270,6 @@ class CustomDomainAdapter(
                     dBind.dacdFailureText.text =
                         context.getString(R.string.cd_dialog_error_invalid_wildcard)
                     dBind.dacdFailureText.visibility = View.VISIBLE
-                    Logger.vv(LOG_TAG_UI, "$TAG invalid wildcard domain: $url")
                     return
                 }
             }
@@ -288,14 +279,12 @@ class CustomDomainAdapter(
                     dBind.dacdFailureText.text =
                         context.getString(R.string.cd_dialog_error_invalid_domain)
                     dBind.dacdFailureText.visibility = View.VISIBLE
-                    Logger.vv(LOG_TAG_UI, "$TAG invalid domain: $url")
                     return
                 }
             }
         }
 
         io {
-            Logger.vv(LOG_TAG_UI, "$TAG domain: $extractedHost, type: $selectedType")
             insertDomain(
                 Utilities.removeLeadingAndTrailingDots(extractedHost),
                 selectedType,
@@ -317,7 +306,6 @@ class CustomDomainAdapter(
         prevDomain: CustomDomain,
         status: DomainRulesManager.Status
     ) {
-        Logger.i(LOG_TAG_UI, "$TAG insert/update domain: $domain, type: $type")
         DomainRulesManager.updateDomainRule(domain, status, type, prevDomain)
         uiCtx {
             Utilities.showToastUiCentered(
@@ -391,7 +379,6 @@ class CustomDomainAdapter(
                                 notifyItemRangeChanged(0, itemCount)
                             }
                         } catch (e: Exception) {
-                            Logger.e(LOG_TAG_UI, "$TAG error in long click: ${e.message}", e)
                         }
                         true
                     }
@@ -536,7 +523,6 @@ class CustomDomainAdapter(
                         notifyItemRangeChanged(0, itemCount)
                     }
                 } catch (e: Exception) {
-                    Logger.e(LOG_TAG_UI, "$TAG error in long click: ${e.message}", e)
                 }
                 true
             }

@@ -15,8 +15,6 @@
  */
 package com.celzero.bravedns.ui.activity
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import com.celzero.bravedns.util.Logger.throwableToException
 import android.content.Context
 import android.content.res.Configuration
@@ -228,7 +226,6 @@ class WgConfigEditorActivity : BaseActivity(R.layout.activity_wg_config_editor) 
         } catch (e: Throwable) {
             val error = ErrorMessages[this, e]
             val ex = throwableToException(e)
-            Logger.e(LOG_TAG_PROXY, "err while parsing wg interface: $error", ex)
             uiCtx { Utilities.showToastUiCentered(this, error, Toast.LENGTH_LONG) }
             return null
         }
