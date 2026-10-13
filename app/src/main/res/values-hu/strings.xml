@@ -903,9 +903,7 @@
     <string name="fs_configure_network_desc" translatable="true">VPN‑alagút mód és hálózati beállítások</string>
     <string name="settings_tunnel_metered" translatable="true">Mindig forgalomkorlátosként kezelve</string>
     <string name="wg_ssid_invalid_error" translatable="true">A Wi‑Fi‑azonosítók (%1$s) legfeljebb 32 karakter hosszúak lehetnek.</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Hibanaplók rögzítése a stabilitás javításához.</string>
     <string name="fs_configure_apps_desc" translatable="true">Alkalmazásonkénti tűzfalszabályok és hálózati házirend</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Stabilítási program</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Minimálisan reagál a hálózati változásokra.</string>
     <string name="ssid_location_error_action" translatable="true">Helymeghatározás engedélyezése</string>
     <string name="settings_locale_dialog_default" translatable="true">Rendszer alapértelmezés</string>
@@ -914,9 +912,7 @@
     <string name="tour_btn_skip">Bemutató kihagyása</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Engedélyezve lehetővé teszi a WireGuard partnerek által kezdeményezett bejövő kapcsolatok fogadását.</string>
     <string name="location_enable_explanation" translatable="true">A Wi‑Fi‑azonosítók (%1$s) eléréséhez kapcsolja be a Helymeghatározás szolgáltatást.</string>
-    <string name="stability_program_snackbar_msg" translatable="true">A stabilitási program engedélyezve. A hibajelentések segítenek a kísérleti funkciók fejlesztésében.</string>
     <string name="ssid_location_error" translatable="true">Helymeghatározás szolgáltatás engedélyezése</string>
     <string name="settings_tunnel_metered_desc" translatable="true">A DNS Control VPN-alagút megjelölése forgalomkorlátosként, hogy az alkalmazások kevesebb adatot használjanak. Figyelem: ez leállíthatja a nagyobb feltöltéseket és letöltéseket, például a biztonsági mentéseket.</string>
     <string name="wg_setting_ssid_desc" translatable="true">Engedélyezd ezt a WireGuard VPN‑t csak akkor, ha Wi‑Fi‑hez vagy a megadott Wi‑Fi‑azonosítókhoz (%1$s) csatlakozol.</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Letiltás</string>
 </resources>

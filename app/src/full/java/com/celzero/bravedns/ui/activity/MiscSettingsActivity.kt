@@ -58,16 +58,11 @@ import com.celzero.bravedns.ui.activity.AppLockActivity.Companion.APP_LOCK_ALIAS
 import com.celzero.bravedns.ui.activity.AppLockActivity.Companion.HOME_ALIAS
 import com.celzero.bravedns.ui.bottomsheet.BackupRestoreBottomSheet
 import com.celzero.bravedns.util.Constants
-import com.celzero.bravedns.util.FirebaseErrorReporting
-import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_LENGTH
-import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_REGENERATION_PERIOD_DAYS
 import com.celzero.bravedns.util.NotificationActionType
-import com.celzero.bravedns.util.SnackbarHelper
 import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.Themes.Companion.getCurrentTheme
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.delay
-import com.celzero.bravedns.util.Utilities.getRandomString
 import com.celzero.bravedns.util.Utilities.isAtleastQ
 import com.celzero.bravedns.util.Utilities.isAtleastS
 import com.celzero.bravedns.util.Utilities.isAtleastT
@@ -172,15 +167,7 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         if (isFdroidFlavour()) {
             b.settingsActivityCheckUpdateRl.visibility = View.GONE
             b.dividerCheckUpdate.visibility = View.GONE
-            // Hide Firebase error reporting for F-Droid variant
-            b.settingsFirebaseErrorReportingRl.visibility = View.GONE
-            b.dividerAutoStart.visibility = View.GONE
         } else {
-            // Show Firebase error reporting for play and website variants
-            b.settingsFirebaseErrorReportingRl.visibility = View.VISIBLE
-            b.dividerAutoStart.visibility = View.VISIBLE
-            // Firebase error reporting
-            b.settingsFirebaseErrorReportingSwitch.isChecked = persistentState.firebaseErrorReportingEnabled
             b.settingsActivityCheckUpdateRl.visibility = View.VISIBLE
             b.dividerCheckUpdate.visibility = View.VISIBLE
             // check for app updates
@@ -268,7 +255,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
 
         displayAppThemeUi()
         displayNotificationActionUi()
-        setupTokenUi()
     }
 
     private fun displayNotificationActionUi() {
@@ -433,12 +419,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         b.settingsActivityAutoStartSwitch.setOnCheckedChangeListener { _: CompoundButton, isChecked: Boolean
             ->
             persistentState.prefAutoStartBootUp = isChecked
-            if (isChecked) {
-                // Enable experimental-dependent settings when experimental features are enabled
-                if (persistentState.enableStabilityDependentSettings()) {
-                    SnackbarHelper.showStabilityProgram(b.root, persistentState)
-                }
-            }
         }
 
         b.donateBtcCopy.setOnClickListener {
@@ -465,16 +445,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             persistentState.downloadIpInfo = isChecked
         }
 
-        // Firebase error reporting toggle
-        b.settingsFirebaseErrorReportingRl.setOnClickListener {
-            b.settingsFirebaseErrorReportingSwitch.isChecked =
-                !b.settingsFirebaseErrorReportingSwitch.isChecked
-        }
-
-        b.settingsFirebaseErrorReportingSwitch.setOnCheckedChangeListener { _: CompoundButton, isChecked: Boolean ->
-            handleFirebaseErrorReportingToggle(isChecked)
-        }
-
         b.tombstoneAppRl.setOnClickListener {
             b.tombstoneAppSwitch.isChecked = !b.tombstoneAppSwitch.isChecked
         }
@@ -484,21 +454,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             io { rdb.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
         }
 
-    }
-
-    private fun handleFirebaseErrorReportingToggle(isChecked: Boolean) {
-        if (isChecked) {
-            // enable firebase error reporting
-            FirebaseErrorReporting.setEnabled(true)
-            b.settingsFirebaseErrorReportingSwitch.isChecked = true
-            persistentState.firebaseErrorReportingEnabled = true
-            setFirebaseUserId(persistentState.firebaseUserToken)
-        } else {
-            // disable firebase error reporting
-            FirebaseErrorReporting.setEnabled(false)
-            b.settingsFirebaseErrorReportingSwitch.isChecked = false
-            persistentState.firebaseErrorReportingEnabled = false
-        }
     }
 
 
@@ -813,27 +768,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             }
         }
         alertBuilder.create().show()
-    }
-
-    fun setFirebaseUserId(token: String) {
-        try {
-            FirebaseErrorReporting.setUserId(token)
-        } catch (_: Exception) {
-        }
-    }
-
-    private fun setupTokenUi() {
-        val now = System.currentTimeMillis()
-        val fortyFiveDaysMs = TimeUnit.DAYS.toMillis(TOKEN_REGENERATION_PERIOD_DAYS)
-
-        var token = persistentState.firebaseUserToken
-        var ts = persistentState.firebaseUserTokenTimestamp
-        if (token.isBlank() || now - ts > fortyFiveDaysMs) {
-            token = getRandomString(TOKEN_LENGTH)
-            ts = now
-            persistentState.firebaseUserToken = token
-            persistentState.firebaseUserTokenTimestamp = ts
-        }
     }
 
     override fun onResume() {

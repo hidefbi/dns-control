@@ -49,7 +49,6 @@ import androidx.core.view.WindowInsetsCompat
 import com.celzero.bravedns.R
 import com.celzero.bravedns.database.AppInfoRepository.Companion.NO_PACKAGE_PREFIX
 import com.celzero.bravedns.net.doh.Transaction
-import com.celzero.bravedns.service.PersistentState
 import com.celzero.firestack.backend.Backend
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.radiobutton.MaterialRadioButton
@@ -516,32 +515,6 @@ object SnackbarHelper {
     fun dismiss() {
         current?.dismiss()
         current = null
-    }
-
-    /**
-     * Show the stability-program enrollment Snackbar with a **Disable** action.
-     *
-     * Automatically anchors above the BottomNavigationView when one is present in the
-     * view hierarchy (e.g. fragments hosted by HomeScreenActivity).
-     *
-     * @param view           Any view inside the activity/fragment hierarchy.
-     * @param persistentState The PersistentState instance used to disable the program.
-     */
-    fun showStabilityProgram(view: View, persistentState: PersistentState) {
-        val context = view.context
-        val message = context.getString(R.string.stability_program_snackbar_msg)
-        val actionLabel = context.getString(R.string.stability_program_snackbar_disable)
-        show(
-            view = view,
-            message = message,
-            duration = Snackbar.LENGTH_LONG,
-            actionLabel = actionLabel,
-            action = {
-                persistentState.firebaseErrorReportingEnabled = false
-                FirebaseErrorReporting.setEnabled(false)
-            },
-            forceShow = true
-        )
     }
 
     /**

@@ -900,8 +900,6 @@
     <string name="wg_ssid_type_exact" translatable="true">Correspond exactement</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Correspond partiellement</string>
     <string name="wg_ssid_invalid_error" translatable="true">Les identifiants Wi-Fi (%1$s) doivent comporter 32 caractères ou moins.</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Programme de stabilité</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Enregistrer les journaux d\'erreurs pour contribuer à améliorer la stabilité.</string>
     <string name="tombstone_app_title" translatable="true">Se souvenir des applications désinstallées</string>
     <string name="tombstone_app_desc" translatable="true">Lorsque cette option est activée, conserver les règles de l\'application pendant 7 jours.</string>
     <string name="settings_locale_dialog_default" translatable="true">Valeurs par défaut du système</string>
@@ -927,6 +925,4 @@
     </plurals>
     <string name="tour_btn_finish">J\'ai compris</string>
     <string name="tour_btn_skip">Passer la visite guidée</string>
-    <string name="stability_program_snackbar_msg" translatable="true">Le mode stabilité est activé. Les rapports d\'erreurs contribuent à l\'amélioration des fonctionnalités expérimentales.</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Désactiver</string>
 </resources>

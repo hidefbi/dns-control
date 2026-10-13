@@ -21,7 +21,6 @@ import android.content.pm.ApplicationInfo
 import android.os.StrictMode
 import com.celzero.bravedns.scheduler.ScheduleManager
 import com.celzero.bravedns.scheduler.WorkScheduler
-import com.celzero.bravedns.util.FirebaseErrorReporting
 import com.celzero.bravedns.util.GlobalExceptionHandler
 import com.celzero.bravedns.util.GoReportingHandler
 import kotlinx.coroutines.CoroutineScope
@@ -53,7 +52,6 @@ class RethinkDnsApplication : Application() {
 
         // Initialize global exception handler
         GlobalExceptionHandler.initialize(this)
-        FirebaseErrorReporting.initialize()
         GoReportingHandler.initialize(appScope, this)
 
         turnOnStrictMode()

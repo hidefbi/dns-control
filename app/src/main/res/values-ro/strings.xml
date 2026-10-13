@@ -884,8 +884,6 @@
     <string name="wg_ssid_type_exact" translatable="true">Potrivire exactă</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Potrivire parțială</string>
     <string name="wg_ssid_invalid_error" translatable="true">Identificatorii Wi-Fi (%1$s) trebuie să conțină cel mult 32 caractere..</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Program stabilitate</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Capturează înregistrările erorilor pentru îmbunătățirea stabilității.</string>
     <string name="tombstone_app_title" translatable="true">Memorează aplicațiile dezinstalate</string>
     <string name="tombstone_app_desc" translatable="true">Dacă este activat, păstrează regulile pe aplicații timp de 7 zile.</string>
     <string name="settings_locale_dialog_default" translatable="true">Prestabilit de sistem</string>
@@ -919,6 +917,4 @@
     <string name="fs_configure_network_desc" translatable="true">Modul tunel VPN și preferințe de rețea</string>
     <string name="fs_configure_apps_desc" translatable="true">Reguli firewall per aplicație și politica de rețea</string>
     <string name="tour_btn_skip">Sari peste tur</string>
-    <string name="stability_program_snackbar_msg" translatable="true">Programul de stabilitate activat. Rapoartele de erori ajută la îmbunătățirea funcționalităților experimentale.</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Dezactivează</string>
 </resources>

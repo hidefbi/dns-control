@@ -900,8 +900,6 @@
     <string name="wg_ssid_type_exact" translatable="true">Совпадает точно</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Совпадает частично</string>
     <string name="wg_ssid_invalid_error" translatable="true">Идентификаторы Wi-Fi (%1$s) должны быть до 32 символов.</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Программа стабилизации</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Отправлять журнал ошибок чтобы помочь улучшить стабильность приложения.</string>
     <string name="tombstone_app_title" translatable="true">Запоминать удалённые программы</string>
     <string name="tombstone_app_desc" translatable="true">Если включено, сохраняет правила приложений ещё 7 дней.</string>
     <string name="settings_locale_dialog_default" translatable="true">Как в системе</string>

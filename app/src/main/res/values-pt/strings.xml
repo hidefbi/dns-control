@@ -783,8 +783,6 @@
     <string name="exclude_apps_from_proxy_failure_toast">Esta aplicação contorna os proxies</string>
     <string name="lbl_notification" translatable="true">Notificação</string>
     <string name="memory_notification_text">O DNS Control está com pouca memória. As ações do sistema podem ser limitadas.</string>
-    <string name="stability_program_snackbar_msg" translatable="true">Programa de estabilidade ativado. Relatórios de falhas ajudam a melhorar recursos experimentais.</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Desativar</string>
     <string name="tour_step_counter">%1$d de %2$d</string>
     <string name="settings_mobile_metered_heading" translatable="true">Redes móveis de medidores</string>
     <string name="settings_biometric_dialog_option_1" translatable="true">Imediatamente</string>
@@ -846,7 +844,6 @@
     <string name="cd_split_dns_heading" translatable="true">DNS dividido (experimental)</string>
     <string name="close_all" translatable="true">Fechar tudo</string>
     <string name="univ_delete_domain_dialog_title" translatable="true">Apagar todas as regras de domínio?</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Capturar registos de erros para ajudar a melhorar a estabilidade.</string>
     <string name="settings_mobile_metered_desc" translatable="true">Trate apenas as redes móveis como medidas e as demais como não medidas.</string>
     <string name="firewall_rule_lockdown_wg" translatable="true">Proxy de bloqueio</string>
     <string name="wireguard_title" translatable="true">Internet segura com WireGuard</string>

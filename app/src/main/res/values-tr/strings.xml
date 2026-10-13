@@ -900,8 +900,6 @@
     <string name="wg_ssid_type_exact" translatable="true">Tam eşleşen</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Kısmen eşleşen</string>
     <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi tanımlayıcıları (%1$s) 32 karakter veya daha az olmalıdır.</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Kararlılık programı</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Kararlılığı artırmaya yardımcı olmak için hata günlüklerini yakala.</string>
     <string name="tombstone_app_title" translatable="true">Kaldırılan uygulamaları hatırla</string>
     <string name="tombstone_app_desc" translatable="true">Etkinleştirildiğinde, uygulama kurallarını 7 gün boyunca saklayın.</string>
     <string name="settings_locale_dialog_default" translatable="true">Sistem varsayılanı</string>
@@ -917,8 +915,6 @@
     <string name="cd_allowed_dns_record_types_desc" translatable="false">İzin verilecek DNS kaynak kaydı türlerini seçin.</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Oto (Tüm tipler)</string>
     <string name="tour_btn_skip">Turu geç</string>
-    <string name="stability_program_snackbar_msg" translatable="true">Stabilite programı etkinleştirildi. Çökme raporları, deneysel özelliklerin geliştirilmesine yardım eder.</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Kapat</string>
     <plurals name="server_count">
         <item quantity="one">%1$d sunucu</item>
         <item quantity="other">%1$d sunucu</item>

@@ -1542,8 +1542,6 @@
     <string name="wg_ssid_empty_error" translatable="false">SSID name cannot be empty</string>
     <string name="wg_ssid_delete_title" translatable="false">Delete SSID</string>
 
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Stability program</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Capture error logs to help improve stability.</string>
 
     <string name="tombstone_app_title" translatable="true">Remember uninstalled apps</string>
     <string name="tombstone_app_desc" translatable="true">When enabled, keep app rules for 7 days.</string>
@@ -1565,8 +1563,6 @@
     <string name="settings_tunnel_metered" translatable="true">Always metered</string>
     <string name="settings_tunnel_metered_desc" translatable="true">Mark DNS Control\'s VPN tunnel as metered to encourage apps to use less data. Caution: This may cause apps to pause large uploads &amp; downloads, like backups.</string>
 
-    <string name="stability_program_snackbar_msg" translatable="true">Stability program enabled</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Undo</string>
 
     <string name="settings_wireguard_lockdown_mode" translatable="false">Proxy Lockdown (experimental)</string>
     <string name="settings_wireguard_lockdown_mode_desc" translatable="false">When enabled, all traffic is forced through Proxy or blocked.</string>

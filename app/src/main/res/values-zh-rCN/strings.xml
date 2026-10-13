@@ -883,8 +883,6 @@
     <string name="wg_ssid_dialog_description" translatable="true">%1$s 该 WireGuard VPN，当 <i>活跃</i> Wi-Fi 标识 (%2$s) %3$s。</string>
     <string name="wg_ssid_input_hint" translatable="true">输入无线网络标识（%1$s）</string>
     <string name="wg_ssid_invalid_error" translatable="true">无线网络标识（%1$s）长度不得超过 32 个字符。</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">稳定性程序</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">捕获错误日志以助力提升稳定性。</string>
     <string name="tombstone_app_title" translatable="true">记住已卸载的应用</string>
     <string name="tombstone_app_desc" translatable="true">启用后，应用规则将保留 7 天。</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">启用后，允许 WireGuard 对等节点发起的入站连接。</string>
@@ -927,8 +925,6 @@
     <string name="config_delete_all_dialog_desc" translatable="true">确定要删除所有 WireGuard VPN 配置吗？这不可逆。</string>
     <string name="fs_configure_others_desc" translatable="true">外观、通知和更多</string>
     <string name="fs_configure_proxy_desc" translatable="true">WireGuard、SOCKS5 和 HTTP 代理路由</string>
-    <string name="stability_program_snackbar_msg" translatable="true">启用了稳定性项目</string>
-    <string name="stability_program_snackbar_disable" translatable="true">撤销</string>
     <string name="config_delete_all_dialog_title" translatable="true">删除所有</string>
     <string name="settings_flood_wg_desc" translatable="true">启用后，发送额外的 WireGuard 包增加在受限网络中识别和拦截隧道流量难度。</string>
     <string name="fs_configure_advanced_desc" translatable="true">开发者工具和诊断</string>

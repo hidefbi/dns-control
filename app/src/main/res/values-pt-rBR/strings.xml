@@ -824,7 +824,6 @@
     <string name="firewall_rule_proxy_error" translatable="true">Erro de proxy</string>
     <string name="tour_btn_skip">Pular tour</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Quando habilitado, permitir conexões de entrada iniciadas por peers WireGuard.</string>
-    <string name="stability_program_snackbar_msg" translatable="true">Programa de estabilidade habilitado. Relatórios de falhas ajudam a melhorar recursos experimentais.</string>
     <string name="top_active_conns" translatable="true">Principais conexões ativas</string>
     <string name="ac_desync" translatable="true">Desincronizar</string>
     <plurals name="peer_count">
@@ -866,7 +865,6 @@
     <string name="ac_never_split_desc" translatable="true">Não altere os pacotes.</string>
     <string name="firewall_rule_bypass_proxy_desc" translatable="true"><![CDATA[Esta conexão foi permitida porque o <i>aplicativo de origem</i> está configurado para <i>ignorar as regras de proxy</i>.<br><br>Para alterar isso, vá para a tela <i>Firewall específico por aplicativo</i>.]]></string>
     <string name="close_all" translatable="true">Fechar tudo</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Capturar registros de erros para ajudar a melhorar a estabilidade.</string>
     <string name="ac_retry_options_never_desc" translatable="true">Em caso de falha, nunca tente novamente técnicas anticensura.</string>
     <string name="ac_desync_desc" translatable="true">Envie pacotes decoy conforme necessário.</string>
     <string name="ac_retry_options_desc" translatable="true">Defina como as tentativas de reconexão funcionam para conexões censuradas.</string>

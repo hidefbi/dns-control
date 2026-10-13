@@ -900,8 +900,6 @@
     <string name="wg_ssid_type_exact" translatable="true">Cocok sepenuhnya</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Cocok sebagian</string>
     <string name="wg_ssid_invalid_error" translatable="true">Identifier Wi-Fi (%1$s) harus terdiri dari 32 karakter atau kurang.</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Program Stabilitas</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Catat log kesalahan untuk membantu meningkatkan stabilitas.</string>
     <string name="tombstone_app_title" translatable="true">Ingat aplikasi yang telah dihapus</string>
     <string name="tombstone_app_desc" translatable="true">Saat diaktifkan, simpan aturan aplikasi selama 7 hari.</string>
     <string name="settings_locale_dialog_default" translatable="true">Default sistem</string>
@@ -933,8 +931,6 @@
     <string name="fs_configure_network_desc" translatable="true">Mode terowongan VPN dan preferensi jaringan</string>
     <string name="fs_configure_apps_desc" translatable="true">Aturan firewall per aplikasi dan kebijakan jaringan</string>
     <string name="tour_btn_skip">Lewati Tur</string>
-    <string name="stability_program_snackbar_msg" translatable="true">Program stabilitas diaktifkan</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Batal</string>
     <string name="settings_flood_wg_desc" translatable="true">Jika diaktifkan, mengirimkan paket WireGuard tambahan agar lalu lintas terowongan lebih sulit dikenali dan diblokir di jaringan yang dibatasi.</string>
     <string name="ip_mismatch_notification_title" translatable="true">Ketidaksesuaian protokol jaringan</string>
     <string name="ip_mismatch_notification_content" translatable="true">Protokol IP yang Anda pilih tidak tersedia pada jaringan saat ini. Beralihlah ke mode \"IPv4 &amp; IPv6\" atau \"Otomatis\" agar tetap terhubung.</string>

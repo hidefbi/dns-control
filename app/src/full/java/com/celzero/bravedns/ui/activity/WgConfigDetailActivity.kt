@@ -57,7 +57,6 @@ import com.celzero.bravedns.ui.dialog.WgAddPeerDialog
 import com.celzero.bravedns.ui.dialog.WgHopDialog
 import com.celzero.bravedns.ui.dialog.WgIncludeAppsDialog
 import com.celzero.bravedns.ui.dialog.WgSsidDialog
-import com.celzero.bravedns.util.SnackbarHelper
 import com.celzero.bravedns.util.SsidPermissionManager
 import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.UIUtils
@@ -760,12 +759,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
                 return@setOnClickListener
             }
             updateUseOnMobileNetwork(b.useMobileCheck.isChecked)
-            if (b.useMobileCheck.isChecked) {
-                // Enable experimental-dependent settings when experimental features are enabled
-                if (persistentState.enableStabilityDependentSettings()) {
-                    SnackbarHelper.showStabilityProgram(b.root, persistentState)
-                }
-            }
         }
 
         b.hopBtnX.setOnClickListener {
@@ -1138,10 +1131,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
             io { WireguardManager.updateSsidEnabled(configId, isChecked) }
 
             if (isChecked && SsidPermissionManager.hasRequiredPermissions(this) && currentLocationEnabled) {
-                // Enable experimental-dependent settings when experimental features are enabled
-                if (persistentState.enableStabilityDependentSettings()) {
-                    SnackbarHelper.showStabilityProgram(b.root, persistentState)
-                }
 
                 // Enabling with proper permissions, load and display SSIDs
                 io {

@@ -899,8 +899,6 @@
     <string name="wg_ssid_type_exact" translatable="true">Exakte Übereinstimmung</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Teilweise Übereinstimmung</string>
     <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi-Kennungen (%1$s) dürfen maximal 32 Zeichen lang sein.</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Stabilitätsprogramm</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Fehlerprotokolle erfassen, um die Stabilität zu verbessern.</string>
     <string name="tombstone_app_title" translatable="true">Deinstallierte Apps merken</string>
     <string name="tombstone_app_desc" translatable="true">Wenn aktiviert, werden die App-Regeln 7 Tage lang beibehalten.</string>
     <string name="settings_locale_dialog_default" translatable="true">Systemvorgabe</string>
@@ -931,8 +929,6 @@
     <string name="fs_configure_others_desc" translatable="true">Aussehen, Benachrichtigungen und mehr</string>
     <string name="dc_block_unknown_heading" translatable="true">DNS aus unbekannter Quelle blockieren</string>
     <string name="fs_configure_proxy_desc" translatable="true">WireGuard, SOCKS5 und HTTP-Proxy-Routing</string>
-    <string name="stability_program_snackbar_msg" translatable="true">Stabilitätsprogramm aktiviert</string>
-    <string name="stability_program_snackbar_disable" translatable="true">Rückgängig</string>
     <string name="config_delete_all_dialog_title" translatable="true">Alle löschen</string>
     <string name="settings_flood_wg_desc" translatable="true">Wenn aktiviert, werden zusätzliche WireGuard-Pakete gesendet, um die Identifizierung und Blockierung des Tunnelverkehrs in restriktiven Netzwerken zu erschweren.</string>
     <string name="fs_configure_advanced_desc" translatable="true">Entwicklertools und Diagnose</string>

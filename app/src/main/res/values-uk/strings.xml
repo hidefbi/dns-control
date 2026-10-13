@@ -886,8 +886,6 @@
     <string name="wg_ssid_type_exact" translatable="true">Точно відповідає</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Частково збігається</string>
     <string name="wg_ssid_invalid_error" translatable="true">Ідентифікатори Wi-Fi (%1$s) повинні містити 32 символи або менше.</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">Програма стабільності</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">Зберігайте журнали помилок для покращення стабільності.</string>
     <string name="tombstone_app_title" translatable="true">Запам\'ятати видалені програми</string>
     <string name="tombstone_app_desc" translatable="true">Якщо ввімкнено, зберігати правила програми протягом 7 днів.</string>
     <string name="settings_locale_dialog_default" translatable="true">Системні за замовчуванням</string>

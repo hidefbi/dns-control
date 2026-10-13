@@ -63,15 +63,11 @@ import com.celzero.bravedns.ui.activity.PauseActivity
 import com.celzero.bravedns.ui.activity.WelcomeActivity
 import com.celzero.bravedns.util.Constants.Companion.ALPHA_UPDATE_CHECK_URL
 import com.celzero.bravedns.util.Constants.Companion.PKG_NAME_PLAY_STORE
-import com.celzero.bravedns.util.FirebaseErrorReporting
-import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_LENGTH
-import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_REGENERATION_PERIOD_DAYS
 import com.celzero.bravedns.util.NewSettingsManager
 import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.Themes.Companion.getCurrentTheme
 import com.celzero.bravedns.util.UIUtils.openUrl
 import com.celzero.bravedns.util.Utilities
-import com.celzero.bravedns.util.Utilities.getRandomString
 import com.celzero.bravedns.util.Utilities.isAtleastO_MR1
 import com.celzero.bravedns.util.Utilities.isAtleastQ
 import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
@@ -147,7 +143,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
 
         NewSettingsManager.handleNewSettings()
 
-        regenerateFirebaseTokenIfNeeded()
     }
 
     override fun onResume() {
@@ -201,24 +196,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         }
 
         showRestoreDialog(uri)
-    }
-
-    private fun regenerateFirebaseTokenIfNeeded() {
-        if (Utilities.isFdroidFlavour()) return
-        if (!persistentState.firebaseErrorReportingEnabled) return
-
-        val now = System.currentTimeMillis()
-        val fortyFiveDaysMs = TimeUnit.DAYS.toMillis(TOKEN_REGENERATION_PERIOD_DAYS)
-
-        var token = persistentState.firebaseUserToken
-        var ts = persistentState.firebaseUserTokenTimestamp
-        if (token.isBlank() || now - ts > fortyFiveDaysMs) {
-            token = getRandomString(TOKEN_LENGTH)
-            ts = now
-            persistentState.firebaseUserToken = token
-            persistentState.firebaseUserTokenTimestamp = ts
-            FirebaseErrorReporting.setUserId(token)
-        }
     }
 
     private fun showRestoreDialog(uri: Uri) {

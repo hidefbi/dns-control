@@ -25,10 +25,8 @@ import com.celzero.bravedns.ui.activity.AntiCensorshipActivity
 import com.celzero.bravedns.data.BlockFreeDnsMode
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.Constants.Companion.INIT_TIME_MS
-import com.celzero.bravedns.util.FirebaseErrorReporting
 import com.celzero.bravedns.util.InternetProtocol
 import com.celzero.bravedns.util.ResourceRecordTypes
-import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastR
 import hu.autsoft.krate.SimpleKrate
 import hu.autsoft.krate.booleanPref
@@ -377,15 +375,9 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
         if (isAtleastR()) BlockFreeDnsMode.AUTO.mode
         else BlockFreeDnsMode.FALLBACK.mode)
 
-    // Firebase error reporting enabled (only for play and website variants)
-    var firebaseErrorReportingEnabled by booleanPref("firebase_error_reporting").withDefault<Boolean>(false)
-
     // setting to enable/disable tombstone apps feature
     var tombstoneApps by booleanPref("tombstone_apps").withDefault<Boolean>(false)
 
-    // Token for Firebase userId
-    var firebaseUserToken by stringPref("firebase_user_token").withDefault("")
-    var firebaseUserTokenTimestamp by longPref("firebase_user_token_timestamp").withDefault(0L)
 
 
 
@@ -577,27 +569,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
             proxyStatus.postValue(status)
         }
         return proxyStatus
-    }
-
-    /**
-     * Enable settings which are dependent on stability program participation.
-     * Currently, only Firebase error reporting is enabled here.
-     * @return true if the state was changed (i.e., it was newly enabled), false otherwise.
-     */
-    fun enableStabilityDependentSettings(): Boolean {
-        // Skip for fdroid flavor
-        if (Utilities.isFdroidFlavour()) {
-            return false
-        }
-
-        // Enable Firebase error reporting for play and website variants
-        if (!firebaseErrorReportingEnabled) {
-            firebaseErrorReportingEnabled = true
-            FirebaseErrorReporting.setEnabled(firebaseErrorReportingEnabled)
-            return true
-        }
-
-        return false
     }
 
     // Allowed DNS record types (stored as comma-separated enum names)

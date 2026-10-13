@@ -40,7 +40,6 @@ import com.celzero.bravedns.ui.activity.DnsListActivity
 import com.celzero.bravedns.ui.activity.PauseActivity
 import com.celzero.bravedns.ui.bottomsheet.DnsRecordTypesBottomSheet
 import com.celzero.bravedns.ui.bottomsheet.LocalBlocklistsBottomSheet
-import com.celzero.bravedns.util.SnackbarHelper
 import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.UIUtils.fetchColor
 import com.celzero.bravedns.util.Utilities
@@ -418,12 +417,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         b.dcAlgSwitch.setOnCheckedChangeListener { _: CompoundButton, enabled: Boolean ->
             enableAfterDelay(TimeUnit.SECONDS.toMillis(1), b.dcAlgSwitch)
             persistentState.enableDnsAlg = enabled
-            if (enabled) {
-                // Enable experimental-dependent settings when experimental features are enabled
-                if (persistentState.enableStabilityDependentSettings()) {
-                    SnackbarHelper.showStabilityProgram(b.root, persistentState)
-                }
-            }
             updateSpiltDns()
         }
 
@@ -505,10 +498,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
                 if (!isAtleastR() && !persistentState.enableDnsAlg) {
                     persistentState.enableDnsAlg = true
                     b.dcAlgSwitch.isChecked = true
-                }
-                // Enable experimental-dependent settings when experimental features are enabled
-                if (persistentState.enableStabilityDependentSettings()) {
-                    SnackbarHelper.showStabilityProgram(b.root, persistentState)
                 }
             }
             updateConnectedStatus(persistentState.connectedDnsName)

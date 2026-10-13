@@ -745,8 +745,6 @@
     <string name="wg_ssid_type_exact" translatable="true">완전일치</string>
     <string name="wg_ssid_type_wildcard" translatable="true">부분일치</string>
     <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi 식별자(%1$s)는 32자 이하여야 합니다.</string>
-    <string name="settings_firebase_error_reporting_heading" translatable="true">안정성 프로그램</string>
-    <string name="settings_firebase_error_reporting_desc" translatable="true">오류 로그를 캡처하여 안정성 개선을 도와주세요.</string>
     <string name="tombstone_app_title" translatable="true">삭제한 앱 기억</string>
     <string name="tombstone_app_desc" translatable="true">켠 경우, 앱 규칙을 7일 동안 유지합니다.</string>
     <string name="settings_locale_dialog_default" translatable="true">시스템 기본값</string>
@@ -913,8 +911,6 @@
     <string name="fs_configure_others_desc" translatable="true">외관, 알림 등</string>
     <string name="dc_block_unknown_heading" translatable="true">알 수 없는 소스로부터의 DNS 차단</string>
     <string name="fs_configure_proxy_desc" translatable="true">WireGuard, SOCKS5, HTTP 프록시 라우팅</string>
-    <string name="stability_program_snackbar_msg" translatable="true">안정성 프로그램이 켜짐</string>
-    <string name="stability_program_snackbar_disable" translatable="true">실행취소</string>
     <string name="config_delete_all_dialog_title" translatable="true">모두 삭제</string>
     <string name="settings_flood_wg_desc" translatable="true">켠 경우, 추가적인 WireGuard 패킷을 전송해 통제받는 네트워크 환경에서 터널 트래픽을 식별하고 차단하기 어렵도록 합니다.</string>
     <string name="fs_configure_advanced_desc" translatable="true">개발자 도구 및 분석</string>

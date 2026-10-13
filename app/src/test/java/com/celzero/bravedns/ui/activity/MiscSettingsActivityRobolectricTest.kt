@@ -108,11 +108,8 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         every { mockPersistentState.downloadIpInfo }                returns false
         every { mockPersistentState.tombstoneApps }                 returns false
         every { mockPersistentState.persistentNotification }        returns false
-        every { mockPersistentState.firebaseErrorReportingEnabled } returns false
         every { mockPersistentState.checkForAppUpdate }             returns false
         every { mockPersistentState.goLoggerLevel }                 returns 4L
-        every { mockPersistentState.firebaseUserToken }             returns "test-token"
-        every { mockPersistentState.firebaseUserTokenTimestamp }    returns System.currentTimeMillis()
         every { mockPersistentState.appTriggerPackages }            returns ""
         every { mockPersistentState.shouldRequestNotificationPermission } returns false
 
@@ -610,16 +607,13 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
     }
 
     // =====================================================================================
-    // 8. isFdroidFlavour – Firebase / check-update sections hidden
+    // 8. isFdroidFlavour – check-update section hidden
     // =====================================================================================
 
     @Test
     fun fdroidFlavour_firebaseSectionIsGone() {
         try {
             val activity = buildAndStartActivity() ?: return
-            activity.findViewById<View>(R.id.settings_firebase_error_reporting_rl)?.let {
-                assertEquals("Firebase RL must be GONE for fdroid", View.GONE, it.visibility)
-            }
             activity.findViewById<View>(R.id.settings_activity_check_update_rl)?.let {
                 assertEquals("CheckUpdate RL must be GONE for fdroid", View.GONE, it.visibility)
             }
@@ -773,32 +767,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
             controller.get().findViewById<View>(R.id.settings_activity_notification_rl)?.performClick()
             ShadowLooper.idleMainLooper()
             controller.pause().stop().destroy()
-            assertTrue(true)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    // =====================================================================================
-    // 14. setFirebaseUserId – must not propagate exceptions (fdroid: no-op)
-    // =====================================================================================
-
-    @Test
-    fun setFirebaseUserId_withValidToken_doesNotThrow() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            activity.setFirebaseUserId("test-token-12345")
-            assertTrue(true)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun setFirebaseUserId_withEmptyToken_doesNotThrow() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            activity.setFirebaseUserId("")
             assertTrue(true)
         } catch (e: Exception) {
             assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
