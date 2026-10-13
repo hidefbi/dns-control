@@ -38,10 +38,11 @@ jobs:
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           test -x "$SDKMANAGER" || SDKMANAGER=$(command -v sdkmanager)
           "$SDKMANAGER" --version
-          # the preinstalled cmdline-tools index may predate android-37: refresh it first
-          "$SDKMANAGER" --update
+          # the runner image already ships android-37 and build-tools 36.0.0; only install what is
+          # missing, instead of --update, which rewrites the preinstalled cmdline-tools
+          test -d "$ANDROID_HOME/platforms/android-37" || "$SDKMANAGER" "platforms;android-37"
+          test -d "$ANDROID_HOME/build-tools/36.0.0" || "$SDKMANAGER" "build-tools;36.0.0"
           yes | "$SDKMANAGER" --licenses > /dev/null || true
-          "$SDKMANAGER" "platforms;android-37" "build-tools;36.0.0"
 
       - name: Decode release keystore
         env:
