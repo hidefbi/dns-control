@@ -386,8 +386,6 @@
     <string name="notif_dialog_pause_dialog_positive">Fortfahren</string>
     <string name="notif_dialog_pause_dialog_negative">Verwerfen</string>
     <string name="notif_channel_desc_firewall_alerts">Warnung vor Firewall-Fehlern und Anomalien</string>
-    <string name="build__flavor_website">Webseite</string>
-    <string name="build__flavor_play_store">Spiel {fileName}</string>
     <string name="build__flavor_fdroid">fdroid</string>
     <string name="cd_toast_added">Domain erfolgreich hinzugefügt</string>
     <string name="cd_dialog_error_invalid_wildcard">Ungültige Wildcard, URL oder Domain</string>

@@ -308,9 +308,7 @@
     <string name="notif_channel_desc_firewall_alerts" translatable="true">Alert o błędach i anomaliach Firewall</string>
     <string name="notif_channed_desc_download" translatable="true">Alert o postępie pobierania dla list blokowych w urządzeniach</string>
     <string name="notif_channel_desc_proxy_failure" translatable="true">Alert o błędach i anomaliach proxy</string>
-    <string name="build__flavor_play_store" translatable="true">otwórz</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
-    <string name="build__flavor_website" translatable="true">strona WWW</string>
     <string name="cd_remove_dialog_title" translatable="true">Usunąć domenę?</string>
     <string name="cd_remove_dialog_message" translatable="true">Usuń domenę z zapisanej konfiguracji.</string>
     <string name="cd_dialog_desc" translatable="true">Niestandardowy adres URL (domena) lub dzika karta, aby zezwolić lub zablokować. np. *.test.com, test.com/test</string>

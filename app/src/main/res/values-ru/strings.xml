@@ -160,8 +160,6 @@
     <string name="always_on_dialog_positive_btn">Перейдите в настройки</string>
     <string name="dns_proxy_remove_dialog_title">Удалить DNS-прокси?</string>
     <string name="cd_custom_dns_proxy_name_default">Прокси</string>
-    <string name="build__flavor_website">website</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="refresh_complete"><!-- use dc_refresh_toast --> Повторная синхронизация списка приложений завершена.</string>
     <string name="settings_theme_dialog_themes_2">Светлая</string>
     <string name="fapps_filter_categories_heading">Категории</string>

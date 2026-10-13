@@ -365,8 +365,6 @@
     <string name="firewall_rule_block_ip_univ_desc" translatable="true"><![CDATA[एक उपयोगकर्ता-सेट फ़ायरवॉल नियम ने <i>गंतव्य आईपी / पोर्ट</i> को अवरुद्ध कर दिया। <br/> <br/> बदलने के लिए <i>यूनीवर्सल</i> टैब पर जाएं।]]></string>
     <string name="new_app_notification_content" translatable="true">रीथिंक ने हाल ही में इंस्टॉल किए गए ऐप %1$s को ब्लॉक कर दिया है।</string>
     <string name="notif_dialog_pause_dialog_positive" translatable="true">दुबारा आरंभ करना</string>
-    <string name="build__flavor_website" translatable="true">वेबसाइट</string>
-    <string name="build__flavor_play_store" translatable="true">चलाए</string>
     <string name="build__flavor_fdroid" translatable="true">एफड्राइड</string>
     <string name="notif_dialog_pause_dialog_message" translatable="true">रोके गए स्थिती में आवेदन, जारी रखने के लिए फिर से शुरू करें</string>
     <string name="ci_trust_initial" translatable="true">टी</string>

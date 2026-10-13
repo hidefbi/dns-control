@@ -577,8 +577,6 @@
     <string name="category_name_others" translatable="true">Egyéb</string>
     <string name="category_name_non_app_sys" translatable="true">Rendszer szolgáltatások</string>
     <string name="category_name_installed" translatable="true">Telepített alkalmazások</string>
-    <string name="build__flavor_website" translatable="true">weboldal</string>
-    <string name="build__flavor_play_store" translatable="true">Play Áruház</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="cd_toast_deleted" translatable="true">Domain eltávolítva az egyéni listáról</string>
     <string name="cd_toast_added" translatable="true">Domain sikeresen hozzáadva</string>

@@ -67,10 +67,6 @@ def appVersionCode = getVersionCode()
 // Override on the command line with -PshouldSplit=true for release-style split builds.
 def shouldSplit = project.hasProperty("shouldSplit") ? project.property("shouldSplit").toString().toBoolean() : false
 
-// Whether this is the fdroid "website, fully de-googled" build. Defaults to false;
-// pass -PwebsiteDegoogled=true to flip it on, matching the comment above.
-def isWebsiteDegoogled = project.hasProperty("websiteDegoogled") ? project.property("websiteDegoogled").toString().toBoolean() : false
-
 try {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 } catch (Exception ex) {
@@ -106,8 +102,6 @@ android {
         minSdkVersion(23)
         targetSdkVersion(37)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        // Defaults to false; the fdroid flavor overrides it via -PwebsiteDegoogled=true.
-        buildConfigField "boolean", "IS_WEBSITE_DEGOOGLD_BUILD", "false"
     }
 
         // archive.is/wlwD8
@@ -232,7 +226,6 @@ android {
         }
     }
 
-    // required for google play developer api model classes
     packaging {
         resources.excludes += "META-INF/INDEX.LIST"
     }
@@ -241,8 +234,6 @@ android {
     productFlavors {
         fdroid {
             dimension "releaseChannel"
-            // true only when built with -PwebsiteDegoogled=true (our own keys).
-            buildConfigField "boolean", "IS_WEBSITE_DEGOOGLD_BUILD", String.valueOf(isWebsiteDegoogled)
         }
         full {
             dimension "releaseType"

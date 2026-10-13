@@ -563,8 +563,6 @@
     <string name="settings_theme_dialog_themes_7" translatable="true">서리</string>
     <string name="category_name_non_app_sys" translatable="true">시스템 서비스</string>
     <string name="category_name_installed" translatable="true">설치된 앱</string>
-    <string name="build__flavor_website" translatable="true">웹사이트</string>
-    <string name="build__flavor_play_store" translatable="true">play</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="rbl_parental_control" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">자녀 보호</string>
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen" translatable="true">성인물과 불법 복제 콘텐츠, 온라인 도박 및 데이팅 서비스, 소셜 미디어를 차단합니다.</string>
@@ -943,7 +941,6 @@
     <string name="app_info_rethink_warning_proceed" translatable="true">알겠습니다</string>
     <string name="dc_global_heading" translatable="true">전역</string>
     <string name="rethink_home_screen_warning" translatable="true">연결에 영향 끼칠 수 있음 ⚠️</string>
-    <string name="build_flavor_website_degoogled" translatable="true">website-degoogled</string>
     <string name="location_disclosure_title" translatable="true">Wi-Fi 기능을 위한 위치 권한</string>
     <string name="location_disclosure_message" translatable="true">DNS Control는 Wi-Fi 네트워크 정보(SSID/BSSID)를 위치 정보로 취급합니다. 백그라운드 위치를 이용하면 앱을 열지 않더라도 Wi-Fi 네트워크가 변경될 때 프록시 자동화를 적용할 수 있습니다. DNS Control는 사용자의 물리적인 GPS 위치 정보를 수집, 저장, 공유하지 않습니다.</string>
     <string name="settings_rinr_btmsht_desc" translatable="true">루프백 모드에서는, DNS Control가 자체 네트워크 트래픽을 재라우팅할 수 있습니다. 즉 다른 일반 애플리케이션처럼 DNS Control에도 자체 트래픽에 IP 및 도메인 규칙, 전역 방화벽 규칙, 프록시 규칙을 적용할 수 있습니다. 루프백 모드는 사용자에게 더 많은 제어 권한을 주지만, 항상 원하는 대로 동작하지 않을 수도 있습니다.\n\n\nDNS Control를 방화벽, DNS, 프록시 규칙에서 제외하는 것이 좋습니다. 이렇게 해도 네트워크 모니터링이나 로깅에는 영향을 끼치지 않고, 규칙만 변경됩니다.\n\n\n지금은, 루프백 모드에서 프록시 락다운이 강제되지 않습니다.</string>

@@ -380,9 +380,7 @@
     <string name="notif_channel_download">下載警報</string>
     <string name="notif_channel_desc_vpn_notification">喺 DNS Control 啓用而且喺背景時提我</string>
     <string name="notif_channel_desc_vpn_failure">喺 DNS Control 被 Android 或者其他 VPN 程式停咗嘅時候提我</string>
-    <string name="build__flavor_website">網站</string>
     <string name="notif_channel_desc_firewall_alerts">喺防火牆錯誤同異常時提我</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="notif_channel_desc_proxy_failure">喺代理錯誤或者異常時提我</string>
     <string name="notif_channed_desc_download">提示本地攔截清單下載進度</string>
     <string name="category_name_sys_components">系統元件</string>

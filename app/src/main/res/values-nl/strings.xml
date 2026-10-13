@@ -419,7 +419,6 @@
     <string name="lbl_ip_rules" translatable="true">IP regels</string>
     <string name="bypass_dns_firewall" translatable="true">Omzeil dns &amp; firewall</string>
     <string name="bypass_universal" translatable="true">Omzeil Universeel</string>
-    <string name="build__flavor_website" translatable="true">website</string>
     <string name="cd_toast_added" translatable="true">Domein succesvol toegevoegd</string>
     <string name="cd_no_rule_initial" translatable="true">N</string>
     <string name="status_protected_with_wg" translatable="true">beschermd met wireguard</string>

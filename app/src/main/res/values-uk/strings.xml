@@ -761,8 +761,6 @@
     <string name="firewall_rule_block_udp_ntp_desc" translatable="true"><![CDATA[A user-set firewall rule blocked this <i>UDP</i> з’єднання.<br/><br/> Щоб змінити, перейдіть на вкладку <i>Універсальне</i>.]]></string>
     <string name="notif_channel_firewall_alerts" translatable="true">Сповіщення фаєрвола</string>
     <string name="notif_channel_desc_firewall_alerts" translatable="true">Сповіщати про помилки та аномалії фаєрвола</string>
-    <string name="build__flavor_website" translatable="true">вебсайт</string>
-    <string name="build__flavor_play_store" translatable="true">грати</string>
     <string name="ci_no_rules_text" translatable="true">Немає правил IP або порту.</string>
     <string name="brbs_restore_dialog_failure_message" translatable="true">Не вдалося відновити. Спробувати знову?</string>
     <string name="brbs_backup_complete_toast" translatable="true">Резервне копіювання завершено</string>

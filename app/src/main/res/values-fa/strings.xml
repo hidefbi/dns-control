@@ -549,9 +549,7 @@
     <string name="brbs_restore_title" translatable="true">بازیابی</string>
     <string name="brbs_title" translatable="true">پشتیبان‌گیری و بازیابی</string>
     <string name="bsrf_clear_filter" translatable="true">پاک کردن</string>
-    <string name="build__flavor_website" translatable="true">وب‌سایت</string>
     <string name="bsrf_sub_group_heading" translatable="true">زیرگروه</string>
-    <string name="build__flavor_play_store" translatable="true">پلی استور</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="bypass_dns_firewall_tooltip">%1$s فقط با DNS شرکت DNS Control کار می‌کند</string>
     <string name="bypasses_network_restrictions" translatable="true">بررسی‌های دسترسی‌پذیری از تمام محدودیت‌های شبکه عبور می‌کنند. در حالت <i>خودکار</i>، رسینک به طور تصادفی از IPها و نام‌های میزبان قبلاً متصل شده استفاده می‌کند.</string>

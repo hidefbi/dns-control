@@ -460,8 +460,6 @@
     <string name="category_name_others">Altro</string>
     <string name="category_name_non_app_sys">Servizi di sistema</string>
     <string name="category_name_installed">App installate</string>
-    <string name="build__flavor_website">sito web</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="build__flavor_fdroid">fdroid</string>
     <string name="cd_toast_deleted">Dominio rimosso dalla lista</string>
     <string name="cd_toast_added">Dominio aggiunto con successo</string>

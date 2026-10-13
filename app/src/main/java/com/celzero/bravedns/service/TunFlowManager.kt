@@ -48,7 +48,6 @@ import com.celzero.bravedns.util.UIUtils.getAccentColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastO
 import com.celzero.bravedns.util.Utilities.isAtleastQ
-import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.bravedns.util.Utilities.isUnspecifiedIp
 import com.celzero.firestack.backend.Backend
 import com.celzero.firestack.intra.FlowSummary
@@ -338,8 +337,8 @@ object TunFlowManager : KoinComponent {
         var domains = d?.split(",") ?: emptyList()
         if (domains.isEmpty()) {
             // add probableDomains in case of empty domains, do this only when the log level is
-            // debug or below, and when in play-version.
-            val canAddProbableDomains = isPlayStoreFlavour() || Logger.LoggerLevel.fromId(persistentState.goLoggerLevel.toInt())
+            // debug or below.
+            val canAddProbableDomains = Logger.LoggerLevel.fromId(persistentState.goLoggerLevel.toInt())
                 ?.isLessThanOrEqualTo(Logger.LoggerLevel.DEBUG) == true
             if (canAddProbableDomains) {
                 domains = probableDomains?.split(",") ?: emptyList()
@@ -973,9 +972,8 @@ object TunFlowManager : KoinComponent {
             return mark
         }
 
-        // subscription/proxy health is reconciled on VPN start (see
-        // BraveVPNService.makeOrUpdateVpnAdapter -> checkForPlusSubscription) and kept
-        // healthy by GlobalProxyHandler; no need to re-check on every flow/inflow.
+        // proxy health is kept up to date by GlobalProxyHandler; no need to re-check on
+        // every flow/inflow.
 
         if (cm != null) {
             // in case of multiple proxies we do not know which proxy carries the connection,

@@ -106,9 +106,7 @@
     <string name="firewall_rules">Aturan-aturan Jaringan</string>
     <string name="notif_channel_firewall_alerts">Peringatan Firewall</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="cd_dns_crypt_name_default">DNSCrypt</string>
-    <string name="build__flavor_website">laman</string>
     <string name="firewall_rule_block_app">Aplikasi Diblokir</string>
     <string name="firewall_rule_block_udp_ntp">UDP Diblokir</string>
     <string name="firewall_rule_exempt_orbot_setup">Pengaturan Orbot</string>
@@ -960,7 +958,6 @@
     <string name="dc_global_heading" translatable="true">Global</string>
     <string name="dc_block_unknown_heading" translatable="true">Blokir DNS dari sumber tidak dikenal</string>
     <string name="dc_block_unknown_desc" translatable="true">Blokir semua permintaan DNS yang berasal dari aplikasi tidak dikenal.</string>
-    <string name="build_flavor_website_degoogled" translatable="true">website-degoogled</string>
     <string name="location_disclosure_title" translatable="true">Izin Lokasi untuk Fitur Wi-Fi</string>
     <string name="location_disclosure_message" translatable="true">DNS Control memperlakukan informasi jaringan Wi-Fi (SSID/BSSID) sebagai data lokasi. Lokasi latar belakang memungkinkan aplikasi menerapkan otomatisasi Proksi secara otomatis saat Wi-Fi Anda berubah, bahkan ketika aplikasi tidak terbuka. DNS Control TIDAK mengumpulkan, menyimpan, atau membagikan lokasi GPS fisik Anda.</string>
     <string name="location_disclosure_positive" translatable="true">Lanjutkan</string>

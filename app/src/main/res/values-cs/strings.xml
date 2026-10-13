@@ -485,7 +485,6 @@
     <string name="category_name_sys_apps" translatable="true">Systémové aplikace</string>
     <string name="category_name_others" translatable="true">Ostatní</string>
     <string name="category_name_non_app_sys" translatable="true">Systémové služby</string>
-    <string name="build__flavor_website" translatable="true">website</string>
     <string name="cd_remove_dialog_message" translatable="true">Smazat doménu z uložené konfigurace.</string>
     <string name="cd_no_rules_text" translatable="true">Žádná doménová pravidla.</string>
     <string name="cd_toast_edit" translatable="true">Upraveno</string>
@@ -652,7 +651,6 @@
     <string name="new_app_notification_action_deny" translatable="true">Pokračovat v blokování</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="category_name_installed" translatable="true">Nainstalované aplikace</string>
-    <string name="build__flavor_play_store" translatable="true">play</string>
     <string name="cd_toast_deleted" translatable="true">Doména odstraněna z vlastního seznamu</string>
     <string name="cd_toast_added" translatable="true">Doména úspěšně přidána</string>
     <string name="cd_remove_dialog_title" translatable="true">Smazat doménu?</string>

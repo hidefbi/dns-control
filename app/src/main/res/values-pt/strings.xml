@@ -288,7 +288,6 @@
     <string name="category_name_sys_components">Componentes do sistema</string>
     <string name="category_name_sys_apps">Aplicações do sistema</string>
     <string name="category_name_installed">Aplicações instaladas</string>
-    <string name="build__flavor_website">site</string>
     <string name="cd_toast_deleted">Domínio removido da lista personalizada</string>
     <string name="cd_dialog_error_invalid_domain">URL ou nome de domínio inválido</string>
     <string name="rbl_parental_control">Controlo parental</string>
@@ -460,7 +459,6 @@
     <string name="notif_channel_desc_proxy_failure">Alertar sobre erros e anomalias do proxy</string>
     <string name="category_name_others">Outras</string>
     <string name="category_name_non_app_sys">Serviços do sistema</string>
-    <string name="build__flavor_play_store">Google Play</string>
     <string name="build__flavor_fdroid">Fdroid</string>
     <string name="cd_toast_added">Domínio adicionado com sucesso</string>
     <string name="cd_remove_dialog_title">Eliminar domínio?</string>

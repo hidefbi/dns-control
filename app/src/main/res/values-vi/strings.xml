@@ -604,7 +604,6 @@
     <string name="category_name_others" translatable="true">Khác</string>
     <string name="category_name_non_app_sys" translatable="true">Dịch vụ hệ thống</string>
     <string name="category_name_installed" translatable="true">Ứng dụng đã cài đặt</string>
-    <string name="build__flavor_website" translatable="true">trang web</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="cd_toast_deleted" translatable="true">Miền bị loại bỏ từ danh sách tùy chỉnh</string>
     <string name="cd_toast_added" translatable="true">Tên miền được thêm vào thành công</string>

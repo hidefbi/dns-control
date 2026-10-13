@@ -103,7 +103,6 @@ import com.celzero.bravedns.util.Utilities.isAtleastQ
 import com.celzero.bravedns.util.Utilities.isAtleastS
 import com.celzero.bravedns.util.Utilities.isAtleastU
 import com.celzero.bravedns.util.Utilities.isNetworkSame
-import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.wireguard.Config
 import com.celzero.bravedns.wireguard.WgHopManager
@@ -1685,8 +1684,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     }
 
     private fun spawnLocalBlocklistStampUpdate() {
-        if (isPlayStoreFlavour()) return
-
         io("dnsStampUpdate") { vpnAdapter?.setRDNSStamp() }
     }
 
@@ -2725,7 +2722,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         GlobalProxyHandler.stop()
         wgProxyPingController.stopAll()
         VpnController.onVpnDestroyed()
-        // stop the inapp billing handler if it exists
         try {
             // this will also cancels the restarter state flow
             vpnScope.cancel("vpnDestroy")

@@ -234,10 +234,8 @@
     <string name="notif_channel_desc_firewall_alerts">Alerta sobre errores y anomalías del cortafuegos</string>
     <string name="notif_channel_desc_proxy_failure">Alerta sobre errores y anomalías del proxy</string>
     <string name="category_name_non_app_sys">Servicios del sistema</string>
-    <string name="build__flavor_website">sitio web</string>
     <string name="category_name_others">Otros</string>
     <string name="category_name_installed">Aplicaciones instaladas</string>
-    <string name="build__flavor_play_store">Play</string>
     <string name="build__flavor_fdroid">fdroid</string>
     <string name="cd_toast_deleted">Dominio eliminado de la lista personalizada</string>
     <string name="ci_dialog_title">Añadir regla de IP/puerto</string>

@@ -20,7 +20,6 @@
     <string name="blocklist_update_check_not_required">قوائم الحظر موجودة بالفعل في أحدث إصدار.</string>
     <string name="settings_notification_desc2">DNS / DNS + جدار الحماية</string>
     <string name="firewall_rule_block_ip_desc"><![CDATA[قاعدة-مستخدم حظرت الـ <i> آي بي الوجهة </i>.<br/><br/> للتغيير غذهب إلى <i> شاشة جدار الحماية </i> الخاص-بالتطبيق.]]></string>
-    <string name="build__flavor_website">موقع الكتروني</string>
     <string name="cd_dialog_title">إضافة قاعدة النطاق</string>
     <string name="brbs_backup_dialog_failure_message">تعذر النسخ الاحتياطي. حاول مرة أخرى؟</string>
     <string name="settings_socks5_dialog_hint_password">كلمة السر (اختيارية)</string>
@@ -106,7 +105,6 @@
     <string name="firewall_rule_block_ip">آي بي / منفذ (التطبيق)</string>
     <string name="firewall_rule_exempt_app_bypass_univ">التطبيق الذي تم تجاوزه</string>
     <string name="firewall_rule_exempt_dns_proxied">وكيل DNS</string>
-    <string name="build__flavor_play_store">لعب</string>
     <string name="ci_bypass_universal_txt">تجاوز عالمي</string>
     <string name="ci_no_rule">لا توجد قاعدة</string>
     <string name="ada_app_status_whitelist">ستتجاوز قواعد جدار الحماية العالمية</string>

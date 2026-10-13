@@ -384,7 +384,6 @@
     <string name="notif_dialog_pause_dialog_message" translatable="true">アプリケーションは一時停止状態です。再開してください</string>
     <string name="notif_dialog_pause_dialog_positive" translatable="true">再開</string>
     <string name="notif_channel_desc_vpn_notification" translatable="true">DNS Control がアクティブでバックグラウンドで実行されている場合に通知する</string>
-    <string name="build__flavor_website" translatable="true">Webサイト</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="cd_toast_deleted" translatable="true">カスタム リストからドメインを削除しました</string>
     <string name="cd_dialog_title" translatable="true">ドメインを追加</string>

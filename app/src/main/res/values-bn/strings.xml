@@ -378,7 +378,6 @@
     <string name="dns_proxy_connection_failure">DNS প্রক্সি সার্ভারের সাথে সংযোগ করতে ত্রুটি৷</string>
     <string name="new_app_notification_action_deny">প্রতিরোধ করে রাখা</string>
     <string name="new_app_notification_action_toast_deny">অ্যাপের জন্য নেটওয়ার্ক সংযোগ অস্বীকার করা হয়েছে</string>
-    <string name="build__flavor_website">ওয়েবসাইট</string>
     <string name="cd_dialog_desc">কাস্টম URL(ডোমেন) বা ওয়াইল্ড কার্ড হয় অনুমতি দিতে বা ব্লক করতে। যেমন, *.test.com, test.com/test</string>
     <string name="cd_no_rule_txt">কোন নিয়ম নেই</string>
     <string name="ci_dialog_edittext_hint">আইপি ঠিকানা, সাবনেট বা পোর্ট</string>
@@ -444,7 +443,6 @@
     <string name="new_app_notification_content">DNS Control ব্লক করা হয়েছে সম্প্রতি ইনস্টল করা অ্যাপ, %1$s।</string>
     <string name="notif_channel_vpn_notification">সক্রিয় ভিপিএন</string>
     <string name="notif_channed_desc_download">অন-ডিভাইস ব্লকলিস্টের জন্য ডাউনলোডের অগ্রগতি সম্পর্কে সতর্কতা</string>
-    <string name="build__flavor_play_store">খেলা</string>
     <string name="cd_blocked_initial">নীল</string>
     <string name="ci_no_rule_txt">কোন নিয়ম নেই</string>
     <string name="ada_noapp_dialog_positive">ঠিক আছে</string>

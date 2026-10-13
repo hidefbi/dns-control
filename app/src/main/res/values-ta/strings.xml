@@ -347,7 +347,6 @@
     <string name="hs_btm_sheet_lock_down" translatable="true">VPN &lt;i&gt; பூட்டுதல் &lt;/i&gt; ஆக இருக்கும்போது முறைகளை மாற்ற முடியாது. VPN அமைப்புகளைத் திருத்து &amp; lt;/u &amp; gt ;.</string>
     <string name="firewall_rule_trusted_ip" translatable="true">நம்பகமான ஐபி</string>
     <string name="firewall_rule_exempt_app_bypass_univ_desc" translatable="true"><![CDATA[<!]]></string>
-    <string name="build__flavor_website" translatable="true">இணையதளம்</string>
     <string name="ci_dialog_added_success" translatable="true">பட்டியலில் ஐபி சேர்க்கப்பட்டது</string>
     <string name="ci_no_rules_text" translatable="true">ஐபி அல்லது துறைமுகம் விதிகள் இல்லை.</string>
     <string name="ci_blocked_initial" translatable="true">B</string>
@@ -642,7 +641,6 @@
     <string name="category_name_sys_apps" translatable="true">கணினி பயன்பாடுகள்</string>
     <string name="category_name_others" translatable="true">மற்றொன்று</string>
     <string name="category_name_installed" translatable="true">நிறுவப்பட்ட பயன்பாடுகள்</string>
-    <string name="build__flavor_play_store" translatable="true">விளையாடுங்கள்</string>
     <string name="cd_toast_deleted" translatable="true">தனிப்பயன் பட்டியலிலிருந்து டொமைன் அகற்றப்பட்டது</string>
     <string name="cd_toast_added" translatable="true">டொமைன் வெற்றிகரமாக சேர்க்கப்பட்டது</string>
     <string name="cd_remove_dialog_title" translatable="true">டொமைனை நீக்கவா?</string>

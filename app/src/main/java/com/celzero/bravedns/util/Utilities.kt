@@ -57,7 +57,6 @@ import com.celzero.bravedns.util.Constants.Companion.FLAVOR_WEBSITE
 import com.celzero.bravedns.util.Constants.Companion.INVALID_UID
 import com.celzero.bravedns.util.Constants.Companion.LOCAL_BLOCKLIST_DOWNLOAD_FOLDER_NAME
 import com.celzero.bravedns.util.Constants.Companion.MISSING_UID
-import com.celzero.bravedns.util.Constants.Companion.PKG_NAME_PLAY_STORE
 import com.celzero.bravedns.util.Constants.Companion.UNSPECIFIED_IP_IPV4
 import com.celzero.bravedns.util.Constants.Companion.UNSPECIFIED_IP_IPV6
 import com.google.common.net.InternetDomainName
@@ -559,26 +558,6 @@ object Utilities {
 
     fun isPlayStoreFlavour(): Boolean {
         return BuildConfig.FLAVOR_releaseChannel == FLAVOR_PLAY
-    }
-
-    fun isWebsiteDegoogledFlavour(): Boolean {
-        return isFdroidFlavour() && BuildConfig.IS_WEBSITE_DEGOOGLD_BUILD
-    }
-
-    /**
-     * Whether Google Play billing can be used on this device for this build.
-     *
-     * Returns `true` only when:
-     *  - the running flavor ships the Play Billing implementation (play or website), and
-     *  - the Play Store (Google Play Services) package is installed and enabled.
-     *
-     * The fdroid flavor has no billing client and always returns `false`. On devices without
-     * Google Play Services (e.g. degoogled phones running the play/website build), the sponsor
-     * UI uses this to fall back to the Stripe web option only.
-     */
-    fun isGooglePlayServicesAvailable(context: Context): Boolean {
-        if (!isPlayStoreFlavour() && !isWebsiteFlavour()) return false
-        return getApplicationInfo(context, PKG_NAME_PLAY_STORE)?.enabled == true
     }
 
     /** Returns true when the app is built with the "alpha" build type. */

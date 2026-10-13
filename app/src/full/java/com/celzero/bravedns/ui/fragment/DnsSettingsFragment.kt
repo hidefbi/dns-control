@@ -50,7 +50,6 @@ import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.UIUtils.fetchColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastR
-import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.firestack.backend.Backend
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
@@ -191,12 +190,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
     }
 
     private fun updateLocalBlocklistUi() {
-        if (isPlayStoreFlavour()) {
-            b.dcLocalBlocklistRl.visibility = View.GONE
-            b.dividerLocalBlocklist.visibility = View.GONE
-            return
-        }
-
         if (persistentState.blocklistEnabled) {
             b.dcLocalBlocklistCount.text = getString(R.string.dc_local_block_enabled)
             b.dcLocalBlocklistDesc.text =

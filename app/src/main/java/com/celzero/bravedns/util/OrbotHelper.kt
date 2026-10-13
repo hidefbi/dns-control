@@ -23,10 +23,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.pm.PackageManager
 import android.net.Uri
 import android.net.VpnService
-import android.text.TextUtils
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
@@ -47,9 +45,6 @@ import com.celzero.bravedns.util.UIUtils.getRelativeTimeSpan
 import com.celzero.bravedns.util.Utilities.getActivityPendingIntent
 import com.celzero.bravedns.util.Utilities.getBroadcastPendingIntent
 import com.celzero.bravedns.util.Utilities.isAtleastO
-import com.celzero.bravedns.util.Utilities.isAtleastT
-import com.celzero.bravedns.util.Utilities.isFdroidFlavour
-import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.bravedns.util.Utilities.isValidPort
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -75,8 +70,6 @@ class OrbotHelper(
         const val ORBOT_SERVICE_ID = 1111
 
         const val ORBOT_PACKAGE_NAME = "org.torproject.android"
-        const val ORBOT_MARKET_URI = "market://details?id=$ORBOT_PACKAGE_NAME"
-        const val PLAY_PACKAGE_NAME = "com.android.vending"
 
         private const val ACTION_STATUS = "org.torproject.android.intent.action.STATUS"
         private const val ACTION_START = "org.torproject.android.intent.action.START"
@@ -157,44 +150,11 @@ class OrbotHelper(
     }
 
     fun getIntentForDownload(): Intent? {
-        if (isPlayStoreFlavour()) { // For play store
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(ORBOT_MARKET_URI)
-
-            val pm = context.packageManager
-            val resInfos =
-                if (isAtleastT()) {
-                    pm.queryIntentActivities(intent, PackageManager.ResolveInfoFlags.of(0))
-                } else {
-                    pm.queryIntentActivities(intent, 0)
-                }
-
-            var foundPackageName: String? = null
-            for (r in resInfos) {
-                if (TextUtils.equals(r.activityInfo.packageName, PLAY_PACKAGE_NAME)) {
-                    foundPackageName = r.activityInfo.packageName
-                    break
-                }
-            }
-            if (foundPackageName == null) {
-                return null
-            }
-
-            intent.setPackage(foundPackageName)
-            return intent
-        } else if (isFdroidFlavour()) { // For fdroid
-            // Orbot is not available in fDroid for now, So taking the user to website download
-            // link.
-            return Intent(
-                Intent.ACTION_VIEW,
-                context.resources.getString(R.string.orbot_download_link_website).toUri()
-            )
-        } else {
-            return Intent(
-                Intent.ACTION_VIEW,
-                context.resources.getString(R.string.orbot_download_link_website).toUri()
-            )
-        }
+        // Orbot is not available in fDroid for now, so taking the user to the website download link.
+        return Intent(
+            Intent.ACTION_VIEW,
+            context.resources.getString(R.string.orbot_download_link_website).toUri()
+        )
     }
 
     /**

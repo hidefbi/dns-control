@@ -103,7 +103,6 @@
     <string name="firewall_rule_block_metered">Ölçülü (Mobil)</string>
     <string name="firewall_rule_foreground">Kullanılmayan Uygulama</string>
     <string name="firewall_rule_block_http">Güvensiz HTTP</string>
-    <string name="build__flavor_play_store">Oyna</string>
     <string name="rt_list_simple_btn_txt">Basit</string>
     <string name="dc_local_block_enabled">Etkin</string>
     <string name="lbbs_download">Blok listelerini güncelleme</string>
@@ -405,7 +404,6 @@
     <string name="accessibility_notification_content">DNS Control erişilebilirlik hizmeti durdu veya çöktü. Artık arka plandaki uygulamaları engellemiyor. Yeniden etkinleştirmek için dokunun.</string>
     <string name="firewall_rule_block_app_desc"><![CDATA[Kullanıcı tarafından belirlenen güvenlik duvarı kuralı bu <i>uygulamayı</i> engelledi. Değiştirmek için <i>Tüm Uygulamalar</i> sekmesine gidin.]]></string>
     <string name="notif_dialog_pause_dialog_positive">Devam ettir</string>
-    <string name="build__flavor_website">web sitesi</string>
     <string name="dc_doh" translatable="false">HTTPS üzerinden Dns</string>
     <string name="cd_dns_crypt_relay_name">DNSRelay %1$s</string>
     <string name="lbl_add">Ekle</string>

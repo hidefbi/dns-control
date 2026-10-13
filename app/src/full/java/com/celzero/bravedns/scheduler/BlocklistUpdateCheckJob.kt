@@ -23,7 +23,6 @@ import androidx.work.WorkerParameters
 import com.celzero.bravedns.download.BlocklistDownloadHelper
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.RethinkBlocklistManager
-import com.celzero.bravedns.util.Utilities
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -35,12 +34,10 @@ class BlocklistUpdateCheckJob(val context: Context, workerParameters: WorkerPara
     override suspend fun doWork(): Result {
         Logger.i(LOG_TAG_SCHEDULER, "starting blocklist update check job")
 
-        if (!Utilities.isPlayStoreFlavour()) {
-            isDownloadRequired(
-                persistentState.localBlocklistTimestamp,
-                RethinkBlocklistManager.DownloadType.LOCAL
-            )
-        }
+        isDownloadRequired(
+            persistentState.localBlocklistTimestamp,
+            RethinkBlocklistManager.DownloadType.LOCAL
+        )
         return Result.success()
     }
 

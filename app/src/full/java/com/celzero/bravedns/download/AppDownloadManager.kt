@@ -40,7 +40,6 @@ import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.RethinkBlocklistManager.DownloadType
 import com.celzero.bravedns.util.Constants.Companion.INIT_TIME_MS
 import com.celzero.bravedns.util.Constants.Companion.ONDEVICE_BLOCKLISTS_ADM
-import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.hasLocalBlocklists
 import java.util.concurrent.TimeUnit
 
@@ -197,11 +196,6 @@ class AppDownloadManager(
         currentTs: Long,
         isRedownload: Boolean
     ): DownloadManagerStatus {
-        // local blocklist available only in fdroid and website version
-        if (!Utilities.isWebsiteFlavour() && !Utilities.isFdroidFlavour()) {
-            return DownloadManagerStatus.FAILURE
-        }
-
         val response = checkBlocklistUpdate(currentTs, persistentState.appVersion, retryCount = 0, persistentState.routeRethinkInRethink)
         // if received response for update is null
         if (response == null) {

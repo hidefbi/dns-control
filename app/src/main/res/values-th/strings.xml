@@ -639,9 +639,7 @@
     <string name="notif_channel_desc_firewall_alerts" translatable="true">การแจ้งเตือนเกี่ยวกับข้อผิดพลาดและสิ่งผิดปกติของไฟร์วอลล์</string>
     <string name="firewall_rule_exempt_app_bypass_univ_desc" translatable="true"><![CDATA[This connection was allowed because the <i>source app</i> is set to <i>bypass universal</i> firewall rules.<br/><br/> To change go to <i>App-specific Firewall</i> screen.]]></string>
     <string name="category_name_others" translatable="true">อื่น</string>
-    <string name="build__flavor_play_store" translatable="true">เล่น</string>
     <string name="category_name_non_app_sys" translatable="true">การบริการระบบ</string>
-    <string name="build__flavor_website" translatable="true">เว็บไซต์</string>
     <string name="build__flavor_fdroid" translatable="true">เอฟดรอยด์</string>
     <string name="cd_dialog_desc" translatable="true">URL หรือชื่อโดเมนพร้อมไวด์การ์ดเสริม: *.test.com, test.com/test</string>
     <string name="cd_dialog_edittext_hint" translatable="true">ใส่ %1$s</string>

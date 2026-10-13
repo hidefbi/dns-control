@@ -609,8 +609,6 @@
     <string name="category_name_others" translatable="true">אחר</string>
     <string name="category_name_non_app_sys" translatable="true">שירותי מערכת</string>
     <string name="category_name_installed" translatable="true">אפליקציות מותקנות</string>
-    <string name="build__flavor_website" translatable="true">אתר</string>
-    <string name="build__flavor_play_store" translatable="true">גוגל Play</string>
     <string name="build__flavor_fdroid" translatable="true">F-Droid</string>
     <string name="cd_toast_deleted" translatable="true">דומיין הוסר מרשימה מותאמת אישית</string>
     <string name="cd_toast_added" translatable="true">דומיין נוסף בהצלחה</string>

@@ -479,8 +479,6 @@
     <string name="category_name_others" translatable="true">Сабаҕа</string>
     <string name="category_name_non_app_sys" translatable="true">Систем аусупқəҧқəқəқəқəқəқəқəқəқəқəқəқəқəқa</string>
     <string name="category_name_installed" translatable="true">Мшынқәа шьҭахныз дызлакәу</string>
-    <string name="build__flavor_website" translatable="true">асасаа</string>
-    <string name="build__flavor_play_store" translatable="true">апхыжь</string>
     <string name="build__flavor_fdroid" translatable="true">FDroid</string>
     <string name="cd_toast_deleted" translatable="true">Адомен акракьышра ашәылантә еиқәыршәалахеит</string>
     <string name="cd_toast_added" translatable="true">Адомен ҟаҧшьнырҭоуп</string>

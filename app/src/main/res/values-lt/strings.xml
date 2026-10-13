@@ -459,8 +459,6 @@
     <string name="notif_channel_desc_proxy_failure">Įspėti apie įgaliotojo serverio klaidas ir anomalijas</string>
     <string name="category_name_sys_components">Sistemos komponentai</string>
     <string name="category_name_sys_apps">Sistemos programėlės</string>
-    <string name="build__flavor_website">interneto svetainė</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="cd_dialog_title">Pridėti domeną</string>
     <string name="new_app_bulk_notification_content">DNS Control užblokavo %1$s naujas (-ą) programėles (-ę). Bakstelėkite norėdami peržiūrėti arba keisti.</string>
     <string name="notif_channel_desc_vpn_failure">Informuoti, kai Android arba kita VPN programa sustabdo DNS Control</string>

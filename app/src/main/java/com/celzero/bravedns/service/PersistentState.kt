@@ -311,7 +311,7 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
 
     // perform connectivity checks
     var connectivityChecks by
-        booleanPref("connectivity_check").withDefault<Boolean>(Utilities.isPlayStoreFlavour())
+        booleanPref("connectivity_check").withDefault<Boolean>(false)
 
     // proxy dns requests over proxy
     var proxyDns by booleanPref("proxy_dns").withDefault<Boolean>(true)
@@ -362,7 +362,7 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     var autoDialsParallel by booleanPref("auto_dials_parallel").withDefault<Boolean>(false)
 
     // user setting whether to download ip info for the given ip address
-    var downloadIpInfo by booleanPref("download_ip_info").withDefault<Boolean>(Utilities.isPlayStoreFlavour())
+    var downloadIpInfo by booleanPref("download_ip_info").withDefault<Boolean>(false)
 
     // user setting to allow only added packages can trigger the app
     var appTriggerPackages by stringPref("app_trigger_packages").withDefault<String>("")

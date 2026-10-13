@@ -462,8 +462,6 @@
     <string name="category_name_sys_components">Componentes do sistema</string>
     <string name="category_name_non_app_sys">Serviços do sistema</string>
     <string name="category_name_installed">Aplicativos instalados</string>
-    <string name="build__flavor_website">site</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="build__flavor_fdroid">fdroid</string>
     <string name="cd_toast_deleted">Domínio removido da lista personalizada</string>
     <string name="cd_toast_added">Domínio adicionado com sucesso</string>

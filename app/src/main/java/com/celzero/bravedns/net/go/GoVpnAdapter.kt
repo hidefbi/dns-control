@@ -60,7 +60,6 @@ import com.celzero.bravedns.util.UIUtils.getAccentColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastO
 import com.celzero.bravedns.util.Utilities.isAtleastS
-import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.wireguard.Config
 import com.celzero.bravedns.wireguard.WgHopManager
@@ -649,7 +648,7 @@ class GoVpnAdapter : KoinComponent {
         Logger.d(LOG_TAG_VPN, "$TAG set brave dns to tunnel (local/remote)")
 
         // enable local blocklist if enabled
-        if (persistentState.blocklistEnabled && !isPlayStoreFlavour()) {
+        if (persistentState.blocklistEnabled) {
             setRDNSLocal()
         } else {
             try {
@@ -1508,11 +1507,7 @@ class GoVpnAdapter : KoinComponent {
 
     suspend fun getRDNS(): RDNS? {
         try {
-            return if (!isPlayStoreFlavour()) {
-                getResolver()?.rdnsLocal
-            } else {
-                getResolver()?.rdnsRemote
-            }
+            return getResolver()?.rdnsLocal
         } catch (e: Exception) {
             Logger.w(LOG_TAG_VPN, "$TAG err getRDNS(): ${e.message}")
         }
@@ -1977,8 +1972,6 @@ class GoVpnAdapter : KoinComponent {
     }
 
     private suspend fun resetLocalBlocklistStampFromTunnel() {
-        if (isPlayStoreFlavour()) return
-
         try {
             val rl = getRDNS()
             if (rl == null) {

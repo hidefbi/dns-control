@@ -429,11 +429,6 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun updateLocalBlocklistUi() {
-        if (Utilities.isPlayStoreFlavour()) {
-            Logger.i(LOG_TAG_UI, "$TAG; play flavour, no need to proceed")
-            return
-        }
-
         if (persistentState.blocklistEnabled) {
             Logger.v(LOG_TAG_UI, "$TAG; blocklist enabled")
             enableBlocklistUi()

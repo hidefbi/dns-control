@@ -469,7 +469,6 @@
     <string name="new_app_notification_action_deny">Continuer à bloquer</string>
     <string name="notif_dialog_pause_dialog_positive">Reprendre</string>
     <string name="notif_channel_desc_proxy_failure">Alerte sur les erreurs et anomalies du proxy</string>
-    <string name="build__flavor_website">website</string>
     <string name="cd_remove_dialog_message">Supprimer le domaine de la configuration sauvegardée.</string>
     <string name="ci_dialog_error_invalid_ip">Adresse IP, sous-réseau ou port non valide.</string>
     <string name="notif_download_content_text">Téléchargement en cours…</string>
@@ -494,7 +493,6 @@
     <string name="rt_edit_dialog_positive">Éditer</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="settings_custom_downloader_desc">Si désactivé, le <i>Gestionnaire de téléchargement</i> d’Android sera utilisé</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="dns_proxy_remove_success">Proxy DNS supprimé.</string>
     <string name="local_blocklist_redownload_desc">Les listes de blocage embarquées sont déjà à la dernière version v%1$s.</string>
     <string name="info_dialog_copy_toast_msg">Adresse IP copiée.</string>

@@ -602,11 +602,9 @@
     <string name="category_name_others" translatable="true">Altele</string>
     <string name="category_name_non_app_sys" translatable="true">Servicii de sistem</string>
     <string name="category_name_installed" translatable="true">Aplicații instalate</string>
-    <string name="build__flavor_website" translatable="true">website</string>
     <string name="cd_dialog_error_invalid_domain" translatable="true">URL-ul sau numele de domeniu nu este valid</string>
     <string name="cd_dialog_error_invalid_wildcard" translatable="true">Metacaracterul, URL-ul sau domeniul nu este valid</string>
     <string name="ci_dialog_desc" translatable="true">Permite (ocolește) sau blochează adrese IP, subrețea IP (interval), Port. Exemplu: 10.10.10.10, 10.1.1.*, 10.2.2/24, ffff::/104, [::]:80, [10.1.0.0/16]:80, *.*:80</string>
-    <string name="build__flavor_play_store" translatable="true">play-store</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="cd_toast_deleted" translatable="true">Domeniu eliminat din lista personalizată</string>
     <string name="cd_toast_added" translatable="true">Domeniu adăugat cu succes</string>

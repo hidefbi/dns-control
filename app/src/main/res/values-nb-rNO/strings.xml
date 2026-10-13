@@ -203,7 +203,6 @@
     <string name="fapps_filter_clear_btn">Tøm</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">Ikke beskyttet</string>
     <string name="cd_dns_proxy_mode_internal">Intern</string>
-    <string name="build__flavor_play_store">play</string>
     <string name="status_protected_with_tor">Beskyttet med Tor</string>
     <string name="hybrid_mode_notification_title">Beskyttet. Tilkoblet til DNS og brannmur.</string>
     <string name="doh_custom_url_remove_dialog_message">Slett DNS-over-HTTPS-endepunktet fra lagret oppsett.</string>
@@ -226,7 +225,6 @@
     <string name="dns_query_latency">%1$s ms</string>
     <string name="firewall_rule_block_app_exception">Feil</string>
     <string name="firewall_rule_exempt_app_bypass_univ">Omgått program</string>
-    <string name="build__flavor_website">website</string>
     <string name="orbot_socks5_desc">Videresender alle TCP-tilkoblinger til Orbot.</string>
     <string name="vpn_profile_error">Kunne ikke igangsette VPN-profil.</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">Advarsel: DNS Control har blitt avslått</string>

@@ -442,8 +442,6 @@
     <string name="category_name_sys_apps" translatable="true">Апликације система</string>
     <string name="category_name_non_app_sys" translatable="true">Сервиси система</string>
     <string name="category_name_installed" translatable="true">Инсталиране апликације</string>
-    <string name="build__flavor_website" translatable="true">веб сајт</string>
-    <string name="build__flavor_play_store" translatable="true">репродукуј</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="cd_toast_deleted" translatable="true">Домен је укоњен из прилагођеног списка</string>
     <string name="cd_toast_added" translatable="true">Домен је успешно додат</string>
