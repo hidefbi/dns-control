@@ -29,8 +29,6 @@ class Constants {
 
         const val FILE_TAG = "filetag.json"
 
-        const val ALPHA_UPDATE_CHECK_URL = "https://github.com/celzero/rethink-app/actions/workflows/nightly.yml"
-
         // file names which are downloaded as part of on-device blocklists
         val ONDEVICE_BLOCKLIST_FILE_TAG = File.separator + FILE_TAG
         val ONDEVICE_BLOCKLIST_FILE_BASIC_CONFIG = File.separator + "basicconfig.json"
@@ -150,9 +148,7 @@ class Constants {
 
         // constants generated as part of com.celzero.bravedns.BuildConfig.FLAVORS
         // (playstore/fdroid/website)
-        const val FLAVOR_PLAY = "play"
         const val FLAVOR_FDROID = "fdroid"
-        const val FLAVOR_WEBSITE = "website"
 
         const val BUILD_TYPE_ALPHA = "alpha"
 
@@ -229,8 +225,6 @@ class Constants {
         const val TIME_FORMAT_2 = "yy.MM (dd)"
         const val TIME_FORMAT_4 = "dd/MM/yy, HH:mm:ss"
 
-        // play services package name
-        const val PKG_NAME_PLAY_STORE = "com.android.vending"
 
         // max endpoint
 

@@ -48,8 +48,6 @@ import com.celzero.bravedns.net.doh.CountryMap
 import com.celzero.bravedns.service.BraveVPNService
 import com.celzero.bravedns.util.Constants.Companion.BUILD_TYPE_ALPHA
 import com.celzero.bravedns.util.Constants.Companion.FLAVOR_FDROID
-import com.celzero.bravedns.util.Constants.Companion.FLAVOR_PLAY
-import com.celzero.bravedns.util.Constants.Companion.FLAVOR_WEBSITE
 import com.celzero.bravedns.util.Constants.Companion.INVALID_UID
 import com.celzero.bravedns.util.Constants.Companion.LOCAL_BLOCKLIST_DOWNLOAD_FOLDER_NAME
 import com.celzero.bravedns.util.Constants.Companion.MISSING_UID
@@ -513,14 +511,6 @@ object Utilities {
 
     fun isFdroidFlavour(): Boolean {
         return BuildConfig.FLAVOR_releaseChannel == FLAVOR_FDROID
-    }
-
-    fun isWebsiteFlavour(): Boolean {
-        return BuildConfig.FLAVOR_releaseChannel == FLAVOR_WEBSITE
-    }
-
-    fun isPlayStoreFlavour(): Boolean {
-        return BuildConfig.FLAVOR_releaseChannel == FLAVOR_PLAY
     }
 
     /** Returns true when the app is built with the "alpha" build type. */

@@ -21,7 +21,6 @@ object Logger {
 
     var uiLogLevel = LoggerLevel.NONE.id
 
-    const val LOG_TAG_APP_UPDATE = "NonStoreAppUpdater"
     const val LOG_TAG_VPN = "RethinkDnsVpn"
     const val LOG_TAG_APP_DB = "AppDatabase"
     const val LOG_TAG_DOWNLOAD = "DownloadManager"
