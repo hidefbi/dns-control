@@ -20,6 +20,11 @@ def keystoreProperties = new Properties()
 // source zip with no .git folder) or git isn't installed, instead of failing the build
 // with "Process 'command git' finished with non-zero exit value 128".
 def gitVersion = {
+    // explicit override, e.g. APP_VERSION_NAME=v0.0.678 ./gradlew ...; used by local and CI builds
+    def override = System.getenv("APP_VERSION_NAME")
+    if (override) {
+        return override
+    }
     try {
         def gitExec = providers.exec {
             commandLine("git", "describe", "--tags", "--always")
