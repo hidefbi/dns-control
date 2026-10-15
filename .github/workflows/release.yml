@@ -41,7 +41,7 @@ jobs:
           # the preinstalled cmdline-tools index may predate android-37: refresh it first
           "$SDKMANAGER" --update
           yes | "$SDKMANAGER" --licenses > /dev/null || true
-          "$SDKMANAGER" "platforms;android-37" "build-tools;36.0.0"
+          "$SDKMANAGER" "platforms;android-37.0" "build-tools;36.0.0"
 
       - name: Decode release keystore
         env:

@@ -105,6 +105,11 @@ android {
         applicationId "com.hidefbi.dnscontrol"
         minSdkVersion(23)
         targetSdkVersion(37)
+        // Ship only arm64-v8a native libraries: the firestack AAR otherwise bundles four ABIs
+        // (about 75 MB of libgojni.so). Applies to every variant and to the universal APK.
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         // Defaults to false; the fdroid flavor overrides it via -PwebsiteDegoogled=true.
         buildConfigField "boolean", "IS_WEBSITE_DEGOOGLD_BUILD", "false"
@@ -151,7 +156,7 @@ android {
                 // the arm64-v8a multiplier (3) so versionCode arithmetic still works
                 def firstAbi = variant.outputs.first().getFilter(com.android.build.OutputFile.ABI)
                 def multiplier = firstAbi != null ? project.ext.versionCodes.get(firstAbi) : project.ext.versionCodes.get('arm64-v8a')
-                def v = 673
+                def v = appVersionCode
                 output.versionCodeOverride = v
             }
         }
