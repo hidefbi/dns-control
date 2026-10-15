@@ -43,13 +43,6 @@ object ConnectivityCheckHelper {
     }
 
     /**
-     * Enum representing different probe modes
-     */
-    enum class ProbeMode {
-        MANUAL, AUTO
-    }
-
-    /**
      * Generic probe result wrapper
      */
     sealed class ConnectivityResult {

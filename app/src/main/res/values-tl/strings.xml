@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings_title_desc" translatable="true">Isang DNS at Firewall na may mataas na antas ng pagsasaayos</string>
-    <string name="about_title_desc" translatable="true">Makita at harangan ang mga banta sa seguridad ng network</string>
     <string name="txt_home" translatable="true">Tahanan</string>
-    <string name="title_about" translatable="true">Tungkol sa</string>
-    <string name="title_statistics" translatable="true">Mga Estadistika</string>
     <string name="pause_title_desc" translatable="true">nagpapahinga lang…</string>
     <string name="accessibility_service_description" translatable="true">Ang DNS Control ay gumagamit ng serbisyong pang-accessibility upang malaman at i-firewall ang mga aplikasyon sa background. Hindi nangongolekta o nagbebenta ng anumang impormasyon ang DNS Control.</string>
     <string name="next" translatable="true">Susunod</string>
@@ -20,14 +17,11 @@
     <string name="lbl_domain" translatable="true">Dominyo</string>
     <string name="lbl_wildcard" translatable="true">Wildcard</string>
     <string name="lbl_action_required" translatable="true">Kailangan ng Aksyon</string>
-    <string name="lbl_rules" translatable="true">mga patakaran</string>
     <string name="lbl_configure" translatable="true">I-configure</string>
-    <string name="lbl_logs" translatable="true">tala</string>
     <string name="lbl_ip_rules" translatable="true">Mga Patakaran sa IP</string>
     <string name="lbl_domain_rules" translatable="true">Mga Patakaran sa Domain</string>
     <string name="slide_2_title" translatable="true">Maligayang pagdating</string>
     <string name="slide_2_desc" translatable="true">Ang DNS Control ay ang pinakamadaling paraan upang magmonitor ng network activity, mag-bypass ng Internet censorship, at firewall apps sa iyong Android device.</string>
-    <string name="slide_1_title" translatable="true">Libre at Open Source</string>
     
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="allow" translatable="true">pahintulutan</string>
@@ -57,8 +51,6 @@
     <string name="firewall_rule_bypass_universal_ip_desc" translatable="true"><![CDATA[Pinapayagan ang koneksyong ito dahil ang <i>destination IP</i> ay nakatakda upang makaiwas sa lahat ng pangkalahatang patakaran ng firewall.<br/><br/> Upang baguhin, pumunta sa <i>IP Rules</i> sa tab na <i>Universal</i>.]]></string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">protektado</string>
     <string name="hybrid_mode_notification_title" translatable="true">Nakaseguro! Nakakonekta sa DNS + Firewall.</string>
-    <string name="status_app_error" translatable="true">error ng aplikasyon</string>
-    <string name="untracked" translatable="true">hindi nasusundan</string>
     <string name="bypass_dns_firewall" translatable="true">Lusutan ang DNS at firewall</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification." translatable="true">Paalala: Na-deactivate na ang DNS Control</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification." translatable="true">Pindutin upang baguhin ang mga setting ng proteksyon</string>
@@ -91,7 +83,6 @@
     <string name="private_dns_dialog_heading" translatable="true">I-off ang Pribadong DNS</string>
     <string name="private_dns_dialog_desc" translatable="true">Ang mga setting ng DNS ng DNS Control ay na-override ng Pribadong DNS ng Android. \n \nPara gamitin ang DNS Control\'s DNS pumunta sa Android Settings at i-off ang \"Private DNS.\"</string>
     <string name="private_dns_dialog_positive" translatable="true">Pumunta sa Mga Setting</string>
-    <string name="firewall_act_network_monitor_tab" translatable="true">Network</string>
     <string name="dns_act_configure_tab" translatable="true">I-configure</string>
     <string name="univ_firewall_dialog_title" translatable="true">Tanggalin ang IP Rule?</string>
     <string name="univ_firewall_dialog_message" translatable="true">Pagtanggal ng patakaran na ito ay magpapahintulot sa anumang app na kumonekta sa IP na ito. Gusto mo bang magpatuloy?</string>
@@ -114,10 +105,6 @@
     <string name="blocklist_update_check_failure" translatable="true">May nangyaring mali. Pakisubukan muli mamaya!</string>
     <string name="blocklist_update_check_not_required" translatable="true">Ang mga blocklist ay nasa pinakabagong bersyon na.</string>
     <string name="refresh_complete" translatable="true">Kumpleto na ang muling pag-sync ng listahan ng app.</string>
-    <string name="show_logs_disabled_network_message" translatable="true">Ang pag-log ng koneksyon ay hindi pinagana. Upang muling paganahin, pumunta sa <i>Mga Setting</i> at i-on ang <i>Paganahin ang on-device na pag-log.</i></string>
-    <string name="show_logs_disabled_dns_message" translatable="true">Ang pag-log ng kahilingan sa DNS ay hindi pinagana. Upang muling paganahin, pumunta sa <i>Mga Setting</i> at i-on ang <i>Paganahin ang on-device na pag-log.</i></string>
-    <string name="settings_enable_logs" translatable="true">Paganahin ang on-device na pag-log</string>
-    <string name="lbl_maybe_blocked" translatable="true">Baka Naharang</string>
     <string name="lbl_network" translatable="true">network</string>
     <string name="lbl_create" translatable="true">Gumawa</string>
     <string name="lbl_qr_code" translatable="true">QR Code</string>

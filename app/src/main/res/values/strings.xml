@@ -2,13 +2,9 @@
     <string name="app_name" translatable="false">DNS Control</string>
     <string name="app_name_small_case" translatable="false">DNS Control</string>
     <string name="app_name_alpha" translatable="false">DNS Control α</string>
-    <string name="title_about" translatable="true">About</string>
     <string name="title_settings" translatable="true">Settings</string>
-    <string name="title_statistics" translatable="true">Stats</string>
-    <string name="title_proc" translatable="false">Proc</string>
     <string name="pause_title_desc" translatable="true">taking a nap…</string>
     <string name="settings_title_desc" translatable="true">A highly customizable DNS and Firewall</string>
-    <string name="about_title_desc" translatable="true">Detect and block network security threats</string>
 
     <string name="txt_home" translatable="true">Home</string>
 
@@ -26,15 +22,12 @@
     <string name="lbl_dismiss" translatable="true">Dismiss</string>
     <string name="lbl_all" translatable="true">All</string>
     <string name="lbl_allowed" translatable="true">Allowed</string>
-    <string name="lbl_maybe_blocked" translatable="true">Maybe Blocked</string>
     <string name="lbl_blocked" translatable="true">Blocked</string>
     <string name="lbl_disabled" translatable="true">Disabled</string>
     <string name="lbl_domain" translatable="true">Domain</string>
     <string name="lbl_wildcard" translatable="true">Wildcard</string>
     <string name="lbl_action_required" translatable="true">Action Required</string>
-    <string name="lbl_rules" translatable="true">rules</string>
     <string name="lbl_configure" translatable="true">Configure</string>
-    <string name="lbl_logs" translatable="true">Logs</string>
     <string name="lbl_network" translatable="true">Network</string>
     <string name="lbl_create" translatable="true">Create</string>
     <string name="lbl_qr_code" translatable="true">QR Code</string>
@@ -55,7 +48,6 @@
     <string name="lbl_public_key" translatable="true">Public Key</string>
     <string name="lbl_addresses" translatable="true">Addresses</string>
     <string name="lbl_dns_servers" translatable="true">DNS Servers</string>
-    <string name="lbl_applications" translatable="true">Applications</string>
     <string name="lbl_ip_rules" translatable="true">IP Rules</string>
     <string name="lbl_domain_rules" translatable="true">Domain Rules</string>
     <string name="lbl_delete" translatable="true">Delete</string>
@@ -71,7 +63,6 @@
     <string name="lbl_active" translatable="true">Active</string>
     <string name="lbl_inactive" translatable="true">Inactive</string>
     <string name="lbl_checking" translatable="false">Checking…</string>
-    <string name="lbl_connecting" translatable="false">Connecting…</string>
     <string name="lbl_socks5" translatable="true">SOCKS5</string>
     <string name="lbl_http" translatable="true">HTTP</string>
     <string name="lbl_http_socks5" translatable="true">HTTPS &amp; SOCKS5</string>
@@ -93,16 +84,7 @@
     <string name="lbl_saving" translatable="true">Saving…</string>
     <string name="lbl_dot" translatable="false">DoT</string>
     <string name="lbl_odoh" translatable="false">ODoH</string>
-    <string name="lbl_cache" translatable="true">Cache</string>
-    <string name="lbl_status" translatable="true">Status</string>
-    <string name="lbl_plan" translatable="true">Plan</string>
-    <string name="lbl_expires_on" translatable="true">Valid until</string>
-    <string name="lbl_cancelled" translatable="true">Cancelled</string>
-    <string name="lbl_expired" translatable="true">Expired</string>
-    <string name="lbl_grace_period" translatable="true">Grace Period</string>
-    <string name="lbl_paused" translatable="true">Paused</string>
     <string name="lbl_remove" translatable="true">Remove</string>
-    <string name="lbl_last" translatable="true">Last</string>
     <string name="lbl_dot_abbr" translatable="false">DNS-over-TLS</string>
     <string name="lbl_dc" translatable="false">DC</string>
     <string name="lbl_dc_abbr" translatable="false">DNSCrypt</string>
@@ -111,7 +93,6 @@
     <string name="lbl_odoh_abbr" translatable="false">Oblivious DNS-over-HTTPS</string>
     <string name="lbl_rdns" translatable="false">RDNS</string>
     <string name="lbl_starting" translatable="true">Starting</string>
-    <string name="lbl_overall" translatable="true">Overall</string>
     <string name="lbl_stopped" translatable="true">Stopped</string>
     <string name="lbl_idle" translatable="true">Idle</string>
     <string name="lbl_private" translatable="true">private</string>
@@ -123,17 +104,12 @@
     <string name="lbl_ip" translatable="false">IP</string>
     <string name="lbl_unselected" translatable="true">Unselected</string>
     <string name="lbl_notification" translatable="true">Notification</string>
-    <string name="lbl_matrix" translatable="false">Matrix</string>
     <string name="lbl_test" translatable="true">Test</string>
     <string name="lbl_protos" translatable="true">protos</string>
     <string name="lbl_experimental" translatable="true">(experimental)</string>
-    <string name="lbl_service_providers" translatable="true">Service Providers</string>
-    <string name="lbl_search" translatable="false">Search</string>
     <string name="lbl_hop" translatable="true">Relays</string>
     <string name="lbl_ipinfo_inc" translatable="false">IPinfo Inc.</string>
     <string name="lbl_manual" translatable="true">Manual</string>
-    <string name="lbl_bootstrap" translatable="true">Bootstrap</string>
-    <string name="lbl_default" translatable="true">Default</string>
     <string name="lbl_action" translatable="true">Action</string>
     <string name="lbl_connect" translatable="true">Connect</string>
     <string name="lbl_criteria" translatable="true">Criteria</string>
@@ -150,57 +126,28 @@
 
     <string name="symbol_upload" translatable="false">%1$s 🔺</string>
     <string name="symbol_download" translatable="false">%1$s 🔻</string>
-    <string name="single_argument" translatable="false">%1$s</string>
     <string name="single_argument_parenthesis" translatable="false">(%1$s)</string>
-    <string name="two_argument_no_space" translatable="false">%1$s%2$s</string>
     <string name="two_argument_space" translatable="false">%1$s %2$s</string>
     <string name="two_argument_colon" translatable="false">%1$s: %2$s</string>
     <string name="two_argument" translatable="false">%1$s / %2$s</string>
-    <string name="two_argument_dot" translatable="false">%1$s · %2$s</string>
     <string name="two_argument_parenthesis" translatable="false">%1$s (%2$s)</string>
-    <string name="two_argument_comma" translatable="false">%1$s, %2$s</string>
-    <string name="three_argument" translatable="false">%1$s %2$s %3$s</string>
     <string name="three_argument_colon" translatable="false">%1$s:%2$s:%3$s</string>
-    <string name="symbol_heavy" translatable="false">🐘</string>
-    <string name="symbol_turtle" translatable="false">🐢</string>
-    <string name="symbol_currency" translatable="false">💲</string>
-    <string name="symbol_green_circle" translatable="false">🟢</string>
-    <string name="symbol_red_circle" translatable="false">🔴</string>
     <string name="symbol_key" translatable="false">🗝️</string>
-    <string name="symbol_global" translatable="false">🌐</string>
-    <string name="symbol_clock" translatable="false">🕒</string>
-    <string name="symbol_rocket" translatable="false">🚀</string>
     <string name="symbol_bunny" translatable="false">🐇</string>
-    <string name="symbol_sparkle" translatable="false">✨</string>
-    <string name="symbol_hyphen" translatable="false">-</string>
     <string name="symbol_slash" translatable="false">/</string>
     <string name="symbol_black_down" translatable="false">\u25be</string>
     <string name="symbol_black_up" translatable="false">\u25b4</string>
     <string name="symbol_lockdown" translatable="false">🔒</string>
     <string name="symbol_lightening" translatable="false">⚡</string>
     <string name="symbol_ps" translatable="false">%1$s/S</string>
-    <string name="symbol_mb" translatable="false">MB</string>
-    <string name="symbol_dollar" translatable="false">$</string>
-    <string name="symbol_star" translatable="false">★</string>
-    <string name="symbol_sky" translatable="false">⛅</string>
-    <string name="symbol_max" translatable="false">🪂</string>
-    <string name="symbol_duck" translatable="false">🦆</string>
-    <string name="symbol_diamond" translatable="false">🔷</string>
     <string name="symbol_mobile" translatable="false">📱</string>
     <string name="symbol_satellite" translatable="false">🛰️</string>
     <string name="symbol_id" translatable="false">🆔</string>
-    <string name="symbol_lock" translatable="false">🔒</string>
-    <string name="symbol_unlock" translatable="false">🔓</string>
-    <string name="symbol_seal" translatable="false">🦭</string>
 
-    <string name="numeric_one" translatable="false">1</string>
-    <string name="numeric_twenty_four" translatable="false">24</string>
-    <string name="numeric_seven" translatable="false">7</string>
 
     <string name="slide_2_title" translatable="true">Welcome</string>
     <string name="slide_2_desc" translatable="true">DNS Control is the easiest way to monitor network activity, bypass Internet censorship, and firewall apps on your Android device.</string>
 
-    <string name="slide_1_title" translatable="true">Free and Open Source</string>
     
 
     <string name="wireguard_title" translatable="true">Secure Internet with WireGuard</string>
@@ -230,7 +177,6 @@
     <string name="bypass_universal" translatable="true">Bypass Universal</string>
     <string name="exclude" translatable="true">Exclude</string>
     <string name="isolate" translatable="true">Isolate</string>
-    <string name="untracked" translatable="true">Untracked</string>
     <string name="bypass_dns_firewall" translatable="true">Bypass DNS &amp; Firewall</string>
 
     <string name="warning_title" description="Status indicator text shown in a warning notification." translatable="true">
@@ -271,7 +217,6 @@
     protected
     </string>
 
-    <string name="status_app_error" translatable="true">app error</string>
 
     <string name="status_dns_error" translatable="true">dns error</string>
 
@@ -345,29 +290,13 @@
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">DNS Control accessibility service has stopped or crashed. <i><b>Goto Settings and Force Stop</b></i> DNS Control and start it again to use <i>Block any app not in use</i> feature.\n\nDNS Control uses accessibility service to track which apps are in-use (foreground) versus those that are not in-use (background).</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">Failure opening Accessibility Settings. Try again later!</string>
 
-    <string name="brave_dns_connect_mode_change_firewall" translatable="true">Choose Mode.</string>
-    <string name="brave_dns_connect_mode_change_dns" translatable="true">Choose Mode.</string>
 
     <string name="default_dns_name" translatable="true">RDNS Default</string>
 
     <string name="custom_url_error_invalid_url" translatable="true">Invalid URL</string>
 
-    <string name="conn_track_clear_logs_title" translatable="true">Delete all network logs?</string>
-    <string name="conn_track_clear_logs_message" translatable="true">This only deletes network logs but not firewall rules. This operation is not reversible. Do you want to proceed?</string>
-    <string name="conn_track_clear_rule_logs_title" translatable="true">Delete logs for this rule?</string>
-    <string name="conn_track_clear_rule_logs_message" translatable="true">This will only delete network logs for the currently viewed firewall rule. This operation is not reversible. Do you want to proceed?</string>
 
-    <string name="dns_query_clear_logs_title" translatable="true">Delete all DNS logs?</string>
-    <string name="dns_query_clear_logs_message" translatable="true">This deletes on-device DNS logs. This operation is not reversible. Do you want to proceed?</string>
 
-    <string name="bsct_app_info" translatable="true">App Info</string>
-    <string name="bsct_block_ip" translatable="true">Block, trust &lt;u>this IP&lt;/u> for &lt;u>this app&lt;/u></string>
-    <string name="bsct_block_domain" translatable="true">Block, trust &lt;u>domain(s)&lt;/u> for &lt;u>this app&lt;/u></string>
-    <string name="bsct_block" translatable="true">Block, bypass, exclude, isolate &lt;u>this app&lt;/u></string>
-    <string name="bsct_conn_block_desc" translatable="true">blocked %1$s by %2$s</string>
-    <string name="bsct_conn_block_desc_device" translatable="true">blocked %1$s on device</string>
-    <string name="bsct_conn_desc_allowed" translatable="true">allowed on %1$s %2$s</string>
-    <string name="bsct_conn_desc_blocked" translatable="true">blocked on %1$s %2$s</string>
     <string name="bsct_conn_rule_explanation" translatable="true">
         &lt;u>#1&lt;/u>: Blocks an app from connecting to the Internet.
         \n &lt;u>#2&lt;/u>: Blocks any app from connecting to a particular IP.
@@ -394,7 +323,6 @@
 
     <string name="firewall_act_universal_tab" translatable="true">Universal</string>
 
-    <string name="firewall_act_network_monitor_tab" translatable="true">Network</string>
 
     <string name="dns_act_configure_tab" translatable="true">Configure</string>
 
@@ -414,8 +342,6 @@
     <string name="dns_proxy_empty_state_desc" translatable="true">Add a DNS Proxy endpoint to get started.</string>
     <string name="dns_crypt_empty_state_title" translatable="true">No DNSCrypt endpoints</string>
     <string name="dns_crypt_empty_state_desc" translatable="true">Add a DNSCrypt endpoint to get started.</string>
-    <string name="rethink_empty_state_title" translatable="true">No blocklists found</string>
-    <string name="rethink_empty_state_desc" translatable="true">Download or configure a blocklist to get started.</string>
 
     <string name="dot_custom_url_remove_dialog_title" translatable="true">Delete DoT endpoint?</string>
     <string name="dot_custom_url_remove_dialog_message" translatable="true">Delete the DNS over TLS endpoint from saved configuration.</string>
@@ -443,14 +369,10 @@
 
     <string name="refresh_complete" translatable="true"><!-- use dc_refresh_toast --> App list re-sync complete.</string>
 
-    <string name="show_logs_disabled_network_message" translatable="true">Connection logging has been disabled. To re-enable, goto <i>Settings</i> and turn on <i>Enable on-device logging.</i></string>
-    <string name="show_logs_disabled_dns_message" translatable="true">DNS request logging has been disabled. To re-enable, goto <i>Settings</i> and turn on <i>Enable on-device logging.</i></string>
 
     <string name="configure_dns_connected_doh_status" translatable="true">DNS over HTTPS</string>
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS Proxy</string>
-    <string name="configure_dns_connection_name" translatable="true">Connected to %1$s</string>
-    <string name="configure_dns_crypt" translatable="true">DNSCrypt: %1$s resolvers</string>
 
     <string name="http_proxy_dialog_heading" translatable="true">Set HTTP(S) CONNECT Proxy</string>
     <string name="http_proxy_dialog_desc" translatable="true">Setup URL of form, &lt;protocol>://&lt;username>:&lt;password>@&lt;domain-or-ip>:&lt;port>&lt;path>. Example: http://proxy.example.com:8080/</string>
@@ -465,35 +387,25 @@
     <string name="download_update_dialog_trylater_title" translatable="true">Can\'t update right now</string>
     <string name="download_update_dialog_trylater_message" translatable="true">The update cannot be executed right now, please try again later.</string>
 
-    <string name="search_firewall_network_log" translatable="true"><font size="12">Search apps, IPs, domains</font></string>
-    <string name="search_event_logs" translatable="false"><font size="12">Search events, messages</font></string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Search apps by uid, name</font></string>
-    <string name="search_dns_logs" translatable="true"><font size="12">Search domain names or IPs</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">Search IPs</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Search domain names</font></string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Search blocklists</font></string>
     <string name="search_proxy_add_apps" translatable="true">Search apps by name</string>
 
     <string name="app_mode_dns_low_battery" translatable="true">DNS (battery saver)</string>
-    <string name="app_mode_dns" translatable="true">DNS</string>
     <string name="app_mode_firewall" translatable="true">Firewall</string>
     <string name="app_mode_dns_firewall" translatable="true">DNS and Firewall (default)</string>
-    <string name="app_mode_wireguard" translatable="true">VPN</string>
 
-    <string name="settings_vpn_heading" translatable="true">vpn</string>
 
     <string name="info_dialog_copy_toast_msg" translatable="true">IP address copied.</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">URL copied</string>
     <string name="public_key_copy_toast_msg" translatable="true">Public key copied.</string>
-    <string name="info_dialog_rethink_toast_msg" translatable="true">Copied as RDNS+ DNS-over-HTTPS URL</string>
 
-    <string name="settings_enable_logs_desc" translatable="true">Store DNS and Firewall logs locally on-device.</string>
-    <string name="settings_enable_logs" translatable="true">Enable on-device logging</string>
 
     <string name="app_mode_choose" translatable="true">Choose mode</string>
 
 
-    <string name="connection_http3" translatable="true">HTTP3</string>
 
     <string name="relative_time_today" translatable="true">Today</string>
     <string name="relative_time_yesterday" translatable="true">Yesterday</string>
@@ -502,8 +414,6 @@
     <string name="settings_ip_network_heading" translatable="true">Choose IP version</string>
     <string name="settings_ip_network_desc" translatable="true">Choose between Internet Protocol versions.</string>
 
-    <string name="settings_ptrans_heading" translatable="true">Force IPv4 egress</string>
-    <string name="settings_ptrans_desc" translatable="true">Translate outbound IPv6 traffic to IPv4 on-device. Enable if you are connected to an IPv4-only network.</string>
 
     <string name="settings_ptrans_new_heading" translatable="false">Perform protocol translations</string>
     <string name="settings_ptrans_new_desc" translatable="false">Translate outbound traffic to the selected IP version on-device. Enable if you are connected to a network that only supports a specific IP version.</string>
@@ -520,8 +430,6 @@
     <string name="settings_exclude_proxy_apps_heading" translatable="true">Loopback proxy forwarder apps</string>
     <string name="settings_exclude_proxy_apps_desc" translatable="true">When disabled, excludes proxy (SOCKS5, HTTP, DNS) forwarder apps from DNS Control\'s VPN tunnel.</string>
 
-    <string name="settings_allow_bypass_heading" translatable="true">Enable network visibility</string>
-    <string name="settings_allow_bypass_desc" translatable="true">Allow requesting apps to access all available networks. These apps may bypass DNS Control\'s VPN tunnel on-demand. Some audio/video conference apps like Zoom and Meet may require this to function properly.</string>
     <string name="settings_lock_down_mode_desc" translatable="true">Certain options disabled when VPN is in lockdown mode. <u>See VPN settings</u>.</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">Cannot setup proxies when VPN is running in DNS only mode.</string>
     <string name="settings_proxy_header" translatable="true">Proxy</string>
@@ -617,8 +525,6 @@
     <string name="settings_theme_heading" translatable="true">Appearance</string>
     <string name="settings_theme_desc" translatable="true">Dark/light theme</string>
 
-    <string name="settings_go_log_heading" translatable="true">Log level</string>
-    <string name="settings_go_log_desc" translatable="true">For debugging purposes</string>
 
     <string name="settings_rinr_heading" translatable="true">Loopback (experimental)</string>
     <string name="settings_rinr_desc_disabled" translatable="true">Route DNS Control\'s own traffic, like blocklist downloads, connectivity checks, DNS connections, back into the tunnel.</string>
@@ -633,17 +539,8 @@
     <string name="app_info_rethink_warning_proceed" translatable="true">I understand</string>
     <string name="rethink_home_screen_warning" translatable="true">may affect connectivity ⚠️</string>
 
-    <string name="settings_gologger_dialog_option_0" translatable="false">Very verbose</string>
-    <string name="settings_gologger_dialog_option_1" translatable="false">Verbose</string>
-    <string name="settings_gologger_dialog_option_2" translatable="false">Debug</string>
-    <string name="settings_gologger_dialog_option_3" translatable="false">Info (default)</string>
-    <string name="settings_gologger_dialog_option_4" translatable="false">Warn</string>
-    <string name="settings_gologger_dialog_option_5" translatable="false">Error</string>
-    <string name="settings_gologger_dialog_option_6" translatable="false">Stack trace</string>
-    <string name="settings_gologger_dialog_option_7" translatable="false">None</string>
 
     <string name="settings_http_proxy_desc" translatable="true">Forwarding to %1$s</string>
-    <string name="settings_http_proxy_dialog_title" translatable="true">Custom Server URL</string>
     <string name="settings_http_proxy_error_text1" translatable="true">Port range should be from 1024–65535</string>
     <string name="settings_http_proxy_error_text2" translatable="true">Invalid port</string>
     <string name="settings_http_proxy_error_text3" translatable="true">Hostname is empty</string>
@@ -703,7 +600,6 @@
     <string name="settings_locale_heading" translatable="true">Change Language</string>
     <string name="settings_locale_desc" translatable="true">Choose your preferred language</string>
     <string name="settings_locale_dialog_title" translatable="true">Choose your preferred language</string>
-    <string name="settings_locale_dialog_neutral" translatable="true">Help translate this app</string>
 
     <string name="settings_biometeric_heading" translatable="true">Enable app lock</string>
     <string name="settings_biometric_desc" translatable="true">Secure this app using your screen lock</string>
@@ -715,13 +611,7 @@
     <string name="settings_default_dns_heading" translatable="true">Choose Bootstrap DNS</string>
     <string name="settings_default_dns_desc" translatable="true">Used only during startup to find the IP address of the encrypted DNS server.</string>
 
-    <string name="settings_pcap_heading" translatable="true">Packet capture</string>
-    <string name="settings_pcap_dialog_title" translatable="true">PCAP</string>
-    <string name="settings_pcap_dialog_option_1" translatable="true">Off (default)</string>
-    <string name="settings_pcap_dialog_option_2" translatable="true">Output to Logcat</string>
-    <string name="settings_pcap_dialog_option_3" translatable="true">Output to the Downloads folder</string>
 
-    <string name="pcap_failure_toast" translatable="true">Error creating pcap file, Try again!</string>
 
     <string name="settings_biometric_dialog_heading" translatable="true">Biometric Authentication</string>
     <string name="settings_biometric_dialog_option_0" translatable="true">None</string>
@@ -742,31 +632,22 @@
     <string name="firewall_status_blocked" translatable="true">blocked</string>
     <string name="firewall_status_unknown" translatable="true">unknown</string>
 
-    <!--Connection tracker bottom sheet -->
-    <string name="ct_bs_app_info_error" translatable="true">App Info not found</string>
 
     <!-- Home screen activity -->
     <string name="hs_biometeric_title" translatable="true">Unlock DNS Control</string>
     <string name="hs_biometeric_desc" translatable="true">Use biometric authentication to unlock DNS Control</string>
-    <string name="hs_biometeric_feature_not_supported" translatable="true">Biometric authentication is not supported or disabled on this device</string>
-    <string name="hs_biometeric_failed" translatable="true">Biometric authentication failed</string>
-    <string name="hs_biometeric_error" translatable="true">Biometric authentication error</string>
 
     <!-- Home screen -->
     <string name="firewall_card_status_active" translatable="true">%1$s apps</string>
 
-    <string name="firewall_card_text_active" translatable="true">%1$s blocked\n%2$s bypassed\n%3$s excluded\n%4$s isolated</string>
     <string name="firewall_card_text_inactive" translatable="true">Enable firewall mode.</string>
 
-    <string name="dns_card_latency_active" translatable="true">%1$sms</string>
     <string name="dns_card_latency_inactive" translatable="true">Enable DNS mode.</string>
 
     <string name="firewall_card_universal_rules" translatable="true">%1$s universal rule(s)</string>
     <string name="rules_card_domain_count" translatable="true">%1$s domain rule(s)</string>
     <string name="apps_card_ips_count" translatable="true">%1$s IP &amp; Port rule(s)</string>
 
-    <string name="logs_card_network_count" translatable="true">%1$s connections</string>
-    <string name="logs_card_dns_count" translatable="true">%1$s queries</string>
 
     <string name="hsf_start_btn_state" translatable="true">start</string>
     <string name="hsf_stop_btn_state" translatable="true">stop</string>
@@ -786,26 +667,14 @@
     <string name="hsf_local_network_permission_dialog_heading" translatable="true">Local Network Permission</string>
     <string name="hsf_local_network_permission_dialog_message" translatable="true">%1$s requires the Local Network permission for some features to function. The VPN has been disabled. Grant the permission from the app settings and try again.</string>
 
-    <string name="hsf_start_dialog_header" translatable="true">Start %1$s</string>
-    <string name="hsf_start_dialog_message" translatable="true">You are one step away from safe and secure Android: Instantly see network activity, block websites, IPs, and badly behaving apps.</string>
-    <string name="hsf_start_dialog_positive" translatable="true">Start</string>
 
-    <string name="hsf_whats_new_chip_text" translatable="true">What\'s new</string>
-    <string name="hsf_proxy_chip_text" translatable="true">Proxy active</string>
-    <string name="hsf_packet_capture_chip_text" translatable="true">Packet capture active</string>
-    <string name="hsf_blocklist_chip_text_no_data" translatable="true">Enable RDNS+</string>
 
     <string name="hsf_exclude_error" translatable="true">Exclude not possible in VPN lockdown mode</string>
 
-    <string name="hsf_proxy_chip_removed_toast" translatable="true">Proxy removed</string>
 
-    <string name="hsf_packet_capture_chip_disabled_toast" translatable="true">Packet capture disabled</string>
 
-    <string name="hsf_whats_new_remove_text" translatable="true">Closing…</string>
 
-    <string name="hsf_blocklist_updating_text" translatable="true">Enabling…</string>
 
-    <string name="hsf_chip_appearance" translatable="true">Theme: %1$s</string>
     <string name="hsf_pause_vpn_failure" translatable="true">Cannot pause: DNS Control not active</string>
 
     <string name="lbl_battery_optimization" translatable="true">Battery optimization</string>
@@ -817,7 +686,6 @@
     <!-- DNS configure screen -->
 
     <string name="dc_block_heading" translatable="true">Rules</string>
-    <string name="dc_other_dns_heading" translatable="true">Type</string>
 
     <string name="dc_global_heading" translatable="true">Global</string>
 
@@ -831,8 +699,6 @@
 
     <string name="dc_custom_block_heading" translatable="true">Domain rules</string>
 
-    <string name="dc_dns_website_heading" translatable="true">Show website icon in DNS logs</string>
-    <string name="dc_dns_website_desc" translatable="true">Fetches website icons from <i>nextdns.io</i> and <i>duckduckgo.com</i>. Consumes up to 350 mb in disk space</string>
 
     <string name="dc_dns_leaks_heading" translatable="true">Prevent DNS leaks</string>
     <string name="dc_dns_leaks_desc" translatable="true">When enabled, DNS Control captures all packets on port 53 and forwards it to a user-set DNS endpoint</string>
@@ -851,49 +717,25 @@
 
     <string name="dc_filtering_heading" translatable="true">Filtering</string>
 
-    <!-- About fragment -->
-    <string name="about_bug_report_desc" translatable="true">email crash logs</string>
-    <string name="about_bug_report" translatable="true">Bug report</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Send email</string>
-    <string name="about_bug_no_log_dialog_positive_btn" translatable="true">Send email</string>
 
-    <!-- Bug Report Files Bottom Sheet -->
-    <string name="bug_report_files_desc" translatable="false">Select the files you want to include in the bug report email</string>
-    <string name="bug_report_deselect_all" translatable="false">Deselect All</string>
-    <string name="bug_report_no_files_selected" translatable="false">Select at least one file</string>
-    <string name="bug_report_creating_zip" translatable="false">Creating archive…</string>
-    <string name="bug_report_file_not_found" translatable="false">File not found</string>
-    <string name="bug_report_error_opening_file" translatable="false">Cannot open this file type</string>
-    <string name="bug_report_delete_confirmation" translatable="false">Are you sure you want to delete \"%1$s\"?</string>
-    <string name="bug_report_file_deleted" translatable="false">File \"%1$s\" deleted</string>
-    <string name="bug_report_delete_failed" translatable="false">Failed to delete \"%1$s\"</string>
-    <string name="bug_report_no_files_available" translatable="false">No bug report files available</string>
 
     <string name="about_settings_app_info" translatable="true">App Info</string>
     <string name="about_mail_to_string" translatable="true">mailto:</string>
     <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_subject" translatable="true">[DNS Control]: Bug report</string>
     <string name="about_mail_bugreport_share_title" translatable="true">Select email provider</string>
     <string name="about_version_install_source" translatable="false">%1$s (%2$s)</string>
 
     <string name="app_info_error" translatable="true">Could not launch App info.</string>
     <string name="vpn_profile_error" translatable="true">Could not launch VPN profile.</string>
-    <string name="private_dns_error" translatable="true">Could not launch private dns screen.</string>
     <string name="notification_screen_error" translatable="true">Could not launch App Notification screen.</string>
     <string name="intent_launch_error" translatable="true">Count not launch %1$s</string>
-    <string name="no_browser_error" translatable="true">Cannot open webpage from browser.</string>
-    <string name="log_file_not_available" translatable="true">No crash report found</string>
-    <string name="error_loading_log_file" translatable="true">Error loading log file</string>
 
-    <string name="collecting_logs_progress_text" translatable="true">Capturing…</string>
-    <string name="logs_disclaimer" translatable="true">Showing first 20,000 characters</string>
 
     <!-- Configure DNS Fragment string == cd -->
     <string name="cd_dns_crypt_title" translatable="true">Resolvers</string>
-    <string name="cd_custom_doh_dialog_title" translatable="true">Custom Server URL</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">DoH</string>
     <string name="cd_custom_doh_url_name" translatable="true">DoH %1$s</string>
-    <string name="cd_custom_dns_proxy_title" translatable="true">Custom DNS Proxy</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">Proxy</string>
     <string name="cd_custom_dns_proxy_name" translatable="true">Proxy %1$s</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
@@ -903,7 +745,6 @@
     <string name="cd_dns_proxy_error_text_1" translatable="true">Invalid IP address</string>
     <string name="cd_dns_proxy_error_text_2" translatable="true">Port range should be from 1024–65535</string>
     <string name="cd_dns_proxy_error_text_3" translatable="true">Invalid port</string>
-    <string name="cd_dns_crypt_dialog_title" translatable="true">Add DNSCrypt Resolver or Relay</string>
     <string name="cd_dns_crypt_name_default" translatable="true">DNSCrypt</string>
     <string name="cd_dns_crypt_name" translatable="true">DNSCrypt %1$s</string>
     <string name="cd_dns_crypt_relay_name" translatable="true">DNSRelay %1$s</string>
@@ -938,7 +779,6 @@
 
     <string name="ct_ip_details" translatable="false">%1$s (%2$s)</string>
 
-    <string name="ct_ip_port" translatable="false">%1$s:%2$s</string>
 
     <!-- Connection tracker bottom sheet fragment string -->
     <string name="ctbs_app_info_not_available_toast" translatable="true">App settings page not found</string>
@@ -947,30 +787,13 @@
     <string name="ctbs_dialog_negative_btn" translatable="true">Go Back</string>
     <!-- DNS Log fragment -->
 
-    <string name="dns_log_dialog_positive" translatable="true">Delete logs</string>
 
-    <string name="dns_btm_sheet_dialog_message" translatable="true">
-        <Data><![CDATA[ <h3><u><font size="8">%1$s</font></u>: %2$s blocklist(s)</h3>%3$s.<br/><br/>]]></Data>
-    </string>
-    <string name="dns_btm_sheet_dialog_ips" translatable="true">
-        <Data><![CDATA[ %1$s %2$s <br/>]]></Data>
-    </string>
-    <string name="dns_btm_sheet_chip" translatable="true">+%1$s Other IPs</string>
-    <string name="dns_btm_sheet_chip_no_answer" translatable="true">No Answer</string>
 
-    <!-- DNS log bottom sheet -->
-    <string name="dns_btm_resolved_crypt" translatable="true">resolved &lt;u&gt;anonymously&lt;/u&gt; %1$s by %2$s via %3$s</string>
-    <string name="dns_btm_resolved_doh" translatable="true">resolved %1$s by %2$s</string>
-    <string name="dns_btm_resolved_doh_no_server" translatable="true">resolved %1$s</string>
 
-    <string name="dns_btm_latency_ms" translatable="true">%1$ss</string>
 
-    <string name="dns_btm_record_type" translatable="true">Query type: %1$s</string>
 
     <!-- Home Screen activity -->
     <string name="hs_download_positive_default" translatable="true">ok</string>
-    <string name="hs_download_positive_play_store" translatable="true">Complete Update</string>
-    <string name="hs_download_positive_website" translatable="true">Visit website</string>
 
     <string name="hs_download_negative_default" translatable="true">Remind me later</string>
 
@@ -985,7 +808,6 @@
     <string name="univ_firewall_rule_8" translatable="true">Block port 80 (insecure HTTP) traffic</string>
     <string name="univ_firewall_rule_9" translatable="true">Block on metered (mobile) network</string>
     <string name="univ_firewall_rule_10" translatable="true">Block all except bypassed apps and IPs</string>
-    <string name="univ_firewall_rule_11" translatable="true">Block all local host connections</string>
 
     <string name="univ_view_blocked_ip" translatable="true">IP &amp; Port rules</string>
     <string name="univ_view_blocked_ip_desc" translatable="true">Modify blocked or trusted Domain, IP / Port rules.</string>
@@ -1006,9 +828,6 @@
     <string name="app_ip_domain_rules" translatable="true">Per app IP / Domain rules</string>
     <string name="app_ip_domain_rules_desc" translatable="true">Modify per app IP / Domain rules.</string>
 
-    <!-- DNS adapters -->
-    <string name="dns_connected_rethink_plus" translatable="true">Connected. %1$s blocklists in-use</string>
-    <string name="dns_connected_no_count" translatable="true">Connected</string>
     <string name="dns_connected" translatable="true">Connected</string>
 
     <string name="dns_info_positive" translatable="true">Ok</string>
@@ -1025,7 +844,6 @@
 
     <string name="dns_proxy_dialog_header_dns" translatable="true">Add DNS Proxy</string>
     <string name="dns_proxy_name" translatable="true">Proxy Name</string>
-    <string name="dns_proxy_app" translatable="true">App</string>
     <string name="dns_proxy_ip_address" translatable="true">IP Address</string>
     <string name="dns_proxy_port" translatable="true">Port Number</string>
 
@@ -1082,13 +900,6 @@
     <string name="fapps_firewall_filter_desc" translatable="true"><![CDATA[Showing <u>%1$s</u> %2$s apps]]></string>
     <string name="fapps_firewall_filter_desc_category" translatable="true"><![CDATA[Showing <u>%1$s</u> %2$s apps in categories: %3$s]]></string>
 
-    <!-- Unicode -->
-    <string name="unicode_warning_sign" translatable="false">\u26a0</string>
-    <string name="unicode_x_sign" translatable="false">\u274c</string>
-    <string name="unicode_question_sign" translatable="false">\u2754</string>
-    <string name="unicode_check_sign" translatable="false">\u2705</string>
-    <string name="unicode_start_sign" translatable="false">\u25b6</string>
-    <string name="fav_icon" translatable="false">fav_icon</string>
 
     <!-- BraveVPN service rules failure -->
     <string name="rules_load_failure_heading" translatable="true">Note</string>
@@ -1105,10 +916,6 @@
 
     <string name="dns_crypt_connection_failure" translatable="true">Error connecting to DNSCrypt server.</string>
     <string name="dns_proxy_connection_failure" translatable="true">Error connecting to DNS Proxy server.</string>
-    <string name="dns_proxy_connection_failure_lockdown" translatable="true">Excluding %1$s for %2$s in lockdown mode can cause Internet connectivity issues.</string>
-    <string name="dns_proxy_toast_parameter" translatable="true">DNS Proxy</string>
-    <string name="socks5_proxy_toast_parameter" translatable="true">SOCKS5 Proxy</string>
-    <string name="orbot_toast_parameter" translatable="true">Tor-as-a-proxy</string>
 
     <string name="system_dns_connection_failure" translatable="true">Cannot determine the current DNS server</string>
 
@@ -1125,9 +932,7 @@
 
     <string name="accessibility_failure_toast" translatable="true">DNS Control accessibility service has stopped or crashed. No longer blocking backgrounded apps.</string>
 
-    <string name="coming_soon_toast" translatable="true">coming soon</string>
 
-    <string name="toast_allow_bypass_disabled" translatable="true">%1$s is disabled as proxies are active</string>
 
     <!-- Pause Activity -->
     <string name="pause_text" translatable="true">paused</string>
@@ -1135,8 +940,6 @@
 
     <!-- Other DNS list -->
     <string name="other_dns_list_tab1" translatable="true">DoH</string>
-    <string name="other_dns_list_tab2" translatable="true">Dnscrypt</string>
-    <string name="other_dns_list_tab3" translatable="true">Dns Proxy</string>
 
     <!-- Home screen bottom sheet -->
     <string name="hs_btm_sheet_lock_down" translatable="true">Cannot change modes when VPN is <i>lockdown</i>. Tap to &lt;u&gt;edit VPN settings&lt;/u&gt;.</string>
@@ -1264,7 +1067,6 @@
 
     <string name="cd_no_rules_text" translatable="true">No domain rules.</string>
 
-    <string name="cd_dialog_edit_title" translatable="true">Edit domain rule</string>
     <string name="cd_toast_edit" translatable="true">Edited</string>
     <string name="cd_dialog_title" translatable="true">Add domain rule</string>
     <string name="cd_dialog_desc" translatable="true">A URL or a domain name with an optional wildcard: *.test.com, test.com/test</string>
@@ -1313,9 +1115,6 @@
 
     <string name="ada_firewall_status" translatable="true"><![CDATA[This app <b><i>%1$s</i></b>.]]></string>
 
-    <string name="ada_ip_connection_count" translatable="true">Connected to %1$s IP address(es)</string>
-    <string name="ada_ip_connection_count_zero" translatable="true">0 IP address</string>
-    <string name="ada_ip_no_connection" translatable="true">No network logs for this category.</string>
 
     <string name="ada_app_status_allow" translatable="true">is allowed</string>
     <string name="ada_app_status_block" translatable="true">is blocked</string>
@@ -1329,9 +1128,7 @@
 
     <string name="ada_firewall_title" translatable="true">Firewall rules for this app</string>
 
-    <string name="ada_network_log_title" translatable="true">Network log for this app</string>
 
-    <string name="ada_app_firewall" translatable="true">Firewall</string>
     <string name="ada_app_metered" translatable="true">Metered</string>
     <string name="ada_app_unmetered" translatable="true">Unmetered</string>
     <string name="ada_app_bypass_univ" translatable="true">Bypass Universal</string>
@@ -1339,10 +1136,7 @@
     <string name="ada_app_exclude" translatable="true">Exclude</string>
     <string name="ada_app_isolate" translatable="true">Isolate</string>
 
-    <string name="ada_app_dns_settings" translatable="true">DNS Settings</string>
 
-    <string name="ada_delete_logs_dialog_title" description="Appears as dialog title to clear the logs in app specific screen" translatable="true">Clear logs</string>
-    <string name="ada_delete_logs_dialog_desc" description="Appears as dialog description to clear the logs in app specific screen" translatable="true">Clear all logs related to this application.</string>
 
     <string name="bypass_dns_firewall_tooltip">%1$s works with DNS Control\'s DNS only</string>
 
@@ -1352,16 +1146,9 @@
     <!-- Temporary Allow Feature -->
     <string name="temp_allow_label" translatable="false">Allow for 15 minutes</string>
     <string name="temp_allow_desc" translatable="false">Temporarily allow this app. Auto-reverts after 15 minutes.</string>
-    <string name="temp_allow_desc_with_time" translatable="false">Last allowed: %1$s</string>
     <string name="temp_allow_active" translatable="false">Active until %1$s</string>
 
-    <!-- app info bottom sheet -->
-    <string name="bsac_title_desc" translatable="true">Rules apply to this app only.</string>
 
-    <!-- DNS logs bottom sheet -->
-    <string name="bsdl_block_desc" translatable="true">Block, trust &lt;u>this domain&lt;/u></string>
-    <string name="bsdl_app_block_desc" translatable="true">Block, trust &lt;u>this domain&lt;/u> for this app</string>
-    <string name="bsdl_blocked_desc" translatable="true">blocked %1$s by %2$s</string>
 
     <!-- app config -->
     <string name="network_dns" translatable="true">System DNS</string>
@@ -1392,9 +1179,6 @@
     <string name="rt_download_start" translatable="true">Downloading blocklists…</string>
     <string name="rt_download" translatable="true">Download blocklists</string>
 
-    <string name="rt_chip_update_available" translatable="true">Update available</string>
-    <string name="rt_chip_check_update" translatable="true">Check for update</string>
-    <string name="rt_re_download" translatable="true">Re-download blocklists</string>
 
     <string name="rt_list_simple_btn_txt" translatable="true">Simple</string>
     <string name="lbl_advanced" translatable="true">Advanced</string>
@@ -1402,15 +1186,11 @@
     <string name="rt_filter_parent_selected" translatable="true">Selected</string>
 
 
-    <string name="radio_sky_btn" translatable="true">⛅ Sky</string>
-    <string name="radio_max_btn" translatable="true">🪂 Max</string>
 
     <string name="rt_filter_hint" translatable="true">Showing <u>all</u> blocklists</string>
     <string name="rt_filter_desc" translatable="true"><![CDATA[Showing <u>%1$s</u> blocklists]]></string>
     <string name="rt_filter_desc_subgroups" translatable="true"><![CDATA[Showing <u>%1$s</u> blocklists in group: %2$s and subgroup: %3$s]]></string>
 
-    <string name="rethink_sky_desc" translatable="true">280+ locations; higher uptime; stub resolver running on cloudflare.com</string>
-    <string name="rethink_max_desc" translatable="true">50+ locations; more private; recursive resolver running on fly.io</string>
 
     <!-- rethink bottomsheet filter -->
     <string name="bsrf_sub_group_heading" translatable="true">Subgroup</string>
@@ -1469,15 +1249,6 @@
     <!-- Rethink simple view -->
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blocklists</string>
 
-    <!-- Summary statistics view-->
-    <string name="ssv_app_network_activity_heading" description="This label will appear on the stats screen as a header for allowed apps." translatable="true">Most Allowed Apps</string>
-    <string name="ssv_app_blocked_heading" description="This label will appear on the stats screen as a header for blocked applications." translatable="true">Most Blocked Apps</string>
-    <string name="ssv_most_contacted_domain_heading" description="This label will appear on the stats screen as a header for most visited domains" translatable="true">Most Contacted Domains</string>
-    <string name="ssv_most_contacted_countries_heading" description="This label will appear on the stats screen as a header for most visited domains by country" translatable="true">Most Contacted Countries</string>
-    <string name="ssv_most_blocked_domain_heading" description="This label will appear on the stats screen as a header for most blocked domains" translatable="true">Most Blocked Domains</string>
-    <string name="ssv_most_contacted_ips_heading" description="This label will appear on the stats screen as a header for most visited ips" translatable="true">Most Contacted IPs</string>
-    <string name="ssv_most_blocked_ips_heading" description="This label will appear on the stats screen as a header for most blocked ips" translatable="true">Most Blocked IPs</string>
-    <string name="ssv_most_blocked_countries_heading" description="This label will appear on the stats screen as a header for most blocked domains by country" translatable="true">Most Blocked Countries</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Start DNS Control to proceed</string>
     <string name="ssv_see_more" translatable="true">Show All</string>
 
@@ -1492,11 +1263,8 @@
     <string name="bad_config_reason_unknown_section" translatable="true">Unknown section</string>
 
     <string name="key_length_explanation_base64" translatable="true">: WireGuard base64 keys must be 44 characters (32 bytes)</string>
-    <string name="key_length_explanation_binary" translatable="true">: WireGuard keys must be 32 bytes</string>
-    <string name="key_length_explanation_hex" translatable="true">: WireGuard hex keys must be 64 characters (32 bytes)</string>
 
     <string name="key_contents_error" translatable="true">Bad characters in key</string>
-    <string name="key_length_error" translatable="true">Incorrect key length</string>
 
     <string name="parse_error_inet_address" translatable="true">IP address</string>
     <string name="parse_error_inet_endpoint" translatable="true">Endpoint</string>
@@ -1525,9 +1293,6 @@
 
     <string name="setup_wireguard" translatable="true">Setup WireGuard</string>
     <string name="wireguard_description" translatable="true">WireGuard as a proxy.</string>
-    <string name="new_warp_config_desc" translatable="true">Fetch WARP configuration from server</string>
-    <string name="new_warp_error_toast" translatable="true">Unable to fetch WARP configuration</string>
-    <string name="new_warp_invalid_config_toast" translatable="true">Invalid WARP configuration</string>
 
     <string name="one_wg_apps_added" translatable="true">Routing all apps</string>
 
@@ -1538,7 +1303,6 @@
 
     <string name="lockdown_wg_dialog_desc" translatable="false">Selected apps will only be routed through this WireGuard VPN, regardless of whether the VPN is active or disabled.</string>
 
-    <string name="one_wg_error_toast" translatable="true">To switch to Advanced, stop WireGuard in Simple mode</string>
 
     <string name="add_remove_apps" translatable="true">Add / Remove (%1$s apps)</string>
     <string name="routing_remaining_apps" translatable="true">Routing remaining apps</string>
@@ -1557,7 +1321,6 @@
     <string name="exclude_all_app_wg_dialog_title" translatable="true">Exclude all apps</string>
     <string name="exclude_all_app_wg_dialog_desc" translatable="true">Exclude all apps from this WireGuard VPN?</string>
 
-    <string name="wireguard_enabled_failure" translatable="true">Stop other active proxies to enable WireGuard</string>
     <string name="wireguard_dns_mode_conflict" translatable="true">WireGuard cannot be enabled in DNS-only mode. Switch to Firewall or DNS+Firewall mode.</string>
     <string name="wireguard_one_wg_active_conflict" translatable="true">An active One-WireGuard configuration is in use. Disable it first to use individual WireGuard configurations.</string>
     <string name="wireguard_invalid_config_title" translatable="true">Invalid WireGuard configuration</string>
@@ -1609,9 +1372,6 @@
     <string name="crypt_relay_us" translatable="true">Anonymized DNS relay hosted in the US - Los Angeles, CA provided by https://cryptostrom.is/.</string>
     <string name="crypt_relay_singapore" translatable="true">Anonymized DNS relay hosted in Singapore.</string>
 
-    <!-- console logs -->
-    <string name="console_log_title" translatable="true">App Logs</string>
-    <string name="console_log_desc" translatable="true">Logs may contain sensitive information.</string>
 
     <!-- advanced settings -->
     <string name="do_not_randomize_listen_port_title" translatable="true">Do not randomize WireGuard listen port</string>
@@ -1626,8 +1386,6 @@
     <string name="tcp_keep_alive_title" translatable="true">Shorter TCP keepalive</string>
     <string name="tcp_keep_alive_desc" translatable="true">Quickly close TCP sockets with no recent activity.</string>
 
-    <!-- anti-censorship -->
-    <string name="ac_title" translatable="true">anti-censorship</string>
     <string name="ac_desc" translatable="true">Anti-censorship tools can grant internet freedom, but those may not work everywhere. Only attempted on non-proxied connections.</string>
 
     <string name="ac_never_split_desc" translatable="true">Do not alter packets.</string>
@@ -1668,7 +1426,6 @@
 
     <string name="blocklist_not_available_toast" translatable="true">To update blocklists, download the latest app version.</string>
 
-    <string name="lbl_ultra_secure" translatable="true">ultra secure</string>
 
     <string name="adv_set_dial_timeout_title" translatable="true">Idle timeout</string>
     <string name="adv_set_dial_timeout_desc" translatable="true">Close idle TCP and UDP sockets after this duration.</string>
@@ -1676,9 +1433,7 @@
     <string name="adv_set_experimental_title" translatable="false">Experimental</string>
     <string name="adv_set_experimental_desc" translatable="false">Experimental features in network engine.</string>
 
-    <string name="select_wg_proxy_desc" translatable="false">Select WireGuard proxy</string>
 
-    <string name="no_stats_available" translatable="true">No stats</string>
 
     <string name="hop_failure_toast" translatable="true">Relay error: %1$s -> %2$s</string>
     <string name="hop_failure_notification_title" translatable="false">Relay Failure Notifications</string>
@@ -1695,8 +1450,6 @@
 
     <string name="bypasses_network_restrictions" translatable="true">Reachability checks bypass all network restrictions. In <i>Auto</i> mode, DNS Control randomly uses previously connected IPs and hostnames.</string>
 
-    <string name="most_contacted_asn" translatable="true">Most Contacted Providers</string>
-    <string name="most_blocked_asn" translatable="true">Most Blocked Providers</string>
 
     <string name="adv_tasker_dialog_msg" translatable="true">Enter package names (comma-separated) allowed to start or stop DNS Control.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Instructions:\n
@@ -1723,7 +1476,6 @@
 
     <string name="top_active_conns" translatable="true">Top Active Connections</string>
 
-    <string name="load_more" translatable="true">Load All</string>
     <string name="close_conns_dialog_title" translatable="true">Close Connections</string>
     <string name="close_conns_dialog_desc" translatable="true">Close all connections for %1$s?</string>
 
@@ -1736,8 +1488,6 @@
     <string name="close_all" translatable="true">Close All</string>
 
 
-    <string name="processing_dialog_title" translatable="true">Processing</string>
-    <string name="processing_dialog_desc" translatable="true">Please wait while we process your request.</string>
 
 
     <string name="custom_rules_proxy_title" translatable="false">Proxy rules</string>
@@ -1755,90 +1505,25 @@
 
     <string name="vpn_policy_title" translatable="true">Connection change policy</string>
 
-    <string name="use_bootstrap_dns_to_bypass" translatable="true">Use bootstrap DNS as bypass</string>
-    <string name="use_bootstrap_dns_to_bypass_desc" translatable="true">When enabled, always uses bootstrap DNS for bypassed domains, and IPs.</string>
 
     <!-- alert, commenting out for now in v055b -->
 
-   <!-- <string name="alert_severity_high" translatable="true">High</string>
-    <string name="alert_severity_medium" translatable="true">Medium</string>
-    <string name="alert_severity_low" translatable="true">Low</string>
-    <string name="alert_severity_critical" translatable="true">Critical</string>
+   <!--
 
-    <string name="alert_type_info" translatable="true">Info</string>
-    <string name="alert_type_warning" translatable="true">Warning</string>
-    <string name="alert_type_error" translatable="true">Error</string>
-    <string name="alert_type_success" translatable="true">Success</string>
 
-    <string name="alert_category_dns" translatable="true">DNS</string>
-    <string name="alert_category_firewall" translatable="true">Firewall</string>
-    <string name="alert_category_proxy" translatable="true">Proxy</string>
-    <string name="alert_category_vpn" translatable="true">VPN</string>
-    <string name="alert_category_app" translatable="true">App</string>
-    <string name="alert_category_other" translatable="true">Other</string>
 
-    <string name="alert_title_protected" translatable="true">Protected</string>
-    <string name="alert_message_protected" translatable="true">DNS Control is protecting your device</string>
-    <string name="alert_actions_protected" translatable="true">View</string>
-    <string name="alert_solution_protected" translatable="true">DNS Control is protecting your device</string>
 
-    <string name="alert_title_no_internet" translatable="true">No Internet</string>
-    <string name="alert_message_no_internet" translatable="true">DNS Control is not connected to the Internet</string>
-    <string name="alert_actions_no_internet" translatable="true">View</string>
-    <string name="alert_solution_no_internet" translatable="true">DNS Control is not connected to the Internet</string>
 
-    <string name="alert_title_dns_error" translatable="true">DNS Error</string>
-    <string name="alert_message_dns_error" translatable="true">DNS Control is unable to resolve DNS queries</string>
-    <string name="alert_actions_dns_error" translatable="true">View</string>
-    <string name="alert_solution_dns_error" translatable="true">DNS Control is unable to resolve DNS queries</string>
 
-    <string name="alert_title_blocked_connections" translatable="true">Blocked Connection</string>
-    <string name="alert_message_blocked_connections" translatable="true">DNS Control is blocking a connection</string>
-    <string name="alert_actions_blocked_connections" translatable="true">View</string>
-    <string name="alert_solution_blocked_connections" translatable="true">DNS Control is blocking a connection</string>
 
-    <string name="alert_title_allowed_connections" translatable="true">Allowed Connection</string>
-    <string name="alert_message_allowed_connections" translatable="true">DNS Control is allowing a connection</string>
-    <string name="alert_actions_allowed_connections" translatable="true">View</string>
-    <string name="alert_solution_allowed_connections" translatable="true">DNS Control is allowing a connection</string>
 
-    <string name="alert_title_send_failed" translatable="true">Send Failed</string>
-    <string name="alert_message_send_failed" translatable="true">DNS Control is unable to send logs</string>
-    <string name="alert_actions_send_failed" translatable="true">View</string>
-    <string name="alert_solution_send_failed" translatable="true">DNS Control is unable to send logs</string>
 
-    <string name="alert_title_dns_not_active" translatable="true">DNS Not Active</string>
-    <string name="alert_message_dns_not_active" translatable="true">DNS Control is not active as DNS</string>
-    <string name="alert_actions_dns_not_active" translatable="true">View</string>
-    <string name="alert_solution_dns_not_active" translatable="true">DNS Control is not active as DNS</string>
 
-    <string name="alert_title_firewall_not_active" translatable="true">Firewall Not Active</string>
-    <string name="alert_message_firewall_not_active" translatable="true">DNS Control is not active as Firewall</string>
-    <string name="alert_actions_firewall_not_active" translatable="true">View</string>
-    <string name="alert_solution_firewall_not_active" translatable="true">DNS Control is not active as Firewall</string>
 
-    <string name="alert_title_proxy_failed" translatable="true">Proxy Failed</string>
-    <string name="alert_message_proxy_failed" translatable="true">DNS Control is unable to start proxy</string>
-    <string name="alert_actions_proxy_failed" translatable="true">View</string>
-    <string name="alert_solution_proxy_failed" translatable="true">DNS Control is unable to start proxy</string>
 
-    <string name="alert_title_vpn_failed" translatable="true">VPN Failed</string>
-    <string name="alert_message_vpn_failed" translatable="true">DNS Control is unable to start VPN</string>
-    <string name="alert_actions_vpn_failed" translatable="true">View</string>
-    <string name="alert_solution_vpn_failed" translatable="true">DNS Control is unable to start VPN</string>
 
-    <string name="alert_title_firewall_blocked" translatable="true">Firewall Blocked</string>
-    <string name="alert_message_firewall_blocked" translatable="true">DNS Control is blocking a connection</string>
-    <string name="alert_actions_firewall_blocked" translatable="true">View</string>
-    <string name="alert_solution_firewall_blocked" translatable="true">DNS Control is blocking a connection</string>
+-->
 
-    <string name="alert_title_ip_domain_blocked" translatable="true">IP/Domain Blocked</string>
-    <string name="alert_message_ip_domain_blocked" translatable="true">DNS Control is blocking a connection</string>
-    <string name="alert_actions_ip_domain_blocked" translatable="true">View</string>
-    <string name="alert_solution_ip_domain_blocked" translatable="true">DNS Control is blocking a connection</string>-->
-
-    <string name="title_database_dump" translatable="true">Database</string>
-    <string name="copied_clipboard" translatable="true">Copied</string>
 
     <string name="lbl_ssids" translatable="false">SSIDs</string>
     <string name="lbl_ssid" translatable="false">SSID</string>
@@ -1850,7 +1535,6 @@
     <string name="ssid_location_error" translatable="true">Enable Location Services</string>
     <string name="ssid_permission_error_action" translatable="true">Grant permission</string>
     <string name="ssid_location_error_action" translatable="true">Enable location</string>
-    <string name="wg_ssid_and_mobile_err" translatable="true">Cannot use both "%1$s" and "%2$s"</string>
 
     <string name="location_disclosure_title" translatable="true">Location Permission for Wi-Fi Features</string>
     <string name="location_disclosure_message" translatable="true">DNS Control treats Wi-Fi network information (SSID/BSSID) as location data. Background location allows the app to automatically apply Proxy automation when your Wi-Fi changes, even if the app is not open. DNS Control does NOT collect, store, or share your physical GPS location.</string>
@@ -1864,13 +1548,8 @@
     <string name="wg_ssid_type_exact" translatable="true">Matches exactly</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Matches partially</string>
     <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi identifiers (%1$s) must be 32 characters or less.</string>
-    <string name="wg_ssid_delete_confirmation" translatable="true">Delete "%1$s"?</string>
-    <string name="wg_ssid_add_button" translatable="false">Add SSID</string>
     <string name="wg_ssid_empty_error" translatable="false">SSID name cannot be empty</string>
-    <string name="wg_ssid_duplicate_error" translatable="false">SSID already exists in the list</string>
     <string name="wg_ssid_delete_title" translatable="false">Delete SSID</string>
-    <string name="wg_ssid_condition_label" translatable="false">Action</string>
-    <string name="wg_ssid_match_type_label" translatable="false">Match Type</string>
 
     <string name="settings_firebase_error_reporting_heading" translatable="true">Stability program</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capture error logs to help improve stability.</string>
@@ -1878,47 +1557,9 @@
     <string name="tombstone_app_title" translatable="true">Remember uninstalled apps</string>
     <string name="tombstone_app_desc" translatable="true">When enabled, keep app rules for 7 days.</string>
 
-    <string name="firewall_bubble_title" translatable="false">Firewall Bubble</string>
-    <string name="firewall_bubble_subtitle" translatable="false">Review blocked apps and allow them temporarily.</string>
-    <string name="firewall_bubble_desc" translatable="false">Shows a floating bubble with recently blocked apps.</string>
-    <string name="firewall_bubble_channel_name" translatable="false">Firewall Bubble Notifications</string>
-    <string name="firewall_bubble_channel_desc" translatable="false">Shows a bubble notification for recently blocked apps</string>
-    <string name="firewall_bubble_text" translatable="false">Tap to view recently blocked apps</string>
-    <string name="firewall_bubble_permission_granted_toast" translatable="false">Firewall Bubble enabled</string>
-    <string name="firewall_bubble_permission_denied_toast" translatable="false">Permission denied. Firewall Bubble disabled.</string>
-    <string name="firewall_bubble_action_disable" translatable="false">Disable</string>
-    <string name="firewall_bubble_action_enable_bubbles" translatable="false">Enable bubbles</string>
-    <string name="firewall_bubble_notification_permission_toast" translatable="false">Notification permission is required for the Firewall Bubble</string>
-    <string name="firewall_bubble_vpn_off_toast" translatable="false">Firewall Bubble will appear when the VPN is running</string>
-    <string name="firewall_bubble_not_allowed_toast" translatable="false">Bubbles are not allowed. Enable them in system settings to use this feature.</string>
-    <string name="firewall_bubble_enable_prompt_text" translatable="false">Tap to enable bubbles in system settings</string>
-    <string name="firewall_bubble_enable_importance_prompt_text" translatable="false">Bubbles require \"High\" notification importance. Tap to fix in settings.</string>
-    <string name="firewall_bubble_action_dismiss" translatable="false">Dismiss</string>
 
-    <string name="bubble_quick_fixes_title" translatable="false">Dashboard</string>
-    <string name="bubble_fix_proxy_lockdown" translatable="false">Proxy Lockdown</string>
-    <string name="bubble_fix_loopback" translatable="false">Loopback</string>
-    <string name="bubble_fix_loopback_proxy" translatable="false">Loopback Proxy</string>
-    <string name="bubble_fix_custom_ips" translatable="false">Custom Interface IPs</string>
-    <string name="bubble_fix_ip_version" translatable="false">IP Version</string>
-    <string name="bubble_fix_adv_dns" translatable="false">Adv DNS Filter</string>
-    <string name="bubble_fix_unknown_dns" translatable="false">Unknown DNS</string>
-    <string name="bubble_fix_unknown_app" translatable="false">Unknown Apps</string>
-    <string name="bubble_fix_udp" translatable="false">Block UDP</string>
-    <string name="bubble_fix_dns_bypass" translatable="false">DNS Bypass</string>
-    <string name="bubble_fix_metered" translatable="false">Metered Network</string>
-    <string name="bubble_fix_lockdown" translatable="false">Universal Lockdown</string>
 
-    <string name="bubble_activity_title" translatable="false">Recently Blocked Apps</string>
-    <string name="bubble_empty_state_title" translatable="false">No Blocked Apps</string>
-    <string name="bubble_empty_state_desc" translatable="false">Apps blocked by the firewall will appear here.</string>
-    <string name="bubble_allow_btn" translatable="false">Allow (15 min)</string>
-    <string name="bubble_blocked_count" translatable="false">%d blocked</string>
-    <string name="bubble_time_just_now" translatable="false">Just now</string>
-    <string name="bubble_time_minutes_ago" translatable="false">%d min ago</string>
-    <string name="bubble_time_hours_ago" translatable="false">%d hr ago</string>
 
-    <string name="bubble_allowed_title" translatable="false">Temporarily Allowed Apps</string>
     <string name="settings_locale_dialog_default" translatable="true">System default</string>
 
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
@@ -1933,7 +1574,6 @@
     <string name="settings_tunnel_metered" translatable="true">Always metered</string>
     <string name="settings_tunnel_metered_desc" translatable="true">Mark DNS Control\'s VPN tunnel as metered to encourage apps to use less data. Caution: This may cause apps to pause large uploads &amp; downloads, like backups.</string>
 
-    <string name="stability_program_toast" translatable="true">Enrolled to the <i>stability program</i> for <i>experimental features</i>.</string>
     <string name="stability_program_snackbar_msg" translatable="true">Stability program enabled</string>
     <string name="stability_program_snackbar_disable" translatable="true">Undo</string>
 
@@ -1979,13 +1619,6 @@
     <string name="settings_smart_persistent_keepalive" translatable="false">Smart Persistent Keepalive</string>
     <string name="settings_smart_persistent_keepalive_desc" translatable="false">Proactively maintains WireGuard tunnel connectivity by sending keep-alive probes only when needed, minimizing reconnection delays on intermittent networks.</string>
 
-    <!-- Event Logs -->
-    <string name="event_logs_title" translatable="false">Event Logs</string>
-    <string name="event_logs_subtitle" translatable="false">View internal system &amp; debug events</string>
-    <string name="no_events_recorded" translatable="false">No events recorded yet</string>
-    <string name="no_events_desc" translatable="false">Event logs will appear here once the app starts recording system activity</string>
-    <string name="delete_all_events" translatable="false">Delete All Events</string>
-    <string name="delete_all_events_confirmation" translatable="false">Are you sure you want to delete all event logs? This action cannot be undone.</string>
 
     <!-- Custom Interface IPs -->
     <string name="custom_lan_ip_title" translatable="false">Custom Interface IPs for VPN</string>
@@ -2001,138 +1634,49 @@
     <string name="custom_lan_ip_save_error" translatable="false">Could not save custom interface IPs</string>
     <string name="custom_lan_ip_open_error" translatable="false">Could not open the Custom Interface IPs dialog</string>
     <string name="custom_lan_ip_validation_error" translatable="false">Invalid IP addresses. Ensure:\n• IPv4 must be private (10.x.x.x, 172.16-31.x.x, or 192.168.x.x)\n• IPv6 must be unique local (fc00::/7)\n• Both IP and prefix must be provided together</string>
-    <string name="vpn_not_active_dialog_title" translatable="false">VPN not active</string>
-    <string name="vpn_not_active_dialog_desc" translatable="false">DNS Control is not started. Please start to use this feature.</string>
 
 
 
 
 
-    <string name="payment_history_title" translatable="false">Device Order History</string>
 
 
-    <string name="contact_support_title" translatable="false">Contact Support</string>
-
-    <string name="subscribe_title" translatable="false">Subscribe</string>
-
-    <string name="resubscribe_title" translatable="false">Resubscribe</string>
-
-    <string name="extend_access_title" translatable="false">Extend access</string>
-
-    <string name="extend_access_note" translatable="false">One-time access expires on %1$s. Buy more time anytime before then. You can also request a full refund within the revocation window shown above.</string>
-
-    <!-- Resubscribe bottom sheet -->
-    <string name="resubscribe_error" translatable="false">Failed to launch resubscription. Please try again.</string>
 
 
-    <string name="payment_processing" translatable="false">Payment processing</string>
-    <string name="payment_processing_desc" translatable="false">Your payment is being processed. You’ll get access once it completes.</string>
 
-    <!-- Subscription UI Strings -->
-    <string name="premium_subtitle" translatable="false">Enhanced privacy, speed, and security</string>
-    <string name="choose_plan" translatable="false">Choose Your Plan</string>
-    <string name="choose_plan_subtitle" translatable="false">Select the plan that works best for you.</string>
-    <string name="subscribe_now" translatable="false">Subscribe Now</string>
-    <string name="one_time_label" translatable="false">One-Time</string>
-    <string name="monthly_plan" translatable="false">Monthly</string>
-    <string name="price_placeholder" translatable="false">$0.00</string>
-    <string name="original_price" translatable="false">Was %1$s</string>
-    <string name="save_percentage" translatable="false">Save %1$s</string>
-    <string name="select_plan_first" translatable="false">Please select a plan first</string>
 
-    <!-- Purchase Processing Bottom Sheet Strings -->
-    <string name="please_wait_processing" translatable="false">Please wait while we process your purchase…</string>
-    <string name="verifying_with_play_store" translatable="false">Verifying with Google Play Store…</string>
-    <string name="something_went_wrong" translatable="false">Something went wrong. Please try again.</string>
-    <string name="server_ack_pending_title" translatable="false">Payment Received</string>
-    <string name="server_ack_pending_message" translatable="false">Your payment was received but we are still verifying it with our server. We are retrying automatically. If verification fails, a refund will be initiated through Google Play. Please contact support if this persists.</string>
-    <string name="close" translatable="false">Close</string>
-    <string name="retry" translatable="false">Retry</string>
-    <string name="error_message" translatable="false">Unable to load plans</string>
 
-    <!-- Pending purchase escalation -->
-    <string name="pending_stage_initial" translatable="false">Verifying your payment…</string>
-    <string name="pending_stage_waiting" translatable="false">Still waiting for Google Play to confirm your payment…</string>
-    <string name="pending_stage_delayed" translatable="false">Your payment is taking longer than usual. We\'ll keep checking in the background.</string>
-    <string name="pending_timeout_title" translatable="false">Payment Not Yet Confirmed</string>
-    <string name="pending_timeout_message" translatable="false">We\'re still waiting for Google Play to confirm your payment. This can take up to 24 hours in some cases.</string>
-    <string name="check_status" translatable="false">Check Status</string>
-    <string name="pending_checking_status" translatable="false">Checking payment status…</string>
 
-    <!-- Item already owned / restore feedback -->
-    <string name="item_already_owned_restoring" translatable="false">This item is already owned. Restoring your purchase…</string>
 
-    <!-- Offline indicator -->
-    <string name="no_internet_title" translatable="false">No Internet Connection</string>
-    <string name="no_internet_premium_msg" translatable="false">You\'re offline. Please connect to the internet to view and purchase plans.</string>
 
-    <!-- Grace / OnHold banner -->
-    <string name="grace_period_banner_msg" translatable="false">Payment issue: Update your payment method in Google Play to avoid losing access.</string>
-    <string name="on_hold_banner_msg" translatable="false">Your subscription is on hold. Update your payment method in Google Play to restore access.</string>
-    <string name="update_in_play_store" translatable="false">Update in Google Play</string>
 
-    <!-- Account mismatch -->
-    <string name="account_mismatch_title" translatable="false">Different Google Account Detected</string>
-    <string name="account_mismatch_msg" translatable="false">You purchased with a different Google account. Please switch accounts in Google Play to restore your purchase.</string>
+
+
+
+
+
 
     <!-- User-friendly billing error messages -->
 
-    <!-- Product fetch error reasons (shown below the primary error message in RethinkPlusFragment) -->
-    <string name="error_reason" translatable="false">Reason</string>
-    <string name="product_fetch_err_network" translatable="false">No internet connection. Check your network and try again.</string>
-    <string name="product_fetch_err_timeout" translatable="false">Google Play did not respond in time. Please try again.</string>
-    <string name="product_fetch_err_empty" translatable="false">No subscription plans were returned. Please try again.</string>
-    <string name="product_fetch_err_auth" translatable="false">Configuration error. Please contact support.</string>
-    <string name="product_fetch_err_server" translatable="false">Google Play is temporarily unavailable. Please try again.</string>
-    <string name="product_fetch_err_unknown" translatable="false">An unexpected error occurred. Please try again.</string>
 
-    <!-- Server sync pending banner -->
-    <string name="server_sync_pending_msg" translatable="false">Purchase verified, but server sync is pending. Your access is active and will sync shortly.</string>
 
-    <!-- Server Selection Screen -->
-    <string name="server_selection_title" translatable="false">Choose Countries</string>
-    <string name="server_selection_search_hint" translatable="false">Search countries or locations…</string>
-    <string name="server_selection_clear_search" translatable="false">Clear search</string>
-    <string name="server_selection_max_info" translatable="false">Select up to 5 servers</string>
-    <string name="server_selection_max_reached" translatable="false">Maximum %1$d servers can be selected</string>
-    <string name="server_selection_no_servers" translatable="false">No servers found</string>
-    <string name="server_selection_no_servers_desc" translatable="false">Try adjusting your search or check back later.</string>
-    <string name="server_selection_error_title" translatable="false">Error fetching locations</string>
-    <string name="server_selection_error_message" translatable="false">There was a problem fetching server locations. This is usually a temporary issue.</string>
-    <string name="server_selection_error_hint" translatable="false">Check your connection or try again in a moment.</string>
     <string name="server_selection_error_retry" translatable="false">Try Again</string>
     <string name="server_selection_proxy_unavailable" translatable="false">Could not load server locations. Proxy may not be ready yet.</string>
 
-    <!-- RPN reset progress dialog (dialog_server_loading layout) -->
-    <string name="server_loading_dialog_status_timeout" translatable="false">Taking a bit longer than expected…</string>
 
     <!-- RPN Restore dialog -->
     <!-- Short label shown on the reset button while a reset is running in the background -->
 
-    <string name="loading" translatable="false">Loading…</string>
-    <string name="server_selection_tap_to_select" translatable="false">Start RPN to proceed</string>
 
-    <string name="vpn_status_disconnected" translatable="false">Disconnected</string>
 
     <plurals name="server_count">
         <item quantity="one">%1$d location</item>
         <item quantity="other">%1$d locations</item>
     </plurals>
 
-    <!-- Server Removal Notification -->
-    <string name="server_removal_title" translatable="false">Server Location Removed</string>
-    <string name="server_removal_subtitle" translatable="false">This server location is no longer available.</string>
-    <string name="server_removed" translatable="false">Removed</string>
 
-    <!-- Country SSID Dialog -->
-    <string name="country_ssid_dialog_title" translatable="false">WiFi Settings for %1$s</string>
-    <string name="country_ssid_dialog_description" translatable="false">%1$s to %2$s when connected to %3$s that %4$s match the list below</string>
-    <string name="country_ssid_add_new" translatable="false">Add New SSID</string>
-    <string name="country_ssid_configured_list" translatable="false">Configured SSIDs</string>
     <string name="country_ssid_empty_state" translatable="false">No SSIDs configured yet</string>
-    <string name="country_ssid_icon" translatable="false">SSID Icon</string>
 
-    <string name="lbl_server_config" translatable="false">Server Configuration</string>
     <string name="lbl_not_set" translatable="false">Not set</string>
 
     <!-- Peer Count -->
@@ -2141,258 +1685,58 @@
         <item quantity="other">%d peers</item>
     </plurals>
 
-    <string name="hint_seconds" translatable="false">Seconds</string>
 
     <!-- Settings -->
 
     <string name="lbl_actions" translatable="false">Actions</string>
 
 
-    <!-- Double acknowledgement-failure (server ack + Google Play ack) and Play-services errors -->
-    <string name="ack_failure_both_title" translatable="false">Payment Confirmed, Verification Failed</string>
-    <string name="ack_failure_both_message" translatable="false">"We received your payment, but we could not verify it with our server or Google Play. This usually resolves on its own within a few minutes. If it doesn't, a refund will be started automatically and you can contact support. You can retry verification below."</string>
-    <string name="ack_failure_server_only_title" translatable="false">Verification Delayed</string>
-    <string name="ack_failure_server_only_message" translatable="false">"Your payment was received, but our server is still verifying it. We'll keep retrying automatically."</string>
-    <string name="ack_failure_play_only_title" translatable="false">Google Play Verification Failed</string>
-    <string name="ack_failure_play_only_message" translatable="false">"Google Play could not acknowledge your purchase. Please check your connection and retry, or contact support."</string>
-    <string name="ack_retrying_now" translatable="false">Re-checking with Google Play and our server…</string>
-    <string name="ack_refund_initiated" translatable="false">A refund has been initiated via Google Play.</string>
-    <string name="ack_resolved_success" translatable="false">Verification complete — your subscription is now active.</string>
 
     <!-- Customer Support Activity -->
 
-    <!-- Dashboard subscription banner labels -->
-    <string name="dashboard_expiry_label" translatable="false">Valid until</string>
 
-    <!-- Manage Subscription loading overlay -->
-    <string name="manage_sub_cancelling" translatable="false">Cancelling…</string>
-    <string name="manage_sub_revoking" translatable="false">Revoking…</string>
 
     <!-- Privacy Exposure Warning Card -->
 
-    <!-- Subscription banner strings -->
-    <string name="server_selection_sub_on_hold" translatable="false">On Hold</string>
-    <string name="server_selection_sub_ends_on" translatable="false">Ends on</string>
-    <string name="server_selection_sub_expired_on" translatable="false">Expired on</string>
-    <string name="server_selection_sub_days_left" translatable="false">%1$dd left</string>
 
-    <!-- ServerSelectionFragment proxy / DNS strings -->
-    <string name="server_settings_title" translatable="false">Server Settings</string>
-    <string name="server_settings_dns_section" translatable="false">DNS Filter</string>
-    <string name="server_settings_dns_family" translatable="false">Family</string>
-    <string name="server_settings_dns_desc_includes" translatable="false">Includes %1$s</string>
-    <string name="server_settings_dns_no_filters" translatable="false">No filters</string>
     <string name="server_settings_refresh_servers" translatable="false">Refresh Servers</string>
-    <string name="server_settings_stop_proxies" translatable="false">Stop RPN</string>
-    <string name="server_settings_open" translatable="false">Open server settings</string>
-    <string name="server_settings_split_dns_disabled" translatable="false">Split DNS is disabled. Enable it to use DNS filtering on your VPN servers.</string>
-    <string name="server_settings_enable_split_dns" translatable="false">Enable Split DNS</string>
-    <string name="server_settings_proxy_stopped" translatable="false">Proxy Stopped</string>
 
-    <!-- Auto Exclude Countries bottom sheet -->
-    <string name="auto_exclude_cc_title" translatable="false">Exclude Countries</string>
-    <string name="auto_exclude_cc_subtitle" translatable="false">Selected countries will be skipped during AUTO server selection</string>
-    <string name="auto_exclude_cc_row_title" translatable="false">Excluded Countries for AUTO</string>
-    <string name="auto_exclude_cc_none" translatable="false">None excluded</string>
-    <string name="auto_exclude_cc_count" translatable="false">%d countries excluded</string>
-    <string name="auto_exclude_cc_min_info" translatable="false">At least %d countries must remain available for AUTO selection</string>
-    <string name="auto_exclude_cc_limit_reached" translatable="false">Limit reached, at least %d countries must remain available</string>
-    <string name="auto_exclude_cc_no_servers" translatable="false">No countries available</string>
-    <string name="auto_exclude_cc_loading" translatable="false">Loading countries…</string>
-    <string name="auto_exclude_cc_search_hint" translatable="false">Search countries…</string>
 
-    <!-- Server settings bottom sheet -->
-    <string name="server_settings_sheet_subtitle" translatable="false">Configure VPN server preferences</string>
-    <string name="server_settings_config_handling_section" translatable="false">Configuration Handling</string>
-    <string name="server_settings_config_handling_desc" translatable="false">Choose how connection settings should be managed</string>
-    <string name="server_settings_config_mode_auto" translatable="false">AUTO</string>
-    <string name="server_settings_config_mode_manual" translatable="false">MANUAL</string>
-    <string name="server_settings_config_auto_hint" translatable="false">The app automatically selects the port, identity, and configuration</string>
-    <string name="server_settings_config_manual_hint" translatable="false">Manually control the identity, port, and configuration mode</string>
-    <string name="server_settings_identity_title" translatable="false">Always Change Identity</string>
-    <string name="server_settings_identity_desc" translatable="false">Request a new client identity for each connection attempt</string>
-    <string name="server_settings_port_title" translatable="false">Connection Port</string>
-    <string name="server_settings_port_desc" translatable="false">Port used for tunnel server connections</string>
-    <string name="server_settings_permanent_config_title" translatable="false">Permanent Configuration</string>
-    <string name="server_settings_permanent_config_desc" translatable="false">Keep the same server configuration across reconnections</string>
-    <string name="server_settings_port_dialog_title" translatable="false">Select Connection Port</string>
-    <string name="server_selection_sub_expires_today" translatable="false">Valid until today</string>
-    <string name="server_selection_auto_always_on" translatable="false">AUTO is always connected and cannot be removed</string>
-    <string name="server_selection_remove_title" translatable="false">Remove Server</string>
-    <string name="server_selection_remove_message" translatable="false">Remove %1$s (%2$s) from your server list?</string>
-    <string name="server_selection_frequent_label" translatable="false">Frequent</string>
-    <string name="server_favourite_added" translatable="false">%1$s added to favourites</string>
-    <string name="server_favourite_removed" translatable="false">%1$s removed from favourites</string>
     <string name="lbl_not_available_short" translatable="false">N/A</string>
 
-    <!-- Manage Subscription Strings -->
-    <string name="manage_on_google_play" translatable="false">Manage on Google Play</string>
-    <string name="confirm_cancel_title" translatable="false">Cancel Purchase?</string>
-    <string name="confirm_cancel_message" translatable="false">Are you sure you want to cancel your purchase? You will lose access to premium features at the end of the current period.</string>
-    <string name="confirm_revoke_title" translatable="false">Revoke Purchase?</string>
-    <string name="confirm_revoke_message" translatable="false">Are you sure you want to revoke your purchase? This action will immediately cancel your purchase and refund your payment. You will lose access to premium features.</string>
 
-    <!-- ManageSubscriptionFragment strings -->
-    <string name="status_revoked" translatable="false">Revoked</string>
-    <!-- Generic plan duration labels (no billing-type qualifier) -->
-    <string name="plan_2yr" translatable="false">2-Year</string>
-    <string name="plan_5yr" translatable="false">5-Year</string>
 
-    <!-- Ping Test Activity -->
-    <string name="ping_test_title" translatable="false">Connection Test</string>
-    <string name="ping_test_button" translatable="false">Run Test</string>
-    <string name="ping_ready_title" translatable="false">Ready to Test</string>
-    <string name="ping_ready_desc" translatable="false">Enter domains below and tap Run Test.</string>
-    <string name="ping_testing_title" translatable="false">Testing…</string>
-    <string name="ping_testing_desc" translatable="false">Checking reachability through the proxy.</string>
-    <string name="ping_success_title" translatable="false">All Reachable</string>
-    <string name="ping_success_desc" translatable="false">Every target is reachable through your RPN proxy.</string>
-    <string name="ping_partial_title" translatable="false">Partial Connectivity</string>
-    <string name="ping_partial_desc" translatable="false">Some targets are unreachable through the proxy.</string>
-    <string name="ping_failure_title" translatable="false">Unreachable</string>
-    <string name="ping_failure_desc" translatable="false">None of the targets could be reached. Check your RPN proxy.</string>
-    <string name="ping_no_proxy_title" translatable="false">No Active Proxy</string>
-    <string name="ping_status_failed" translatable="false">Failed</string>
-    <string name="ping_test_again" translatable="false">Run Again</string>
-    <string name="ping_reach_hint" translatable="false">Domains or IPs, comma-separated</string>
-    <string name="ping_reach_reachable" translatable="false">Reachable</string>
-    <string name="ping_total_latency" translatable="false">%1$dms</string>
 
-    <!-- Purchase History Screen -->
-    <string name="payment_history_summary_title" translatable="false">All Transactions</string>
-    <string name="payment_history_summary_subtitle" translatable="false">A complete record of every purchase and state change</string>
-    <string name="payment_history_empty_title" translatable="false">No history yet</string>
-    <string name="payment_history_empty_subtitle" translatable="false">Purchase transactions and state changes will appear here</string>
-    <string name="payment_history_error" translatable="false">Failed to load purchase history</string>
-    <string name="payment_history_open_error" translatable="false">Could not open purchase history</string>
-    <string name="payment_history_transition_fmt" translatable="false">%1$s → %2$s</string>
-    <string name="payment_history_state_pending" translatable="false">Pending</string>
 
-    <!-- ServerOrderHistoryActivity, server-side purchase order history -->
-    <string name="server_order_title" translatable="false">Order History</string>
-    <string name="server_order_summary_title" translatable="false">Server Orders</string>
-    <string name="server_order_summary_subtitle" translatable="false">Purchase records fetched live from the server</string>
-    <string name="server_order_empty_title" translatable="false">No orders found</string>
-    <string name="server_order_empty_subtitle" translatable="false">No purchase records were found for this account</string>
-    <string name="server_order_empty_no_credentials" translatable="false">No active subscription found. Please subscribe to view order history.</string>
-    <string name="server_order_started_fmt" translatable="false">Started %1$s</string>
-    <string name="server_order_expires_fmt" translatable="false">Until %1$s</string>
-    <string name="server_order_auto_renew" translatable="false">Renews %1$s</string>
-    <string name="server_order_id_fmt" translatable="false">Order: %1$s</string>
-    <string name="server_order_desc" translatable="false">View orders fetched from server</string>
-    <string name="server_order_open_error" translatable="false">Could not open order history</string>
 
 
     <!-- ProxySettingsActivity RPN section -->
 
-    <!-- ServerWgConfigDetailActivity live stats card -->
-    <string name="lbl_last_handshake" translatable="false">Last Handshake</string>
-    <string name="lbl_last_open" translatable="false">Last Reconnect</string>
-    <string name="lbl_errors" translatable="false">Errors</string>
     <string name="lbl_client_ipv4" translatable="false">Exit IP</string>
-    <string name="lbl_server_info" translatable="false">Endpoint</string>
-    <string name="lbl_never" translatable="false">Never</string>
 
 
-    <!-- Emoji icons used in the privacy exposure card -->
-    <string name="emoji_eye" translatable="false">👁️</string>
-    <string name="emoji_pin" translatable="false">📍</string>
-    <string name="emoji_antenna" translatable="false">📡</string>
-    <string name="emoji_shield" translatable="false">🛡️</string>
-
-    <!-- GooglePlaySubsAdapter billing text & trial -->
-    <string name="trial_days_format" translatable="false">%1$d days free trial</string>
-
-    <!-- RethinkPlusDashboardFragment hero banner -->
-    <string name="hero_plan_and_account" translatable="false">%1$s • %2$s</string>
-    <string name="placeholder_dash" translatable="false">\u2014</string>
-
-    <!-- RethinkPlusFragment connection info -->
-    <string name="connection_location_with_colo" translatable="false">%1$s \u2022 %2$s</string>
-    <string name="truncated_text" translatable="false">%1$s\u2026</string>
-
-    <!-- Separator / utility -->
-    <string name="lbl_separator_dot" translatable="false">\u2022</string>
 
 
-    <!-- ManageSubscriptionFragment no-subscription empty state -->
-    <string name="progress_step_validating" translatable="false">Validating purchase</string>
-    <string name="progress_step_contacting_server" translatable="false">Contacting server</string>
-    <string name="progress_step_updating" translatable="false">Updating local state</string>
-    <string name="progress_step_refreshing" translatable="false">Refreshing billing status</string>
-    <string name="progress_do_not_close" translatable="false">Please do not close the app</string>
 
-    <!-- One-time purchase expiry strings -->
-    <string name="inapp_expiry_soon" translatable="false">⚠ Your access valid until in %1$d day(s).</string>
-    <string name="inapp_expiry_extend_hint" translatable="false">Buy more access time now so there\'s no interruption.</string>
-    <string name="inapp_extend_access_btn" translatable="false">Extend Access</string>
 
-    <!-- Extend-mode banner shown at top of RethinkPlusFragment when user is extending -->
-    <string name="extend_mode_banner_title" translatable="false">Extending Your Access</string>
-    <string name="extend_mode_banner_desc" translatable="false">Your new purchase adds to your remaining time. Access continues uninterrupted.</string>
+
+
+
+
 
     <!-- Extend-mode purchase success celebration -->
 
     <!-- Normal subscription success celebration -->
 
-    <!-- Per-month price breakdown for one-time plans (e.g. "₹141 / mo") -->
-    <string name="price_per_month_format" translatable="false">%s / mo</string>
 
-    <!-- Purchase conflict (HTTP 409) bottom sheet -->
-    <string name="conflict_title_cancel" translatable="false">Purchase Conflict</string>
-    <string name="conflict_title_revoke" translatable="false">Refund Conflict</string>
-    <string name="conflict_title_ack" translatable="false">Purchase Already Acknowledged</string>
-    <string name="conflict_title_consume" translatable="false">Purchase Already Consumed</string>
-    <string name="conflict_title_device" translatable="false">Device Already Registered</string>
-    <string name="conflict_title_customer" translatable="false">Customer Registration</string>
 
-    <string name="conflict_desc_cancel" translatable="false">Your purchase appears to be in a conflicting state on the server. You can request a refund to resolve this, or manage it directly on Google Play.</string>
-    <string name="conflict_desc_revoke" translatable="false">A refund request for this purchase is already in progress or the purchase is in a conflicting state. You can try again or manage it on Google Play.</string>
-    <string name="conflict_desc_ack" translatable="false">This purchase was already acknowledged on the server. No action is needed, your purchase should be active. If you see an issue, contact support.</string>
-    <string name="conflict_desc_consume" translatable="false">This purchase has already been consumed. If you believe this is an error, please contact support.</string>
-    <string name="conflict_desc_device" translatable="false">This device is already registered with the server. No action is needed. If access is not working, try again or contact support.</string>
-    <string name="conflict_desc_customer" translatable="false">Customer registration failure. Please contact support.</string>
 
-    <string name="conflict_btn_refund" translatable="false">Request Refund</string>
-    <string name="conflict_btn_refund_retry" translatable="false">Retry Refund</string>
 
-    <string name="conflict_detail_http_code" translatable="false">HTTP Code</string>
 
-    <string name="conflict_refund_success" translatable="false">Refund requested successfully. Your purchase has been revoked.</string>
-    <string name="conflict_refund_failed" translatable="false">Refund request failed: %1$s</string>
 
-    <!-- 409 background notification (no UI available) -->
-    <string name="conflict_notif_title" translatable="false">Action Required: Purchase Conflict</string>
-    <string name="conflict_notif_body" translatable="false">A server conflict was detected with your purchase. Tap to review and request a refund.</string>
 
-    <!-- Bottom sheet shown when /g/device or /customer returns 401 Unauthorized -->
-    <string name="device_auth_error_title" translatable="false">Device Authorization Failed</string>
-    <string name="device_auth_error_desc" translatable="false">Your device could not be authorized by the Rethink server. This may be due to an account issue. Please contact customer support with the details below so we can resolve this quickly.</string>
-    <string name="device_auth_error_http_code" translatable="false">HTTP 401: Unauthorized</string>
-    <string name="device_auth_error_account_id_label" translatable="false">Account ID</string>
-    <string name="device_auth_error_device_id_label" translatable="false">Device ID</string>
-    <string name="device_auth_error_device_id_partial" translatable="false">partial</string>
-    <string name="device_auth_error_id_unavailable" translatable="false">-</string>
-    <string name="device_auth_error_btn_email" translatable="false">Email Customer Support</string>
-    <!-- Pre-filled email content -->
-    <string name="device_auth_error_email_body_greeting" translatable="false">Hello Rethink Support,</string>
-    <string name="device_auth_error_email_body_details" translatable="false">I am experiencing a device authorization issue (HTTP 401). My account details are:</string>
-    <string name="device_auth_error_email_body_closing" translatable="false">Help me resolve this.</string>
 
-    <!-- Device Not Registered bottom sheet -->
-    <string name="device_not_registered_title" translatable="false">Device Not Registered</string>
-    <string name="device_not_registered_badge" translatable="false">Account ID Mismatch</string>
-    <string name="device_not_registered_desc" translatable="false">Your device could not be registered under the account linked to your active subscription. The account ID from Google Play (shown below) could not be resolved to a device on our server. Please contact support with the details below.</string>
-    <string name="device_not_registered_entitlement_cid_label" translatable="false">Subscription Account ID (Google Play)</string>
-    <string name="device_not_registered_master_badge" translatable="false">master</string>
-    <string name="device_not_registered_what_this_means" translatable="false">What this means</string>
-    <string name="device_not_registered_what_this_means_desc" translatable="false">Your subscription is active on Google Play but your device could not be linked to it on the Rethink server. This can happen after restoring from a backup or switching devices. Our support team can resolve this quickly once you provide the account details above.</string>
-    <string name="device_not_registered_email_subject" translatable="false">Device Not Registered: Rethink DNS</string>
-    <string name="device_not_registered_email_body_details" translatable="false">I have an active subscription but my device cannot be registered. The account details are:</string>
 
-    <!-- Device-not-registered system notification -->
-    <string name="device_not_registered_notif_body" translatable="false">Your device could not be linked to your active subscription. Tap to review and contact support.</string>
-    <string name="device_auth_error_notif_body" translatable="false">Your device could not be authorized by the Rethink server (HTTP 401). Tap to view details and contact support.</string>
 
     <!-- Step counter chip label: "Step 1 of 5" -->
     <string name="tour_step_counter">%1$d of %2$d</string>
@@ -2422,9 +1766,6 @@
     <string name="tour_step_proxy_title" translatable="false">Proxy &amp; Routing</string>
     <string name="tour_step_proxy_desc" translatable="false">Chain a WireGuard, SOCKS5, or HTTP proxy to shape exactly how your traffic exits. Combine with DNS for full control.</string>
 
-    <!-- Step 5: Logs Card -->
-    <string name="tour_step_logs_title" translatable="false">Connection Logs</string>
-    <string name="tour_step_logs_desc" translatable="false">Every DNS query and network connection is logged here. Review what your apps are doing and block anything suspicious with one tap.</string>
 
     <!-- Duration labels for one-time purchase plan cards -->
     <plurals name="duration_years" translatable="false">
@@ -2442,20 +1783,8 @@
     <string name="fs_configure_proxy_desc" translatable="true">WireGuard, SOCKS5, and HTTP proxy routing</string>
     <string name="fs_configure_others_desc" translatable="true">Appearance, notifications, and more</string>
     <string name="fs_configure_advanced_desc" translatable="true">Developer tools and diagnostics</string>
-    <string name="fs_configure_logs_desc" translatable="true">Review DNS queries and connection logs</string>
 
-    <!-- DNS bypass mode bottom sheet -->
-    <string name="bfdm_heading" translatable="false">DNS for bypass</string>
-    <string name="bfdm_desc" translatable="false">Select the DNS to use for trusted and bypassed ips and domains</string>
-    <string name="bfdm_option_bootstrap_label" translatable="false">Use Bootstrap DNS</string>
-    <string name="bfdm_option_bootstrap_desc" translatable="false">Use the bootstrap DNS for trusted and bypassed connections</string>
-    <string name="bfdm_option_global_label" translatable="false">Use Global DNS</string>
-    <string name="bfdm_option_global_desc" translatable="false">Use the globally configured DNS for trusted and bypassed connections</string>
-    <string name="bfdm_option_auto_label" translatable="false">Automatic</string>
-    <string name="bfdm_option_auto_desc" translatable="false">Automatically select DNS based on other settings</string>
-    <string name="bfdm_split_dns_disabled" translatable="false">Split DNS is disabled</string>
 
-    <string name="console_log_include_file_trace" translatable="false">Include file trace in logs</string>
 
     <string name="rethink_block_error_desc" translatable="false">DNS Control may be blocked by firewall rules ⚠</string>
 
@@ -2467,10 +1796,6 @@
     <string name="external_dnscrypt_notice" translatable="true">Add a DNSCrypt server or relay as an sdns:// stamp. Copy an entry from the sources below.</string>
     <string name="external_odoh_notice" translatable="true">Add an ODoH target and a relay. Enter each as an https:// URL or an sdns:// stamp. Copy an entry from the sources below.</string>
     <string name="external_relay_notice" translatable="true">This app does not include DNSCrypt relays. For transparency, add them yourself: copy an address from the source below, then add it manually on your phone.</string>
-    <string name="external_dnscrypt_sources" translatable="false">DNSCrypt target servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
-DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md</string>
-    <string name="external_odoh_sources" translatable="false">ODoH target servers: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
-ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md</string>
     <string name="external_relay_sources" translatable="false">DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md</string>
     <!-- Donation block shown at the bottom of the home screen settings sheet -->
     <string name="donate_section_title" translatable="true">Support this project</string>

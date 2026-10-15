@@ -46,9 +46,6 @@ object Logger {
     const val LOG_OKHTTP = "OkHttp"
     const val LOG_FIREBASE = "FirebaseErrorReporting"
 
-    const val WIRELOG_FILE_NAME = "wirelogs.txt"
-    const val WIRELOG_MAX_SIZE_BYTES = 3 * 1024 * 1024L // 3 MB
-    const val WIRELOG_FOLDER_NAME = "logs"
 
     // github.com/celzero/firestack/blob/bce8de917f/intra/log/logger.go#L76
     enum class LoggerLevel(val id: Long) {

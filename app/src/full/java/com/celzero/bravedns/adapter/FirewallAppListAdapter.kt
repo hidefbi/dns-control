@@ -118,11 +118,6 @@ class FirewallAppListAdapter(
                     // setting the appname with different color for system and user apps
                     // causes conflict with the firewall status like blocked and isolated
                     // so removing the color change for now
-                    /* if (appInfo.isSystemApp) {
-                        b.firewallAppLabelTv.setTextColor(systemAppColor)
-                    } else {
-                        b.firewallAppLabelTv.setTextColor(userAppColor)
-                    } */
                     b.firewallAppToggleOther.text = getFirewallText(appStatus, connStatus)
                     displayIcon(
                         getIcon(context, appInfo.packageName, appInfo.appName), b.firewallAppIconIv)

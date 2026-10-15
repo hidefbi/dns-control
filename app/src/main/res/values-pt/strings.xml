@@ -3,14 +3,12 @@
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">protegido</string>
     <string name="status_no_internet">sem Internet</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]">falha</string>
-    <string name="status_app_error">erro de aplicação</string>
     <string name="status_dns_error">erro de dns</string>
     <string name="status_dns_server_down">servidor dns inativo</string>
     <string name="status_protected_with_tor">protegido com Tor</string>
     <string name="status_protected_with_private_dns">protegido com dns privado</string>
     <string name="status_protected_with_tor_private_dns">protegido com tor e dns privado</string>
     <string name="slide_2_desc">DNS Control é a forma mais fácil de monitorizar a atividade da rede, contornar a censura da Internet e bloquear, com a firewall, as aplicações no seu dispositivo Android.</string>
-    <string name="slide_1_title">Código livre e aberto</string>
     
     <string name="warning_title" description="Status indicator text shown in a warning notification.">Aviso: DNS Control foi desativado</string>
     <string name="exclude">excluir</string>
@@ -30,13 +28,7 @@
     <string name="alert_firewall_accessibility_explanation">DNS Control utiliza o serviço de acessibilidade para identificar as aplicações que estão a ser utilizadas (primeiro plano) e as que não estão a ser utilizadas (segundo plano). \n \nDNS Control não recolhe qualquer informação nem o monitoriza de forma alguma.</string>
     <string name="alert_firewall_accessibility_regrant_explanation">O serviço de acessibilidade DNS Control parou ou foi bloqueado. <i><b>Aceda às definições, pare</b> </i>DNS Control e torne a iniciar para usar <i>a funcionalidade de bloquear todas as aplicações que não estejam a ser utilizadas</i>. \n \nDNS Control utiliza o serviço de acessibilidade para rastrear as aplicações estão a ser utilizadas (primeiro plano) e as que não estão a ser utilizadas (segundo plano).</string>
     <string name="alert_firewall_accessibility_exception">Falha ao abrir as definições de acessibilidade. Tente mais tarde!</string>
-    <string name="dns_query_clear_logs_message">Isto elimina os registos DNS do dispositivo. Esta operação não é reversível. Continuar?</string>
-    <string name="bsct_app_info">Informações</string>
-    <string name="bsct_block_ip">Bloquear, confiar &lt;u&gt;neste IP&lt;/u&gt; para &lt;u&gt;esta aplicação&lt;/u&gt;</string>
-    <string name="bsct_block">Bloquear , ignorar, excluir e isolar &lt;u&gt;esta aplicação&lt;/u&gt;</string>
-    <string name="bsct_conn_desc_allowed">permitido em %1$s %2$s</string>
     <string name="always_on_dialog_positive_btn">Ir para definições</string>
-    <string name="bsct_conn_block_desc">%1$s bloqueado por %2$s</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;: Bloqueia a ligação de uma aplicação à Internet. \n &lt;u&gt;#2&lt;/u&gt;: Bloqueia a ligação de todas as aplicações a um determinado IP. \n &lt;u&gt;##3&lt;/u&gt;: Bloqueia todas as ligações quando o dispositivo está bloqueado (firewall universal). \n &lt;u&gt;#4&lt;/u&gt;: Bloqueia qualquer aplicação que não esteja a ser utilizada (firewall universal). \n &lt;u&gt;##5&lt;/u&gt;: Bloqueia as ligações quando a aplicação de origem é desconhecida (firewall universal). \n&lt;u&gt;##6&lt;/u&gt;: Bloqueia todo o tráfego UDP exceto DNS (firewall universal). \n &lt;u&gt;#7&lt;/u&gt;: Bloqueia ligações quando o DNS é ignorado (firewall universal).</string>
     <string name="relative_time_yesterday">Ontem</string>
     <string name="always_on_dialog_heading">Desativar VPN sempre ativa</string>
@@ -47,18 +39,13 @@
     <string name="blocklist_update_check_not_required">As listas de bloqueio já são da última versão.</string>
     <string name="download_update_dialog_message">Está disponível, no site, uma nova versão da aplicação. Deseja continuar?</string>
     <string name="local_blocklist_redownload_desc">As listas de bloqueio no dispositivo já são da última versão v%1$s.</string>
-    <string name="show_logs_disabled_network_message">O registo de ligações foi desativado. Para acesas às <i>Definições</i> e ative a opção <i>Ativar registo no dispositivo</i>.</string>
-    <string name="show_logs_disabled_dns_message">O registo de pedidos DNS foi desativado. Para ativar, aceda às <i>Definições</i> e ative a opção <i>Ativar registo no dispositivo</i>.</string>
     <string name="configure_dns_connected_doh_status">DNS over HTTPS</string>
     <string name="download_update_dialog_failure_message">Ou os servidores estão em baixo ou não foi possível estabelecer a ligação. Por favor tente mais tarde.</string>
     <string name="download_update_dialog_trylater_title">Não foi possível atualizar</string>
     <string name="download_update_dialog_trylater_message">Não foi possível efetuar a atualização. Por favor tente mais tarde.</string>
-    <string name="search_firewall_network_log"><font size="12">Pesquisar aplicações, IPs, domínios</font></string>
     <string name="search_custom_domains"><font size="12">Pesquisar nomes de domínio</font></string>
     <string name="app_mode_dns_firewall">DNS e firewall (padrão)</string>
     <string name="info_dialog_copy_toast_msg">Endereço IP copiado.</string>
-    <string name="info_dialog_rethink_toast_msg">Copiado como RDNS+ DNS-over-HTTPS URL</string>
-    <string name="settings_enable_logs_desc">Guardar registos de DNS e de firewall no dispositivo.</string>
     <string name="settings_theme_heading">Aparência</string>
     <string name="settings_http_proxy_error_text3">O nome do servidor está vazio</string>
     <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Conectado com RethinkDNS e firewall</string>
@@ -91,7 +78,6 @@
     <string name="settings_theme_dialog_themes_1">Definido pelo sistema</string>
     <string name="settings_theme_dialog_themes_4">Preto profundo</string>
     <string name="settings_notification_dialog_option_1">\nPausar/Parar (predefinição):\n\nMostra dois botões, para pausar ou parar DNS Control rapidamente.</string>
-    <string name="dc_other_dns_heading">Tipo</string>
     <string name="settings_ip_text_ipv4">IPv4</string>
     <string name="settings_notification_dialog_option_2">\nDNS / DNS + Firewall:\nMostra dois botões para mudar rapidamente entre o modo DNS para poupar bateria e o modo normal DNS + Firewall.</string>
     <string name="hsf_vpn_dialog_message">DNS Control necessita da sua permissão para criar uma VPN local para cifrar os pedidos DNS, implementar um monitor de rede e impor as regras da firewall. \n \nDNS Control não recolhe informações nem monitoriza as suas atividades.</string>
@@ -99,12 +85,10 @@
     <string name="settings_ip_text_ipv6">IPv6</string>
     <string name="firewall_status_excluded">excluída de dns e da firewall</string>
     <string name="firewall_card_text_inactive">Ativar modo firewall.</string>
-    <string name="hsf_start_dialog_message">Está a um passo de possuir um Android seguro e protegido: veja instantaneamente a atividade da rede, bloqueie sites, IPs e aplicações suspeitas.</string>
     <string name="firewall_status_isolate">isolada</string>
     <string name="firewall_status_block_metered">bloqueada em redes limitadas (móveis)</string>
     <string name="hsf_stop_btn_state">parar</string>
     <string name="hsf_notification_permission_failure">Ative a permissão de notificação nas definições</string>
-    <string name="hsf_blocklist_updating_text">A ativar…</string>
     <string name="next">Seguinte</string>
     <string name="slide_2_title">Boas-vindas</string>
     <string name="allow">permitir</string>
@@ -117,12 +101,7 @@
     <string name="dns_mode_info_title">DNS</string>
     <string name="default_dns_name">RDNS padrão</string>
     <string name="custom_url_error_invalid_url">URL inválido</string>
-    <string name="conn_track_clear_logs_title">Eliminar todos os registos da rede?</string>
-    <string name="dns_query_clear_logs_title">Eliminar todos os registos DNS?</string>
-    <string name="bsct_conn_block_desc_device">%1$s bloqueado no dispositivo</string>
-    <string name="bsct_conn_desc_blocked">bloqueado em %1$s %2$s</string>
     <string name="always_on_dialog_neutral">Definições</string>
-    <string name="firewall_act_network_monitor_tab">Rede</string>
     <string name="dns_act_configure_tab">Configurar</string>
     <string name="univ_firewall_dialog_title">Eliminar regra de IP?</string>
     <string name="univ_firewall_dialog_message">A eliminação desta regra permitiria que qualquer aplicação se ligasse a este IP. Continuar?</string>
@@ -145,8 +124,6 @@
     <string name="refresh_complete"><!-- use dc_refresh_toast --> Sincronização da lista de aplicações concluída.</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status">Proxy DNS</string>
-    <string name="configure_dns_connection_name">Ligado a %1$s</string>
-    <string name="configure_dns_crypt">DNSCrypt: %1$s resolvedores</string>
     <string name="http_proxy_dialog_heading">Definir proxy HTTP(S) CONNECT</string>
     <string name="download_update_dialog_title">Nova atualização!</string>
     <string name="download_update_dialog_message_ok_title">Atualizado!</string>
@@ -154,21 +131,14 @@
     <string name="download_update_dialog_message_success">Lista de bloqueios descarregada com sucesso.</string>
     <string name="download_update_dialog_failure_title">Algo correu mal!</string>
     <string name="search_firewall_all_apps"><font size="12">Pesquisar aplicações por uid, nome</font></string>
-    <string name="search_dns_logs"><font size="12">Pesquisar nomes de domínio ou IPs</font></string>
     <string name="search_universal_ips"><font size="12">Pesquisar IPs</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">Pesquisar listas de bloqueio</font></string>
     <string name="app_mode_dns_low_battery">DNS (economizar bateria)</string>
-    <string name="app_mode_dns">DNS</string>
     <string name="app_mode_firewall">Firewall</string>
-    <string name="app_mode_wireguard">VPN</string>
-    <string name="settings_vpn_heading">vpn</string>
-    <string name="settings_enable_logs">Ativar registo no dispositivo</string>
     <string name="app_mode_choose">Escolha o modo</string>
-    <string name="connection_http3">HTTP3</string>
     <string name="relative_time_today">Hoje</string>
     <string name="settings_app_notification_a13_heading">Notificação da aplicação</string>
     <string name="settings_app_notification_a13_desc">Ativar permissão de notificação para a aplicação</string>
-    <string name="settings_http_proxy_dialog_title">URL do servidor personalizado</string>
     <string name="settings_http_proxy_error_text1">O intervalo de portas deve ser entre 1024 e 65535</string>
     <string name="settings_dns_proxy_dialog_port_number">Número da porta</string>
     <string name="settings_dns_proxy_dialog_username">Nome de utilizador</string>
@@ -198,10 +168,7 @@
     <string name="firewall_status_block_unmetered">bloqueada em redes ilimitadas (wifi)</string>
     <string name="firewall_status_blocked">bloqueada</string>
     <string name="firewall_status_unknown">desconhecido</string>
-    <string name="ct_bs_app_info_error">Informação não encontrada</string>
     <string name="firewall_card_status_active">%1$s aplicações</string>
-    <string name="firewall_card_text_active">%1$s bloqueadas \n%2$s ignoradas \n%3$s excluídas \n%4$s isoladas</string>
-    <string name="dns_card_latency_active">%1$s ms</string>
     <string name="dns_card_latency_inactive">Ativar modo DNS.</string>
     <string name="apps_card_ips_count">%1$s regra(s) de IP/Portas</string>
     <string name="hsf_start_btn_state">iniciar</string>
@@ -210,29 +177,17 @@
     <string name="hsf_vpn_dialog_header">Atenção!</string>
     <string name="lbl_proceed">Continuar</string>
     <string name="hsf_vpn_prepare_failure">Falta a permissão de VPN ou outra aplicação está com a opção \"VPN sempre ativa\".</string>
-    <string name="hsf_start_dialog_header">Iniciar %1$s</string>
-    <string name="hsf_start_dialog_positive">Iniciar</string>
-    <string name="hsf_whats_new_chip_text">Novidades</string>
-    <string name="hsf_proxy_chip_text">Proxy ativo</string>
-    <string name="hsf_blocklist_chip_text_no_data">Ativar RDNS+</string>
     <string name="hsf_exclude_error">Não é possível excluir no modo de VPN bloqueado</string>
-    <string name="hsf_proxy_chip_removed_toast">Proxy removido</string>
-    <string name="hsf_whats_new_remove_text">A fechar…</string>
-    <string name="hsf_chip_appearance">Tema: %1$s</string>
     <string name="hsf_pause_vpn_failure">Não é possível pausa: DNS Control não está ativo</string>
     <string name="hybrid_mode_info_title">DNS + Firewall</string>
-    <string name="conn_track_clear_logs_message">Isto elimina os registos da rede mas não as regras de firewall. Esta operação não é reversível. Continuar?</string>
     <string name="info_dialog_url_copy_toast_msg">URL copiado</string>
     <string name="bypass_universal">Ignorar todos</string>
-    <string name="title_about">Acerca</string>
     <string name="orbot_bs_status_trying_connect">A configurar Orbot…</string>
     <string name="orbot_install_dialog_title">Instalar Orbot?</string>
     <string name="settings_network_all_networks_desc">Quando ativada, DNS Control utiliza todas as redes disponíveis para se ligar à Internet. Caso contrário, utiliza a rede que estiver <i>ativada</i> pelo Android.</string>
     <string name="settings_import_export_desc">Crie um backup ou restaure os dados e definições da aplicação.</string>
     <string name="settings_title_desc">DNS e firewall altamente personalizável</string>
     <string name="txt_home">Início</string>
-    <string name="brave_dns_connect_mode_change_firewall">Escolha o modo.</string>
-    <string name="brave_dns_connect_mode_change_dns">Escolha o modo.</string>
     <string name="firewall_act_universal_tab">Universal</string>
     <string name="orbot_app_issue">Não foi possível iniciar Orbot. Está instalado?</string>
     <string name="settings_socks5_vpn_disabled_error">Inicie DNS Control para continuar.</string>
@@ -245,14 +200,12 @@
     <string name="orbot_install_activity_error" translatable="false">Algo correu mal, tente novamente após algum tempo</string>
     <string name="settings_network_all_networks">Utilizar todas as redes disponíveis (experimental)</string>
     <string name="settings_check_update_heading">Procurar atualizações</string>
-    <string name="about_title_desc">Deteta e bloqueia ameaças à segurança da rede</string>
     <string name="orbot_status_arg_3">DNS e TCP</string>
     <string name="orbot_website_link" translatable="false">https://guardianproject.info/apps/org.torproject.android/</string>
     <string name="settings_autostart_bootup_desc">Ao ligar o dispositivo, inicia DNS Control caso estivesse em execução ao desligar.</string>
     <string name="settings_check_update_desc">Procura, semanalmente, se existem atualizações da aplicação.</string>
     <string name="orbot">Orbot</string>
     <string name="settings_ip_network_desc">Escolha entre as versões do protocolo de Internet.</string>
-    <string name="settings_ptrans_desc">Converter tráfego IPv6 para IPv4 no dispositivo. Ative se estiver conectado a uma rede apenas com IPv4.</string>
     <string name="settings_proxy_header">Proxy</string>
     <string name="orbot_bs_status_3">A encaminhar %1$s para Orbot, proxy HTTP também definido.</string>
     <string name="settings_orbot_disabled_error">Desative o proxy HTTP(S) e/ou SOCKS5 para continuar com a configuração do Tor-as-a-proxy.</string>
@@ -288,28 +241,21 @@
     <string name="settings_orbot_header">Orbot\t❯</string>
     <string name="settings_orbot_notification_action">Abrir Orbot</string>
     <string name="hybrid_mode_notification_title">Protegido! Conectado a DNS + Firewall.</string>
-    <string name="settings_ptrans_heading">Forçar IPv4</string>
     <string name="orbot_title">Orbot e proxies</string>
     <string name="settings_orbot_notification_content">Falha ao iniciar o Tor-as-a-proxy. Abra a aplicação Orbot para o iniciar manualmente.</string>
     <string name="settings_custom_downloader_desc">Se inativa, será usado o <i>gestor de descargas</i> do sistema</string>
     <string name="skip">Ignorar</string>
     <string name="orbot_socks5_desc">Encaminhar todas as ligações TCP para Orbot.</string>
     <string name="orbot_stop_dialog_title">Requer intervenção manual</string>
-    <string name="untracked">não rastreado</string>
-    <string name="settings_allow_bypass_heading">Permitir visibilidade da rede</string>
     <string name="settings_socks5_heading">Configurar proxy SOCKS5</string>
     <string name="orbot_socks5">Proxy TCP-only</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
     <string name="orbot_install_dialog_positive">Instalar</string>
     <string name="settings_socks5_disabled_error">Ligado a %1$s. Desligue-o para continuar.</string>
-    <string name="settings_allow_bypass_desc">Permitir que as aplicações acedam a todas as redes disponíveis. Estas aplicações podem ignorar o túnel VPN DNS Control a pedido. Algumas aplicações de conferência de áudio/vídeo, como o Zoom e o Meet, podem exigir isto para funcionarem corretamente.</string>
     <string name="orbot_http_desc">Estabelece um túnel HTTP CONNECT para Orbot.</string>
     <string name="settings_orbot_desc">Orbot em modo não VPN com HTTPS/SOCKS5.</string>
     <string name="settings_autostart_bootup_heading">Arranque automático ao ligar (experimental)</string>
     <string name="dc_custom_block_heading">Regras de domínio</string>
-    <string name="dc_dns_website_heading">Mostrar ícone do site nos registos DNS (experimental)</string>
-    <string name="dc_dns_website_desc">Obtém ícones do sites em <i>nextdns.io</i> e <i>duckduckgo.com</i>. Utiliza, no máximo, 350 MB de espaço</string>
-    <string name="about_bug_report_desc">reportar por email</string>
     <string name="about_bug_report_dialog_positive_btn">Enviar e-mail</string>
     <string name="about_settings_app_info">Info da aplicação</string>
     <string name="about_mail_subject">[DNS Control]:</string>
@@ -323,34 +269,23 @@
     <string name="dc_dns_leaks_desc">Se ativa, DNS Control captura todos os pacotes na porta 53 e encaminha-os para um \'endpoint\' DNS definido pelo utilizador</string>
     <string name="dc_check_update_heading">Avisar sobre atualização das listas de bloqueio</string>
     <string name="dc_check_update_desc">Procurar atualizações das listas de bloqueio a cada <i>três</i> dias</string>
-    <string name="about_bug_report">Reportar erros</string>
-    <string name="about_bug_no_log_dialog_positive_btn">Enviar e-mail</string>
     <string name="about_mail_to_string">mailto:</string>
-    <string name="about_mail_bugreport_subject">[DNS Control]: Relatório de erro</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="app_info_error">Não foi possível ver as informação da aplicação.</string>
     <string name="vpn_profile_error">Não foi possível iniciar o perfil VPN.</string>
     <string name="notification_screen_error">Não foi possível iniciar o ecrã de notificação da aplicação.</string>
     <string name="intent_launch_error">Não foi possível abrir %1$s</string>
-    <string name="no_browser_error">Não foi possível abrir a página web no navegador.</string>
-    <string name="log_file_not_available">Não foi encontrado qualquer relatório de erro</string>
-    <string name="error_loading_log_file">Erro ao carregar o ficheiro de registo</string>
-    <string name="collecting_logs_progress_text">A obter…</string>
     <string name="cd_custom_dns_proxy_name_default">Proxy</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
     <string name="cd_dns_proxy_error_text_1">Endereço IP inválido</string>
     <string name="cd_dns_proxy_error_text_2">O intervalo de portas deve estar entre 1024 e 65535</string>
-    <string name="cd_dns_crypt_dialog_title">Adicionar DNSCrypt Resolver ou Relay</string>
     <string name="ctbs_app_info_not_available_toast">Página de definições não encontrada</string>
     <string name="cd_dns_crypt_dialog_desc">Descrição (opcional)</string>
     <string name="cd_doh_dialog_resolver_name">Nome do resolvedor</string>
     <string name="cd_doh_dialog_resolver_url">URL do resolvedor</string>
-    <string name="dns_btm_sheet_dialog_message"><Data><![CDATA[ <h3><u><font size="8">%1$s</font></u>: %2$s lista(s) de bloqueio</h3>%3$s.<br/><br/>]]></Data></string>
     <string name="univ_firewall_rule_1">Bloquear todas as aplicações se o dispositivo estiver bloqueado</string>
-    <string name="dns_btm_record_type">Tipo de pedido: %1$s</string>
     <string name="firewall_rule_block_ip_univ_desc"><![CDATA[Uma regra de firewall, definida pelo utilizador, bloqueou o <i>IP/Porta de destino</i>.<br/><br/> Para alterar, aceda ao separador <i>Universal</i>.]]></string>
     <string name="univ_firewall_rule_8">Bloquear tráfego na porta 80 (HTTP inseguro)</string>
-    <string name="dns_proxy_connection_failure_lockdown">Se excluir %1$s para %2$s no modo bloqueado, pode causar problemas de conectividade com a Internet.</string>
     <string name="firewall_rule_block_app_desc"><![CDATA[Uma regra de firewall definida pelo utilizador bloqueou esta <i>aplicação</i>.<br/><br/> Para alterar, aceda ao separador <i>Todas as Aplicações.]]></string>
     <string name="notif_dialog_pause_dialog_message">Aplicação no modo de pausa, retome para continuar</string>
     <string name="notif_channed_desc_download">Alertar sobre o progresso das descargas de listas de bloqueio</string>
@@ -367,12 +302,8 @@
     <string name="ci_dialog_desc">Permitir (Ignorar) ou bloquear endereço IP, sub-rede IP (intervalo), porta. Exemplo: 10.10.10.10, 10.1.1.*, 10.2.2/24, ffff::/104, [::]:80, [10.1.0.0/16]:80, *.*:80</string>
     <string name="ada_app_status_whitelist">irá ignorar as regras da firewall universal</string>
     <string name="ada_app_bypass_univ">Ignorar universal</string>
-    <string name="ada_ip_no_connection">Não há registos de rede para esta aplicação.</string>
     <string name="ada_app_status_allow">permitida</string>
     <string name="notif_download_content_text">A descarregar…</string>
-    <string name="bsdl_blocked_desc">%1$s bloqueado por %2$s</string>
-    <string name="rt_chip_update_available">Atualização disponível</string>
-    <string name="rethink_sky_desc">Mais de 280 localizações; mais tempo de atividade; resolvedor de stub em cloudflare.com</string>
     <string name="brbs_backup_desc">Criar backup das definições da aplicação, rede e registos de DNS</string>
     <string name="brbs_restore_desc">Restaurar de um ficheiro de backup</string>
     <string name="brbs_restore_dialog_positive">Restaurar</string>
@@ -385,14 +316,12 @@
     <string name="brbs_backup_dialog_failure_title">Falha ao criar o backup</string>
     <string name="brbs_restore_no_uri_toast">Falha ao restaurar; tente novamente</string>
     <string name="brbs_backup_complete_toast">Backup efetuado</string>
-    <string name="dns_btm_resolved_doh_no_server">resolvido %1$s</string>
     <string name="univ_firewall_rule_6">Bloquear aplicações instaladas recentemente</string>
     <string name="univ_ip_delete_dialog_positive">Eliminar tudo</string>
     <string name="univ_view_blocked_ip_desc">Alterar domínios bloqueados/confiáveis e regras de IP/Porta.</string>
     <string name="univ_accessibility_dialog_negative">Recusar</string>
     <string name="univ_delete_firewall_dialog_message">Se eliminar estas regras, permite que qualquer aplicação se conecte aos IPs atualmente bloqueados.</string>
     <string name="network_log_app_name_unnamed">Sem nome (%1$s)</string>
-    <string name="dns_connected_rethink_plus">Ligado. %1$s listas de bloqueio ativas</string>
     <string name="dns_info_neutral">Copiar</string>
     <string name="fapps_metered_block_dialog_message">Bloquear ligações em redes limitadas (móveis) para as aplicações <i>da lista</i>\?</string>
     <string name="firewall_rule_block_udp_ntp">UDP bloqueado</string>
@@ -421,10 +350,8 @@
     <string name="firewall_rule_exempt_dns_proxied_desc"><![CDATA[Esta ligação DNS foi feita via proxy e encaminhada para o terminal DNS preferido do utilizador.<br/><br/> Para alterar, desative <i>Prevenir fugas de DNS</i> no ecrã <i>Configurar</i> do DNS.]]></string>
     <string name="new_app_notification_action_toast_allow">Ligação de rede permitida para a aplicação</string>
     <string name="cd_dns_crypt_title">resolvedores</string>
-    <string name="cd_custom_doh_dialog_title">URL do servidor personalizado</string>
     <string name="cd_custom_doh_url_name_default">DoH</string>
     <string name="cd_custom_doh_url_name">DoH %1$s</string>
-    <string name="cd_custom_dns_proxy_title">Proxy DNS personalizado</string>
     <string name="cd_custom_dns_proxy_name">Proxy %1$s</string>
     <string name="cd_custom_dns_proxy_default_app">Nenhum</string>
     <string name="cd_dns_proxy_mode_internal">Interno</string>
@@ -445,16 +372,7 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s outras aplicações</string>
     <string name="ctbs_block_other_apps">As regras aplicadas em %1$s também serão aplicadas em %2$s outras aplicações</string>
     <string name="ctbs_dialog_negative_btn">Recuar</string>
-    <string name="dns_log_dialog_positive">Eliminar registos</string>
-    <string name="dns_btm_sheet_dialog_ips"><Data><![CDATA[ %1$s %2$s <br/>]]></Data></string>
-    <string name="dns_btm_sheet_chip">+%1$s outros IPs</string>
-    <string name="dns_btm_sheet_chip_no_answer">Sem resposta</string>
-    <string name="dns_btm_resolved_crypt">resolvido &lt;u&gt;anonimamente&lt;/u&gt; %1$s por %2$s através de %3$s</string>
-    <string name="dns_btm_resolved_doh">resolvido %1$s por %2$s</string>
-    <string name="dns_btm_latency_ms">%1$sms</string>
     <string name="hs_download_positive_default">ok</string>
-    <string name="hs_download_positive_play_store">Atualização completa</string>
-    <string name="hs_download_positive_website">Visitar site</string>
     <string name="hs_download_negative_default">Lembrar mais tarde</string>
     <string name="univ_firewall_rule_2">Bloquear aplicações que não estejam a ser utilizadas</string>
     <string name="univ_firewall_rule_3">Bloquear quando a origem da aplicação for desconhecida</string>
@@ -469,7 +387,6 @@
     <string name="univ_delete_firewall_dialog_title">Eliminar todas as regras de IP?</string>
     <string name="univ_accessibility_crash_dialog_positive">Ir para as definições</string>
     <string name="univ_accessibility_dialog_positive">Permitir</string>
-    <string name="dns_connected_no_count">Ligado</string>
     <string name="dns_connected">Ligado</string>
     <string name="dns_info_positive">OK</string>
     <string name="dns_crypt_relay_error_toast">Nenhum resolvedor selecionado</string>
@@ -494,27 +411,18 @@
     <string name="fapps_metered_unblock_dialog_message">Permitir ligações em redes limitadas (móveis) para as aplicações <i>da lista</i>\?</string>
     <string name="fapps_firewall_filter_hint">Mostrar todas as aplicações</string>
     <string name="fapps_firewall_filter_desc"><![CDATA[A mostrar <u>%1$s</u> de %2$s aplicações]]></string>
-    <string name="unicode_warning_sign" translatable="false">⚠</string>
-    <string name="unicode_question_sign" translatable="false">❔</string>
-    <string name="fav_icon" translatable="false">fav_icon</string>
     <string name="rules_load_failure_desc">Não foram encontradas regras</string>
     <string name="rules_load_failure_reload">recarregar</string>
     <string name="network_log_app_name_unknown">Desconhecido</string>
     <string name="dns_crypt_connection_failure">Erro ao ligar ao servidor DNSCrypt.</string>
     <string name="dns_proxy_connection_failure">Erro ao ligar ao servidor DNS Proxy.</string>
-    <string name="dns_proxy_toast_parameter">Proxy DNS</string>
-    <string name="socks5_proxy_toast_parameter">Proxy SOCKS5</string>
-    <string name="orbot_toast_parameter">Tor-as-a-proxy</string>
     <string name="system_dns_connection_failure">Não foi possível determinar o servidor DNS atual</string>
     <string name="copy_clipboard_label">URL</string>
     <string name="update_complete_action_snack">Reiniciar</string>
     <string name="settings_local_blocklist_dialog_positive">Descarregar</string>
     <string name="accessibility_notification_content">O serviço de acessibilidade DNS Control parou ou encravou. Não está a bloquear aplicações em segundo plano. Toque para reativar.</string>
-    <string name="coming_soon_toast">brevemente</string>
     <string name="pause_text">em pausa</string>
     <string name="other_dns_list_tab1">DoH</string>
-    <string name="other_dns_list_tab2">DNSCrypt</string>
-    <string name="other_dns_list_tab3">Proxy DNS</string>
     <string name="hs_btm_sheet_lock_down">Não é possível alterar os modos quando a VPN está como &lt;i&gt;bloqueado&lt;/i&gt;. &lt;u&gt;Toque para &amp;lt;u&amp;gt;editar as definições da VPN&amp;lt;/u&amp;gt;.</string>
     <string name="firewall_rule_no_rule">Sem regra</string>
     <string name="firewall_rule_block_app">Aplicação bloqueada</string>
@@ -588,8 +496,6 @@
     <string name="ada_noapp_dialog_message">Falta a informação da aplicação. Talvez esta aplicação tenha sido desinstalada?</string>
     <string name="ada_noapp_dialog_positive">OK</string>
     <string name="ada_firewall_status"><![CDATA[Esta aplicação <b><i>%1$s</i></b>.]]></string>
-    <string name="ada_ip_connection_count">Conectado a %1$s endereços IP</string>
-    <string name="ada_ip_connection_count_zero">Endereços IP: 0</string>
     <string name="ada_app_status_block">bloqueada</string>
     <string name="ada_app_status_block_wifi">bloqueada em redes ilimitadas (wifi)</string>
     <string name="ada_app_status_block_md">bloqueada em redes limitadas (móveis)</string>
@@ -597,12 +503,9 @@
     <string name="ada_app_status_isolate">isolada; apenas permitidos IPs de confiança</string>
     <string name="ada_app_status_unknown">desconhecida</string>
     <string name="ada_firewall_title">regras de firewall para esta aplicação</string>
-    <string name="ada_network_log_title">registo de rede para esta aplicação</string>
     <string name="ada_app_metered">Rede limitada</string>
     <string name="ada_app_exclude">Excluir</string>
     <string name="ada_app_isolate">Isolar</string>
-    <string name="ada_app_dns_settings">Definições de DNS</string>
-    <string name="bsac_title_desc">Regras aplicáveis apenas a esta aplicação.</string>
     <string name="notif_download_content_title">Descarga de listas de bloqueio no dispositivo</string>
     <string name="notif_download_failure_content">Falha ao descarregar. Tente novamente.</string>
     <string name="notif_download_cancel_content">Descarga cancelada.</string>
@@ -614,17 +517,12 @@
     <string name="rt_dialog_neutral">Continuar</string>
     <string name="rt_edit_dialog_positive">Editar</string>
     <string name="rt_download_start">A descarregar listas de bloqueio…</string>
-    <string name="rt_chip_check_update">Procurar atualizações</string>
-    <string name="rt_re_download">Descarregar novamente as listas de bloqueio</string>
     <string name="rt_list_simple_btn_txt">Simples</string>
     <string name="lbl_advanced">Avançado</string>
     <string name="rt_filter_parent_selected">Selecionado</string>
-    <string name="radio_sky_btn">⛅ Sky</string>
-    <string name="radio_max_btn">🪂 Max</string>
     <string name="rt_filter_hint">A mostrar <u>todas</u> as listas de bloqueio</string>
     <string name="rt_filter_desc"><![CDATA[A mostrar <u>%1$s</u> listas de bloqueio]]></string>
     <string name="rt_filter_desc_subgroups"><![CDATA[A mostrar <u>%1$s</u>listas de bloqueio do grupo: %2$s e do subgrupo: %3$s]]></string>
-    <string name="rethink_max_desc">Mais de 50 localizações; mais privado; resolvedor recursivo em fly.io</string>
     <string name="bsrf_sub_group_heading">Subgrupo</string>
     <string name="bsrf_clear_filter">Limpar</string>
     <string name="dc_local_block_enabled">Ativado</string>
@@ -648,7 +546,6 @@
     <string name="dns_query_latency">%1$s ms</string>
     <string name="dns_proxy_dialog_header_dns">Adicionar proxy DNS</string>
     <string name="dns_proxy_name">Nome do proxy</string>
-    <string name="dns_proxy_app">Aplicação</string>
     <string name="dns_proxy_ip_address">Endereço IP</string>
     <string name="dns_proxy_port">Número da porta</string>
     <string name="network_dns">DNS do sistema</string>
@@ -666,21 +563,13 @@
     <string name="rbl_privacy_desc" description="The text appears as blocklists description in configure screen">Bloquear attentionware, spyware, scareware.</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">Bloquear malware, ransomware, cryptoware, phishers e outras ameaças.</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s listas de bloqueio</string>
-    <string name="private_dns_error">Não foi possível iniciar o ecrã de dns privado.</string>
-    <string name="ada_delete_logs_dialog_title" description="Appears as dialog title to clear the logs in app specific screen">Limpar registos</string>
-    <string name="ada_delete_logs_dialog_desc" description="Appears as dialog description to clear the logs in app specific screen">Limpar todos os registos relacionados com esta aplicação.</string>
-    <string name="title_statistics">Estatísticas</string>
     <string name="isolate">isolar</string>
     <string name="settings_locale_heading">Alterar idioma</string>
     <string name="settings_locale_desc">Escolha o seu idioma preferido</string>
     <string name="settings_locale_dialog_title">Escolha o seu idioma preferido</string>
-    <string name="settings_locale_dialog_neutral">Ajude a traduzir a aplicação</string>
     <string name="settings_biometeric_heading">Ativar bloqueio da aplicação</string>
     <string name="hs_biometeric_title">Desbloquear DNS Control</string>
     <string name="hs_biometeric_desc">Utilizar autenticação biométrica para desbloquear DNS Control</string>
-    <string name="hs_biometeric_feature_not_supported">A autenticação biométrica não é compatível ou está desativada neste dispositivo</string>
-    <string name="hs_biometeric_failed">Falha na autenticação biométrica</string>
-    <string name="hs_biometeric_error">Erro de autenticação biométrica</string>
     <string name="fapps_info_unmetered_msg">Permitir/bloquear em redes ilimitadas (WiFi).</string>
     <string name="fapps_info_metered_msg">Permitir/bloquear em redes limitadas (móveis).</string>
     <string name="fapps_info_bypass_msg">Ignorar regras universais da firewall.</string>
@@ -695,12 +584,6 @@
     <string name="fapps_isolate_block_dialog_title">Isolar aplicações</string>
     <string name="fapps_isolate_block_dialog_message">Isolar aplicações <i>da lista</i>\?</string>
     <string name="ci_trust_rule">Confiar</string>
-    <string name="ssv_app_network_activity_heading" description="This label will appear on the stats screen as a header for allowed apps." translatable="true">aplicações mais permitidas</string>
-    <string name="ssv_app_blocked_heading" description="This label will appear on the stats screen as a header for blocked applications." translatable="true">aplicações mais bloqueadas</string>
-    <string name="ssv_most_contacted_domain_heading" description="This label will appear on the stats screen as a header for most visited domains" translatable="true">domínios mais contactados</string>
-    <string name="ssv_most_blocked_domain_heading" description="This label will appear on the stats screen as a header for most blocked domains" translatable="true">domínios mais bloqueados</string>
-    <string name="ssv_most_contacted_ips_heading" description="This label will appear on the stats screen as a header for most visited ips" translatable="true">IPs mais contactados</string>
-    <string name="ssv_most_blocked_ips_heading" description="This label will appear on the stats screen as a header for most blocked ips" translatable="true">IPs mais bloqueados</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">Inicie DNS Control para continuar</string>
     <string name="settings_biometric_desc">Proteger aplicação com o bloqueio de ecrã</string>
     <string name="ssv_see_more">Mostrar tudo</string>
@@ -708,7 +591,6 @@
     <string name="lbl_disabled" translatable="true">Desativada</string>
     <string name="firewall_rule_block_domain_desc" translatable="true"><![CDATA[Uma regra de firewall, definida pelo utilizador, bloqueou o <i>domínio</i>.<br/><br/>Para alterar, aceda ao ecrã <i>Firewall por aplicação</i>.]]></string>
     <string name="firewall_rule_trusted_domain_desc" translatable="true"><![CDATA[Esta ligação foi permitida porque o <i>domínio</i> está definido como confiável.<br/><br/>Para alterar, aceda ao ecrã <i>Firewall por aplicação</i>.]]></string>
-    <string name="bsdl_block_desc" translatable="true">Bloquear, confiar &lt;u&gt;neste domínio&lt;/u&gt;</string>
     <string name="lbl_cancel" translatable="true">Cancelar</string>
     <string name="lbl_apply" translatable="true">Aplicar</string>
     <string name="lbl_dismiss" translatable="true">Cancelar</string>
@@ -723,14 +605,9 @@
     <string name="firewall_rule_block_domain" translatable="true">Domínio (aplicação)</string>
     <string name="cd_no_rules_text" translatable="true">Sem regras de domínio.</string>
     <string name="lbl_configure" translatable="true">Configurar</string>
-    <string name="bsct_block_domain" translatable="true">Bloquear, confiar &lt;u&gt;domínio(s)&lt;/u&gt; para &lt;u&gt;esta aplicação&lt;/u&gt;</string>
-    <string name="lbl_logs" translatable="true">registos</string>
-    <string name="lbl_rules" translatable="true">regras</string>
     <string name="bypass_dns_firewall" translatable="true">ignorar dns e firewall</string>
     <string name="settings_general_customize" translatable="true">personalizar</string>
     <string name="settings_default_dns_desc" translatable="true">Em casos raros, quando o DNS preferencial do utilizador não pode ser usado, é utilizado o DNS de recurso.</string>
-    <string name="settings_pcap_heading" translatable="true">Captura de pacotes</string>
-    <string name="hsf_packet_capture_chip_disabled_toast" translatable="true">Captura de pacotes desativada</string>
     <string name="cd_dns_alg_desc" translatable="true">Atribuir um IP único por cada pedido DNS.</string>
     <string name="cd_dns_alg_heading" translatable="true">Filtragem DNS avançada (experimental)</string>
     <string name="firewall_rule_bypass_dns_firewall" translatable="true">Aplicação ignorada</string>
@@ -740,22 +617,13 @@
     <string name="firewall_rule_dns_blocked_desc" translatable="true"><![CDATA[Esta ligação foi bloqueada porque o <i>domínio</i> está bloqueado pelo DNS preferido do utilizador.<br/><br/>Para alterar este comportamento, aceda ao separador <i>Configurar DNS</i>.]]></string>
     <string name="firewall_rule_domain_trusted_univ_desc" translatable="true"><![CDATA[Esta ligação foi permitida porque o <i>domínio</i> está definido como confiável nas regras universais de domínio.<br/><br/>Para alterar este comportamento, aceda ao separador <i>Configurar DNS</i>.]]></string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Solicitações unificadas, respostas em cache, tratamento de erros resiliente</string>
-    <string name="settings_pcap_dialog_title" translatable="true">PCAP</string>
-    <string name="settings_pcap_dialog_option_1" translatable="true">Desativado (padrão)</string>
-    <string name="settings_pcap_dialog_option_2" translatable="true">Saída para Logcat</string>
-    <string name="settings_pcap_dialog_option_3" translatable="true">Saída para a pasta Downloads</string>
-    <string name="pcap_failure_toast" translatable="true">Erro ao criar o ficheiro pcap. Tente novamente!</string>
     <string name="firewall_status_bypass_dns_firewall" translatable="true">ignora as regras de DNS e de firewall</string>
     <string name="rules_card_domain_count" translatable="true">%1$s regra(s) de domínio</string>
-    <string name="logs_card_network_count" translatable="true">%1$s ligações</string>
-    <string name="logs_card_dns_count" translatable="true">%1$s consultas</string>
-    <string name="hsf_packet_capture_chip_text" translatable="true">Captura de pacotes ativa</string>
     <string name="fapps_bypass_dns_firewall_dialog_title" translatable="true">Ignorar aplicações</string>
     <string name="firewall_rule_domain_trusted_univ" translatable="true">Domínio confiável (universal)</string>
     <string name="ada_app_status_bypass_dns_firewall" translatable="true">irá ignorar o DNS universal e as regras de firewall</string>
     <string name="ada_app_bypass_dns_firewall" translatable="true">Ignorar DNS e firewall</string>
     <string name="brbs_backup_restore_desc" translatable="true">Não funciona em todas as versões da aplicação</string>
-    <string name="ada_app_firewall" translatable="true">Firewall</string>
     <string name="dc_refresh_toast" translatable="true">Atualização concluída</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">Não é possível configurar proxies quando a VPN está a funcionar no modo DNS.</string>
     <string name="settings_default_dns_heading" translatable="true">Escolha o DNS de recurso</string>
@@ -769,13 +637,11 @@
     <string name="lbl_private_key" translatable="true">Chave privada</string>
     <string name="lbl_random" translatable="true">(aleatório)</string>
     <string name="lbl_very" translatable="true">muito</string>
-    <string name="lbl_maybe_blocked" translatable="true">Talvez bloqueada</string>
     <string name="lbl_network" translatable="true">Rede</string>
     <string name="lbl_create" translatable="true">Criar</string>
     <string name="lbl_wireguard" translatable="true">WireGuard</string>
     <string name="lbl_addresses" translatable="true">Endereços</string>
     <string name="lbl_dns_servers" translatable="true">Servidores DNS</string>
-    <string name="lbl_applications" translatable="true">Aplicações</string>
     <string name="lbl_delete" translatable="true">Eliminar</string>
     <string name="lbl_include" translatable="true">Incluir</string>
     <string name="lbl_select_all" translatable="true">selecionar tudo</string>
@@ -786,10 +652,7 @@
     <string name="lbl_app_wise" translatable="true">Por app</string>
     <string name="lbl_sec" translatable="true">seg</string>
     <string name="lbl_min" translatable="true">min</string>
-    <string name="lbl_last" translatable="true">Último</string>
     <string name="lbl_stopped" translatable="true">Parado</string>
-    <string name="lbl_cache" translatable="true">Cache</string>
-    <string name="lbl_status" translatable="true">Estado</string>
     <string name="lbl_remove" translatable="true">Remover</string>
     <string name="lbl_private" translatable="true">privado</string>
     <string name="lbl_secure" translatable="true">seguro</string>
@@ -817,14 +680,11 @@
     <string name="lbl_save" translatable="true">Gravar</string>
     <string name="search_proxy_add_apps" translatable="true">Pesquisar aplicações por nome</string>
     <string name="public_key_copy_toast_msg" translatable="true">Chave pública copiada.</string>
-    <string name="lbl_overall" translatable="true">Em geral</string>
     <string name="cd_deleted_toast" translatable="true">Eliminou todas as regras de domínio</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Valor inválido</string>
     <string name="bad_config_reason_missing_attribute" translatable="true">Atributo em falta</string>
     <string name="bad_config_reason_missing_section" translatable="true">Secção em falta</string>
     <string name="key_length_explanation_base64" translatable="true">: as chaves WireGuard base64 devem ter 44 caracteres (32 bytes)</string>
-    <string name="key_length_explanation_binary" translatable="true">: as chaves WireGuard devem ter 32 bytes</string>
-    <string name="key_length_error" translatable="true">Comprimento inválido</string>
     <string name="parse_error_inet_address" translatable="true">Endereço IP</string>
     <string name="parse_error_inet_endpoint" translatable="true">Endpoint</string>
     <string name="parse_error_integer" translatable="true">número</string>
@@ -832,9 +692,7 @@
     <string name="no_configs_error" translatable="true">Nenhuma configuração encontrada</string>
     <string name="one_wg_dialog_desc" translatable="true">Todas as ligações de todas as aplicações, incluindo DNS, serão encaminhadas para uma única VPN WireGuard ativa. Outras VPNs WireGuard ativas, se existirem, serão interrompidas.</string>
     <string name="lbl_anonymous" translatable="true">anónimo</string>
-    <string name="settings_go_log_heading" translatable="true">Nível de registo</string>
     <string name="logs_card_duration" translatable="true">desde %1$s</string>
-    <string name="logs_disclaimer" translatable="true">A mostrar os primeiros 20 000 caracteres</string>
     <string name="cd_doh_dialog_checkbox_desc" translatable="true">Não validar certificados TLS do servidor (ative apenas se souber o que está a fazer)</string>
     <string name="fapps_info_bypass_dns_firewall_msg" translatable="true">Ignorar regras de DNS e de firewall.</string>
     <string name="firewall_rule_proxied_desc" translatable="true"><![CDATA[Esta ligação foi reencaminhada para o proxy preferido pelo utilizador.<br/><br/>Para alterar, aceda a <i>Proxy</i> no ecrã <i>Configurar</i>.]]></string>
@@ -844,7 +702,6 @@
     <string name="bad_config_reason_syntax_error" translatable="true">Erro de sintaxe</string>
     <string name="bad_config_reason_unknown_attribute" translatable="true">Atributo desconhecido</string>
     <string name="bad_config_reason_unknown_section" translatable="true">Secção desconhecida</string>
-    <string name="key_length_explanation_hex" translatable="true">: as chaves hex WireGuard devem ter 64 caracteres (32 bytes)</string>
     <string name="key_contents_error" translatable="true">Caracteres inválidos na chave</string>
     <string name="bad_config_explanation_pka" translatable="true">: Deve ser positivo e não mais do que 65535</string>
     <string name="bad_config_explanation_udp_port" translatable="true">: Deve ser um número de porta UDP válido</string>
@@ -856,13 +713,10 @@
     <string name="catch_all_wg_dialog_title" translatable="true">Sempre ligada</string>
     <string name="routing_remaining_apps" translatable="true">Encaminhamento das restantes aplicações</string>
     <string name="exclude_all_app_wg_dialog_title" translatable="true">Excluir todas as aplicações</string>
-    <string name="settings_go_log_desc" translatable="true">Para fins de depuração</string>
     <string name="parse_error_inet_network" translatable="true">Rede IP</string>
     <string name="app_ip_domain_rules" translatable="true">Por regras de IP/Domínio da aplicação</string>
     <string name="univ_firewall_heading" translatable="true">Regras universais de firewall</string>
     <string name="app_ip_domain_rules_desc" translatable="true">Modificar regras de IP/Domínio da aplicação.</string>
-    <string name="ssv_most_contacted_countries_heading" description="This label will appear on the stats screen as a header for most visited domains by country" translatable="true">países mais contactados</string>
-    <string name="ssv_most_blocked_countries_heading" description="This label will appear on the stats screen as a header for most blocked domains by country" translatable="true">países mais bloqueados</string>
     <string name="bad_config_error" translatable="true">%1$s em %2$s</string>
     <string name="generic_error" translatable="true">Erro desconhecido “%s”</string>
     <string name="unknown_error" translatable="true">Erro desconhecido</string>
@@ -873,10 +727,6 @@
     <string name="import_error" translatable="true">Incapaz de importar túnel: %s</string>
     <string name="include_all_app_wg_dialog_desc" translatable="true">Utilizar esta VPN WireGuard para todas as aplicações?</string>
     <string name="exclude_all_app_wg_dialog_desc" translatable="true">Excluir todas as aplicações desta VPN WireGuard?</string>
-    <string name="wireguard_enabled_failure" translatable="true">Pare os outros proxies ativos para ativar WireGuard</string>
-    <string name="new_warp_config_desc" translatable="true">Obter configuração WARP do servidor</string>
-    <string name="new_warp_error_toast" translatable="true">Não foi possível obter a configuração WARP</string>
-    <string name="new_warp_invalid_config_toast" translatable="true">Configuração WARP inválida</string>
     <string name="add_remove_apps" translatable="true">Adicionar/Remover (%1$s aplicações)</string>
     <string name="add_peer" translatable="true">Adicionar peer</string>
     <string name="include_all_app_wg_dialog_title" translatable="true">Incluir todas as aplicações</string>
@@ -886,12 +736,10 @@
     <string name="settings_rinr_desc_enabled" translatable="true">A encaminhar tráfego DNS Control através do túnel. A menos que saiba o que está a fazer, desative está opção.</string>
     <string name="settings_rinr_desc_disabled" translatable="true">Encaminhar pelo túnel DNS Control todo o tráfego tais como: listas de bloqueio, verificação de ligação, ligações DNS e mais.</string>
     <string name="catch_all_wg_dialog_desc" translatable="true">Todas as ligações e aplicações não encaminhadas por outras VPNs WireGuard serão encaminhadas por esta.</string>
-    <string name="one_wg_error_toast" translatable="true">Para ativar o modo avançado, desative o modo simples WireGuard</string>
     <string name="config_delete_dialog_desc" translatable="true">Tem a ver de que deseja eliminar esta configuração WireGuard?</string>
     <string name="config_delete_dialog_title" translatable="true">Eliminar</string>
     <string name="config_add_success_toast" translatable="true">Concluído</string>
     <string name="wireguard_disable_failure" translatable="true">\"WireGuard sempre ligado\" não pode ser desligado</string>
-    <string name="cd_dialog_edit_title" translatable="true">Editar regra de domínio</string>
     <string name="lbl_peer" translatable="true">Peer</string>
     <string name="dot_custom_url_remove_dialog_title" translatable="true">Eliminar \'endpoint\' DoT?</string>
     <string name="wireguard_apps_proxy_map_desc" translatable="true">parte de %1$s</string>
@@ -933,7 +781,6 @@
     <string name="settings_connectivity_checks_desc" translatable="true">São enviadas verificações de conetividade para verificar a acessibilidade.</string>
     <string name="dc_proxy_dns_heading" translatable="true">Nunca usar proxy DNS</string>
     <string name="dc_proxy_dns_desc" translatable="true">Não fazer proxy de DNS em proxies WireGuard, SOCKS5, HTTP sempre ativos.</string>
-    <string name="toast_allow_bypass_disabled" translatable="true">%1$s está desativado porque os proxies estão ativos</string>
     <string name="lbl_unselected" translatable="true">Não selecionado</string>
     <string name="battery_optimization_dialog_heading" translatable="true">Desativar %1$s</string>
     <string name="lbl_battery_optimization" translatable="true">Otimização de bateria</string>
@@ -946,13 +793,11 @@
     <string name="memory_notification_text">O DNS Control está com pouca memória. As ações do sistema podem ser limitadas.</string>
     <string name="stability_program_snackbar_msg" translatable="true">Programa de estabilidade ativado. Relatórios de falhas ajudam a melhorar recursos experimentais.</string>
     <string name="stability_program_snackbar_disable" translatable="true">Desativar</string>
-    <string name="lbl_expires_on" translatable="true">Expira em</string>
     <string name="tour_step_counter">%1$d de %2$d</string>
     <string name="settings_mobile_metered_heading" translatable="true">Redes móveis de medidores</string>
     <string name="settings_biometric_dialog_option_1" translatable="true">Imediatamente</string>
     <string name="cd_split_dns_desc" translatable="true">Encaminhe consultas DNS de apps proxy para os servidores DNS do proxy.</string>
     <string name="ac_retry_options_after_split_desc" translatable="true">Sempre aplicar técnicas anticensura.</string>
-    <string name="lbl_paused" translatable="true">Pausado</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">Depois de 15 minutos</string>
     <string name="ac_split_tcp" translatable="true">TCP</string>
     <string name="tour_btn_finish">Entendi</string>
@@ -962,24 +807,18 @@
     <string name="tcp_keep_alive_desc" translatable="true">Feche rapidamente sockets TCP sem atividade recente.</string>
     <string name="lbl_saving" translatable="true">A gravar…</string>
     <string name="anti_censorship_desc" translatable="true">Escolha entre várias técnicas Anticensura.</string>
-    <string name="conn_track_clear_rule_logs_message" translatable="true">Isto apagará apenas os logs de rede da regra de firewall visualizada no momento. Esta operação não é reversível. Deseja prosseguir?</string>
-    <string name="lbl_expired" translatable="true">Expirado</string>
     <string name="ac_desc" translatable="true">Ferramentas anticensura podem garantir liberdade na internet, mas podem não funcionar em todos os lugares. Só foram testadas em conexões sem proxy.</string>
     <string name="wireguard_disable_failure_relay" translatable="true">\"Relay WireGuard\" não pode ser desativado</string>
     <string name="lbl_always" translatable="true">Sempre</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Automático (todos os tipos)</string>
     <string name="vpn_policy_fixed" translatable="true">Conservativo</string>
     <string name="lockdown_download_enable_inapp" translatable="true">Ativar descarregador</string>
-    <string name="lbl_cancelled" translatable="true">Cancelado</string>
-    <string name="load_more" translatable="true">Carregar Tudo</string>
     <string name="firewall_rule_proxy_error" translatable="true">Erro de proxy</string>
     <string name="dc_use_sys_dns_undelegated_desc" translatable="true">Use o DNS do sistema para domínios não controlados, como <i>.lan</i>, <i>.internal</i>, etc.</string>
     <string name="dns_title" translatable="true">Bloqueie anúncios e malware com DNS</string>
     <string name="ac_retry_options_with_split_desc" translatable="true">Aplicar técnicas anticensura quando necessário.</string>
     <string name="ac_split_tls_desc" translatable="true">Altere os pacotes TCP ou TLS.</string>
     <string name="ssid_permission_error_action" translatable="true">Conceder permissão</string>
-    <string name="lbl_default" translatable="true">Predefinição</string>
-    <string name="console_log_desc" translatable="true">Os registos podem conter informações sensíveis.</string>
     <string name="settings_theme_dialog_themes_6" translatable="true">Escuro Plus</string>
     <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Use DNS do sistema para domínios não delegados</string>
     <string name="lbl_action" translatable="true">Ação</string>
@@ -990,25 +829,19 @@
     <string name="anti_censorship_title" translatable="true">Anticensura</string>
     <string name="config_invalid_desc" translatable="true">Configuração WireGuard Inválida</string>
     <string name="settings_theme_dialog_themes_7" translatable="true">Geada</string>
-    <string name="lbl_service_providers" translatable="true">Provedores de serviços</string>
     <string name="ac_retry_options_title" translatable="true">estratégia</string>
     <string name="settings_biometric_dialog_heading" translatable="true">Autenticação Biométrica</string>
     <string name="lbl_manual" translatable="true">Manual</string>
     <string name="local_blocklist_delete_desc" translatable="true">Apagar listas de bloqueio no dispositivo?</string>
     <string name="firewall_rule_paused_app" translatable="true">App pausada</string>
-    <string name="conn_track_clear_rule_logs_title" translatable="true">Apagar logs para esta regra?</string>
-    <string name="ac_title" translatable="true">anticensura</string>
     <string name="adv_taster_desc" translatable="true">Configurar apps que podem iniciar ou encerrar o DNS Control.</string>
     <string name="settings_biometric_dialog_option_0" translatable="true">Nenhum</string>
     <string name="ac_toast_retry_disabled" translatable="true">Escolher qualquer opção anticensura para definir a estratégia.</string>
-    <string name="processing_dialog_desc" translatable="true">Aguarde enquanto processamos a sua solicitação.</string>
     <string name="ac_split_auto_desc" translatable="true">Altere os pacotes conforme necessário.</string>
     <string name="firewall_rule_paused_app_desc" translatable="true"><![CDATA[Esta conexão foi permitida porque a <i>app</i> está em estado de <i>pausa</i>.]]></string>
     <string name="firewall_rule_private_dns_desc" translatable="true"><![CDATA[Esta conexão procura um servidor de <i>DNS privado</i> que não existe.]]></string>
-    <string name="console_log_title" translatable="true">Registos de Apps</string>
     <string name="config_delete_all_dialog_title" translatable="true">Apagar tudo</string>
     <string name="firewall_rule_lockdown_wg_desc" translatable="true"><![CDATA[Esta conexão foi bloqueada porque o WireGuard está em modo de <i>lockdown</i>.<br><br> Para alterar, vá para o ecrã <i>WireGuard</i>.]]></string>
-    <string name="univ_firewall_rule_11" translatable="true">Bloquear todas as conexões de host local</string>
     <string name="firewall_rule_private_dns" translatable="true">DNS privado</string>
     <string name="adv_set_dial_timeout_desc" translatable="true">Fechar conexões TCP e UDP inativas após este período.</string>
     <string name="close_conns_dialog_title" translatable="true">Fechar conexões</string>
@@ -1016,22 +849,17 @@
     <string name="ac_never_split_desc" translatable="true">Não altere os pacotes.</string>
     <string name="settings_biometric_dialog_option_2" translatable="true">Após 5 minutos</string>
     <string name="vpn_policy_relaxed" translatable="true">Relaxado</string>
-    <string name="wg_ssid_delete_confirmation" translatable="true">Apagar %1$s?</string>
     <string name="firewall_rule_bypass_proxy_desc" translatable="true"><![CDATA[Esta conexão foi permitida porque o <i>app de origem</i> está configurado para <i>ignorar as regras de proxy</i>.<br><br>Para alterar isso, vá para o ecrã <i>Firewall específico por app</i>.]]></string>
     <string name="dns_desc" translatable="true">Escolha entre mais que 190 listas para bloquear anúncios, rastreadores e malware.</string>
     <string name="cd_split_dns_heading" translatable="true">DNS dividido (experimental)</string>
     <string name="close_all" translatable="true">Fechar tudo</string>
     <string name="univ_delete_domain_dialog_title" translatable="true">Apagar todas as regras de domínio?</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capturar registos de erros para ajudar a melhorar a estabilidade.</string>
-    <string name="lbl_plan" translatable="true">Plano</string>
     <string name="settings_mobile_metered_desc" translatable="true">Trate apenas as redes móveis como medidas e as demais como não medidas.</string>
     <string name="firewall_rule_lockdown_wg" translatable="true">Proxy de bloqueio</string>
     <string name="wireguard_title" translatable="true">Internet segura com WireGuard</string>
-    <string name="lbl_grace_period" translatable="true">Período de tolerância</string>
     <string name="ac_retry_options_never_desc" translatable="true">Em caso de falha, nunca tente novamente técnicas anticensura.</string>
     
-    <string name="processing_dialog_title" translatable="true">A processar</string>
-    <string name="no_stats_available" translatable="true">Sem estatísticas</string>
     <string name="download_ip_info_title" translatable="true">Mostrar informações do provedor</string>
     <string name="wireguard_desc" translatable="true">Criptografe o seu tráfego de internet com o WireGuard. Escolha rotas diferentes para apps diferentes.</string>
     <string name="ssid_location_error_action" translatable="true">Ativar localização</string>
@@ -1039,10 +867,8 @@
     <string name="status_no_network" translatable="true">sem rede</string>
     <string name="settings_theme_dialog_themes_5" translatable="true">Luz Plus</string>
     <string name="ac_split_tcp_desc" translatable="true">Altere os pacotes TCP.</string>
-    <string name="copied_clipboard" translatable="true">Copiado</string>
     <string name="firewall_rule_bypass_proxy" translatable="true">Ignorar proxy</string>
     <string name="wg_setting_ssid_title" translatable="true">Apenas Wi-Fi</string>
-    <string name="title_database_dump" translatable="true">Base de dados</string>
     <string name="ac_split_tls" translatable="true">TCP/TLS</string>
     <string name="tombstone_app_desc" translatable="true">Quando ativado, manter regras da app por 7 dias.</string>
 </resources>

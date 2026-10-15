@@ -3,7 +3,6 @@
     <string name="title_settings">تنظیمات</string>
     <string name="txt_home">خانه</string>
     <string name="always_on_dialog_neutral">تنظیمات</string>
-    <string name="title_about">درباره</string>
     <string name="next">بعدی</string>
     <string name="firewall_rules">قوانین شبکه</string>
     <string name="orbot_install_dialog_title">Orbot نصب شود؟</string>
@@ -12,14 +11,11 @@
     <string name="pause_text">متوقف شده</string>
     <string name="settings_title_desc">DNS و فایروال بسیار قابل تنظیم</string>
     <string name="orbot_install_dialog_positive">نصب</string>
-    <string name="about_title_desc">شناسایی و مسدود کردن تهدیدات امنیتی شبکه</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">هشدار: DNS Control غیرفعال شده است</string>
     <string name="slide_2_title">خوش آمدید</string>
     <string name="dns_mode_notification_title">حفاظت شده! متصل به DNS سریع و امن.</string>
     <string name="firewall_mode_notification_title">حفاظت شده! متصل به دیوار آتش.</string>
     <string name="status_dns_error">خطای dns</string>
-    <string name="status_app_error">خطای برنامه</string>
-    <string name="other_dns_list_tab2">Dnscrypt</string>
     <string name="finish">پایان</string>
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline.">در انتظار</string>
     <string name="other_dns_list_tab1">DoH</string>
@@ -31,7 +27,6 @@
     <string name="slide_2_desc">DNS Control ساده ترین راه برای نظارت بر فعالیت شبکه، دور زدن سانسور اینترنت و برنامه های فایروال در دستگاه اندرویدی شما است.</string>
     
     <string name="status_protected_with_proxy_private_dns">محافظت شده با پروکسی و dns خصوصی</string>
-    <string name="slide_1_title">رایگان و متن‌باز</string>
     <string name="hybrid_mode_info_title">DNS + دیوار آتش</string>
     <string name="dns_mode_info_title">DNS</string>
     <string name="firewall_mode_info_title">دیوار آتش</string>
@@ -51,13 +46,10 @@
     <string name="rdns_plus" translatable="false">RDNS پلاس</string>
     <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">dns خصوصی فعال است</string>
     <string name="status_protected_with_http" translatable="true">محافظت شده با http پروکسی</string>
-    <string name="lbl_rules" translatable="true">قوانین</string>
     <string name="lbl_configure" translatable="true">پیکربندی</string>
-    <string name="lbl_logs" translatable="true">گزارشها</string>
     <string name="lbl_domain_rules" translatable="true">قوانین دامنه</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">شکست خوردن</string>
     <string name="dns_explanation_dns_connected" translatable="true">به RethinkDNS متصل شد</string>
-    <string name="title_statistics" translatable="true">آمار</string>
     <string name="lbl_dismiss" translatable="true">نادیده گرفتن</string>
     <string name="lbl_all" translatable="true">همه</string>
     <string name="lbl_allowed" translatable="true">اجازه داده شده</string>
@@ -75,25 +67,14 @@
     <string name="pause_title_desc" translatable="true">ایجاد وقفه …</string>
     <string name="hybrid_mode_notification_title" translatable="true">حفاظت شده! به DNS + دیوار آتش متصل است.</string>
     <string name="custom_url_error_invalid_url" translatable="true">نشانی نامعتبر</string>
-    <string name="conn_track_clear_logs_title" translatable="true">همه گزارش های شبکه حذف شود؟</string>
-    <string name="bsct_conn_block_desc_device" translatable="true">%1$s را در دستگاه مسدود کرد</string>
-    <string name="bsct_conn_desc_allowed" translatable="true">مجاز در %1$s %2$s</string>
     <string name="bypass_dns_firewall" translatable="true">دور زدن DNS و دیوار آتش</string>
     <string name="always_on_dialog_stop_heading" translatable="true">VPN همیشه روشن</string>
-    <string name="lbl_maybe_blocked" translatable="true">احتمالاً مسدود شده است</string>
     <string name="lbl_network" translatable="true">شبکه</string>
     <string name="isolate" translatable="true">منزوی</string>
     <string name="default_dns_name" translatable="true">RDNS پیش فرض</string>
-    <string name="dns_query_clear_logs_title" translatable="true">همه گزارش‌های DNS حذف شوند؟</string>
-    <string name="bsct_app_info" translatable="true">اطلاعات برنامه</string>
-    <string name="bsct_block_ip" translatable="true">مسدود کنید، به &lt;u&gt;این IP&lt;/u&gt; برای &lt;u&gt;این برنامه&lt;/u&gt; اعتماد کنید</string>
-    <string name="bsct_block_domain" translatable="true">برای &lt;u&gt;این برنامه&lt;/u&gt; دامنه(های) &lt;u/&gt; را مسدود کنید، اعتماد کنید</string>
-    <string name="bsct_conn_block_desc" translatable="true">%1$s توسط %2$s مسدود شد</string>
-    <string name="bsct_conn_desc_blocked" translatable="true">مسدود شده در %1$s %2$s</string>
     <string name="always_on_dialog" translatable="true">\"VPN همیشه روشن\" در این دستگاه فعال است. برای شروع DNS Control، لطفاً به برنامه تنظیمات بروید و «VPN همیشه روشن» را غیرفعال کنید.</string>
     <string name="always_on_dialog_positive_btn" translatable="true">برو به تنظیمات</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">تنظیمات دسترس‌پذیری باز نشد. بعدا دوباره تلاش کنید!</string>
-    <string name="conn_track_clear_logs_message" translatable="true">این ulg فقط \'chvahj شبکه را حذف می کند اما قوانین فایروال را حذف نمی کند. این عمل برگشت پذیر نیست. آیا می خواهید ادامه دهید؟</string>
     <string name="notification_action_pause_vpn" translatable="true">مکث</string>
     <string name="bypass_universal" translatable="true">دور زدن کلی</string>
     <string name="allow" translatable="true">همیشه</string>
@@ -101,11 +82,8 @@
     <string name="notification_action_resume_vpn" translatable="true">ادامه</string>
     <string name="status_protected_with_tor" translatable="true">محافظت شده توسط تور</string>
     <string name="alert_permission_accessibility" translatable="true">مجوز-دسترسی</string>
-    <string name="dns_query_clear_logs_message" translatable="true">این عمل گزارش‌های DNS روی دستگاه را حذف می‌کند و برگشت پذیر نیست. آیا می خواهید ادامه دهید؟</string>
-    <string name="bsct_block" translatable="true">مسدود کردن، دور زدن، مستثنی کردن، انزوای &lt;u&gt;این برنامه&lt;/u&gt;</string>
     <string name="exclude" translatable="true">مستثنی</string>
     <string name="always_on_dialog_heading" translatable="true">VPN همیشه روشن را غیرفعال کنید</string>
-    <string name="untracked" translatable="true">ردیابی نشده</string>
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control از سرویس دسترسی برای ردیابی برنامه هایی که در حال استفاده هستند (پیش زمینه) در برابر برنامه هایی که در حال استفاده نیستند (پس زمینه) استفاده می کند. \n \nDNS Control هیچ اطلاعاتی را جمع آوری نکرده و به هیچ وجه از شما جاسوسی نمی کند.</string>
     <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">متصل به DNS و دیوار آتش Rethink</string>
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">سرویس دسترسی DNS Control متوقف شده یا از کار افتاده است. <i><b>به تنظیمات رفته و DNS Control را اجباراً متوقف کنید</b></i> و دوباره آن را برای استفاده از <i>ویژگی مسدود کردن هر برنامه‌ای که از آن</i> استفاده نمی‌کنید، راه‌اندازی کنید. \n \nDNS Control از سرویس دسترسی برای ردیابی برنامه هایی که در حال استفاده هستند (پیش زمینه) در برابر برنامه هایی که در حال استفاده نیستند (پس زمینه) استفاده می کند.</string>
@@ -119,7 +97,6 @@
     <string name="private_dns_dialog_heading" translatable="true">DNS خصوصی را خاموش کنید</string>
     <string name="private_dns_dialog_desc" translatable="true">تنظیمات DNS DNS Control توسط DNSخصوصی اندروید لغو شده است. \n \nبرای استفاده از DNS DNS Control به تنظیمات اندروید بروید و \"DNS خصوصی\" را خاموش کنید.</string>
     <string name="private_dns_dialog_positive" translatable="true">برو به تنظیمات</string>
-    <string name="firewall_act_network_monitor_tab" translatable="true">شبکه</string>
     <string name="dns_act_configure_tab" translatable="true">پیکربندی</string>
     <string name="univ_firewall_dialog_title" translatable="true">قانون IP حذف شود؟</string>
     <string name="doh_custom_url_remove_dialog_title" translatable="true">نقطه پایانی DoH حذف شود؟</string>
@@ -131,12 +108,8 @@
     <string name="local_blocklist_redownload_desc" translatable="true">لیست های مسدود شده‌ی روی دستگاه از قبل در آخرین نسخه v%1$s هستند.</string>
     <string name="blocklist_update_check_failure" translatable="true">مشکلی پیش آمد. بعداً دوباره تلاش کنید!</string>
     <string name="blocklist_update_check_not_required" translatable="true">لیست های مسدود از قبل در آخرین نسخه هستند.</string>
-    <string name="show_logs_disabled_dns_message" translatable="true">ثبت درخواست DNS غیرفعال شده است. برای فعال سازی مجدد، به <i>تنظیمات</i> رفته و <i> گزینه فعال سازی گزارش روی دستگاه را روشن کنید.</i></string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">پروکسی DNS</string>
-    <string name="configure_dns_crypt" translatable="true">برطرف کننده‌های DNSCrypt: %1$s</string>
     <string name="http_proxy_dialog_heading" translatable="true">پروکسی HTTP(S) را تنظیم کنید.</string>
-    <string name="show_logs_disabled_network_message" translatable="true">ثبت اتصال غیرفعال شده است. برای فعال سازی مجدد، به <i>تنظیمات</i> بروید و <i>گزینه فعال کردن گزارش روی دستگاه را روشن کنید.</i></string>
-    <string name="configure_dns_connection_name" translatable="true">متصل به %1$s</string>
     <string name="univ_firewall_dialog_message" translatable="true">حذف این قانون به هر برنامه ای اجازه می دهد تا به این IP متصل شود. آیا می خواهید ادامه دهید؟</string>
     <string name="dns_proxy_remove_dialog_title" translatable="true">پروکسی DNS حذف شود؟</string>
     <string name="local_blocklist_download" translatable="true">لیست های مسدود را دانلود کنید</string>
@@ -151,43 +124,30 @@
     <string name="app_mode_firewall" translatable="true">دیوار آتش</string>
     <string name="app_mode_dns_firewall" translatable="true">DNS و دیوار آتش(پیش‌فرض)</string>
     <string name="app_mode_dns_low_battery" translatable="true">DNS (صرفه جویی در باتری)</string>
-    <string name="app_mode_dns" translatable="true">DNS</string>
     <string name="download_update_dialog_message" translatable="true">نسخه جدید برنامه برای دانلود از وب سایت موجود است. آیا می خواهید ادامه دهید؟</string>
     <string name="download_update_dialog_message_ok" translatable="true">شما در حال حاضر در آخرین نسخه هستید.</string>
     <string name="download_update_dialog_message_success" translatable="true">دانلود فهرست بلاک با موفقیت انجام شد.</string>
     <string name="download_update_dialog_failure_title" translatable="true">مشکلی پیش آمد!</string>
-    <string name="search_firewall_network_log" translatable="true"><font size="12">جستجوی برنامه‌ها، آی‌پی‌ها، دامنه‌ها</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">جستجوی آی‌پی‌ها</font></string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">URL کپی شد</string>
     <string name="info_dialog_copy_toast_msg" translatable="true">آدرس IP کپی شد.</string>
-    <string name="info_dialog_rethink_toast_msg" translatable="true">به عنوان URL RDNS+ DNS-over-HTTPS کپی شد</string>
-    <string name="settings_enable_logs_desc" translatable="true">گزارش های DNS و دیوار آتش را به صورت محلی روی دستگاه ذخیره کنید.</string>
     <string name="download_update_dialog_message_ok_title" translatable="true">به‌روز است!</string>
     <string name="download_update_dialog_failure_message" translatable="true">یا سرورهای ما قطع است یا اتصال برقرار نشد. لطفا بعد از مدتی دوباره امتحان کنید.</string>
     <string name="download_update_dialog_trylater_title" translatable="true">در حال حاضر نمی توان به روز رسانی کرد</string>
     <string name="download_update_dialog_trylater_message" translatable="true">به روز رسانی در حال حاضر قابل اجرا نیست، لطفاً بعداً دوباره امتحان کنید.</string>
-    <string name="search_dns_logs" translatable="true"><font size="12">جستجوی نام دامنه یا آی‌پی‌ها </font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">جستجوی نامهای دامنه</font></string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">جستجوی فهرست‌های مسدود</font></string>
-    <string name="app_mode_wireguard" translatable="true">VPN (شبکه خصوصی مجازی)</string>
-    <string name="settings_vpn_heading" translatable="true">vpn</string>
-    <string name="settings_enable_logs" translatable="true">فعال کردن گزارش‌گیری روی دستگاه</string>
     <string name="app_mode_choose" translatable="true">حالت را انتخاب کنید</string>
     <string name="download_update_dialog_title" translatable="true">به‌روزرسانی جدید!</string>
-    <string name="connection_http3" translatable="true">HTTP3</string>
     <string name="relative_time_today" translatable="true">امروز</string>
     <string name="relative_time_yesterday" translatable="true">دیروز</string>
     <string name="settings_allow_lan_heading" translatable="true">IP های خصوصی را مسیریابی نکنید (آزمایشی)</string>
     <string name="settings_allow_lan_desc" translatable="true">حذف LAN، Loopback و مسیرهای پیوند محلی از تونل VPN DNS Control.</string>
     <string name="settings_ip_network_heading" translatable="true">نسخه IP را انتخاب کنید</string>
-    <string name="settings_ptrans_desc" translatable="true">ترافیک IPv6 خروجی را به IPv4 روی دستگاه ترجمه کنید؛ اگر به یک شبکه IPv4 متصل هستید، فعال کنید.</string>
-    <string name="settings_allow_bypass_heading" translatable="true">فعال سازی قابلیت مشاهده شبکه</string>
     <string name="settings_ip_network_desc" translatable="true">از بین نسخه های پروتکل اینترنت، یکی را انتخاب کنید.</string>
-    <string name="settings_ptrans_heading" translatable="true">خروج اجباری IPv4</string>
     <string name="lbl_wildcard" translatable="true">ولیدکارت</string>
     <string name="orbot_http" translatable="true">پروکسی HTTP</string>
     <string name="orbot_none" translatable="true">هیچکدام (پیش‌فرض)</string>
-    <string name="brave_dns_connect_mode_change_firewall" translatable="true">حالت را انتخاب کنید.</string>
     <string name="settings_lock_down_mode_desc" translatable="true">برخی از گزینه‌ها وقتی VPN در حالت قفل باشد، غیرفعال می‌شوند. <u>تنظیمات VPN را ببینید</u>.</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">نمی توان پراکسی ها را وقتی VPN در حالت فقط DNS یا حالت قفل اجرا می شود، راه اندازی کرد. <u>به تنظیمات VPN بروید</u></string>
     <string name="orbot_socks5" translatable="true">پروکسی صرفا از نوع TCP</string>
@@ -197,8 +157,6 @@
     <string name="settings_https_heading" translatable="true">راه اندازی پروکسی HTTP(S)</string>
     <string name="orbot_both" translatable="true">پروکسی از نوع TCP + HTTP</string>
     <string name="settings_socks5_heading" translatable="true">راه اندازی پروکسی SOCKS5</string>
-    <string name="brave_dns_connect_mode_change_dns" translatable="true">حالت را انتخاب کنید.</string>
-    <string name="settings_allow_bypass_desc" translatable="true">به برنامه های درخواست کننده اجازه دسترسی به همه شبکه های موجود را بدهید. این برنامه‌ها ممکن است بر حسب تقاضا تونل VPN DNS Control را دور بزنند. برخی از برنامه‌های کنفرانس صوتی/تصویری مانند Zoom و Meet ممکن است برای عملکرد صحیح به این نیاز داشته باشند.</string>
     <string name="settings_socks5_desc" translatable="true">انتقال اتصالات به نقطه پایانی SOCKS5.</string>
     <string name="settings_https_desc" translatable="true">این تنظیم فقط یک توصیه بوده و ممکن است برنامه ها آن را نادیده بگیرند. برنامه‌هایی که از پروکسی HTTP(S) استفاده می‌کنند، قوانین فایروال و DNS را دور می‌زنند.</string>
     <string name="orbot_socks5_desc" translatable="true">هدایت همه اتصالات TCP به Orbot.</string>
@@ -237,20 +195,16 @@
     <string name="lbl_proceed" translatable="true">ادامه دهید</string>
     <string name="lbl_hour" translatable="true">ساعت</string>
     <string name="lbl_persistent_keepalive" translatable="true">ماندگار</string>
-    <string name="settings_http_proxy_dialog_title" translatable="true">لینک سرور سفارشی</string>
     <string name="settings_ip_dialog_ipv4" translatable="true">IPv4 (پیش‌فرض)</string>
     <string name="lbl_save" translatable="true">ذخیره</string>
     <string name="lbl_optional" translatable="true">(اختیاری)</string>
-    <string name="settings_go_log_desc" translatable="true">برای اهداف اشکال زدایی</string>
     <string name="settings_theme_dialog_themes_3" translatable="true">تاریک</string>
     <string name="lbl_delete" translatable="true">حذف</string>
-    <string name="dns_proxy_toast_parameter" translatable="true">DNS پروکسی</string>
     <string name="settings_http_proxy_desc" translatable="true">ارسال به %1$s</string>
     <string name="lbl_http_socks5" translatable="true">HTTPS &amp; SOCKS5</string>
     <string name="settings_theme_dialog_title" translatable="true">ظاهر</string>
     <string name="settings_ip_dialog_title" translatable="true">نسخه IP را انتخاب کنید</string>
     <string name="lbl_generated" translatable="true">تولید شده</string>
-    <string name="settings_go_log_heading" translatable="true">سطح گزارش</string>
     <string name="lbl_auto" translatable="true">(خودکار)</string>
     <string name="settings_http_proxy_toast_success" translatable="true">پروکسی HTTP تنظیم شده است</string>
     <string name="lbl_slow" translatable="true">آهسته</string>
@@ -269,7 +223,6 @@
     <string name="lbl_private_key" translatable="true">کلید خصوصی</string>
     <string name="lbl_preshared_key" translatable="true">کلید از پیش به اشتراک گذاشته شده</string>
     <string name="settings_theme_dialog_themes_4" translatable="true">سیاه واقعی</string>
-    <string name="lbl_applications" translatable="true">برنامه ( ابزار ) های کاربردی</string>
     <string name="lbl_include" translatable="true">عبارتند از</string>
     <string name="settings_theme_heading" translatable="true">ظاهر</string>
     <string name="lbl_very" translatable="true">خیلی</string>
@@ -307,11 +260,8 @@
     <string name="settings_custom_downloader_heading" translatable="true">Use in-app downloader</string>
     <string name="settings_app_notification_a13_heading" translatable="true">اعلان نرم افزار</string>
     <string name="settings_app_notification_a13_desc" translatable="true">فعال کردن دسترسی برای اعلان برنامه</string>
-    <string name="lbl_status" translatable="true">ترجمه</string>
     <string name="lbl_remove" translatable="true">برداشتن</string>
-    <string name="lbl_last" translatable="true">آخر</string>
     <string name="lbl_starting" translatable="true">راه افتادن</string>
-    <string name="lbl_overall" translatable="true">به طور کلی</string>
     <string name="lbl_secure" translatable="true">امن است</string>
     <string name="lbl_stopped" translatable="true">متوقف شد</string>
     <string name="lbl_private" translatable="true">خصوصی</string>
@@ -327,7 +277,6 @@
     <string name="http_proxy_dialog_desc" translatable="true">راه اندازی URL فرم، &lt;protocol&gt;://&lt;username&gt;:&lt;password&gt;@&lt;domain-or-ip&gt;:&lt;port&gt;&lt;path&gt;. مثال: http://proxy.example.com:8080/</string>
     <string name="settings_rinr_desc_disabled" translatable="true">ترافیک خود DNS Control مانند بارگیری‌های فهرست مسدود، بررسی اتصال، اتصالات DNS را به داخل تونل مسیریابی کنید.</string>
     <string name="settings_rinr_desc_enabled" translatable="true">مسیریابی ترافیک DNS Control از طریق تونل. تا زمانی که نمی دانید چه کار می کنید، آن را خاموش کنید</string>
-    <string name="lbl_cache" translatable="true">حافظه پنهان</string>
     <string name="settings_app_notification_persistent_heading" translatable="true">اعلان مداوم</string>
     <string name="settings_app_notification_persistent_desc" translatable="true">اعلان را دائمی کنید</string>
     <string name="lbl_unselected" translatable="true">انتخاب نشده است</string>
@@ -362,7 +311,6 @@
     <string name="settings_theme_dialog_themes_2" translatable="true">روشن</string>
     <string name="settings_ip_text_ipv6" translatable="true">IPv6</string>
     <string name="settings_notification_desc3" translatable="true">هیچ کدام</string>
-    <string name="dns_card_latency_active" translatable="true">%1$s پیامک</string>
     <string name="hsf_vpn_dialog_header" translatable="true">توجه!</string>
     <string name="settings_socks5_dialog_hint_password" translatable="true">رمز (اختیاری)</string>
     <string name="settings_notification_dialog_option_2" translatable="true">\n\nDNS / DNS + دیوارهٔ آتش:\n\nدو دکمه را برای تغییر سریع بین حالت ذخیرهٔ-باتری DNS و حالت عادی DNS + دیوارهٔ آتش نشان می دهد.</string>
@@ -370,22 +318,17 @@
     <string name="settings_socks_forwarding_default_desc" translatable="true">انتقال اتصالات به SOCKS5 endpoint.</string>
     <string name="dns_card_latency_inactive" translatable="true">روشن کردن حالت DNS.</string>
     <string name="settings_locale_dialog_title" translatable="true">زبان مورد نظرتان را انتخاب کنید</string>
-    <string name="settings_locale_dialog_neutral" translatable="true">به ترجمهٔ این برنامه کمک کنید</string>
     <string name="settings_biometeric_heading" translatable="true">فعال کردن قفل برنامه</string>
-    <string name="settings_pcap_dialog_option_1" translatable="true">خاموش (پیش‌فرض)</string>
     <string name="settings_notification_desc1" translatable="true">مکث / توقف (پیش‌فرض)</string>
     <string name="settings_notification_dialog_option_3" translatable="true">\n\nهیچ کدام:\n\nهیچ دکمه ای را نشان نمی‌دهد.\n\n</string>
     <string name="settings_locale_heading" translatable="true">تغییر زبان</string>
     <string name="settings_selected_theme" translatable="true">پوستهٔ فعلی: %1$s</string>
-    <string name="settings_pcap_dialog_title" translatable="true">PCAP</string>
-    <string name="settings_pcap_dialog_option_2" translatable="true">خروجی به Logcat</string>
     <string name="apps_icon_content_desc" translatable="true">آیکون برنامه</string>
     <string name="firewall_status_allow" translatable="true">مجاز</string>
     <string name="firewall_status_unknown" translatable="true">نامشخص</string>
     <string name="hs_biometeric_title" translatable="true">بازکردن DNS Control</string>
     <string name="firewall_card_text_inactive" translatable="true">روشن کردن حالت دیوارهٔ آتش.</string>
     <string name="firewall_card_universal_rules" translatable="true">%1$s قاعدهٔ سراسری</string>
-    <string name="logs_card_network_count" translatable="true">%1$s اتصال</string>
     <string name="hsf_downtime" translatable="true">(غیر فعال از %1$s)</string>
     <string name="settings_theme_dialog_themes_1" translatable="true">تنظیم شده توسط System</string>
     <string name="settings_notification_desc2" translatable="true">DNS / DNS + دیوارهٔ آتش</string>
@@ -396,20 +339,13 @@
     <string name="hsf_stop_btn_state" translatable="true">توقف</string>
     <string name="settings_notification_heading" translatable="true">اقدام اعلان را انتخاب کنید</string>
     <string name="firewall_status_excluded" translatable="true">از dns و فایروال حذف شده است</string>
-    <string name="hs_biometeric_feature_not_supported" translatable="true">احراز هویت بیومتریک در این دستگاه پشتیبانی نمی‌شود یا غیرفعال است</string>
     <string name="hsf_vpn_prepare_failure" translatable="true">یا مجوز وی پی ان وجود ندارد، یا برنامه دیگری در حالت وی پی ان همیشه روشن است.</string>
     <string name="hsf_notification_permission_failure" translatable="true">فعال کردن مجوز اعلان از صفحه تنظیمات</string>
-    <string name="hsf_blocklist_updating_text" translatable="true">فعال کردن…</string>
-    <string name="hsf_chip_appearance" translatable="true">تم: %1$s</string>
     <string name="dc_custom_dns_radio" translatable="true">دی‌ان‌ اس سایر</string>
-    <string name="about_bug_no_log_dialog_positive_btn" translatable="true">ارسال ایمیل</string>
     <string name="settings_notification_dialog_title" translatable="true">انتخاب اقدام اعلان</string>
     <string name="hs_biometeric_desc" translatable="true">برای باز کردن قفل DNS Control از احراز هویت بیومتریک استفاده کنید</string>
-    <string name="hsf_whats_new_remove_text" translatable="true">بستن…</string>
-    <string name="dc_dns_website_heading" translatable="true">نمایش آیکون وب‌سایت در گزارش‌های دی ان اس (آزمایشی)</string>
     <string name="dc_check_update_desc" translatable="true">هر <i>سه</i> روز یکبار، به‌روزرسانی‌های فهرست مسدودی‌ها را بررسی کنید</string>
     <string name="rules_card_domain_count" translatable="true">قانون(های) دامنه %1$s</string>
-    <string name="logs_card_dns_count" translatable="true">%1$s پرس‌وجو</string>
     <string name="dc_dns_leaks_desc" translatable="true">وقتی فعال باشد، DNS Control تمام بسته‌های روی پورت ۵۳ را ضبط کرده و به یک نقطه پایانی دی ان اس تنظیم شده توسط کاربر ارسال می‌کند.</string>
     <string name="dc_dns_leaks_heading" translatable="true">جلوگیری از نشت دی ان اس</string>
     <string name="dc_proxy_dns_heading" translatable="true">هرگز دی ان اس را پروکسی نکنید</string>
@@ -417,14 +353,7 @@
     <string name="firewall_status_isolate" translatable="true">ایزوله</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">ارسال ایمیل</string>
     <string name="settings_notification_desc" translatable="true">دکمه‌های عملیاتی برای نمایش با اعلان DNS Control: %1$s</string>
-    <string name="settings_pcap_heading" translatable="true">ضبط بسته</string>
     <string name="firewall_status_block_metered" translatable="true">در شبکه‌های محدود شده (موبایل) مسدود شده است</string>
-    <string name="hs_biometeric_failed" translatable="true">احراز هویت بیومتریک ناموفق بود</string>
-    <string name="hs_biometeric_error" translatable="true">خطای احراز هویت بیومتریک</string>
-    <string name="firewall_card_text_active" translatable="true">%1$s مسدود شده\n%2$s دور زده شده\n%3$s مستثنی شده\n%4$s ایزوله</string>
-    <string name="hsf_start_dialog_header" translatable="true">استارت %1$s</string>
-    <string name="hsf_start_dialog_message" translatable="true">شما یک قدم با اندروید امن و مطمئن فاصله دارید: فوراً فعالیت شبکه را مشاهده کنید، وب‌سایت‌ها، آی پی ها و برنامه‌های دارای رفتار نامناسب را مسدود کنید.</string>
-    <string name="hsf_start_dialog_positive" translatable="true">شروع</string>
     <string name="hsf_pause_vpn_failure" translatable="true">نمی‌توان مکث کرد: DNS Control فعال نیست</string>
     <string name="lbl_battery_optimization" translatable="true">بهینه‌سازی باتری</string>
     <string name="battery_optimization_dialog_heading" translatable="true">غیرفعال کردن %1$s</string>
@@ -435,34 +364,18 @@
     <string name="dc_local_block_heading" translatable="true">لیست‌های مسدود شده روی دستگاه</string>
     <string name="dc_custom_block_heading" translatable="true">قوانین دامنه</string>
     <string name="dc_check_update_heading" translatable="true">درخواست به‌روزرسانی‌های لیست مسدودیت</string>
-    <string name="about_bug_report_desc" translatable="true">ایمیل گزارش‌های خرابی</string>
-    <string name="about_bug_report" translatable="true">گزارش اشکال</string>
-    <string name="hsf_blocklist_chip_text_no_data" translatable="true">فعال کردن RDNS+</string>
-    <string name="hsf_proxy_chip_removed_toast" translatable="true">پروکسی حذف شد</string>
-    <string name="pcap_failure_toast" translatable="true">خطا در ایجاد فایلpcap، دوباره امتحان کنید!</string>
     <string name="dc_local_block_desc_1" translatable="true">از بین بیش از ۱۹۵ لیست مسدودکننده انتخاب کنید. برای دانلود یا پیکربندی لیست‌های مسدودکننده اینجا کلیک کنید.</string>
     <string name="hsf_exclude_error" translatable="true">در حالت قفل وی پی ان، امکان حذف وجود ندارد</string>
-    <string name="dc_dns_website_desc" translatable="true">آیکون‌های وب‌سایت را از <i>nextdns.io</i> و <i>duckduckgo.com</i> دریافت می‌کند. تا ۳۵۰ مگابایت از فضای دیسک را اشغال می‌کند</string>
-    <string name="hsf_proxy_chip_text" translatable="true">پروکسی فعال است</string>
-    <string name="hsf_packet_capture_chip_disabled_toast" translatable="true">ضبط بسته غیرفعال است</string>
-    <string name="hsf_whats_new_chip_text" translatable="true">جدید چی هست</string>
-    <string name="hsf_packet_capture_chip_text" translatable="true">ضبط بسته فعال است</string>
     <string name="firewall_status_whitelisted" translatable="true">قوانین جهانی فایروال را دور می‌زند</string>
-    <string name="ct_bs_app_info_error" translatable="true">اطلاعات برنامه یافت نشد</string>
     <string name="firewall_status_bypass_dns_firewall" translatable="true">قوانین دی ان اس و فایروال را دور می‌زند</string>
     <string name="firewall_status_block_unmetered" translatable="true">مسدود شدن در شبکه‌های نامحدود (وای‌فای)</string>
     <string name="apps_card_ips_count" translatable="true">%1$s قانون(های) آی‌پی و پورت</string>
     <string name="hsf_vpn_dialog_message" translatable="true">DNS Control برای راه‌اندازی VPN محلی جهت رمزگذاری درخواست‌های DNS دستگاه، پیاده‌سازی مانیتور شبکه و اجرای قوانین دیوار‌آتش به مجوز نیاز دارد.\n\nDNS Control هیچ اطلاعاتی را جمع‌آوری نمی‌کند و به هیچ وجه از شما جاسوسی نمی‌کند.</string>
-    <string name="dc_other_dns_heading" translatable="true">نوع</string>
-    <string name="settings_pcap_dialog_option_3" translatable="true">خروجی به پوشه دانلودها</string>
     <string name="lbl_protos" translatable="true"><a href="https://hosted.weblate.org/engage/rethink-dns-firewall/">\n<img src="https://hosted.weblate.org/widget/rethink-dns-firewall/android/peo/svg-badge.svg" alt="Translation status"/>\n</a></string>
     <string name="lbl_test" translatable="true">آزمایش</string>
     <string name="lbl_experimental" translatable="true">(آزمایشی)</string>
-    <string name="lbl_service_providers" translatable="true">ارائه دهندگان خدمات</string>
     <string name="lbl_hop" translatable="true">رله‌ها</string>
     <string name="lbl_manual" translatable="true">دستی</string>
-    <string name="lbl_bootstrap" translatable="true">عقب‌گرد</string>
-    <string name="lbl_default" translatable="true">پیش‌فرض</string>
     <string name="lbl_action" translatable="true">عمل</string>
     <string name="lbl_connect" translatable="true">اتصال</string>
     <string name="lbl_criteria" translatable="true">معیارها</string>
@@ -473,8 +386,6 @@
     <string name="dns_title" translatable="true">‫مسدود کردن تبلیغات و بدافزارها با DNS</string>
     <string name="dns_desc" translatable="true">برای متوقف کردن تبلیغات، ردیاب‌ها و بدافزارها، از بین بیش از ۱۹۰ لیست، یکی را انتخاب کنید.</string>
     <string name="status_no_network" translatable="true">بدون شبکه</string>
-    <string name="conn_track_clear_rule_logs_title" translatable="true">گزارش‌های مربوط به این قانون حذف شود؟</string>
-    <string name="conn_track_clear_rule_logs_message" translatable="true">این فقط گزارش‌های شبکه را برای قانون دیوار‌آتش مشاهده شده فعلی حذف می‌کند. این عملیات قابل برگشت نیست. آیا می‌خواهید ادامه دهید؟</string>
     <string name="settings_mobile_metered_heading" translatable="true">شبکه‌های موبایل اندازه‌گیری شده</string>
     <string name="settings_mobile_metered_desc" translatable="true">فقط شبکه‌های تلفن همراه را به صورت اندازه‌گیری‌شده در نظر بگیرید، بقیه را بدون اندازه‌گیری در نظر بگیرید.</string>
     <string name="settings_theme_dialog_themes_5" translatable="true">روشن اضافی</string>
@@ -491,23 +402,14 @@
     <string name="dc_filtering_heading" translatable="true">فیلتر کردن</string>
     <string name="about_mail_to_string" translatable="true">ایمیل به:</string>
     <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
-    <string name="about_mail_bugreport_subject" translatable="true">[DNS Control]: گزارش خطا</string>
     <string name="about_mail_bugreport_share_title" translatable="true">انتخاب ارائه‌دهنده ایمیل</string>
     <string name="app_info_error" translatable="true">راه‌اندازی اطلاعات برنامه ممکن نبود.</string>
     <string name="vpn_profile_error" translatable="true">امکان راه‌اندازی پروفایل VPN وجود ندارد.</string>
-    <string name="private_dns_error" translatable="true">صفحه DNS خصوصی باز نشد.</string>
     <string name="notification_screen_error" translatable="true">صفحه اعلان‌های برنامه باز نشد.</string>
     <string name="intent_launch_error" translatable="true">%1$s باز نشد.</string>
-    <string name="no_browser_error" translatable="true">امکان باز کردن صفحه وب از مرورگر وجود ندارد.</string>
-    <string name="log_file_not_available" translatable="true">گزارش خرابی یافت نشد.</string>
-    <string name="error_loading_log_file" translatable="true">خطا در بارگیری فایل گزارش</string>
-    <string name="collecting_logs_progress_text" translatable="true">در حال ضبط…</string>
-    <string name="logs_disclaimer" translatable="true">نمایش ۲۰٬۰۰۰ کاراکتر اول</string>
     <string name="cd_dns_crypt_title" translatable="true">تفکیک‌کننده‌ها</string>
-    <string name="cd_custom_doh_dialog_title" translatable="true">نشانی سرور سفارشی</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">DoH</string>
     <string name="cd_custom_doh_url_name" translatable="true">DoH %1$s</string>
-    <string name="cd_custom_dns_proxy_title" translatable="true">پروکسی DNS سفارشی</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">پروکسی</string>
     <string name="cd_custom_dns_proxy_name" translatable="true">پروکسی %1$s</string>
     <string name="cd_custom_dns_proxy_default_app" translatable="true">هیچکدام</string>
@@ -516,7 +418,6 @@
     <string name="cd_dns_proxy_error_text_1" translatable="true">آدرس آی‌پی نامعتبر است</string>
     <string name="cd_dns_proxy_error_text_2" translatable="true">محدوده پورت باید از 1024 تا 65535 باشد.</string>
     <string name="cd_dns_proxy_error_text_3" translatable="true">پورت نامعتبر است</string>
-    <string name="cd_dns_crypt_dialog_title" translatable="true">DNSCrypt Resolver یا Relay را اضافه کنید</string>
     <string name="cd_dns_crypt_name_default" translatable="true">DNSCrypt</string>
     <string name="cd_dns_crypt_name" translatable="true">DNSCrypt %1$s</string>
     <string name="cd_dns_crypt_relay_name" translatable="true">DNSRelay %1$s</string>
@@ -529,7 +430,6 @@
     <string name="cd_dns_crypt_error_text_1" translatable="true">مُهر نمی‌تواند خالی باشد</string>
     <string name="cd_doh_dialog_heading" translatable="true">افزودن DNS بر بستر HTTPS</string>
     <string name="cd_doh_dialog_resolver_name" translatable="true">نام حل‌کننده</string>
-    <string name="univ_firewall_rule_11" translatable="true">تمام اتصالات میزبان محلی را مسدود کنید</string>
     <string name="univ_view_blocked_ip" translatable="true">قوانین آی پی و پورت</string>
     <string name="univ_view_blocked_ip_desc" translatable="true">ویرایش قواعد دامنه، آی‌پی / پورت مسدود یا مورد اعتماد.</string>
     <string name="univ_ip_delete_individual_toast" translatable="true">%1$s حذف شد.</string>
@@ -554,19 +454,7 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s برنامهٔ دیگر</string>
     <string name="ctbs_block_other_apps" translatable="true">قواعدی که برای %1$s اعمال می‌شود، برای %2$s برنامه دیگر نیز اعمال خواهد شد.</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">بازگشت</string>
-    <string name="dns_log_dialog_positive" translatable="true">حذف لاگ‌ها</string>
-    <string name="dns_btm_sheet_dialog_message" translatable="true"><Data><![CDATA[ <h3><u><font size="8">%1$s</font></u>: %2$s فهرست مسدودی</h3>%3$s.<br/><br/>]]></Data></string>
-    <string name="dns_btm_sheet_dialog_ips" translatable="true"><Data> %1$s %2$s &lt;br/&gt;</Data></string>
-    <string name="dns_btm_sheet_chip" translatable="true">+%1$s IP دیگر</string>
-    <string name="dns_btm_sheet_chip_no_answer" translatable="true">بی‌پاسخ</string>
-    <string name="dns_btm_resolved_crypt" translatable="true">به‌صورت ناشناس در %1$s توسط %2$s از طریق %3$s حل شد</string>
-    <string name="dns_btm_resolved_doh" translatable="true">%1$s توسط %2$s حل شد</string>
-    <string name="dns_btm_resolved_doh_no_server" translatable="true">%1$s حل شد</string>
-    <string name="dns_btm_latency_ms" translatable="true">%1$s ها</string>
-    <string name="dns_btm_record_type" translatable="true">نوع پرس و جو: %1$s</string>
     <string name="hs_download_positive_default" translatable="true">باشه</string>
-    <string name="hs_download_positive_play_store" translatable="true">به‌روزرسانی کامل</string>
-    <string name="hs_download_positive_website" translatable="true">دیدن وبسایت</string>
     <string name="hs_download_negative_default" translatable="true">بعداً یادم بیار</string>
     <string name="univ_firewall_rule_1" translatable="true">مسدود کردن همهٔ برنامه‌ها هنگام قفل بودن دستگاه</string>
     <string name="univ_firewall_rule_2" translatable="true">برنامه‌های غیرفعال را مسدود کنید</string>
@@ -579,8 +467,6 @@
     <string name="univ_firewall_rule_9" translatable="true">مسدود کردن در شبکه حجمی (موبایل)</string>
     <string name="univ_firewall_rule_10" translatable="true">مسدود کردن همه به جز برنامه‌ها و آی‌پی‌های مجاز</string>
     <string name="app_ip_domain_rules_desc" translatable="true">اصلاح قوانین IP / دامنه بر اساس برنامه</string>
-    <string name="dns_connected_rethink_plus" translatable="true">متصل. %1$s لیست انسداد فعال</string>
-    <string name="dns_connected_no_count" translatable="true">متصل</string>
     <string name="dns_connected" translatable="true">متصل</string>
     <string name="dns_info_positive" translatable="true">باشه</string>
     <string name="dns_info_neutral" translatable="true">کپی</string>
@@ -590,7 +476,6 @@
     <string name="dns_query_latency" translatable="true">%1$s میلی‌ثانیه</string>
     <string name="dns_proxy_dialog_header_dns" translatable="true">افزودن پروکسی DNS</string>
     <string name="dns_proxy_name" translatable="true">نام پروکسی</string>
-    <string name="dns_proxy_app" translatable="true">برنامه</string>
     <string name="dns_proxy_ip_address" translatable="true">آدرس آی پی</string>
     <string name="dns_proxy_port" translatable="true">شماره پورت</string>
     <string name="fapps_filter_filter_heading" translatable="true">نوع</string>
@@ -623,7 +508,6 @@
     <string name="ci_dialog_added_success" translatable="true">آی پی به لیست اضافه شد</string>
     <string name="ci_trust_rule" translatable="true">اعتماد</string>
     <string name="ci_trust_txt" translatable="true">مورد اعتماد</string>
-    <string name="coming_soon_toast" translatable="true">بزودی</string>
     <string name="config_invalid_desc" translatable="true">پیکربندی WireGuard نامعتبر است</string>
     <string name="config_delete_dialog_desc" translatable="true">آیا مطمئن هستید که می‌خواهید این پیکربندی WireGuard VPN را حذف کنید؟</string>
     <string name="close_all" translatable="true">بستن همه</string>
@@ -670,13 +554,10 @@
     <string name="brbs_restore_no_uri_toast" translatable="true">بازیابی ناموفق بود؛ دوباره امتحان کنید</string>
     <string name="brbs_restore_title" translatable="true">بازیابی</string>
     <string name="brbs_title" translatable="true">پشتیبان‌گیری و بازیابی</string>
-    <string name="bsac_title_desc" translatable="true">قوانین فقط برای این برنامه اعمال می‌شود.</string>
-    <string name="bsdl_block_desc" translatable="true">مسدود کردن، اعتماد به &lt;u&gt;این دامنه&lt;/u&gt;</string>
     <string name="bsrf_clear_filter" translatable="true">پاک کردن</string>
     <string name="build__flavor_website" translatable="true">وب‌سایت</string>
     <string name="bsrf_sub_group_heading" translatable="true">زیرگروه</string>
     <string name="build__flavor_play_store" translatable="true">پلی استور</string>
-    <string name="bsdl_blocked_desc" translatable="true">%1$s توسط %2$s مسدود شد</string>
     <string name="build__flavor_fdroid" translatable="true">fdroid</string>
     <string name="bypass_dns_firewall_tooltip">%1$s فقط با DNS شرکت DNS Control کار می‌کند</string>
     <string name="bypasses_network_restrictions" translatable="true">بررسی‌های دسترسی‌پذیری از تمام محدودیت‌های شبکه عبور می‌کنند. در حالت <i>خودکار</i>، رسینک به طور تصادفی از IPها و نام‌های میزبان قبلاً متصل شده استفاده می‌کند.</string>
@@ -712,9 +593,6 @@
     <string name="network_log_app_name_unknown" translatable="true">ناشناخته</string>
     <string name="network_log_app_name_unnamed" translatable="true">بی نام (%1$s)</string>
     <string name="dns_proxy_connection_failure" translatable="true">خطا در اتصال به سرور پروکسی DNS</string>
-    <string name="dns_proxy_connection_failure_lockdown" translatable="true">مستثنی کردن %1$s برای %2$s در حالت قفل، میتواند مشکلاتی در اتصال اینترنت ایجاد کند.</string>
-    <string name="socks5_proxy_toast_parameter" translatable="true">پروکسی SOCKS5</string>
-    <string name="orbot_toast_parameter" translatable="true">Tor به عنوان پروکسی</string>
     <string name="system_dns_connection_failure" translatable="true">نمیتوان سرور DNS فعلی را مشخص کرد</string>
     <string name="copy_clipboard_label" translatable="true">پیوند</string>
     <string name="update_complete_action_snack" translatable="true">راه‌اندازی مجدد</string>
@@ -722,7 +600,6 @@
     <string name="settings_local_blocklist_dialog_positive" translatable="true">دانلود</string>
     <string name="settings_local_blocklist_version" translatable="true">نسخه: %1$s</string>
     <string name="accessibility_notification_content" translatable="true">سرویس دسترسی‌پذیری DNS Control متوقف شد یا کرش کرد. دیگر نمیتوان برنامه های پس زمینه را مسدود کرد. برای فعالسازی دوباره، ضربه بزنید.</string>
-    <string name="toast_allow_bypass_disabled" translatable="true">%1$s غیر فعال است زیرا پروکسی‌ها فعال هستند</string>
     <string name="firewall_rule_no_rule" translatable="true">قانونی وجود ندارد</string>
     <string name="firewall_rule_block_app" translatable="true">برنامه مسدود شد</string>
     <string name="firewall_rule_block_unmetered" translatable="true">نامحدود (وای‌فای)</string>
@@ -749,7 +626,6 @@
     <string name="rules_load_failure_heading" translatable="true">­تنظیمات سیو شود</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Auto (All types)</string>
     <string name="pause_desc" translatable="true">Love</string>
-    <string name="other_dns_list_tab3" translatable="true">پروکسی دی ان اس</string>
     <string name="hs_btm_sheet_lock_down" translatable="true">امکان تغییر حالت‌ها زمانی که VPN در <i>Lockdown</i> است وجود ندارد. برای &lt;u&gt;ویرایش تنظیمات VPN&lt;/u&gt; ضربه بزنید.</string>
     <string name="lockdown_download_message" translatable="true">&lt;/i&gt;</string>
 </resources>

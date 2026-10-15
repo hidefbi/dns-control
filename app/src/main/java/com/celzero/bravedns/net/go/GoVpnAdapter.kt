@@ -2104,33 +2104,6 @@ class GoVpnAdapter : KoinComponent {
             Logger.i(LOG_TAG_VPN, "$TAG set go-log level: $l1, $l2, $depth")
         }
 
-        suspend fun printStack(): String {
-            // where=0: stdout, where=1: console (no bytes returned by Go),
-            // any other value: returns goroutine stacks as bytes.
-            val where = 2
-            return withContext(Dispatchers.IO) {
-                try {
-                    val bytes = Intra.printStack(where)
-                    if (bytes == null || bytes.isEmpty()) {
-                        Logger.w(LOG_TAG_VPN, "$TAG print stack: null or empty")
-                        return@withContext ""
-                    }
-                    // The buffer may be zero-padded at the tail; trim trailing null bytes.
-                    val end = bytes.indexOfLast { it != 0.toByte() }
-                    if (end < 0) {
-                        Logger.w(LOG_TAG_VPN, "$TAG print stack: buffer entirely zero-padded")
-                        return@withContext ""
-                    }
-                    val content = bytes.copyOfRange(0, end + 1)
-                    Logger.i(LOG_TAG_VPN, "$TAG print stack: ${content.size} bytes (buffer=${bytes.size})")
-                    String(content, Charsets.UTF_8)
-                } catch (e: Exception) {
-                    Logger.e(LOG_TAG_VPN, "$TAG err print stack: ${e.message}")
-                    ""
-                }
-            }
-        }
-
         fun getGoMetrics(): GoMetrics? {
             return try {
                 val stat = Intra.goMet()
@@ -2571,53 +2544,6 @@ class GoVpnAdapter : KoinComponent {
             Logger.e(LOG_TAG_VPN, "$TAG err tun mtu: ${e.message}", e)
             0
         }
-    }
-
-    fun crashTun(type: Long) {
-        if (!tunnel.isConnected) {
-            Logger.e(LOG_TAG_VPN, "$TAG no tunnel, skip crash tun")
-            return
-        }
-        try {
-            // 0: default, 1: don't panic
-            // 0: will crash, gowtf
-            // 1: won't crash, send it to console
-            // 2: will crash, send it to console
-            val afterMs = 1000L
-            Intra.crash(type, afterMs)
-        } catch (e: Exception) {
-            Logger.e(LOG_TAG_VPN, "$TAG err crash tun: ${e.message}", e)
-        }
-    }
-
-    suspend fun memProfile(filepath: String) {
-        if (!tunnel.isConnected) {
-            Logger.e(LOG_TAG_VPN, "$TAG no tunnel, skip mem profiler")
-            return
-        }
-        try {
-            // int, string => int: granularity 0: no granularity, 1: more detailed
-            Intra.memProfile(1, filepath)
-        } catch (e: Exception) {
-            Logger.e(LOG_TAG_VPN, "$TAG err mem profiler: ${e.message}", e)
-        }
-        return
-    }
-
-    suspend fun cpuProfile(filepath: String) {
-        if (!tunnel.isConnected) {
-            Logger.e(LOG_TAG_VPN, "$TAG no tunnel, skip mem profiler")
-            return
-        }
-        try {
-            // string filepath, string flightrecodered path, int granularity 0: no granularity,
-            // 1: more detailed
-            // for now, the flight recorder is set to empty
-            Intra.cpuProfile(filepath, "", 1)
-        } catch (e: Exception) {
-            Logger.e(LOG_TAG_VPN, "$TAG err mem profiler: ${e.message}", e)
-        }
-        return
     }
 
     private fun logEvent(severity: Severity, msg: String, details: String) {

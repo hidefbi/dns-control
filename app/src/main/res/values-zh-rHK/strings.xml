@@ -16,7 +16,6 @@
     <string name="settings_socks5_dialog_hint_port">埠</string>
     <string name="settings_socks5_dialog_hint_username">帳號（可選）</string>
     <string name="hsf_vpn_dialog_message">DNS Control 需要設定本地 VPN 嘅權限，以加密裝置嘅 DNS 請求、實現網絡監測同執行防火牆規則。 \n \nDNS Control 並唔會收集任何資料，同埋唔會以任何方式監視您。</string>
-    <string name="dc_dns_website_heading">喺 DNS 日誌入面展示網站圖示（實驗性）</string>
     <string name="dc_check_update_desc">每<i>三</i>日檢查有冇攔截清單更新</string>
     <string name="dns_mode_info_title">DNS</string>
     <string name="firewall_rules">網絡規則</string>
@@ -39,13 +38,8 @@
     <string name="app_mode_dns_firewall">DNS 同防火牆（默認）</string>
     <string name="dns_crypt_relay_remove_dialog_title">係咪刪除呢個 DNSCrypt 中繼？</string>
     <string name="app_mode_dns_low_battery">DNS（慳電）</string>
-    <string name="app_mode_wireguard">VPN</string>
     <string name="info_dialog_copy_toast_msg">複製咗 IP 地址。</string>
-    <string name="settings_enable_logs_desc">喺本地儲存 DNS 同防火牆日誌。</string>
-    <string name="app_mode_dns">DNS</string>
     <string name="app_mode_firewall">防火牆</string>
-    <string name="settings_enable_logs">啓用本地日誌</string>
-    <string name="info_dialog_rethink_toast_msg">當做 RDNS+ DNS-over-HTTPS URL 複製咗</string>
     <string name="orbot_http">HTTP 代理</string>
     <string name="cd_doh_dialog_heading">加 DNS over HTTPS</string>
     <string name="cd_doh_dialog_resolver_url">解析服務 URL</string>
@@ -58,20 +52,15 @@
     <string name="firewall_rule_foreground">應用程式未使用</string>
     <string name="cd_dialog_title">加網域規則</string>
     <string name="ada_app_unmetered">唔收費嘅網絡</string>
-    <string name="ada_network_log_title">呢個 app 嘅網絡日誌</string>
     <string name="ada_app_metered">收費嘅網絡</string>
     <string name="ada_app_exclude">排除</string>
-    <string name="rethink_sky_desc">超過 280 個地方；更長嘅在線時間；喺 cloudflare.com 上面行嘅中間解析服務</string>
     <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
-    <string name="title_about">關於</string>
     <string name="title_settings">設定</string>
     <string name="settings_title_desc">一款可以高度自訂嘅 DNS 同防火牆軟件</string>
-    <string name="about_title_desc">偵測同攔截網絡威脅，保護您嘅安全</string>
     <string name="txt_home">首頁</string>
     <string name="next">下一步</string>
     <string name="finish">搞掂</string>
     <string name="slide_2_title">歡迎</string>
-    <string name="slide_1_title">自由同開放原始碼</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">警告： DNS Control 已被停用</string>
     <string name="dns_mode_notification_title">保護緊！連線咗去快速而且安全嘅 DNS。</string>
@@ -81,7 +70,6 @@
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline.">等緊</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]">失敗</string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">保護緊</string>
-    <string name="status_app_error">應用程式錯誤</string>
     <string name="status_dns_error">DNS 錯誤</string>
     <string name="status_dns_server_down">DNS 伺服器離線</string>
     <string name="status_no_internet">冇網絡連線</string>
@@ -106,17 +94,11 @@
     <string name="alert_firewall_accessibility_explanation">DNS Control 用咗無障礙服務嚟追蹤你用緊嘅 app（前景）同唔係用緊嘅 app（背景）。 \n \nDNS Control 並唔會收集任何資料，同埋唔會以任何方式監視您。</string>
     <string name="default_dns_name">RDNS 默認</string>
     <string name="custom_url_error_invalid_url">冇效嘅 URL</string>
-    <string name="conn_track_clear_logs_title">係咪要丟哂所有網絡日誌？</string>
-    <string name="conn_track_clear_logs_message">咁做只會丟咗網絡日誌，唔會影響防火牆規則。呢個動作冇得返轉頭㗎。請問您係咪想繼續？</string>
-    <string name="dns_query_clear_logs_title">係咪要丟哂所有 DNS 日誌？</string>
-    <string name="dns_query_clear_logs_message">咁做會丟咗裝置上面所有嘅 DNS 日誌。呢個動作冇得返轉頭㗎。請問您係咪想繼續？</string>
-    <string name="bsct_app_info">應用程式資訊</string>
     <string name="always_on_dialog_heading">禁用永久連線 VPN</string>
     <string name="always_on_dialog_positive_btn">去設定</string>
     <string name="always_on_dialog_stop_heading">永久連線 VPN</string>
     <string name="always_on_dialog_neutral">設定</string>
     <string name="firewall_act_universal_tab">通用</string>
-    <string name="firewall_act_network_monitor_tab">網絡</string>
     <string name="dns_act_configure_tab">配置</string>
     <string name="univ_firewall_dialog_title">係咪刪除 IP 規則？</string>
     <string name="univ_firewall_dialog_message">丟咗呢條規則將會容許任何嘅 app 連去呢個 IP 地址。您係咪要繼續？</string>
@@ -136,13 +118,9 @@
     <string name="local_blocklist_redownload_desc">本地攔截清單已經係最新版本 v%1$s。</string>
     <string name="blocklist_update_check_not_required">攔截清單已經係最新版本。</string>
     <string name="refresh_complete"><!-- use dc_refresh_toast --> 應用程式列表已經重新同步完。</string>
-    <string name="show_logs_disabled_network_message">連線日誌被禁用咗。如果您想重新啓用，請去<i>設定</i>度打開<i>啓用本地日誌</i>。</string>
-    <string name="show_logs_disabled_dns_message">DNS 請求日誌被禁用咗。如果您想重新啓用，請去<i>設定</i>度打開<i>啓用本地日誌</i>。</string>
     <string name="configure_dns_connected_doh_status">DNS over HTTPS</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status">DNS 代理</string>
-    <string name="configure_dns_connection_name">連線咗去 %1$s</string>
-    <string name="configure_dns_crypt">DNSCrypt: %1$s 個解析服務</string>
     <string name="http_proxy_dialog_heading">設定 HTTP(S) 代理</string>
     <string name="download_update_dialog_title">有得更新！</string>
     <string name="download_update_dialog_message">已經有新版本可以喺網站度下載。您係咪想繼續？</string>
@@ -151,20 +129,12 @@
     <string name="download_update_dialog_message_success">攔截清單下載成功。</string>
     <string name="download_update_dialog_failure_title">似乎有啲咩出咗錯！</string>
     <string name="download_update_dialog_trylater_title">而家冇得更新</string>
-    <string name="search_firewall_network_log"><font size="12">搵 app、IP、網域</font></string>
     <string name="search_firewall_all_apps"><font size="12">用 UID / 名搵 app</font></string>
-    <string name="search_dns_logs"><font size="12">搵網域或者 IP</font></string>
     <string name="search_universal_ips"><font size="12">搵 IP</font></string>
     <string name="search_custom_domains"><font size="12">搵網域</font></string>
-    <string name="settings_vpn_heading">vpn</string>
     <string name="info_dialog_url_copy_toast_msg">複製咗 URL</string>
-    <string name="connection_http3">HTTP3</string>
     <string name="settings_ip_network_heading">揀 IP 版本</string>
     <string name="settings_ip_network_desc">喺唔同嘅互聯網協定版本之間揀。</string>
-    <string name="settings_ptrans_heading">強制 IPv4 出站</string>
-    <string name="settings_ptrans_desc">喺本地將出站嘅 IPv6 流量轉換做 IPv4 流量。在您連線到只有 IPv4 嘅網絡時用。</string>
-    <string name="settings_allow_bypass_heading">啓用網絡可見性</string>
-    <string name="settings_allow_bypass_desc">允許應用程式請求訪問所有用得嘅網絡。呢些 app 可能會按需要繞過 DNS Control 嘅 VPN 隧道。一啲例如 Zoom 同 Meet 嘅音訊／視訊會議應用程式可能會需要呢個功能嚟正常運行。</string>
     <string name="settings_lock_down_mode_desc">某啲選項喺 VPN 處於閉關模式時唔用得。<u>請去 VPN 設定</u>。</string>
     <string name="settings_proxy_header">代理</string>
     <string name="settings_socks5_heading">設定 SOCKS5 代理</string>
@@ -212,7 +182,6 @@
     <string name="settings_theme_heading">外觀</string>
     <string name="settings_theme_desc">暗色／亮色主題</string>
     <string name="settings_http_proxy_desc">轉發緊去 %1$s</string>
-    <string name="settings_http_proxy_dialog_title">自訂伺服器 URL</string>
     <string name="settings_http_proxy_error_text1">埠範圍喺 1024 到 65535 之間</string>
     <string name="settings_http_proxy_error_text2">冇效嘅埠</string>
     <string name="settings_http_proxy_error_text3">網域係空</string>
@@ -253,11 +222,8 @@
     <string name="settings_protocol_translation_dns_inactive">轉去 DNS 或 DNS + 防火牆模式啓用呢個設定</string>
     <string name="apps_icon_content_desc">App Icon</string>
     <string name="firewall_status_unknown">未知</string>
-    <string name="ct_bs_app_info_error">搵唔到應用程式資訊</string>
     <string name="firewall_card_status_active">%1$s 個 app</string>
-    <string name="firewall_card_text_active">攔截 %1$s \n繞行 %2$s \n排除 %3$s \n隔離 %4$s</string>
     <string name="firewall_card_text_inactive">請啓用防火牆模式。</string>
-    <string name="dns_card_latency_active">%1$sms</string>
     <string name="dns_card_latency_inactive">請啓用 DNS 模式。</string>
     <string name="apps_card_ips_count">%1$s 條 IP 同埠規則</string>
     <string name="hsf_start_btn_state">啓動</string>
@@ -267,49 +233,28 @@
     <string name="hsf_vpn_dialog_header">注意！</string>
     <string name="lbl_proceed">繼續</string>
     <string name="hsf_vpn_prepare_failure">可能係冇咗 VPN 權限，亦都可能係某個 app 正處於永久連線 VPN 模式中。</string>
-    <string name="hsf_start_dialog_header">啓動 %1$s</string>
-    <string name="hsf_start_dialog_message">您距離安全嘅 Android 系統只有一步之遙：即時查看網絡活動，攔截網站、IP 同唔聽話嘅 app。</string>
-    <string name="hsf_start_dialog_positive">啓動</string>
-    <string name="hsf_whats_new_chip_text">新內容</string>
-    <string name="hsf_proxy_chip_text">啓用咗代理</string>
-    <string name="hsf_blocklist_chip_text_no_data">啓用 RDNS+</string>
     <string name="hsf_exclude_error">VPN 閉關模式下冇得排除</string>
-    <string name="hsf_proxy_chip_removed_toast">移除咗代理</string>
-    <string name="hsf_whats_new_remove_text">關閉緊……</string>
-    <string name="hsf_blocklist_updating_text">啓動緊……</string>
-    <string name="hsf_chip_appearance">主題：%1$s</string>
     <string name="hsf_pause_vpn_failure">暫停唔到：DNS Control 未啓用</string>
     <string name="dc_block_heading">規則</string>
-    <string name="dc_other_dns_heading">類型</string>
     <string name="dc_custom_dns_radio">其他 DNS</string>
     <string name="dc_rethink_dns_radio">Rethink DNS</string>
     <string name="dc_entries">%1$s 個項目 »</string>
     <string name="dc_local_block_heading">本地攔截清單</string>
     <string name="dc_local_block_desc_1">喺超過 195 條攔截清單之中揀。㩒一下呢度下載或者配置攔截清單。</string>
-    <string name="dc_dns_website_desc">由 <i>nextdns.io</i> 同 <i>duckduckgo.com</i> 拎網站圖示。大約佔用 350 MB 磁碟空間</string>
     <string name="dc_dns_leaks_heading">防止 DNS 洩漏</string>
     <string name="dc_dns_leaks_desc">如果啓用，DNS Control 將捕獲埠 53 上嘅所有數據包，並將佢轉發去您設定嘅 DNS 端點</string>
     <string name="dc_check_update_heading">攔截清單更新時提示</string>
-    <string name="about_bug_report_desc">電郵傳送崩潰日誌</string>
-    <string name="about_bug_report">漏洞報告</string>
     <string name="about_bug_report_dialog_positive_btn">發送電郵</string>
-    <string name="about_bug_no_log_dialog_positive_btn">發送電郵</string>
     <string name="about_settings_app_info">App 資料</string>
     <string name="about_mail_to_string">mailto:</string>
     <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="about_mail_bugreport_subject">[DNS Control]: Bug report</string>
     <string name="about_mail_bugreport_share_title">揀電郵供應商</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="app_info_error">打開唔到 app 資訊。</string>
     <string name="vpn_profile_error">打開唔到 VPN 配置。</string>
-    <string name="log_file_not_available">搵唔到崩潰報告</string>
-    <string name="error_loading_log_file">讀取日誌檔錯誤</string>
-    <string name="collecting_logs_progress_text">捕獲緊……</string>
     <string name="cd_dns_crypt_title">解析服務</string>
-    <string name="cd_custom_doh_dialog_title">自訂伺服器 URL</string>
     <string name="cd_custom_doh_url_name_default">DoH</string>
     <string name="cd_custom_doh_url_name">DoH %1$s</string>
-    <string name="cd_custom_dns_proxy_title">自訂 DNS 代理</string>
     <string name="cd_custom_dns_proxy_name_default">代理</string>
     <string name="cd_custom_dns_proxy_name">代理 %1$s</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
@@ -319,7 +264,6 @@
     <string name="cd_dns_proxy_error_text_1">冇效嘅 IP 地址</string>
     <string name="cd_dns_proxy_error_text_2">埠應該喺 1024 到 65535 之間</string>
     <string name="cd_dns_proxy_error_text_3">冇效嘅埠</string>
-    <string name="cd_dns_crypt_dialog_title">加 DNSCrypt 解析服務或者中繼</string>
     <string name="cd_dns_crypt_name_default">DNSCrypt</string>
     <string name="cd_dns_crypt_name">DNSCrypt %1$s</string>
     <string name="cd_dns_crypt_relay_name">DNS 中繼 %1$s</string>
@@ -337,18 +281,7 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s 個其他應用程式</string>
     <string name="ctbs_block_other_apps">應用喺 %1$s 嘅規則亦會應用喺其他 %2$s 個應用程式</string>
     <string name="ctbs_dialog_negative_btn">返回</string>
-    <string name="dns_log_dialog_positive">刪除日誌</string>
-    <string name="dns_btm_sheet_dialog_message"><Data><![CDATA[ <h3><u><font size="8">%1$s</font></u>：%2$s 份攔截清單</h3>%3$s。<br/><br/>]]></Data></string>
-    <string name="dns_btm_sheet_dialog_ips"><Data><![CDATA[ %1$s %2$s <br/>]]></Data></string>
-    <string name="dns_btm_sheet_chip">+%1$s 個其他 IP</string>
-    <string name="dns_btm_resolved_crypt">%1$s 由 %2$s 自 %3$s &lt;u&gt;匿名&lt;/u&gt;解析</string>
-    <string name="dns_btm_resolved_doh">%1$s 由 %2$s 解析</string>
-    <string name="dns_btm_resolved_doh_no_server">解析咗 %1$s</string>
-    <string name="dns_btm_latency_ms">%1$sms</string>
-    <string name="dns_btm_record_type">請求類型：%1$s</string>
     <string name="hs_download_positive_default">確定</string>
-    <string name="hs_download_positive_play_store">更新完</string>
-    <string name="hs_download_positive_website">訪問網站</string>
     <string name="hs_download_negative_default">陣間提醒</string>
     <string name="univ_firewall_rule_1">裝置鎖定時攔截所有應用程式</string>
     <string name="univ_firewall_rule_2">攔截任何唔係用緊嘅應用程式</string>
@@ -370,8 +303,6 @@
     <string name="univ_accessibility_crash_dialog_positive">去設定</string>
     <string name="univ_accessibility_dialog_positive">准許</string>
     <string name="univ_accessibility_dialog_negative">拒絕</string>
-    <string name="dns_connected_rethink_plus">連咗線。用緊 %1$s 份攔截清單</string>
-    <string name="dns_connected_no_count">連咗線</string>
     <string name="dns_connected">連咗線</string>
     <string name="dns_crypt_relay_error_toast">未揀解析服務</string>
     <string name="dns_proxy_desc" translatable="false">%1$s:%2$s, %3$s</string>
@@ -381,7 +312,6 @@
     <string name="dns_query_latency">%1$sms</string>
     <string name="dns_proxy_dialog_header_dns">加 DNS 代理</string>
     <string name="dns_proxy_name">代理名</string>
-    <string name="dns_proxy_app">應用程式</string>
     <string name="dns_proxy_ip_address">IP 地址</string>
     <string name="dns_proxy_port">埠</string>
     <string name="fapps_filter_clear_btn">清除</string>
@@ -400,21 +330,14 @@
     <string name="fapps_firewall_filter_hint">顯示緊所有應用程式</string>
     <string name="fapps_firewall_filter_desc"><![CDATA[顯示 <u>%1$s</u> %2$s 個 app]]></string>
     <string name="fapps_firewall_filter_desc_category"><![CDATA[顯示分類 %3$s 嘅 <u>%1$s</u> %2$s 個應用]]></string>
-    <string name="unicode_warning_sign" translatable="false">⚠</string>
-    <string name="unicode_question_sign" translatable="false">❔</string>
-    <string name="fav_icon" translatable="false">fav_icon</string>
     <string name="rules_load_failure_heading">注意</string>
     <string name="rules_load_failure_desc">搵唔到防火牆規則</string>
     <string name="rules_load_failure_reload">重載</string>
     <string name="fapps_metered_unblock_dialog_title">喺收費嘅網絡放行</string>
-    <string name="socks5_proxy_toast_parameter">SOCKS5 代理</string>
-    <string name="orbot_toast_parameter">Tor 代理</string>
     <string name="network_log_app_name_unknown">未知</string>
     <string name="network_log_app_name_unnamed">未命名（%1$s）</string>
     <string name="dns_crypt_connection_failure">連線去 DNSCrypt 伺服器時出錯。</string>
     <string name="dns_proxy_connection_failure">連線去 DNS 代理伺服器時出錯。</string>
-    <string name="dns_proxy_connection_failure_lockdown">爲咗 %2$s 而在閉關模式下排除 %1$s 可以導致網絡問題。</string>
-    <string name="dns_proxy_toast_parameter">DNS 代理</string>
     <string name="system_dns_connection_failure">確定唔到而家嘅 DNS 伺服器</string>
     <string name="copy_clipboard_label">URL</string>
     <string name="update_complete_snack_message">下載咗新版本。</string>
@@ -424,12 +347,9 @@
     <string name="settings_local_blocklist_version">版本：v%1$s</string>
     <string name="accessibility_notification_content">DNS Control 嘅無障礙服務停咗或者 hang 咗。而家唔再攔截背景應用。㩒一下重新啓用。</string>
     <string name="accessibility_failure_toast">DNS Control 嘅無障礙服務停咗或者 hang 咗。而家唔再攔截背景應用。</string>
-    <string name="coming_soon_toast">就嚟推出</string>
     <string name="pause_text">已暫停</string>
     <string name="pause_desc">注意：%1$s 個攔截咗嘅 app 將會繼續被攔截。</string>
     <string name="other_dns_list_tab1">DoH</string>
-    <string name="other_dns_list_tab2">Dnscrypt</string>
-    <string name="other_dns_list_tab3">Dns Proxy</string>
     <string name="hs_btm_sheet_lock_down">冇得喺 VPN 處於<i>閉關模式</i>時轉模式。㩒一下<u>改 VPN 設定</u>。</string>
     <string name="firewall_rule_no_rule">冇規則</string>
     <string name="firewall_rule_block_app">應用程式已攔截</string>
@@ -498,16 +418,10 @@
     <string name="ada_noapp_dialog_message">搵唔到你講嗰隻 app 嘅資訊。或者個 app 被 del 咗？</string>
     <string name="ada_noapp_dialog_positive">確認</string>
     <string name="ada_firewall_status"><![CDATA[呢個 app <b><i>%1$s</i></b>。]]></string>
-    <string name="ada_ip_connection_count">已連線至 %1$s 個 IP 地址</string>
-    <string name="ada_ip_connection_count_zero">0 個 IP 地址</string>
-    <string name="ada_ip_no_connection">呢個 app 冇網絡日誌。</string>
     <string name="ada_app_status_whitelist">將會繞過全局防火牆規則</string>
     <string name="ada_app_status_exclude">已排除喺 DNS 同防火牆外</string>
     <string name="ada_app_status_isolate">喺隔離模式入面；只放行信任嘅 IP</string>
     <string name="ada_app_status_unknown">未知</string>
-    <string name="ada_app_dns_settings">DNS 設定</string>
-    <string name="bsac_title_desc">呢條規則淨係適用於呢個 app。</string>
-    <string name="bsdl_blocked_desc">由 %2$s 攔截咗 %1$s</string>
     <string name="network_dns">系統 DNS</string>
     <string name="notif_download_content_title">下載本地攔截清單</string>
     <string name="notif_download_content_text">下載緊……</string>
@@ -521,14 +435,8 @@
     <string name="rt_edit_dialog_positive">編輯</string>
     <string name="rt_download_start">下載緊攔截清單……</string>
     <string name="rt_download">下載攔截清單</string>
-    <string name="rt_chip_update_available">有更新</string>
-    <string name="rt_chip_check_update">檢查更新</string>
-    <string name="rt_re_download">重新下載攔截清單</string>
     <string name="rt_list_simple_btn_txt">簡單</string>
     <string name="lbl_advanced">進階</string>
-    <string name="radio_sky_btn">⛅ Sky</string>
-    <string name="radio_max_btn">🪂 Max</string>
-    <string name="rethink_max_desc">超過 50 個地方；更私密；喺 fly.io 上面行嘅遞歸解析服務</string>
     <string name="bsrf_sub_group_heading">子分組</string>
     <string name="bsrf_clear_filter">套用</string>
     <string name="dc_local_block_enabled">已啓用</string>
@@ -568,11 +476,8 @@
     <string name="bypass_universal">無條件放行</string>
     <string name="exclude">排除</string>
     <string name="isolate">隔離</string>
-    <string name="untracked">未追蹤</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification.">㩒一下呢度改防護設定</string>
-    <string name="brave_dns_connect_mode_change_firewall">揀模式。</string>
     <string name="firewall_mode_info_explanation_new">監測網絡活動同攔截任何應用程式或者 IP 地址。</string>
-    <string name="brave_dns_connect_mode_change_dns">揀模式。</string>
     <string name="always_on_dialog_lockdown_stop_message">DNS Control 用緊<i>閉關</i>模式行緊 VPN。停咗佢會令到而家嘅使用者上唔到網。您係咪仲要繼續？</string>
     <string name="always_on_dialog_stop_message">永久連線 VPN 已對 DNS Control 啓用。您係咪仲想停止 DNS Control？</string>
     <string name="app_mode_choose">揀模式</string>
@@ -588,12 +493,6 @@
     <string name="universal_firewall_explanation">根據裝置事件應用防火牆規則，例如喺在裝置鎖定時或者某個 app 唔係用緊時進行攔截。</string>
     <string name="always_on_dialog">呢部電話嘅「永久連線 VPN」已經開着咗。要開 DNS Control 嘅話，請去系統設定禁用咗「永久連線 VPN」先。</string>
     <string name="alert_firewall_accessibility_exception">打開唔到無障礙設定。請等陣再試過！</string>
-    <string name="bsct_conn_block_desc">由 %2$s 攔截咗 %1$s</string>
-    <string name="bsct_block_ip">對&lt;u&gt;呢個 app&lt;/u&gt; 攔截、信任&lt;u&gt;呢個 IP&lt;/u&gt;</string>
-    <string name="bsct_block">針對&lt;u&gt;呢個 app&lt;/u&gt; 攔截、放行、排除或者隔離</string>
-    <string name="bsct_conn_block_desc_device">本地攔截 %1$s</string>
-    <string name="bsct_conn_desc_allowed">%2$s 放行 %1$s</string>
-    <string name="bsct_conn_desc_blocked">%2$s 攔截 %1$s</string>
     <string name="blocklist_update_check_failure">似乎出咗啲問題。請等陣再試過！</string>
     <string name="download_update_dialog_failure_message">可能我哋嘅伺服器死咗，或者個網有啲事，請等陣再試過。</string>
     <string name="download_update_dialog_trylater_message">而家更新唔到，請等陣再試過。</string>
@@ -605,7 +504,6 @@
     <string name="firewall_status_block_unmetered">阻止咗連接唔收費嘅網絡（WiFi）</string>
     <string name="firewall_status_block_metered">阻止咗連接收費嘅網絡（流動數據）</string>
     <string name="firewall_status_blocked">攔截咗</string>
-    <string name="dns_btm_sheet_chip_no_answer">冇回應</string>
     <string name="fapps_firewall_filter_bypass_universal">繞行咗</string>
     <string name="fapps_firewall_filter_excluded">排除咗</string>
     <string name="fapps_firewall_filter_isolate">隔離咗</string>
@@ -656,15 +554,11 @@
     <string name="settings_app_notification_a13_desc">准許應用程式嘅通知權限</string>
     <string name="hsf_notification_permission_failure">由設定區准許應用程式通知權限</string>
     <string name="notification_screen_error">開唔到應用程式通知區。</string>
-    <string name="no_browser_error">瀏覽器開唔到網頁。</string>
     <string name="intent_launch_error">開唔到 %1$s</string>
-    <string name="ada_delete_logs_dialog_desc" description="Appears as dialog description to clear the logs in app specific screen">清除關於呢個 app 嘅日誌。</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s 份攔截清單</string>
     <string name="private_dns_dialog_heading">熄私人 DNS</string>
     <string name="private_dns_dialog_positive">去設定</string>
-    <string name="private_dns_error">開唔到私人 DNS 區。</string>
     <string name="ci_trust_txt">信任</string>
-    <string name="ada_delete_logs_dialog_title" description="Appears as dialog title to clear the logs in app specific screen">清除日誌</string>
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen">攔截成人、盜版內容，線上賭博、約會同社交媒體。</string>
     <string name="private_dns_dialog_desc">DNS Control 嘅 DNS 設定被 Android 嘅私人 DNS 冚咗。 \n \n要用 DNS Control 嘅 DNS，請去 Android 設定度熄咗「私人 DNS」佢。</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">攔截惡意軟件、勒索軟件、加密軟件、釣魚同其他威脅。</string>
@@ -672,35 +566,24 @@
     <string name="rbl_privacy_desc" description="The text appears as blocklists description in configure screen">攔截吸睛軟件、間諜軟件同恐嚇軟件。</string>
     <string name="settings_locale_heading">更改語言</string>
     <string name="settings_locale_desc">揀您嘅語言</string>
-    <string name="settings_locale_dialog_neutral">幫手翻譯呢個 app</string>
     <string name="settings_biometeric_heading">啓用應用鎖</string>
     <string name="settings_biometric_desc">用螢幕鎖保護呢個 app</string>
     <string name="hs_biometeric_desc">用生物認證解鎖 DNS Control</string>
-    <string name="hs_biometeric_failed">生物認證失敗</string>
-    <string name="hs_biometeric_error">生物認證錯誤</string>
     <string name="fapps_info_metered_msg">喺收錢嘅網絡（流動數據）放行／攔截。</string>
     <string name="fapps_info_bypass_msg">繞過全局防火牆規則。</string>
     <string name="fapps_info_isolate_msg">除信任嘅 IP 之外一律攔截。</string>
     <string name="fapps_unblock_dialog_title">准許應用程式</string>
     <string name="fapps_exclude_block_dialog_title">被排除嘅應用程式</string>
     <string name="fapps_exclude_block_dialog_message">係咪由 DNS 同防火牆排除<i>列出嘅</i>應用程式？</string>
-    <string name="ssv_most_contacted_domain_heading" description="This label will appear on the stats screen as a header for most visited domains" translatable="true">連線最多嘅網域</string>
-    <string name="ssv_most_contacted_ips_heading" description="This label will appear on the stats screen as a header for most visited ips" translatable="true">連線最多嘅 IP</string>
-    <string name="ssv_most_blocked_ips_heading" description="This label will appear on the stats screen as a header for most blocked ips" translatable="true">攔截最多嘅 IP</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">啓動 DNS Control 以繼續</string>
     <string name="ssv_see_more">冚唪唥睇哂</string>
     <string name="fapps_unblock_dialog_message">係咪放行嚟自<i>列出嘅</i>應用程式嘅連接？</string>
     <string name="fapps_info_unmetered_msg">喺唔收錢嘅網絡（WiFi）放行／攔截。</string>
-    <string name="title_statistics">統計</string>
     <string name="hs_biometeric_title">解鎖 DNS Control</string>
     <string name="fapps_bypass_block_dialog_title">繞行應用程式</string>
     <string name="settings_locale_dialog_title">揀您嘅語言</string>
-    <string name="hs_biometeric_feature_not_supported">呢部設備唔支持或者禁用咗生物認證</string>
     <string name="fapps_bypass_block_dialog_message">係咪對<i>列出嘅</i>應用程式繞過全局防火牆規則？</string>
     <string name="fapps_info_exclude_msg">由 DNS 同防火牆排除。</string>
-    <string name="ssv_app_network_activity_heading" description="This label will appear on the stats screen as a header for allowed apps." translatable="true">放行最多嘅應用程式</string>
-    <string name="ssv_app_blocked_heading" description="This label will appear on the stats screen as a header for blocked applications." translatable="true">攔截最多嘅應用程式</string>
-    <string name="ssv_most_blocked_domain_heading" description="This label will appear on the stats screen as a header for most blocked domains" translatable="true">攔截最多嘅網域</string>
     <string name="fapps_isolate_block_dialog_title">隔離應用程式</string>
     <string name="fapps_isolate_block_dialog_message">係咪要隔離<i>呢度列出嘅</i>應用程式？</string>
     <string name="ci_trust_rule">信任</string>
@@ -721,14 +604,9 @@
     <string name="firewall_rule_trusted_domain" translatable="true">信任網域（應用程式）</string>
     <string name="firewall_rule_block_domain" translatable="true">網域（應用程式）</string>
     <string name="firewall_rule_trusted_domain_desc" translatable="true"><![CDATA[呢個連線因爲呢個<i>網域</i>被設定咗做信任嘅網域而被放行。<br/><br/>如果要改，請去<i>分應用防火牆</i>區。]]></string>
-    <string name="bsdl_block_desc" translatable="true">攔截、信任&lt;u&gt;呢個網域&lt;/u&gt;</string>
     <string name="settings_default_dns_heading" translatable="true">揀後備 DNS</string>
     <string name="settings_default_dns_desc" translatable="true">喺極少數情況下，當確定唔到用戶偏好嘅 DNS 時，將會攞後備 DNS 嚟用。</string>
-    <string name="settings_pcap_heading" translatable="true">資料包捕獲</string>
-    <string name="settings_pcap_dialog_option_3" translatable="true">輸出到下載資料夾</string>
-    <string name="pcap_failure_toast" translatable="true">創建 PCAP 檔時出錯，請再試過！</string>
     <string name="rules_card_domain_count" translatable="true">%1$s 條網域規則</string>
-    <string name="logs_card_network_count" translatable="true">%1$s 條連線</string>
     <string name="cd_dns_alg_heading" translatable="true">進階 DNS 過濾（實驗性）</string>
     <string name="cd_dns_alg_desc" translatable="true">爲 DNS 請求指定唯一 IP</string>
     <string name="fapps_bypass_dns_firewall_dialog_message" translatable="true">係咪爲<i>呢度列出嘅</i>應用程式繞行通用 DNS 同防火牆規則？</string>
@@ -737,33 +615,22 @@
     <string name="dc_setting_dns_cache_heading" translatable="true">DNS 加速器</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">合併請求、快取應答、彈性應對錯誤</string>
     <string name="bypass_dns_firewall" translatable="true">繞行 DNS 同防火牆</string>
-    <string name="lbl_rules" translatable="true">規則</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">當 VPN 喺僅 DNS 時，冇得設定代理。</string>
     <string name="settings_general_customize" translatable="true">自訂</string>
     <string name="lbl_configure" translatable="true">配置</string>
-    <string name="lbl_logs" translatable="true">日誌</string>
-    <string name="bsct_block_domain" translatable="true">對&lt;u&gt;呢個 app&lt;/u&gt; 攔截、信任&lt;u&gt;呢個網域&lt;/u&gt;</string>
-    <string name="settings_pcap_dialog_option_1" translatable="true">閂（默認）</string>
     <string name="fapps_bypass_dns_firewall_dialog_title" translatable="true">繞行應用程式</string>
-    <string name="settings_pcap_dialog_title" translatable="true">PCAP</string>
     <string name="firewall_status_bypass_dns_firewall" translatable="true">繞過咗 DNS 同防火牆規則</string>
-    <string name="settings_pcap_dialog_option_2" translatable="true">輸出到 Logcat</string>
     <string name="firewall_card_universal_rules" translatable="true">%1$s 條通用規則</string>
-    <string name="logs_card_dns_count" translatable="true">%1$s 次查詢</string>
-    <string name="hsf_packet_capture_chip_disabled_toast" translatable="true">資料包捕獲禁用咗</string>
-    <string name="hsf_packet_capture_chip_text" translatable="true">資料包捕獲啓用咗</string>
     <string name="firewall_rule_domain_trusted_univ" translatable="true">信任網域（通用）</string>
     <string name="firewall_rule_bypass_dns_firewall" translatable="true">繞過咗 App</string>
     <string name="firewall_rule_domain_blocked_univ" translatable="true">網域（通用）</string>
     <string name="ada_app_status_bypass_dns_firewall" translatable="true">將會繞過通用 DNS 同防火牆規則</string>
     <string name="dc_refresh_toast" translatable="true">刷新完</string>
-    <string name="ada_app_firewall" translatable="true">防火牆</string>
     <string name="firewall_rule_domain_trusted_univ_desc" translatable="true"><![CDATA[呢個連線因爲<i>網域</i>被通用網域規則信任而被放行。<br/><br/>如果要改呢個行爲，請去 <i>DNS 配置</i>選項卡。]]></string>
     <string name="firewall_rule_bypass_dns_firewall_desc" translatable="true"><![CDATA[呢個連線因爲<i>來源應用程式</i>嘅<i>繞行 DNS 同防火牆</i>規則而被放行。<br/><br/>如果要改，請去<i>分應用防火牆</i>區。]]></string>
     <string name="firewall_rule_dns_blocked_desc" translatable="true"><![CDATA[呢個連線因爲<i>網域</i>被用戶偏好嘅 DNS 攔截咗。<br/><br/>如果要改呢個行爲，請去 <i>DNS 配置</i>選項卡。]]></string>
     <string name="firewall_rule_domain_blocked_univ_desc" translatable="true"><![CDATA[呢個連線因爲<i>網域</i>被通用網域規則攔截而攔截咗。<br/><br/>如果要改呢個行爲，請去 <i>DNS 配置</i>選項卡。]]></string>
     <string name="brbs_backup_restore_desc" translatable="true">冇得跨版本用</string>
-    <string name="lbl_maybe_blocked" translatable="true">或已攔截</string>
     <string name="lbl_network" translatable="true">網絡</string>
     <string name="settings_allow_lan_desc" translatable="true">將 LAN、環回、多播同本地鏈路路由排除喺 DNS Control 嘅 VPN 隧道外面。</string>
     <string name="bypass_dns_firewall_tooltip">%1$s 只會喺 DNS Control 嘅 DNS 度有效</string>
@@ -774,12 +641,10 @@
     <string name="status_protected_with_wg_private_dns" translatable="true">被 WireGuard 同私人 DNS 保護緊</string>
     <string name="app_ip_domain_rules" translatable="true">分應用 IP／網域規則</string>
     <string name="firewall_rule_proxied" translatable="true">代理咗</string>
-    <string name="ssv_most_contacted_countries_heading" description="This label will appear on the stats screen as a header for most visited domains by country" translatable="true">連線最多嘅國家</string>
     <string name="parse_error_inet_endpoint" translatable="true">端點</string>
     <string name="parse_error_integer" translatable="true">數字</string>
     <string name="bad_config_explanation_pka" translatable="true">：必須係唔超過 65535 嘅正整數</string>
     <string name="parse_error_inet_network" translatable="true">IP 網絡</string>
-    <string name="new_warp_error_toast" translatable="true">拎唔到 WARP 配置</string>
     <string name="cleanbrowsing_adult_dns_desc" translatable="true">成人篩檢器攔截對所有成人、色情同露骨網站嘅訪問。佢唔會攔截代理或者 VPN，亦都唔攔截混合內容嘅網站。Reddit 之類嘅網站會被放行。Google 同 Bing 會被設定做安全模式。</string>
     <string name="crypt_relay_france" translatable="true">喺法國巴黎託管嘅匿名 DNS 中繼，由 https://cryptostrom.is/ 提供。</string>
     <string name="crypt_relay_sweden" translatable="true">喺瑞典託管嘅匿名 DNS 中繼，由 https://cryptostrom.is/ 提供。</string>
@@ -789,7 +654,6 @@
     <string name="lbl_public_key" translatable="true">公鑰</string>
     <string name="lbl_addresses" translatable="true">地址</string>
     <string name="lbl_dns_servers" translatable="true">DNS 伺服器</string>
-    <string name="lbl_applications" translatable="true">應用程式</string>
     <string name="lbl_delete" translatable="true">剷走</string>
     <string name="lbl_private_key" translatable="true">私鑰</string>
     <string name="lbl_random" translatable="true">（隨機）</string>
@@ -830,14 +694,12 @@
     <string name="crypt_relay_netherlands" translatable="true">喺荷蘭託管嘅匿名 DNS 中繼</string>
     <string name="crypt_relay_singapore" translatable="true">喺新加坡託管嘅匿名 DNS 中繼。</string>
     <string name="public_key_copy_toast_msg" translatable="true">複製咗公鑰。</string>
-    <string name="logs_disclaimer" translatable="true">顯示頭 20000 隻字</string>
     <string name="cd_doh_dialog_checkbox_desc" translatable="true">唔好驗證伺服器嘅 TLS 證書（只有當您知道自己做緊乜嘅時候先好啓用）</string>
     <string name="app_ip_domain_rules_desc" translatable="true">改分應用 IP／網域規則。</string>
     <string name="fapps_info_bypass_dns_firewall_msg" translatable="true">繞過 DNS 同防火牆規則。</string>
     <string name="univ_firewall_heading" translatable="true">全局防火牆規則</string>
     <string name="firewall_rule_proxied_desc" translatable="true"><![CDATA[呢個連線已經代理咗並且轉發咗去用戶所揀嘅代理。<br/><br/> 如果要改，請去<i>配置</i>區入面嘅<i>代理</i>區。]]></string>
     <string name="cd_deleted_toast" translatable="true">已經剷哂所有網域規則</string>
-    <string name="ssv_most_blocked_countries_heading" description="This label will appear on the stats screen as a header for most blocked domains by country" translatable="true">攔截最多嘅國家</string>
     <string name="bad_config_reason_invalid_key" translatable="true">冇效嘅鍵</string>
     <string name="bad_config_reason_invalid_number" translatable="true">冇效嘅數字</string>
     <string name="bad_config_reason_invalid_value" translatable="true">冇效嘅值</string>
@@ -861,23 +723,17 @@
     <string name="key_length_explanation_base64" translatable="true">：WireGuard Base64 密鑰必須係 44 隻字（32 位元組）</string>
     <string name="parse_error_generic" translatable="true">字串</string>
     <string name="import_error" translatable="true">匯入唔到隧道：%s</string>
-    <string name="new_warp_config_desc" translatable="true">喺伺服器拎 WARP 配置</string>
     <string name="add_remove_apps" translatable="true">加／剷（%1$s 個應用程式）</string>
     <string name="add_peer" translatable="true">加對等端點</string>
     <string name="config_delete_dialog_title">剷走配置</string>
-    <string name="key_length_explanation_binary" translatable="true">：WireGuard 密鑰必須係 32 位元組</string>
     <string name="include_all_app_wg_dialog_title">包括所有應用程式</string>
-    <string name="new_warp_invalid_config_toast" translatable="true">冇效嘅 WARP 配置</string>
     <string name="config_add_success_toast">配置添加咗</string>
     <string name="config_delete_dialog_desc">您是否想剷走呢個配置？</string>
     <string name="include_all_app_wg_dialog_desc">係咪通過呢條隧道代理所有應用程式？</string>
     <string name="exclude_all_app_wg_dialog_title">排除所有應用程式</string>
-    <string name="wireguard_enabled_failure">停用其他活動代理以啓用 WireGuard</string>
     <string name="wireguard_no_config_msg">冇 WireGuard VPN。加啲配置去開始連線。</string>
-    <string name="key_length_explanation_hex" translatable="true">：WireGuard 十六進位密鑰必須係 64 隻字（32 位元組）</string>
     <string name="exclude_all_app_wg_dialog_desc">係咪從呢條隧道排除所有應用程式？</string>
     <string name="parse_error_inet_address" translatable="true">IP 位址</string>
-    <string name="key_length_error" translatable="true">密鑰長度錯誤</string>
     <string name="bad_config_explanation_positive_number" translatable="true">：必須係正數</string>
     <string name="wireguard_connection_error">連線去 WireGuard VPN 嘅時候出錯</string>
     <string name="wireguard_disclaimer">DNS 會被轉發去 %1$s ，而 ICMP（例如 ping）將會由底層網絡發送。</string>
@@ -886,8 +742,6 @@
     <string name="cloudflare_family_dns_desc" translatable="true">攔截惡意軟體同成人內容。用 Cloudflare 嘅 1.1.1.3 DNS 端點。</string>
     <string name="cloudflare_security_dns_desc" translatable="true">攔截惡意內容。用 Cloudflare 嘅 1.1.1.2 DNS 端點。</string>
     <string name="google_dns_desc" translatable="true">唔攔截任何 DNS 請求。用 Google 嘅 DNS 端點。</string>
-    <string name="settings_go_log_desc" translatable="true">為咗調試</string>
-    <string name="settings_go_log_heading" translatable="true">日誌級別</string>
     <string name="logs_card_duration" translatable="true">喺 %1$s 前開始</string>
     <string name="dot_custom_url_remove_dialog_title" translatable="true">係咪丟咗個 DoT 端點？</string>
     <string name="dot_custom_url_remove_dialog_message" translatable="true">喺儲存咗嘅配置入面丟咗呢個 DNS over TLS 端點。</string>
@@ -897,28 +751,22 @@
     <string name="lbl_remaining_apps" translatable="true">剩低嘅應用程式</string>
     <string name="remaining_apps_dialog_title" translatable="true">包含所有剩低嘅應用程式</string>
     <string name="remaining_apps_dialog_desc" translatable="true">包含所有未被其他代理路由嘅應用程式</string>
-    <string name="lbl_last" translatable="true">最後</string>
     <string name="lbl_starting" translatable="true">啓動緊</string>
     <string name="lbl_stopped" translatable="true">停止</string>
     <string name="lbl_private" translatable="true">保密</string>
-    <string name="lbl_overall" translatable="true">總共</string>
     <string name="lbl_secure" translatable="true">安全</string>
     <string name="lbl_anonymous" translatable="true">匿名</string>
     <string name="lbl_peer" translatable="true">對等端</string>
-    <string name="one_wg_error_toast" translatable="true">停用簡單模式嘅 WireGuard 以切換去進階模式</string>
     <string name="routing_remaining_apps" translatable="true">路由剩低嘅所有應用程式</string>
     <string name="wireguard_disable_failure" translatable="true">閂唔到「永久連線嘅 WireGuard 」</string>
-    <string name="lbl_status" translatable="true">狀態</string>
     <string name="lbl_remove" translatable="true">移除</string>
     <string name="wg_apps_dialog_title_include" translatable="true">包含 %1$s 個 apps</string>
     <string name="wg_apps_dialog_title_exclude" translatable="true">排除 %1$s 個 apps</string>
-    <string name="lbl_cache" translatable="true">快取</string>
     <string name="wireguard_apps_proxy_map_desc" translatable="true">%1$s 嘅一部分</string>
     <string name="orbot_no_app_toast" translatable="true">添加至少一個應用程式以啓用 Orbot</string>
     <string name="settings_rinr_heading" translatable="true">回送（實驗性）</string>
     <string name="settings_rinr_desc_enabled" translatable="true">將 DNS Control 自身嘅流量路由入隧道。如果您不清楚您喺度做緊乜嘢，請唔好啓用。</string>
     <string name="settings_rinr_desc_disabled" translatable="true">將 DNS Control 自身嘅流量（例如下載攔截清單、連線檢查同 DNS 連接）路由入隧道。</string>
-    <string name="cd_dialog_edit_title" translatable="true">改網域規則</string>
     <string name="cd_toast_edit" translatable="true">改咗</string>
     <string name="one_wg_apps_added" translatable="true">路由緊所有應用程式</string>
     <string name="one_wg_dialog_desc" translatable="true">包括 DNS 在內嘅來自所有應用程式嘅流量將被單個活躍嘅 WireGuard VPN 路由。其他活躍嘅 WireGuard VPN 將被停止。</string>
@@ -927,7 +775,6 @@
     <string name="wireguard_disable_message" translatable="true">係咪停止所有活躍嘅 WireGuard VPN？</string>
     <string name="settings_connectivity_checks" translatable="true">檢查連線</string>
     <string name="dc_proxy_dns_heading" translatable="true">千祈唔好代理 DNS</string>
-    <string name="toast_allow_bypass_disabled" translatable="true">由於開咗代理，用唔到 %1$s</string>
     <string name="lbl_idle" translatable="true">閒置</string>
     <string name="lbl_split" translatable="true">分割</string>
     <string name="lbl_on_device" translatable="true">喺設備度</string>

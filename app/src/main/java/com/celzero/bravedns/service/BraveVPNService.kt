@@ -16,6 +16,7 @@
  */
 package com.celzero.bravedns.service
 
+import com.celzero.bravedns.BuildConfig
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_CONNECTION
 import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
@@ -380,14 +381,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             // network with zero addresses
             // TODO: in case of wg, bind to the network depending on the call from go, wg ips
             // will always be zero.
-            /*if (
-                (destIp.isZero && who.startsWith(ID_WG_BASE)) ||
-                destIp.isZero ||
-                destIp.isLoopback
-            ) {
-                logd("bind: zero ip: $destIp, who: $who, addr: $addrPort")
-                return
-            }*/
 
             pfd = ParcelFileDescriptor.adoptFd(fid.toInt())
 
@@ -2027,7 +2020,13 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                     // create a new vpn adapter
                     val ifaceAddresses = getAddresses()
                     Logger.i(LOG_TAG_VPN, "vpn-adapter doesn't exists, create one, fd: $fd, lockdown: $lockdown, protos: $protos, ifaddr: $ifaceAddresses, opts: $opts, mtu: $mtu, nwMtu: $nwMtu")
-                    GoVpnAdapter.setLogLevel(persistentState.goLoggerLevel.toInt(), includeFileTrace = persistentState.includeFileTrace)
+                    // release: native (firestack) logging is off (8 = none, console and go).
+                    // debug builds keep the user-selected level for diagnostics.
+                    if (BuildConfig.DEBUG) {
+                        GoVpnAdapter.setLogLevel(persistentState.goLoggerLevel.toInt(), includeFileTrace = persistentState.includeFileTrace)
+                    } else {
+                        GoVpnAdapter.setLogLevel(8, 8, includeFileTrace = false)
+                    }
                     vpnAdapter = GoVpnAdapter(ctx, vpnScope, fd, ifaceAddresses, mtu, nwMtu, opts) // may throw
                     Logger.d(LOG_TAG_VPN, "vpn-adapter created with ifaddr: $ifaceAddresses, protos: $protos")
                     io("tunInit") { vpnAdapter?.initResolverProxiesPcap(opts) }
@@ -2041,9 +2040,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                             // as leaks are not possible.
                             // doing so also fixes 'endpoint closed' errors which are frequent in lockdown mode
                             // now unlink happens before creating new tunFd, see restartVpn()
-                            /* if (lockdown) {
-                                vpnAdapter?.unlink()
-                            } */
                             // in case, if vpn-adapter exists, update the existing vpn-adapter
                             if (vpnAdapter?.updateLinkAndRoutes(fd, mtu, nwMtu, protos) == false) {
                                 Logger.e(LOG_TAG_VPN, "err update vpn-adapter")
@@ -4042,10 +4038,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         return WireguardManager.stats()
     }
 
-    suspend fun crashTun(type: Long) {
-        vpnAdapter?.crashTun(type)
-    }
-
     fun screenUnlock() {
         io("screenUnlock") {
             // initiate wireguard ping for one wg, catch-all, hop proxies
@@ -4098,14 +4090,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                 "handleWgProxiesToPing: proxy $proxyId is not active, skip ping"
             )
         }
-    }
-
-    suspend fun memProfile(filepath: String) {
-        vpnAdapter?.memProfile(filepath)
-    }
-
-    suspend fun cpuProfile(filepath: String) {
-        vpnAdapter?.cpuProfile(filepath)
     }
 
     suspend fun initiateWgPing(proxyId: String) {
@@ -4193,13 +4177,5 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         return tunUnderlyingNetworks.isEmpty()
     }
 
-    /*override fun onUnbind(intent: Intent?): Boolean {
-        Logger.w(LOG_TAG_VPN, "onUnbind, stop vpn adapter")
-        // onUnbind is called when the vpn is disconnected by signalStopService or if
-        // some other vpn service is started by the user, so stop the vpn adapter in onUnbind which
-        // will close tunFd which is a prerequisite for onDestroy()
-        stopVpnAdapter()
-        return super.onUnbind(intent)
-    }*/
 
 }

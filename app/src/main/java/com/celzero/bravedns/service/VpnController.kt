@@ -226,14 +226,6 @@ object VpnController : KoinComponent {
         return rvpn?.getLocalProxyStatsById(id)
     }
 
-    suspend fun memProfile(filepath: String) {
-        rvpn?.memProfile(filepath)
-    }
-
-    suspend fun cpuProfile(filepath: String) {
-        rvpn?.cpuProfile(filepath)
-    }
-
     suspend fun getDnsIps(id: String): String? {
         return rvpn?.getDnsIps(id)
     }
@@ -436,10 +428,6 @@ object VpnController : KoinComponent {
 
     fun screenLock() {
         rvpn?.screenLock()
-    }
-
-    suspend fun crashTun(type: Long) {
-        rvpn?.crashTun(type)
     }
 
 }

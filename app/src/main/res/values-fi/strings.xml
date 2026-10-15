@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="about_title_desc" translatable="true">Tunnista ja estä verkon tietoturvauhat</string>
     <string name="lbl_cancel" translatable="true">Peruuta</string>
     <string name="next" translatable="true">Seuraava</string>
     <string name="lbl_apply" translatable="true">Käytä</string>
-    <string name="title_statistics" translatable="true">Tilastot</string>
     <string name="txt_home" translatable="true">Koti</string>
-    <string name="title_about" translatable="true">Tietoja</string>
     <string name="settings_title_desc" translatable="true">Erittäin muokattavissa oleva DNS ja palomuuri</string>
     <string name="skip" translatable="true">Ohita</string>
     <string name="accessibility_service_description" translatable="true">DNS Control käyttää esteettömyyspalvelua taustasovellusten tunnistamiseen ja palomuuriin. DNS Control ei kerää tai myy mitään tietoa.</string>
@@ -41,8 +38,6 @@
     <string name="lbl_public_key" translatable="true">Julkinen avain</string>
     <string name="lbl_ip_rules" translatable="true">IP-säännöt</string>
     <string name="lbl_min" translatable="true">min</string>
-    <string name="lbl_maybe_blocked" translatable="true">Ehkä estetty</string>
-    <string name="lbl_applications" translatable="true">Sovellukset</string>
     <string name="lbl_include" translatable="true">Sisällytä</string>
     <string name="lbl_very" translatable="true">erittäin</string>
     <string name="lbl_all" translatable="true">Kaikki</string>
@@ -50,12 +45,9 @@
     <string name="lbl_allowed" translatable="true">Sallittu</string>
     <string name="lbl_disabled" translatable="true">Ei käytössä</string>
     <string name="lbl_create" translatable="true">Luo</string>
-    <string name="lbl_logs" translatable="true">lokit</string>
     <string name="lbl_dismiss" translatable="true">Sulje</string>
     <string name="slide_2_title" translatable="true">Tervetuloa</string>
-    <string name="lbl_cache" translatable="true">Välimuisti</string>
     <string name="lbl_remove" translatable="true">Poista</string>
-    <string name="lbl_last" translatable="true">Viimeinen</string>
     <string name="lbl_stopped" translatable="true">Pysäytetty</string>
     <string name="lbl_wildcard" translatable="true">Jokerimerkki</string>
     <string name="lbl_secure" translatable="true">turvallinen</string>
@@ -63,9 +55,7 @@
     <string name="lbl_configure" translatable="true">Määritä</string>
     <string name="lbl_private_key" translatable="true">Yksityinen avain</string>
     <string name="lbl_private" translatable="true">yksityinen</string>
-    <string name="lbl_status" translatable="true">Tila</string>
     <string name="lbl_starting" translatable="true">Käynnistetään</string>
-    <string name="lbl_overall" translatable="true">Kaiken kaikkiaan</string>
     <string name="lbl_random" translatable="true">(satunnainen)</string>
     <string name="slide_2_desc" translatable="true">DNS Control on helpoin tapa seurata verkkotoimintaa, ohittaa Internet-sensuuri ja asettaa palomuuri Android-laitteesi sovelluksille.</string>
     <string name="lbl_action_required" translatable="true">Vaatii toimenpide</string>
@@ -81,9 +71,7 @@
     <string name="lbl_split" translatable="true">Jaa</string>
     <string name="lbl_on_device" translatable="true">laitteessa</string>
     
-    <string name="lbl_rules" translatable="true">säännöt</string>
     <string name="lbl_wireguard" translatable="true">WireGuard</string>
-    <string name="slide_1_title" translatable="true">Vapaa ja avoin lähde</string>
     <string name="lbl_anonymous" translatable="true">anonyymi</string>
     <string name="allow" translatable="true">salli</string>
     <string name="isolate" translatable="true">eristä</string>
@@ -92,7 +80,6 @@
     <string name="hybrid_mode_with_proxy_notification_title" translatable="true">Suojattu! Yhdistetty DNS + palomuuri + välityspalvelimeen.</string>
     <string name="bypass_universal" translatable="true">ohita universaali</string>
     <string name="exclude" translatable="true">Pois sulje</string>
-    <string name="untracked" translatable="true">ei jäljitetty</string>
     <string name="bypass_dns_firewall" translatable="true">ohita DNS ja palomuuri</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification." translatable="true">Muuta suojausasetusta napauttamalla</string>
     <string name="dns_mode_notification_title" translatable="true">Suojattu! Yhdistetty nopeaan ja suojattuun DNS:ään.</string>
@@ -110,7 +97,6 @@
     <string name="hybrid_mode_info_title" translatable="true">DNS + palomuuri</string>
     <string name="dns_mode_info_explanation_new" translatable="true">Valvo, estä ja salaa DNS-pyyntöjä.</string>
     <string name="dns_firewall_mode_info_explanation_new" translatable="true">Kaikki yllä olevat + internet-sensuurin ohittaminen.</string>
-    <string name="status_app_error" translatable="true">sovellusvirhe</string>
     <string name="status_dns_error" translatable="true">DNS-virhe</string>
     <string name="status_dns_server_down" translatable="true">DNS-palvelin alas</string>
     <string name="status_protected_with_private_dns" translatable="true">suojattu yksityisellä DNS:llä</string>
@@ -143,15 +129,7 @@
     <string name="lbl_notification" translatable="true">ilmoitus</string>
     <string name="memory_notification_text">DNS Control kokee alhaista muistin määrää. Järjestelmä toimet saattaa rajoittua.</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">Ei onnistuttu avaamaan Saavutettavuuden asetuksia. Yritä myöhemmin uudelleen!</string>
-    <string name="brave_dns_connect_mode_change_firewall" translatable="true">Valitse tila.</string>
-    <string name="brave_dns_connect_mode_change_dns" translatable="true">Valitse tila.</string>
     <string name="default_dns_name" translatable="true">Oletusarvoinen RDNS</string>
     <string name="custom_url_error_invalid_url" translatable="true">Epäkelpo osoite</string>
-    <string name="conn_track_clear_logs_title" translatable="true">Poista kaikki verkkotoiminnan lokit?</string>
-    <string name="conn_track_clear_logs_message" translatable="true">Tämä poistaa vain verkkotoiminnan lokit, ei palomuurisääntöjä. Tätä ei voi kumota. Haluatko jatkaa?</string>
-    <string name="dns_query_clear_logs_title" translatable="true">Poista kaikki DNS-lokit?</string>
-    <string name="dns_query_clear_logs_message" translatable="true">Tämä poistaa kaikki laitteella olevat DNS-lokit. Tätä ei voi kumota. Haluatko jatkaa?</string>
-    <string name="bsct_app_info" translatable="true">Tietoa sovelluksesta</string>
-    <string name="bsct_block_ip" translatable="true">Estä, luota &lt;u&gt;tähän IP-osoitteeseen&lt;/u&gt; &lt;u&gt;tälle sovellukselle&lt;/u&gt;</string>
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">Käytettävyyspalvelu on pysähtynyt tai kaatunut. <i><b>Mene asetuksiin ja pakota DNS Controlin lopetus</b></i> \u0020ja käynnistä se uudelleen <i>Estä mikä tahansa sovellus, jota ei käytetä.</i>\n\nDNS Control käyttää saavutettavuuspalvelua seuraamaan, mitkä sovellukset ovat käytössä (etualalla) verrattuna niihin, jotka eivät ole käytössä (taustalla).</string>
 </resources>

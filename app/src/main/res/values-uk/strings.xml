@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="title_about">Про нас</string>
     <string name="title_settings">Налаштуваннях</string>
     <string name="pause_title_desc">дрімаю…</string>
     <string name="txt_home">Головна</string>
@@ -8,12 +7,10 @@
     <string name="skip">Пропустити</string>
     <string name="finish">Закінчити</string>
     <string name="slide_2_title">Ласкаво просимо</string>
-    <string name="slide_1_title">Безкоштовний та з відкритим вихідним кодом</string>
     
     <string name="block">блокувати</string>
     <string name="exclude">виключити</string>
     <string name="isolate">ізолювати</string>
-    <string name="untracked">не відстежуваний</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">Попередження: DNS Control було деактивовано</string>
     <string name="dns_mode_notification_title">Захищено! Підключено до Швидкого та Безпечного DNS.</string>
     <string name="firewall_mode_notification_title">Захищено! Підключено до Брандмауера.</string>
@@ -22,7 +19,6 @@
     <string name="settings_title_desc">DNS та брандмауер, що легко налаштовуються</string>
     <string name="always_on_dialog_lockdown_stop_message">DNS Control запускає VPN у режимі <i>Блокування</i>. Його зупинка призведе до втрати підключення до Інтернету для цього профілю користувача. Ви все одно хочете продовжити?</string>
     <string name="private_dns_dialog_heading">Вимкнути Приватний DNS</string>
-    <string name="about_title_desc">Виявлення та блокування загроз мережевої безпеки</string>
     <string name="accessibility_service_description">DNS Control використовує службу спеціальних можливостей для виявлення та блокування фонових застосунків. DNS Control не збирає та не продає жодної інформації.</string>
     <string name="slide_2_desc">DNS Control - це найпростіший спосіб моніторингу мережевої активності, обходу інтернет-цензури та брандмауерів на вашому Android пристрої.</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
@@ -34,7 +30,6 @@
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline.">очікування</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]">невдало</string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">захищено</string>
-    <string name="status_app_error">помилка застосунку</string>
     <string name="status_dns_error">помилка dns</string>
     <string name="status_dns_server_down">сервер dns не працює</string>
     <string name="status_no_internet">немає інтернету</string>
@@ -61,12 +56,9 @@
     <string name="firewall_rules">Правила мережі</string>
     <string name="firewall_mode_info_title">Брандмауер</string>
     <string name="universal_firewall_explanation" translatable="true">Застосовуйте правила брандмауера до всіх застосунків на основі подій на пристрої, наприклад, коли пристрій заблоковано або коли певна програма не використовується.</string>
-    <string name="bsct_block" translatable="true">Блокувати, обходити, виключати, ізолювати &lt;u&gt;цей застосунок&lt;/u&gt;</string>
     <string name="univ_firewall_dialog_message" translatable="true">Видалення цього правила дозволить будь-якому застосунку підключатися до цієї IP-адреси. Ви бажаєте продовжити?</string>
     <string name="refresh_complete" translatable="true"><!-- use dc_refresh_toast --> Повторну синхронізацію списку застосунків завершено.</string>
-    <string name="search_firewall_network_log" translatable="true"><font size="12">Пошук застосунків, IP-адрес, доменів</font></string>
     <string name="app_mode_dns_firewall" translatable="true">DNS та Брандмауер (за замовчуванням)</string>
-    <string name="app_mode_wireguard" translatable="true">VPN</string>
     <string name="app_mode_choose" translatable="true">Виберіть режим</string>
     <string name="orbot_http_desc" translatable="true">Встановлення тунелю HTTP CONNECT до Orbot.</string>
     <string name="orbot_bs_status_2" translatable="true">HTTP-проксі встановлено.</string>
@@ -126,7 +118,6 @@
     <string name="ada_noapp_dialog_message" translatable="true">Інформація про застосунок відсутня. Можливо, цей застосунок було видалено?</string>
     <string name="ada_noapp_dialog_positive" translatable="true">Ок</string>
     <string name="ada_firewall_status" translatable="true"><![CDATA[This app <b><i>%1$s</i></b>.]]></string>
-    <string name="ada_ip_no_connection" translatable="true">Для цієї категорії немає мережевих журналів.</string>
     <string name="ada_app_status_allow" translatable="true">дозволено</string>
     <string name="ada_app_status_block" translatable="true">заблоковано</string>
     <string name="ada_app_status_block_wifi" translatable="true">блокується в необмежених мережах (wifi)</string>
@@ -136,26 +127,18 @@
     <string name="ada_app_status_block_md" translatable="true">блокується в обмежених мережах (мобільних)</string>
     <string name="ada_app_status_whitelist" translatable="true">буде обходити універсальні правила брандмауера</string>
     <string name="ada_app_metered" translatable="true">Обмежена мережа</string>
-    <string name="ada_network_log_title" translatable="true">мережевий журнал для цього застосунку</string>
-    <string name="ada_app_firewall" translatable="true">Брандмауер</string>
     <string name="ada_app_unmetered" translatable="true">Необмежена мережа</string>
     <string name="ada_app_exclude" translatable="true">Виключити</string>
-    <string name="ada_app_dns_settings" translatable="true">Налаштування DNS</string>
-    <string name="ada_delete_logs_dialog_desc" description="Appears as dialog description to clear the logs in app specific screen" translatable="true">Очистити всі журнали, пов\'язані з цим застосунком.</string>
     <string name="brbs_backup_desc" translatable="true">Резервне копіювання налаштувань застосунків, журналів мережі та dns</string>
     <string name="brbs_backup_dialog_message" translatable="true">Створює резервну копію налаштувань застосунку, мережі та журналів dns у файл. Це призведе до перезапуску VPN.</string>
     <string name="brbs_restore_complete_toast" translatable="true">Відновлення завершено, перезапуск застосунку…</string>
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control використовує службу доступності, щоб відстежувати, які застосунки використовуються (на передньому плані) і які не використовуються (у фоновому режимі). \n \nDNS Control не збирає жодної інформації та жодним чином не шпигує за вами.</string>
     <string name="download_update_dialog_message" translatable="true">Нова версія застосунку доступна для завантаження з вебсайту. Ви бажаєте продовжити?</string>
-    <string name="settings_locale_dialog_neutral" translatable="true">Допоможіть перекласти цей застосунок</string>
     <string name="settings_biometeric_heading" translatable="true">Увімкнути блокування застосунку</string>
     <string name="settings_biometric_desc" translatable="true">Захистіть цей застосунок за допомогою блокування екрана</string>
     <string name="apps_icon_content_desc" translatable="true">Іконка застосунку</string>
-    <string name="ct_bs_app_info_error" translatable="true">Інформація про застосунок не знайдено</string>
-    <string name="hsf_chip_appearance" translatable="true">Тема: %1$s</string>
     <string name="about_settings_app_info" translatable="true">Інформація про застосунок</string>
     <string name="cd_custom_dns_proxy_default_app" translatable="true">Відсутнє</string>
-    <string name="dns_proxy_app" translatable="true">Застосунок</string>
     <string name="fapps_firewall_filter_isolate" translatable="true">Ізольовані</string>
     <string name="fapps_info_unmetered_msg" translatable="true">Дозволити / Заблокувати в безлімітній мережі (Wi-Fi).</string>
     <string name="fapps_info_metered_msg" translatable="true">Дозволити / Заблокувати в обмеженій (мобільній) мережі.</string>
@@ -186,12 +169,9 @@
     <string name="ada_app_bypass_univ" translatable="true">Обхід Універсальний</string>
     <string name="firewall_mode_info_explanation_new" translatable="true">Відстежуйте мережеву активність і брандмауер будь-якого застосунку або IP-адреси.</string>
     <string name="apps_info_title" translatable="true">Застосунки</string>
-    <string name="bsct_app_info" translatable="true">Інформація про застосунок</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Пошук застосунків за uid, назвою</font></string>
     <string name="app_mode_dns_low_battery" translatable="true">DNS (економія заряду батареї)</string>
-    <string name="app_mode_dns" translatable="true">DNS</string>
     <string name="apps_card_ips_count" translatable="true">%1$s правил IP та портів</string>
-    <string name="hsf_start_dialog_message" translatable="true">Ви в одному кроці від безпечного та захищеного Android: миттєво переглядайте мережеву активність, блокуйте вебсайти, IP-адреси та застосунки, що погано поводяться.</string>
     <string name="fapps_info_dialog_positive_btn" translatable="true">Добре</string>
     <string name="firewall_rule_trusted_domain" translatable="true">Довіряти домену застосунка</string>
     <string name="firewall_rule_block_domain" translatable="true">Домен (Застосунок)</string>
@@ -199,7 +179,6 @@
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">Служба доступності DNS Control зупинилася або вийшла з ладу. <i><b>Перейдіть до налаштувань і примусово зупиніть</b></i> DNS Control і запустіть його знову, щоб використовувати <i>Блокування будь-якого застосунку, яка не використовується</i>. \n \nDNS Control використовує службу доступності, щоб відстежувати, які застосунки використовуються (на передньому плані) і які не використовуються (у фоновому режимі).</string>
     <string name="always_on_dialog" translatable="true">«Завжди увімкнений VPN» увімкнено на цьому пристрої. Щоб запустити DNS Control, перейдіть до Налаштувань та вимкніть «Завжди увімкнений VPN».</string>
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;: Блокує підключення програми до Інтернету. \n &lt;u&gt;#2&lt;/u&gt;: Блокує підключення будь-якої програми до певної IP-адреси. \n &lt;u&gt;#3&lt;/u&gt;: Блокує всі з\'єднання, коли пристрій заблоковано (Універсальний брандмауер). \n &lt;u&gt;#4&lt;/u&gt;: Блокує будь-які програми, які не використовуються (Універсальний брандмауер). \n &lt;u&gt;#5&lt;/u&gt;: Блокує з’єднання, коли вихідна програма невідома (Universal Firewall). \n &lt;u&gt;#6&lt;/u&gt;: Блокує весь UDP-трафік, окрім DNS (універсальний брандмауер). \n &lt;u&gt;#7&lt;/u&gt;: Блокувати з’єднання, коли DNS обходиться (Universal Firewall).</string>
-    <string name="settings_allow_bypass_desc" translatable="true">Дозволити застосункам, що запитують, доступ до всіх доступних мереж. Ці застосунки можуть обходити VPN тунель DNS Control за вимогою. Деякі застосунки для аудіо чи відео конференцій, такі як Zoom та Meet, можуть потребувати цього для належної роботи.</string>
     <string name="settings_https_desc" translatable="true">Пересилати з\'єднання за протоколом HTTP(s).</string>
     <string name="orbot_explanation" translatable="true">Orbot – це безплатний застосунок-проксі, який дає змогу іншим застосункам &lt;u&gt;безпечніше&lt;/u&gt; використовувати Інтернет. \nOrbot використовує &lt;u&gt;Tor&lt;/u&gt; для шифрування вашого Інтернет-трафіку, що допомагає вам &lt;u&gt;обійти цензуру&lt;/u&gt; та захиститися від форм &lt;u&gt;мережевого спостереження&lt;/u&gt;, які загрожують особистій свободі та конфіденційності. \n&lt;u&gt;TCP Proxy&lt;/u&gt;: DNS Control пересилає до Orbot лише TCP-сегменти посилань &lt;i&gt;доданих&lt;/i&gt; застосунків. \n&lt;u&gt;Http Proxy&lt;/u&gt;; DNS Control &lt;i&gt;встановлює&lt;/i&gt; тунель HTTP ПІДКЛЮЧЕННЯ до Orbot і пересилає лише TCP-сегменти посилань &lt;i&gt;доданих&lt;/i&gt; застосунків.</string>
     <string name="settings_import_export_desc" translatable="true">Вручну створіть резервну копію або відновіть дані та налаштування застосунку.</string>
@@ -224,30 +203,20 @@
     <string name="brbs_restore_dialog_message" translatable="true">Відновіть налаштування застосунку, мережеві та dns журнали з файлу резервної копії. Це призведе до перезапуску застосунку.</string>
     <string name="firewall_rule_block_domain_desc" translatable="true"><![CDATA[A user-set firewall rule blocked the <i>домен</i>.<br/><br/> Щоб змінити, перейдіть на екран <i>Брандмауер для конкретної програми</i>.]]></string>
     <string name="new_app_notification_action_toast_allow" translatable="true">Для застосунку дозволено підключення до мережі</string>
-    <string name="bsac_title_desc" translatable="true">Правила застосовуються лише до цього застосунку.</string>
     <string name="firewall_rule_trusted_domain_desc" translatable="true"><![CDATA[This connection was allowed because the <i>домен</i> встановлено як довірений домен.<br/><br/> Щоб змінити, перейдіть на екран <i>Брандмауер для конкретного додатка</i>.]]></string>
     <string name="new_app_bulk_notification_content" translatable="true">DNS Control заблокував новий застосунок %1$s . Натисніть, щоб переглянути або змінити.</string>
-    <string name="ssv_app_network_activity_heading" description="This label will appear on the stats screen as a header for allowed apps." translatable="true">найбільш дозволені застосунки</string>
-    <string name="ssv_app_blocked_heading" description="This label will appear on the stats screen as a header for blocked applications." translatable="true">найбільш заблоковані застосунки</string>
     <string name="always_on_dialog_heading" translatable="true">Вимкнути Постійно ввімкнений VPN</string>
     <string name="always_on_dialog_positive_btn" translatable="true">Перейти до налаштуваннях</string>
     <string name="always_on_dialog_stop_heading" translatable="true">Постійно ввімкнений VPN</string>
     <string name="private_dns_dialog_desc" translatable="true">Налаштування DNS DNS Control перевизначаються приватними DNS Android. \n \nЩоб використовувати DNS DNS Control, перейдіть до налаштувань Android і вимкніть \"Приватний DNS\".</string>
     <string name="univ_firewall_dialog_title" translatable="true">Видалити правило IP?</string>
     <string name="doh_custom_url_remove_success" translatable="true">Кінцева точка видалена.</string>
-    <string name="lbl_rules" translatable="true">правила</string>
     <string name="bypass_dns_firewall" translatable="true">обхід dns та брандмауера</string>
     <string name="hybrid_mode_info_title" translatable="true">DNS + Брандмауер</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">Не вдалося відкрити Налаштування доступності. Спробуйте пізніше!</string>
-    <string name="bsct_block_ip" translatable="true">Блокувати, довіряти &lt;u&gt;цю IP-адресу&lt;/u&gt; для &lt;u&gt;цього застосунку&lt;/u&gt;</string>
-    <string name="bsct_block_domain" translatable="true">Блокувати, довіряти &lt;u&gt;домен(и)&lt;/u&gt; для &lt;u&gt;цього застосунку&lt;/u&gt;</string>
-    <string name="bsct_conn_desc_allowed" translatable="true">дозволено на %1$s %2$s</string>
-    <string name="bsct_conn_desc_blocked" translatable="true">заблоковано на %1$s %2$s</string>
     <string name="local_blocklist_download" translatable="true">Завантажити списки блокування</string>
-    <string name="bsct_conn_block_desc" translatable="true">заблоковано %1$s за адресою %2$s</string>
     <string name="lbl_network" translatable="true">мережа</string>
     <string name="default_dns_name" translatable="true">RDNS за замовчуванням</string>
-    <string name="dns_query_clear_logs_title" translatable="true">Видалити всі журнали DNS?</string>
     <string name="always_on_dialog_stop_message" translatable="true">У DNS Control ввімкнено постійний доступ до VPN. Ви дійсно хочете зупинити DNS Control?</string>
     <string name="private_dns_dialog_positive" translatable="true">Перейти до Налаштувань</string>
     <string name="dns_crypt_relay_remove_success" translatable="true">DNSCrypt Relay видалено.</string>
@@ -255,7 +224,6 @@
     <string name="dns_proxy_remove_success" translatable="true">DNS проксі видалено.</string>
     <string name="local_blocklist_download_desc" translatable="true">Завантажити списки блокування (близько 60 МБ), щоб використовувати цю функцію?</string>
     <string name="cd_dialog_error_invalid_wildcard" translatable="true">Недійсний символ підстановки або домен</string>
-    <string name="title_statistics" translatable="true">Статистика</string>
     <string name="lbl_cancel" translatable="true">Скасувати</string>
     <string name="lbl_allowed" translatable="true">Дозволені</string>
     <string name="lbl_apply" translatable="true">Застосувати</string>
@@ -270,22 +238,13 @@
     <string name="lbl_dismiss" translatable="true">Відхилити</string>
     <string name="lbl_configure" translatable="true">Конфігурація</string>
     <string name="lbl_blocked" translatable="true">Заблоковані</string>
-    <string name="lbl_maybe_blocked" translatable="true">Можливо заблоковані</string>
-    <string name="lbl_logs" translatable="true">журнали</string>
     <string name="dns_firewall_mode_info_explanation_new" translatable="true">Все перераховане вище + обхід інтернет-цензури.</string>
-    <string name="conn_track_clear_logs_title" translatable="true">Видалити всі мережеві журнали?</string>
     <string name="dns_mode_info_explanation_new" translatable="true">Моніторинг, блокування та шифрування DNS-запитів.</string>
     <string name="alert_permission_accessibility" translatable="true">Дозвіл - Доступність</string>
     <string name="custom_url_error_invalid_url" translatable="true">Неправильна URL-адреса</string>
-    <string name="dns_query_clear_logs_message" translatable="true">Видалення журналів DNS на пристрої. Ця операція не є зворотною. Ви хочете продовжити?</string>
-    <string name="brave_dns_connect_mode_change_firewall" translatable="true">Виберіть режим.</string>
-    <string name="brave_dns_connect_mode_change_dns" translatable="true">Виберіть режим.</string>
-    <string name="conn_track_clear_logs_message" translatable="true">При цьому видаляються лише мережеві журнали, але не правила брандмауера. Ця операція не є зворотною. Ви хочете продовжити?</string>
-    <string name="bsct_conn_block_desc_device" translatable="true">заблоковано %1$s на пристрої</string>
     <string name="firewall_act_universal_tab" translatable="true">універсальний</string>
     <string name="dns_crypt_custom_url_remove_dialog_title" translatable="true">Видалити резолвер DNSCrypt?</string>
     <string name="dns_crypt_url_remove_dialog_message" translatable="true">Видаліть резолвер DNSCrypt із збереженої конфігурації.</string>
-    <string name="firewall_act_network_monitor_tab" translatable="true">Мережа</string>
     <string name="doh_custom_url_remove_dialog_message" translatable="true">Видалити кінцеву точку DNS через Https зі збереженої конфігурації.</string>
     <string name="dns_crypt_url_remove_success" translatable="true">Резолвер DNSCrypt видалено.</string>
     <string name="dns_act_configure_tab" translatable="true">Конфігурація</string>
@@ -324,7 +283,6 @@
     <string name="lbl_min" translatable="true">хв</string>
     <string name="lbl_private_key" translatable="true">Приватний ключ</string>
     <string name="lbl_preshared_key" translatable="true">Загальний ключ</string>
-    <string name="lbl_applications" translatable="true">Застосунки</string>
     <string name="lbl_include" translatable="true">Включити</string>
     <string name="lbl_very" translatable="true">дуже</string>
     <string name="lbl_select_all" translatable="true">обрати все</string>
@@ -335,46 +293,30 @@
     <string name="lbl_random" translatable="true">(випадково)</string>
     <string name="univ_firewall_rule_8" translatable="true">Блокувати трафік через 80 порт (незахищений HTTP)</string>
     <string name="univ_firewall_heading" translatable="true">Універсальні правила брандмауера</string>
-    <string name="about_bug_report" translatable="true">Звіт про помилку</string>
     <string name="firewall_rule_block_http" translatable="true">Незахищенний HTTP</string>
     <string name="univ_firewall_rule_4" translatable="true">Блокувати UDP, крім DNS та NTP</string>
     <string name="univ_view_blocked_ip" translatable="true">Правила IP та портів</string>
     <string name="univ_firewall_rule_5" translatable="true">Блокувати у разі обходу DNS</string>
     <string name="univ_view_blocked_ip_desc" translatable="true">Зміна заблокованих та довірених правил для доменів, IP чи портів.</string>
-    <string name="about_mail_bugreport_subject" translatable="true">[DNS Control]: Звіт про помилку</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Надіслати</string>
-    <string name="hsf_whats_new_chip_text" translatable="true">Що нового</string>
-    <string name="about_bug_report_desc" translatable="true">ел. пошта</string>
-    <string name="hs_download_positive_website" translatable="true">Відвідайте вебсайт</string>
     <string name="blocklist_update_check_not_required" translatable="true">Блоклисти останньої версії.</string>
     <string name="blocklist_update_check_failure" translatable="true">Щось пішло не так. Спробуйте пізніше!</string>
-    <string name="show_logs_disabled_network_message" translatable="true">Логування підключень вимкнено. Щоб увімкнути його знову, перейдіть до <i>Налаштувань</i> та увімкніть <i>Увімкнути логування на пристрої.</i></string>
     <string name="settings_locale_desc" translatable="true">Виберіть бажану мову</string>
     <string name="settings_locale_heading" translatable="true">Змінити мову</string>
     <string name="settings_locale_dialog_title" translatable="true">Виберіть бажану мову</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS проксі</string>
     <string name="settings_default_dns_heading" translatable="true">Вибрати резервний DNS</string>
-    <string name="ssv_most_contacted_ips_heading" description="This label will appear on the stats screen as a header for most visited ips" translatable="true">найбільш контактуючі ip</string>
-    <string name="configure_dns_connection_name" translatable="true">Підключенно до %1$s</string>
-    <string name="ssv_most_blocked_ips_heading" description="This label will appear on the stats screen as a header for most blocked ips" translatable="true">найбільш заблоковані ip</string>
     <string name="http_proxy_dialog_heading" translatable="true">Встановити HTTP(S) ПІДКЛЮЧЕННЯ проксі</string>
-    <string name="ssv_most_contacted_domain_heading" description="This label will appear on the stats screen as a header for most visited domains" translatable="true">найбільш контактуючі домени</string>
-    <string name="show_logs_disabled_dns_message" translatable="true">Логування DNS запитів вимкнено. Для повторного увімкнення перейдіть у <i>Налаштування</i> та увімкніть <i>Увімкнути логування на пристрої.</i></string>
     <string name="search_proxy_add_apps" translatable="true">Пошук застосунків за назвою</string>
     <string name="settings_ip_network_heading" translatable="true">Виберати версію IP</string>
-    <string name="ssv_most_contacted_countries_heading" description="This label will appear on the stats screen as a header for most visited domains by country" translatable="true">найбільш контактуючі країни</string>
-    <string name="ssv_most_blocked_countries_heading" description="This label will appear on the stats screen as a header for most blocked domains by country" translatable="true">найбільш заблоковані країни</string>
     <string name="settings_default_dns_desc" translatable="true">У рідкісних випадках, коли бажаний користувачем DNS неможливо встановити, використовується резервний DNS.</string>
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="local_blocklist_redownload_desc" translatable="true">Блоклисти на пристрої вже мають останню версію v%1$s.</string>
-    <string name="configure_dns_crypt" translatable="true">DNSCrypt: %1$s розв\'язувачів імен (розв\'язуют доменні імена в IP-адреси)</string>
-    <string name="ssv_most_blocked_domain_heading" description="This label will appear on the stats screen as a header for most blocked domains" translatable="true">найбільш заблоковані домени</string>
     <string name="configure_dns_connected_doh_status" translatable="true">DNS через HTTPS</string>
     <string name="ssv_see_more" translatable="true">Показати усе</string>
     <string name="download_update_dialog_title" translatable="true">Нове оновлення!</string>
     <string name="info_dialog_copy_toast_msg" translatable="true">IP адрес скопійовано.</string>
     <string name="download_update_dialog_message_success" translatable="true">Блоклист завантажено успішно.</string>
-    <string name="search_dns_logs" translatable="true"><font size="12">Пошук доменів чи IP</font></string>
     <string name="public_key_copy_toast_msg" translatable="true">Публійчний ключ скопійовано.</string>
     <string name="download_update_dialog_failure_title" translatable="true">Щось пішло не так!</string>
     <string name="download_update_dialog_failure_message" translatable="true">Або наші сервери не працюють, або не вдалося встановити з\'єднання. Будь ласка, спробуйте ще раз через деякий час.</string>
@@ -382,7 +324,6 @@
     <string name="download_update_dialog_trylater_message" translatable="true">Оновлення неможливо виконати зараз, будь ласка, спробуйте пізніше.</string>
     <string name="search_custom_domains" translatable="true"><font size="12">Пошук доменів</font></string>
     <string name="download_update_dialog_trylater_title" translatable="true">Неможливо оновити зараз</string>
-    <string name="settings_vpn_heading" translatable="true">vpn</string>
     <string name="download_update_dialog_message_ok" translatable="true">Ви вже використовуєте останню версію.</string>
     <string name="search_universal_ips" translatable="true"><font size="12">Пошук IP</font></string>
     <string name="download_update_dialog_message_ok_title" translatable="true">Актуально!</string>
@@ -399,12 +340,10 @@
     <string name="orbot_stop_dialog_message" translatable="true">DNS Control припинив переадресацію з\'єднань до Orbot, але Orbot, можливо, працює у фоновому режимі.</string>
     <string name="orbot_title" translatable="true">Orbot і проксі</string>
     <string name="settings_allow_lan_heading" translatable="true">Не перенаправляти приватні IP-адреси (експериментально)</string>
-    <string name="settings_ptrans_heading" translatable="true">Примусовий вихід IPv4</string>
     <string name="orbot_status_arg_3" translatable="true">DNS і TCP</string>
     <string name="orbot_bs_status_3" translatable="true">Пересилання %1$s до Orbot, HTTP-проксі також встановлено.</string>
     <string name="settings_orbot_header" translatable="true">Orbot\t❯</string>
     <string name="relative_time_today" translatable="true">Сьогодні</string>
-    <string name="settings_allow_bypass_heading" translatable="true">Увімкнути видимість мережі</string>
     <string name="orbot_bs_status_trying_connect" translatable="true">Налаштування Orbot…</string>
     <string name="orbot_none" translatable="true">Ні (за замовчуванням)</string>
     <string name="orbot_none_desc" translatable="true">Нічого з перерахованого вище.</string>
@@ -412,7 +351,6 @@
     <string name="settings_ip_network_desc" translatable="true">Виберіть одну з версій мережевого протоколу.</string>
     <string name="orbot_http" translatable="true">HTTP-проксі</string>
     <string name="orbot_stop_dialog_title" translatable="true">Потрібне ручне втручання</string>
-    <string name="settings_ptrans_desc" translatable="true">Перетворювати вихідний трафік з IPv6 на IPv4 на пристрої. Увімкніть, якщо ви підключені до мережі, яка підтримує лише IPv4.</string>
     <string name="settings_orbot_heading" translatable="true">Налаштування Orbot</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
     <string name="orbot_both" translatable="true">TCP + HTTP Proxy</string>
@@ -434,37 +372,23 @@
     <string name="settings_connectivity_checks" translatable="true">Перевіряти підключення до мережі</string>
     <string name="generic_error" translatable="true">Невідома \"%s\" помилка</string>
     <string name="network_dns" translatable="true">Системний DNS</string>
-    <string name="lbl_status" translatable="true">Стан</string>
     <string name="lbl_remove" translatable="true">Вилучити</string>
-    <string name="connection_http3" translatable="true">HTTP3</string>
-    <string name="dc_other_dns_heading" translatable="true">тип</string>
     <string name="unknown_error" translatable="true">Невідома помилка</string>
     <string name="hybrid_mode_with_proxy_notification_title" translatable="true">Захищено! Підключений до DNS + брандмауер + проксі.</string>
     <string name="dc_custom_dns_radio" translatable="true">Інший DNS</string>
-    <string name="dns_btm_record_type" translatable="true">Тип запиту: %1$s</string>
-    <string name="dns_btm_latency_ms" translatable="true">%1$s с</string>
     <string name="category_name_others" translatable="true">Інші</string>
     <string name="lbl_notification" translatable="true">повідомлення</string>
     <string name="memory_notification_text">DNS Control бракує пам\'яті. Дії системи можуть бути обмежені.</string>
-    <string name="settings_enable_logs_desc" translatable="true">Зберігати журнали DNS й брандмауера локально на пристрої.</string>
-    <string name="dns_card_latency_active" translatable="true">%1$s мс</string>
-    <string name="no_browser_error" translatable="true">Не вдалося відкрити веб-сторінку з браузера.</string>
     <string name="fapps_info_bypass_dns_firewall_msg" translatable="true">Обхід правил DNS та брандмауера.</string>
     <string name="category_name_sys_components" translatable="true">Системні компоненти</string>
     <string name="lbl_starting" translatable="true">Запуск</string>
-    <string name="lbl_overall" translatable="true">Загалом</string>
     <string name="dns_query_latency" translatable="true">%1$s мс</string>
-    <string name="settings_enable_logs" translatable="true">Увімкнути логування на пристрої</string>
     <string name="lbl_anonymous" translatable="true">анонімний</string>
-    <string name="lbl_cache" translatable="true">Кеш</string>
-    <string name="lbl_last" translatable="true">Останній</string>
     <string name="lbl_idle" translatable="true">Бездіяльність</string>
     <string name="lbl_secure" translatable="true">безпечний</string>
     <string name="lbl_private" translatable="true">приватний</string>
     <string name="lbl_unselected" translatable="true">Не обрано</string>
     <string name="lbl_stopped" translatable="true">Зупинено</string>
-    <string name="settings_go_log_heading" translatable="true">Рівень логування</string>
-    <string name="settings_go_log_desc" translatable="true">Для налагодження</string>
     <string name="settings_connectivity_checks_desc" translatable="true">Перевірка зв\'язку надсилається, щоб переконатися в доступності.</string>
     <string name="settings_orbot_notification_action" translatable="true">Відкрити Orbot</string>
     <string name="settings_autostart_bootup_desc" translatable="true">Після ввімкнення пристрою запуститься DNS Control, якщо він був запущений перед вимкненням.</string>
@@ -500,9 +424,6 @@
     <string name="dc_check_update_desc" translatable="true">Перевіряти оновленя блок листа раз на <i>три</i> дні</string>
     <string name="dc_proxy_dns_desc" translatable="true">Не проксірувати DNS через Always-on, WireGuard, Socks5, HTTP-проксі.</string>
     <string name="dc_proxy_dns_heading" translatable="true">Нікли не проксувати DNS</string>
-    <string name="dns_log_dialog_positive" translatable="true">Видалення logs-журналу</string>
-    <string name="dns_btm_sheet_dialog_ips" translatable="true"><Data><![CDATA[ %1$s %2$s <br/>]]></Data></string>
-    <string name="dns_btm_sheet_chip" translatable="true">+%1$s Інші IPs</string>
     <string name="firewall_rule_bypass_universal_ip" translatable="true">Обхід IP</string>
     <string name="add_remove_apps" translatable="true">Додати/Видалити (%1$s застосунок)</string>
     <string name="exclude_all_app_wg_dialog_title" translatable="true">Відключити усі додатки</string>
@@ -510,7 +431,6 @@
     <string name="config_add_success_toast" translatable="true">Добре</string>
     <string name="config_delete_dialog_title" translatable="true">Видалити</string>
     <string name="bad_config_error" translatable="true">%1$s в %2$s</string>
-    <string name="wireguard_enabled_failure" translatable="true">Зупиніть інші активні проксі-сервери, щоб увімкнути WireGuard</string>
     <string name="google_dns_desc" translatable="true">Не блокує запити системи доменних імен [DNS]. На основі DNS Google .</string>
     <string name="cloudflare_security_dns_desc" translatable="true">Блокує шкідливий вміст. Використовує систему доменних імен [DNS] Cloudflare.</string>
     <string name="wireguard_apps_proxy_map_desc" translatable="true">частково %1$s</string>
@@ -528,7 +448,6 @@
     <string name="cloudflare_family_dns_desc" translatable="true">Блокує шкідливе програмне забезпечення та вміст для дорослих. Використовує систему доменних імен [DNS] Cloudflare.</string>
     <string name="exclude_all_app_wg_dialog_desc" translatable="true">Відключити усі додатки від цього WireGuard VPN?</string>
     <string name="config_delete_dialog_desc" translatable="true">Ви впевнені, що хочете видалити цю конфігурацію WireGuard VPN?</string>
-    <string name="one_wg_error_toast" translatable="true">Щоб перемкнутися на розширений режим, зупиніть WireGuard у простому режимі</string>
     <string name="catch_all_wg_dialog_desc" translatable="true">Усі з\'єднання та програми, не маршрутизовані іншими VPN-серверами WireGuard, будуть маршрутизовані цим.</string>
     <string name="one_wg_dialog_desc" translatable="true">Усі з’єднання з усіх додатків, включаючи DNS, спрямовуватимуться до однієї активної WireGuard VPN. Інші активні WireGuard VPNs, якщо такі є, буде зупинено.</string>
     <string name="parse_error_reason" translatable="true">Неможливо проаналізувати %1$s “%2$s”</string>
@@ -537,16 +456,13 @@
     <string name="settings_theme_dialog_themes_1" translatable="true">З Системи</string>
     <string name="settings_notification_dialog_option_3" translatable="true">\nНемає:\nНе відображає кнопку.\n</string>
     <string name="settings_protocol_translation_dns_inactive" translatable="true">Перемикач режимів DNS/Фаєрвол+DNS, оберіть налаштування</string>
-    <string name="dns_btm_sheet_chip_no_answer" translatable="true">Немає відповіді</string>
     <string name="about_mail_to_string" translatable="true">Посилання mailTO:</string>
     <string name="settings_exclude_proxy_apps_heading" translatable="true">Застосунки переадресації проксі-серверів зі зворотним зв\'язком</string>
     <string name="settings_exclude_proxy_apps_desc" translatable="true">Коли цей параметр вимкнено, супроводження застосунків до проксі-серверів (SОСКS5, НТТР, DNS) виключається з VPN-тунелів DNS Control\'s.</string>
     <string name="settings_ip_dialog_ipv4" translatable="true">IPv4 (стандарт)</string>
     <string name="settings_socks5_dialog_hint_port" translatable="true">Порт</string>
     <string name="settings_selected_theme" translatable="true">Поточна тема: %1$s</string>
-    <string name="about_bug_no_log_dialog_positive_btn" translatable="true">Надіслати email</string>
     <string name="vpn_profile_error" translatable="true">Не вдалося запустити профіль VPN.</string>
-    <string name="logs_disclaimer" translatable="true">Показувати перші 20 000 символів</string>
     <string name="cd_custom_doh_url_name" translatable="true">DNS-Над-HTTPs%1$s</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">[DoH] Система назв доменів (DNS)-Над- Безпечним протоколом передачі гіпертексту (HTTPs)</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">Проксі</string>
@@ -554,31 +470,22 @@
     <string name="cd_dns_proxy_error_text_1" translatable="true">Некоректна IP адреса</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">Назад</string>
     <string name="hs_download_positive_default" translatable="true">Добре</string>
-    <string name="dns_btm_resolved_crypt" translatable="true">дозволено &lt;u&gt;анонімно&lt;/u&gt; %1$s по %2$s через %3$s</string>
     <string name="ci_dialog_desc" translatable="true">Дозволити ОБІЙТИ або ЗАБЛОКУВАТИ: IP-адресу, IP-підмережу (діапазон), порт. Приклади: 10.10.10.10, 10.1.1.*, 10.2.2/24, ff::/104, [::]:80, [10.1.0.0/16]:80, *.*:80</string>
     <string name="ada_app_bypass_dns_firewall" translatable="true">Обходить DNS &amp; Firewall</string>
     <string name="http_proxy_dialog_desc" translatable="true">Налаштуйте URL-адресу форми, &lt;protocol&gt;://&lt;username&gt;:&lt;password&gt;@&lt;domain-or-ip&gt;:&lt;port&gt;&lt;path&gt;. Приклад: http://proxy.example.com:8080/</string>
     <string name="firewall_rule_bypass_dns_firewall_desc" translatable="true"><![CDATA[This connection was allowed because the <i>Для програми-джерела</i> налаштовано <i>обхід правил DNS та брандмауера</i>.<br/><br/> Щоб змінити, перейдіть на екран <i>Брандмауер для конкретної програми</i>.]]></string>
-    <string name="settings_pcap_heading" translatable="true">Перех-ня пакетів</string>
-    <string name="firewall_card_text_active" translatable="true">%1$s заблоковані \n%2$s обходять \n%3$s виключені \n%4$s ізольовані</string>
     <string name="cd_dns_proxy_mode_internal" translatable="true">Внутрішній</string>
     <string name="cd_dns_proxy_mode_external" translatable="true">Зовнішній</string>
     <string name="cd_dns_crypt_name" translatable="true">DNSCrypt %1$s</string>
     <string name="cd_dns_crypt_error_text_1" translatable="true">Штамп не може бути порожнім</string>
-    <string name="dns_btm_sheet_dialog_message" translatable="true"><Data><![CDATA[ <h3><u><font size="8">%1$s</font></u>: %2$s блок-лист(и)</h3>%3$s.<br/><br/>]]></Data></string>
-    <string name="dns_btm_resolved_doh" translatable="true">дозволено %1$s по %2$s</string>
-    <string name="dns_btm_resolved_doh_no_server" translatable="true">дозволено %1$s</string>
-    <string name="hs_download_positive_play_store" translatable="true">Оновлення відбулося</string>
     <string name="univ_accessibility_crash_dialog_positive" translatable="true">Перейти до налаштувань</string>
     <string name="univ_accessibility_dialog_positive" translatable="true">Дозвіл</string>
     <string name="univ_accessibility_dialog_negative" translatable="true">Відхилити</string>
-    <string name="dns_connected_rethink_plus" translatable="true">Підключено. %1$s блок-лист застосовується</string>
     <string name="fapps_bypass_dns_firewall_dialog_title" translatable="true">Застосунки які обходять</string>
     <string name="ada_app_status_bypass_dns_firewall" translatable="true">ігнорують універсальні правила DNS та брандмауера</string>
     <string name="univ_firewall_rule_9" translatable="true">Блокувати у мобільній (тарифікованій) мережі</string>
     <string name="bypass_dns_firewall_tooltip">%1$s працює лише з DNS DNS Control</string>
     <string name="wireguard_connection_error" translatable="true">WireGuard VPN не вдається підключити</string>
-    <string name="cd_custom_dns_proxy_title" translatable="true">Користувкий DNS-проксі</string>
     <string name="settings_http_proxy_error_text3" translatable="true">Ім\'я хосту порожнє</string>
     <string name="settings_http_proxy_error_text4" translatable="true">Помилка з\'єднання з host-вузлом. Спробуйте ще раз.</string>
     <string name="cd_dns_crypt_resolver_heading" translatable="true">Резолвер</string>
@@ -587,8 +494,6 @@
     <string name="cd_dns_crypt_relay_name" translatable="true">DNSРетранслятор %1$s</string>
     <string name="wireguard_disclaimer" translatable="true">DNS перенаправлено на %1$s.</string>
     <string name="dot_custom_url_remove_dialog_message" translatable="true">Видаліть DNS через TLS із збереженої конфігурації.</string>
-    <string name="info_dialog_rethink_toast_msg" translatable="true">Скопійовано URL як RDNS+ DNS-over-HTTPS</string>
-    <string name="settings_http_proxy_dialog_title" translatable="true">Налаштування URL-адреси сервера</string>
     <string name="settings_http_proxy_error_text1" translatable="true">Діапазон портів має бути від 1024 до 65535</string>
     <string name="settings_http_proxy_error_text2" translatable="true">Недійсний порт</string>
     <string name="settings_http_proxy_toast_success" translatable="true">HTTP-проксі встановлено</string>
@@ -618,18 +523,12 @@
     <string name="settings_notification_dialog_option_2" translatable="true">\nDNS / DNS + Брандмауер:\nПоказує дві кнопки для швидкого перемикання між режимом DNS для економії заряду батареї та звичайним режимом DNS + Брандмауер.</string>
     <string name="firewall_status_whitelisted" translatable="true">оминає універсальні правила фаєрволу</string>
     <string name="firewall_status_bypass_dns_firewall" translatable="true">оминає правила DNS та фаєрвола</string>
-    <string name="settings_pcap_dialog_title" translatable="true">PCAP (бібл-ка перех-ня пакетів)</string>
-    <string name="settings_pcap_dialog_option_1" translatable="true">вимкнено (стандарт)</string>
-    <string name="logs_card_dns_count" translatable="true">%1$s запитів</string>
-    <string name="logs_card_network_count" translatable="true">%1$s підключень</string>
     <string name="dc_check_update_heading" translatable="true">Запитувати про оновлення блок листа</string>
     <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
     <string name="about_mail_bugreport_share_title" translatable="true">Оберіть провайдера e-mail</string>
     <string name="intent_launch_error" translatable="true">Не вдалося запустити %1$s</string>
-    <string name="log_file_not_available" translatable="true">Звіт про збій не знайдено</string>
     <string name="cd_dns_proxy_error_text_3" translatable="true">Недійсний порт</string>
     <string name="cd_dns_crypt_name_default" translatable="true">DNSCrypt - протокол шифрования DNS-трафика</string>
-    <string name="cd_dns_crypt_dialog_title" translatable="true">Додайте DNSCrypt Резолвер або Ретранслятор</string>
     <string name="cd_dns_crypt_dialog_heading" translatable="true">Додати DNSCrypt Резолвер або Ретранслятор</string>
     <string name="cd_dns_crypt_dialog_name" translatable="true">Ім\'я</string>
     <string name="cd_dns_crypt_dialog_stamp" translatable="true">Штамп</string>
@@ -646,7 +545,6 @@
     <string name="univ_ip_delete_toast_success" translatable="true">Видалено усі правила IP.</string>
     <string name="univ_delete_firewall_dialog_title" translatable="true">Видалити усі правила IP?</string>
     <string name="fapps_bypass_dns_firewall_dialog_message" translatable="true">Обійти універсальні правила DNS та фаєрвола для<i>перелічених</i>застосунків?</string>
-    <string name="toast_allow_bypass_disabled" translatable="true">%1$s вимкнено, оскільки проксі-сервери активні</string>
     <string name="firewall_rule_bypass_dns_firewall" translatable="true">Обхід DNS&amp;Firewall</string>
     <string name="firewall_rule_bypass_universal_ip_desc" translatable="true"><![CDATA[This connection was allowed because the <i>IP-адреса призначення</i> налаштована на обхід усіх правил універсального брандмауера.<br/><br/> Щоб змінити, перейдіть до <i>Правила IP<i> на вкладці <i>Універсальний</i>.]]></string>
     <string name="exclude_apps_from_proxy_failure_toast">Цей застосунок обходить проксі</string>
@@ -657,9 +555,6 @@
     <string name="illegal_filename_error" translatable="true">Неправильна назва файлу “%s”</string>
     <string name="import_error" translatable="true">Не вдалося імпортувати тунель: %s</string>
     <string name="one_wg_apps_added" translatable="true">Маршрутизація усіх застосунків</string>
-    <string name="new_warp_invalid_config_toast" translatable="true">Конфігурація WARP є некоректною</string>
-    <string name="new_warp_error_toast" translatable="true">Не вдалося отримати конфігурацію WARP</string>
-    <string name="new_warp_config_desc" translatable="true">Отримати конфігурацію WARP із сервера</string>
     <string name="wireguard_description" translatable="true">WireGuard у якості проксі.</string>
     <string name="setup_wireguard" translatable="true">Налаштувати WireGuard</string>
     <string name="cleanbrowsing_adult_dns_desc" translatable="true">Фільтр для дорослих блокує доступ до всіх дорослих, порнографічних та відвертих сайтів. Він не блокує проксі-сервери або VPN-домени, а також сайти змішаного контенту. Дозволені такі сайти, як Reddit. Google та Bing налоштуйте на безпечний режим.</string>
@@ -668,14 +563,10 @@
     <string name="app_ip_domain_rules" translatable="true">На кожен застосунок особистий IP / правила Домену</string>
     <string name="app_ip_domain_rules_desc" translatable="true">Змінювати IP кожного застосунку / правила Домену.</string>
     <string name="firewall_rule_block_dns_bypass" translatable="true">Обхід DNS</string>
-    <string name="collecting_logs_progress_text" translatable="true">Дайте подумати…</string>
-    <string name="private_dns_error" translatable="true">Не вдалося запустити приватний екран DNS.</string>
-    <string name="error_loading_log_file" translatable="true">Помилка завантаження log журналу</string>
     <string name="quad9_dns_desc" translatable="true">Quad9 маршрутизує [Перевіряє посилання трафіку у базі даних загроз IBM X-Force] ваші DNS-запити [Системи доменних імен] через захищену мережу серверів по всьому світу.</string>
     <string name="cloudflare_dns_desc" translatable="true">Не блокує запити DNS. Використовує систему доменних імен [DNS] Cloudflare.</string>
     <string name="wireguard_disable_failure" translatable="true">Функцію \"Завжди включений WireGuard\" не можна вимкнути</string>
     <string name="include_all_app_wg_dialog_title" translatable="true">Включити усі додатки</string>
-    <string name="hsf_whats_new_remove_text" translatable="true">Завершення…</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Завантажити</string>
     <string name="settings_local_blocklist_version" translatable="true">Версія: v%1$s</string>
     <string name="firewall_rule_block_univ_ip" translatable="true">IP/порт (універсальний)</string>
@@ -696,14 +587,10 @@
     <string name="system_dns_connection_failure" translatable="true">Не вдається визначити поточний DNS-сервер</string>
     <string name="ci_bypass_universal_initial" translatable="true">ОУ</string>
     <string name="ci_bypass_universal" translatable="true">Обхід Унів-й</string>
-    <string name="bsdl_blocked_desc" translatable="true">Заблоковано %1$s зі %2$s</string>
     <string name="rbl_parental_control" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">Батьківський контроль</string>
     <string name="rbl_security" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">Безпека</string>
     <string name="rt_dialog_neutral" translatable="true">Продовжити</string>
     <string name="rt_edit_dialog_positive" translatable="true">Редагувати</string>
-    <string name="rt_chip_update_available" translatable="true">Доступне оновлення</string>
-    <string name="radio_sky_btn" translatable="true">⛅️ Хмара</string>
-    <string name="radio_max_btn" translatable="true">🪂 Макс</string>
     <string name="rt_filter_hint" translatable="true">Показати<u>усі списки</u> блокування</string>
     <string name="rt_filter_desc" translatable="true"><![CDATA[Showing <u>%1$s</u> списки блокування]]></string>
     <string name="bsrf_clear_filter" translatable="true">Очистити фільтр</string>
@@ -714,7 +601,6 @@
     <string name="rbl_privacy" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">Конфіденційність</string>
     <string name="firewall_rule_block_unmetered" translatable="true">Необмежений (для WiFi)</string>
     <string name="firewall_rule_exempt_dns_proxied" translatable="true">Правило по DNS-проксуванню</string>
-    <string name="hsf_packet_capture_chip_disabled_toast" translatable="true">Захоплення пакетів вимкнено</string>
     <string name="hsf_pause_vpn_failure" translatable="true">Не вдається призупинити: DNS Control неактивнен</string>
     <string name="hsf_vpn_dialog_message" translatable="true">DNS Control потрібен дозвіл для налаштування локального VPN-сервісу та шифрування запитів DNS з вашого пристроя, розгортання мережевого монітора та забезпечення функціонування фаєрволу. \n\nDNS Control не збирає жодних даних і жодним чином не шпигує за вами.</string>
     <string name="restrict_dialog_message" translatable="true"><i>%1$s</i> може призвести до втрати підключення. Змініть налаштування, щоб дозволити DNS Control використовувати дані та інші ресурси у фоновому режимі.</string>
@@ -723,7 +609,6 @@
     <string name="dc_custom_block_heading" translatable="true">Доменні правила</string>
     <string name="dc_local_block_heading" translatable="true">Блоклисти пристроя</string>
     <string name="cd_dns_crypt_title" translatable="true">розв\'язувач імен</string>
-    <string name="cd_custom_doh_dialog_title" translatable="true">URL користувацького сервера</string>
     <string name="dns_info_positive" translatable="true">прийняти</string>
     <string name="firewall_rule_block_ip_univ_desc" translatable="true"><![CDATA[A user-set firewall rule blocked the <i>IP-адреса призначення / Порт</i>.<br/><br/> Щоб змінити, перейдіть на вкладку <i>Універсальний</i>.]]></string>
     <string name="notif_channel_desc_proxy_failure" translatable="true">Сповіщяти про помилки та аномалії проксі-сервера</string>
@@ -732,7 +617,6 @@
     <string name="cd_remove_dialog_message" translatable="true">Видалити домен зі збереженням конфігурації.</string>
     <string name="cd_deleted_toast" translatable="true">Видалено всі домені правила</string>
     <string name="cd_no_rules_text" translatable="true">Немає правил домену.</string>
-    <string name="cd_dialog_edit_title" translatable="true">Редагувати правило домену</string>
     <string name="cd_toast_edit" translatable="true">Змінено</string>
     <string name="cd_dialog_title" translatable="true">Додати правило домену</string>
     <string name="cd_dialog_edittext_hint" translatable="true">Введіть%1$s</string>
@@ -755,15 +639,12 @@
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s блоклисти</string>
     <string name="firewall_status_excluded" translatable="true">виключено з DNS та фаєрвола</string>
     <string name="hs_biometeric_desc" translatable="true">Використовувати біометричну автентифікацію, щоб розблоковувати DNS Control</string>
-    <string name="hs_biometeric_error" translatable="true">Помилка біометричної автентифікації</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_dns_leaks_desc" translatable="true">Якщо ввімкнено, DNS Control захоплює всі пакети на порту 53 і пересилає їх до визначеної користувачем кінцевої точки DNS</string>
-    <string name="dns_connected_no_count" translatable="true">Під’єднано</string>
     <string name="dns_connected" translatable="true">Під’єднано dns</string>
     <string name="dns_info_neutral" translatable="true">Копіювати</string>
     <string name="dns_crypt_connection_failure" translatable="true">Помилка підключення до сервера шифрування DNSCrypt.</string>
     <string name="update_complete_snack_message" translatable="true">Завантажено нову версію.</string>
-    <string name="orbot_toast_parameter" translatable="true">Tor як проксі-сервер</string>
     <string name="firewall_rule_device_lock" translatable="true">Правило для блокування пристроя</string>
     <string name="firewall_rule_global_lockdown" translatable="true">Глобальний локдаун</string>
     <string name="firewall_rule_exempt_dns_proxied_desc" translatable="true"><![CDATA[This DNS connection was proxied and forwarded to user-preferred DNS endpoint.<br/><br/> Щоб змінити, вимкніть опцію <i>Запобігання витокам DNS</i> на екрані <i>Налаштування</i> DNS.]]></string>
@@ -774,9 +655,7 @@
     <string name="cd_dialog_error_invalid_domain" translatable="true">Недійсна URL-адреса або ім\'я домену</string>
     <string name="notif_download_content_text" translatable="true">Прогрес завантаження…</string>
     <string name="dc_local_block_enabled" translatable="true">Увімкнено</string>
-    <string name="rethink_max_desc" translatable="true">50+ локацій; більше приватних серверів; рекурсивний розв\'язувач імен, що працює на fly.io</string>
     <string name="brbs_backup_restore_desc" translatable="true">Не працює в різних версіях додатка</string>
-    <string name="pcap_failure_toast" translatable="true">Помилка створення pcap-файлу, спробуйте ще раз!</string>
     <string name="hs_biometeric_title" translatable="true">Розблокувати DNS Control</string>
     <string name="firewall_card_universal_rules" translatable="true">%1$s універсальних правил</string>
     <string name="hsf_start_btn_state" translatable="true">почати</string>
@@ -784,10 +663,7 @@
     <string name="ci_no_rule_txt" translatable="true">Немає правил</string>
     <string name="ci_no_rule" translatable="true">Немає правил</string>
     <string name="ci_trust_rule" translatable="true">Довіряти</string>
-    <string name="ada_ip_connection_count_zero" translatable="true">\"0\" IP-адрес</string>
-    <string name="ada_ip_connection_count" translatable="true">Підключено до %1$s IP-адрес(и)</string>
     <string name="notif_download_content_title" translatable="true">Завантаження блоклиста</string>
-    <string name="rt_re_download" translatable="true">Оновити блоклисти</string>
     <string name="lbbs_redownload" translatable="true">Повторне завантаження блеклистів</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Невірний номер конфігурації</string>
     <string name="bad_config_reason_invalid_key" translatable="true">Недійсний ключ</string>
@@ -798,12 +674,8 @@
     <string name="dns_crypt_relay_error_toast" translatable="true">Не обрано розв\'язувач імен</string>
     <string name="notif_channel_desc_vpn_notification" translatable="true">Повідомляти, коли DNS Control активний і працює у фоновому режимі</string>
     <string name="brbs_backup_dialog_positive" translatable="true">Резервне копіювання</string>
-    <string name="settings_pcap_dialog_option_2" translatable="true">Зберігати до LOGcat</string>
-    <string name="settings_pcap_dialog_option_3" translatable="true">Зберігти до папки Downloads</string>
     <string name="firewall_status_allow" translatable="true">дозволяти</string>
     <string name="firewall_status_block_unmetered" translatable="true">заблокувано в WiFi мережах</string>
-    <string name="hs_biometeric_feature_not_supported" translatable="true">Біометрична автентифікація не підтримується або вимкнена на цьому пристрої</string>
-    <string name="hs_biometeric_failed" translatable="true">Біометричну автентифікацію Не здійснено</string>
     <string name="dns_card_latency_inactive" translatable="true">Увімкнути режим DNS.</string>
     <string name="firewall_card_text_inactive" translatable="true">Увімкнути режим фаерволу.</string>
     <string name="rules_card_domain_count" translatable="true">%1$s доменних правил</string>
@@ -811,16 +683,10 @@
     <string name="hsf_downtime" translatable="true">(блоковано за %1$s)</string>
     <string name="hsf_vpn_dialog_header" translatable="true">Уважно!</string>
     <string name="hsf_notification_permission_failure" translatable="true">Увімкніть дозволи на сповіщення у меню Налаштувань</string>
-    <string name="hsf_proxy_chip_text" translatable="true">Проксі-сервер активний</string>
-    <string name="hsf_packet_capture_chip_text" translatable="true">Захоплення пакетів активне</string>
-    <string name="hsf_blocklist_chip_text_no_data" translatable="true">Увімкнути RDNS+</string>
     <string name="hsf_exclude_error" translatable="true">Вимкнути неможливо в режимі \"блокування без VPN\"</string>
-    <string name="hsf_proxy_chip_removed_toast" translatable="true">Проксі вилучено</string>
     <string name="lbl_battery_optimization" translatable="true">Оптимізація акумулятора</string>
     <string name="battery_optimization_dialog_heading" translatable="true">Вимкнути %1$s</string>
     <string name="dc_local_block_desc_1" translatable="true">Виберіть з 195+ блоклистів. Натисніть тут, щоб завантажити або налаштувати їх.</string>
-    <string name="dc_dns_website_heading" translatable="true">Показувати іконки вебсайтів в журналах DNS (експериментально)</string>
-    <string name="dc_dns_website_desc" translatable="true">Отримання іконок вебсайтів з <i>nextdns.io</i> та <i>duckduckgo.com</i>. Займє до 350 Мб постійної пам\'яті пристрою</string>
     <string name="dc_dns_leaks_heading" translatable="true">Запобігання витоку DNS даних</string>
     <string name="dns_proxy_name" translatable="true">Ім\'я проксі</string>
     <string name="dns_proxy_ip_address" translatable="true">IP адреса</string>
@@ -828,17 +694,11 @@
     <string name="rules_load_failure_heading" translatable="true">Примітка</string>
     <string name="rules_load_failure_desc" translatable="true">Правил фаєрвола не знайдено</string>
     <string name="dns_proxy_connection_failure" translatable="true">Помилка підключення до проксі-сервера DNS.</string>
-    <string name="dns_proxy_connection_failure_lockdown" translatable="true">Вимкнення %1$s для %2$s у режимі блокування може спричинити проблеми з підключенням до мережі.</string>
-    <string name="dns_proxy_toast_parameter" translatable="true">DNS проксі</string>
-    <string name="socks5_proxy_toast_parameter" translatable="true">SOCKS5 проксі</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
     <string name="update_complete_action_snack" translatable="true">РЕСТАРТ</string>
     <string name="settings_local_blocklist_in_use" translatable="true">%1$s блоклисти, що використовуються</string>
     <string name="other_dns_list_tab1" translatable="true">DoH. Система назв доменів (DNS)-Над- Безпечним протоколом передачі гіпертексту (HTTPs)</string>
-    <string name="other_dns_list_tab2" translatable="true">DNSCrypt</string>
-    <string name="coming_soon_toast" translatable="true">незабаром</string>
     <string name="pause_text" translatable="true">призупинити</string>
-    <string name="other_dns_list_tab3" translatable="true">DNS проксі</string>
     <string name="hs_btm_sheet_lock_down" translatable="true">Неможливо змінити режими, коли увімкнено VPN <i>lockdown</i>. Натисніть, щоб &lt;u&gt;редагувати налаштування VPN&lt;/u&gt;.</string>
     <string name="firewall_rule_no_rule" translatable="true">Нема правила</string>
     <string name="firewall_rule_block_metered" translatable="true">Враховувати (стильниковій)</string>
@@ -860,8 +720,6 @@
     <string name="ci_trust_txt" translatable="true">Довіряти</string>
     <string name="ci_blocked_initial" translatable="true">Б</string>
     <string name="ci_delete" translatable="true">видалити</string>
-    <string name="ada_delete_logs_dialog_title" description="Appears as dialog title to clear the logs in app specific screen" translatable="true">Очистити log-журнали</string>
-    <string name="bsdl_block_desc" translatable="true">Заблокувати, довіряти&lt;u&gt;цьому домену&lt;/u&gt;</string>
     <string name="notif_download_failure_content" translatable="true">Не вдалося завантажити. Спробуйте ще раз.</string>
     <string name="notif_download_success_content" translatable="true">Вдало завантажено.</string>
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen" translatable="true">Блокування контенту для дорослих та піратського контенту, онлайн-гемблінгу (азартні ігри) та сайтів знайомств, а також соціальних мереж.</string>
@@ -870,10 +728,8 @@
     <string name="rt_dialog_title" translatable="true">Зберегти зміни</string>
     <string name="rt_download_start" translatable="true">Завантаження блоклистів…</string>
     <string name="rt_download" translatable="true">Завантажити блоклисти</string>
-    <string name="rt_chip_check_update" translatable="true">Перевірте наявність оновлень</string>
     <string name="lbl_advanced" translatable="true">розгорнутий лист</string>
     <string name="rt_filter_desc_subgroups" translatable="true"><![CDATA[Showing <u>%1$s</u> списки блокування в групі: %2$s та підгрупі: %3$s]]></string>
-    <string name="rethink_sky_desc" translatable="true">280+ локацій серверів; вищий час безвідмовної роботи; розв\'язувач імен працює на cloudflare.com</string>
     <string name="bsrf_sub_group_heading" translatable="true">Підгрупа</string>
     <string name="dc_setting_dns_cache_heading" translatable="true">Прискорювач DNS</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Об’єднання запитів, кешування відповіді, стійка обробка помилок</string>
@@ -890,10 +746,7 @@
     <string name="bad_config_reason_unknown_attribute" translatable="true">Невідомий атрибут</string>
     <string name="bad_config_reason_unknown_section" translatable="true">Невідома секція</string>
     <string name="key_length_explanation_base64" translatable="true">: WireGuard ключі base64 повинні містити 44 символи (32 байти)</string>
-    <string name="key_length_explanation_binary" translatable="true">: WireGuard ключі повинні мати розмір 32 байта</string>
-    <string name="key_length_explanation_hex" translatable="true">: WireGuard шістнадцяткові ключі мають містити 64 символи (32 байти)</string>
     <string name="key_contents_error" translatable="true">Недійсні символи у ключі</string>
-    <string name="key_length_error" translatable="true">Неправильна довжина ключа</string>
     <string name="parse_error_inet_endpoint" translatable="true">Помилка Кінцевої точки</string>
     <string name="parse_error_inet_network" translatable="true">Помилка IP-мережі</string>
     <string name="bad_config_explanation_pka" translatable="true">: Має бути позитивним і не більше 65535</string>
@@ -905,9 +758,6 @@
     <string name="firewall_rule_exempt_orbot_setup" translatable="true">Правило по Orbot</string>
     <string name="notif_dialog_pause_dialog_positive" translatable="true">Продовжити</string>
     <string name="rules_load_failure_reload" translatable="true">перезавантажити</string>
-    <string name="hsf_start_dialog_header" translatable="true">Запустити %1$s</string>
-    <string name="hsf_start_dialog_positive" translatable="true">Запущено</string>
-    <string name="hsf_blocklist_updating_text" translatable="true">Увімкнення…</string>
     <string name="firewall_rule_exempt_orbot_setup_desc" translatable="true"><![CDATA[This connection was allowed because <i>Налаштування Tor-as-a-proxy одним кліком через Orbot тривало.]]></string>
     <string name="firewall_rule_block_http_desc" translatable="true"><![CDATA[This connection was blocked because it likely used <i>незахищений HTTP</i>.<br/><br/> Щоб змінити, перейдіть на вкладку <i>Універсальний</i>.]]></string>
     <string name="firewall_rule_dns_blocked_desc" translatable="true"><![CDATA[This connection was blocked because the <i>домен</i> заблоковано DNS-сервером, налаштованим користувачем.<br/><br/> Щоб змінити цю поведінку, перейдіть на вкладку <i>Налаштування DNS</i>.]]></string>
@@ -930,7 +780,6 @@
     <string name="lbl_test" translatable="true">тест</string>
     <string name="lbl_protos" translatable="true">протея</string>
     <string name="lbl_experimental" translatable="true">(експериментальний)</string>
-    <string name="lbl_service_providers" translatable="true">Постачальники послуг</string>
     <string name="lbl_hop" translatable="true">Реле</string>
     <string name="lbl_manual" translatable="true">Ручний</string>
     <string name="wireguard_title" translatable="true">Безпечний Інтернет з WireGuard</string>
@@ -955,7 +804,6 @@
     <string name="dc_filtering_heading" translatable="true">фільтрація</string>
     <string name="cd_split_dns_heading" translatable="true">Розділений DNS (експериментальний)</string>
     <string name="cd_split_dns_desc" translatable="true">Пересилати DNS-запити від проксі-програм на DNS-сервери проксі-сервера.</string>
-    <string name="univ_firewall_rule_11" translatable="true">Блокувати всі підключення до локального хоста</string>
     <string name="firewall_rule_private_dns" translatable="true">Приватний DNS</string>
     <string name="firewall_rule_bypass_proxy" translatable="true">Обхід проксі-сервера</string>
     <string name="firewall_rule_paused_app" translatable="true">Додаток призупинено</string>
@@ -966,8 +814,6 @@
     <string name="firewall_rule_lockdown_wg_desc" translatable="true"><![CDATA[This connection was blocked because WireGuard is in <i>режим блокування.<br/><br/> Щоб змінити, перейдіть на екран <i>WireGuard</i>.]]></string>
     <string name="wireguard_disable_failure_relay" translatable="true">\"Relay WireGuard\" не можна вимкнути</string>
     <string name="config_invalid_desc" translatable="true">Недійсна конфігурація WireGuard</string>
-    <string name="console_log_title" translatable="true">Журнали програм</string>
-    <string name="console_log_desc" translatable="true">Журнали можуть містити конфіденційну інформацію.</string>
     <string name="do_not_randomize_listen_port_title" translatable="true">Не рандомізувати порт прослуховування WireGuard</string>
     <string name="do_not_randomize_listen_port_desc" translatable="true">Залишайте порти прослуховування WireGuard фіксованими (без рандомізації) у розширеному режимі.</string>
     <string name="endpoint_independent_mapping_title" translatable="true">Відображення, незалежне від кінцевої точки</string>
@@ -976,7 +822,6 @@
     <string name="anti_censorship_desc" translatable="true">Оберіть один із різних методів боротьби з цензурою.</string>
     <string name="tcp_keep_alive_title" translatable="true">Коротший TCP keep alive</string>
     <string name="tcp_keep_alive_desc" translatable="true">Швидко закривати TCP-сокети без нещодавньої активності.</string>
-    <string name="ac_title" translatable="true">антицензура</string>
     <string name="ac_desc" translatable="true">Інструменти боротьби з цензурою можуть гарантувати свободу Інтернету, але вони можуть працювати не скрізь. Спроба лише на не проксі-з’єднаннях.</string>
     <string name="ac_never_split_desc" translatable="true">Не змінюйте пакети.</string>
     <string name="ac_split_auto_desc" translatable="true">Змініть пакети за потреби.</string>
@@ -998,17 +843,13 @@
     <string name="hop_error_toast_msg_2" translatable="true">Для реле WireGuard недоступний; будь ласка, додайте більше.</string>
     <string name="mode_change_error_proxy_enabled" translatable="true">Неможливо змінити режими, коли використовуються проксі-сервери. Натисніть, щоб &lt;u&gt;редагувати налаштування проксі-сервера&lt;/u&gt;.</string>
     <string name="blocklist_not_available_toast" translatable="true">Щоб оновити списки блокування, завантажте останню версію.</string>
-    <string name="lbl_ultra_secure" translatable="true">надбезпечний</string>
     <string name="adv_set_dial_timeout_title" translatable="true">Тайм-аут простою</string>
     <string name="adv_set_dial_timeout_desc" translatable="true">Закрийте неактивні сокети TCP та UDP після закінчення цього періоду.</string>
-    <string name="no_stats_available" translatable="true">Немає статистики</string>
     <string name="hop_failure_toast" translatable="true">Помилка реле: %1$s -&gt; %2$s</string>
     <string name="wg_setting_use_on_mobile" translatable="true">Тільки для мобільних пристроїв</string>
     <string name="wg_setting_use_on_mobile_desc" translatable="true">Використовуйте цей VPN WireGuard через мобільні дані.</string>
     <string name="hop_add_remove_title" translatable="true">Додати /Вилучити реле</string>
     <string name="bypasses_network_restrictions" translatable="true">Перевірки досяжності обходять усі мережеві обмеження. В режимі <i>Auto</i> DNS Control випадковим чином використовує раніше підключені IP-адреси та імена хостів.</string>
-    <string name="most_contacted_asn" translatable="true">найчастіше контактовані постачальники</string>
-    <string name="most_blocked_asn" translatable="true">більшість заблокованих провайдерів</string>
     <string name="adv_tasker_dialog_msg" translatable="true">Введіть назви пакетів (розділені комами), яким дозволено запускати або зупиняти DNS Control.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Інструкції:\nНеобхідні додаткові елементи в трансляції:\n• Ключ: відправник\n• Значення: Назва пакета програми, що викликає\n\nПриклад: ключ: відправник значення: com.termux\n\nПідтримувані дії:\n• Запустити VPN – com.celzero.bravedns.intent.action.VPN_START\n• Зупинити VPN – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Введіть назву пакета (приклад: net.dinglisch.android.taskerm)</string>
@@ -1017,18 +858,14 @@
     <string name="adv_taster_title" translatable="true">Автоматизація</string>
     <string name="adv_taster_desc" translatable="true">Налаштуйте програми, які можуть запускати або зупиняти DNS Control.</string>
     <string name="top_active_conns" translatable="true">найактивніші з\'єднання</string>
-    <string name="load_more" translatable="true">Завантажити все</string>
     <string name="close_conns_dialog_title" translatable="true">Тісні зв\'язки</string>
     <string name="close_conns_dialog_desc" translatable="true">Закрити всі з’єднання для %1$s?</string>
     <string name="local_blocklist_delete_desc" translatable="true">Видалити списки блокування на пристрої?</string>
     <string name="fail_open_network_title" translatable="true">Зупинка через втрату мережі</string>
     <string name="fail_open_network_desc" translatable="true">Коли функцію ввімкнено, DNS Control зупиняє всі дані, коли немає з’єднання, наприклад, у режимі <i>У літаку</i>.</string>
     <string name="close_all" translatable="true">Закрити все</string>
-    <string name="processing_dialog_title" translatable="true">Обробка</string>
-    <string name="processing_dialog_desc" translatable="true">Будь ласка, зачекайте, поки ми обробимо ваш запит.</string>
     <string name="hop_error_toast_msg_3" translatable="true">Вимкніть опцію \"Тільки мобільні пристрої\" або \"SSID\", щоб використовувати реле</string>
     <string name="wg_mobile_only_hop_err" translatable="true">Режим \"лише для мобільних пристроїв\" не підтримується для реле</string>
-    <string name="lbl_bootstrap" translatable="true">Резервний варіант</string>
     <string name="univ_delete_domain_dialog_title" translatable="true">Видалити всі правила домену?</string>
     <string name="univ_delete_domain_dialog_message" translatable="true">Видалення цих правил дозволить будь-якій програмі підключатися до наразі заблокованих доменів.</string>
     <string name="vpn_policy_auto_desc" translatable="true">Реагує на важливі зміни в мережі та з\'єднанні.</string>
@@ -1037,11 +874,6 @@
     <string name="vpn_policy_relaxed" translatable="true">Розслаблений</string>
     <string name="vpn_policy_relaxed_desc" translatable="true">Реагує на цікаві зміни в підключенні.</string>
     <string name="vpn_policy_title" translatable="true">Політика зміни підключення</string>
-    <string name="title_database_dump" translatable="true">База даних</string>
-    <string name="copied_clipboard" translatable="true">Скопійовано</string>
-    <string name="conn_track_clear_rule_logs_title" translatable="true">Видалити журнали для цього правила?</string>
-    <string name="conn_track_clear_rule_logs_message" translatable="true">Це видалить лише мережеві журнали для поточного правила брандмауера. Цю операцію неможливо скасувати. Продовжити?</string>
-    <string name="lbl_default" translatable="true">За замовчуванням</string>
     <string name="lbl_action" translatable="true">Дія</string>
     <string name="lbl_connect" translatable="true">Підключитися</string>
     <string name="lbl_criteria" translatable="true">Критерії</string>
@@ -1057,13 +889,11 @@
     <string name="ssid_location_error" translatable="true">Увімкнути службу визначення місцезнаходження</string>
     <string name="ssid_permission_error_action" translatable="true">Надати дозвіл</string>
     <string name="ssid_location_error_action" translatable="true">Увімкнути геодані</string>
-    <string name="wg_ssid_and_mobile_err" translatable="true">Не можна використовувати одночасно %1$s та %2$s</string>
     <string name="wg_ssid_dialog_description" translatable="true">%1$s ця VPN-мережа WireGuard, коли <i>активна</i>. Ідентифікатор Wi-Fi (%2$s) %3$s.</string>
     <string name="wg_ssid_input_hint" translatable="true">Введіть ідентифікатор Wi-Fi (%1$s)</string>
     <string name="wg_ssid_type_exact" translatable="true">Точно відповідає</string>
     <string name="wg_ssid_type_wildcard" translatable="true">Частково збігається</string>
     <string name="wg_ssid_invalid_error" translatable="true">Ідентифікатори Wi-Fi (%1$s) повинні містити 32 символи або менше.</string>
-    <string name="wg_ssid_delete_confirmation" translatable="true">Видалити %1$s?</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Програма стабільності</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Зберігайте журнали помилок для покращення стабільності.</string>
     <string name="tombstone_app_title" translatable="true">Запам\'ятати видалені програми</string>
@@ -1077,18 +907,6 @@
     <string name="settings_jumbo_packets_desc" translatable="true">Використовує <i>jumbo-пакети</i> в VPN-тунелі DNS Control.</string>
     <string name="settings_tunnel_metered" translatable="true">Завжди з обліком</string>
     <string name="settings_tunnel_metered_desc" translatable="true">Позначте VPN-тунель DNS Control як лімітований, щоб програми споживали менше даних. Увага: це може призвести до того, що програми призупинять великі завантаження та вивантаження, такі як резервні копії.</string>
-    <string name="stability_program_toast" translatable="true">Зареєстровано в <i>програмі стабільності</i> для <i>експериментальних функцій</i>.</string>
-    <string name="search_event_logs" translatable="false"><font size="12">Пошук подій, повідомлень</font></string>
-    <string name="bug_report_files_desc" translatable="false">Виберіть файли, які потрібно включити до електронного листа зі звітом про помилку</string>
-    <string name="bug_report_deselect_all" translatable="false">Зняти вибір усіх</string>
-    <string name="bug_report_no_files_selected" translatable="false">Будь ласка, виберіть принаймні один файл</string>
-    <string name="bug_report_creating_zip" translatable="false">Створення архіву…</string>
-    <string name="bug_report_file_not_found" translatable="false">Файл не знайдено</string>
-    <string name="bug_report_error_opening_file" translatable="false">Не вдається відкрити цей тип файлу</string>
-    <string name="bug_report_delete_confirmation" translatable="false">Ви впевнені, що хочете видалити \"%1$s\"?</string>
-    <string name="bug_report_file_deleted" translatable="false">Файл \"%1$s\" видалено</string>
-    <string name="bug_report_delete_failed" translatable="false">Не вдалося видалити \"%1$s\"</string>
-    <string name="bug_report_no_files_available" translatable="false">Немає файлів звітів про помилки</string>
     <string name="cd_allowed_dns_record_types_heading" translatable="false">Дозволені типи DNS-записів</string>
     <string name="cd_allowed_dns_record_types_desc" translatable="false">Виберіть, які типи записів ресурсів DNS дозволити.</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Автоматичний (усі типи)</string>
