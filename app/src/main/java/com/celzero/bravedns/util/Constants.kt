@@ -24,8 +24,8 @@ class Constants {
         // on-device blocklist download path
         val ONDEVICE_BLOCKLIST_DOWNLOAD_PATH = File.separator + "downloads" + File.separator
 
-        // rethink base url (modified from download to dl on v053l)
-        const val DOWNLOAD_BASE_URL = "https://hidefbi.github.io"
+        // blocklist and update base url: prepared rule data published at hidefbi/rules-old
+        const val DOWNLOAD_BASE_URL = "https://hidefbi.github.io/rules-old"
 
         // base url for ipinfo download
         const val IP_INFO_BASE_URL = "http://127.0.0.1:9/ip/"

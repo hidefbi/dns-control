@@ -1,118 +1,115 @@
 # DNS Control
 
-An unofficial, privacy-focused Android DNS and per-app firewall app, forked from
-RethinkDNS. It runs a local VPN that resolves DNS over encrypted transports and
-lets you decide which apps may reach the network.
+An unofficial, privacy-focused Android DNS and per-app firewall, forked from
+RethinkDNS. DNS Control runs a local VPN service that resolves DNS over encrypted
+transports and lets you decide which apps may reach the network.
 
 > This is an unofficial fork. It is not affiliated with or endorsed by RethinkDNS,
 > BraveDNS, or any DNS provider. See [NOTICE](NOTICE) for details.
 
 ## Features
 
-- Encrypted DNS: DNS-over-HTTPS, DNS-over-TLS, ODoH and DNSCrypt (ODoH and
-  DNSCrypt servers and relays are not built in; see below)
-- Built-in presets: Quad9 (Classic and ECS) and Cloudflare; add your own
-- Optional on-device blocklists for ads, trackers, malware and phishing (see below)
-- Per-app network control through a local VPN
+- Encrypted DNS over DNS-over-HTTPS, DNS-over-TLS, ODoH and DNSCrypt. ODoH and
+  DNSCrypt servers and relays are not built in; see [DNSCrypt and ODoH servers](#dnscrypt-and-odoh-servers).
+- Built-in presets for Cloudflare (standard, Family and Security) and Quad9
+  (Secure and DNSCrypt variants). You can add your own resolvers.
+- Optional on-device blocklists for ads, trackers, malware and phishing.
+- Per-app network control through a local VPN.
 - Fail-closed encrypted DNS: if the selected encrypted resolver fails, the app
-  does not silently switch to system DNS
-- No Firebase or Google services are configured
-- No connection, DNS query or diagnostic logs are stored or uploaded
+  does not silently switch to system DNS.
+- No Firebase or Google services are configured.
+- Connection, DNS query and diagnostic logs are not stored or uploaded.
 
 ## Ad, tracker and malware blocking
 
-DNS Control can block known ad, tracker, malware and phishing domains at the
-DNS level. Blocking is optional and is set up from the local blocklists screen.
+DNS Control can block known advertising, tracking, malware and phishing domains
+at the DNS level. Blocking is optional and is configured on the local blocklists
+screen.
 
 ### How it works
 
-1. The app downloads a set of prepared blocklist files from the project's
-   download host (`https://hidefbi.github.io`). These files are built from
-   public third-party blocklists (see [Sources](#sources-and-licenses)).
-2. The domain lists are stored on the phone as a compressed trie, a tree of
-   domain-name labels that can be searched quickly. A small rank file and a
-   tag file describe the lists, and a basic configuration file holds settings.
-3. When an app asks for a name, the app checks the query against the local
-   trie. A match gets a blocked answer; a non-match is resolved by your
-   selected DNS resolver as usual.
+1. The app downloads a prepared set of blocklist files from the project's
+   download host, `https://hidefbi.github.io/rules-old`. The set is built from
+   public third-party blocklists (see [Sources and licenses](#sources-and-licenses)).
+2. The domain lists are stored on the device as a compressed trie, a tree of
+   domain-name labels that can be searched quickly. A rank file and a tag file
+   describe the lists, and a basic configuration file holds the default settings.
+3. When an app resolves a name, the query is checked against the local trie. A
+   match receives a blocked answer; a non-match is resolved by the selected DNS
+   resolver as usual.
 
-Matching happens on the device. The lookup does not send the queried name to
-a blocking service. Blocking is applied to DNS queries only; it does not block
-traffic to a server whose address an app already has, and it cannot see inside
-encrypted content.
+Matching happens on the device. The lookup does not send the queried name to a
+blocking service. Blocking applies to DNS queries only. It does not block traffic
+to a server whose IP address an app already has, and it cannot inspect encrypted
+content.
 
 ### Updates and verification
 
-The app checks for a newer blocklist set about every 3 days. The check sends the
-app version code and the timestamp of your current set to the download host.
-A check only detects that an update exists; it does not download anything. You
-start the download from the local blocklists screen.
+The app checks for a newer blocklist set approximately every 3 days. The check
+sends the app version code (`vcode`) and the timestamp of the currently installed
+set (`tstamp`) to `update/blocklists` on the download host. The check only
+determines whether an update is available; it does not download anything. The
+download is started from the local blocklists screen.
 
-A download first fetches the small manifest (`index.json` and its signature).
-Each file that is already installed and whose size and SHA-256 match the new
-manifest is reused and not downloaded again. Only changed files are downloaded.
-Because `trie` is a single file, any change to the lists means it is downloaded
-again. The Android Download Manager option (turned off by default) always
-downloads the full set.
+A download first fetches the manifest, `index.json`, and its signature,
+`index.json.sig`. Each file that is already installed and whose size and SHA-256
+hash match the new manifest is reused and not downloaded again. Only changed files
+are fetched. Because `trie` is a single file, any change to the lists requires it
+to be downloaded again. The optional Android Download Manager mode, which is off
+by default, always downloads the full set.
 
 Before a new set is activated, the app verifies it:
 
 - `index.json` must carry a valid ECDSA P-256 / SHA-256 signature in
-  `index.json.sig`, made with the project's key (the public key is compiled into
-  the app).
+  `index.json.sig`, made with the project key. The public key is compiled into
+  the app.
 - The `blocklists`, `basicconfig`, `rank` and `trie` files must match the size
   and SHA-256 hash recorded in `index.json`.
-- The set's sequence number must match the update being installed and must not
-  be older than the last accepted set (this blocks rollback to an older set).
+- The set's sequence number must match the update being installed and must not be
+  older than the last accepted set. This prevents rollback to an older set.
 
-If any check fails, the new set is discarded and the current one stays active.
+If any check fails, the new set is discarded and the current set remains active.
 
 ### Download size
 
-The published set is 77,523,948 bytes (about 77.5 MB, or 73.9 MiB). Sizes are
-for the set published at the time of writing and change with each rebuild.
+The size of the published set changes with each rebuild, so it is not listed
+here. The current file sizes are in the
+[`index.json` manifest](https://hidefbi.github.io/rules-old/index.json) and are
+described in the [rules-old README](https://github.com/hidefbi/rules-old#readme).
 
-| File | Size | Purpose |
-|---|---|---|
-| `trie` | 71,423,522 bytes (about 71.4 MB) | Compressed domain trie used for matching |
-| `rank` | 6,026,360 bytes (about 6.0 MB) | Rank data for the lists |
-| `blocklists` | 42,158 bytes | Included blocklists and tags |
-| `index.json` | 31,459 bytes | Manifest: file sizes, hashes, sequence, sources |
-| `index.json.sig` | 96 bytes | Signature for the manifest |
-| `basicconfig` | 353 bytes | Basic configuration |
-
-While a download is in progress, the phone temporarily needs about twice this
-space, because the files are first written to the downloads folder and then
-copied into the app's storage.
+The download is written to temporary storage before it is copied into the app's
+storage, so free space of roughly the size of the set is needed while an update
+is in progress.
 
 ### Sources and licenses
 
-The lists are compiled from public blocklists maintained by their own authors,
-including StevenBlack, HaGeZi, OISD, EasyList and EasyPrivacy, The Block List
-Project, Disconnect, Peter Lowe, and many others. The full table of upstream
-URLs and groups (Security, Privacy and ParentalControl) is in the
-[download host README](https://github.com/hidefbi/hidefbi.github.io/blob/main/README.md).
+The lists are compiled from public blocklists maintained by their respective
+authors, including StevenBlack, HaGeZi, OISD, EasyList and EasyPrivacy, The Block
+List Project, Disconnect, Peter Lowe and others. The full list of upstream URLs
+and groups (Security, Privacy and ParentalControl) is maintained in the
+[rules-old README](https://github.com/hidefbi/rules-old#readme). The build pipeline
+is documented in [dns-rules-builder](https://github.com/hidefbi/dns-rules-builder).
 
-Each upstream list keeps its own license and terms. The compiler that builds
-the files is MPL-2.0 licensed (serverless-dns/blocklists). This fork does not
-claim ownership of any upstream list. Before redistributing a list, check its
-upstream license.
+Each upstream list remains under its own license and terms. The compiler used to
+build the files is derived from serverless-dns/blocklists and is licensed under
+MPL-2.0. This project does not claim ownership of any upstream list. Check the
+upstream license before redistributing a list.
 
-Blocklists can cause false positives. If a site breaks, change the selected
+Blocklists can cause false positives. If a site stops working, change the selected
 lists in the app.
 
 ## DNSCrypt and ODoH servers
 
-The app does not ship with DNSCrypt or ODoH servers or relays. Add them yourself
-from the sources on the DNSCrypt and ODoH screens.
+The app does not ship with DNSCrypt or ODoH servers or relays. Add them from the
+DNSCrypt and ODoH screens using a source of your choice.
 
 - **DNSCrypt**: add a server or relay as an `sdns://` stamp.
 - **ODoH**: add a target as an `https://` URL or an `sdns://` stamp (protocol
-  0x05). Add a relay on the ODoH screen as an `sdns://` stamp (protocol 0x85) or
-  an `https://` URL, then select it. The selected relay is used for ODoH targets.
-  Without a relay, the target can see your IP address; the app shows a warning.
+  0x05). Add a relay as an `sdns://` stamp (protocol 0x85) or an `https://` URL on
+  the ODoH screen, then select it. The selected relay is used for ODoH targets.
+  Without a relay, the target can see your IP address, and the app shows a warning.
 
-Sources:
+Reference sources:
 
 - DNSCrypt servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
 - DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md
@@ -121,19 +118,21 @@ Sources:
 
 ## Requirements
 
-- Android 6.0 (API 23) or newer
-- Android Studio, or a JDK and the Android SDK, to build from source
+- Android 6.0 (API 23) or later.
+- Android Studio, or a JDK and the Android SDK, to build from source.
 
 ## Building
+
+Build the F-Droid flavor with the full feature set:
 
 ```
 ./gradlew :app:assembleFdroidFullDebug
 ```
 
-The build downloads the `firestack` native library (gomobile AAR) from its
-published source. Set `-PfirestackRepo` and `-PfirestackCommit` to pin a version.
+The build fetches the `firestack` native library (gomobile AAR) from its published
+source. Use `-PfirestackRepo` and `-PfirestackCommit` to pin a specific version.
 
-Run unit tests with:
+Run the unit tests with:
 
 ```
 ./gradlew :app:testFdroidFullDebugUnitTest
@@ -145,40 +144,42 @@ Pushing a version tag builds, signs, verifies and publishes a release through
 `.github/workflows/release.yml`:
 
 ```
-git tag v0.0.674 && git push origin v0.0.674
+git tag v0.0.677 && git push origin v0.0.677
 ```
 
-The workflow refuses to publish unless the APK's `versionName` matches the tag
-and it is signed with the expected certificate. It needs these repository
-secrets: `RELEASE_KEYSTORE_BASE64` (base64 of the keystore file),
+The workflow refuses to publish unless the APK's `versionName` matches the tag and
+the APK is signed with the expected certificate. It requires these repository
+secrets: `RELEASE_KEYSTORE_BASE64` (the base64-encoded keystore file),
 `RELEASE_STORE_PASSWORD`, `RELEASE_KEY_ALIAS` and `RELEASE_KEY_PASSWORD`. The
-keystore is never committed.
+keystore is never committed to the repository.
 
 ## Changes from upstream
 
 The application ID is `com.hidefbi.dnscontrol`, so this fork installs alongside
-the upstream app and is listed under its own name and author. The Java package
-name is unchanged.
+the upstream application and is listed under its own name. The Java package name
+is unchanged.
 
-See [NOTICE](NOTICE) for a summary. In short: log storage, log viewers and bug
-report collection are removed, several screens and background features are removed, DNS presets are
-replaced, and encrypted DNS failures no longer fall back to system DNS.
+See [NOTICE](NOTICE) for the full summary. In short: log storage, log viewers and
+bug-report collection are removed; several screens and background features are
+removed; the DNS presets are replaced; and encrypted DNS failures no longer fall
+back to system DNS.
 
 ## Privacy
 
 Connection and DNS query metadata is not persisted, and no log files are written
 or uploaded. Encrypted DNS queries are sent only to the resolver you select.
 
-Blocking downloads and the update check described above are the only other
-network requests made for blocking. The update check sends the app version code
-and the timestamp of your current lists.
+The only other network requests made for blocking are the update check and the
+blocklist download described above. Both contact the download host. The update
+check sends the app version code and the timestamp of the currently installed
+blocklist set.
 
 ## License
 
-Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
-Original copyright notices are retained in each source file.
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE). Original
+copyright notices are retained in each source file.
 
 ## Trademarks
 
-"RethinkDNS", "BraveDNS" and their logos are trademarks of their respective
+"RethinkDNS" and "BraveDNS" and their logos are trademarks of their respective
 owners. This project does not use them to imply endorsement.

@@ -24,6 +24,11 @@ Modifications in this fork (summary):
   Android robot, which is a Google work (CC BY 3.0); the new icon is original.
   Removed an unused Android-robot vector drawable.
 
+- Blocklist data: the prepared blocklist set downloaded by the app is published
+  from hidefbi/rules-old and built by hidefbi/dns-rules-builder from the public
+  upstream lists listed in the rules-old README. Upstream lists keep their own
+  licenses. The builder tooling is derived from serverless-dns/blocklists (MPL-2.0).
+
 Third-party data:
 - IP geolocation data in app/src/main/assets/dbip.v4 and dbip.v6:
   "IP Geolocation by DB-IP" (https://db-ip.com), licensed under CC BY 4.0.

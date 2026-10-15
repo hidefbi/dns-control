@@ -1,7 +1,7 @@
 name: Release
 
 # Builds, signs, verifies and publishes a GitHub Release when a version tag is pushed.
-#   git tag v0.0.674 && git push origin v0.0.674
+#   git tag v0.0.677 && git push origin v0.0.677
 on:
   push:
     tags:
@@ -66,7 +66,7 @@ jobs:
           grep -q "Signer #1 certificate SHA-256 digest: $EXPECTED_CERT_SHA256" signer.txt \
             || { echo "certificate does not match the expected release key"; exit 1; }
 
-          # the in-app version must match the tag, e.g. v0.0.674
+          # the in-app version must match the tag, e.g. v0.0.677
           "$AAPT2" dump badging "$APK" | grep -q "versionName='${GITHUB_REF_NAME}'" \
             || { echo "versionName does not match tag ${GITHUB_REF_NAME}"; exit 1; }
 
