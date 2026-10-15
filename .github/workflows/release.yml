@@ -1,7 +1,10 @@
 name: Release
 
 # Builds, signs, verifies and publishes a GitHub Release when a version tag is pushed.
-#   git tag v0.0.676 && git push origin v0.0.676
+#   git tag vX.Y.Z && git push origin vX.Y.Z
+# The tag must be vMAJOR.MINOR.PATCH with a numeric PATCH. The PATCH number becomes the
+# versionCode and the whole tag becomes the versionName. SDK packages follow compileSdk in
+# app/build.gradle, so this file does not need editing for a release.
 on:
   push:
     tags:
@@ -31,6 +34,16 @@ jobs:
           distribution: temurin
           java-version: "17"
 
+      - name: Derive version code from tag
+        run: |
+          # vMAJOR.MINOR.PATCH -> versionCode = PATCH (for example v0.0.678 -> 678)
+          PATCH="${GITHUB_REF_NAME##*.}"
+          case "$PATCH" in
+            ''|*[!0-9]*) echo "tag $GITHUB_REF_NAME must end in a numeric patch, e.g. v0.0.678"; exit 1 ;;
+          esac
+          echo "VERSION_CODE=$PATCH" >> "$GITHUB_ENV"
+          echo "APP_VERSION_NAME=$GITHUB_REF_NAME" >> "$GITHUB_ENV"
+
       # GitHub-hosted ubuntu runners ship with the Android SDK preinstalled and set ANDROID_HOME.
       - name: Install SDK packages
         run: |
@@ -38,10 +51,19 @@ jobs:
           SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
           test -x "$SDKMANAGER" || SDKMANAGER=$(command -v sdkmanager)
           "$SDKMANAGER" --version
-          # the preinstalled cmdline-tools index may predate android-37: refresh it first
+          # the preinstalled cmdline-tools index may predate the platform: refresh it first
           "$SDKMANAGER" --update
           yes | "$SDKMANAGER" --licenses > /dev/null || true
-          "$SDKMANAGER" "platforms;android-37.0" "build-tools;36.0.0"
+          # platform follows compileSdk in app/build.gradle (e.g. 37 -> platforms;android-37.x)
+          COMPILE_SDK=$(grep -oE '^[[:space:]]*compileSdk[[:space:]]+[0-9]+' app/build.gradle | grep -oE '[0-9]+$' | head -1)
+          test -n "$COMPILE_SDK" || { echo "compileSdk not found in app/build.gradle"; exit 1; }
+          SDK_LIST=$("$SDKMANAGER" --list 2>/dev/null)
+          PLATFORM=$(echo "$SDK_LIST" | grep -oE "platforms;android-${COMPILE_SDK}(\.[0-9]+)?" | sort -V | tail -1)
+          BUILD_TOOLS=$(echo "$SDK_LIST" | grep -oE "build-tools;[0-9]+\.[0-9.]+" | sort -V | tail -1)
+          test -n "$PLATFORM" || { echo "no platform package for android-$COMPILE_SDK"; exit 1; }
+          test -n "$BUILD_TOOLS" || { echo "no build-tools package found"; exit 1; }
+          echo "Installing $PLATFORM and $BUILD_TOOLS"
+          "$SDKMANAGER" "$PLATFORM" "$BUILD_TOOLS"
 
       - name: Decode release keystore
         env:
@@ -70,7 +92,7 @@ jobs:
           grep -q "Signer #1 certificate SHA-256 digest: $EXPECTED_CERT_SHA256" signer.txt \
             || { echo "certificate does not match the expected release key"; exit 1; }
 
-          # the in-app version must match the tag, e.g. v0.0.676
+          # the in-app version must match the tag
           "$AAPT2" dump badging "$APK" | grep -q "versionName='${GITHUB_REF_NAME}'" \
             || { echo "versionName does not match tag ${GITHUB_REF_NAME}"; exit 1; }
 

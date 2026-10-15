@@ -144,8 +144,13 @@ Pushing a version tag builds, signs, verifies and publishes a release through
 `.github/workflows/release.yml`:
 
 ```
-git tag v0.0.677 && git push origin v0.0.677
+git tag vX.Y.Z && git push origin vX.Y.Z
 ```
+
+The tag must be `vMAJOR.MINOR.PATCH` with a numeric patch number. The workflow
+uses the tag as the app's `versionName` and the patch number as its `versionCode`
+(for example, `v0.0.678` gives versionCode 678). The SDK packages follow `compileSdk`
+in `app/build.gradle`. No other file needs to be edited for a release.
 
 The workflow refuses to publish unless the APK's `versionName` matches the tag and
 the APK is signed with the expected certificate. It requires these repository
