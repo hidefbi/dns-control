@@ -31,7 +31,6 @@ object Logger {
     const val LOG_TAG_DOWNLOAD = "DownloadManager"
     const val LOG_TAG_UI = "RethinkUI"
     const val LOG_TAG_SCHEDULER = "JobScheduler"
-    const val LOG_TAG_BACKUP_RESTORE = "BackupRestore"
     const val LOG_TAG_PROXY = "ProxyLogs"
     const val LOG_QR_CODE = "QrCodeFromFileScanner"
     const val LOG_TAG_APP = "ExceptionHandler"

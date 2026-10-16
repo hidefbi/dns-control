@@ -31,7 +31,6 @@ import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.NotificationActionType
 import io.mockk.Runs
 import io.mockk.coEvery
-import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.just
 import io.mockk.mockk
@@ -71,7 +70,6 @@ import org.robolectric.shadows.ShadowLooper
  *  - Every toggle switch: RL-click delegation and PersistentState side-effects
  *  - Dialog creation / dismissal (Theme, Notification, Tasker)
  *  - Guard against dialog creation after the activity is finishing/destroyed
- *  - Lifecycle-safe IO: tombstone switch triggers rdb.refresh() in lifecycleScope
  *  - No context leak: dialogs are dismissed before the activity window is detached
  *
  * View IDs used here are the raw XML @+id values (underscore-separated), not the
@@ -108,7 +106,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         every { mockPersistentState.notificationActionType }        returns NotificationActionType.PAUSE_STOP.action
         every { mockPersistentState.biometricAuthType }             returns 0
         every { mockPersistentState.prefAutoStartBootUp }           returns false
-        every { mockPersistentState.tombstoneApps }                 returns false
         every { mockPersistentState.persistentNotification }        returns false
         every { mockPersistentState.firebaseErrorReportingEnabled } returns false
         every { mockPersistentState.goLoggerLevel }                 returns 4L
@@ -168,20 +165,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
                 val method = cls.getDeclaredMethod("onSaveInstanceState", Bundle::class.java)
                 method.isAccessible = true
                 method.invoke(activity, bundle)
-                return
-            } catch (_: NoSuchMethodException) {
-                cls = cls.superclass
-            }
-        }
-    }
-
-    private fun callInvokeImportExport(activity: MiscSettingsActivity) {
-        var cls: Class<*>? = activity.javaClass
-        while (cls != null) {
-            try {
-                val method = cls.getDeclaredMethod("invokeImportExport")
-                method.isAccessible = true
-                method.invoke(activity)
                 return
             } catch (_: NoSuchMethodException) {
                 cls = cls.superclass
@@ -365,61 +348,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
     }
 
     @Test
-    fun tombstoneAppRl_click_togglesTombstoneAppSwitch() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            val rl = activity.findViewById<View>(R.id.tombstone_app_rl) ?: return
-            val sw = activity.findViewById<CompoundButton>(R.id.tombstone_app_switch) ?: return
-            val before = sw.isChecked
-            rl.performClick()
-            assertEquals("Tombstone RL click must invert switch", !before, sw.isChecked)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun tombstoneAppSwitch_checkedTrue_setsTombstoneApps() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            val sw = activity.findViewById<CompoundButton>(R.id.tombstone_app_switch) ?: return
-            sw.isChecked = true
-            verify { mockPersistentState.tombstoneApps = true }
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun tombstoneAppSwitch_checked_triggersRefreshDatabase() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            val sw = activity.findViewById<CompoundButton>(R.id.tombstone_app_switch) ?: return
-            sw.isChecked = true
-            ShadowLooper.runUiThreadTasksIncludingDelayedTasks()
-            Thread.sleep(300)
-            coVerify(atLeast = 1) { mockRdb.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun tombstoneAppSwitch_toggle_thenActivityDestroyed_doesNotCrash() {
-        // lifecycleScope must cancel the in-flight coroutine on destroy, not crash
-        try {
-            val controller = Robolectric.buildActivity(MiscSettingsActivity::class.java)
-                .create().start().resume()
-            val activity = controller.get()
-            activity.findViewById<CompoundButton>(R.id.tombstone_app_switch)?.isChecked = true
-            controller.pause().stop().destroy()
-            assertTrue(true)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
     fun persistentNotificationRl_click_togglesSwitch() {
         try {
             val activity = buildAndStartActivity() ?: return
@@ -520,48 +448,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
             dialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.performClick()
             ShadowLooper.idleMainLooper()
             assertFalse("Negative button must not invoke callback", callbackInvoked)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    // =====================================================================================
-    // 6. invokeImportExport – finishing guard
-    // =====================================================================================
-
-    @Test
-    fun importExportRl_whenActivityIsFinishing_doesNotShowBottomSheet() {
-        try {
-            val controller = Robolectric.buildActivity(MiscSettingsActivity::class.java)
-                .create().start().resume()
-            val activity = controller.get()
-            activity.finish()
-            assertTrue(activity.isFinishing)
-            // Must not crash even when invoked while finishing
-            activity.findViewById<View>(R.id.settings_activity_import_export_rl)?.performClick()
-            assertTrue(true)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun invokeImportExport_whenActivityIsDestroyed_doesNotShowBottomSheet() {
-        try {
-            val controller = Robolectric.buildActivity(MiscSettingsActivity::class.java)
-                .create().start().resume().pause().stop().destroy()
-            val activity = controller.get()
-            assertTrue(activity.isDestroyed)
-
-            val fragmentCountBefore = activity.supportFragmentManager.fragments.size
-            callInvokeImportExport(activity)
-            ShadowLooper.idleMainLooper()
-
-            assertEquals(
-                "Destroyed activity must not add import/export fragment",
-                fragmentCountBefore,
-                activity.supportFragmentManager.fragments.size
-            )
         } catch (e: Exception) {
             assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
         }
@@ -828,34 +714,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         }
     }
 
-    @Test
-    fun tombstoneSwitch_initialState_trueWhenTombstoneAppsTrue() {
-        every { mockPersistentState.tombstoneApps } returns true
-        try {
-            val activity = buildAndStartActivity() ?: return
-            val sw = activity.findViewById<CompoundButton>(R.id.tombstone_app_switch) ?: return
-            assertTrue("Switch must be checked when tombstoneApps=true", sw.isChecked)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    // =====================================================================================
-    // 18. IO coroutine lifecycle – no crash after pause
-    // =====================================================================================
-
-    @Test
-    fun tombstoneSwitch_toggleAfterPause_doesNotCrash() {
-        try {
-            val controller = Robolectric.buildActivity(MiscSettingsActivity::class.java)
-                .create().start().resume().pause()
-            val activity = controller.get()
-            activity.findViewById<CompoundButton>(R.id.tombstone_app_switch)?.isChecked = true
-            assertTrue(true)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
 }
 
 

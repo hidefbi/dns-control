@@ -90,7 +90,6 @@ class RefreshDatabaseTest {
 
         coEvery { Utilities.isMissingOrInvalidUid(uid) } returns false
         coEvery { FirewallManager.hasUid(uid) } returns false
-        coEvery { FirewallManager.isTombstone(packageName) } returns false
         every { packageManager.getPackagesForUid(uid) } returns arrayOf(packageName)
         every { packageManager.getApplicationInfo(packageName, any<Int>()) } returns applicationInfo
         every { packageManager.getApplicationLabel(any()) } returns "Example App"
@@ -112,21 +111,20 @@ class RefreshDatabaseTest {
     // takes its collaborators as constructor parameters.
     @Ignore("ACTION_REFRESH_AUTO touches the full WireGuard/Proxy Koin graph; needs a fixture or refactor")
     @Test
-    fun `process ACTION_REFRESH_AUTO should tombstone uninstalled apps when tombstone is enabled`() = runTest {
+    fun `process ACTION_REFRESH_AUTO should delete uninstalled apps`() = runTest {
         val trackedUid = 10555
         val trackedPackage = "com.uninstalled.app"
         val trackedApps = setOf(FirewallManager.AppInfoTuple(trackedUid, trackedPackage))
         
-        every { persistentState.tombstoneApps } returns true
         coEvery { FirewallManager.getAllApps() } returns trackedApps
         // Simulate no apps installed via Package Manager
         every { packageManager.getInstalledPackages(any<Int>()) } returns emptyList()
         
-        coEvery { FirewallManager.tombstoneApp(any(), any(), any()) } just Runs
+        coEvery { FirewallManager.deletePackage(any(), any()) } just Runs
         
         val action = RefreshDatabase.Action(RefreshDatabase.ACTION_REFRESH_AUTO)
         refreshDatabase.process(action)
         
-        coVerify { FirewallManager.tombstoneApp(trackedUid, trackedPackage, any()) }
+        coVerify { FirewallManager.deletePackage(trackedUid, trackedPackage) }
     }
 }

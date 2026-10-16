@@ -68,17 +68,6 @@ class AppInfoRepository(private val appInfoDAO: AppInfoDAO) {
         appInfoDAO.deleteAll()
     }
 
-    suspend fun tombstoneApp(oldUid: Int, newUid: Int, packageName: String?, tombstoneTs: Long) {
-        val modifiedTs = System.currentTimeMillis()
-        if (packageName == null) {
-            // clear stale values before updating
-            appInfoDAO.tombstoneAppByUid(oldUid, newUid, tombstoneTs, modifiedTs)
-            return
-        }
-        // clear stale values before updating
-        appInfoDAO.tombstoneAppWithPkg(newUid, oldUid, packageName, tombstoneTs, modifiedTs)
-    }
-
     suspend fun getAppInfo(): List<AppInfo> {
         return appInfoDAO.getAllAppDetails()
     }

@@ -91,7 +91,6 @@
     <string name="settings_check_update_heading">Tikrinti ar yra atnaujinimų</string>
     <string name="settings_custom_downloader_heading">Naudoti programėlėje esančią atsisiuntimo priemonę</string>
     <string name="settings_custom_downloader_desc">Jei išjungta, naudojama integruota Android <i>atsisiuntimo tvarkyklė</i>.</string>
-    <string name="settings_import_export_heading">Atsarginė kopija ir atkūrimas</string>
     <string name="settings_theme_heading">Išvaizda</string>
     <string name="settings_http_proxy_desc">Peradresuojama į %1$s</string>
     <string name="settings_http_proxy_error_text2">Netinkamas prievadas</string>
@@ -299,26 +298,8 @@
     <string name="lbbs_redownload">Iš naujo atsisiųsti blokavimo sąrašus</string>
     <string name="lbbs_download">Atnaujinti blokavimo sąrašus</string>
     <string name="lbbs_heading">Konfigūruoti 185+ blokavimo sąrašus</string>
-    <string name="brbs_title">Atsarginė kopija ir atkūrimas</string>
     <string name="status_protected_with_proxy">apsaugota su įgaliotuoju serveriu</string>
     <string name="always_on_dialog">Šiame įrenginyje įjungtas „Nuolatinis VPN“. Norėdami paleisti DNS Control, eikite į programėlę „Nustatymai“ ir išjunkite „Nuolatinis VPN“.</string>
-    <string name="brbs_backup_title">Atsarginė kopija</string>
-    <string name="brbs_backup_desc">Programėlės nustatymų, tinklo ir DNS žurnalų atsarginės kopijos</string>
-    <string name="brbs_restore_title">Atkurti</string>
-    <string name="brbs_restore_desc">Atkurti iš atsarginės kopijos failo</string>
-    <string name="brbs_backup_dialog_title">Padaryti atsarginę kopiją</string>
-    <string name="brbs_backup_dialog_message">Sukuria atsargines programėlės nustatymų, tinklo ir dns žurnalų kopijas faile. Tai iš naujo paleis VPN.</string>
-    <string name="brbs_backup_dialog_positive">Sukurti atsarginę kopiją</string>
-    <string name="brbs_restore_dialog_title">Atkurti atsarginę kopiją</string>
-    <string name="brbs_restore_dialog_message">Atkurti programėlės nustatymus, tinklo ir DNS žurnalus iš atsarginės kopijos failo. Tai iš naujo paleis programėlę.</string>
-    <string name="brbs_restore_dialog_positive">Atkurti</string>
-    <string name="brbs_backup_dialog_failure_title">Atsarginė kopija nepavyko</string>
-    <string name="brbs_backup_dialog_failure_message">Nepavyko sukurti atsarginės kopijos. Bandyti dar kartą?</string>
-    <string name="brbs_backup_dialog_failure_positive">Bandyti dar kartą sukurti atsarginę kopiją</string>
-    <string name="brbs_restore_dialog_failure_title">Atkūrimas nepavyko</string>
-    <string name="brbs_restore_dialog_failure_message">Nepavyko atkurti. Bandyti dar kartą?</string>
-    <string name="brbs_restore_dialog_failure_positive">Bandyti iš atkurti naujo</string>
-    <string name="brbs_backup_complete_toast">Atsarginės kopijos kūrimas baigtas</string>
     <string name="slide_2_desc">DNS Control yra lengviausias būdas stebėti tinklo veiklą, apeiti interneto cenzūrą ir ugniasienės programėles jūsų Android įrenginyje.</string>
     <string name="slide_2_title">Sveiki</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
@@ -386,7 +367,6 @@
     <string name="settings_orbot_notification_content">Gedimas paleidžiant Tor kaip įgaliotasis serveris. Atidarykite Orbot programėlę, kad paleistumėte jį rankiniu būdu.</string>
     <string name="settings_autostart_bootup_heading">Automatinis paleidimas įrenginį įjungus (eksperimentinis)</string>
     <string name="settings_http_proxy_error_text1">Prievadų diapazonas turėtų būti 1024-65535</string>
-    <string name="settings_import_export_desc">Rankiniu būdu sukurkite atsarginę kopiją arba atkurkite programėlės duomenis ir nustatymus.</string>
     <string name="settings_dns_proxy_dialog_positive_btn">nustatyti</string>
     <string name="settings_dns_proxy_dialog_password">Slaptažodis</string>
     <string name="settings_notification_heading">Pasirinkti pranešimo veiksmą</string>
@@ -480,7 +460,6 @@
     <string name="notif_download_failure_content">Atsisiųsti nepavyko. Bandykite dar kartą.</string>
     <string name="notif_download_success_content">Atsisiuntimas sėkmingas.</string>
     <string name="ada_app_status_block_wifi">yra užblokuota nematuojamuose (wifi) tinkluose</string>
-    <string name="brbs_restore_complete_toast">Atkūrimas baigtas, iš naujo paleidžiama programėlė…</string>
     <string name="ada_app_status_isolate">yra visiško užrakinimo režime</string>
     <string name="ada_app_status_unknown">yra nežinoma</string>
     <string name="ada_app_metered">Matuojami</string>
@@ -488,7 +467,6 @@
     <string name="network_dns">Sistemos DNS</string>
     <string name="rbl_security">Sauga</string>
     <string name="rt_edit_dialog_positive">Redaguoti</string>
-    <string name="brbs_restore_no_uri_toast">Atkūrimas nepavyko; bandykite dar kartą</string>
     <string name="pause_title_desc">snaudžiama…</string>
     <string name="settings_title_desc">Itin pritaikoma DNS bei ugniasienė</string>
     <string name="bypass_universal">apeiti universaliąsias</string>

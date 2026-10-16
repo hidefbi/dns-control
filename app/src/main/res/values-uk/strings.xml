@@ -128,9 +128,6 @@
     <string name="ada_app_metered" translatable="true">Обмежена мережа</string>
     <string name="ada_app_unmetered" translatable="true">Необмежена мережа</string>
     <string name="ada_app_exclude" translatable="true">Виключити</string>
-    <string name="brbs_backup_desc" translatable="true">Резервне копіювання налаштувань застосунків, журналів мережі та dns</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Створює резервну копію налаштувань застосунку, мережі та журналів dns у файл. Це призведе до перезапуску VPN.</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Відновлення завершено, перезапуск застосунку…</string>
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control використовує службу доступності, щоб відстежувати, які застосунки використовуються (на передньому плані) і які не використовуються (у фоновому режимі). \n \nDNS Control не збирає жодної інформації та жодним чином не шпигує за вами.</string>
     <string name="settings_biometeric_heading" translatable="true">Увімкнути блокування застосунку</string>
     <string name="settings_biometric_desc" translatable="true">Захистіть цей застосунок за допомогою блокування екрана</string>
@@ -179,7 +176,6 @@
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;: Блокує підключення програми до Інтернету. \n &lt;u&gt;#2&lt;/u&gt;: Блокує підключення будь-якої програми до певної IP-адреси. \n &lt;u&gt;#3&lt;/u&gt;: Блокує всі з\'єднання, коли пристрій заблоковано (Універсальний брандмауер). \n &lt;u&gt;#4&lt;/u&gt;: Блокує будь-які програми, які не використовуються (Універсальний брандмауер). \n &lt;u&gt;#5&lt;/u&gt;: Блокує з’єднання, коли вихідна програма невідома (Universal Firewall). \n &lt;u&gt;#6&lt;/u&gt;: Блокує весь UDP-трафік, окрім DNS (універсальний брандмауер). \n &lt;u&gt;#7&lt;/u&gt;: Блокувати з’єднання, коли DNS обходиться (Universal Firewall).</string>
     <string name="settings_https_desc" translatable="true">Пересилати з\'єднання за протоколом HTTP(s).</string>
     <string name="orbot_explanation" translatable="true">Orbot – це безплатний застосунок-проксі, який дає змогу іншим застосункам &lt;u&gt;безпечніше&lt;/u&gt; використовувати Інтернет. \nOrbot використовує &lt;u&gt;Tor&lt;/u&gt; для шифрування вашого Інтернет-трафіку, що допомагає вам &lt;u&gt;обійти цензуру&lt;/u&gt; та захиститися від форм &lt;u&gt;мережевого спостереження&lt;/u&gt;, які загрожують особистій свободі та конфіденційності. \n&lt;u&gt;TCP Proxy&lt;/u&gt;: DNS Control пересилає до Orbot лише TCP-сегменти посилань &lt;i&gt;доданих&lt;/i&gt; застосунків. \n&lt;u&gt;Http Proxy&lt;/u&gt;; DNS Control &lt;i&gt;встановлює&lt;/i&gt; тунель HTTP ПІДКЛЮЧЕННЯ до Orbot і пересилає лише TCP-сегменти посилань &lt;i&gt;доданих&lt;/i&gt; застосунків.</string>
-    <string name="settings_import_export_desc" translatable="true">Вручну створіть резервну копію або відновіть дані та налаштування застосунку.</string>
     <string name="settings_socks_forwarding_desc_no_app" translatable="true">Переадресація на %1$s:%2$s</string>
     <string name="univ_firewall_rule_6" translatable="true">Блокувати нові встановлені застосунки за замовчуванням</string>
     <string name="settings_orbot_notification_content" translatable="true">Помилка запуску Tor-as-a-Proxy. Відкрийте застосунок Orbot, щоб запустити його вручну.</string>
@@ -198,7 +194,6 @@
     <string name="firewall_rule_foreground_desc" translatable="true"><![CDATA[This connection was firewalled because the source app was <i>не на передньому плані</i>.<br/><br/> Щоб змінити цю поведінку, перейдіть на вкладку <i>Універсальний</i>.]]></string>
     <string name="ada_app_isolate" translatable="true">Ізолювати</string>
     <string name="rt_dialog_message" translatable="true">Ви хочете застосувати нещодавно налаштовані списки блокування?</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Відновіть налаштування застосунку, мережеві та dns журнали з файлу резервної копії. Це призведе до перезапуску застосунку.</string>
     <string name="firewall_rule_block_domain_desc" translatable="true"><![CDATA[A user-set firewall rule blocked the <i>домен</i>.<br/><br/> Щоб змінити, перейдіть на екран <i>Брандмауер для конкретної програми</i>.]]></string>
     <string name="new_app_notification_action_toast_allow" translatable="true">Для застосунку дозволено підключення до мережі</string>
     <string name="firewall_rule_trusted_domain_desc" translatable="true"><![CDATA[This connection was allowed because the <i>домен</i> встановлено як довірений домен.<br/><br/> Щоб змінити, перейдіть на екран <i>Брандмауер для конкретного додатка</i>.]]></string>
@@ -398,7 +393,6 @@
     <string name="settings_rinr_desc_enabled" translatable="true">Перенаправлення власного трафіку DNS Control через тунель. Якщо ви не знаєте, що робите, вимкніть це.</string>
     <string name="settings_socks5_vpn_disabled_error" translatable="true">Запустіть DNS Control, щоб продовжити.</string>
     <string name="settings_orbot_disabled_error" translatable="true">Вимкніть HTTP(S) та/або SOCKS5 проксі, щоб продовжити налаштування Tor як проксі.</string>
-    <string name="settings_import_export_heading" translatable="true">Резервне копіювання та відновлення</string>
     <string name="orbot_no_app_toast" translatable="true">Додайте принаймні один застосунок, щоб увімкнути Orbot</string>
     <string name="settings_theme_desc" translatable="true">Темна/світла тема</string>
     <string name="crypt_relay_netherlands" translatable="true">Анонімна ретрансляція DNS (Система доменних імен), розміщена в Нідерландах</string>
@@ -562,9 +556,6 @@
     <string name="firewall_rule_trusted_ip" translatable="true">Довіряти IP</string>
     <string name="firewall_rule_unknown" translatable="true">Правило для невідомих джерел</string>
     <string name="cd_dialog_desc" translatable="true">Доменне ім\'я або URL з необов\'язковими операторами модифікації: *.test.com, test.com/test</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Повторити резервне копіювання</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Повторіть спробу відновлення</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">Не вдалося відновити</string>
     <string name="bad_config_explanation_positive_number" translatable="true">: Має бути позитивним</string>
     <string name="bad_config_explanation_udp_port" translatable="true">: номер порту UDP має бути дійсним</string>
     <string name="bad_config_context" translatable="true">%1$s %2$s</string>
@@ -585,8 +576,6 @@
     <string name="bsrf_clear_filter" translatable="true">Очистити фільтр</string>
     <string name="lbbs_enabled" translatable="true">Увімкнено</string>
     <string name="lbbs_update_check" translatable="true">Перевірити наявність оновлень</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Невдале створення резервної копії</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">Не вдалося відновити; спробуйте ще раз</string>
     <string name="rbl_privacy" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">Конфіденційність</string>
     <string name="firewall_rule_block_unmetered" translatable="true">Необмежений (для WiFi)</string>
     <string name="firewall_rule_exempt_dns_proxied" translatable="true">Правило по DNS-проксуванню</string>
@@ -643,7 +632,6 @@
     <string name="cd_dialog_error_invalid_domain" translatable="true">Недійсна URL-адреса або ім\'я домену</string>
     <string name="notif_download_content_text" translatable="true">Прогрес завантаження…</string>
     <string name="dc_local_block_enabled" translatable="true">Увімкнено</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Не працює в різних версіях додатка</string>
     <string name="hs_biometeric_title" translatable="true">Розблокувати DNS Control</string>
     <string name="firewall_card_universal_rules" translatable="true">%1$s універсальних правил</string>
     <string name="hsf_start_btn_state" translatable="true">почати</string>
@@ -661,7 +649,6 @@
     <string name="cd_no_rule_initial" translatable="true">YN</string>
     <string name="dns_crypt_relay_error_toast" translatable="true">Не обрано розв\'язувач імен</string>
     <string name="notif_channel_desc_vpn_notification" translatable="true">Повідомляти, коли DNS Control активний і працює у фоновому режимі</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Резервне копіювання</string>
     <string name="firewall_status_allow" translatable="true">дозволяти</string>
     <string name="firewall_status_block_unmetered" translatable="true">заблокувано в WiFi мережах</string>
     <string name="dns_card_latency_inactive" translatable="true">Увімкнути режим DNS.</string>
@@ -724,11 +711,6 @@
     <string name="lbbs_configure" translatable="true">Конфігурація</string>
     <string name="lbbs_download" translatable="true">Оновити блоклисти</string>
     <string name="lbbs_heading" translatable="true">Налаштуйте 195+ блеклистів</string>
-    <string name="brbs_title" translatable="true">Резервне копіювання/відновлення даних</string>
-    <string name="brbs_backup_title" translatable="true">Резервна копія</string>
-    <string name="brbs_restore_title" translatable="true">Відновити</string>
-    <string name="brbs_restore_desc" translatable="true">Відновлення з файла резервної копії</string>
-    <string name="brbs_backup_dialog_title" translatable="true">Створіть резервну копію</string>
     <string name="bad_config_reason_syntax_error" translatable="true">Синтаксична помилка</string>
     <string name="bad_config_reason_unknown_attribute" translatable="true">Невідомий атрибут</string>
     <string name="bad_config_reason_unknown_section" translatable="true">Невідома секція</string>
@@ -757,12 +739,7 @@
     <string name="build__flavor_website" translatable="true">вебсайт</string>
     <string name="build__flavor_play_store" translatable="true">грати</string>
     <string name="ci_no_rules_text" translatable="true">Немає правил IP або порту.</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Не вдалося відновити. Спробувати знову?</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Резервне копіювання завершено</string>
     <string name="bad_config_reason_missing_attribute" translatable="true">Відсутній атрибут</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Відновити резервну копію</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Відновити</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Не вдалося створити резервну копію. Спробувати знову?</string>
     <string name="bad_config_reason_missing_section" translatable="true">Відсутній атрибут</string>
     <string name="lbl_test" translatable="true">тест</string>
     <string name="lbl_protos" translatable="true">протея</string>
@@ -881,8 +858,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Ідентифікатори Wi-Fi (%1$s) повинні містити 32 символи або менше.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Програма стабільності</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Зберігайте журнали помилок для покращення стабільності.</string>
-    <string name="tombstone_app_title" translatable="true">Запам\'ятати видалені програми</string>
-    <string name="tombstone_app_desc" translatable="true">Якщо ввімкнено, зберігати правила програми протягом 7 днів.</string>
     <string name="settings_locale_dialog_default" translatable="true">Системні за замовчуванням</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Якщо ввімкнено, дозволяється вхідні з’єднання, ініційовані вузлами WireGuard.</string>

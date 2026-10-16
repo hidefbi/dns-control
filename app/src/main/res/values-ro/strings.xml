@@ -156,7 +156,6 @@
     <string name="settings_dns_proxy_dialog_username" translatable="true">Nume de utilizator</string>
     <string name="settings_general_header" translatable="true">General</string>
     <string name="firewall_status_unknown" translatable="true">necunoscute</string>
-    <string name="settings_import_export_heading" translatable="true">Backup și restaurare</string>
     <string name="settings_dns_proxy_dialog_password" translatable="true">Parolă</string>
     <string name="settings_locale_heading" translatable="true">Schimbă limba</string>
     <string name="hsf_start_btn_state" translatable="true">start</string>
@@ -296,7 +295,6 @@
     <string name="settings_network_all_networks_desc" translatable="true">Când este activat, DNS Control folosește toate rețelele disponibile pentru conectarea la internet. Dacă nu, folosește orice rețea indicată ca <i>activă</i> de Android.</string>
     <string name="settings_custom_downloader_heading" translatable="true">Folosește downloader-ul aplicației</string>
     <string name="settings_custom_downloader_desc" translatable="true">Dacă e dezactivat, se folosește <i>Download Manager</i> al Android</string>
-    <string name="settings_import_export_desc" translatable="true">Efectuează manual copie de rezervă sau restaurare a setărilor și datelor din aplicații.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">Notificare aplicație</string>
     <string name="settings_app_notification_a13_desc" translatable="true">Activează notificările pentru aplicație</string>
     <string name="settings_app_notification_persistent_heading" translatable="true">Notificare permanentă</string>
@@ -629,8 +627,6 @@
     <string name="ci_bypass_universal" translatable="true">Ocolire Universală</string>
     <string name="ci_trust_rule" translatable="true">De încredere</string>
     <string name="lbbs_heading" translatable="true">Configurează peste 195 liste de blocat</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Nu funcționează la toate versiunile aplicației</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Salvează setările de la aplicații, rețea și jurnale DNS intr-un fișier. Această acțiune va reporni VPN.</string>
     <string name="parse_error_integer" translatable="true">număr</string>
     <string name="one_wg_apps_added" translatable="true">Se direcționează toate aplicațiile</string>
     <string name="catch_all_wg_dialog_title" translatable="true">Permanent</string>
@@ -690,30 +686,11 @@
     <string name="lbbs_update_check" translatable="true">Verifică actualizări</string>
     <string name="lbbs_redownload" translatable="true">Redescarcă listele de blocat</string>
     <string name="lbbs_download" translatable="true">Actualizează listele de blocat</string>
-    <string name="brbs_title" translatable="true">Copie de rezervă și restaurare</string>
-    <string name="brbs_backup_title" translatable="true">Copie de rezervă</string>
-    <string name="brbs_backup_desc" translatable="true">Copie de rezervă a setărilor pentru aplicații, rețea si jurnale DNS</string>
-    <string name="brbs_restore_title" translatable="true">Restaurare</string>
-    <string name="brbs_restore_desc" translatable="true">Restaurare după copie de rezervă</string>
-    <string name="brbs_backup_dialog_title" translatable="true">Preia copia de rezervă</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Copie de rezervă</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Restaurare copie de rezervă</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Restaurează setările pentru aplicații, rețea, și jurnalele DNS dintr-un fișier copie de rezervă. Această acțiune va reporni aplicația.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Restaurare</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Nu s-a realizat copia de rezervă</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Reîncearcă crearea unei copii de rezervă</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Nu s-a realizat copia de rezervă. Mai încerci o dată?</string>
     <string name="rt_filter_hint" translatable="true">Se arată <u>toate</u> listele de blocat</string>
     <string name="rt_filter_desc_subgroups" translatable="true"><![CDATA[Se arată listele de blocat <u>%1$s</u>în grupul: %2$s și subgrupul: %3$s]]></string>
     <string name="dc_setting_dns_cache_heading" translatable="true">Booster DNS</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Grupează cererile, memorează răspunsurile, rezolvă cu promptitudine erorile</string>
     <string name="dc_refresh_toast" translatable="true">Reîmprospătare completă</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">Restaurare nereușită</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Nu s-a putut efectua restaurarea. Mai încerci o dată?</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Reîncearcă restaurarea</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Restaurare completă, se repornește aplicația…</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Copie de rezervă reușită</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">Restaurare nereușită, încearcă din nou</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s liste de blocat</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Pornește DNS Control pentru a începe</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Valoarea nu e validă</string>
@@ -878,8 +855,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Identificatorii Wi-Fi (%1$s) trebuie să conțină cel mult 32 caractere..</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Program stabilitate</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capturează înregistrările erorilor pentru îmbunătățirea stabilității.</string>
-    <string name="tombstone_app_title" translatable="true">Memorează aplicațiile dezinstalate</string>
-    <string name="tombstone_app_desc" translatable="true">Dacă este activat, păstrează regulile pe aplicații timp de 7 zile.</string>
     <string name="settings_locale_dialog_default" translatable="true">Prestabilit de sistem</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Odată activate, permite intrarea conexiunile inițiate de perechile Wireguard.</string>

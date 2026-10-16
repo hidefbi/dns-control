@@ -21,8 +21,6 @@
     <string name="firewall_rules">網絡規則</string>
     <string name="orbot_explanation">Orbot 係一款能夠畀其他程式更&lt;u&gt;安全&lt;/u&gt;咁連線去互聯網嘅免費代理應用程式。 \nOrbot 會用到 &lt;u&gt;Tor&lt;/u&gt; 嚟加密您嘅網絡流量，幫您&lt;u&gt;繞過網絡審查&lt;/u&gt;，同埋抵禦威脅個人自由同隱私嘅&lt;u&gt;網絡監視&lt;/u&gt;。 \n&lt;u&gt;TCP 代理&lt;/u&gt;：DNS Control 只會將&lt;i&gt;包含嘅&lt;/i&gt;應用程式嘅 TCP 連線轉發去 Orbot。 \n&lt;u&gt;HTTP 代理&lt;/u&gt;：DNS Control 會同 Orbot &lt;i&gt;起一條&lt;/i&gt; HTTP CONNECT 隧道，並且只會轉發&lt;i&gt;包含嘅&lt;/i&gt;應用程式嘅 TCP 連線。</string>
     <string name="settings_custom_downloader_desc">如果禁用，就會用 Android 內置嘅<i>下載管理器</i></string>
-    <string name="settings_import_export_heading">備份同恢復</string>
-    <string name="settings_import_export_desc">手動備份或者恢復程式資料同設定。</string>
     <string name="settings_socks_forwarding_desc_no_app">轉發緊去 %1$s:%2$s</string>
     <string name="settings_socks5_dialog_hint_password">密碼（可選）</string>
     <string name="settings_socks_forwarding_default_desc">轉發緊連線去 SOCKS5 端點。</string>
@@ -438,25 +436,6 @@
     <string name="lbbs_redownload">重新下載攔截清單</string>
     <string name="lbbs_download">更新攔截清單</string>
     <string name="lbbs_heading">配置超過 195 份攔截清單</string>
-    <string name="brbs_title">備份同恢復</string>
-    <string name="brbs_backup_title">備份</string>
-    <string name="brbs_backup_desc">備份應用設定、網絡日誌同 DNS 日誌</string>
-    <string name="brbs_restore_title">恢復</string>
-    <string name="brbs_restore_desc">喺備份檔度恢復</string>
-    <string name="brbs_backup_dialog_title">執行備份</string>
-    <string name="brbs_backup_dialog_message">將應用程式設定、網絡日誌同 DNS 日誌備份到一個檔案入面。咁做會重啓 VPN。</string>
-    <string name="brbs_backup_dialog_positive">備份</string>
-    <string name="brbs_restore_dialog_title">恢復備份</string>
-    <string name="brbs_restore_dialog_message">喺一個備份檔案入面恢復應用程式設定、網絡日誌同 DNS 日誌。這將重啓應用程式。</string>
-    <string name="brbs_restore_dialog_positive">恢復</string>
-    <string name="brbs_backup_dialog_failure_title">備份失敗</string>
-    <string name="brbs_backup_dialog_failure_message">而家備份唔到。要唔要試多次？</string>
-    <string name="brbs_backup_dialog_failure_positive">重新備份</string>
-    <string name="brbs_restore_dialog_failure_title">恢復失敗</string>
-    <string name="brbs_restore_dialog_failure_message">而家恢復唔到。要唔要試多次？</string>
-    <string name="brbs_backup_complete_toast">備份完</string>
-    <string name="brbs_restore_dialog_failure_positive">重新恢復</string>
-    <string name="brbs_restore_complete_toast">恢復完，重啓緊 app……</string>
     <string name="cd_remove_dialog_message">喺儲存咗嘅配置入面刪除呢個網域。</string>
     <string name="pause_title_desc">瞌陣先…</string>
     <string name="accessibility_service_description">唔該比 DNS Control 用無障礙服務，嚟偵測同攔截背景應用程式。DNS Control 並唔會偷同埋賣您嘅任何資訊。</string>
@@ -516,7 +495,6 @@
     <string name="ada_app_status_block_md">已經喺收費嘅網絡（流動數據）攔截咗</string>
     <string name="ada_app_bypass_univ">無條件放行</string>
     <string name="notif_download_failure_content">下載失敗。請再試過。</string>
-    <string name="brbs_restore_no_uri_toast">恢復失敗；請再試過</string>
     <string name="firewall_rule_block_udp_ntp_desc"><![CDATA[一條用戶定義嘅防火牆規則攔截咗呢個 <i>UDP</i> 連線。<br/><br/>如果要改，請去<i>全局</i>選項卡。]]></string>
     <string name="firewall_rule_exempt_orbot_setup_desc"><![CDATA[呢個連線因爲仲設定緊<i>一鍵 Tor 代理</i>而放行。]]></string>
     <string name="firewall_rule_device_lock_desc"><![CDATA[呢個連線因爲<i>裝置鎖定咗</i>而被攔截。<br/><br/>如果要改呢個行爲，請去<i>全局</i>選項卡。]]></string>
@@ -617,7 +595,6 @@
     <string name="firewall_rule_bypass_dns_firewall_desc" translatable="true"><![CDATA[呢個連線因爲<i>來源應用程式</i>嘅<i>繞行 DNS 同防火牆</i>規則而被放行。<br/><br/>如果要改，請去<i>分應用防火牆</i>區。]]></string>
     <string name="firewall_rule_dns_blocked_desc" translatable="true"><![CDATA[呢個連線因爲<i>網域</i>被用戶偏好嘅 DNS 攔截咗。<br/><br/>如果要改呢個行爲，請去 <i>DNS 配置</i>選項卡。]]></string>
     <string name="firewall_rule_domain_blocked_univ_desc" translatable="true"><![CDATA[呢個連線因爲<i>網域</i>被通用網域規則攔截而攔截咗。<br/><br/>如果要改呢個行爲，請去 <i>DNS 配置</i>選項卡。]]></string>
-    <string name="brbs_backup_restore_desc" translatable="true">冇得跨版本用</string>
     <string name="lbl_network" translatable="true">網絡</string>
     <string name="settings_allow_lan_desc" translatable="true">將 LAN、環回、多播同本地鏈路路由排除喺 DNS Control 嘅 VPN 隧道外面。</string>
     <string name="bypass_dns_firewall_tooltip">%1$s 只會喺 DNS Control 嘅 DNS 度有效</string>

@@ -61,12 +61,10 @@
     <string name="settings_orbot_desc">HTTPS/SOCKS5 ile vpn olmayan modda Orbot.</string>
     <string name="settings_orbot_install_desc">Orbot\'u yüklemek için buraya dokunun</string>
     <string name="settings_orbot_disabled_error">Proxy olarak Tor kurulumuna devam etmek için HTTP(S) ve/veya SOCKS5 proxy\'yi kapatın.</string>
-    <string name="settings_import_export_desc">Uygulama veri ve ayarlarını manuel olarak yedekleyin veya geri yükleyin.</string>
     <string name="settings_theme_heading">Görünüm</string>
     <string name="settings_theme_desc">Koyu/açık tema</string>
     <string name="settings_http_proxy_desc">%1$s adresine yönlendirme</string>
     <string name="settings_custom_downloader_desc">Devre dışı bırakılırsa, Android\'in yerleşik <i>İndirme Yöneticisi</i> kullanılır</string>
-    <string name="settings_import_export_heading">Yedekle &amp; Geri Yükle</string>
     <string name="firewall_status_blocked">kapalı</string>
     <string name="firewall_status_unknown">Bilinmeyen</string>
     <string name="firewall_card_status_active">%1$s uygulamalar</string>
@@ -109,7 +107,6 @@
     <string name="rt_list_simple_btn_txt">Basit</string>
     <string name="dc_local_block_enabled">Etkin</string>
     <string name="lbbs_download">Blok listelerini güncelleme</string>
-    <string name="brbs_backup_dialog_positive">Yedekle</string>
     <string name="app_mode_firewall">Güvenlik Duvarı</string>
     <string name="settings_ip_network_heading">IP sürümünü seçin</string>
     <string name="orbot_stop_dialog_dns_message">DNS Control, DNS sorgularını Orbot\'a iletecek şekilde ayarlanmıştır. Gerektiği gibi değiştirin.</string>
@@ -129,7 +126,6 @@
     <string name="cd_toast_added">Alan adı başarıyla eklendi</string>
     <string name="rt_dialog_neutral">Devam Et</string>
     <string name="about_mail_subject">[DNS Control]:</string>
-    <string name="brbs_backup_dialog_title">Yedek alın</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
     <string name="settings_http_proxy_error_text1">Port aralığı 1024-65535 arasında olmalıdır</string>
     <string name="hsf_stop_btn_state">durak</string>
@@ -144,8 +140,6 @@
     <string name="settings_notification_dialog_option_2">\nDNS / DNS + Güvenlik Duvarı:\nPil tasarrufu sağlayan DNS modu ile normal DNS + Güvenlik Duvarı modu arasında hızlıca geçiş yapmak için iki düğme gösterir.</string>
     <string name="ci_no_rule_txt">Kural Yok</string>
     <string name="orbot_download_link_website" translatable="false">https://github.com/guardianproject/orbot/releases</string>
-    <string name="brbs_backup_title">Yedekle</string>
-    <string name="brbs_backup_dialog_failure_message">Yedekleme yapılamadı. Tekrar deneyelim mi?</string>
     <string name="dns_proxy_desc_no_app" translatable="false">%1$s:%2$s</string>
     <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
     <string name="dns_crypt_relay_remove_dialog_message">DNSCrypt aktarıcısını kayıtlı yapılandırmadan silin.</string>
@@ -168,8 +162,6 @@
     <string name="ci_dialog_title">IP / Port Kuralı Ekle</string>
     <string name="ci_block">Engelle</string>
     <string name="lbbs_heading">195+ blok listesini yapılandır</string>
-    <string name="brbs_backup_dialog_failure_positive">Yedeklemeyi Yeniden Dene</string>
-    <string name="brbs_restore_dialog_failure_title">Geri yükleme başarısız oldu</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="orbot_stop_dialog_neutral">DNS Değiştir</string>
     <string name="orbot_title">Orbot ve Proxy\'ler</string>
@@ -190,9 +182,6 @@
     <string name="notif_channel_vpn_failure">Etkin Olmayan VPN</string>
     <string name="notif_channel_desc_vpn_notification">DNS Control aktif olduğunda ve arka planda çalıştığında bilgilendirin</string>
     <string name="ci_bypass_universal_txt">Bypass Evrensel</string>
-    <string name="brbs_restore_dialog_message">Uygulama ayarlarını, ağ, ve dns günlüklerini bir yedekleme dosyasından geri yükleyin. Bu, uygulamayı yeniden başlatacaktır.</string>
-    <string name="brbs_restore_dialog_failure_positive">Yeniden Dene Geri Yükle</string>
-    <string name="brbs_restore_complete_toast">Geri yükleme tamamlandı, uygulama yeniden başlatılıyor…</string>
     <string name="always_on_dialog_stop_heading">Her zaman açık VPN</string>
     <string name="firewall_act_universal_tab">Genel</string>
     <string name="dns_act_configure_tab">Yapılandır</string>
@@ -229,7 +218,6 @@
     <string name="firewall_rule_block_udp_ntp">UDP Engellendi</string>
     <string name="notif_dialog_pause_dialog_title">Uygulama duraklatıldı!</string>
     <string name="cd_remove_dialog_message">Etki alanını kayıtlı yapılandırmadan silin.</string>
-    <string name="brbs_backup_dialog_message">Uygulama ayarlarını, ağ, ve dns günlüklerini bir dosyaya yedekler. Bu, VPN\'i yeniden başlatacaktır.</string>
     <string name="local_blocklist_download">Engelleme Listelerini İndirin</string>
     <string name="settings_socks5_heading">SOCKS5 Proxy Kurulumu</string>
     <string name="orbot_bs_status_4">Tek tıklamayla Tor-as-a-Proxy (Orbot) kurulumu.</string>
@@ -244,8 +232,6 @@
     <string name="copy_clipboard_label">Adres</string>
     <string name="new_app_bulk_notification_content">DNS Control %1$s yeni uygulamaları engelledi. Görüntülemek veya değiştirmek için dokunun.</string>
     <string name="notif_channel_desc_proxy_failure">Proxy hataları ve anomalileri hakkında uyarı</string>
-    <string name="brbs_restore_title">Geri Yükle</string>
-    <string name="brbs_restore_dialog_title">Yedeği geri yükle</string>
     <string name="dns_proxy_desc" translatable="false">%1$s:%2$s, %3$s</string>
     <string name="default_dns_name">RDNS Varsayılan</string>
     <string name="always_on_dialog_stop_message">DNS Control için her zaman açık VPN etkinleştirildi. Yine de DNS Control\'i durdurmak istediğinizden emin misiniz?</string>
@@ -264,7 +250,6 @@
     <string name="ci_dialog_edittext_hint">IP adresi, alt ağ veya bağlantı noktası</string>
     <string name="lbbs_configure">Yapılandır</string>
     <string name="about_mail_to_string">mailto:</string>
-    <string name="brbs_restore_dialog_failure_message">Geri yüklenemedi. Tekrar deneyelim mi?</string>
     <string name="always_on_dialog_positive">Dur</string>
     <string name="refresh_complete"><!-- use dc_refresh_toast --> Uygulama listesinin yeniden senkronizasyonu tamamlandı.</string>
     <string name="app_mode_dns_low_battery">DNS (pil tasarrufu)</string>
@@ -301,7 +286,6 @@
     <string name="notif_channel_desc_firewall_alerts">Güvenlik Duvarı hataları ve anomalileri hakkında uyarı</string>
     <string name="cd_dialog_error_invalid_wildcard">Geçersiz joker karakter URL veya alan adı</string>
     <string name="bsrf_clear_filter">Temizle</string>
-    <string name="brbs_backup_complete_toast">Yedekleme tamamlandı</string>
     <string name="dns_query_latency">%1$sms</string>
     <string name="dns_proxy_remove_dialog_title">DNS Vekil Sunucusu silinsin mi?</string>
     <string name="settings_https_disabled_error">%1$s\'a bağlandı. Devam etmek için kapatın.</string>
@@ -322,7 +306,6 @@
     <string name="firewall_rule_exempt_dns_proxied_desc"><![CDATA[Bu DNS bağlantısı proxy\'lendi ve kullanıcının tercih ettiği DNS uç noktasına yönlendirildi. Değiştirmek için DNS <i>Yapılandır</i> ekranından <i>DNS sızıntılarını önle</i> seçeneğini devre dışı bırakın.]]></string>
     <string name="lbbs_enabled">Etkin</string>
     <string name="orbot_website_link" translatable="false">https://guardianproject.info/apps/org.torproject.android/</string>
-    <string name="brbs_restore_desc">Yedekleme dosyasından geri yükle</string>
     <string name="always_on_dialog_positive_btn">Ayarlara git</string>
     <string name="local_blocklist_redownload_desc">Cihaz üzerindeki engelleme listeleri zaten en son v%1$s sürümündedir.</string>
     <string name="settings_proxy_header">Vekil Sunucu</string>
@@ -386,7 +369,6 @@
     <string name="ada_noapp_dialog_title">Böyle bir uygulama yok</string>
     <string name="rt_download_start">Engelleme listeleri indiriliyor…</string>
     <string name="lbbs_update_check">Güncellemeleri denetle</string>
-    <string name="brbs_title">Yedekle &amp; Geri Yükle</string>
     <string name="local_blocklist_redownload">Güncel!</string>
     <string name="settings_theme_dialog_themes_1">Sistem tarafından ayarlanır</string>
     <string name="settings_ip_text_ipv46">Otomatik</string>
@@ -412,10 +394,6 @@
     <string name="category_name_sys_components">Sistem Bileşenleri</string>
     <string name="cd_dialog_desc">Bir URL veya bir opsiyonel joker karakteri olan bir etki alanı adı: *.test.com, test.com/test</string>
     <string name="cd_custom_doh_url_name">DoH %1$s</string>
-    <string name="brbs_backup_desc">Uygulama ayarlarını, ağ, ve dns günlüklerini yedekleme</string>
-    <string name="brbs_restore_dialog_positive">Geri Yükle</string>
-    <string name="brbs_backup_dialog_failure_title">Yedekleme tamamlanamadı</string>
-    <string name="brbs_restore_no_uri_toast">Geri yükleme başarısız oldu; tekrar deneyin</string>
     <string name="firewall_mode_info_explanation_new">Ağ etkinliğini izleyin ve herhangi bir uygulamayı veya IP adresini güvenlik duvarına alın.</string>
     <string name="apps_info_title">Uygulamalar</string>
     <string name="alert_permission_accessibility">İzin - Erişilebilirlik</string>
@@ -640,7 +618,6 @@
     <string name="lbl_generated" translatable="true">(oluşturuldu)</string>
     <string name="bad_config_explanation_positive_number" translatable="true">: Pozitif olmalıdır</string>
     <string name="bad_config_reason_missing_section" translatable="true">Eksik bölüm</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Uygulama sürümleri arasında çalışmıyor</string>
     <string name="wireguard_no_config_msg">WireGuard VPNleri yok. Başlamak için bazılarını ekleyin.</string>
     <string name="settings_general_customize" translatable="true">Özelleştir</string>
     <string name="bad_config_context" translatable="true">%1$s\'s %2$s</string>
@@ -895,8 +872,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi tanımlayıcıları (%1$s) 32 karakter veya daha az olmalıdır.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Kararlılık programı</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Kararlılığı artırmaya yardımcı olmak için hata günlüklerini yakala.</string>
-    <string name="tombstone_app_title" translatable="true">Kaldırılan uygulamaları hatırla</string>
-    <string name="tombstone_app_desc" translatable="true">Etkinleştirildiğinde, uygulama kurallarını 7 gün boyunca saklayın.</string>
     <string name="settings_locale_dialog_default" translatable="true">Sistem varsayılanı</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Etkinleştirildiğinde, WireGuard eşleri tarafından başlatılan gelen bağlantılara izin ver.</string>

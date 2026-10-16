@@ -130,7 +130,6 @@
     <string name="settings_autostart_bootup_heading" translatable="true">電源投入時の自動起動(試験的)</string>
     <string name="settings_check_update_heading" translatable="true">アプリの更新をチェック</string>
     <string name="settings_custom_downloader_heading" translatable="true">アプリ内ダウンローダーを利用する</string>
-    <string name="settings_import_export_heading" translatable="true">バックアップと復元</string>
     <string name="settings_theme_heading" translatable="true">外観設定</string>
     <string name="settings_http_proxy_error_text2" translatable="true">無効なポート</string>
     <string name="settings_http_proxy_error_text3" translatable="true">ホスト名が空です</string>
@@ -218,11 +217,8 @@
     <string name="fapps_filter_categories_heading" translatable="true">カテゴリー</string>
     <string name="fapps_info_exclude_msg" translatable="true">DNSとファイアウォールの両方から除外する。</string>
     <string name="fapps_info_isolate_msg" translatable="true">信頼できるIP以外をブロックする。</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">バックアップを再試行</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">バックアップできませんでした。もう一度試してください。</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">DNS Controlを起動して始める</string>
     <string name="lbbs_update_check" translatable="true">更新を確認</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">バックアップに失敗しました</string>
     <string name="hsf_vpn_prepare_failure" translatable="true">VPN権限がないか、別のアプリケーションが常時接続 VPNに設定されています。</string>
     <string name="univ_firewall_rule_1" translatable="true">デバイスがロック状態であるときはすべてのアプリをブロックする</string>
     <string name="univ_firewall_rule_3" translatable="true">アプリの提供元が不明な場合はブロックする</string>
@@ -230,9 +226,6 @@
     <string name="univ_firewall_rule_8" translatable="true">80番ポート(安全ではないHTTP)の通信をブロックする</string>
     <string name="univ_ip_delete_toast_success" translatable="true">すべてのIP規則が削除された。</string>
     <string name="univ_delete_firewall_dialog_message" translatable="true">これらの規則を削除すると、現在ブロックされているIPに全てのアプリケーションが接続できるようになります。</string>
-    <string name="brbs_backup_title" translatable="true">バックアップ</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">バックアップ</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">復元に失敗しました</string>
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control は、ユーザー補助サービスを使用して、どのアプリが使用中 (フォアグラウンド) で、どのアプリが使用されていない (バックグラウンド) かを追跡します。 \n \nDNS Control は、いかなる方法でも、あなたの情報を収集したり、スパイ行為を行ったりすることはありません。</string>
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;:アプリケーションのインターネットへの接続をブロックします。 \n&lt;u&gt;#2&lt;/u&gt;:アプリが特定のIPに接続できないようにします。 \n&lt;u&gt;#3&lt;/u&gt;:デバイスがロックされているときにすべての接続をブロックします(ユニバーサルファイアウォール)。 \n&lt;u&gt;#4&lt;/u&gt;:使用されていないアプリをブロックします(ユニバーサルファイアウォール)。 \n&lt;u&gt;#5&lt;/u&gt;:アプリケーションの提供元が不明なときに接続をブロックします(ユニバーサルファイアウォール)。 \n&lt;u&gt;#6&lt;/u&gt;:DNSを除くすべてのUDPトラフィックをブロックします(ユニバーサルファイアウォール)。 \n&lt;u&gt;#7&lt;/u&gt;:DNSをバイパスする接続をブロックします(ユニバーサルファイアウォール)。</string>
     <string name="orbot_stop_dialog_negative" translatable="true">Orbotを止める</string>
@@ -278,7 +271,6 @@
     <string name="settings_notification_dialog_option_2" translatable="true">\n\nDNS / DNS + ファイアウォール。\n\nバッテリーを節約するDNSモードと通常のDNS＋ファイアウォールモードを素早く切り替えるための2つのボタンを表示します。</string>
     <string name="settings_selected_theme" translatable="true">現在のテーマ: %1$s</string>
     <string name="settings_default_dns_heading" translatable="true">フォールバックDNSを選択する</string>
-    <string name="settings_import_export_desc" translatable="true">アプリのデータや設定を手動でバックアップしたり、復元したりすることができます。</string>
     <string name="orbot_install_dialog_positive" translatable="true">インストール</string>
     <string name="firewall_status_allow" translatable="true">許可</string>
     <string name="firewall_status_block_metered" translatable="true">従量制課金 (モバイル) ネットワークでブロック</string>

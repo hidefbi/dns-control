@@ -86,7 +86,6 @@
     <string name="settings_theme_desc">Thème sombre/clair</string>
     <string name="settings_notification_dialog_option_2">\nDNS / DNS + Pare-feu :\n\nAffiche deux boutons permettant de passer rapidement du mode DNS qui économise la batterie, au mode normal DNS + Pare-feu.</string>
     <string name="settings_selected_theme">Thème actuel : %1$s</string>
-    <string name="settings_import_export_heading">Sauvegarder &amp; Restaurer</string>
     <string name="settings_dns_proxy_dialog_port_number">Numéro de port</string>
     <string name="settings_socks5_dialog_hint_ip">Adresse IP</string>
     <string name="settings_theme_dialog_themes_4">Sombre AMOLED</string>
@@ -103,7 +102,6 @@
     <string name="settings_network_all_networks">Utiliser tous les réseaux disponibles (expérimental)</string>
     <string name="settings_orbot_disabled_error">Désactivez le proxy HTTP(S) et/ou SOCKS5 pour continuer avec la configuration de Tor-as-a-proxy.</string>
     <string name="settings_autostart_bootup_heading">Démarrage automatique à la mise sous tension (expérimental)</string>
-    <string name="settings_import_export_desc">Sauvegardez ou restaurez manuellement les données et les paramètres de l’application.</string>
     <string name="settings_http_proxy_error_text1">La plage de ports doit être comprise entre 1024 et 65535</string>
     <string name="settings_http_proxy_error_text4">La connexion avec l’hôte a échoué. Essayez à nouveau.</string>
     <string name="settings_http_proxy_desc">Transfert vers %1$s</string>
@@ -158,9 +156,6 @@
     <string name="firewall_rule_trusted_ip_desc"><![CDATA[Cette connexion a été autorisée car <i>l’IP de destination</i> est autorisée.<br/><br/> Pour modifier cela, allez à l’écran <i>Pare-feu de l’application</i>.]]></string>
     <string name="firewall_rule_exempt_app_bypass_univ_desc"><![CDATA[Cette connexion a été autorisée car <i>l’application source</i> est configurée pour <i>contourner les règles du pare-feu global</i>.<br/><br/> Pour modifier cela, accédez à l’écran <i>Pare-feu de l’application</i> .]]></string>
     <string name="lbbs_download">Mettre à jour les listes de blocage</string>
-    <string name="brbs_backup_title">Sauvegarder</string>
-    <string name="brbs_restore_dialog_message">Restaure les paramètres de l’application ainsi que les journaux réseau et DNS à partir d’un fichier de sauvegarde. Cela va redémarrer l’application.</string>
-    <string name="brbs_restore_dialog_failure_message">Impossible de restaurer. Essayez à nouveau ?</string>
     <string name="orbot_explanation">Orbot est une application proxy gratuite qui permet à d’autres applications d’utiliser Internet de manière plus &lt;u&gt;sûre&lt;/u&gt; . \nOrbot utilise &lt;u&gt;Tor&lt;/u&gt; pour chiffrer votre trafic Internet, ce qui vous aide à &lt;u&gt;contourner la censure&lt;/u&gt; et à vous défendre contre les formes de &lt;u&gt;surveillance du réseau&lt;/u&gt; qui menacent les libertés individuelles et la vie privée. \n&lt;u&gt;Proxy TCP&lt;/u&gt; : DNS Control transmet à Orbot les connexions TCP de toutes les applications sauf celles qui sont exclues. \n&lt;u&gt;Proxy HTTP&lt;/u&gt; : DNS Control &lt;i&gt;établit&lt;/i&gt; un proxy HTTP mais n’oblige pas les applications à l’utiliser. En général, les navigateurs comme Chrome et Firefox l’utilisent. Les applications qui utilisent le proxy HTTP(S) contournent les règles du pare-feu et du DNS.</string>
     <string name="settings_network_all_networks_desc">Si activé, DNS Control utilisera tous les réseaux disponibles pour se connecter à Internet. Sinon, il utilisera le réseau jugé <i>actif</i> par Android.</string>
     <string name="settings_check_update_heading">Vérifiez l’existence de mises à jour</string>
@@ -235,8 +230,6 @@
     <string name="rbl_privacy">Confidentialité</string>
     <string name="lbbs_redownload">Re-télécharger les listes de blocage</string>
     <string name="lbbs_heading">Configurer plus de 195 listes de blocage</string>
-    <string name="brbs_restore_title">Restaurer</string>
-    <string name="brbs_backup_dialog_title">Faire une sauvegarde</string>
     <string name="orbot_bs_status_trying_connect">Configuration d’Orbot…</string>
     <string name="dc_custom_block_heading">Règles de domaines</string>
     <string name="always_on_dialog_lockdown_stop_message">DNS Control exécute le VPN en mode <i>Confinement</i>. L’arrêter entraînerait une perte de connectivité Internet sur ce profil utilisateur. Voulez-vous continuer malgré tout ?</string>
@@ -256,7 +249,6 @@
     <string name="ci_delete">supprimer</string>
     <string name="ada_app_status_exclude">est exclue du DNS et du pare-feu</string>
     <string name="notif_download_content_title">Téléchargement des listes de blocage sur l’appareil</string>
-    <string name="brbs_restore_desc">Restaure à partir d’un fichier de sauvegarde</string>
     <string name="firewall_rule_exempt_orbot_setup">Configuration Orbot</string>
     <string name="blocklist_update_check_not_required">Les listes de blocage sont déjà à la dernière version.</string>
     <string name="info_dialog_url_copy_toast_msg">URL copiée</string>
@@ -277,7 +269,6 @@
     <string name="firewall_rule_exempt_orbot_setup_desc"><![CDATA[Cette connexion a été autorisée car la configuration <i>en un clic Tor-as-a-proxy</i> via Orbot était en cours.]]></string>
     <string name="rbl_security">Sécurité</string>
     <string name="rt_download">Télécharger les listes de blocage</string>
-    <string name="brbs_backup_dialog_failure_positive">Retenter la sauvegarde</string>
     <string name="notif_dialog_pause_dialog_title">Application en pause !</string>
     <string name="dc_rethink_dns" translatable="false">DNS Rethink</string>
     <string name="fapps_firewall_filter_hint">Montrer toutes les apps</string>
@@ -306,8 +297,6 @@
     <string name="ada_app_bypass_univ">Exception globale</string>
     <string name="dc_dns_proxy" translatable="false">Proxy DNS</string>
     <string name="lbbs_configure">Paramétrer</string>
-    <string name="brbs_backup_desc">Sauvegarde les paramètres de l’application ainsi que les journaux réseau et DNS</string>
-    <string name="brbs_backup_complete_toast">Sauvegarde terminée</string>
     <string name="dns_proxy_remove_dialog_title">Supprimer le proxy DNS ?</string>
     <string name="download_update_dialog_message_success">Téléchargement de la liste de blocage réussi.</string>
     <string name="dc_local_block_desc_1">Choisissez parmi plus de 195 listes de blocage. Cliquez ici pour télécharger ou configurer les listes de blocage.</string>
@@ -321,8 +310,6 @@
     <string name="firewall_rule_unknown">Source inconnue</string>
     <string name="category_name_sys_apps">Applications système</string>
     <string name="ada_firewall_status"><![CDATA[Cette application <b><i>%1$s</i></b>.]]></string>
-    <string name="brbs_restore_dialog_failure_positive">Retenter la restauration</string>
-    <string name="brbs_restore_complete_toast">Restauration terminée, redémarrage de l’application…</string>
     <string name="notif_channel_vpn_failure">VPN inactif</string>
     <string name="cd_no_rule_initial">N</string>
     <string name="hsf_uptime" translatable="false">(actif %1$s ; protocoles : %2$s ; type : %3$s)</string>
@@ -342,8 +329,6 @@
     <string name="rbl_parental_control">Contrôle parental</string>
     <string name="rt_dialog_title">Enregistrer les changements</string>
     <string name="lbbs_enabled">Activé</string>
-    <string name="brbs_backup_dialog_message">Sauvegarde les paramètres de l’application ainsi que les journaux réseau et DNS dans un fichier. Cela redémarre le VPN.</string>
-    <string name="brbs_restore_dialog_failure_title">Échec de la restauration</string>
     <string name="cd_dns_crypt_error_text_1">Le stamp ne peut être vide</string>
     <string name="settings_dns_proxy_dialog_app_desc" translatable="false">L’application sélectionnée sera exclue du VPN pour lui permettre d’établir des connexions par proxy pour votre compte.</string>
     <string name="always_on_dialog_neutral">Paramètres</string>
@@ -356,8 +341,6 @@
     <string name="firewall_rule_block_ip_univ_desc"><![CDATA[Une règle de pare-feu définie par l’utilisateur a bloqué <i>l’IP de destination / le port</i>.<br/><br/> Pour la modifier, allez sur l’onglet <i>Global</i>.]]></string>
     <string name="firewall_rule_block_dns_bypass_desc"><![CDATA[Cette connexion a été bloquée car <i>l’application source</i> contournait le DNS spécifié par l’utilisateur.<br/><br/> Pour modifier cela, allez sur l’onglet <i>Global</i>.]]></string>
     <string name="category_name_non_app_sys">Services système</string>
-    <string name="brbs_backup_dialog_positive">Sauvegarder</string>
-    <string name="brbs_restore_no_uri_toast">La restauration a échoué ; réessayez</string>
     <string name="hsf_start_btn_state">commencer</string>
     <string name="hsf_pause_vpn_failure">Impossible de mettre en pause : DNS Control n’est pas actif</string>
     <string name="univ_firewall_dialog_message">La suppression de cette règle permettrait à n’importe quelle application de se connecter à cette IP. Voulez-vous continuer ?</string>
@@ -377,7 +360,6 @@
     <string name="ci_dialog_added_success">IP ajoutée à la liste</string>
     <string name="ci_bypass_universal_initial">EG</string>
     <string name="ada_noapp_dialog_positive">D’accord</string>
-    <string name="brbs_restore_dialog_title">Restaurer une sauvegarde</string>
     <string name="univ_accessibility_crash_dialog_positive">Aller aux paramètres</string>
     <string name="ci_no_rule_initial">N</string>
     <string name="settings_ip_network_heading">Choisir la version IP</string>
@@ -399,7 +381,6 @@
     <string name="firewall_rule_no_rule_desc">Aucune règle de pare-feu ne s’applique à cette connexion.</string>
     <string name="rt_download_start">Téléchargement des listes de blocage…</string>
     <string name="bsrf_sub_group_heading">Sous-groupe</string>
-    <string name="brbs_title">Sauvegarde &amp; restauration</string>
     <string name="dc_check_update_heading">Rappel de mise à jour des listes de blocage</string>
     <string name="orbot_bs_status_3">Transfert de %1$s à Orbot, proxy HTTP également configuré.</string>
     <string name="search_firewall_all_apps"><font size="12">Recherche d’applis par uid, nom</font></string>
@@ -420,7 +401,6 @@
     <string name="build__flavor_fdroid">fdroid</string>
     <string name="rt_list_simple_btn_txt">simple</string>
     <string name="bsrf_clear_filter">Effacer</string>
-    <string name="brbs_backup_dialog_failure_message">Impossible de sauvegarder. Essayez à nouveau ?</string>
     <string name="settings_custom_downloader_heading">Télécharger directement dans l’application</string>
     <string name="firewall_rule_isolate">Confinée (Appli)</string>
     <string name="search_rethinkplus_file_tag"><font size="12">Recherche de listes de blocage</font></string>
@@ -466,7 +446,6 @@
     <string name="ci_dialog_error_invalid_ip">Adresse IP, sous-réseau ou port non valide.</string>
     <string name="notif_download_content_text">Téléchargement en cours…</string>
     <string name="dc_local_block_enabled">Activé</string>
-    <string name="brbs_restore_dialog_positive">Restaurer</string>
     <string name="cd_dialog_desc">Une URL ou un nom de domaine avec un joker optionnel : *.test.com, test.com/test</string>
     <string name="dns_proxy_remove_dialog_message">Supprimer le proxy DNS de la configuration sauvegardée.</string>
     <string name="settings_socks5_desc">Transférer les connexions vers le point de terminaison SOCKS5.</string>
@@ -526,7 +505,6 @@
     <string name="settings_local_blocklist_in_use">%1$s listes de blocage en cours d’utilisation</string>
     <string name="settings_local_blocklist_version">Version : v%1$s</string>
     <string name="ada_app_exclude">Exclure</string>
-    <string name="brbs_backup_dialog_failure_title">Échec de la sauvegarde</string>
     <string name="rt_filter_desc"><![CDATA[Affichage des listes de blocage <u>%1$s</u>]]></string>
     <string name="rt_filter_desc_subgroups"><![CDATA[Affichage des listes de blocage <u>%1$s</u> dans les groupes : %2$s et les sous-groupes : %3$s]]></string>
     <string name="intent_launch_error">Impossible de lancer %1$s</string>
@@ -608,7 +586,6 @@
     <string name="dc_setting_dns_cache_heading" translatable="true">Booster DNS</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Coalescence des demandes, mise en cache des réponses, traitement résilient des erreurs</string>
     <string name="dc_refresh_toast" translatable="true">Actualisation terminée</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Ne fonctionne pas avec toutes les versions de l\'application</string>
     <string name="firewall_card_universal_rules" translatable="true">%1$s règle(s) universelle(s)</string>
     <string name="rules_card_domain_count" translatable="true">%1$s règle(s) de domaine</string>
     <string name="cd_dns_alg_desc" translatable="true">Attribution d\'une IP unique par requête DNS.</string>
@@ -895,8 +872,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Les identifiants Wi-Fi (%1$s) doivent comporter 32 caractères ou moins.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Programme de stabilité</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Enregistrer les journaux d\'erreurs pour contribuer à améliorer la stabilité.</string>
-    <string name="tombstone_app_title" translatable="true">Se souvenir des applications désinstallées</string>
-    <string name="tombstone_app_desc" translatable="true">Lorsque cette option est activée, conserver les règles de l\'application pendant 7 jours.</string>
     <string name="settings_locale_dialog_default" translatable="true">Valeurs par défaut du système</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Lorsqu\'elle est activée, cette option autorise les connexions entrantes initiées par les pairs WireGuard.</string>

@@ -79,12 +79,10 @@ class FirewallManagerTest : KoinTest {
     private val testUid3 = 10003
     private val systemUid = 1000
     private val invalidUid = -1
-    private val tombstoneUid = -10001
 
     private lateinit var testAppInfo1: AppInfo
     private lateinit var testAppInfo2: AppInfo
     private lateinit var systemAppInfo: AppInfo
-    private lateinit var tombstoneAppInfo: AppInfo
     private lateinit var rethinkAppInfo: AppInfo
 
     @Before
@@ -129,7 +127,7 @@ class FirewallManagerTest : KoinTest {
 
         // Populate test data into FirewallManager's internal state
         runBlocking {
-            val appInfoList = listOf(testAppInfo1, testAppInfo2, systemAppInfo, tombstoneAppInfo, rethinkAppInfo)
+            val appInfoList = listOf(testAppInfo1, testAppInfo2, systemAppInfo, rethinkAppInfo)
             appInfoList.forEach { appInfo ->
                 FirewallManager.GlobalVariable.appInfos.put(appInfo.uid, appInfo)
             }
@@ -159,8 +157,7 @@ class FirewallManagerTest : KoinTest {
             connectionStatus = FirewallManager.ConnectionStatus.ALLOW.id,
             isProxyExcluded = false,
             screenOffAllowed = true,
-            backgroundAllowed = true,
-            tombstoneTs = 0L
+            backgroundAllowed = true
         )
 
         testAppInfo2 = AppInfo(
@@ -175,8 +172,7 @@ class FirewallManagerTest : KoinTest {
             connectionStatus = FirewallManager.ConnectionStatus.BOTH.id,
             isProxyExcluded = true,
             screenOffAllowed = false,
-            backgroundAllowed = false,
-            tombstoneTs = 0L
+            backgroundAllowed = false
         )
 
         systemAppInfo = AppInfo(
@@ -191,24 +187,7 @@ class FirewallManagerTest : KoinTest {
             connectionStatus = FirewallManager.ConnectionStatus.ALLOW.id,
             isProxyExcluded = false,
             screenOffAllowed = true,
-            backgroundAllowed = true,
-            tombstoneTs = 0L
-        )
-
-        tombstoneAppInfo = AppInfo(
-            packageName = "com.test.tombstone",
-            appName = "Tombstone App",
-            uid = tombstoneUid,
-            isSystemApp = false,
-            firewallStatus = FirewallManager.FirewallStatus.NONE.id,
-            appCategory = "Other",
-            wifiDataUsed = 0L,
-            mobileDataUsed = 0L,
-            connectionStatus = FirewallManager.ConnectionStatus.ALLOW.id,
-            isProxyExcluded = false,
-            screenOffAllowed = true,
-            backgroundAllowed = true,
-            tombstoneTs = System.currentTimeMillis()
+            backgroundAllowed = true
         )
 
         rethinkAppInfo = AppInfo(
@@ -223,21 +202,19 @@ class FirewallManagerTest : KoinTest {
             connectionStatus = FirewallManager.ConnectionStatus.ALLOW.id,
             isProxyExcluded = false,
             screenOffAllowed = true,
-            backgroundAllowed = true,
-            tombstoneTs = 0L
+            backgroundAllowed = true
         )
     }
 
     private fun setupDatabaseMocks() {
         // Setup comprehensive database mocks with correct method signatures
-        coEvery { mockDb.getAppInfo() } returns listOf(testAppInfo1, testAppInfo2, systemAppInfo, tombstoneAppInfo, rethinkAppInfo)
+        coEvery { mockDb.getAppInfo() } returns listOf(testAppInfo1, testAppInfo2, systemAppInfo, rethinkAppInfo)
 
         // Correct method signatures based on actual AppInfoRepository
         coEvery { mockDb.insert(any()) } returns 1L
         coEvery { mockDb.updateFirewallStatusByUid(any(), any(), any()) } just Runs
         coEvery { mockDb.updateUid(any(), any(), any()) } returns 1
         coEvery { mockDb.deletePackage(any(), any()) } just Runs
-        coEvery { mockDb.tombstoneApp(any(), any(), any(), any()) } just Runs
         coEvery { mockDb.updateProxyExcluded(any(), any()) } just Runs
 
         // Mock PersistentState methods
@@ -447,20 +424,6 @@ class FirewallManagerTest : KoinTest {
         assertTrue(packageNames.contains("com.android.system"))
     }
 
-    // Test getAllApps with tombstoned apps
-    @Test
-    fun testGetAllApps_includesTombstoned() = runBlocking {
-        FirewallManager.load()
-
-        val apps = FirewallManager.getAllApps()
-
-        // Should include all apps including tombstoned ones
-        val packageNames = apps.map { it.packageName }
-        assertTrue(packageNames.contains("com.test.tombstone"))
-        assertTrue(packageNames.contains("com.test.app1"))
-        assertTrue(packageNames.contains("com.test.app2"))
-    }
-
     // Test hasUid with various scenarios
     @Test
     fun testHasUid_edgeCases() = runBlocking {
@@ -502,14 +465,14 @@ class FirewallManagerTest : KoinTest {
             isSystemApp = false, firewallStatus = FirewallManager.FirewallStatus.NONE.id,
             appCategory = "Other", wifiDataUsed = 0L, mobileDataUsed = 0L,
             connectionStatus = FirewallManager.ConnectionStatus.ALLOW.id,
-            isProxyExcluded = false, screenOffAllowed = true, backgroundAllowed = true, tombstoneTs = 0L
+            isProxyExcluded = false, screenOffAllowed = true, backgroundAllowed = true
         )
         val aiWork = AppInfo(
             packageName = dualPkg, appName = "Dual Work", uid = workProfileUid,
             isSystemApp = false, firewallStatus = FirewallManager.FirewallStatus.NONE.id,
             appCategory = "Other", wifiDataUsed = 0L, mobileDataUsed = 0L,
             connectionStatus = FirewallManager.ConnectionStatus.ALLOW.id,
-            isProxyExcluded = false, screenOffAllowed = true, backgroundAllowed = true, tombstoneTs = 0L
+            isProxyExcluded = false, screenOffAllowed = true, backgroundAllowed = true
         )
         FirewallManager.GlobalVariable.appInfos.put(user0Uid, aiUser0)
         FirewallManager.GlobalVariable.appInfos.put(workProfileUid, aiWork)
@@ -610,12 +573,12 @@ class FirewallManagerTest : KoinTest {
     }
 
     @Test
-    fun testUpdateUidAndResetTombstone_logic() = runBlocking {
+    fun testUpdateUid_logic() = runBlocking {
         try {
-            FirewallManager.updateUidAndResetTombstone(testUid1, testUid3, "com.test.app1")
+            FirewallManager.updateUid(testUid1, testUid3, "com.test.app1")
             assertTrue(true)
         } catch (e: Exception) {
-            fail("updateUidAndResetTombstone should not throw exception: ${e.message}")
+            fail("updateUid should not throw exception: ${e.message}")
         }
     }
 
@@ -664,15 +627,6 @@ class FirewallManagerTest : KoinTest {
         assertTrue(FirewallManager.hasUid(testUid1))
         assertTrue(FirewallManager.hasUid(testUid2))
         assertFalse(FirewallManager.hasUid(invalidUid))
-    }
-
-    @Test
-    fun testIsTombstone() = runBlocking {
-        FirewallManager.load()
-
-        assertTrue(FirewallManager.isTombstone("com.test.tombstone"))
-        assertFalse(FirewallManager.isTombstone("com.test.app1"))
-        assertFalse(FirewallManager.isTombstone("nonexistent.package"))
     }
 
     // Test label methods
@@ -756,7 +710,6 @@ class FirewallManagerTest : KoinTest {
     @Test
     fun testConstants() {
         assertEquals("Firewall_Alerts", FirewallManager.NOTIF_CHANNEL_ID_FIREWALL_ALERTS)
-        assertEquals(7 * 24 * 60 * 60 * 1000L, FirewallManager.TOMBSTONE_EXPIRY_TIME_MS)
     }
 
     // Test ConnectionStatus and FirewallStatus enums
@@ -853,7 +806,6 @@ class FirewallManagerTest : KoinTest {
             FirewallManager.getCategoriesForSystemApps()
             FirewallManager.getCategoriesForInstalledApps()
             FirewallManager.getAllCategories()
-            FirewallManager.getTombstoneApps()
             FirewallManager.stats()
             // Remove getLabel call as it accesses resources not available in test environment
             FirewallManager.getLabelForStatus(FirewallManager.FirewallStatus.NONE, FirewallManager.ConnectionStatus.ALLOW, FirewallManager.ConnectionStatus.ALLOW)

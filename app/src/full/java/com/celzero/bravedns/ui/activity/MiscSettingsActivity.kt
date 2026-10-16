@@ -66,7 +66,6 @@ import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.ui.LauncherSwitcher
 import com.celzero.bravedns.ui.activity.AppLockActivity.Companion.APP_LOCK_ALIAS
 import com.celzero.bravedns.ui.activity.AppLockActivity.Companion.HOME_ALIAS
-import com.celzero.bravedns.ui.bottomsheet.BackupRestoreBottomSheet
 import com.celzero.bravedns.update.AppUpdateChecker
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.FirebaseErrorReporting
@@ -268,8 +267,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         // Auto start app after reboot
         b.settingsActivityAutoStartSwitch.isChecked = persistentState.prefAutoStartBootUp
 
-        b.tombstoneAppSwitch.isChecked = persistentState.tombstoneApps
-
         displayAppThemeUi()
         displayNotificationActionUi()
         setupTokenUi()
@@ -407,8 +404,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             logEvent("Persistent notification set to $b")
         }
 
-        b.settingsActivityImportExportRl.setOnClickListener { invokeImportExport() }
-
         b.settingsActivityAppNotificationSwitch.setOnClickListener {
             b.settingsActivityAppNotificationSwitch.isChecked =
                 !b.settingsActivityAppNotificationSwitch.isChecked
@@ -467,16 +462,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
 
         b.settingsFirebaseErrorReportingSwitch.setOnCheckedChangeListener { _: CompoundButton, isChecked: Boolean ->
             handleFirebaseErrorReportingToggle(isChecked)
-        }
-
-        b.tombstoneAppRl.setOnClickListener {
-            b.tombstoneAppSwitch.isChecked = !b.tombstoneAppSwitch.isChecked
-        }
-
-        b.tombstoneAppSwitch.setOnCheckedChangeListener { _, isChecked ->
-            persistentState.tombstoneApps = isChecked
-            io { rdb.refresh(RefreshDatabase.ACTION_REFRESH_FORCE) }
-            logEvent("Tombstone apps set to $isChecked")
         }
 
     }
@@ -742,16 +727,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
               }
           }
           return map
-      }
-
-      private fun invokeImportExport() {
-          if (this.isFinishing || this.isDestroyed) {
-              Logger.w(LOG_TAG_UI, "err opening bkup btmsheet, activity is destroyed")
-              return
-          }
-
-          val bottomSheetFragment = BackupRestoreBottomSheet()
-          bottomSheetFragment.show(this.supportFragmentManager, bottomSheetFragment.tag)
       }
 
       fun showAppTriggerPackageDialog(context: Context, onPackageSet: (String) -> Unit) {

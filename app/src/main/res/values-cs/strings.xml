@@ -267,8 +267,6 @@
     <string name="settings_autostart_bootup_desc" translatable="true">Po zapnutí zařízení spustí DNS Control, pokud běžel před vypnutím.</string>
     <string name="settings_network_all_networks" translatable="true">Využívat všechny dostupné sítě (experimentální)</string>
     <string name="settings_network_all_networks_desc" translatable="true">Je-li zapnuto, DNS Control používá všechny dostupné sítě k připojení k internetu. Jinak použije tu, kterou Android označí za „aktivní“.</string>
-    <string name="settings_import_export_heading" translatable="true">Záloha &amp; Obnova</string>
-    <string name="settings_import_export_desc" translatable="true">Ruční záloha nebo obnova dat a nastavení aplikace.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">Oznámení aplikace</string>
     <string name="settings_app_notification_persistent_heading" translatable="true">Trvalé oznámení</string>
     <string name="settings_app_notification_persistent_desc" translatable="true">Udržovat oznámení neustále zobrazené</string>
@@ -536,16 +534,6 @@
     <string name="dc_local_block_enabled" translatable="true">Zapnuto</string>
     <string name="dc_refresh_toast" translatable="true">Obnovení dokončeno</string>
     <string name="lbbs_configure" translatable="true">Konfigurovat</string>
-    <string name="brbs_title" translatable="true">Záloha &amp; obnova</string>
-    <string name="brbs_backup_desc" translatable="true">Zálohovat nastavení aplikace, síťové záznamy a DNS logy</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Zálohuje nastavení aplikace, síťové a DNS logy do souboru. Tím se restartuje VPN.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Obnovit</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Záloha se nezdařila</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Nelze provést zálohu. Zkusit znovu?</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Zkusit znovu zálohu</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">Obnovení se nezdařilo</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Nelze provést obnovu. Zkusit znovu?</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Záloha dokončena</string>
     <string name="ssv_see_more" translatable="true">Zobrazit vše</string>
     <string name="bad_config_reason_invalid_key" translatable="true">Neplatný klíč</string>
     <string name="bad_config_reason_unknown_attribute" translatable="true">Neznámý atribut</string>
@@ -652,14 +640,12 @@
     <string name="ci_bypass_universal" translatable="true">Obejít univerzálně</string>
     <string name="ci_trust_rule" translatable="true">Důvěřovat</string>
     <string name="ci_delete" translatable="true">smazat</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">Obnovení selhalo, zkuste znovu</string>
     <string name="bad_config_reason_missing_section" translatable="true">Chybějící sekce</string>
     <string name="bad_config_reason_syntax_error" translatable="true">Syntax error</string>
     <string name="private_dns_dialog_positive" translatable="true">Přejít do Nastavení</string>
     <string name="cd_dns_crypt_resolver_heading" translatable="true">Resolver</string>
     <string name="cd_dns_crypt_relay_heading" translatable="true">Relay</string>
     <string name="cd_dns_crypt_dialog_name" translatable="true">Název</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Zálohovat</string>
     <string name="cloudflare_dns_desc" translatable="true">Nezablokuje žádné DNS požadavky. Využívá Cloudflare 1.1.1.1.</string>
     <string name="cloudflare_family_dns_desc" translatable="true">Blokuje malware a obsah pro dospělé. Využívá Cloudflare 1.1.1.3.</string>
     <string name="cloudflare_security_dns_desc" translatable="true">Blokuje škodlivý obsah. Využívá Cloudflare 1.1.1.2.</string>
@@ -667,7 +653,6 @@
     <string name="cd_custom_doh_url_name_default" translatable="true">DoH</string>
     <string name="cd_custom_doh_url_name" translatable="true">DoH %1$s</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">Proxy</string>
-    <string name="brbs_backup_title" translatable="true">Záloha</string>
     <string name="orbot" translatable="true">Orbot</string>
     <string name="rules_load_failure_heading" translatable="true">Poznámka</string>
     <string name="exclude_apps_from_proxy">Obcházet aplikaci pro všechny proxy</string>
@@ -687,14 +672,6 @@
     <string name="lbbs_redownload" translatable="true">Znovu stáhnout blokovací seznamy</string>
     <string name="lbbs_download" translatable="true">Aktualizovat blokovací seznamy</string>
     <string name="lbbs_heading" translatable="true">Konfigurace 195+ blokovacích seznamů</string>
-    <string name="brbs_restore_title" translatable="true">Obnovit</string>
-    <string name="brbs_restore_desc" translatable="true">Obnovit ze souboru zálohy</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Nezaručeno mezi různými verzemi aplikace</string>
-    <string name="brbs_backup_dialog_title" translatable="true">Vytvořit zálohu</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Zkusit znovu obnovu</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Obnova dokončena, restartuji aplikaci…</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Obnovit zálohu</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Obnoví nastavení aplikace, síťové a DNS logy ze souboru zálohy. Aplikace se poté restartuje.</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blokovacích seznamů</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Spusťte DNS Control pro pokračování</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Neplatné číslo</string>

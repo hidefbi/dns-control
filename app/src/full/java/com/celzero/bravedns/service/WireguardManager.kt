@@ -19,7 +19,6 @@ import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.Context
 import android.text.format.DateUtils
-import com.celzero.bravedns.backup.BackupHelper.Companion.TEMP_WG_DIR
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.data.SsidItem
 import com.celzero.bravedns.database.WgConfigFiles
@@ -28,7 +27,6 @@ import com.celzero.bravedns.database.WgConfigFilesRepository
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
 import com.celzero.bravedns.util.Constants.Companion.WIREGUARD_FOLDER_NAME
 import com.celzero.bravedns.util.UIUtils.getRelativeTimeSpan
-import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.wireguard.Config
 import com.celzero.bravedns.wireguard.Peer
 import com.celzero.bravedns.wireguard.WgHopManager
@@ -1159,110 +1157,6 @@ object WireguardManager : KoinComponent {
 
     fun getPeers(id: Int): MutableList<Peer> {
         return configs.find { it.getId() == id }?.getPeers()?.toMutableList() ?: mutableListOf()
-    }
-
-    suspend fun restoreProcessRetrieveWireGuardConfigs() {
-        val count = db.getWgConfigs().size
-        Logger.i(LOG_TAG_PROXY, "restoreProcessRetrieveWireGuardConfigs: db wg entries count: $count")
-        clearLoadedConfigs()
-        performRestore()
-        val loadedCount = load(forceRefresh = true)
-        Logger.i(LOG_TAG_PROXY, "restoreProcessRetrieveWireGuardConfigs: completed, loaded $loadedCount configs")
-    }
-
-    suspend fun performRestore() {
-        try {
-            // during restore process, plain text wg configs are present in the temp dir
-            // move the files to the wireguard directory and load the configs
-            val tempDir = File(applicationContext.filesDir, TEMP_WG_DIR)
-            val dbconfs = db.getWgConfigs()
-
-            val tempFiles = tempDir.listFiles()?.filter { it.name.endsWith(".conf") } ?: emptyList()
-            Logger.i(
-                LOG_TAG_PROXY,
-                "performRestore: temp dir .conf files: ${tempFiles.size} (${tempFiles.joinToString { it.name }}), db size: ${dbconfs.size}"
-            )
-
-            if (tempFiles.isEmpty() && dbconfs.isEmpty()) {
-                Logger.i(LOG_TAG_PROXY, "performRestore: no temp files and no db entries, nothing to restore")
-                return
-            }
-
-            if (tempFiles.isEmpty()) {
-                Logger.w(LOG_TAG_PROXY, "performRestore: db has ${dbconfs.size} entries but no temp .conf files found, cannot restore")
-                return
-            }
-
-            if (dbconfs.isEmpty()) {
-                Logger.w(
-                    LOG_TAG_PROXY,
-                    "performRestore: ${tempFiles.size} temp .conf files found but db has 0 entries. Files cannot be restored without db metadata. Preserving temp files for manual recovery."
-                )
-                return
-            }
-
-            val restoredIds = mutableSetOf<Int>()
-            val unmatchedFiles = mutableListOf<String>()
-
-            dbconfs.forEach { c ->
-                // for each database entry, corresponding file with $id.conf is present in the temp dir
-                // move the file to the wireguard directory with the name available in the database
-                val file = File(tempDir, "${c.id}.conf")
-                if (file.exists()) {
-                    Logger.i(LOG_TAG_PROXY, "performRestore: file exists: ${file.absolutePath} (${file.length()} bytes), proceed restore for config ${c.id}/${c.name}")
-                } else {
-                    Logger.w(LOG_TAG_PROXY, "performRestore: no matching wg file for db entry ${c.id}/${c.name}, expected: ${file.absolutePath}, deleting config entry")
-                    db.deleteConfig(c.id)
-                    return@forEach
-                }
-                // Read the backup bytes and always persist them encrypted at rest.
-                val bytes = file.readBytes()
-                val targetFile = File(c.configPath).canonicalFile
-                val wgBase = WireguardConfigFileManager.getConfigDirectory(applicationContext).canonicalFile
-                val basePath = wgBase.path + File.separator
-                if (targetFile.path != wgBase.path && !targetFile.path.startsWith(basePath)) {
-                    db.deleteConfig(c.id)
-                    return@forEach
-                }
-                try {
-                    EncryptedFileManager.write(applicationContext, bytes, targetFile)
-                    restoredIds.add(c.id)
-                } catch (_: Exception) {
-                    db.deleteConfig(c.id)
-                }
-            }
-
-            // identify files that were not matched to any db entry
-            tempFiles.forEach { tf ->
-                val id = tf.nameWithoutExtension.toIntOrNull()
-                if (id == null || id !in restoredIds) {
-                    unmatchedFiles.add(tf.name)
-                }
-            }
-
-            if (unmatchedFiles.isNotEmpty()) {
-                Logger.w(
-                    LOG_TAG_PROXY,
-                    "performRestore: ${unmatchedFiles.size} temp .conf files unmatched to any db entry: ${unmatchedFiles.joinToString()}. Preserving temp dir for manual recovery."
-                )
-                // do not delete temp dir, unmatched files may be needed
-                return
-            }
-
-            Logger.i(LOG_TAG_PROXY, "performRestore: successfully restored ${restoredIds.size} configs, cleaning up temp dir")
-            val isResidueDeleted = Utilities.deleteRecursive(tempDir)
-            if (isResidueDeleted) {
-                Logger.i(LOG_TAG_PROXY, "deleted residue temp wg files: ${tempDir.absolutePath}")
-            } else {
-                Logger.w(
-                    LOG_TAG_PROXY,
-                    "failed to delete residue temp wg files: ${tempDir.absolutePath}"
-                )
-                tempDir.deleteRecursively()
-            }
-        } catch (e: Exception) {
-            Logger.e(LOG_TAG_PROXY, "performRestore: err restoring wg configs, ${e.message}", e)
-        }
     }
 
     fun oneWireGuardEnabled(): Boolean {

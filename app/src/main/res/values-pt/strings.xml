@@ -177,7 +177,6 @@
     <string name="orbot_bs_status_trying_connect">A configurar Orbot…</string>
     <string name="orbot_install_dialog_title">Instalar Orbot?</string>
     <string name="settings_network_all_networks_desc">Quando ativada, DNS Control utiliza todas as redes disponíveis para se ligar à Internet. Caso contrário, utiliza a rede que estiver <i>ativada</i> pelo Android.</string>
-    <string name="settings_import_export_desc">Crie um backup ou restaure os dados e definições da aplicação.</string>
     <string name="settings_title_desc">DNS e firewall altamente personalizável</string>
     <string name="txt_home">Início</string>
     <string name="firewall_act_universal_tab">Universal</string>
@@ -224,7 +223,6 @@
     <string name="orbot_stop_dialog_negative">Parar Orbot</string>
     <string name="settings_orbot_heading">Configurar Orbot</string>
     <string name="settings_general_header">Geral</string>
-    <string name="settings_import_export_heading">Backup e restauro</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="settings_ip_network_heading">Escolha a versão do IP</string>
     <string name="settings_socks5_desc">Encaminhar ligações para o \'endpoint\' SOCKS5.</string>
@@ -295,18 +293,6 @@
     <string name="ada_app_bypass_univ">Ignorar universal</string>
     <string name="ada_app_status_allow">permitida</string>
     <string name="notif_download_content_text">A descarregar…</string>
-    <string name="brbs_backup_desc">Criar backup das definições da aplicação, rede e registos de DNS</string>
-    <string name="brbs_restore_desc">Restaurar de um ficheiro de backup</string>
-    <string name="brbs_restore_dialog_positive">Restaurar</string>
-    <string name="brbs_backup_dialog_message">Criar backup das definições da aplicação, da rede e dos registos de DNS para um ficheiro. A VPN será reiniciada.</string>
-    <string name="brbs_restore_dialog_title">Restaurar backup</string>
-    <string name="brbs_restore_dialog_message">Restaurar definições da aplicação, rede e registos de DNS de um ficheiro. A aplicação será reiniciada.</string>
-    <string name="brbs_backup_dialog_failure_message">Não foi possível criar o backup . Tentar novamente?</string>
-    <string name="brbs_backup_dialog_failure_positive">Repetir backup</string>
-    <string name="brbs_restore_complete_toast">Restauro efetuado, a reiniciar aplicação…</string>
-    <string name="brbs_backup_dialog_failure_title">Falha ao criar o backup</string>
-    <string name="brbs_restore_no_uri_toast">Falha ao restaurar; tente novamente</string>
-    <string name="brbs_backup_complete_toast">Backup efetuado</string>
     <string name="univ_firewall_rule_6">Bloquear aplicações instaladas recentemente</string>
     <string name="univ_ip_delete_dialog_positive">Eliminar tudo</string>
     <string name="univ_view_blocked_ip_desc">Alterar domínios bloqueados/confiáveis e regras de IP/Porta.</string>
@@ -522,14 +508,6 @@
     <string name="lbbs_redownload">Descarregar novamente as listas de bloqueio</string>
     <string name="lbbs_download">Atualizar listas de bloqueio</string>
     <string name="lbbs_heading">Configurar mais de 195 listas de bloqueio</string>
-    <string name="brbs_title">Backup e restauro</string>
-    <string name="brbs_backup_title">Backup</string>
-    <string name="brbs_restore_title">Restauro</string>
-    <string name="brbs_backup_dialog_title">Criar backup</string>
-    <string name="brbs_backup_dialog_positive">Backup</string>
-    <string name="brbs_restore_dialog_failure_title">Falha ao restaurar</string>
-    <string name="brbs_restore_dialog_failure_message">Não foi possível restaurar. Tentar novamente?</string>
-    <string name="brbs_restore_dialog_failure_positive">Repetir restauro</string>
     <string name="dns_query_latency">%1$s ms</string>
     <string name="dns_proxy_dialog_header_dns">Adicionar proxy DNS</string>
     <string name="dns_proxy_name">Nome do proxy</string>
@@ -610,7 +588,6 @@
     <string name="firewall_rule_domain_trusted_univ" translatable="true">Domínio confiável (universal)</string>
     <string name="ada_app_status_bypass_dns_firewall" translatable="true">irá ignorar o DNS universal e as regras de firewall</string>
     <string name="ada_app_bypass_dns_firewall" translatable="true">Ignorar DNS e firewall</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Não funciona em todas as versões da aplicação</string>
     <string name="dc_refresh_toast" translatable="true">Atualização concluída</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">Não é possível configurar proxies quando a VPN está a funcionar no modo DNS.</string>
     <string name="settings_default_dns_heading" translatable="true">Escolha o DNS de recurso</string>
@@ -856,5 +833,4 @@
     <string name="firewall_rule_bypass_proxy" translatable="true">Ignorar proxy</string>
     <string name="wg_setting_ssid_title" translatable="true">Apenas Wi-Fi</string>
     <string name="ac_split_tls" translatable="true">TCP/TLS</string>
-    <string name="tombstone_app_desc" translatable="true">Quando ativado, manter regras da app por 7 dias.</string>
 </resources>

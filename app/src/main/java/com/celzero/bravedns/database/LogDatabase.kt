@@ -21,7 +21,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
-import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 /**
@@ -38,7 +37,6 @@ abstract class LogDatabase : RoomDatabase() {
 
     companion object {
         const val LOGS_DATABASE_NAME = "rethink_logs.db"
-        private const val PRAGMA = "pragma wal_checkpoint(full)"
 
         // Legacy log tables removed in v16. Connection/DNS traffic must not be stored on disk.
         private val LEGACY_LOG_TABLES =
@@ -76,9 +74,4 @@ abstract class LogDatabase : RoomDatabase() {
     }
 
     abstract fun eventDao(): EventDao
-
-    // flush the WAL into the main db file; used before restoring a backup
-    fun checkPoint() {
-        openHelper.writableDatabase.query(SimpleSQLiteQuery(PRAGMA)).use { it.moveToFirst() }
-    }
 }

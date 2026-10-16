@@ -152,7 +152,6 @@ class FirewallAppListAdapterTest {
         packageName: String = "com.test.app",
         appName: String = "Test App",
         isSystemApp: Boolean = false,
-        tombstoneTs: Long = 0L,
         hasInternetPermission: Boolean = true,
         isProxyExcluded: Boolean = false,
         uploadBytes: Long = 1024L,
@@ -163,7 +162,6 @@ class FirewallAppListAdapterTest {
         every { appInfo.packageName } returns packageName
         every { appInfo.appName } returns appName
         every { appInfo.isSystemApp } returns isSystemApp
-        every { appInfo.tombstoneTs } returns tombstoneTs
         every { appInfo.hasInternetPermission(any()) } returns hasInternetPermission
         every { appInfo.isProxyExcluded } returns isProxyExcluded
         every { appInfo.uploadBytes } returns uploadBytes
@@ -320,16 +318,6 @@ class FirewallAppListAdapterTest {
     @Test
     fun `test app without internet permission`() = testScope.runTest {
         val appInfo = createTestAppInfo(hasInternetPermission = false)
-        mockViewHolder.update(appInfo)
-        advanceUntilIdle()
-
-        verify { mockViewHolder.update(appInfo) }
-    }
-
-    @Test
-    fun `test tombstoned app`() = testScope.runTest {
-        val tombstoneTimestamp = 12345L
-        val appInfo = createTestAppInfo(tombstoneTs = tombstoneTimestamp)
         mockViewHolder.update(appInfo)
         advanceUntilIdle()
 

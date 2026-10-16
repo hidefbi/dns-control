@@ -179,7 +179,6 @@
     <string name="search_custom_domains"><font size="12">Mencari nama-nama domain</font></string>
     <string name="settings_theme_dialog_title">Tampilan</string>
     <string name="cd_dns_proxy_error_text_2">Port harus dalam rentang 1024-65535</string>
-    <string name="brbs_backup_title">Cadangkan</string>
     <string name="univ_view_blocked_ip">Aturan IP &amp; Port</string>
     <string name="univ_accessibility_dialog_negative">Tolak</string>
     <string name="orbot_title">Orbot dan Proksi</string>
@@ -192,7 +191,6 @@
     <string name="fapps_firewall_filter_bypass_universal">Dipintaskan</string>
     <string name="dns_proxy_port">Nomor Port</string>
     <string name="status_protected_with_socks5">terproteksi dengan proksi socks</string>
-    <string name="brbs_backup_complete_toast">Selesai mencadangkan</string>
     <string name="default_dns_name">Bawaan RDNS</string>
     <string name="ci_dialog_added_success">IP telah ditambahkan ke daftar</string>
     <string name="ci_dialog_error_invalid_ip">Alamat IP, subnet atau port tidak sah.</string>
@@ -250,7 +248,6 @@
     <string name="fapps_firewall_filter_excluded">Dikecualikan</string>
     <string name="cd_custom_dns_proxy_name">Proksi %1$s</string>
     <string name="dns_proxy_name">Nama Proksi</string>
-    <string name="brbs_backup_dialog_failure_title">Gagal mencadangkan</string>
     <string name="apps_card_ips_count">%1$s aturan IP &amp; Port</string>
     <string name="fapps_firewall_filter_desc_category"><![CDATA[Menampilkan <u>%1$s</u> %2$s aplikasi dalam kategori: %3$s]]></string>
     <string name="alert_firewall_accessibility_regrant_explanation">Layanan aksesibilitas DNS Control terhenti atau mengalami kegagalan. <i><b>Masuk ke Pengaturan dan Hentikan Paksa</b></i> dan mulai ulang untuk menggunakan fitur <i>Blokir aplikasi apapun yang tidak digunakan</i>.\n\nDNS Control menggunakan layanan aksesibilitas untuk mengawasi aplikasi yang sedang digunakan (latar depan) dan aplikasi yang tidak digunakan (latar belakang).</string>
@@ -268,11 +265,9 @@
     <string name="ada_app_status_allow">diperbolehkan</string>
     <string name="notif_download_success_content">Berhasil terunduh.</string>
     <string name="rt_dialog_title">Simpan Perubahan</string>
-    <string name="brbs_backup_dialog_failure_positive">Cadangkan Ulang</string>
     <string name="blocklist_update_check_not_required">Daftar-daftar blokir sudah dalam versi terbaru.</string>
     <string name="notif_download_content_text">Sedang mengunduh…</string>
     <string name="settings_dns_proxy_dialog_port_number">Nomor Port</string>
-    <string name="brbs_backup_dialog_positive">Cadangkan</string>
     <string name="settings_dns_proxy_dialog_positive_btn">Tetapkan</string>
     <string name="settings_ip_text_ipv4">IPv4</string>
     <string name="firewall_card_text_inactive">Aktifkan mode firewall.</string>
@@ -343,7 +338,6 @@
     <string name="status_protected_with_proxy_private_dns">terproteksi dengan proksi &amp; dns pribadi</string>
     <string name="fapps_filter_clear_btn">Kosongkan</string>
     <string name="dc_rethink_dns" translatable="false">DNS Rethink</string>
-    <string name="brbs_backup_dialog_failure_message">Tidak dapat mencadangkan. Coba lagi?</string>
     <string name="download_update_dialog_message_success">Daftar blokir berhasil terunduh.</string>
     <string name="alert_firewall_accessibility_explanation">DNS Control menggunakan layanan aksesibilitas untuk mengawasi aplikasi yang sedang digunakan (latar depan) dan aplikasi yang tidak digunakan (latar belakang) \n \nDNS Control tidak mengumpulkan data apa pun dan tidak memata-matai Anda dengan cara apa pun.</string>
     <string name="doh_custom_url_remove_success">Titik-akhir telah terhapus.</string>
@@ -399,7 +393,6 @@
     <string name="firewall_rule_block_unmetered">Tidak Terukur (WiFi)</string>
     <string name="firewall_status_block_metered">Diblokir pada jaringan yang terukur (Data Seluler)</string>
     <string name="firewall_rule_trusted_ip">IP Tepercaya</string>
-    <string name="brbs_backup_dialog_title">Buat cadangan</string>
     <string name="cd_dns_crypt_title">Resolver</string>
     <string name="firewall_rule_univ_block_metered">Terukur (Universal)</string>
     <string name="fapps_unmetered_block_dialog_title">Blokir jaringan yang tidak terukur</string>
@@ -419,7 +412,6 @@
     <string name="notification_action_pause_vpn">JEDA</string>
     <string name="orbot_stop_dialog_title">Dibutuhkan intervensi manual</string>
     <string name="dc_doh" translatable="false">Dns melalui HTTPS</string>
-    <string name="brbs_backup_desc">Cadangkan setelan aplikasi, riwayat jaringan dan DNS</string>
     <string name="firewall_rule_block_app_univ_mobile_desc"><![CDATA[Aturan firewall universal yang ditetapkan pengguna telah memblokir <i>app</i> ini saat mencoba terhubung ke jaringan <i>Metered</i> (Mobile).<br/><br/> Untuk mengubahnya, buka tab <i>Universal</i>.]]></string>
     <string name="hsf_exclude_error">Tidak dapat dikecualikan dalam mode penguncian penuh VPN</string>
     <string name="firewall_rule_block_app_mobile_desc"><![CDATA[Aturan firewall yang ditetapkan pengguna telah memblokir <i>aplikasi</i> ini saat mencoba terhubung ke jaringan <i>Metered</i>.<br/><br/> Untuk mengubahnya, buka tab <i>Semua Aplikasi</i>.]]></string>
@@ -427,23 +419,9 @@
     <string name="fapps_info_dialog_message">Blokir aplikasi agar tidak terhubung ke internet. Membatasi akses ke internet membantu menghindari penggunaan data yang tidak perlu dan juga membantu menghemat baterai.</string>
     <string name="firewall_rule_block_app_unmetered_desc"><![CDATA[Aturan firewall yang ditetapkan pengguna memblokir <i>aplikasi</i> ini saat mencoba terhubung pada jaringan <i>Tidak Terukur</i>.<br/><br/> Untuk mengubahnya, buka tab <i>Semua Aplikasi</i>.]]></string>
     <string name="pause_title_desc">sedang rehat…</string>
-    <string name="brbs_restore_dialog_failure_positive">Ulangi Pemulihan</string>
-    <string name="brbs_restore_complete_toast">Pemulihan selesai, memulai ulang aplikasi…</string>
-    <string name="settings_import_export_heading">Pencadangan &amp; Pemulihan</string>
-    <string name="brbs_restore_dialog_message">Memulihkan pengaturan aplikasi, riwayat jaringan dan DNS dari berkas cadangan. Ini akan memulai ulang aplikasi.</string>
-    <string name="brbs_restore_desc">Pulihkan dari file cadangan</string>
-    <string name="brbs_backup_dialog_message">Mencadangkan pengaturan, riwayat jaringan dan dns ke sebuah berkas. Ini akan memulai ulang VPN.</string>
-    <string name="brbs_restore_no_uri_toast">Pemulihan gagal, coba lagi</string>
-    <string name="brbs_restore_dialog_failure_message">Tidak dapat memulihkan. Coba lagi?</string>
-    <string name="brbs_restore_title">Pemulihan</string>
     <string name="notif_channel_proxy_failure">Peringatan Proksi</string>
-    <string name="brbs_title">Pencadangan &amp; pemulihan</string>
     <string name="firewall_rule_bypass_universal_ip">IP yang dipintaskan/di-bypass</string>
     <string name="local_blocklist_redownload">Terbaru!</string>
-    <string name="settings_import_export_desc">Mencadangkan atau memulihkan data dan pengaturan aplikasi secara manual.</string>
-    <string name="brbs_restore_dialog_positive">Pulihkan</string>
-    <string name="brbs_restore_dialog_title">Pulihkan cadangan</string>
-    <string name="brbs_restore_dialog_failure_title">Pemulihan gagal</string>
     <string name="private_dns_dialog_desc">Pengaturan DNS DNS Control diganti oleh DNS Pribadi Android.\n\nUntuk menggunakan DNS DNS Control, buka Pengaturan Android dan nonaktifkan DNS Pribadi.</string>
     <string name="private_dns_dialog_heading">Matikan DNS Pribadi</string>
     <string name="private_dns_dialog_positive">Masuk ke Pengaturan</string>
@@ -609,7 +587,6 @@
     <string name="dc_refresh_toast" translatable="true">Penyegaran selesai</string>
     <string name="dc_setting_dns_cache_heading" translatable="true">Penguat DNS</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Menggabungkan permintaan, menyimpan tembolok (cache), menanggapi kesalahan dengan tangguh</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Tidak berfungsi di semua versi aplikasi</string>
     <string name="firewall_rule_bypass_dns_firewall" translatable="true">Aplikasi yang Dipintaskan/Di-Bypass</string>
     <string name="firewall_rule_dns_blocked" translatable="true">DNS Diblokir</string>
     <string name="firewall_rule_domain_blocked_univ" translatable="true">Domain (Universal)</string>
@@ -895,8 +872,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Identifier Wi-Fi (%1$s) harus terdiri dari 32 karakter atau kurang.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Program Stabilitas</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Catat log kesalahan untuk membantu meningkatkan stabilitas.</string>
-    <string name="tombstone_app_title" translatable="true">Ingat aplikasi yang telah dihapus</string>
-    <string name="tombstone_app_desc" translatable="true">Saat diaktifkan, simpan aturan aplikasi selama 7 hari.</string>
     <string name="settings_locale_dialog_default" translatable="true">Default sistem</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Saat diaktifkan, mengiizinkan sambungan masuk yang diinisialisasi oleh mitra WireGuard.</string>

@@ -16,18 +16,14 @@
 package com.celzero.bravedns.ui
 
 import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_BACKUP_RESTORE
 import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.app.UiModeManager
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import android.net.Uri
 import android.os.Bundle
 import android.os.SystemClock
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -36,19 +32,8 @@ import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
-import androidx.work.BackoffPolicy
-import androidx.work.Data
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkInfo
-import androidx.work.WorkManager
-import androidx.work.WorkRequest
 import com.celzero.bravedns.BuildConfig
 import com.celzero.bravedns.R
-import com.celzero.bravedns.backup.BackupHelper
-import com.celzero.bravedns.backup.BackupHelper.Companion.BACKUP_FILE_EXTN
-import com.celzero.bravedns.backup.BackupHelper.Companion.INTENT_RESTART_APP
-import com.celzero.bravedns.backup.BackupHelper.Companion.INTENT_SCHEME
-import com.celzero.bravedns.backup.RestoreAgent
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.RefreshDatabase
 import com.celzero.bravedns.service.BraveVPNService
@@ -56,29 +41,25 @@ import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.service.WireguardManager
-import com.celzero.bravedns.ui.activity.MiscSettingsActivity
-import com.celzero.bravedns.ui.activity.PauseActivity
-import com.celzero.bravedns.ui.activity.WelcomeActivity
 import com.celzero.bravedns.util.FirebaseErrorReporting
 import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_LENGTH
 import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_REGENERATION_PERIOD_DAYS
+import com.celzero.bravedns.util.Utilities
+import com.celzero.bravedns.util.Utilities.getRandomString
+import java.util.concurrent.TimeUnit
+import com.celzero.bravedns.ui.activity.MiscSettingsActivity
+import com.celzero.bravedns.ui.activity.PauseActivity
+import com.celzero.bravedns.ui.activity.WelcomeActivity
 import com.celzero.bravedns.util.NewSettingsManager
 import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.Themes.Companion.getCurrentTheme
-import com.celzero.bravedns.util.Utilities
-import com.celzero.bravedns.util.Utilities.getRandomString
 import com.celzero.bravedns.util.Utilities.isAtleastO_MR1
 import com.celzero.bravedns.util.Utilities.isAtleastQ
-import com.celzero.bravedns.util.Utilities.showToastUiCentered
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import java.util.concurrent.TimeUnit
-import kotlin.time.Duration.Companion.milliseconds
 
 class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
     private val persistentState by inject<PersistentState>()
@@ -128,9 +109,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         setupNavigationItemSelectedListener()
 
 
-        // handle intent receiver for backup/restore
-        handleIntent()
-
         observeAppState()
 
         handleOnBackPressed()
@@ -163,40 +141,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         return !this.isFinishing && !this.isDestroyed
     }
 
-    private fun handleIntent() {
-        val intent = this.intent ?: return
-        if (
-            intent.scheme?.equals(INTENT_SCHEME) == true &&
-            intent.data?.path?.contains(BACKUP_FILE_EXTN) == true
-        ) {
-            Logger.i(LOG_TAG_UI, "handleIntent: backup intent")
-            handleRestoreProcess(intent.data)
-        } else if (intent.scheme?.equals(INTENT_SCHEME) == true) {
-            Logger.i(LOG_TAG_UI, "handleIntent: restore intent")
-            showToastUiCentered(
-                this,
-                getString(R.string.brbs_restore_no_uri_toast),
-                Toast.LENGTH_SHORT
-            )
-        } else if (intent.getBooleanExtra(INTENT_RESTART_APP, false)) {
-            Logger.i(LOG_TAG_UI, "Restart from restore, so refreshing app database...")
-            io { rdb.refresh(RefreshDatabase.ACTION_REFRESH_RESTORE) }
-        }
-    }
-
-    private fun handleRestoreProcess(uri: Uri?) {
-        if (uri == null) {
-            showToastUiCentered(
-                this,
-                getString(R.string.brbs_restore_no_uri_toast),
-                Toast.LENGTH_SHORT
-            )
-            return
-        }
-
-        showRestoreDialog(uri)
-    }
-
     private fun regenerateFirebaseTokenIfNeeded() {
         if (Utilities.isFdroidFlavour()) return
         if (!persistentState.firebaseErrorReportingEnabled) return
@@ -213,92 +157,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             persistentState.firebaseUserTokenTimestamp = ts
             FirebaseErrorReporting.setUserId(token)
         }
-    }
-
-    private fun showRestoreDialog(uri: Uri) {
-        if (!isInForeground()) return
-
-        val builder = MaterialAlertDialogBuilder(this, R.style.App_Dialog_NoDim)
-        builder.setTitle(R.string.brbs_restore_dialog_title)
-        builder.setMessage(R.string.brbs_restore_dialog_message)
-        builder.setPositiveButton(getString(R.string.brbs_restore_dialog_positive)) { _, _ ->
-            startRestore(uri)
-            observeRestoreWorker()
-        }
-
-        builder.setNegativeButton(getString(R.string.lbl_cancel)) { _, _ ->
-            // no-op
-        }
-
-        builder.setCancelable(true)
-        val dialog = builder.create()
-        dialog.show()
-    }
-
-    private fun startRestore(fileUri: Uri) {
-        Logger.i(LOG_TAG_BACKUP_RESTORE, "invoke worker to initiate the restore process")
-        val data = Data.Builder()
-        data.putString(BackupHelper.DATA_BUILDER_RESTORE_URI, fileUri.toString())
-
-        val importWorker =
-            OneTimeWorkRequestBuilder<RestoreAgent>()
-                .setInputData(data.build())
-                .setBackoffCriteria(
-                    BackoffPolicy.LINEAR,
-                    WorkRequest.MIN_BACKOFF_MILLIS,
-                    TimeUnit.MILLISECONDS
-                )
-                .addTag(RestoreAgent.TAG)
-                .build()
-        WorkManager.getInstance(this).beginWith(importWorker).enqueue()
-    }
-
-    private fun observeRestoreWorker() {
-        val workManager = WorkManager.getInstance(this.applicationContext)
-
-        // observer for custom download manager worker
-        workManager.getWorkInfosByTagLiveData(RestoreAgent.TAG).observe(this) { workInfoList ->
-            val workInfo = workInfoList?.getOrNull(0) ?: return@observe
-            Logger.i(
-                LOG_TAG_BACKUP_RESTORE,
-                "WorkManager state: ${workInfo.state} for ${RestoreAgent.TAG}"
-            )
-            if (WorkInfo.State.SUCCEEDED == workInfo.state) {
-                showToastUiCentered(
-                    this,
-                    getString(R.string.brbs_restore_complete_toast),
-                    Toast.LENGTH_SHORT
-                )
-                workManager.pruneWork()
-                // restart the app so that Room gets fresh SQLite connections
-                lifecycleScope.launch {
-                    delay(1000.milliseconds)
-                    restartApp()
-                }
-            } else if (
-                WorkInfo.State.CANCELLED == workInfo.state ||
-                WorkInfo.State.FAILED == workInfo.state
-            ) {
-                showToastUiCentered(
-                    this,
-                    getString(R.string.brbs_restore_no_uri_toast),
-                    Toast.LENGTH_SHORT
-                )
-                workManager.pruneWork()
-                workManager.cancelAllWorkByTag(RestoreAgent.TAG)
-            } else { // state == blocked
-                // no-op
-            }
-        }
-    }
-
-    private fun restartApp() {
-        val pm: PackageManager = packageManager
-        val intent = pm.getLaunchIntentForPackage(packageName) ?: return
-        val mainIntent = Intent.makeRestartActivityTask(intent.component)
-        mainIntent.putExtra(INTENT_RESTART_APP, true)
-        startActivity(mainIntent)
-        Runtime.getRuntime().exit(0)
     }
 
     private fun observeAppState() {

@@ -40,7 +40,6 @@ import com.celzero.bravedns.service.DomainRulesManager
 import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.FirewallManager
 import com.celzero.bravedns.service.FirewallManager.NOTIF_CHANNEL_ID_FIREWALL_ALERTS
-import com.celzero.bravedns.service.FirewallManager.TOMBSTONE_EXPIRY_TIME_MS
 import com.celzero.bravedns.service.FirewallManager.deletePackage
 import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.PersistentState
@@ -82,7 +81,6 @@ internal constructor(
         const val NOTIF_ID_DB_CORRUPTION = 104
         private const val NOBODY = Constants.INVALID_UID
         private const val ACTION_BASE = 0
-        const val ACTION_REFRESH_RESTORE = ACTION_BASE + 1
         const val ACTION_REFRESH_AUTO = ACTION_BASE + 2
         const val ACTION_REFRESH_INTERACTIVE = ACTION_BASE + 3
         const val ACTION_REFRESH_FORCE = ACTION_BASE + 4
@@ -143,13 +141,6 @@ internal constructor(
             latestRefreshTime = current
             val pm = ctx.packageManager ?: return
 
-            // during restore action, move plain wg config files from temp_wireguard/ into
-            // the wireguard directory before loading managers so WireguardManager.load()
-            // finds the plaintext files.
-            if (action == ACTION_REFRESH_RESTORE) {
-                WireguardManager.restoreProcessRetrieveWireGuardConfigs()
-            }
-
             // make sure to maintain the order of the below calls
             val fm = FirewallManager.load()
             val ipm = IpRulesManager.load()
@@ -164,7 +155,6 @@ internal constructor(
                 "reload: fm: $fm; ip: $ipm; dom: $dm; px: $pxm; wg: $wgm; hm: $hm"
             )
 
-            val canTombstone = persistentState.tombstoneApps
             val trackedApps = FirewallManager.getAllApps()
             // installedPackages includes apps which are disabled by the user
             val installedPackages: List<PackageInfo> =
@@ -184,7 +174,7 @@ internal constructor(
                 }
             }
             if (trackedApps.size != installedApps.size) {
-                logEvent(Severity.LOW, "app refresh", "installed apps: ${installedApps.size}, tracked apps: ${trackedApps.size}, restore? ${action == ACTION_REFRESH_RESTORE}")
+                logEvent(Severity.LOW, "app refresh", "installed apps: ${installedApps.size}, tracked apps: ${trackedApps.size}")
             }
             Logger.i(
                 LOG_TAG_APP_DB,
@@ -192,35 +182,25 @@ internal constructor(
             )
             val packagesToAdd =
                 findPackagesToAdd(trackedApps, installedApps)
-            val probableTombstonePkgs =
-                findPackagesToTombstone(trackedApps, installedApps, action != ACTION_REFRESH_RESTORE && canTombstone)
-            val packagesToDelete =
-                findPackagesToDelete(trackedApps, installedApps, action == ACTION_REFRESH_RESTORE || !canTombstone)
-            // remove packages from delete list which are part of the probable tombstone
-            val packagesToTombstone = probableTombstonePkgs.filter {
-                !packagesToDelete.map { x -> x.packageName }.contains(it.packageName)
-            }.toSet()
-            val packagesToUpdate =
-                findPackagesToUpdate(trackedApps, installedApps, action == ACTION_REFRESH_RESTORE)
+            val packagesToDelete = findPackagesToDelete(trackedApps, installedApps)
+            val packagesToUpdate = findPackagesToUpdate(trackedApps, installedApps)
 
             printAll(packagesToAdd, "packagesToAdd")
-            printAll(packagesToTombstone, "packagesToTombstone")
             printAll(packagesToDelete, "packagesToDelete")
             printAll(packagesToUpdate, "packagesToUpdate")
 
-            logEvent(Severity.LOW, "app refresh details", "sizes: rmv: ${packagesToDelete.size}; add: ${packagesToAdd.size}; update: ${packagesToUpdate.size}, tombstone: ${packagesToTombstone.size}, action: $action, tombstoneEnabled? $canTombstone")
+            logEvent(Severity.LOW, "app refresh details", "sizes: rmv: ${packagesToDelete.size}; add: ${packagesToAdd.size}; update: ${packagesToUpdate.size}, action: $action")
             Logger.i(
                 LOG_TAG_APP_DB,
-                "sizes: rmv: ${packagesToDelete.size}; add: ${packagesToAdd.size}; update: ${packagesToUpdate.size}, tombstone: ${packagesToTombstone.size}, action: $action, tombstoneEnabled? $canTombstone"
+                "sizes: rmv: ${packagesToDelete.size}; add: ${packagesToAdd.size}; update: ${packagesToUpdate.size}, action: $action"
             )
-            tombstonePackages(packagesToTombstone, action == ACTION_REFRESH_RESTORE || !canTombstone)
-            deletePackages(packagesToDelete, action == ACTION_REFRESH_RESTORE)
+            deletePackages(packagesToDelete)
             addMissingPackages(packagesToAdd)
-            updateExistingPackagesIfNeeded(packagesToUpdate) // updated only for restore
+            updateExistingPackagesIfNeeded(packagesToUpdate)
             refreshNonApps(trackedApps, installedApps)
             // must be called after updateExistingPackagesIfNeeded
             // packages to add and delete are calculated based on proxy mapping
-            refreshProxyMapping(trackedApps, packagesToAdd, packagesToUpdate, packagesToDelete, action == ACTION_REFRESH_RESTORE)
+            refreshProxyMapping(trackedApps, packagesToAdd, packagesToUpdate, packagesToDelete)
             // must be called after updateExistingPackagesIfNeeded
             refreshIPRules(packagesToUpdate)
             // must be called after updateExistingPackagesIfNeeded
@@ -248,117 +228,39 @@ internal constructor(
             .toHashSet()
     }
 
-    private suspend fun findPackagesToTombstone(
+    private fun findPackagesToDelete(
         old: Set<FirewallManager.AppInfoTuple>,
-        latest: Set<FirewallManager.AppInfoTuple>,
-        canTombstone: Boolean
+        latest: Set<FirewallManager.AppInfoTuple>
     ): Set<FirewallManager.AppInfoTuple> {
-        if (!canTombstone) return emptySet()
-        // find packages that are in old but not in latest, and are not non-apps
+        // find old package names that do not appear in latest, and are not non-apps
         val latestPkgs = latest.map { it.packageName }.toSet()
-        val tombstonePkgs = old.filter { !latestPkgs.contains(it.packageName) && !isNonApp(it.packageName) }
-            .toSet() // find old package names that do not appear in latest
-        return tombstonePkgs.filter {
-            val appInfo = FirewallManager.getAppInfoByPackage(it.packageName)
-            // cases where some apps tombstoned already but uid is positive
-            (appInfo != null && appInfo.tombstoneTs == 0L) || it.uid > 0
-        }.toSet() // filter out already tombstone packages
-    }
-
-    private suspend fun findPackagesToDelete(old: Set<FirewallManager.AppInfoTuple>, latest: Set<FirewallManager.AppInfoTuple>, restoreOrNoTombstone: Boolean): Set<FirewallManager.AppInfoTuple> {
-        val latestPkgs = latest.map { it.packageName }.toSet()
-        if (restoreOrNoTombstone) {
-            return old.filter { !latestPkgs.contains(it.packageName) && !isNonApp(it.packageName) }.toSet()
-        }
-
-        // find packages which have elapsed the tombstone expiry time
-        val currentTime = System.currentTimeMillis()
-        val tombstonePkgs = old.filter { !latestPkgs.contains(it.packageName) && !isNonApp(it.packageName) }.toSet()
-        return tombstonePkgs.filter {
-            val appInfo = FirewallManager.getAppInfoByPackage(it.packageName)
-            appInfo != null && appInfo.tombstoneTs > 0L &&
-                currentTime - appInfo.tombstoneTs > TOMBSTONE_EXPIRY_TIME_MS
-        }.toSet() // find old package names that do not appear in latest
+        return old.filter { !latestPkgs.contains(it.packageName) && !isNonApp(it.packageName) }
+            .toSet()
     }
 
     private fun findPackagesToUpdate(
         old: Set<FirewallManager.AppInfoTuple>,
-        latest: Set<FirewallManager.AppInfoTuple>,
-        ignoreUid: Boolean
+        latest: Set<FirewallManager.AppInfoTuple>
     ): Set<FirewallManager.AppInfoTuple> {
-        return if (ignoreUid) {
-            val latestPkgs = latest.map { it.packageName }.toSet()
-            old.filter { latestPkgs.contains(it.packageName) }
-                .toSet() // find old package names that appear in latest
-        } else {
-            // Sets.intersection(old, latest); need not update apps already tracked
-            old.filter { x ->
-                latest.any { y -> y.packageName == x.packageName && y.uid != x.uid }
-            }.toSet() // find old package names that appear in latest with different uid
-        }
+        // Sets.intersection(old, latest); need not update apps already tracked
+        return old.filter { x ->
+            latest.any { y -> y.packageName == x.packageName && y.uid != x.uid }
+        }.toSet() // find old package names that appear in latest with different uid
     }
 
-    private suspend fun tombstonePackages(
-        packagesToTombstone: Set<FirewallManager.AppInfoTuple>,
-        skipTombstone: Boolean
-    ) {
-        if (skipTombstone) {
-            // if restore, then no need to tombstone the app, delete should take care of it
-            Logger.i(LOG_TAG_APP_DB, "tombstonePackages: skip tombstone, no-op")
-            return
-        }
-        // if not restore then mark the app as tombstone
-        val currentTime = System.currentTimeMillis()
-        packagesToTombstone.forEach {
-            val appInfo = FirewallManager.getAppInfoByPackage(it.packageName)
-            Logger.d(LOG_TAG_APP_DB, "tombstone app: $it, tombstone: ${appInfo?.tombstoneTs}, restore: $skipTombstone, current: $currentTime, diff: ${currentTime - (appInfo?.tombstoneTs ?: 0L)}")
-            if (appInfo != null) {
-                if (appInfo.tombstoneTs > 0L && appInfo.uid < 0) {
-                    // should not be the case as we filter out the tombstone packages
-                    Logger.w(LOG_TAG_APP_DB, "tombstone app: ${it.packageName}, uid: ${it.uid}, ts: ${appInfo.tombstoneTs} is already tombstoned, no-op")
-                    return@forEach
-                }
-                // mark the app as tombstone, only appInfo will be updated with tombstone ts
-                // all other rules will be updated with new uid (-1 * uid)
-                IpRulesManager.tombstoneRulesByUid(it.uid)
-                DomainRulesManager.tombstoneRulesByUid(it.uid)
-                ProxyManager.tombstoneApp(it.uid)
-                FirewallManager.tombstoneApp(it.uid, it.packageName, currentTime)
-                Logger.i(
-                    LOG_TAG_APP_DB,
-                    "tombstone app: ${it.packageName}, uid: ${it.uid}, ts: ${appInfo.tombstoneTs}"
-                )
-            }
-        }
-    }
-
-    private suspend fun deletePackages(packagesToDelete: Set<FirewallManager.AppInfoTuple>, restore: Boolean) {
-        // decide whether the app need to be deleted or just need to be tombstoned
-        // if tombstone then just update the tombstoneTs to current time and return
-        // in case if the app is already tombstoned and the tombstoneTs is expired then delete it
-        // in case of restore no need to look for tombstoneTs expiry, just delete the app
-        val currentTime = System.currentTimeMillis()
+    private suspend fun deletePackages(packagesToDelete: Set<FirewallManager.AppInfoTuple>) {
         packagesToDelete.forEach {
             val appInfo = FirewallManager.getAppInfoByPackage(it.packageName)
-            Logger.d(LOG_TAG_APP_DB, "delete app: $it, tombstone: ${appInfo?.tombstoneTs}, restore: $restore, current: $currentTime, diff: ${currentTime - (appInfo?.tombstoneTs ?: 0L)}")
             if (appInfo != null) {
-                // delete the app from the database only if tombstone expiry time has elapsed
-                // or if restore is true or tombstone is disabled
-                val canDelete = !persistentState.tombstoneApps || restore || (appInfo.tombstoneTs > 0L && currentTime - appInfo.tombstoneTs > TOMBSTONE_EXPIRY_TIME_MS)
-                if (canDelete && it.uid != Constants.UID_EVERYBODY) {
+                if (it.uid != Constants.UID_EVERYBODY) {
                     // remove all the rules related to the packages
                     IpRulesManager.deleteRulesByUid(it.uid)
                     DomainRulesManager.deleteRulesByUid(it.uid)
                     ProxyManager.deleteApp(it.uid, it.packageName)
                     deletePackage(it.uid, it.packageName)
-                    Logger.i(
-                        LOG_TAG_APP_DB,
-                        "delete app: ${it.packageName}, uid: ${it.uid}, ts: ${appInfo.tombstoneTs}"
-                    )
+                    Logger.i(LOG_TAG_APP_DB, "delete app: ${it.packageName}, uid: ${it.uid}")
                 } else {
-                    // should not be the case as we filter out the tombstone packages
-                    // no-op, package is already tombstone, will be deleted later
-                    Logger.w(LOG_TAG_APP_DB, "delete app: ${it.packageName}, uid: ${it.uid}, ts: ${appInfo.tombstoneTs} is not expired, no-op")
+                    Logger.w(LOG_TAG_APP_DB, "delete app: ${it.packageName}, uid: ${it.uid}, skipped, uid is everybody")
                 }
             }
         }
@@ -444,7 +346,7 @@ internal constructor(
     }
 
     private suspend fun maybeInsertApp(uid: Int) {
-        val knownUid = FirewallManager.hasUid(uid) // this will skip tombstone apps
+        val knownUid = FirewallManager.hasUid(uid)
         if (knownUid) {
             Logger.i(LOG_TAG_APP_DB, "insertApp: $uid already tracked")
             return
@@ -452,37 +354,6 @@ internal constructor(
         val ai = maybeFetchAppInfo(uid)
         val pkg = ai?.packageName ?: ""
 
-        val tombstone = FirewallManager.isTombstone(pkg)
-        Logger.i(LOG_TAG_APP_DB, "insert app; uid: $uid, pkg: $pkg, tombstone? $tombstone")
-        if (tombstone) {
-            val oldUid = FirewallManager.getAppInfoByPackage(pkg)?.uid
-            if (oldUid == null) {
-                Logger.e(LOG_TAG_APP_DB, "insertApp: $uid is tombstone, but oldUid is null")
-                return
-            }
-            if (ai == null) { // this should not happen as tombstone will not deal with non-apps
-                // if the app is tombstone, but the app info is not available, maybe non-app
-                // reset the tombstone timestamp
-                val newUid = if (oldUid < INVALID_UID) { // negative for tombstoned apps
-                    // if the oldUid is invalid, then use the current uid
-                    uid
-                } else {
-                    oldUid
-                }
-                FirewallManager.updateUidAndResetTombstone(oldUid, newUid, pkg)
-                logEvent(Severity.MEDIUM, "tombstone app", "reset tombstone for non-app $pkg, uid: $newUid")
-                Logger.i(LOG_TAG_APP_DB, "insertApp: $uid is tombstoned, but app info is null (non-app)")
-                return
-            }
-            // if the app is markes as tombstone, then reset the tombstone timestamp
-            // and return, so that the app is not added again
-            FirewallManager.updateUidAndResetTombstone(oldUid, ai.uid, pkg)
-            IpRulesManager.updateUids(listOf(oldUid), listOf(ai.uid))
-            DomainRulesManager.updateUids(listOf(oldUid), listOf(ai.uid))
-            ProxyManager.updateApp(ai.uid, ai.packageName)
-            Logger.i(LOG_TAG_APP_DB, "insertApp: $uid is tombstone ($oldUid), reset ts")
-            return
-        }
         if (ai != null) {
             // uid may be different from the one in ai, if the app is installed in a different user
             insertApp(ai)
@@ -513,8 +384,7 @@ internal constructor(
         trackedApps: Set<FirewallManager.AppInfoTuple>,
         packageToAdd: Set<FirewallManager.AppInfoTuple>,
         packagesToUpdate: Set<FirewallManager.AppInfoTuple>,
-        packagesToDelete: Set<FirewallManager.AppInfoTuple>,
-        restore: Boolean = false
+        packagesToDelete: Set<FirewallManager.AppInfoTuple>
     ) {
 
         // trackedApps is empty, the installed apps are yet to be added to the database; and so,
@@ -525,7 +395,6 @@ internal constructor(
         }
 
         // ProxyManager.purgeDupsBeforeRefresh()
-        val canTombstone = persistentState.tombstoneApps
         // remove the apps from proxy mapping which are not tracked by app info repository
         // this will just sync the proxy mapping with the app info repository
         val pxm = ProxyManager.trackedApps()
@@ -535,11 +404,10 @@ internal constructor(
         val currentFwApps =
             fwSnapshot.keys.map { FirewallManager.AppInfoTuple(it.first, it.second) }.toSet()
 
-        val tombstoneApps = findPackagesToTombstone(pxm, currentFwApps, !restore && canTombstone)
-        // apps which are tombstone, but not yet deleted will be deleted now
-        val del = findPackagesToDelete(pxm, currentFwApps, restore || !canTombstone)
+        // apps which are no longer installed are removed from the proxy mapping
+        val del = findPackagesToDelete(pxm, currentFwApps)
         // Compare proxy state against current state so uid changes are detected correctly.
-        val update = findPackagesToUpdate(pxm, currentFwApps, restore)
+        val update = findPackagesToUpdate(pxm, currentFwApps)
         val add =
             findPackagesToAdd(pxm, currentFwApps).mapNotNull {
                 // resolve from the snapshot; also uid-aware so that
@@ -553,7 +421,6 @@ internal constructor(
         printAll(pxm, "px: tracked apps")
         printAll(packageToAdd, "px: add apps")
         printAll(update, "px: update apps")
-        printAll(tombstoneApps, "px: tombstone apps")
         printAll(del, "px: delete apps")
 
         ProxyManager.deleteApps(del)
@@ -561,26 +428,8 @@ internal constructor(
         // updateApps resolves any pre-existing proxy/FW uid discrepancies using current FW state
         ProxyManager.updateApps(update)
 
-        tombstoneApps.forEach { stale ->
-            val uidReused = currentFwApps.any { fw -> fw.uid == stale.uid && fw.packageName != stale.packageName }
-            if (uidReused) {
-                // The uid now belongs to a different app, just remove the stale proxy entry
-                // for the old packageName; do not use tombstoneApp(uid) or it will make the
-                // new app that happens to share the same uid.
-                Logger.w(LOG_TAG_APP_DB, "proxy tombstone: uid ${stale.uid} reused, deleting stale entry for ${stale.packageName}")
-                ProxyManager.deleteApp(stale.uid, stale.packageName)
-            } else {
-                ProxyManager.tombstoneApp(stale.uid)
-            }
-        }
-
         packagesToDelete.forEach {
-            if (restore) {
-                // restore the app in proxy mapping
-                ProxyManager.deleteApp(it.uid, it.packageName)
-            } else {
-                ProxyManager.deleteAppIfNeeded(it.uid, it.packageName)
-            }
+            ProxyManager.deleteAppIfNeeded(it.uid, it.packageName)
         }
 
         // packagesToUpdate entries carry the old uid (captured before updateExistingPackagesIfNeeded).
@@ -641,7 +490,7 @@ internal constructor(
         if (oldUid == newUid) {
             return
         }
-        FirewallManager.updateUidAndResetTombstone(oldUid, newUid, pkg)
+        FirewallManager.updateUid(oldUid, newUid, pkg)
     }
 
     private suspend fun insertApp(ai: ApplicationInfo) {

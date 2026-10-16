@@ -130,7 +130,6 @@ object ProxyManager : KoinComponent {
             val ai = FirewallManager.getAppInfoByUidAndPackage(app.uid, app.packageName)
                 ?: return@forEach
 
-            if (ai.tombstoneTs > 0L) return@forEach // skip uninstalled/tombstoned
             // concurrently removed; will be reconciled on next refresh
             // make sure the app is visible in app-lists even if not assigned to a proxy
             ensureBaseRow(app.uid, app.packageName, ai.appName)
@@ -283,10 +282,6 @@ object ProxyManager : KoinComponent {
         // if there is no app info for the package, then delete the app from the mapping
         if (fm == null) {
             deleteApp(uid, packageName)
-            return
-        } else {
-            // the app can be tombstoned, so do not delete the app from the mapping
-            Logger.i(LOG_TAG_PROXY, "deleteAppIfNeeded: app($uid, $packageName) is available in firewall manager, not deleting, tombstone: ${fm.tombstoneTs}")
         }
     }
 
@@ -306,27 +301,6 @@ object ProxyManager : KoinComponent {
         pamSet.clear()
         db.deleteAll()
         Logger.d(LOG_TAG_PROXY, "deleting all apps for mapping")
-    }
-
-    suspend fun tombstoneApp(oldUid: Int) {
-        val newUid = if (oldUid > 0) -1 * oldUid else oldUid
-        if (newUid == oldUid) {
-            Logger.w(LOG_TAG_PROXY, "no change in uid, not tombstoning: $oldUid")
-            return
-        }
-        val entries = pamSet.filter { it.uid == oldUid }
-        try {
-            entries.forEach { tuple ->
-                db.deleteMapping(newUid, tuple.packageName, tuple.proxyId)
-            }
-            db.tombstoneApp(oldUid, newUid)
-        } catch (e: Exception) {
-            Logger.w(LOG_TAG_PROXY, "tombstoneApp failed for oldUid=$oldUid; reloading cache", e)
-            load()
-            return
-        }
-        load()
-        Logger.i(LOG_TAG_PROXY, "tombstoning app for mapping: $oldUid, $newUid, entries: ${entries.size}")
     }
 
     fun isAnyAppSelected(proxyId: String): Boolean {

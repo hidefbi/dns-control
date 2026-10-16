@@ -23,8 +23,6 @@
     <string name="category_name_installed" translatable="true">แอปที่ติดตั้ง</string>
     <string name="ci_dialog_title" translatable="true">เพิ่มกฎ IP / พอร์ต</string>
     <string name="ci_trust_initial" translatable="true">T</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">ลองสำรองข้อมูลอีกครั้ง</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">การคืนค่าล้มเหลว</string>
     <string name="bad_config_error" translatable="true">%1$s in %2$s</string>
     <string name="remaining_apps_dialog_desc" translatable="true">รวมแอปที่เหลือทั้งหมดที่ไม่ถูกกำหนดเส้นทางโดยพร็อกซีอื่น</string>
     <string name="crypt_adguard_desc" translatable="true">ปกป้องอุปกรณ์ของคุณจากมัลแวร์และอื่นๆ อีกมากมาย</string>
@@ -228,7 +226,6 @@
     <string name="lbbs_redownload" translatable="true">ดาวน์โหลดรายการบล็อคอีกครั้ง</string>
     <string name="lbbs_download" translatable="true">อัปเดตรายการบล็อค</string>
     <string name="lbbs_heading" translatable="true">กำหนดค่ารายการบล็อกมากกว่า 195 รายการ</string>
-    <string name="brbs_backup_restore_desc" translatable="true">ไม่ทำงานข้ามเวอร์ชันแอป</string>
     <string name="bad_config_reason_unknown_section" translatable="true">หมวดที่ไม่ทราบ</string>
     <string name="bad_config_explanation_pka" translatable="true">: ต้องเป็นค่าบวกและไม่เกิน 65535</string>
     <string name="bad_config_explanation_udp_port" translatable="true">: ต้องเป็นหมายเลขพอร์ต UDP ที่ถูกต้อง</string>
@@ -318,11 +315,6 @@
     <string name="ada_noapp_dialog_positive" translatable="true">ตกลง</string>
     <string name="rbl_security" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">ความปลอดภัย</string>
     <string name="lbbs_update_check" translatable="true">ตรวจสอบการอัปเดต</string>
-    <string name="brbs_backup_title" translatable="true">การสำรองข้อมูล</string>
-    <string name="brbs_backup_dialog_title" translatable="true">การสำรองข้อมูล</string>
-    <string name="brbs_restore_dialog_message" translatable="true">กู้คืนการตั้งค่าแอป เครือข่าย และบันทึก DNS จากไฟล์สำรองข้อมูล การดำเนินการนี้จะเริ่มแอปใหม่</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">การสำรองข้อมูลล้มเหลว</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">ไม่สามารถคืนค่าได้ ลองใหม่อีกครั้ง?</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">รายการบล็อค %1$s</string>
     <string name="bad_config_explanation_positive_number" translatable="true">: ต้องเป็นบวก</string>
     <string name="bad_config_context" translatable="true">%1$s\'s %2$s</string>
@@ -445,11 +437,7 @@
     <string name="rbl_privacy" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">ความเป็นส่วนตัว</string>
     <string name="rt_download" translatable="true">ดาวน์โหลดรายการบล็อค</string>
     <string name="rt_filter_desc_subgroups" translatable="true"><![CDATA[กำลังแสดง <u>%1$s</u> รายการบล็อกในกลุ่ม: %2$s และกลุ่มย่อย: %3$s]]></string>
-    <string name="brbs_backup_dialog_message" translatable="true">สำรองข้อมูลการตั้งค่าแอป เครือข่าย และบันทึก DNS ลงในไฟล์ การดำเนินการนี้จะเริ่ม VPN ใหม่</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">การสำรองข้อมูล</string>
     <string name="lbbs_configure" translatable="true">การกำหนดค่า</string>
-    <string name="brbs_restore_complete_toast" translatable="true">การคืนค่าเสร็จสมบูรณ์ กำลังรีสตาร์ทแอป…</string>
-    <string name="brbs_backup_complete_toast" translatable="true">การสำรองข้อมูลเสร็จสิ้น</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_entries" translatable="true">%1$s รายการ »</string>
     <string name="fapps_bypass_block_dialog_message" translatable="true">ข้ามกฎไฟร์วอลล์สากลสำหรับแอปที่<i>อยู่ในรายการ</i>หรือไม่?</string>
@@ -512,7 +500,6 @@
     <string name="settings_general_customize" translatable="true">ปรับแต่ง</string>
     <string name="settings_network_all_networks_desc" translatable="true">เมื่อเปิดใช้งาน DNS Control จะใช้เครือข่ายทั้งหมดที่มีเพื่อเชื่อมต่ออินเทอร์เน็ต หากไม่เป็นเช่นนั้น จะใช้เครือข่ายใดก็ตามที่ Android ถือว่า <i>ใช้งานอยู่</i></string>
     <string name="settings_check_update_heading" translatable="true">ตรวจสอบการอัปเดตแอป</string>
-    <string name="settings_import_export_desc" translatable="true">สำรองหรือกู้คืนข้อมูลแอปและการตั้งค่าด้วยตนเอง</string>
     <string name="settings_app_notification_a13_desc" translatable="true">เปิดใช้งานการอนุญาตการแจ้งเตือนสำหรับแอป</string>
     <string name="settings_autostart_bootup_heading" translatable="true">เริ่มการทำงานอัตโนมัติเมื่อเปิดเครื่อง (ทดลอง)</string>
     <string name="settings_network_all_networks" translatable="true">ใช้เครือข่ายที่มีอยู่ทั้งหมด (ทดลอง)</string>
@@ -655,14 +642,7 @@
     <string name="rt_dialog_message" translatable="true">คุณต้องการใช้รายการบล็อกที่กำหนดค่าใหม่หรือไม่?</string>
     <string name="rt_dialog_neutral" translatable="true">ดำเนินการต่อ</string>
     <string name="rt_download_start" translatable="true">กำลังดาวน์โหลดรายการบล็อค…</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">คืนค่า</string>
     <string name="dc_setting_dns_cache_heading" translatable="true">บูสเตอร์ DNS</string>
-    <string name="brbs_title" translatable="true">การสำรองข้อมูลและกู้คืน</string>
-    <string name="brbs_restore_title" translatable="true">คืนค่า</string>
-    <string name="brbs_restore_desc" translatable="true">กู้คืนจากไฟล์สำรองข้อมูล</string>
-    <string name="brbs_restore_dialog_title" translatable="true">กู้คืนข้อมูลสำรอง</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">ลองคืนค่าอีกครั้ง</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">การคืนค่าล้มเหลว ลองอีกครั้ง</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">เริ่มคิดใหม่เพื่อดำเนินการต่อ</string>
     <string name="bad_config_reason_invalid_key" translatable="true">คีย์ไม่ถูกต้อง</string>
     <string name="ssv_see_more" translatable="true">แสดงทั้งหมด</string>
@@ -727,7 +707,6 @@
     <string name="orbot_stop_dialog_message" translatable="true">DNS Control หยุดการส่งต่อการเชื่อมต่อไปยัง Orbot แล้ว แต่ Orbot อาจยังคงทำงานอยู่เบื้องหลัง</string>
     <string name="settings_socks5_vpn_disabled_error" translatable="true">เริ่มคิดใหม่เพื่อดำเนินการต่อ</string>
     <string name="orbot_explanation" translatable="true">Orbot เป็นแอปพร็อกซีฟรีที่ช่วยให้แอปอื่นใช้อินเทอร์เน็ตได้ &lt;u&gt;ปลอดภัยยิ่งขึ้น&lt;/u&gt; \nOrbot ใช้ &lt;u&gt;Tor&lt;/u&gt; เพื่อเข้ารหัสการรับส่งข้อมูลทางอินเทอร์เน็ตของคุณ ซึ่งช่วยให้คุณ &lt;u&gt;หลีกเลี่ยงการเซ็นเซอร์&lt;/u&gt; และป้องกันการเฝ้าติดตามเครือข่าย&lt;/u&gt; ในรูปแบบต่างๆ ที่คุกคามเสรีภาพและความเป็นส่วนตัวของบุคคล \n&lt;u&gt;TCP Proxy&lt;/u&gt;: DNS Control ส่งต่อเฉพาะการเชื่อมต่อ TCP ของแอป &lt;i&gt;ที่รวมอยู่&lt;/i&gt; ไปยัง Orbot \n&lt;u&gt;HTTP Proxy&lt;/u&gt;: DNS Control &lt;i&gt;สร้าง&lt;/i&gt;อุโมงค์ HTTP CONNECT ไปยัง Orbot และส่งต่อเฉพาะการเชื่อมต่อ TCP ของแอป &lt;i&gt;ที่รวมอยู่&lt;/i&gt;</string>
-    <string name="settings_import_export_heading" translatable="true">การสำรองข้อมูลและกู้คืน</string>
     <string name="settings_dns_proxy_dialog_header" translatable="true">ตั้งค่าพร็อกซี SOCKS5</string>
     <string name="firewall_status_block_unmetered" translatable="true">ถูกบล็อคบนเครือข่ายแบบไม่มีการวัดปริมาณ (wifi)</string>
     <string name="firewall_status_blocked" translatable="true">ถูกบล็อค</string>
@@ -740,8 +719,6 @@
     <string name="cd_dnscrypt_relay_heading" translatable="true">รีเลย์</string>
     <string name="cd_doh_dialog_heading" translatable="true">เพิ่ม DNS ผ่าน HTTPS</string>
     <string name="univ_firewall_rule_8" translatable="true">บล็อกการรับส่งข้อมูลพอร์ต 80 (HTTP ที่ไม่ปลอดภัย)</string>
-    <string name="brbs_backup_desc" translatable="true">การตั้งค่าแอปสำรองข้อมูล เครือข่าย และบันทึก DNS</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">ไม่สามารถสำรองข้อมูลได้ ลองอีกครั้งหรือไม่?</string>
     <string name="fapps_bypass_dns_firewall_dialog_message" translatable="true">ข้ามกฎ DNS และไฟร์วอลล์สากลสำหรับแอปที่แสดงรายการไว้หรือไม่?</string>
     <string name="fapps_firewall_filter_hint" translatable="true">กำลังแสดงแอปทั้งหมด</string>
     <string name="settings_local_blocklist_in_use" translatable="true">%1$s รายการบล็อคที่ใช้งานอยู่</string>

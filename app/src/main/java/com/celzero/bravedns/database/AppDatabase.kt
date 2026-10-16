@@ -23,7 +23,6 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
-import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.celzero.bravedns.util.Constants
 
@@ -48,7 +47,7 @@ import com.celzero.bravedns.util.Constants
         ODoHEndpoint::class,
         WgHopMap::class,
     ],
-    version = 37,
+    version = 38,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -63,7 +62,6 @@ abstract class AppDatabase : RoomDatabase() {
         // running on the freshly-copied asset, which was a source of the
         // "Bad database header" failure seen after clearing app storage.
         private const val DATABASE_PATH = "database/rethink_v31.db"
-        private const val PRAGMA = "pragma wal_checkpoint(full)"
 
         // setJournalMode() is added as part of issue #344
         // modified the journal mode from TRUNCATE to AUTOMATIC.
@@ -151,6 +149,7 @@ abstract class AppDatabase : RoomDatabase() {
                 .addMigrations(MIGRATION_34_35)
                 .addMigrations(MIGRATION_35_36)
                 .addMigrations(MIGRATION_36_37)
+                .addMigrations(MIGRATION_37_38)
                 .build()
         }
 
@@ -1365,6 +1364,63 @@ abstract class AppDatabase : RoomDatabase() {
                 }
             }
 
+        // v38: the "remember uninstalled apps" (tombstone) feature and backup/restore were removed.
+        // Drop AppInfo.tombstoneTs by rebuilding the table (DROP COLUMN is not available on
+        // minSdk 23) and purge the rows that the removed feature negated. UID_EVERYBODY (-1000)
+        // and INVALID_UID (-1) are legitimate, so only uids below -1000 are purged from rule tables.
+        val MIGRATION_37_38: Migration =
+            object : Migration(37, 38) {
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    purgeTombstonedRows(db)
+                    rebuildAppInfoWithoutTombstone(db)
+                    Logger.i(LOG_TAG_APP_DB, "MIGRATION_37_38: removed tombstone column and purged tombstoned rows")
+                }
+            }
+
+        private fun purgeTombstonedRows(db: SupportSQLiteDatabase) {
+            db.execSQL("DELETE FROM AppInfo WHERE tombstoneTs > 0")
+            db.execSQL("DELETE FROM CustomIp WHERE uid < -1000")
+            db.execSQL("DELETE FROM CustomDomain WHERE uid < -1000")
+            db.execSQL("DELETE FROM ProxyApplicationMapping WHERE uid < -1000")
+        }
+
+        private fun rebuildAppInfoWithoutTombstone(db: SupportSQLiteDatabase) {
+            db.execSQL("DROP TABLE IF EXISTS `AppInfo_new`")
+            db.execSQL(
+                "CREATE TABLE IF NOT EXISTS `AppInfo_new` (" +
+                    "`packageName` TEXT NOT NULL, " +
+                    "`appName` TEXT NOT NULL, " +
+                    "`uid` INTEGER NOT NULL, " +
+                    "`isSystemApp` INTEGER NOT NULL, " +
+                    "`firewallStatus` INTEGER NOT NULL, " +
+                    "`appCategory` TEXT NOT NULL, " +
+                    "`wifiDataUsed` INTEGER NOT NULL, " +
+                    "`mobileDataUsed` INTEGER NOT NULL, " +
+                    "`connectionStatus` INTEGER NOT NULL, " +
+                    "`screenOffAllowed` INTEGER NOT NULL, " +
+                    "`backgroundAllowed` INTEGER NOT NULL, " +
+                    "`uploadBytes` INTEGER NOT NULL, " +
+                    "`downloadBytes` INTEGER NOT NULL, " +
+                    "`isProxyExcluded` INTEGER NOT NULL, " +
+                    "`modifiedTs` INTEGER NOT NULL, " +
+                    "`tempAllowEnabled` INTEGER NOT NULL, " +
+                    "`tempAllowExpiryTime` INTEGER NOT NULL, " +
+                    "PRIMARY KEY(`uid`, `packageName`))"
+            )
+            db.execSQL(
+                "INSERT INTO `AppInfo_new` (packageName, appName, uid, isSystemApp, firewallStatus, " +
+                    "appCategory, wifiDataUsed, mobileDataUsed, connectionStatus, screenOffAllowed, " +
+                    "backgroundAllowed, uploadBytes, downloadBytes, isProxyExcluded, modifiedTs, " +
+                    "tempAllowEnabled, tempAllowExpiryTime) " +
+                    "SELECT packageName, appName, uid, isSystemApp, firewallStatus, appCategory, " +
+                    "wifiDataUsed, mobileDataUsed, connectionStatus, screenOffAllowed, backgroundAllowed, " +
+                    "uploadBytes, downloadBytes, isProxyExcluded, modifiedTs, tempAllowEnabled, " +
+                    "tempAllowExpiryTime FROM AppInfo"
+            )
+            db.execSQL("DROP TABLE AppInfo")
+            db.execSQL("ALTER TABLE `AppInfo_new` RENAME TO AppInfo")
+        }
+
         private fun seedPresetDnsEndpoints(db: SupportSQLiteDatabase) {
             val dohPresets = listOf(
                 Triple(
@@ -1431,14 +1487,6 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 
-    // fixme: revisit the links to remove the pragma for each table
-    // https://stackoverflow.com/questions/49030258/how-to-vacuum-roomdatabase
-    // https://stackoverflow.com/questions/50987119/backup-room-databas
-    fun checkPoint() {
-        appDatabaseRawQueries().checkpoint(SimpleSQLiteQuery(PRAGMA))
-        appDatabaseRawQueries().vacuum(SimpleSQLiteQuery("VACUUM"))
-    }
-
     abstract fun appInfoDAO(): AppInfoDAO
 
     abstract fun dohEndpointsDAO(): DoHEndpointDAO
@@ -1460,8 +1508,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun rethinkLocalFileTagDao(): RethinkLocalFileTagDao
 
     abstract fun localBlocklistPacksMapDao(): LocalBlocklistPacksMapDao
-
-    abstract fun appDatabaseRawQueries(): AppDatabaseRawQueryDao
 
     abstract fun wgConfigFilesDAO(): WgConfigFilesDAO
 

@@ -39,7 +39,6 @@ class AppInfo : Serializable {
     var uploadBytes: Long = 0
     var downloadBytes: Long = 0
     var isProxyExcluded: Boolean = false
-    var tombstoneTs: Long = 0
     var modifiedTs: Long = 0
     var tempAllowEnabled: Boolean = false
     var tempAllowExpiryTime: Long = 0
@@ -77,7 +76,6 @@ class AppInfo : Serializable {
                 "uploadBytes" -> uploadBytes = it.value as Long
                 "downloadBytes" -> downloadBytes = it.value as Long
                 "isProxyExcluded" -> isProxyExcluded = (it.value as Int == 1)
-                "tombstoneTs" -> tombstoneTs = it.value as Long
                 "modifiedTs" -> modifiedTs = it.value as Long
                 "tempAllowEnabled" -> tempAllowEnabled = (it.value as Int == 1)
                 "tempAllowExpiryTime" -> tempAllowExpiryTime = it.value as Long
@@ -101,7 +99,6 @@ class AppInfo : Serializable {
         isProxyExcluded: Boolean,
         screenOffAllowed: Boolean,
         backgroundAllowed: Boolean,
-        tombstoneTs: Long = 0,
     ) {
         this.packageName = packageName
         this.appName = appName
@@ -115,7 +112,6 @@ class AppInfo : Serializable {
         this.isProxyExcluded = isProxyExcluded
         this.screenOffAllowed = screenOffAllowed
         this.backgroundAllowed = backgroundAllowed
-        this.tombstoneTs = tombstoneTs
     }
 
     fun hasInternetPermission(packageManager: PackageManager): Boolean {

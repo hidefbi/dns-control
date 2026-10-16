@@ -105,11 +105,6 @@
     <string name="lbl_advanced">avançado</string>
     <string name="lbbs_redownload">Baixar novamente listas de bloqueio</string>
     <string name="lbbs_download">Atualizar listas de bloqueio</string>
-    <string name="brbs_backup_dialog_message">Fazer backup das configurações de aplicativos, rede e registros de DNS para um arquivo. Isso reiniciará a VPN.</string>
-    <string name="brbs_backup_dialog_failure_title">Backup falhou</string>
-    <string name="brbs_restore_dialog_failure_message">Não foi possível restaurar. Tente novamente?</string>
-    <string name="brbs_restore_dialog_failure_positive">Repetir restauração</string>
-    <string name="brbs_restore_complete_toast">Restauração concluída, reiniciando o aplicativo…</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="block">Bloquear</string>
     <string name="status_no_internet">sem internet</string>
@@ -277,8 +272,6 @@
     <string name="settings_check_update_heading">Buscar por atualizações do aplicativo</string>
     <string name="settings_custom_downloader_heading">Usar assistente de download do aplicativo</string>
     <string name="settings_custom_downloader_desc">Se desativado, o <i>Gerenciador de Downloads</i> integrado do Android será usado</string>
-    <string name="settings_import_export_heading">Backup &amp; Restauração</string>
-    <string name="settings_import_export_desc">Fazer backup ou restaurar os dados e configurações do aplicativo.</string>
     <string name="settings_http_proxy_desc">Encaminhando para %1$s</string>
     <string name="settings_http_proxy_error_text1">O intervalo de portas deve ser a partir de 1024 a 65535</string>
     <string name="settings_http_proxy_error_text2">Porta inválida</string>
@@ -512,21 +505,6 @@
     <string name="lbbs_configure">Configurar</string>
     <string name="lbbs_update_check">Verificar atualizações</string>
     <string name="lbbs_heading">Configurar mais de 195 listas de bloqueio</string>
-    <string name="brbs_title">Backup &amp; Restauração</string>
-    <string name="brbs_backup_title">Backup</string>
-    <string name="brbs_backup_desc">Fazer backup das configurações do aplicativo, rede e registros de DNS</string>
-    <string name="brbs_restore_title">Restaurar</string>
-    <string name="brbs_restore_desc">Restaurar de um arquivo de backup</string>
-    <string name="brbs_backup_dialog_title">Fazer backup</string>
-    <string name="brbs_backup_dialog_positive">Backup</string>
-    <string name="brbs_restore_dialog_title">Restaurar backup</string>
-    <string name="brbs_restore_dialog_message">Restaurar configurações de aplicativos, rede e registros de DNS do arquivo de backup. Isso irá reiniciar o aplicativo.</string>
-    <string name="brbs_restore_dialog_positive">Restaurar</string>
-    <string name="brbs_backup_dialog_failure_message">Não foi possível fazer o backup. Tente novamente?</string>
-    <string name="brbs_backup_dialog_failure_positive">Refazer Backup</string>
-    <string name="brbs_restore_dialog_failure_title">Falha na restauração</string>
-    <string name="brbs_backup_complete_toast">Backup concluído</string>
-    <string name="brbs_restore_no_uri_toast">Falha na restauração; tentar novamente</string>
     <string name="settings_app_notification_a13_heading">Notificação do aplicativo</string>
     <string name="relative_time_today">Hoje</string>
     <string name="relative_time_yesterday">Ontem</string>
@@ -658,7 +636,6 @@
     <string name="bypass_dns_firewall_tooltip">%1$s funciona apenas com DNS do DNS Control</string>
     <string name="dc_refresh_toast" translatable="true">Atualização concluída</string>
     <string name="dc_setting_dns_cache_heading" translatable="true">Impulsionar DNS</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Não funciona em todas as versões do aplicativo</string>
     <string name="bad_config_reason_syntax_error" translatable="true">Erro de sintaxe</string>
     <string name="parse_error_integer" translatable="true">número</string>
     <string name="bad_config_explanation_pka" translatable="true">: Deve ser positivo e não superior a 65535</string>
@@ -871,7 +848,6 @@
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Insira o nome do pacote (exemplo: net.dinglisch.android.taskerm)</string>
     <string name="close_conns_dialog_desc" translatable="true">Feche todas as conexões para%1$s?</string>
     <string name="ac_split_tls" translatable="true">TCP/TLS</string>
-    <string name="tombstone_app_desc" translatable="true">Quando habilitado, manter regras do aplicativo por 7 dias.</string>
     <string name="lbl_saving" translatable="true">Salvando…</string>
     <string name="ip_mismatch_notification_title" translatable="true">Incompatibilidade do protocolo de rede</string>
     <string name="ip_mismatch_notification_content" translatable="true">Seu protocolo IP selecionado não está disponível na rede atual. Mude para o modo \"IPv4 &amp; IPv6\" ou \"Auto\" para ficar conectado.</string>

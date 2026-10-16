@@ -72,7 +72,6 @@
     <string name="always_on_dialog_positive">Stop</string>
     <string name="univ_firewall_dialog_title">Usunąć regułę IP?</string>
     <string name="dns_crypt_url_remove_success">DNSCrypt resolver usunięty.</string>
-    <string name="brbs_restore_no_uri_toast">Przywracanie nie powiodło się; spróbuj ponownie</string>
     <string name="slide_2_title">Witaj</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
     <string name="isolate">izoluj</string>
@@ -175,8 +174,6 @@
     <string name="settings_theme_heading" translatable="true">Wygląd</string>
     <string name="settings_theme_desc" translatable="true">Ciemny/jasny motyw</string>
     <string name="orbot_explanation" translatable="true">Orbot jest bezpłatną aplikacją proxy, która umożliwia innym aplikacjom korzystanie z Internetu w bardziej &lt;u&gt;bezpieczny sposób&lt;/u&gt;. \nOrbot używa &lt;u&gt;Tora&lt;/u&gt; do szyfrowania ruchu internetowego, co pomaga &lt;u&gt;ominąć cenzurę&lt;/u&gt; i bronić się przed formami &lt;u&gt;inwigilacji&lt;/u&gt;, które zagrażają wolności osobistej i prywatności. \n&lt;u&gt;Proxy TCP&lt;/u&gt;: DNS Control przekazuje do Orbota tylko połączenia TCP wszystkich aplikacji poza wykluczonymi. \n&lt;u&gt;Proxy HTTP&lt;/u&gt;: DNS Control &lt;i&gt;ustawia&lt;/i&gt; proxy HTTP, ale nie wymusza używania go przez aplikacje. Zwykle używają go przeglądarki takie jak Chrome i Firefox. Aplikacje korzystające z serwera proxy HTTP(S) będą omijać zarówno reguły zapory sieciowej, jak i DNS.</string>
-    <string name="settings_import_export_heading" translatable="true">Kopia zapasowa i przywracanie</string>
-    <string name="settings_import_export_desc" translatable="true">Ręcznie wykonaj kopię zapasową lub przywróć dane i ustawienia aplikacji.</string>
     <string name="settings_orbot_disabled_error" translatable="true">Wyłącz proxy HTTP (S) i/lub SOCKS5, aby kontynuować konfigurację Tor-as-a-proxy.</string>
     <string name="settings_orbot_header" translatable="true">Orbot\t❯</string>
     <string name="settings_orbot_install_desc" translatable="true">Kliknij tutaj, aby zainstalować Orbot-a</string>
@@ -342,16 +339,6 @@
     <string name="dc_doh" translatable="false">Dns przez HTTPS</string>
     <string name="dc_dns_proxy" translatable="false">DNS Proxy</string>
     <string name="lbbs_update_check" translatable="true">Sprawdź aktualizacje</string>
-    <string name="brbs_backup_title" translatable="true">Kopia zapasowa</string>
-    <string name="brbs_restore_desc" translatable="true">Przywróć z pliku kopii zapasowej</string>
-    <string name="brbs_restore_title" translatable="true">Przywróć</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Przywróć</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Przywróć ustawienia aplikacji, logi sieci i dns z pliku kopii zapasowej. Spowoduje to ponowne uruchomienie aplikacji.</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Powtórzenie kopii zapasowej</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Spróbuj ponownie przywrócić</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Nie można przywrócić. Spróbuj jeszcze raz?</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Zakończono tworzenie kopii zapasowej</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Przywracanie zakończone, ponowne uruchomienie aplikacji…</string>
     <string name="settings_locale_heading" translatable="true">Zmień język</string>
     <string name="settings_locale_desc" translatable="true">Wybierz preferowany język</string>
     <string name="settings_locale_dialog_title" translatable="true">Wybierz preferowany język</string>
@@ -428,10 +415,7 @@
     <string name="network_dns" translatable="true">System DNS</string>
     <string name="rt_dialog_message" translatable="true">Czy chcesz zastosować nowo skonfigurowane listy blokad?</string>
     <string name="lbbs_configure" translatable="true">Skonfiguruj</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Kopia zapasowa</string>
     <string name="lbbs_redownload" translatable="true">Pobierz ponownie listy blokujące</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Wykonuje kopię zapasową ustawień aplikacji, sieci i logów dns do pliku. Spowoduje to ponowne uruchomienie sieci VPN.</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">Przywracanie nie powiodło się</string>
     <string name="lbl_proceed" translatable="true">Kontynuować</string>
     <string name="hsf_pause_vpn_failure" translatable="true">Nie można wstrzymać: DNS Control nie jest aktywny</string>
     <string name="dc_block_heading" translatable="true">zasady</string>
@@ -487,8 +471,6 @@
     <string name="lbbs_enabled" translatable="true">Włączone</string>
     <string name="dc_refresh_toast" translatable="true">Odświeżanie zakończone</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Łączenie żądań, buforowanie , obsługa błędów</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Nie działa na różnych wersjach aplikacji</string>
-    <string name="brbs_backup_desc" translatable="true">Tworzenie kopii zapasowych ustawień aplikacji, logów sieciowych i dns</string>
     <string name="settings_http_proxy_error_text3" translatable="true">Nazwa hosta jest pusta</string>
     <string name="settings_http_proxy_error_text4" translatable="true">Połączenie z hostem nie powiodło się. Spróbuj ponownie.</string>
     <string name="settings_http_proxy_toast_success" translatable="true">Serwer proxy HTTP jest ustawiony</string>
@@ -575,7 +557,6 @@
     <string name="firewall_rule_trusted_domain_desc" translatable="true"><![CDATA[To połączenie zostało dopuszczone, ponieważ domena <i/> jest ustawiona jako Zaufana domena.<br/><br/> Aby to zmienić, przejdź do ekranu <i>App-specific Firewall</i>.]]></string>
     <string name="notif_channel_firewall_alerts" translatable="true">Alerty firewalla</string>
     <string name="dc_rethink_dns" translatable="false">Przemyśleć DNS</string>
-    <string name="brbs_title" translatable="true">Kopia i przywracanie</string>
     <string name="bsrf_sub_group_heading" translatable="true">Podgrupa</string>
     <string name="ada_app_isolate" translatable="true">Odizolować</string>
     <string name="ada_app_bypass_univ" translatable="true">Uniwersalne obejście</string>
@@ -597,13 +578,9 @@
     <string name="firewall_status_allow" translatable="true">dozwolony</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">DNS-over-HTTPS (DoH)</string>
     <string name="fapps_info_dialog_message" translatable="true">Zablokuj aplikacjom możliwość łączenia się z Internetem. Ograniczenie dostępu do Internetu pomaga zapobiegać nieuzasadnionemu wykorzystaniu danych, a także oszczędzać baterię.</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Nie można wykonać kopii zapasowej. Spróbuj ponownie?</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Tworzenie kopii zapasowej nie powiodło się</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Przywróć kopię zapasową</string>
     <string name="firewall_rule_new_app_desc" translatable="true"><![CDATA[Ta aplikacja nawiązała połączenie po raz <i>pierwszy</i>.<br/><br/> Aby to zmienić, przejdź do zakładki <i>Universal</i>.]]></string>
     <string name="dc_dns_leaks_desc" translatable="true">Po włączeniu, DNS Control przechwytuje wszystkie pakiety na porcie 53 i przekazuje je do ustawionego przez użytkownika punktu końcowego DNS</string>
     <string name="univ_firewall_rule_5" translatable="true">Blokuj, gdy DNS jest omijany</string>
-    <string name="brbs_backup_dialog_title" translatable="true">Zrób kopię zapasową</string>
     <string name="dns_crypt_connection_failure" translatable="true">Błąd połączenia z serwerem DNSCrypt.</string>
     <string name="firewall_rule_block_ip_univ_desc" translatable="true"><![CDATA[</i>Reguła firewalla ustawiona przez użytkownika zablokowała docelowe IP / port <i>.<br/><br/> Aby to zmienić przejdź do zakładki <i>Universal</i>.]]></string>
     <string name="firewall_rule_foreground_desc" translatable="true"><![CDATA[To połączenie zostało zablokowane, ponieważ aplikacja źródłowa <i>nie była na pierwszym planie</i>.<br/><br/> Aby zmienić to zachowanie przejdź do zakładki <i>Universal</i>.]]></string>

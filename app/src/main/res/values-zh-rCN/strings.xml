@@ -60,7 +60,6 @@
     <string name="settings_dns_proxy_dialog_positive_btn">设置</string>
     <string name="settings_notification_desc3">无</string>
     <string name="hsf_vpn_dialog_header">注意！</string>
-    <string name="settings_import_export_desc">手动备份或恢复应用数据与设置。</string>
     <string name="dc_entries">%1$s 条目 »</string>
     <string name="dc_local_block_heading">本地屏蔽名单</string>
     <string name="cd_dns_crypt_relay_name">DNS 中继 %1$s</string>
@@ -75,7 +74,6 @@
     <string name="ci_no_rules_text">无 IP 或端口规则。</string>
     <string name="ada_app_status_isolate">隔离模式中；仅放行信任 IP 和域</string>
     <string name="rt_edit_dialog_positive">編辑</string>
-    <string name="brbs_backup_title">备份</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]">失败</string>
     <string name="notification_action_stop_vpn">停止</string>
     <string name="univ_firewall_dialog_title">是否删除 IP 规则？</string>
@@ -121,7 +119,6 @@
     <string name="ci_bypass_universal">无条件放行</string>
     <string name="ada_app_status_block_md">已于计费网络（移动数据）拦截</string>
     <string name="notif_download_failure_content">下载失败。请重试。</string>
-    <string name="brbs_restore_dialog_failure_title">恢复失败</string>
     <string name="notification_action_dns_mode">DNS</string>
     <string name="firewall_rules">网络规则</string>
     <string name="always_on_dialog_heading">禁用永久连接的 VPN</string>
@@ -129,7 +126,6 @@
     <string name="orbot_both">TCP + HTTP 代理</string>
     <string name="orbot_bs_status_1">将 %1$s 连接转发至 Orbot。</string>
     <string name="orbot_stop_dialog_negative">停止 Orbot</string>
-    <string name="settings_import_export_heading">备份与恢复</string>
     <string name="settings_http_proxy_error_text4">服务器连接失败。请重试。</string>
     <string name="settings_dns_proxy_dialog_hostname">域名</string>
     <string name="settings_theme_dialog_themes_4">纯黑</string>
@@ -306,8 +302,6 @@
     <string name="ada_noapp_dialog_positive">确认</string>
     <string name="rbl_privacy">隐私</string>
     <string name="rbl_security">安全</string>
-    <string name="brbs_restore_title">恢复</string>
-    <string name="brbs_backup_complete_toast">备份完毕</string>
     <string name="status_protected_with_http">受 HTTP 代理保护</string>
     <string name="firewall_mode_info_title">防火墙</string>
     <string name="orbot_stop_dialog_neutral">更改 DNS</string>
@@ -427,7 +421,6 @@
     <string name="notif_channel_vpn_notification">VPN 已启用</string>
     <string name="category_name_sys_apps">系统应用</string>
     <string name="lbbs_enabled">已启用</string>
-    <string name="brbs_backup_dialog_positive">备份</string>
     <string name="orbot_http_desc">与 Orbot 的 HTTP 代理建立隧道。</string>
     <string name="ada_app_status_allow">已放行</string>
     <string name="settings_title_desc">一款可高度自定义的 DNS 与防火墙软件</string>
@@ -509,25 +502,10 @@
     <string name="rbl_parental_control">家长控制</string>
     <string name="rt_download_start">正在下载屏蔽名单……</string>
     <string name="lbbs_update_check">检查更新</string>
-    <string name="brbs_restore_desc">从备份文件中恢复</string>
     <string name="lbbs_heading">配置逾 195 个屏蔽名单</string>
-    <string name="brbs_backup_dialog_message">将应用设置、网络日志与 DNS 日志备份至单个文件内。这将重启 VPN 。</string>
-    <string name="brbs_backup_dialog_failure_title">备份失败</string>
     <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
     <string name="lbbs_configure">配置</string>
-    <string name="brbs_backup_desc">备份应用设置、网络日志与 DNS 日志</string>
-    <string name="brbs_backup_dialog_title">执行备份</string>
-    <string name="brbs_restore_dialog_title">恢复备份</string>
-    <string name="brbs_restore_dialog_message">从单个备份文件中恢复应用设置、网络日志与 DNS 日志。这将重启应用。</string>
     <string name="lbbs_redownload">重新下载屏蔽名单</string>
-    <string name="brbs_title">备份与恢复</string>
-    <string name="brbs_restore_dialog_failure_positive">重试恢复</string>
-    <string name="brbs_backup_dialog_failure_message">当前无法备份。再来试一试吗？</string>
-    <string name="brbs_backup_dialog_failure_positive">重试备份</string>
-    <string name="brbs_restore_dialog_failure_message">当前无法恢复。再来试一试吗？</string>
-    <string name="brbs_restore_dialog_positive">恢复</string>
-    <string name="brbs_restore_complete_toast">恢复完毕，正在重启应用……</string>
-    <string name="brbs_restore_no_uri_toast">恢复失败；请重试</string>
     <string name="hsf_notification_permission_failure">于设置屏启用通知权限</string>
     <string name="notif_download_cancel_content">下载已取消。</string>
     <string name="notification_screen_error">无法打开应用通知屏。</string>
@@ -618,7 +596,6 @@
     <string name="firewall_rule_domain_trusted_univ_desc" translatable="true"><![CDATA[此连接因<i>域名</i>被全局域名规则信任而被放行。<br><br>若需变更此行为，请移步 <i>DNS 配置</i>选项卡。]]></string>
     <string name="dc_setting_dns_cache_heading" translatable="true">DNS 加速器</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">合并请求，缓存响应，弹性应对错误</string>
-    <string name="brbs_backup_restore_desc" translatable="true">无法跨版本使用</string>
     <string name="bypass_dns_firewall_tooltip">%1$s 仅于 DNS Control 的 DNS 生效</string>
     <string name="lbl_network" translatable="true">网络</string>
     <string name="settings_allow_lan_desc" translatable="true">将局域网、环回、多播与本地链路路由排除于 DNS Control 的 VPN 隧道外。</string>
@@ -879,8 +856,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">无线网络标识（%1$s）长度不得超过 32 个字符。</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">稳定性程序</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">捕获错误日志以助力提升稳定性。</string>
-    <string name="tombstone_app_title" translatable="true">记住已卸载的应用</string>
-    <string name="tombstone_app_desc" translatable="true">启用后，应用规则将保留 7 天。</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">启用后，允许 WireGuard 对等节点发起的入站连接。</string>
     <string name="lockdown_download_message" translatable="true">Android 的内置 <i>下载管理器</i> 可能失败，因 VPN 处于 <i>锁定</i> 模式。启用 DNS Control 的下载器吗？</string>
     <string name="lockdown_download_enable_inapp" translatable="true">启用下载器</string>

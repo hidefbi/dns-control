@@ -196,10 +196,8 @@
     <string name="settings_autostart_bootup_heading" translatable="true">부팅 후 자동 시작 (실험적)</string>
     <string name="settings_check_update_heading" translatable="true">앱 업데이트 확인</string>
     <string name="settings_custom_downloader_heading" translatable="true">인앱 다운로더 사용</string>
-    <string name="settings_import_export_desc" translatable="true">수동으로 앱의 데이터와 설정을 백업하거나 복원합니다.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">앱 알림</string>
     <string name="settings_custom_downloader_desc" translatable="true">비활성화 된다면, Android에 내재된 <i>다운로드 관리자</i>가 사용됩니다</string>
-    <string name="settings_import_export_heading" translatable="true">백업 &amp; 복원</string>
     <string name="configure_dns_connected_doh_status" translatable="true">DNS over HTTPS</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">URL 복사됨</string>
     <string name="app_mode_choose" translatable="true">모드 선택</string>
@@ -582,26 +580,6 @@
     <string name="lbbs_redownload" translatable="true">차단 목록 다시 다운로드</string>
     <string name="lbbs_download" translatable="true">차단 목록 업데이트</string>
     <string name="lbbs_heading" translatable="true">195+ 차단 목록 구성</string>
-    <string name="brbs_title" translatable="true">백업 및 복원</string>
-    <string name="brbs_backup_title" translatable="true">백업</string>
-    <string name="brbs_backup_desc" translatable="true">앱 설정, 네트워크, DNS 로그 백업</string>
-    <string name="brbs_restore_title" translatable="true">복원</string>
-    <string name="brbs_restore_desc" translatable="true">백업 파일로부터 복원</string>
-    <string name="brbs_backup_dialog_title" translatable="true">백업 실시</string>
-    <string name="brbs_backup_dialog_message" translatable="true">앱 설정, 네트워크, DNS 로그를 파일에 백업합니다. VPN이 재시작합니다.</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">백업</string>
-    <string name="brbs_restore_dialog_title" translatable="true">백업 복원</string>
-    <string name="brbs_restore_dialog_message" translatable="true">앱 설정, 네트워크, DNS 로그를 백업 파일로부터 복원합니다. 앱이 재시작합니다.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">복원</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">백업 실패</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">백업할 수 없습니다. 다시 시도하시겠습니까?</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">백업 재시도</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">복원 실패</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">복원할 수 없습니다. 다시 시도하시겠습니까?</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">복원 재시도</string>
-    <string name="brbs_restore_complete_toast" translatable="true">복원 완료, 앱을 재시작합니다…</string>
-    <string name="brbs_backup_complete_toast" translatable="true">백업 완료</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">복원 실패. 다시 시도해 보십시오</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">차단 목록 %1$s개</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">DNS Control를 시작해 계속 진행</string>
     <string name="ssv_see_more" translatable="true">모두 표시</string>
@@ -742,8 +720,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi 식별자(%1$s)는 32자 이하여야 합니다.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">안정성 프로그램</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">오류 로그를 캡처하여 안정성 개선을 도와주세요.</string>
-    <string name="tombstone_app_title" translatable="true">삭제한 앱 기억</string>
-    <string name="tombstone_app_desc" translatable="true">켠 경우, 앱 규칙을 7일 동안 유지합니다.</string>
     <string name="settings_locale_dialog_default" translatable="true">시스템 기본값</string>
     <string name="settings_jumbo_packets" translatable="true">대역폭 부스터</string>
     <string name="settings_jumbo_packets_desc" translatable="true">DNS Control의 VPN 터널 내에서 <i>점보 패킷</i>을 사용합니다.</string>
@@ -826,7 +802,6 @@
     <string name="firewall_rule_bypass_universal_ip_desc" translatable="true"><![CDATA[<i>대상 IP</i>가 모든 전역 방화벽 규칙을 우회하도록 설정되었기 때문에 연결이 허용되었습니다.<br/><br/> 변경하려면 <i>전역</i> 탭의 <i>IP 규칙</i> 설정으로 이동합니다.]]></string>
     <string name="firewall_rule_device_lock_desc" translatable="true"><![CDATA[이 연결은 당시 <i>기기가 잠겨</i> 있었기 때문에 방화벽으로 보호되었습니다.<br/><br/> 이 동작을 변경하려면 <i>전역</i> 탭으로 이동하십시오.]]></string>
     <string name="wireguard_disclaimer" translatable="true">DNS를 %1$s에 포워딩했습니다.</string>
-    <string name="brbs_backup_restore_desc" translatable="true">앱 버전이 다르면 호환되지 않습니다</string>
     <string name="bypass_dns_firewall_tooltip">%1$s 기능은 DNS Control의 DNS에서만 동작합니다</string>
     <string name="crypt_adguard_desc" translatable="true">악성코드 등으로부터 기기를 보호합니다.</string>
     <string name="crypt_adguard_family_desc" translatable="true">세이프서치 및 성인 콘텐츠 차단 기능을 탑재한 Adguard DNS입니다.</string>

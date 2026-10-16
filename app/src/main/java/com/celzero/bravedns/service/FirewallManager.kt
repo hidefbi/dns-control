@@ -60,9 +60,6 @@ object FirewallManager : KoinComponent {
 
     const val NOTIF_CHANNEL_ID_FIREWALL_ALERTS = "Firewall_Alerts"
 
-    // max time to keep the tombstone entry in the database
-    const val TOMBSTONE_EXPIRY_TIME_MS = 7 * 24 * 60 * 60 * 1000L // 7 days
-
     const val TEMP_ALLOW_DEFAULT_MINUTES = 15 // 15 minutes
 
     // androidxref.com/9.0.0_r3/xref/frameworks/base/core/java/android/os/UserHandle.java
@@ -417,7 +414,7 @@ object FirewallManager : KoinComponent {
 
     suspend fun getAllApps(): Set<AppInfoTuple> {
         mutex.withLock {
-            // return all apps including tombstoned ones; callers filter if needed
+            // return all tracked apps
             return appInfos.values().map { AppInfoTuple(it.uid, it.packageName) }.toSet()
         }
     }
@@ -425,27 +422,6 @@ object FirewallManager : KoinComponent {
     // snapshot of the full AppInfo collection (uid+packageName -> AppInfo)
     suspend fun getAppInfoSnapshot(): Map<Pair<Int, String>, AppInfo> {
         return snapshotAppInfos().associateBy { Pair(it.uid, it.packageName) }
-    }
-
-    suspend fun tombstoneApp(uid: Int, packageName: String?, ts: Long = System.currentTimeMillis()) {
-        val newUid = if (uid > 0) -1 * uid else uid // use negative uid to mark the app as tombstone
-        mutex.withLock {
-            val iter = appInfos.get(uid).iterator()
-            while (iter.hasNext()) {
-                val ai = iter.next()
-                if (ai.packageName == packageName) {
-                    iter.remove() // safe removal while iterating
-                    ai.uid = newUid
-                    ai.tombstoneTs = ts
-                    ai.modifiedTs = ts
-                    appInfos.put(newUid, ai)
-                    break
-                }
-            }
-        }
-        db.tombstoneApp(uid, newUid, packageName, ts)
-        Logger.d(LOG_TAG_FIREWALL, "tombstone app: $packageName, uid: $uid, ts: $ts, newUid: $newUid")
-        informObservers()
     }
 
     suspend fun deletePackage(uid: Int, packageName: String?) {
@@ -482,7 +458,7 @@ object FirewallManager : KoinComponent {
     // TODO: Use the package-manager API instead
     suspend fun isOrbotInstalled(): Boolean {
         mutex.withLock {
-            return appInfos.values().any { it.packageName == OrbotHelper.ORBOT_PACKAGE_NAME && it.tombstoneTs == 0L }
+            return appInfos.values().any { it.packageName == OrbotHelper.ORBOT_PACKAGE_NAME }
         }
     }
 
@@ -490,24 +466,6 @@ object FirewallManager : KoinComponent {
         mutex.withLock {
             val appInfo = appInfos.get(uid)
             return appInfo.isNotEmpty()
-        }
-    }
-
-    suspend fun isTombstone(packageName: String): Boolean {
-        mutex.withLock {
-            return try {
-                appInfos.values().any {
-                    it.packageName == packageName && it.tombstoneTs > 0L
-                }
-            } catch (e: NoSuchElementException) {
-                Logger.w(LOG_TAG_FIREWALL, "isTombstone iterator fault, using fallback: ${e.message}")
-                appInfos.asMap().values.flatten().any {
-                    it.packageName == packageName && it.tombstoneTs > 0L
-                }
-            } catch (e: Exception) {
-                Logger.e(LOG_TAG_FIREWALL, "isTombstone failed: ${e.message}", e)
-                false
-            }
         }
     }
 
@@ -543,7 +501,7 @@ object FirewallManager : KoinComponent {
         mutex.withLock {
             return appInfos
                 .values()
-                .filter { it.firewallStatus == FirewallStatus.EXCLUDE.id && it.tombstoneTs == 0L }
+                .filter { it.firewallStatus == FirewallStatus.EXCLUDE.id }
                 .map { it.packageName }
                 .toMutableSet()
         }
@@ -553,8 +511,7 @@ object FirewallManager : KoinComponent {
     suspend fun isAnyAppBypassesDns(): Boolean {
         mutex.withLock {
             return appInfos.values().any {
-                it.firewallStatus == FirewallStatus.BYPASS_DNS_FIREWALL.id &&
-                it.tombstoneTs == 0L
+                it.firewallStatus == FirewallStatus.BYPASS_DNS_FIREWALL.id
             }
         }
     }
@@ -596,10 +553,6 @@ object FirewallManager : KoinComponent {
             }
             // skip apps which do not have internet permission
             if (!appInfo.hasInternetPermission(packageManager)) {
-                return@forEach
-            }
-            // skip tombstoned apps
-            if (appInfo.tombstoneTs > 0L) {
                 return@forEach
             }
             val hasVpnPermission = try {
@@ -716,23 +669,19 @@ object FirewallManager : KoinComponent {
         }
     }
 
-    suspend fun updateUidAndResetTombstone(oldUid: Int, newUid: Int, pkg: String) {
-        // while updating the package reset the tombstone timestamp
+    suspend fun updateUid(oldUid: Int, newUid: Int, pkg: String) {
         var cacheok = false
         val appInfo = getAppInfoByUid(oldUid)
-        Logger.i(LOG_TAG_FIREWALL, "updateUidAndResetTombstone: $oldUid -> $newUid; has? ${appInfo?.packageName} == $pkg")
+        Logger.i(LOG_TAG_FIREWALL, "updateUid: $oldUid -> $newUid; has? ${appInfo?.packageName} == $pkg")
         val now = System.currentTimeMillis()
         var mutatedAi: AppInfo? = null
-        var originalTombstoneTs = 0L
         mutex.withLock {
             val iter = appInfos.get(oldUid).iterator()
             while (iter.hasNext()) {
                 val ai = iter.next()
                 if (ai.packageName == pkg) {
                     iter.remove() // safe removal while iterating
-                    originalTombstoneTs = ai.tombstoneTs
                     ai.uid = newUid
-                    ai.tombstoneTs = 0
                     ai.modifiedTs = now
                     appInfos.put(newUid, ai)
                     mutatedAi = ai
@@ -762,7 +711,6 @@ object FirewallManager : KoinComponent {
                     mutex.withLock {
                         appInfos.remove(newUid, mutatedAi)
                         mutatedAi.uid = oldUid
-                        mutatedAi.tombstoneTs = originalTombstoneTs
                         appInfos.put(oldUid, mutatedAi)
                     }
                     Logger.w(LOG_TAG_FIREWALL, "rolled back cache for $pkg: $newUid -> $oldUid")
@@ -1019,20 +967,6 @@ object FirewallManager : KoinComponent {
                 }
             }
             informObservers()
-        }
-    }
-
-    suspend fun getTombstoneApps(): List<AppInfo> {
-        mutex.withLock {
-            return try {
-                appInfos.values().filter { it.tombstoneTs > 0L }
-            } catch (e: NoSuchElementException) {
-                Logger.w(LOG_TAG_FIREWALL, "getTombstoneApps iterator fault, using fallback: ${e.message}")
-                appInfos.asMap().values.flatten().filter { it.tombstoneTs > 0L }
-            } catch (e: Exception) {
-                Logger.e(LOG_TAG_FIREWALL, "getTombstoneApps failed: ${e.message}", e)
-                emptyList()
-            }
         }
     }
 

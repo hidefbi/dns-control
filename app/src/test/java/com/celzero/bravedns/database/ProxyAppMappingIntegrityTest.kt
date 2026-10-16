@@ -87,7 +87,7 @@ class ProxyAppMappingIntegrityTest {
         packageName = pkg, appName = name, uid = uid, isSystemApp = false,
         firewallStatus = 5, appCategory = "Test", wifiDataUsed = 0L, mobileDataUsed = 0L,
         connectionStatus = 3, isProxyExcluded = false, screenOffAllowed = true,
-        backgroundAllowed = true, tombstoneTs = 0L
+        backgroundAllowed = true
     )
 
     private fun pam(uid: Int, pkg: String, proxyId: String, appName: String = "App$uid"): ProxyApplicationMapping =
@@ -307,20 +307,8 @@ class ProxyAppMappingIntegrityTest {
         assertTrue("after backfill, app is visible again", (10002 to "com.b") in visibleAllApps(wg0))
     }
 
-    @Test
-    fun `tombstoned app with negative uid still has its rows but is a distinct identity`() = runBlocking {
-        // tombstone moves uid 10001 -> -10001; the row should still exist under the negative uid
-        insertProxy(10001, "com.a", "")
-        proxyRepo.tombstoneApp(10001, -10001)
-        // positive uid row gone
-        assertTrue(proxyDao.getProxiesForApp(10001, "com.a").none { it.proxyId == "" })
-        // negative uid row present
-        val rows = proxyDao.getProxiesForApp(-10001, "com.a")
-        assertTrue("base row must survive tombstone under negative uid", rows.any { it.proxyId == "" })
-    }
-
     // ========================================================================================
-    // SECTION 4 - Transaction integrity: updateUidForApp / tombstoneApp / deleteApp
+    // SECTION 4 - Transaction integrity: updateUidForApp / deleteApp
     // ========================================================================================
 
     @Test
@@ -347,16 +335,6 @@ class ProxyAppMappingIntegrityTest {
         val rows = proxyDao.getProxiesForApp(20001, "com.a").map { it.proxyId }.toSet()
         assertTrue("base row must exist after conflict resolution", "" in rows)
         assertTrue("wg0 row must be migrated", wg0 in rows)
-    }
-
-    @Test
-    fun `tombstoneApp moves all rows (base and proxy-specific) to negative uid`() = runBlocking {
-        insertProxy(10001, "com.a", "")
-        insertProxy(10001, "com.a", wg0)
-        proxyRepo.tombstoneApp(10001, -10001)
-        assertEquals(0, proxyDao.getProxiesForApp(10001, "com.a").size)
-        val rows = proxyDao.getProxiesForApp(-10001, "com.a").map { it.proxyId }.toSet()
-        assertEquals(setOf("", wg0), rows)
     }
 
     @Test

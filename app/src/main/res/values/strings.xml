@@ -522,8 +522,6 @@
     <string name="settings_custom_downloader_heading" translatable="true">Use in-app downloader</string>
     <string name="settings_custom_downloader_desc" translatable="true">If disabled, Android\'s built-in <i>Download Manager</i> is used</string>
 
-    <string name="settings_import_export_heading" translatable="true">Backup &amp; Restore</string>
-    <string name="settings_import_export_desc" translatable="true">Manually back up or restore app data and settings.</string>
 
     <string name="settings_app_notification_a13_heading" translatable="true">App Notification</string>
     <string name="settings_app_notification_a13_desc" translatable="true">Enable notification permission for the app</string>
@@ -1222,34 +1220,11 @@
     <string name="lbbs_download" translatable="true">Update blocklists</string>
     <string name="lbbs_heading" translatable="true">Configure 195+ blocklists</string>
 
-    <!-- backup / restore bottom sheet -->
-    <string name="brbs_title" translatable="true">Backup &amp; restore</string>
-    <string name="brbs_backup_title" translatable="true">Backup</string>
-    <string name="brbs_backup_desc" translatable="true">Backup app settings, network, and dns logs</string>
-    <string name="brbs_restore_title" translatable="true">Restore</string>
-    <string name="brbs_restore_desc" translatable="true">Restore from a backup file</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Doesn\'t work across app versions</string>
 
-    <string name="brbs_backup_dialog_title" translatable="true">Take backup</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Backs up app settings, network, and dns logs to a file. This will restart the VPN.</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Backup</string>
 
-    <string name="brbs_restore_dialog_title" translatable="true">Restore backup</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Restore app settings, network, and dns logs from a backup file. This will restart the app.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Restore</string>
 
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Backup failed</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Could not backup. Try again?</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Retry Backup</string>
 
-    <string name="brbs_restore_dialog_failure_title" translatable="true">Restore failed</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Could not restore. Try again?</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Retry Restore</string>
 
-    <string name="brbs_restore_complete_toast" translatable="true">Restore completed, restarting app…</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Backup completed</string>
-    <string name="brbs_restore_invalid_file" translatable="false">Invalid backup file. Please select a %1$s backup file for this build.</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">Restore failed; try again</string>
 
     <!-- Rethink simple view -->
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blocklists</string>
@@ -1557,8 +1532,6 @@
     <string name="settings_firebase_error_reporting_heading" translatable="true">Stability program</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capture error logs to help improve stability.</string>
 
-    <string name="tombstone_app_title" translatable="true">Remember uninstalled apps</string>
-    <string name="tombstone_app_desc" translatable="true">When enabled, keep app rules for 7 days.</string>
 
 
 

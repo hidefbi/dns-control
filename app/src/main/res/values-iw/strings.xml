@@ -94,7 +94,6 @@
     <string name="settings_orbot_install_desc" translatable="true">לחץ כאן כדי להתקין Orbot</string>
     <string name="settings_socks5_disabled_error" translatable="true">מחובר %1$s. כבה אותו כדי להמשיך.</string>
     <string name="settings_socks5_vpn_disabled_error" translatable="true">הפעל את DNS Control כדי להמשיך.</string>
-    <string name="settings_import_export_desc" translatable="true">גבה או שחזר באופן ידני נתוני אפליקציה והגדרות.</string>
     <string name="settings_theme_dialog_themes_1" translatable="true">הגדר ע\"פ המערכת</string>
     <string name="settings_theme_dialog_themes_3" translatable="true">כהה</string>
     <string name="settings_theme_dialog_themes_4" translatable="true">שחור אמיתי</string>
@@ -123,17 +122,6 @@
     <string name="bsrf_clear_filter" translatable="true">אפס</string>
     <string name="ssv_see_more" translatable="true">הצג הכל</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">הפעל את DNS Control כדי להמשיך</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">השחזור נכשל; נסה שוב</string>
-    <string name="brbs_backup_complete_toast" translatable="true">הגיבוי הושלם</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">השחזור נכשל</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">לא ניתן לשחזר. לנסות שוב?</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">נסה לגבות שוב</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">הגיבוי נכשל</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">שחזר</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">נסה שוב לשחזר</string>
-    <string name="brbs_restore_complete_toast" translatable="true">השחזור הושלם, מפעיל מחדש את האפליקציה…</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">גיבוי</string>
-    <string name="brbs_restore_dialog_title" translatable="true">שחזר גיבוי</string>
     <string name="always_on_dialog_positive_btn" translatable="true">מעבר להגדרות</string>
     <string name="always_on_dialog" translatable="true">\"VPN תמיד פועל\" מאופשר במכשיר זה. כדי להפעיל את DNS Control, עבור אל אפליקציית ההגדרות והשבת את \"VPN תמיד פועל\".</string>
     <string name="univ_delete_firewall_dialog_title" translatable="true">למחוק את כל כללי ה-IP?</string>
@@ -392,7 +380,6 @@
     <string name="hsf_notification_permission_failure" translatable="true">אפשר הרשאת התראות ממסך ההגדרות</string>
     <string name="settings_check_update_heading" translatable="true">בדוק אם יש עדכוני אפליקציה</string>
     <string name="settings_custom_downloader_heading" translatable="true">השתמש בכלי ההורדה שבתוך האפליקציה</string>
-    <string name="settings_import_export_heading" translatable="true">גיבוי ושחזור</string>
     <string name="settings_app_notification_a13_heading" translatable="true">התראת אפליקציה</string>
     <string name="hs_biometeric_title" translatable="true">בטל את הנעילה של DNS Control</string>
     <string name="lbl_battery_optimization" translatable="true">מיטוב סוללה</string>

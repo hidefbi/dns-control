@@ -56,24 +56,6 @@ class AppInfoRepositoryTest {
     }
 
     @Test
-    fun `test tombstoneApp handles null package name`() = runBlocking {
-        coEvery { appInfoDAO.tombstoneAppByUid(1000, 2000, 12345L, any()) } returns Unit
-        
-        repository.tombstoneApp(1000, 2000, null, 12345L)
-        
-        coVerify { appInfoDAO.tombstoneAppByUid(1000, 2000, 12345L, any()) }
-    }
-
-    @Test
-    fun `test tombstoneApp handles package name`() = runBlocking {
-        coEvery { appInfoDAO.tombstoneAppWithPkg(2000, 1000, "com.test", 12345L, any()) } returns Unit
-        
-        repository.tombstoneApp(1000, 2000, "com.test", 12345L)
-        
-        coVerify { appInfoDAO.tombstoneAppWithPkg(2000, 1000, "com.test", 12345L, any()) }
-    }
-
-    @Test
     fun `test getAllTempAllowedApps filters by time`() = runBlocking {
         val app1 = AppInfo(null).apply { tempAllowExpiryTime = 1000 }
         val app2 = AppInfo(null).apply { tempAllowExpiryTime = 3000 }

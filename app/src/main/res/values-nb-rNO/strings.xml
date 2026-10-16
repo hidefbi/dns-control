@@ -257,8 +257,6 @@
     <string name="notif_download_content_text">Laster ned …</string>
     <string name="bsrf_sub_group_heading">Undergruppe</string>
     <string name="lbbs_enabled">Påskrudd</string>
-    <string name="brbs_title">Sikkerhetskopier og gjenopprett</string>
-    <string name="brbs_backup_dialog_title">Ta sikkerhetskopi</string>
     <string name="ada_app_metered">Kvotebasert</string>
     <string name="settings_socks5_desc">Videresend tilkoblinger til SOCKS5-endepunkt.</string>
     <string name="settings_network_all_networks">Alle nettverk (eksperimentelt)</string>
@@ -266,7 +264,6 @@
     <string name="new_app_notification_action_toast_deny">Nettverkstilgang nektet for programmet</string>
     <string name="rt_edit_dialog_positive">Rediger</string>
     <string name="lbbs_redownload">Last ned svartelister igjen</string>
-    <string name="brbs_backup_complete_toast">Sikkerhetskopi utført</string>
     <string name="settings_socks_forwarding_default_desc">Videresend tilkoblinger til SOCKS5-endepunkt.</string>
     <string name="univ_accessibility_crash_dialog_positive">Åpne innstillingene</string>
     <string name="rt_dialog_neutral">Fortsett</string>
@@ -278,39 +275,30 @@
     <string name="notif_download_failure_content">Kunne ikke laste ned. Prøv igjen.</string>
     <string name="rbl_privacy">Personvern</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
-    <string name="brbs_backup_desc">Sikkerhetskopier programinnstillinger, nettverks- og DNS-loggføring</string>
     <string name="orbot_bs_status_1">Videresender %1$s tilkoblinger til Orbot.</string>
     <string name="orbot_bs_status_4">Ett-klikks oppsett av «Tor-som-mellomtjener (Orbot).</string>
-    <string name="settings_import_export_desc">Sikkerhetskopier eller gjenopprett programdata og innstillinger manuelt.</string>
     <string name="univ_firewall_rule_7">Blokker IPv4 i IPv6 (eksperimentelt)</string>
     <string name="new_app_notification_action_toast_allow">Nettverkstilkobling tillatt for programmet</string>
     <string name="ci_dialog_added_success">IP lagt til i listen</string>
     <string name="dc_dns_proxy" translatable="false">DNS-mellomtjener</string>
     <string name="lbbs_configure">Sett opp</string>
-    <string name="brbs_backup_dialog_positive">Sikkerhetskopier</string>
     <string name="rules_load_failure_heading">Merknad</string>
     <string name="rt_download">Last ned svartelister</string>
     <string name="dc_local_block_enabled">Påskrudd</string>
-    <string name="brbs_restore_dialog_failure_title">Gjenoppretting mislyktes</string>
     <string name="ada_app_unmetered">Fri bruk</string>
     <string name="orbot_stop_dialog_dns_message">DNS Control er satt opp til å videresende DNS-spørringer til Orbot. Endre som du vil.</string>
     <string name="univ_firewall_rule_9">Blokker på kvotebasert (mobil-) nettverk</string>
     <string name="univ_accessibility_dialog_negative">Nekt</string>
     <string name="rbl_security">Sikkerhet</string>
     <string name="rt_list_simple_btn_txt">Enkel</string>
-    <string name="brbs_restore_title">Gjenopprett</string>
-    <string name="brbs_restore_dialog_failure_positive">Prøv igjen</string>
-    <string name="brbs_restore_no_uri_toast">Gjenoppretting mislyktes. Prøv igjen.</string>
     <string name="orbot_stop_dialog_title">Handling kreves</string>
     <string name="settings_custom_downloader_desc">Ellers vil Androids innebygde <i>Nedlastingshåndterer</i> brukes.</string>
     <string name="settings_notification_desc3">Ingen</string>
     <string name="univ_firewall_rule_8">Blokker port 80 (usikker HTTP-) trafikk</string>
-    <string name="brbs_restore_complete_toast">Gjenoppretting fullført. Starter programmet igjen …</string>
     <string name="always_on_dialog">«Alltid påslått VPN» er påskrudd på enheten. Start DNS Control ved å skru av «Alltid påslått VPN» i innstillingene.</string>
     <string name="orbot_stop_dialog_message">DNS Control har sluttet å videresende tilkoblinger til Orbot, men kanskje Orbot kjører i bakgrunnen.</string>
     <string name="fapps_unmetered_unblock_dialog_title">Tillat for fri bruk</string>
     <string name="rt_download_start">Laster ned svartelister …</string>
-    <string name="brbs_backup_dialog_failure_message">Kunne ikke sikkerhetskopiere. Prøv igjen?</string>
     <string name="always_on_dialog_stop_message">«Alltid påslått VPN» er påslått for DNS Control. Vil du stoppe DNS Control likevel?</string>
     <string name="settings_ip_network_desc">Velg mellom Internett-protokollversjoner.</string>
     <string name="settings_http_proxy_error_text4">Kunne ikke koble til vert. Prøv igjen.</string>
@@ -320,9 +308,7 @@
     <string name="fapps_firewall_filter_isolate">Nedlåst</string>
     <string name="notif_channel_vpn_notification">Aktiv VPN</string>
     <string name="dc_doh" translatable="false">DNS over HTTPS</string>
-    <string name="brbs_backup_title">Sikkerhetskopiering</string>
     <string name="app_mode_dns_low_battery">DNS (sparer batteri)</string>
-    <string name="settings_import_export_heading">Sikkerhetskopier og gjenopprett</string>
     <string name="fapps_firewall_filter_excluded">Utelatt</string>
     <string name="system_dns_connection_failure">Kan ikke fastsette nåværende DNS-tjener</string>
     <string name="new_app_notification_action_deny">Fortsett å blokkere</string>
@@ -330,9 +316,6 @@
     <string name="settings_custom_downloader_heading">Bruk programmets nedlaster</string>
     <string name="notif_dialog_pause_dialog_negative">Avslå</string>
     <string name="cd_dialog_error_invalid_wildcard">Ugyldig jokertegn.</string>
-    <string name="brbs_restore_desc">Gjenopprett fra sikkerhetskopifil</string>
-    <string name="brbs_restore_dialog_title">Gjenopprett sikkerhetskopi</string>
-    <string name="brbs_restore_dialog_failure_message">Kunne ikke gjenopprette. Prøv igjen?</string>
     <string name="settings_https_disabled_error">Tilkoblet til %1$s. Skru det av for å fortsette.</string>
     <string name="univ_firewall_rule_5">Blokker når DNS er omgått</string>
     <string name="univ_accessibility_dialog_positive">Innvilg</string>
@@ -344,7 +327,6 @@
     <string name="rt_dialog_title">Lagre endringer</string>
     <string name="cd_dns_crypt_title">Utledere</string>
     <string name="fapps_unmetered_block_dialog_title">Blokker på kvotebasert</string>
-    <string name="brbs_restore_dialog_positive">Gjenopprett</string>
     <string name="notif_download_success_content">Nedlastet.</string>
     <string name="settings_dns_proxy_dialog_positive_btn">Sett</string>
     <string name="cd_doh_dialog_resolver_url">Utledernettadresse</string>

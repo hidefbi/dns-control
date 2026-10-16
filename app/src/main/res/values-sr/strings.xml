@@ -200,8 +200,6 @@
     <string name="settings_orbot_install_desc" translatable="true">Додирните овде да инсталирате Orbot</string>
     <string name="settings_orbot_disabled_error" translatable="true">Искључи HTTP(S) и/или SOCKS5 прокси да би наставили са Tor-као-прокси подешавањем.</string>
     <string name="settings_orbot_notification_action" translatable="true">Отвори Orbot</string>
-    <string name="settings_import_export_heading" translatable="true">Резервна копија и враћање</string>
-    <string name="settings_import_export_desc" translatable="true">Ручно направи копију или врати податке апликације и подешавања.</string>
     <string name="settings_http_proxy_desc" translatable="true">Прослеђује се на %1$s</string>
     <string name="settings_http_proxy_error_text1" translatable="true">Опсег порта би требао бити између 1024-65535</string>
     <string name="settings_http_proxy_error_text2" translatable="true">Неисправан порт</string>
@@ -498,21 +496,6 @@
     <string name="lbbs_enabled" translatable="true">Омогућено</string>
     <string name="lbbs_update_check" translatable="true">Провери надоградњу</string>
     <string name="lbbs_redownload" translatable="true">Поново преузми блок листе</string>
-    <string name="brbs_title" translatable="true">Резервна копија и враћање</string>
-    <string name="brbs_backup_title" translatable="true">Направи резервну копију</string>
-    <string name="brbs_backup_desc" translatable="true">Направи копију подешавања, мреже и dns записа</string>
-    <string name="brbs_restore_title" translatable="true">Поврати</string>
-    <string name="brbs_restore_desc" translatable="true">Поврати из дататеке резервне копије</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Не функционише са различитим верзијама апликације</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Прави копију подешавања апликације, мреже, и dns записа у датотеку. Ово ће поново покренути VPN.</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Поврати подешавања апликације, мреже, и dns записе из датотеке копије. Ово ће поново покренути апликацију.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Поврати</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Прављење копије није успело</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Поново покушај копију</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">Враћање није успело</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Није могло вратити. Покушати поново?</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Прављење копије је завршено</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">Враћање није успело; покушај поново</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s блок листи</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Спаја захтеве, кешира одговоре, отпорно решавање грешака</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Покрени DNS Control за наставак</string>
@@ -737,12 +720,6 @@
     <string name="lbbs_configure" translatable="true">Подеси</string>
     <string name="lbbs_download" translatable="true">Освежи блок листе</string>
     <string name="lbbs_heading" translatable="true">Подеси 195+ блок листи</string>
-    <string name="brbs_backup_dialog_title" translatable="true">Направи копију</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Направи копију</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Поврати копију</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Ниј могуће направити копију. Покушати поново?</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Враћање завршено, поновно покретање апликације…</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Поново покушај враћање</string>
     <string name="bad_config_reason_unknown_attribute" translatable="true">Непознати атрибут</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Неисправна вредност</string>
     <string name="bad_config_reason_missing_attribute" translatable="true">Недостаје атрибут</string>

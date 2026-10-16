@@ -263,11 +263,9 @@
     <string name="firewall_rule_unknown_desc"><![CDATA[Diese Verbindung wurde blockiert, da die <i>Quell-App</i> nicht ermittelt werden konnte.<br><br> Um dieses Verhalten zu ändern, gehe zum Tab <i>Universell</i>.]]></string>
     <string name="firewall_rule_exempt_dns_proxied_desc"><![CDATA[Diese DNS-Verbindung wurde über einen Proxy geleitet und an den vom Benutzer bevorzugten DNS-Endpunkt weitergeleitet.<br><br> Um dies zu ändern, deaktiviere <i>DNS-Lecks verhindern</i> auf dem Bildschirm <i>Konfigurieren</i>.]]></string>
     <string name="firewall_rule_exempt_orbot_setup_desc"><![CDATA[Diese Verbindung wurde erlaubt, da die <i>One-Click-Tor-als-Proxy</i>-Einrichtung über Orbot im Gange war.]]></string>
-    <string name="settings_import_export_desc">Manuelles Sichern oder Wiederherstellen der App-Daten und Einstellungen.</string>
     <string name="settings_custom_downloader_heading">In-App-Downloader verwenden</string>
     <string name="settings_check_update_heading">Nach App-Updates suchen</string>
     <string name="settings_custom_downloader_desc">Wenn deaktiviert, wird der in Android integrierte <i>Download Manager</i> verwendet</string>
-    <string name="settings_import_export_heading">Sichern und Wiederherstellen</string>
     <string name="bypass_universal">Universelle Umgehung</string>
     <string name="alert_firewall_accessibility_exception">Öffnen der Einstellungen für Barrierefreiheit fehlgeschlagen. Versuche es später erneut!</string>
     <string name="firewall_act_universal_tab">Universell</string>
@@ -335,21 +333,6 @@
     <string name="lbbs_update_check">Nach Updates suchen</string>
     <string name="lbbs_redownload">Blocklisten erneut herunterladen</string>
     <string name="lbbs_heading">Konfigurieren Sie 195+ Blocklisten</string>
-    <string name="brbs_title">Sichern &amp; Wiederherstellen</string>
-    <string name="brbs_backup_title">Sichern (Backup)</string>
-    <string name="brbs_restore_title">Wiederherstellen</string>
-    <string name="brbs_backup_dialog_title">Sicherung vornehmen</string>
-    <string name="brbs_backup_dialog_message">Sichert die App-Einstellungen, Netzwerk- und DNS-Protokolle in einer Datei. Dadurch wird das VPN neu gestartet.</string>
-    <string name="brbs_restore_dialog_title">Sicherung (Backup) wiederherstellen</string>
-    <string name="brbs_backup_dialog_positive">Sichern (Backup)</string>
-    <string name="brbs_restore_dialog_message">App-Einstellungen, Netzwerk- und DNS-Protokolle aus einer Sicherungsdatei wiederherstellen. Dadurch wird die App neu gestartet.</string>
-    <string name="brbs_restore_dialog_positive">Wiederherstellen</string>
-    <string name="brbs_restore_dialog_failure_message">Konnte nicht wiederhergestellt werden. Erneut versuchen?</string>
-    <string name="brbs_restore_dialog_failure_positive">Wiederherstellen wiederholen</string>
-    <string name="brbs_restore_complete_toast">Wiederherstellung abgeschlossen, Neustart der Anwendung…</string>
-    <string name="brbs_backup_complete_toast">Backup abgeschlossen</string>
-    <string name="brbs_restore_no_uri_toast">Wiederherstellung fehlgeschlagen; versuche es nochmal</string>
-    <string name="brbs_restore_dialog_failure_title">Wiederherstellung fehlgeschlagen</string>
     <string name="ci_blocked_initial">B</string>
     <string name="category_name_installed">Installierte Apps</string>
     <string name="cd_toast_deleted">Domäne aus der benutzerdefinierten Liste entfernt</string>
@@ -363,8 +346,6 @@
     <string name="rt_dialog_neutral">Weiter</string>
     <string name="cd_no_rule_txt">Keine Regel</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">Malware, Ransomware, Cryptoware, Phisher und andere Bedrohungen blockieren.</string>
-    <string name="brbs_restore_desc">Aus Sicherungsdatei wiederherstellen</string>
-    <string name="brbs_backup_desc">Sichern von Anwendungseinstellungen, Netzwerk- und DNS-Protokollen</string>
     <string name="alert_firewall_accessibility_regrant_explanation">Der DNS Control-Dienst für Barrierefreiheit wurde angehalten oder ist abgestürzt. <i><b>Erzwinge das Beenden von DNS Control über die Systemeinstellungen</b></i> und starte DNS Control erneut, um die Funktion <i>Blockieren aller nicht genutzten Apps</i> zu verwenden.\n\nDNS Control verwendet den Dienst für Barrierefreiheit, um zu verfolgen, welche Apps in Gebrauch sind (im Vordergrund) und welche nicht (im Hintergrund).</string>
     <string name="firewall_status_isolate">isoliert</string>
     <string name="firewall_status_excluded">von DNS und Firewall ausgeschlossen</string>
@@ -406,10 +387,7 @@
     <string name="rt_filter_parent_selected">Ausgewählt</string>
     <string name="dc_local_block_enabled">Aktiviert</string>
     <string name="lbbs_configure">Konfigurieren</string>
-    <string name="brbs_backup_dialog_failure_title">Sicherung fehlgeschlagen</string>
-    <string name="brbs_backup_dialog_failure_positive">Wiederholung der Sicherung</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s Blocklisten</string>
-    <string name="brbs_backup_dialog_failure_message">Das Backup konnte nicht erstellt werden. Erneut versuchen?</string>
     <string name="hsf_vpn_dialog_message">DNS Control benötigt die Berechtigung, ein lokales VPN einzurichten, um die DNS-Anfragen des Geräts zu verschlüsseln, einen Netzwerkmonitor zu implementieren und Firewall-Regeln durchzusetzen.\n\nDNS Control sammelt keine Informationen und spioniert dich in keiner Weise aus.</string>
     <string name="firewall_card_text_inactive">Firewall-Modus aktivieren.</string>
     <string name="hsf_vpn_dialog_header">Achtung!</string>
@@ -603,7 +581,6 @@
     <string name="firewall_status_bypass_dns_firewall" translatable="true">umgeht DNS- und Firewall-Regeln</string>
     <string name="dc_setting_dns_cache_heading" translatable="true">DNS-Verstärker</string>
     <string name="dc_refresh_toast" translatable="true">Aktualisierung abgeschlossen</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Funktioniert nicht über verschiedene App-Versionen hinweg</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">Proxys können nicht aufgesetzt werden, während das VPN im DNS only - Modus läuft.</string>
     <string name="fapps_bypass_dns_firewall_dialog_message" translatable="true">Universelle DNS- &amp; Firewall-Regeln für <i>aufgelistete</i> Apps umgehen?</string>
     <string name="firewall_rule_domain_trusted_univ" translatable="true">Vertrauenswürdige Domäne (Univ)</string>
@@ -894,8 +871,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi-Kennungen (%1$s) dürfen maximal 32 Zeichen lang sein.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Stabilitätsprogramm</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Fehlerprotokolle erfassen, um die Stabilität zu verbessern.</string>
-    <string name="tombstone_app_title" translatable="true">Deinstallierte Apps merken</string>
-    <string name="tombstone_app_desc" translatable="true">Wenn aktiviert, werden die App-Regeln 7 Tage lang beibehalten.</string>
     <string name="settings_locale_dialog_default" translatable="true">Systemvorgabe</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Wenn aktiviert, werden eingehende Verbindungen von WireGuard-Peers zugelassen.</string>

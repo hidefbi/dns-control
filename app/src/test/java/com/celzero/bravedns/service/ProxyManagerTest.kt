@@ -158,7 +158,6 @@ class ProxyManagerTest : KoinTest {
         coJustRun { mockDb.deleteApp(any(), any()) }
         coJustRun { mockDb.deleteAppByPkgName(any()) }
         coJustRun { mockDb.updateUidForApp(any(), any(), any()) }
-        coJustRun { mockDb.tombstoneApp(any(), any()) }
         coJustRun { mockDb.deleteAll() }
         coJustRun { mockDb.updateProxyNameForProxyId(any(), any()) }
 
@@ -194,7 +193,7 @@ class ProxyManagerTest : KoinTest {
         firewallStatus = FirewallManager.FirewallStatus.NONE.id, appCategory = "Test",
         wifiDataUsed = 0L, mobileDataUsed = 0L,
         connectionStatus = FirewallManager.ConnectionStatus.ALLOW.id,
-        isProxyExcluded = false, screenOffAllowed = true, backgroundAllowed = true, tombstoneTs = 0L
+        isProxyExcluded = false, screenOffAllowed = true, backgroundAllowed = true
     )
 
     /** Convenience factory for ProxyApplicationMapping test rows. */
@@ -611,32 +610,6 @@ class ProxyManagerTest : KoinTest {
             FirewallManager.AppInfoTuple(uid2, pkg2),
         ))
         assertTrue(ProxyManager.trackedApps().isEmpty())
-    }
-
-    // ========================================================================
-    // 9. tombstoneApp
-    // ========================================================================
-
-    @Test
-    fun `tombstoneApp negates the uid and calls DB tombstone`() = runBlocking {
-        val tombstoneUid = -uid1
-        loadMappings(pam(uid1, pkg1, ""), pam(uid1, pkg1, wgProxyId0))
-        // After tombstoneApp calls load(), return tombstoned rows
-        val tombstonedRows = listOf(pam(tombstoneUid, pkg1, ""), pam(tombstoneUid, pkg1, wgProxyId0))
-        coEvery { mockDb.getApps() } returns tombstonedRows
-
-        ProxyManager.tombstoneApp(uid1)
-
-        coVerify(exactly = 1) { mockDb.tombstoneApp(uid1, tombstoneUid) }
-        assertTrue(ProxyManager.trackedApps().any { it.uid == tombstoneUid })
-        assertFalse(ProxyManager.trackedApps().any { it.uid == uid1 })
-    }
-
-    @Test
-    fun `tombstoneApp with already-negative uid is a no-op`() = runBlocking {
-        loadMappings(pam(-uid1, pkg1, ""))
-        ProxyManager.tombstoneApp(-uid1)
-        coVerify(exactly = 0) { mockDb.tombstoneApp(any(), any()) }
     }
 
     // ========================================================================
@@ -1125,27 +1098,6 @@ class ProxyManagerTest : KoinTest {
         // base rows survive so apps stay visible in the include list
         assertTrue("uid1 base row intact", pamSetContains(uid1, pkg1, ""))
         assertTrue("uid2 base row intact", pamSetContains(uid2, pkg2, ""))
-    }
-
-    @Test
-    fun `sync after tombstone - rows move to negative uid and DB tombstone is invoked`() = runBlocking {
-        ProxyManager.addNewApp(appInfo1)
-        ProxyManager.addProxyToApp(uid1, pkg1, wgProxyId0, "T0")
-        // tombstoneApp calls load() at the end; stub getApps to return the tombstoned entries so
-        // the in-memory cache reflects post-tombstone state.
-        val neg = -uid1
-        coEvery { mockDb.getApps() } returns listOf(
-            ProxyApplicationMapping(neg, pkg1, name1, "", true, ""),
-            ProxyApplicationMapping(neg, pkg1, name1, "T0", true, wgProxyId0)
-        )
-        ProxyManager.tombstoneApp(uid1)
-        // DB tombstone was invoked
-        coVerify(exactly = 1) { mockDb.tombstoneApp(uid1, neg) }
-        // positive uid gone from reloaded cache
-        assertFalse(pamSetContains(uid1, pkg1, ""))
-        // negative uid has both base and proxy rows in reloaded cache
-        assertTrue("base row survives tombstone under negative uid", pamSetContains(neg, pkg1, ""))
-        assertTrue("proxy row survives tombstone under negative uid", pamSetContains(neg, pkg1, wgProxyId0))
     }
 
     @Test

@@ -269,23 +269,7 @@
     <string name="lbbs_configure">Configurar</string>
     <string name="lbbs_update_check">Buscar actualizaciones</string>
     <string name="lbbs_redownload">Volver a descargar las listas de bloqueo</string>
-    <string name="brbs_backup_title">Respaldo</string>
     <string name="lbbs_heading">Configurar más de 195 listas de bloqueo</string>
-    <string name="brbs_restore_title">Restaurar</string>
-    <string name="brbs_restore_desc">Restaurar desde un archivo de copia de seguridad</string>
-    <string name="brbs_backup_desc">Copia de seguridad de la configuración de la aplicación, red y registros DNS</string>
-    <string name="brbs_backup_dialog_title">Hacer un respaldo</string>
-    <string name="brbs_backup_dialog_message">Realiza una copia de seguridad de la configuración de la aplicación, la red y los registros DNS en un archivo. Esto reiniciará la VPN.</string>
-    <string name="brbs_backup_dialog_positive">Copia de seguridad</string>
-    <string name="brbs_restore_dialog_title">Restaurar copia de seguridad</string>
-    <string name="brbs_restore_dialog_message">Restaurar la configuración de la aplicación, red y registros DNS desde un archivo de copia de seguridad. Esto reiniciará la aplicación.</string>
-    <string name="brbs_backup_dialog_failure_title">Falló la copia de respaldo</string>
-    <string name="brbs_backup_dialog_failure_message">No se ha podido realizar la copia de seguridad. ¿Intentar de nuevo?</string>
-    <string name="brbs_backup_dialog_failure_positive">Reintentar la copia de seguridad</string>
-    <string name="brbs_restore_dialog_failure_positive">Reintentar la restauración</string>
-    <string name="brbs_restore_dialog_failure_message">No se ha podido restaurar. ¿Intentar de nuevo?</string>
-    <string name="brbs_restore_complete_toast">Restauración completada, reiniciando la aplicación…</string>
-    <string name="brbs_backup_complete_toast">Copia de seguridad completa</string>
     <string name="settings_theme_dialog_title">Apariencia</string>
     <string name="settings_socks_forwarding_default_desc">Reenvía las conexiones al punto de acceso SOCKS5.</string>
     <string name="settings_theme_dialog_themes_1">Fijado por el sistema</string>
@@ -429,10 +413,6 @@
     <string name="rt_list_simple_btn_txt">Simple</string>
     <string name="bsrf_sub_group_heading">Subgrupo</string>
     <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
-    <string name="brbs_title">Respaldo y restauración</string>
-    <string name="brbs_restore_dialog_positive">Restaurar</string>
-    <string name="brbs_restore_dialog_failure_title">La restauración ha fallado</string>
-    <string name="brbs_restore_no_uri_toast">La restauración ha fallado; inténtalo de nuevo</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s listas de bloqueo</string>
     <string name="notif_dialog_pause_dialog_negative">Descartar</string>
     <string name="notif_dialog_pause_dialog_message">Aplicación pausada, reanudar para continuar</string>
@@ -440,7 +420,6 @@
     <string name="notif_dialog_pause_dialog_positive">Reanudar</string>
     <string name="notif_dialog_pause_dialog_neutral">Mostrar</string>
     <string name="dc_local_block_enabled">Activado</string>
-    <string name="settings_import_export_desc">Realiza manualmente una copia de seguridad o restaura los datos y configuración de la aplicación.</string>
     <string name="hsf_downtime">(inactivo desde %1$s)</string>
     <string name="settings_notification_desc1">Pausar / Detener (por defecto)</string>
     <string name="configure_dns_connected_dns_proxy_status">Proxy DNS</string>
@@ -457,7 +436,6 @@
     <string name="settings_socks5_heading">Configurar el proxy SOCKS5</string>
     <string name="settings_socks5_desc">Reenvía las conexiones al punto de acceso SOCKS5.</string>
     <string name="orbot_stop_dialog_neutral">Cambiar el DNS</string>
-    <string name="settings_import_export_heading">Copia de seguridad y restauración</string>
     <string name="settings_proxy_header">Proxy</string>
     <string name="orbot">Orbot</string>
     <string name="settings_autostart_bootup_heading">Arranque automático al encender (en pruebas)</string>
@@ -616,7 +594,6 @@
     <string name="dc_setting_dns_cache_heading" translatable="true">Refuerzo DNS</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Fusionar peticiones, respuestas en caché, gestión de errores resistentes</string>
     <string name="settings_lock_down_proxy_desc" translatable="true">No se pueden configurar proxies cuando la VPN se ejecuta en modo sólo DNS.</string>
-    <string name="brbs_backup_restore_desc" translatable="true">No funciona en todas las versiones de la aplicación</string>
     <string name="settings_allow_lan_heading" translatable="true">No enrutar IPs privadas (experimental)</string>
     <string name="settings_allow_lan_desc" translatable="true">Excluye las rutas LAN, loopback, multicast, enlace-local del túnel VPN de DNS Control.</string>
     <string name="lbl_network" translatable="true">Red</string>
@@ -896,8 +873,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Los identificadores Wi‑Fi (%1$s) deben tener 32 caracteres o menos.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Programa de estabilidad</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capturar registros de errores para ayudar a mejorar la estabilidad.</string>
-    <string name="tombstone_app_title" translatable="true">Recordar aplicaciones desinstaladas</string>
-    <string name="tombstone_app_desc" translatable="true">Cuando está activado, conserva las reglas de la aplicación durante 7 días.</string>
     <string name="settings_locale_dialog_default" translatable="true">Predeterminado del sistema</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Cuando está activado, permite conexiones entrantes iniciadas por pares de WireGuard.</string>

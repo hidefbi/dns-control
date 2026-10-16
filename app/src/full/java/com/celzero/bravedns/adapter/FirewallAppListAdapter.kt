@@ -131,14 +131,7 @@ class FirewallAppListAdapter(
                     }
                     b.firewallAppToggleWifi.visibility = View.VISIBLE
                     b.firewallAppToggleMobileData.visibility = View.VISIBLE
-                    // strike through the app name if the app is tombstoned
-                    if (appInfo.tombstoneTs > 0) {
-                        b.firewallAppLabelTv.paint.isStrikeThruText = true
-                        b.firewallAppLabelTv.alpha = ALPHA_DISABLED
-                        b.firewallAppIconIv.alpha = ALPHA_DISABLED
-                    } else {
-                        b.firewallAppLabelTv.paint.isStrikeThruText = false
-                    }
+                    b.firewallAppLabelTv.paint.isStrikeThruText = false
                     if (appInfo.uid == rethinkUid) {
                         // do not show the wi-fi and mobile data icons for RethinkDNS
                         b.firewallAppToggleWifi.visibility = View.GONE

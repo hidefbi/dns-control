@@ -272,27 +272,16 @@
     <string name="notif_download_content_text">Загрузка продолжается…</string>
     <string name="notif_download_cancel_content">Загрузка отменена.</string>
     <string name="rbl_parental_control">Родительский контроль</string>
-    <string name="brbs_title">Резервное копирование и восстановление</string>
     <string name="rt_dialog_title">Сохранить изменения</string>
     <string name="rt_dialog_message">Вы хотите применить новые настроенные списки блокировки?</string>
     <string name="rt_download_start">Загрузка списков блокировки…</string>
     <string name="dc_rethink_dns" translatable="false">Переосмыслить DNS</string>
     <string name="lbbs_redownload">Повторная загрузка списков блокировки</string>
-    <string name="brbs_backup_dialog_message">Резервное копирование настроек приложения, сети и логов DNS в файл. Это перезапустит VPN.</string>
-    <string name="brbs_restore_dialog_message">Восстановить настройки приложения, сети и логи DNS из файла резервной копии. Это перезапустит приложение.</string>
-    <string name="brbs_restore_dialog_failure_title">Восстановление не удалось</string>
     <string name="rt_filter_desc_subgroups"><![CDATA[Показывает <u>%1$s</u> списки блокировки в группе: %2$s и подгруппе: %3$s]]></string>
     <string name="lbbs_enabled">Включено</string>
     <string name="rt_list_simple_btn_txt">простой</string>
     <string name="lbl_advanced">Расширенные настройки</string>
-    <string name="brbs_backup_dialog_positive">Резервное копирование</string>
-    <string name="brbs_backup_dialog_failure_title">Не удалось создать резервную копию</string>
-    <string name="brbs_restore_no_uri_toast">Восстановление не удалось; попробуйте еще раз</string>
     <string name="lbbs_download">Обновление списков блокировки</string>
-    <string name="brbs_backup_desc">Резервное копирование настроек приложения, сети и логов DNS</string>
-    <string name="brbs_backup_dialog_title">Создайте резервную копию</string>
-    <string name="brbs_restore_complete_toast">Восстановление завершено, перезапускаю приложение…</string>
-    <string name="brbs_backup_complete_toast">Резервное копирование завершено</string>
     <string name="rt_filter_hint">Показывать <u>все</u> блоклисты</string>
     <string name="settings_dns_proxy_dialog_header">Установка прокси-сервера SOCKS5</string>
     <string name="settings_socks5_dialog_hint_password">Пароль (необязательно)</string>
@@ -378,15 +367,6 @@
     <string name="lbbs_configure">Настройка</string>
     <string name="lbbs_update_check">Проверить обновления</string>
     <string name="lbbs_heading">Настройка 195+ списков блокировки</string>
-    <string name="brbs_backup_title">Резервное копирование</string>
-    <string name="brbs_restore_title">Восстановление</string>
-    <string name="brbs_restore_desc">Восстановить из файла резервной копии</string>
-    <string name="brbs_restore_dialog_title">Восстановить резервную копию</string>
-    <string name="brbs_restore_dialog_positive">Восстановить</string>
-    <string name="brbs_backup_dialog_failure_message">Не удалось выполнить резервное копирование. Попробовать еще раз?</string>
-    <string name="brbs_backup_dialog_failure_positive">Повторное резервное копирование</string>
-    <string name="brbs_restore_dialog_failure_message">Не удалось восстановить. Попробовать еще раз?</string>
-    <string name="brbs_restore_dialog_failure_positive">Повторное восстановление</string>
     <string name="settings_app_notification_a13_heading">Уведомление приложения</string>
     <string name="settings_app_notification_a13_desc">Включить разрешение на уведомления для приложения</string>
     <string name="settings_theme_desc">Темная/светлая тема</string>
@@ -481,13 +461,11 @@
     <string name="settings_orbot_notification_action">Открыть Orbot</string>
     <string name="settings_autostart_bootup_desc">Запустить DNS Control при включении устройства, если он был запущен до выключения.</string>
     <string name="orbot_title">Orbot и прокси</string>
-    <string name="settings_import_export_heading">Резервное копирование и восстановление</string>
     <string name="orbot_both_desc">Все вышеперечисленное.</string>
     <string name="orbot_stop_dialog_neutral">Изменить DNS</string>
     <string name="settings_https_desc">Направлять соединения на конечную точку HTTP(S) CONNECT.</string>
     <string name="orbot_status_arg_3">DNS и TCP</string>
     <string name="orbot_stop_dialog_title">Требуется ручное вмешательство</string>
-    <string name="settings_import_export_desc">Создание резервной копии или восстановление данных и настроек приложения вручную.</string>
     <string name="orbot_install_dialog_message">Orbot переносит возможности и функциональность Tor на Android.</string>
     <string name="orbot_bs_status_trying_connect">Настройка Orbot…</string>
     <string name="settings_socks5_disabled_error">Подключен к %1$s. Выключите его, чтобы продолжить.</string>
@@ -617,7 +595,6 @@
     <string name="firewall_rule_domain_blocked_univ_desc" translatable="true"><![CDATA[Это подключение было заблокировано, так как <i>домен</i> заблокирован в правилах универсального домена.<br/><br/> Чтобы изменить это поведение, перейдите на вкладку <i>Настройка DNS</i>.]]></string>
     <string name="ada_app_status_bypass_dns_firewall" translatable="true">будет обходить универсальные правила DNS и брандмауэра</string>
     <string name="ada_app_bypass_dns_firewall" translatable="true">Обход DNS и брандмауэра</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Не работает в разных версиях приложения</string>
     <string name="lbl_network" translatable="true">Cеть</string>
     <string name="settings_allow_lan_heading" translatable="true">Не маршрутизировать частные IP-адреса (экспериментально)</string>
     <string name="bypass_dns_firewall_tooltip">%1$s работает только с DNS Control</string>
@@ -895,8 +872,6 @@
     <string name="wg_ssid_invalid_error" translatable="true">Идентификаторы Wi-Fi (%1$s) должны быть до 32 символов.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Программа стабилизации</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Отправлять журнал ошибок чтобы помочь улучшить стабильность приложения.</string>
-    <string name="tombstone_app_title" translatable="true">Запоминать удалённые программы</string>
-    <string name="tombstone_app_desc" translatable="true">Если включено, сохраняет правила приложений ещё 7 дней.</string>
     <string name="settings_locale_dialog_default" translatable="true">Как в системе</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P (напрямую между участниками)</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Если включено, пропускает входящие подключения от клиентов Wireguard.</string>

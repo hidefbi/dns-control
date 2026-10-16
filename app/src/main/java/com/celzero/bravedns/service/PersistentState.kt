@@ -386,9 +386,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // Firebase error reporting enabled (only for play and website variants)
     var firebaseErrorReportingEnabled by booleanPref("firebase_error_reporting").withDefault<Boolean>(false)
 
-    // setting to enable/disable tombstone apps feature
-    var tombstoneApps by booleanPref("tombstone_apps").withDefault<Boolean>(false)
-
     // Token for Firebase userId
     var firebaseUserToken by stringPref("firebase_user_token").withDefault("")
     var firebaseUserTokenTimestamp by longPref("firebase_user_token_timestamp").withDefault(0L)

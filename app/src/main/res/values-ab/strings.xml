@@ -179,8 +179,6 @@
     <string name="settings_check_update_heading" translatable="true">Апликациақәа рҿынтәкала даԥсалаа</string>
     <string name="settings_custom_downloader_heading" translatable="true">Ашәахәаҧшра ашьҭышьҭыҟә</string>
     <string name="settings_custom_downloader_desc" translatable="true">Ако иҧыжьымкәа, иуадаҩым акәымкәам Андроит ихаҭыррала иузаауа «Download Manager»</string>
-    <string name="settings_import_export_heading" translatable="true">Ацәыхра &amp; Ажьырæхә</string>
-    <string name="settings_import_export_desc" translatable="true">Апп и data-ақәа, settings-еи рхыхра адгылара ашәашәра.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">Апликациа рыуха | Апликациа рыуха</string>
     <string name="settings_app_notification_a13_desc" translatable="true">Ашәахәахәҵәаҟәатәи азин ашәҭразы ашәҟәыҟаҵәашәҭратә жәаҿа enable</string>
     <string name="settings_theme_heading" translatable="true">Ашҭашәа</string>
@@ -558,27 +556,6 @@
     <string name="lbbs_redownload" translatable="true">Ашәахьышәажәатәи ақәымҵәажьқәа</string>
     <string name="lbbs_download" translatable="true">Аҳәоуааира бзкаларақəə</string>
     <string name="lbbs_heading" translatable="true">195+ адрынажқəа рконфигурациа анамхəа</string>
-    <string name="brbs_title" translatable="true">Ашьаҧшьыжь, ажьыхыжь</string>
-    <string name="brbs_backup_title" translatable="true">Ашьахыҵәахтә</string>
-    <string name="brbs_backup_desc" translatable="true">Амшынлатын апны, амҵәы иахьаҵәа, еиужьны иахьаҵәа иқәыжьырцә</string>
-    <string name="brbs_restore_title" translatable="true">Шәахәахәҧш</string>
-    <string name="brbs_restore_desc" translatable="true">Аихәахәахәа амҵәыжь афаил аҟынтә</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Априхкьылара апрограмма аверсиқәа рҿы акәымкәа ишакәымхьо</string>
-    <string name="brbs_backup_dialog_title" translatable="true">Ахәыҷра ҟаҵатәуп</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Апликациа шьақәыргалара, а 네트워크, насгьы DNS а журналқәа файле данахьжьысуа. А VPN ажигалара ҷыдала иҟалоит.</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Ашәаҳәатәла</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Акапшра ашәахьашәажьыршә</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Ашәымҭақәа, а 네트워크, насгьы DNS ашәҟәқәа ашәымҭа шьҭашәҟәа ирааира. Ар ашәымҭа ааннажьыр алҵшәа.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Иахьахьышәырты&lt;/h4&gt;</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Ази Ашәахәыжьра дымҿыцыхым</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Амыжьра азинмыжьт. Ашәахьчара?</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Ашәахәахәра Ашәахәахәа</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">&gt;&gt; Restore « failed »</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Амаҵәымра. Уахҭашәҟәала?</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Иахьаиуит ашәахәҭакра</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Алашьара еиҧшхеит, аппак аартра иаҿиҭоит…</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Ашәахәара еимҵит</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">Ашәахәаҧшра амхыцәааит; ацәынтәаашәахәаҧш</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s ашәахәқәа</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">DNS Control ацашьаха, аҧҵы аиҭашәашәаразы</string>
     <string name="ssv_see_more" translatable="true">Иҭабужь Аҭабужь</string>

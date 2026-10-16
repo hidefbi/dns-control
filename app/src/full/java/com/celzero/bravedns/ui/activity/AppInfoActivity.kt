@@ -183,7 +183,7 @@ class AppInfoActivity : BaseActivity(R.layout.activity_app_details) {
         io {
             val appInfo = FirewallManager.getAppInfoByUid(uid)
             // case: app is uninstalled but still available in RethinkDNS database
-            if (appInfo == null || uid == INVALID_UID || appInfo.tombstoneTs > 0) {
+            if (appInfo == null || uid == INVALID_UID) {
                 uiCtx { showNoAppFoundDialog() }
                 return@io
             }

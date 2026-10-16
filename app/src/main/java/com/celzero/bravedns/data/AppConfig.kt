@@ -1088,7 +1088,6 @@ internal constructor(
         sb.append("   socket buffer sz: ${persistentState.socketBufferSizeBytes}\n")
         sb.append("   internet protocol: ${getInternetProtocol()}\n")
         sb.append("   protocol translation mode: ${getProtocolTranslationMode()}\n")
-        sb.append("   remember uninstalled apps: ${persistentState.tombstoneApps}\n")
 
         return sb.toString()
     }

@@ -129,7 +129,6 @@
     <string name="orbot">অরবট</string>
     <string name="orbot_status_arg_2">TCP</string>
     <string name="settings_orbot_desc">HTTPS/SOCKS5 সহ অ-ভিপিএন মোডে অরবট।</string>
-    <string name="settings_import_export_heading">ব্যাকআপ এবং পুনরুদ্ধার করুন</string>
     <string name="settings_app_list_default_app">কেউ না</string>
     <string name="settings_theme_dialog_themes_2">হালকা</string>
     <string name="firewall_card_status_active">%1$s অ্যাপ</string>
@@ -241,7 +240,6 @@
     <string name="settings_https_heading">HTTP(S) প্রক্সি সেটআপ করুন</string>
     <string name="orbot_bs_status_2">HTTP প্রক্সি সেট করা আছে (অ্যাপগুলি এটি উপেক্ষা করতে পারে)।</string>
     <string name="settings_orbot_notification_action">অরবট খুলুন</string>
-    <string name="settings_import_export_desc">ম্যানুয়ালি ব্যাক আপ বা অ্যাপ ডেটা এবং সেটিংস পুনরুদ্ধার করুন।</string>
     <string name="settings_dns_proxy_dialog_username">ব্যবহারকারীর নাম</string>
     <string name="settings_dns_proxy_dialog_positive_btn">সেট</string>
     <string name="settings_theme_dialog_themes_3">কাল</string>
@@ -347,9 +345,6 @@
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="dc_dns_proxy" translatable="false">DNS প্রক্সি</string>
     <string name="lbbs_download">ব্লকলিস্ট আপডেট করুন</string>
-    <string name="brbs_restore_dialog_message">একটি ব্যাকআপ ফাইল থেকে অ্যাপ সেটিংস, নেটওয়ার্ক এবং ডিএনএস লগ পুনরুদ্ধার করুন। এটি অ্যাপটি পুনরায় চালু করবে।</string>
-    <string name="brbs_restore_dialog_positive">পুনঃস্থাপন</string>
-    <string name="brbs_restore_dialog_failure_message">পুনরুদ্ধার করা যায়নি। আবার চেষ্টা করুন?</string>
     <string name="copy_clipboard_label">ইউআরএল (URL)</string>
     <string name="firewall_rule_exempt_orbot_setup">অরবোট সেটআপ</string>
     <string name="firewall_rule_bypass_universal_ip_desc"><![CDATA[এই সংযোগের অনুমতি দেওয়া হয়েছিল কারণ <i>গন্তব্য আইপি</i> সমস্ত সার্বজনীন ফায়ারওয়াল নিয়মগুলিকে বাইপাস করতে সেট করা হয়েছে৷<br/><br/> পরিবর্তন করতে <i>ইউনিভার্সাল<-এ <i>আইপি নিয়মে<i> যান </i> ট্যাব।]]></string>
@@ -357,7 +352,6 @@
     <string name="notif_channel_desc_proxy_failure">প্রক্সি ত্রুটি এবং অসঙ্গতির বিষয়ে সতর্কতা</string>
     <string name="network_dns">সিস্টেম DNS</string>
     <string name="lbbs_update_check">হালনাগাদ আছে কিনা দেখো</string>
-    <string name="brbs_backup_desc">ব্যাকআপ অ্যাপ সেটিংস, নেটওয়ার্ক এবং ডিএনএস লগ</string>
     <string name="category_name_sys_apps">সিস্টেম অ্যাপস</string>
     <string name="cd_toast_deleted">কাস্টম তালিকা থেকে ডোমেন সরানো হয়েছে</string>
     <string name="cd_dialog_title">ডোমেইন যোগ করুন</string>
@@ -366,7 +360,6 @@
     <string name="ada_app_status_block_wifi">মিটারবিহীন (ওয়াইফাই) নেটওয়ার্কে ব্লক করা আছে</string>
     <string name="ada_app_status_whitelist">সার্বজনীন ফায়ারওয়াল নিয়ম বাইপাস হবে</string>
     <string name="rt_edit_dialog_positive">সম্পাদনা</string>
-    <string name="brbs_restore_desc">একটি ব্যাকআপ ফাইল থেকে পুনরুদ্ধার করুন</string>
     <string name="dns_proxy_connection_failure">DNS প্রক্সি সার্ভারের সাথে সংযোগ করতে ত্রুটি৷</string>
     <string name="new_app_notification_action_deny">প্রতিরোধ করে রাখা</string>
     <string name="new_app_notification_action_toast_deny">অ্যাপের জন্য নেটওয়ার্ক সংযোগ অস্বীকার করা হয়েছে</string>
@@ -375,14 +368,11 @@
     <string name="cd_no_rule_txt">কোন নিয়ম নেই</string>
     <string name="ci_dialog_edittext_hint">আইপি ঠিকানা, সাবনেট বা পোর্ট</string>
     <string name="ada_app_bypass_univ">বাইপাস ইউনিভার্সাল</string>
-    <string name="brbs_restore_title">পুনঃস্থাপন</string>
-    <string name="brbs_backup_dialog_failure_title">ব্যাকআপ ব্যর্থ হয়েছে</string>
     <string name="network_log_app_name_unknown">অজ্ঞাত</string>
     <string name="firewall_rule_block_http">অনিরাপদ HTTP</string>
     <string name="firewall_rule_block_app_unmetered_desc"><![CDATA[<i>আনমিটারড</i> নেটওয়ার্কে সংযোগ করার চেষ্টা করার সময় একটি ব্যবহারকারী-সেট ফায়ারওয়াল নিয়ম এই <i>অ্যাপ</i> ব্লক করে।]]></string>
     <string name="firewall_rule_exempt_app_bypass_univ_desc"><![CDATA[এই সংযোগের অনুমতি দেওয়া হয়েছিল কারণ <i>সোর্স অ্যাপ</i> সেট করা হয়েছে <i>বাইপাস ইউনিভার্সাল</i> ফায়ারওয়াল নিয়মে।]]></string>
     <string name="notif_dialog_pause_dialog_message">বিরতি অবস্থায় আবেদন, চালিয়ে যেতে পুনরায় শুরু করুন</string>
-    <string name="brbs_backup_dialog_message">একটি ফাইলে অ্যাপ সেটিংস, নেটওয়ার্ক এবং ডিএনএস লগ ব্যাক আপ করে। এটি VPN পুনরায় চালু করবে।</string>
     <string name="firewall_rule_block_udp_ntp">UDP অবরুদ্ধ</string>
     <string name="firewall_rule_global_lockdown">তালাবদ্ধ</string>
     <string name="firewall_rule_no_rule_desc">কোন ফায়ারওয়াল নিয়ম এই সংযোগ মেলে না.</string>
@@ -394,7 +384,6 @@
     <string name="ada_app_exclude">বাদ দিন</string>
     <string name="rt_dialog_title">Save changes</string>
     <string name="dc_local_block_enabled">সক্ষম করা হয়েছে</string>
-    <string name="brbs_restore_no_uri_toast">পুনরুদ্ধার ব্যর্থ হয়েছে; আবার চেষ্টা করুন</string>
     <string name="firewall_rule_block_metered">মিটারযুক্ত (মোবাইল)</string>
     <string name="firewall_rule_bypass_universal_ip">বাইপাস আইপি</string>
     <string name="category_name_non_app_sys">সিস্টেম পরিষেবা</string>
@@ -404,7 +393,6 @@
     <string name="rt_download_start">ব্লকলিস্ট ডাউনলোড করা হচ্ছে…</string>
     <string name="bsrf_sub_group_heading">সাব গ্রুপ</string>
     <string name="lbbs_configure">কনফিগার</string>
-    <string name="brbs_backup_dialog_failure_positive">ব্যাকআপ আবার চেষ্টা করুন</string>
     <string name="system_dns_connection_failure">বর্তমান DNS সার্ভার নির্ধারণ করা যাচ্ছে না</string>
     <string name="firewall_rule_univ_block_metered">মিটারযুক্ত (সর্বজনীন)</string>
     <string name="firewall_rule_new_app_desc"><![CDATA[এই অ্যাপটি <i>প্রথম</i> বারের জন্য সংযোগ তৈরি করেছে।<br/><br/> পরিবর্তন করতে <i>ইউনিভার্সাল</i> ট্যাবে যান।]]></string>
@@ -427,7 +415,6 @@
     <string name="ada_app_status_isolate">লকডাউন মোডে আছে</string>
     <string name="notif_download_success_content">ডাউনলোড সফল হয়েছে।</string>
     <string name="lbl_advanced">উন্নত</string>
-    <string name="brbs_restore_dialog_failure_title">পুনরুদ্ধার ব্যর্থ হয়েছে</string>
     <string name="network_log_app_name_unnamed">নামহীন (%1$s)</string>
     <string name="settings_local_blocklist_version">ভার্সন: v%1$s</string>
     <string name="firewall_rule_block_app_new_install">নতুন অ্যাপ</string>
@@ -441,8 +428,6 @@
     <string name="ci_no_rule_txt">কোন নিয়ম নেই</string>
     <string name="ada_noapp_dialog_positive">ঠিক আছে</string>
     <string name="ada_firewall_status"><![CDATA[এই অ্যাপটি <b><i>%1$s</i></b>।]]></string>
-    <string name="brbs_title">ব্যাকআপ এবং পুনরুদ্ধার করুন</string>
-    <string name="brbs_restore_dialog_failure_positive">পুনরুদ্ধার পুনরায় চেষ্টা করুন</string>
     <string name="notif_channel_proxy_failure">প্রক্সি সতর্কতা</string>
     <string name="ci_dialog_desc">অনুমতি দিন (বাইপাস) বা ব্লক আইপি ঠিকানা, আইপি সাবনেট (পরিসীমা), পোর্ট। উদাহরণ: 10.10.10.10, 10.1.1.*, 10.2.2/24, ffff::/104, [::]:80, *.*:80</string>
     <string name="ci_no_rules_text">কোনো সার্বজনীন আইপি ব্লক বা বাইপাস নিয়ম পাওয়া যায়নি।</string>
@@ -474,7 +459,6 @@
     <string name="ada_app_metered">মিটারযুক্ত</string>
     <string name="rbl_security">নিরাপত্তা</string>
     <string name="bsrf_clear_filter">পরিষ্কার করুন</string>
-    <string name="brbs_backup_dialog_title">ব্যাকআপ নিন</string>
     <string name="settings_local_blocklist_dialog_positive">ডাউনলোড</string>
     <string name="accessibility_notification_content">DNS Control অ্যাক্সেসিবিলিটি পরিষেবা বন্ধ বা ক্র্যাশ হয়েছে৷ ব্যাকগ্রাউন্ডেড অ্যাপসকে আর ব্লক করা হচ্ছে না। পুনরায় সক্ষম করতে আলতো চাপুন৷</string>
     <string name="firewall_rule_block_app">অ্যাপ ব্লক করা হয়েছে</string>
@@ -487,7 +471,6 @@
     <string name="cd_toast_added">ডোমেন সফলভাবে যোগ করা হয়েছে</string>
     <string name="cd_no_rule_initial">এন</string>
     <string name="rt_dialog_message">আপনি কি নতুন কনফিগার করা ব্লকলিস্ট প্রয়োগ করতে চান?</string>
-    <string name="brbs_restore_dialog_title">ব্যাকআপ পুনরুদ্ধার</string>
     <string name="firewall_rule_isolate">লকডাউন (অ্যাপ)</string>
     <string name="firewall_rule_unknown">উৎস অজানা</string>
     <string name="firewall_rule_exempt_app_bypass_univ">বাইপাস অ্যাপ</string>
@@ -497,14 +480,11 @@
     <string name="cd_dialog_error_invalid_wildcard">অবৈধ ওয়াইল্ডকার্ড।</string>
     <string name="ci_bypass_universal_txt">বাইপাস ইউনিভার্সাল</string>
     <string name="rt_list_simple_btn_txt">সহজ</string>
-    <string name="brbs_backup_dialog_failure_message">ব্যাকআপ করা যায়নি। আবার চেষ্টা করুন?</string>
     <string name="firewall_rule_trusted_ip">বাইপাসড আইপি (অ্যাপ)</string>
     <string name="firewall_rule_block_ip_univ_desc"><![CDATA[একটি ব্যবহারকারী-সেট ফায়ারওয়াল নিয়ম <i>গন্তব্য আইপি / পোর্ট</i>কে ব্লক করেছে।<br/><br/> পরিবর্তন করতে <i>ইউনিভার্সাল</i> ট্যাবে যান]]></string>
     <string name="firewall_rule_trusted_ip_desc"><![CDATA[এই সংযোগের অনুমতি দেওয়া হয়েছিল কারণ <i>গন্তব্য IP</i> অ্যাপ-নির্দিষ্ট নিয়মগুলিকে বাইপাস করার জন্য সেট করা হয়েছে।<br/><br/> পরিবর্তন করতে <i>অ্যাপ-নির্দিষ্ট ফায়ারওয়াল</i> স্ক্রিনে যান।]]></string>
     <string name="notif_channel_desc_vpn_failure">Android বা অন্য VPN অ্যাপ দ্বারা DNS Control বন্ধ করা হলে জানান</string>
     <string name="lbbs_heading">185+ ব্লকলিস্ট কনফিগার করুন</string>
-    <string name="brbs_restore_complete_toast">পুনরুদ্ধার সম্পন্ন হয়েছে, অ্যাপ পুনরায় চালু হচ্ছে…</string>
-    <string name="brbs_backup_complete_toast">ব্যাকআপ সম্পন্ন</string>
     <string name="fapps_firewall_filter_hint">তালিকাভুক্ত অ্যাপে আনমিটারড/মিটারড নিয়ম প্রয়োগ করুন</string>
     <string name="fapps_firewall_filter_desc"><![CDATA[<u>%1$s</u> %2$s অ্যাপ দেখানো হচ্ছে]]></string>
     <string name="fapps_info_dialog_positive_btn">ঠিক আছে</string>

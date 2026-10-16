@@ -524,20 +524,6 @@ object DomainRulesManager : KoinComponent {
         rehydrateFromDB(cd.uid)
     }
 
-    suspend fun tombstoneRulesByUid(oldUid: Int) {
-        Logger.i(LOG_TAG_FIREWALL, "tombstone rules for uid: $oldUid")
-        // here tombstone means negating the uid of the rule
-        // this is used when the app is uninstalled, so that the rules are not deleted
-        // but the uid is set to (-1 * uid), so that the rules are not applied
-        val newUid = if (oldUid > 0) -1 * oldUid else oldUid
-        if (oldUid == newUid) {
-            Logger.w(LOG_TAG_FIREWALL, "tombstone: same uids, old: $oldUid, new: $newUid, no-op")
-            return
-        }
-        db.tombstoneRulesByUid(oldUid, newUid)
-        load()
-    }
-
 
     fun isWildCardEntry(url: String): Boolean {
         return wcRegex.matcher(url).matches()

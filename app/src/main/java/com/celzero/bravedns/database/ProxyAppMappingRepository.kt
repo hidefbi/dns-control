@@ -73,14 +73,6 @@ class ProxyAppMappingRepository(
         }
     }
 
-    suspend fun tombstoneApp(oldUid: Int, newUid: Int) {
-        try {
-            proxyApplicationMappingDAO.tombstoneApp(oldUid, newUid)
-        } catch (_: SQLiteConstraintException) {
-            Logger.w(LOG_TAG_PROXY, "tombstoneApp constraint violation; oldUid=$oldUid -> newUid=$newUid; skipping tombstone")
-        }
-    }
-
     suspend fun getProxiesForApp(uid: Int, packageName: String): List<ProxyApplicationMapping> {
         return proxyApplicationMappingDAO.getProxiesForApp(uid, packageName)
     }

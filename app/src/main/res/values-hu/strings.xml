@@ -145,8 +145,6 @@
     <string name="settings_https_disabled_error" translatable="true">Csatlakozva a következőhöz: %1$s. A folytatáshoz kapcsolja ki.</string>
     <string name="settings_check_update_heading" translatable="true">Frissítések keresése az alkalmazáshoz</string>
     <string name="settings_custom_downloader_heading" translatable="true">Alkalmazáson belüli letöltő használata</string>
-    <string name="settings_import_export_desc" translatable="true">Kézi biztonsági mentés vagy az alkalmazás adatainak és beállításainak visszaállítása.</string>
-    <string name="settings_import_export_heading" translatable="true">Biztonsági mentés és visszaállítás</string>
     <string name="settings_theme_heading" translatable="true">Megjelenés</string>
     <string name="settings_theme_desc" translatable="true">Sötét/világos téma</string>
     <string name="settings_http_proxy_desc" translatable="true">Továbbítás ide: %1$s</string>
@@ -663,27 +661,6 @@
     <string name="lbbs_redownload" translatable="true">Blokkolólisták újratöltése</string>
     <string name="lbbs_download" translatable="true">Blokkolólisták frissítése</string>
     <string name="lbbs_heading" translatable="true">185+ blokklista konfigurálása</string>
-    <string name="brbs_title" translatable="true">Biztonsági másolat és visszaállítás</string>
-    <string name="brbs_backup_title" translatable="true">Biztonsági másolat</string>
-    <string name="brbs_backup_desc" translatable="true">Biztonsági mentés az alkalmazás beállításairól, hálózati és dns naplókról</string>
-    <string name="brbs_restore_title" translatable="true">Visszaállítás</string>
-    <string name="brbs_restore_desc" translatable="true">Visszaállítás fájlból</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Nem működik az alkalmazás verziók és eszközök között</string>
-    <string name="brbs_backup_dialog_title" translatable="true">Készítsen biztonsági másolatot</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Biztonsági mentést készít az alkalmazás beállításairól, a hálózati és dns naplókról egy fájlba. Ez újraindítja a VPN-t.</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Biztonsági másolat</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Biztonsági mentés visszaállítása</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Alkalmazásbeállítások, hálózati és dns-naplók visszaállítása biztonsági másolatból. Ez újraindítja az alkalmazást.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Visszaállítás</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Biztonsági mentés sikertelen</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">A biztonsági mentés nem sikerült. Szeretné újra megpróbálni?</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Biztonsági mentés megismétlése</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">A visszaállítás sikertelen</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">A visszaállítás nem sikerült. Szeretné újra megpróbálni?</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Visszaállítás újrakezdése</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Visszaállítás befejeződött, alkalmazás újraindítása…</string>
-    <string name="brbs_backup_complete_toast" translatable="true">A biztonsági mentés kész</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">A visszaállítás sikertelen; próbálja újra</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blokklisták</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Indítsa el a DNS Control-et a folytatáshoz</string>
     <string name="ssv_see_more" translatable="true">Összes megjelenítése</string>
@@ -881,7 +858,6 @@
     <string name="wg_ssid_type_wildcard" translatable="true">Pontosan egyezik</string>
     <string name="fs_configure_others_desc" translatable="true">Megjelenés, értesítések és egyebek</string>
     <string name="ssid_permission_error_action" translatable="true">Engedély megadása</string>
-    <string name="tombstone_app_title" translatable="true">Eltávolított alkalmazások megjegyzése</string>
     <string name="wg_ssid_type_exact" translatable="true">Pontos egyezés</string>
     <string name="lbl_action" translatable="true">Művelet</string>
     <string name="lbl_connect" translatable="true">Kapcsolódás</string>
@@ -902,7 +878,6 @@
     <string name="ssid_location_error_action" translatable="true">Helymeghatározás engedélyezése</string>
     <string name="settings_locale_dialog_default" translatable="true">Rendszer alapértelmezés</string>
     <string name="wg_setting_ssid_title" translatable="true">Csak Wi-Fi</string>
-    <string name="tombstone_app_desc" translatable="true">Az engedélyezett alkalmazásszabályok, 7 napig megmaradnak meg.</string>
     <string name="tour_btn_skip">Bemutató kihagyása</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Engedélyezve lehetővé teszi a WireGuard partnerek által kezdeményezett bejövő kapcsolatok fogadását.</string>
     <string name="location_enable_explanation" translatable="true">A Wi‑Fi‑azonosítók (%1$s) eléréséhez kapcsolja be a Helymeghatározás szolgáltatást.</string>

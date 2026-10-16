@@ -243,10 +243,8 @@
     <string name="settings_socks5_vpn_disabled_error" translatable="true">Start DNS Control to proceed.</string>
     <string name="settings_check_update_heading" translatable="true">Check for app updates</string>
     <string name="orbot_install_dialog_neutral" translatable="true">وبسایت</string>
-    <string name="settings_import_export_heading" translatable="true">Backup &amp; Restore</string>
     <string name="settings_orbot_notification_action" translatable="true">Open Orbot</string>
     <string name="settings_orbot_disabled_error" translatable="true">Turn off HTTP(S) and/or SOCKS5 proxy to continue with Tor-as-a-proxy setup.</string>
-    <string name="settings_import_export_desc" translatable="true">Manually back up or restore app data and settings.</string>
     <string name="settings_socks5_disabled_error" translatable="true">Connected to %1$s. Turn it off to continue.</string>
     <string name="settings_custom_downloader_heading" translatable="true">Use in-app downloader</string>
     <string name="settings_app_notification_a13_heading" translatable="true">اعلان نرم افزار</string>
@@ -522,27 +520,6 @@
     <string name="bad_config_reason_unknown_attribute" translatable="true">ویژگی ناشناخته</string>
     <string name="bad_config_reason_unknown_section" translatable="true">بخش ناشناخته</string>
     <string name="blocklist_not_available_toast" translatable="true">برای به‌روزرسانی لیست‌های مسدود شده، آخرین نسخه برنامه را دانلود کنید.</string>
-    <string name="brbs_backup_complete_toast" translatable="true">پشتیبان گیری تکمیل شد</string>
-    <string name="brbs_backup_desc" translatable="true">پشتیبان‌گیری از تنظیمات برنامه، شبکه و لاگ‌های DNS</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">پشتیبان‌گیری انجام نشد. دوباره امتحان میکنید؟</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">دوباره نسخه پشتیبان تهیه کنید</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">پشتیبان گیری ناموفق بود</string>
-    <string name="brbs_backup_dialog_message" translatable="true">تنظیمات برنامه، شبکه و گزارش‌های DNS را در یک فایل پشتیبان‌گیری می‌کند. این کار VPN را مجدداً راه‌اندازی می‌کند.</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">پشتیبان گیری</string>
-    <string name="brbs_backup_dialog_title" translatable="true">پشتیبان بگیرید</string>
-    <string name="brbs_backup_restore_desc" translatable="true">در نسخه‌های مختلف برنامه کار نمی‌کند</string>
-    <string name="brbs_backup_title" translatable="true">پشتیبان گیری</string>
-    <string name="brbs_restore_complete_toast" translatable="true">بازیابی تکمیل شد، برنامه مجدداً راه‌اندازی می‌شود…</string>
-    <string name="brbs_restore_desc" translatable="true">بازیابی از یک فایل پشتیبان</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">بازیابی انجام نشد. دوباره امتحان میکنید؟</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">دوباره بازیابی کنید</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">بازیابی ناموفق بود</string>
-    <string name="brbs_restore_dialog_message" translatable="true">تنظیمات برنامه، شبکه و گزارش‌های DNS را از یک فایل پشتیبان بازیابی کنید. این کار برنامه را مجدداً راه‌اندازی می‌کند.</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">بازیابی</string>
-    <string name="brbs_restore_dialog_title" translatable="true">بازیابی نسخه پشتیبان</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">بازیابی ناموفق بود؛ دوباره امتحان کنید</string>
-    <string name="brbs_restore_title" translatable="true">بازیابی</string>
-    <string name="brbs_title" translatable="true">پشتیبان‌گیری و بازیابی</string>
     <string name="bsrf_clear_filter" translatable="true">پاک کردن</string>
     <string name="build__flavor_website" translatable="true">وب‌سایت</string>
     <string name="bsrf_sub_group_heading" translatable="true">زیرگروه</string>

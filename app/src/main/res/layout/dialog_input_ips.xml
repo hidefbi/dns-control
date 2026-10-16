@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center"
                 android:layout_marginEnd="10dp"
-                android:text="@string/brbs_restore_title"
+                android:text="@string/lbl_reset"
                 android:textColor="?attr/chipTextPositive"
                 android:textSize="@dimen/large_font_text_view"
                 android:visibility="visible"

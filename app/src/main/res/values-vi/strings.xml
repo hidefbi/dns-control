@@ -225,7 +225,6 @@
     <string name="hsf_downtime" translatable="true">(không hoạt động kể từ %1$s)</string>
     <string name="hsf_vpn_dialog_header" translatable="true">Chú ý!</string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Tìm kiếm danh sách chặn</font></string>
-    <string name="settings_import_export_heading" translatable="true">Sao lưu và khôi phục</string>
     <string name="settings_https_desc" translatable="true">Chuyển tiếp các kết nối tới điểm cuối HTTP(S) CONNECT.</string>
     <string name="orbot_bs_status_4" translatable="true">Thiết lập Tor-as-a-Proxy (Orbot) chỉ bằng một cú nhấp.</string>
     <string name="orbot_stop_dialog_message" translatable="true">DNS Control đã ngừng chuyển tiếp kết nối tới Orbot, nhưng Orbot có thể đang chạy nền.</string>
@@ -234,7 +233,6 @@
     <string name="settings_orbot_disabled_error" translatable="true">Tắt proxy HTTP(S) và/hoặc SOCKS5 để tiếp tục thiết lập Tor-as-a-proxy.</string>
     <string name="settings_autostart_bootup_desc" translatable="true">Khi bật nguồn thiết bị, khởi động DNS Control nếu nó vẫn đang chạy trước khi tắt máy.</string>
     <string name="settings_network_all_networks_desc" translatable="true">Khi được bật, DNS Control sẽ sử dụng tất cả các mạng khả dụng để kết nối với Internet. Nếu không, nó sẽ sử dụng bất kỳ mạng nào được Android coi là <i> đang hoạt động</i>.</string>
-    <string name="settings_import_export_desc" translatable="true">Sao lưu hoặc khôi phục cài đặt và dữ liệu ứng dụng theo cách thủ công.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">Thông báo ứng dụng</string>
     <string name="settings_dns_proxy_dialog_hostname" translatable="true">Tên máy chủ</string>
     <string name="settings_dns_proxy_dialog_password" translatable="true">Mật khẩu</string>
@@ -637,15 +635,6 @@
     <string name="lbbs_redownload" translatable="true">Tải lại các danh sách chặn</string>
     <string name="lbbs_download" translatable="true">Cập nhật các danh sách chặn</string>
     <string name="lbbs_heading" translatable="true">Tinh chỉnh hơn 195 danh sách chặn</string>
-    <string name="brbs_title" translatable="true">Sao lưu và khôi phục</string>
-    <string name="brbs_backup_title" translatable="true">Sao lưu</string>
-    <string name="brbs_backup_desc" translatable="true">Sao lưu các cài đặt ứng dụng, cài đặt mạng và nhật ký dns</string>
-    <string name="brbs_restore_title" translatable="true">Khôi phục</string>
-    <string name="brbs_restore_desc" translatable="true">Khôi phục từ một tập tin sao lưu</string>
-    <string name="brbs_backup_restore_desc" translatable="true">Không tương thích giữa các phiên bản ứng dụng</string>
-    <string name="brbs_backup_dialog_message" translatable="true">Sao lưu các cài đặt ứng dụng, cài đặt mạng và nhật ký dns sang một tập tin. Việc này sẽ khởi động lại VPN</string>
-    <string name="brbs_backup_dialog_positive" translatable="true">Sao lưu</string>
-    <string name="brbs_restore_dialog_title" translatable="true">Khôi phục bản sao lưu</string>
     <string name="key_length_explanation_base64" translatable="true">Khóa WireGuard ( mã hóa base64 ) phải dài 44 ký tự ( 32 bytes )</string>
     <string name="bad_config_reason_unknown_attribute" translatable="true">Thuộc tính không rõ</string>
     <string name="bad_config_reason_syntax_error" translatable="true">Lỗi cú pháp</string>
@@ -653,17 +642,6 @@
     <string name="bad_config_reason_invalid_key" translatable="true">Khóa không hợp lệ</string>
     <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Khởi động DNS Control để tiếp tục</string>
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s danh sách chặn</string>
-    <string name="brbs_restore_no_uri_toast" translatable="true">Khôi phục thất bại; vui lòng thử lại</string>
-    <string name="brbs_backup_complete_toast" translatable="true">Sao lưu hoàn thành</string>
-    <string name="brbs_restore_complete_toast" translatable="true">Khôi phục hoàn tất, đang khởi động lại ứng dụng…</string>
-    <string name="brbs_restore_dialog_failure_positive" translatable="true">Thử lại việc khôi phục</string>
-    <string name="brbs_restore_dialog_failure_message" translatable="true">Không thể khôi phục. Thử lại chứ ?</string>
-    <string name="brbs_restore_dialog_failure_title" translatable="true">Khôi phục thất bại</string>
-    <string name="brbs_backup_dialog_failure_positive" translatable="true">Thử lại việc sao lưu</string>
-    <string name="brbs_backup_dialog_failure_message" translatable="true">Không thể sao lưu. Thử lại chứ ?</string>
-    <string name="brbs_backup_dialog_failure_title" translatable="true">Sao lưu thất bại</string>
-    <string name="brbs_restore_dialog_positive" translatable="true">Khôi phục</string>
-    <string name="brbs_restore_dialog_message" translatable="true">Khôi phục các cài đặt ứng dụng, cài đặt mạng và nhật ký dns từ một tệp tin sao lưu. Việc này sẽ khởi động lại ứng dụng</string>
     <string name="lbbs_configure" translatable="true">Tinh chỉnh</string>
     <string name="lbbs_enabled" translatable="true">Cho phép</string>
     <string name="dc_refresh_toast" translatable="true">Làm mới hoàn tất</string>
