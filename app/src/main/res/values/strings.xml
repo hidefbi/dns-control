@@ -108,7 +108,6 @@
     <string name="lbl_protos" translatable="true">protos</string>
     <string name="lbl_experimental" translatable="true">(experimental)</string>
     <string name="lbl_hop" translatable="true">Relays</string>
-    <string name="lbl_ipinfo_inc" translatable="false">IPinfo Inc.</string>
     <string name="lbl_manual" translatable="true">Manual</string>
     <string name="lbl_action" translatable="true">Action</string>
     <string name="lbl_connect" translatable="true">Connect</string>
@@ -1474,8 +1473,6 @@
     <string name="set_auto_dial_title" translatable="false">Set Auto Dial</string>
     <string name="set_auto_dial_desc" translatable="false">Use parallel dialing to connect to multiple servers at once.</string>
 
-    <string name="download_ip_info_title" translatable="true">Show provider information</string>
-    <string name="download_ip_info_desc" translatable="true">Fetches service provider details for websites from <i>rethinkdns.com</i>, powered by <i>%1$s</i></string>
 
     <string name="adv_taster_title" translatable="true">Automation</string>
     <string name="adv_taster_desc" translatable="true">Configure apps that can start or stop DNS Control.</string>

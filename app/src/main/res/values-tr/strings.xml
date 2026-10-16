@@ -369,7 +369,6 @@
     <string name="orbot_install_dialog_positive">Kur</string>
     <string name="orbot_install_activity_error" translatable="false">Bir şeyler ters gitti, bir süre sonra deneyin</string>
     <string name="settings_network_all_networks">Mevcut tüm ağları kullanın (deneysel)</string>
-    <string name="settings_check_update_desc">Uygulama güncellemelerini haftada bir otomatik olarak kontrol edin.</string>
     <string name="settings_dns_proxy_dialog_header">SOCKS5 Vekili Ayarla</string>
     <string name="settings_theme_dialog_title">Görünüm</string>
     <string name="settings_ip_dialog_ipv46">Otomatik (deneysel)</string>
@@ -864,8 +863,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">DNS Control\'i başlatmasına veya durdurmasına izin verilen paket adlarını girin (virgülle ayrılmış).</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Talimatlar:\n Yayında gerekli ekstralar:\n • Anahtar: sender\n • Değer: Çağıran uygulamanın paket adı\n\nÖrnek: anahtar:sender değer:com.termux\n\n Desteklenen eylemler:\n • VPN Başlat – com.celzero.bravedns.intent.action.VPN_START\n • VPN Durdur – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Paket adını girin (örnek: net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_title" translatable="true">Sağlayıcı bilgilerini göster</string>
-    <string name="download_ip_info_desc" translatable="true">Web siteleri için hizmet sağlayıcı bilgilerini <i>rethinkdns.com</i>\'dan alır, <i>%1$s</i> tarafından desteklenir</string>
     <string name="adv_taster_title" translatable="true">Otomasyon</string>
     <string name="adv_taster_desc" translatable="true">DNS Control\'i başlatabilecek veya durdurabilecek uygulamaları yapılandırın.</string>
     <string name="top_active_conns" translatable="true">en aktif bağlantılar</string>

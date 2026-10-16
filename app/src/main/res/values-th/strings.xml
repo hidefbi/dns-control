@@ -334,7 +334,6 @@
     <string name="settings_ip_network_heading" translatable="true">เลือกเวอร์ชัน IP</string>
     <string name="settings_proxy_header" translatable="true">พร็อกซี</string>
     <string name="settings_autostart_bootup_desc" translatable="true">เมื่อเปิดเครื่องอุปกรณ์ ให้เริ่ม DNS Control หากกำลังทำงานอยู่ก่อนที่จะปิดเครื่อง</string>
-    <string name="settings_check_update_desc" translatable="true">ตรวจสอบการอัปเดตแอปโดยอัตโนมัติสัปดาห์ละครั้ง</string>
     <string name="settings_custom_downloader_heading" translatable="true">ใช้ตัวดาวน์โหลดในแอป</string>
     <string name="settings_custom_downloader_desc" translatable="true">หากปิดใช้งาน ตัวจัดการการดาวน์โหลด <i>ในตัวของ Android </i>จะถูกใช้</string>
     <string name="settings_ip_dialog_ipv46" translatable="true">อัตโนมัติ (ทดลอง)</string>

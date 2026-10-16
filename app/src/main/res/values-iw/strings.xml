@@ -391,7 +391,6 @@
     <string name="dc_dns_leaks_desc" translatable="true">כאשר מופעל, DNS Control לוכד את כל החבילות בפיתחה 53 ומעביר אותן לנקודת קצה של DNS שהוגדרה על ידי המשתמש</string>
     <string name="hsf_notification_permission_failure" translatable="true">אפשר הרשאת התראות ממסך ההגדרות</string>
     <string name="settings_check_update_heading" translatable="true">בדוק אם יש עדכוני אפליקציה</string>
-    <string name="settings_check_update_desc" translatable="true">בדוק אוטומטית אם יש עדכוני אפליקציה פעם בשבוע.</string>
     <string name="settings_custom_downloader_heading" translatable="true">השתמש בכלי ההורדה שבתוך האפליקציה</string>
     <string name="settings_import_export_heading" translatable="true">גיבוי ושחזור</string>
     <string name="settings_app_notification_a13_heading" translatable="true">התראת אפליקציה</string>

@@ -25,13 +25,12 @@ import androidx.sqlite.db.SimpleSQLiteQuery
 import androidx.sqlite.db.SupportSQLiteDatabase
 
 /**
- * Holds only non-traffic data: cached IP metadata (used by WireGuard/endpoint screens) and the
- * app event log. Connection, DNS and console logs are no longer persisted; their tables are
- * dropped by [MIGRATION_15_16].
+ * Holds only the app event log. Connection, DNS and console logs are no longer persisted; their
+ * tables are dropped by [MIGRATION_15_16], and the cached IP metadata table by [MIGRATION_16_17].
  */
 @Database(
-    entities = [IpInfo::class, Event::class],
-    version = 16,
+    entities = [Event::class],
+    version = 17,
     exportSchema = false
 )
 @TypeConverters(Converters::class)
@@ -53,7 +52,7 @@ abstract class LogDatabase : RoomDatabase() {
                     LOGS_DATABASE_NAME
                 )
                 .setJournalMode(JournalMode.AUTOMATIC)
-                .addMigrations(MIGRATION_15_16)
+                .addMigrations(MIGRATION_15_16, MIGRATION_16_17)
                 .fallbackToDestructiveMigration() // recreate the database if no migration is found
                 .build()
         }
@@ -66,13 +65,17 @@ abstract class LogDatabase : RoomDatabase() {
                     }
                 }
             }
+
+        // cached IP metadata table removed with the provider information feature
+        private val MIGRATION_16_17: Migration =
+            object : Migration(16, 17) {
+                override fun migrate(db: SupportSQLiteDatabase) {
+                    db.execSQL("DROP TABLE IF EXISTS `IpInfo`")
+                }
+            }
     }
 
-    abstract fun ipInfoDao(): IpInfoDAO
-
     abstract fun eventDao(): EventDao
-
-    fun ipInfoRepository() = IpInfoRepository(ipInfoDao())
 
     // flush the WAL into the main db file; used before restoring a backup
     fun checkPoint() {

@@ -129,7 +129,6 @@
     <string name="settings_general_header" translatable="true">一般設定</string>
     <string name="settings_autostart_bootup_heading" translatable="true">電源投入時の自動起動(試験的)</string>
     <string name="settings_check_update_heading" translatable="true">アプリの更新をチェック</string>
-    <string name="settings_check_update_desc" translatable="true">週に 1 回、アプリの更新を自動的に確認します。</string>
     <string name="settings_custom_downloader_heading" translatable="true">アプリ内ダウンローダーを利用する</string>
     <string name="settings_import_export_heading" translatable="true">バックアップと復元</string>
     <string name="settings_theme_heading" translatable="true">外観設定</string>

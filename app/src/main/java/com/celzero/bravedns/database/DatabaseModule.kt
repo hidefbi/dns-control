@@ -42,7 +42,6 @@ object DatabaseModule {
         single { get<AppDatabase>().odohEndpointDao() }
         single { get<AppDatabase>().wgHopMapDao() }
 
-        single { get<LogDatabase>().ipInfoDao() }
         single { get<LogDatabase>().eventDao() }
     }
     private val repositoryModule = module {
@@ -65,7 +64,6 @@ object DatabaseModule {
         single { get<AppDatabase>().odohEndpointRepository() }
         single { get<AppDatabase>().wgHopMapRepository() }
 
-        single { get<LogDatabase>().ipInfoRepository() }
     }
 
     val modules = listOf(databaseModule, daoModule, repositoryModule)

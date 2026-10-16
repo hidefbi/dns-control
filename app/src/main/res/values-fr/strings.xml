@@ -164,7 +164,6 @@
     <string name="orbot_explanation">Orbot est une application proxy gratuite qui permet à d’autres applications d’utiliser Internet de manière plus &lt;u&gt;sûre&lt;/u&gt; . \nOrbot utilise &lt;u&gt;Tor&lt;/u&gt; pour chiffrer votre trafic Internet, ce qui vous aide à &lt;u&gt;contourner la censure&lt;/u&gt; et à vous défendre contre les formes de &lt;u&gt;surveillance du réseau&lt;/u&gt; qui menacent les libertés individuelles et la vie privée. \n&lt;u&gt;Proxy TCP&lt;/u&gt; : DNS Control transmet à Orbot les connexions TCP de toutes les applications sauf celles qui sont exclues. \n&lt;u&gt;Proxy HTTP&lt;/u&gt; : DNS Control &lt;i&gt;établit&lt;/i&gt; un proxy HTTP mais n’oblige pas les applications à l’utiliser. En général, les navigateurs comme Chrome et Firefox l’utilisent. Les applications qui utilisent le proxy HTTP(S) contournent les règles du pare-feu et du DNS.</string>
     <string name="settings_network_all_networks_desc">Si activé, DNS Control utilisera tous les réseaux disponibles pour se connecter à Internet. Sinon, il utilisera le réseau jugé <i>actif</i> par Android.</string>
     <string name="settings_check_update_heading">Vérifiez l’existence de mises à jour</string>
-    <string name="settings_check_update_desc">Vérifiez automatiquement l’existence de mises à jour une fois par semaine.</string>
     <string name="dns_proxy_port">Numéro de port</string>
     <string name="fapps_filter_filter_heading">Type</string>
     <string name="fapps_filter_categories_heading">Catégories</string>
@@ -866,8 +865,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">Saisir les noms des paquets (séparés par des virgules) autorisés à démarrer ou à arrêter DNS Control.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Instructions :\nÉléments requis pour la diffusion :\n• Clé : sender\n• Valeur : Nom du package de l’application appelante\n\nExemple : key : sender value : com.termux\n\nActions prises en charge :\n• Démarrer le VPN : com.celzero.bravedns.intent.action.VPN_START\n• Arrêter le VPN : com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Saisir le nom du package (exemple : net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_title" translatable="true">Afficher les informations du fournisseur</string>
-    <string name="download_ip_info_desc" translatable="true">Récupère les informations du fournisseur de services pour les sites web depuis <i>rethinkdns.com</i>, propulsé par <i>%1$s</i></string>
     <string name="adv_taster_desc" translatable="true">Configurer les applications qui peuvent démarrer ou arrêter DNS Control.</string>
     <string name="top_active_conns" translatable="true">connexions actives principales</string>
     <string name="close_conns_dialog_title" translatable="true">Fermer les connexions</string>

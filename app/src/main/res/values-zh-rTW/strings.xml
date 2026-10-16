@@ -165,7 +165,7 @@
     <string name="settings_orbot_desc">在非 VPN 模式下使用 HTTPS/SOCKS5 的 Orbot。</string>
     <string name="settings_network_all_networks">使用所有可用網路（實驗性）</string>
     <string name="settings_check_update_heading">檢查應用程式更新</string>
-    <string name="settings_check_update_desc">每週一次自動檢查應用程式是否有可用更新。</string>
+    <string name="settings_check_update_desc">手動檢查 GitHub 上是否有新版本，不會自動下載或安裝。</string>
     <string name="dc_rethink_dns_radio">Rethink DNS</string>
     <string name="firewall_rule_unknown_desc"><![CDATA[此連線因無法得知<i>來源應用程式</i>而被攔截。<br/><br/>若需更改，請至<i>全局</i>選項卡。]]></string>
     <string name="new_app_bulk_notification_title">注意</string>

@@ -195,7 +195,6 @@
     <string name="settings_general_customize" translatable="true">사용자 지정</string>
     <string name="settings_autostart_bootup_heading" translatable="true">부팅 후 자동 시작 (실험적)</string>
     <string name="settings_check_update_heading" translatable="true">앱 업데이트 확인</string>
-    <string name="settings_check_update_desc" translatable="true">1주에 한번 자동으로 앱의 업데이트를 확인합니다.</string>
     <string name="settings_custom_downloader_heading" translatable="true">인앱 다운로더 사용</string>
     <string name="settings_import_export_desc" translatable="true">수동으로 앱의 데이터와 설정을 백업하거나 복원합니다.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">앱 알림</string>
@@ -843,8 +842,6 @@
     <string name="close_conns_dialog_title" translatable="true">연결 닫기</string>
     <string name="close_conns_dialog_desc" translatable="true">%1$s의 모든 연결을 닫습니까?</string>
     <string name="adv_taster_desc" translatable="true">DNS Control를 시작 및 중지할 수 있는 앱을 설정합니다.</string>
-    <string name="download_ip_info_title" translatable="true">제공자 정보 표시</string>
-    <string name="download_ip_info_desc" translatable="true"><i>rethinkdns.com</i>에서 웹사이트의 제공자 정보를 가져옵니다, <i>%1$s</i> 이용</string>
     <string name="config_invalid_desc" translatable="true">잘못된 WireGuard 구성</string>
     <string name="one_wg_apps_added" translatable="true">모든 앱 라우팅</string>
     <string name="one_wg_dialog_desc" translatable="true">DNS를 포함한 모든 앱으로부터의 연결을 활성화된, 단일 WireGuard VPN으로 라우팅합니다. 다른 활성화된 WireGuard VPN이 있다면, 모두 중지됩니다.</string>

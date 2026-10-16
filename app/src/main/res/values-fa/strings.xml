@@ -230,7 +230,6 @@
     <string name="settings_https_disabled_error" translatable="true">Connected to %1$s. Turn it off to continue.</string>
     <string name="settings_autostart_bootup_desc" translatable="true">On device power-up, start DNS Control if it was running before shut down.</string>
     <string name="settings_custom_downloader_desc" translatable="true">If disabled, Android\'s built-in <i>Download Manager</i> is used</string>
-    <string name="settings_check_update_desc" translatable="true">Automatically check for app updates once a week.</string>
     <string name="settings_network_all_networks" translatable="true">Use all available networks (experimental)</string>
     <string name="settings_network_all_networks_desc" translatable="true">When enabled, DNS Control uses all available networks to connect to Internet. If not, it uses whichever network is deemed <i>active</i> by Android.</string>
     <string name="public_key_copy_toast_msg" translatable="true">Public key copied.</string>

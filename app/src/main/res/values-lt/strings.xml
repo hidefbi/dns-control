@@ -89,7 +89,6 @@
     <string name="settings_general_header">bendrieji</string>
     <string name="settings_network_all_networks">Naudoti visus turimus tinklus (eksperimentinis)</string>
     <string name="settings_check_update_heading">Tikrinti ar yra atnaujinimų</string>
-    <string name="settings_check_update_desc">Kartą per savaitę automatiškai patikrina, ar nėra programėlės atnaujinimų.</string>
     <string name="settings_custom_downloader_heading">Naudoti programėlėje esančią atsisiuntimo priemonę</string>
     <string name="settings_custom_downloader_desc">Jei išjungta, naudojama integruota Android <i>atsisiuntimo tvarkyklė</i>.</string>
     <string name="settings_import_export_heading">Atsarginė kopija ir atkūrimas</string>

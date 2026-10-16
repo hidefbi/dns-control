@@ -18,7 +18,6 @@ package com.celzero.bravedns.adapter
 
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_DNS
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
@@ -33,11 +32,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.R
-import com.celzero.bravedns.customdownloader.IpInfoDownloader
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.DoHEndpoint
 import com.celzero.bravedns.databinding.ListItemEndpointBinding
-import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.util.UIUtils.clipboardCopy
 import com.celzero.bravedns.util.UIUtils.getDnsStatusStringRes
@@ -130,7 +127,6 @@ class DohEndpointAdapter(private val context: Context, private val appConfig: Ap
             // Shows either the info/delete icon for the DoH entries.
             showIcon(endpoint)
 
-            io { updateFlag(endpoint) }
         }
 
         private fun keepSelectedStatusUpdated() {
@@ -259,42 +255,6 @@ class DohEndpointAdapter(private val context: Context, private val appConfig: Ap
                 // no-op
             }
             builder.create().show()
-        }
-
-        private suspend fun updateFlag(endpoint: DoHEndpoint) {
-            var ip: String? = null
-
-            if (endpoint.isSelected) {
-                val ips = VpnController.getDnsIps(Backend.Preferred)
-                ip = ips?.split(",")?.firstOrNull()?.trim()?.let { stripPort(it) }
-                Logger.d(LOG_TAG_UI, "ip for doh1: $ip, addr: $ips, url: ${endpoint.dohURL}")
-            }
-
-            if (ip.isNullOrBlank()) {
-                ip = Utilities.getIpForUrl(context, endpoint.dohURL)
-            }
-
-            Logger.d(LOG_TAG_UI, "ip for doh2: $ip, url: ${endpoint.dohURL}")
-
-            if (ip.isNullOrBlank()) {
-                uiCtx { b.endpointFlagText.visibility = View.GONE }
-                return
-            }
-
-            val ipInfo = IpInfoDownloader.getIpInfo(ip)
-            uiCtx {
-                if (ipInfo != null && ipInfo.countryCode.isNotEmpty()) {
-                    b.endpointFlagText.text = Utilities.getFlag(ipInfo.countryCode)
-                    b.endpointFlagText.visibility = View.VISIBLE
-                } else {
-                    b.endpointFlagText.visibility = View.GONE
-                }
-            }
-            Logger.d(LOG_TAG_UI, "ip for doh3: $ip, cc: ${ipInfo?.countryCode} url: ${endpoint.dohURL}")
-        }
-
-        private fun stripPort(addr: String): String {
-            return IpRulesManager.splitHostPort(addr).first
         }
 
         private suspend fun uiCtx(f: suspend () -> Unit) {

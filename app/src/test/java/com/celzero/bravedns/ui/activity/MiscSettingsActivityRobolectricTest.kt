@@ -108,7 +108,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         every { mockPersistentState.notificationActionType }        returns NotificationActionType.PAUSE_STOP.action
         every { mockPersistentState.biometricAuthType }             returns 0
         every { mockPersistentState.prefAutoStartBootUp }           returns false
-        every { mockPersistentState.downloadIpInfo }                returns false
         every { mockPersistentState.tombstoneApps }                 returns false
         every { mockPersistentState.persistentNotification }        returns false
         every { mockPersistentState.firebaseErrorReportingEnabled } returns false
@@ -360,32 +359,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
             val sw = activity.findViewById<CompoundButton>(R.id.settings_activity_auto_start_switch) ?: return
             sw.isChecked = true
             verify { mockPersistentState.prefAutoStartBootUp = true }
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun ipInfoRl_click_togglesDvIpInfoSwitch() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            val rl = activity.findViewById<View>(R.id.settings_ip_info_rl) ?: return
-            val sw = activity.findViewById<CompoundButton>(R.id.dv_ip_info_switch) ?: return
-            val before = sw.isChecked
-            rl.performClick()
-            assertEquals("IpInfo RL click must invert switch", !before, sw.isChecked)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun dvIpInfoSwitch_checkedTrue_setsDownloadIpInfo() {
-        try {
-            val activity = buildAndStartActivity() ?: return
-            val sw = activity.findViewById<CompoundButton>(R.id.dv_ip_info_switch) ?: return
-            sw.isChecked = true
-            verify { mockPersistentState.downloadIpInfo = true }
         } catch (e: Exception) {
             assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
         }
@@ -850,18 +823,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
             val activity = buildAndStartActivity() ?: return
             val sw = activity.findViewById<CompoundButton>(R.id.settings_activity_auto_start_switch) ?: return
             assertTrue("Switch must be checked when prefAutoStartBootUp=true", sw.isChecked)
-        } catch (e: Exception) {
-            assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
-        }
-    }
-
-    @Test
-    fun dvIpInfoSwitch_initialState_trueWhenDownloadIpInfoTrue() {
-        every { mockPersistentState.downloadIpInfo } returns true
-        try {
-            val activity = buildAndStartActivity() ?: return
-            val sw = activity.findViewById<CompoundButton>(R.id.dv_ip_info_switch) ?: return
-            assertTrue("Switch must be checked when downloadIpInfo=true", sw.isChecked)
         } catch (e: Exception) {
             assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))
         }

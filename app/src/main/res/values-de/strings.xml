@@ -265,7 +265,6 @@
     <string name="firewall_rule_exempt_orbot_setup_desc"><![CDATA[Diese Verbindung wurde erlaubt, da die <i>One-Click-Tor-als-Proxy</i>-Einrichtung über Orbot im Gange war.]]></string>
     <string name="settings_import_export_desc">Manuelles Sichern oder Wiederherstellen der App-Daten und Einstellungen.</string>
     <string name="settings_custom_downloader_heading">In-App-Downloader verwenden</string>
-    <string name="settings_check_update_desc">Einmal pro Woche automatisch nach App-Updates suchen.</string>
     <string name="settings_check_update_heading">Nach App-Updates suchen</string>
     <string name="settings_custom_downloader_desc">Wenn deaktiviert, wird der in Android integrierte <i>Download Manager</i> verwendet</string>
     <string name="settings_import_export_heading">Sichern und Wiederherstellen</string>
@@ -857,8 +856,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">Paketnamen eingeben (kommagetrennt), die DNS Control starten oder stoppen dürfen.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Anleitung:\nErforderliche Extras in der Broadcast-Nachricht:\n • Schlüssel: sender\n • Wert: Der Paketname der aufrufenden App\n\n Beispiel: key:sender value:com.termux\n\n Unterstützte Aktionen:\n • VPN starten – com.celzero.bravedns.intent.action.VPN_START\n • VPN stoppen – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Paketnamen eingeben (Beispiel: net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_title" translatable="true">Providerinformationen anzeigen</string>
-    <string name="download_ip_info_desc" translatable="true">Ruft Details zu Dienstanbietern für Websites von <i>rethinkdns.com</i> ab, bereitgestellt von <i>%1$s</i></string>
     <string name="adv_taster_title" translatable="true">Automatisierung</string>
     <string name="adv_taster_desc" translatable="true">Konfiguriere Apps, die DNS Control starten oder stoppen können.</string>
     <string name="top_active_conns" translatable="true">Top aktive Verbindungen</string>

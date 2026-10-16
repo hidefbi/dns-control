@@ -447,7 +447,6 @@
     <string name="settings_autostart_bootup_desc" translatable="true">डिवाइस पावर-अप पर, रीथिंक शुरू करें अगर वो शटडाउन से पहले चल रहा था।</string>
     <string name="settings_network_all_networks" translatable="true">सभी उपलब्ध नेटवर्क का उपयोग करें (प्रयोगात्मक)</string>
     <string name="settings_network_all_networks_desc" translatable="true">सक्षम होने पर, रीथिंक इंटरनेट से जुड़ने के लिए सभी मौजूद नेटवर्क का इस्तेमाल करता है। अगर नहीं, तो ये एंड्रॉइड द्वारा <i>सक्रिय</i> समझे जाने वाले नेटवर्क का इस्तेमाल करता है।</string>
-    <string name="settings_check_update_desc" translatable="true">सप्ताह में एक बार ऐप अपडेट के लिए स्वचालित रूप से जांचें।</string>
     <string name="settings_custom_downloader_heading" translatable="true">इन-ऐप डाउनलोडर का उपयोग करें</string>
     <string name="settings_custom_downloader_desc" translatable="true">अक्षम होने पर, एंड्रॉइड के अंतर्निर्मित <i>डाउनलोड प्रबंधक</i> का उपयोग किया जाता है</string>
     <string name="settings_import_export_heading" translatable="true">बैकअप और रीस्टोर</string>

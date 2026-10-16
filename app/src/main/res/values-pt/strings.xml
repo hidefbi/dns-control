@@ -195,7 +195,6 @@
     <string name="orbot_status_arg_3">DNS e TCP</string>
     <string name="orbot_website_link" translatable="false">https://guardianproject.info/apps/org.torproject.android/</string>
     <string name="settings_autostart_bootup_desc">Ao ligar o dispositivo, inicia DNS Control caso estivesse em execução ao desligar.</string>
-    <string name="settings_check_update_desc">Procura, semanalmente, se existem atualizações da aplicação.</string>
     <string name="orbot">Orbot</string>
     <string name="settings_ip_network_desc">Escolha entre as versões do protocolo de Internet.</string>
     <string name="settings_proxy_header">Proxy</string>
@@ -848,7 +847,6 @@
     <string name="wireguard_title" translatable="true">Internet segura com WireGuard</string>
     <string name="ac_retry_options_never_desc" translatable="true">Em caso de falha, nunca tente novamente técnicas anticensura.</string>
     
-    <string name="download_ip_info_title" translatable="true">Mostrar informações do provedor</string>
     <string name="wireguard_desc" translatable="true">Criptografe o seu tráfego de internet com o WireGuard. Escolha rotas diferentes para apps diferentes.</string>
     <string name="ssid_location_error_action" translatable="true">Ativar localização</string>
     <string name="univ_delete_domain_dialog_message" translatable="true">Apagar essas regras permitirá que qualquer aplicação conecte aos domínios atualmente bloqueados.</string>

@@ -33,7 +33,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.OneWgConfigAdapter.DnsStatusListener
-import com.celzero.bravedns.customdownloader.IpInfoDownloader
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.Severity
@@ -53,7 +52,6 @@ import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.UIUtils.fetchColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.wireguard.WgHopManager
-import inet.ipaddr.HostName
 import com.celzero.bravedns.wireguard.WgInterface
 import com.celzero.firestack.backend.Backend
 import com.celzero.firestack.backend.RouterStats
@@ -63,8 +61,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.time.Duration.Companion.milliseconds
-import androidx.core.view.isVisible
-import com.celzero.bravedns.service.IpRulesManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class WgConfigAdapter(private val context: Context, private val listener: DnsStatusListener, private val splitDns: Boolean, private val eventLogger: EventLogger) :
@@ -134,9 +130,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
             updateHopSrcChip(config.id)
             updateAmneziaChip(config)
             updateHoppingChip(config.id)
-            io {
-                updateFlag(null, config.id)
-            }
         }
 
         private fun updateStatusJob(config: WgConfigFiles) {
@@ -248,40 +241,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
             }
         }
 
-        private fun stripPort(addr: String): String {
-            return IpRulesManager.splitHostPort(addr).first
-        }
-
-        private suspend fun updateFlag(addr: String?, configId: Int) {
-            var ip: String? = addr?.split(",")?.firstOrNull()?.trim()?.let { stripPort(it) }
-
-            if (ip.isNullOrBlank()) {
-                val c = WireguardManager.getConfigById(configId)
-                val host = c?.getPeers()?.getOrNull(0)?.getEndpoint()?.orElse(null)?.host
-                if (!host.isNullOrBlank() && HostName(host).asAddress() != null) {
-                    ip = host
-                }
-            }
-
-            Logger.d(LOG_TAG_UI, "$TAG ip: $ip, stats-addr: ${addr}, configId: $configId")
-
-            if (ip.isNullOrBlank()) {
-                uiCtx { b.interfaceFlagText.visibility = View.GONE }
-                return
-            }
-
-            val ipInfo = IpInfoDownloader.getIpInfo(ip)
-            uiCtx {
-                if (ipInfo != null && ipInfo.countryCode.isNotEmpty()) {
-                    b.interfaceFlagText.text = Utilities.getFlag(ipInfo.countryCode)
-                    b.interfaceFlagText.visibility = View.VISIBLE
-                } else {
-                    b.interfaceFlagText.visibility = View.GONE
-                }
-            }
-            Logger.d(LOG_TAG_UI, "$TAG cc: ${ipInfo?.countryCode}, flag? ${b.interfaceFlagText.isVisible}, ipInfo: $ipInfo")
-        }
-
         fun cancelJobIfAny() {
             if (job?.isActive == true) {
                 job?.cancel()
@@ -294,7 +253,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
             val pair = VpnController.getSupportedIpVersion(id)
             val c = WireguardManager.getConfigById(config.id)
             val stats = VpnController.getProxyStats(id)
-            val addr = VpnController.getProxyAddrById(id)
             val dnsStatusId = if (splitDns) {
                 VpnController.getDnsStatus(id)
             } else {
@@ -322,7 +280,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
                 updateStatusUi(config, statusId, dnsStatusId, stats)
                 updateProtocolChip(pair)
                 updateSplitTunnelChip(isSplitTunnel)
-                if (!b.interfaceFlagText.isVisible) io { updateFlag(addr, config.id) }
             }
         }
 

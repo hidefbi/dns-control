@@ -195,10 +195,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             b.settingsFirebaseErrorReportingSwitch.isChecked = persistentState.firebaseErrorReportingEnabled
         }
 
-        // add ipInfo inc to the desc
-        b.genSettingsIpInfoDesc.text =
-            getString(R.string.download_ip_info_desc, getString(R.string.lbl_ipinfo_inc))
-
 
         // for app locale (default system/user selected locale)
         if (isAtleastT()) {
@@ -271,7 +267,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
 
         // Auto start app after reboot
         b.settingsActivityAutoStartSwitch.isChecked = persistentState.prefAutoStartBootUp
-        b.dvIpInfoSwitch.isChecked = persistentState.downloadIpInfo
 
         b.tombstoneAppSwitch.isChecked = persistentState.tombstoneApps
 
@@ -462,15 +457,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
                 persistentState.appTriggerPackages = packageName
                 logEvent("App trigger package set to $packageName")
             })
-        }
-
-        b.settingsIpInfoRl.setOnClickListener {
-            b.dvIpInfoSwitch.isChecked = !b.dvIpInfoSwitch.isChecked
-        }
-
-        b.dvIpInfoSwitch.setOnCheckedChangeListener { _, isChecked ->
-            persistentState.downloadIpInfo = isChecked
-            logEvent("Download ipinfo inc set to $isChecked")
         }
 
         // Firebase error reporting toggle

@@ -487,7 +487,6 @@
     <string name="orbot_install_dialog_message">Orbot lleva las características y funcionalidades de Tor a Android.</string>
     <string name="orbot_install_dialog_neutral">sitio web</string>
     <string name="settings_autostart_bootup_desc">Al encender el dispositivo, se iniciará DNS Control si se estaba ejecutando antes de apagarlo.</string>
-    <string name="settings_check_update_desc">Comprueba automáticamente las actualizaciones de la aplicación una vez a la semana.</string>
     <string name="settings_https_desc">Reenvía las conexiones al punto final de la CONEXIÓN HTTP(S).</string>
     <string name="status_dns_error">error de dns</string>
     <string name="settings_socks5_disabled_error">Conectado a %1$s. Apágalo para continuar.</string>
@@ -805,7 +804,6 @@
     <string name="lbl_always" translatable="true">Siempre</string>
     <string name="ac_retry_options_after_split_desc" translatable="true">Siempre aplicar técnicas anti-censura.</string>
     <string name="blocklist_not_available_toast" translatable="true">Para actualizar las listas de bloqueo, descarga la última versión de la app.</string>
-    <string name="download_ip_info_title" translatable="true">Mostrar información del proveedor</string>
     <string name="adv_taster_title" translatable="true">Automatización</string>
     <string name="adv_taster_desc" translatable="true">Configurar aplicaciones que pueden iniciar o detener DNS Control.</string>
     <string name="close_conns_dialog_title" translatable="true">Cerrar Conexiones</string>
@@ -871,7 +869,6 @@
     <string name="hop_add_remove_title" translatable="true">Añadir / eliminar retransmisión</string>
     <string name="bypasses_network_restrictions" translatable="true">Las comprobaciones de alcance omiten todas las restricciones de red. En modo <i>Auto</i>, DNS Control usa aleatoriamente IPs y nombres de host conectados previamente.</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Introduzca el nombre del paquete (ejemplo: net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_desc" translatable="true">Obtiene detalles del proveedor de servicios para sitios web desde <i>rethinkdns.com</i>, con tecnología de <i>%1$s</i></string>
     <string name="top_active_conns" translatable="true">Principales conexiones activas</string>
     <string name="local_blocklist_delete_desc" translatable="true">¿Eliminar las listas de bloqueo en el dispositivo?</string>
     <string name="fail_open_network_title" translatable="true">Detenerse ante pérdida de red</string>

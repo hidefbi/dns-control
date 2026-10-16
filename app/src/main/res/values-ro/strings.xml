@@ -294,7 +294,6 @@
     <string name="orbot_explanation" translatable="true">Orbot este o aplicație proxy gratuită care permite altor aplicații să folosească internetul mult mai &lt;u&gt;sigur&lt;/u&gt;.\nOrbot folosește &lt;u&gt;Tor&lt;/u&gt; pentru a cripta traficul tău de internet și astfel te ajută să &lt;u&gt;ocolești cenzura&lt;/u&gt; și să eviți diferitele forme de &lt;u&gt;supraveghere în rețea&lt;/u&gt; care pun în pericol libertatea și intimitatea personală\n&lt;u&gt;TCP Proxy&lt;/u&gt;: DNS Control direcționează numai conexiunile TCP ale aplicațiilor &lt;i&gt;adăugate&lt;/i&gt; la Orbot.\n&lt;u&gt;HTTP Proxy&lt;/u&gt;: DNS Control &lt;i&gt;instalează&lt;/i&gt; tunelul HTTP CONNECT la Orbot și direcționează numai conexiunile TCP ale aplicațiilor &lt;i&gt;adăugate&lt;/i&gt;.</string>
     <string name="settings_network_all_networks" translatable="true">Folosește toate rețelele disponibile (experimental)</string>
     <string name="settings_network_all_networks_desc" translatable="true">Când este activat, DNS Control folosește toate rețelele disponibile pentru conectarea la internet. Dacă nu, folosește orice rețea indicată ca <i>activă</i> de Android.</string>
-    <string name="settings_check_update_desc" translatable="true">Verifică automat pentru actualizări săptămânal.</string>
     <string name="settings_custom_downloader_heading" translatable="true">Folosește downloader-ul aplicației</string>
     <string name="settings_custom_downloader_desc" translatable="true">Dacă e dezactivat, se folosește <i>Download Manager</i> al Android</string>
     <string name="settings_import_export_desc" translatable="true">Efectuează manual copie de rezervă sau restaurare a setărilor și datelor din aplicații.</string>
@@ -841,8 +840,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">Introdu numele pachetelor (separate prin virgulă) admise să pornească sau să oprească DNS Control.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Instructiuni:\n Extras cerute la transmitere:\n • Key: expeditor\n • Value: Numele de pachet al aplicației solicitante\n\n Exemplu: key:expeditor value:com.termux\n\n Acțiuni suportate:\n • Start VPN – com.celzero.bravedns.intent.action.VPN_START\n • Stop VPN – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Introdu numele de pachet (example: net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_title" translatable="true">Arată informații despre ISP</string>
-    <string name="download_ip_info_desc" translatable="true">Oferă detalii ISP-ului pentru website-uri de la <i>rethinkdns.com</i>, cu sprijinul <i>%1$s</i></string>
     <string name="adv_taster_title" translatable="true">Automatizare</string>
     <string name="adv_taster_desc" translatable="true">Configurează aplicațiile care pot porni sau opri DNS Control.</string>
     <string name="top_active_conns" translatable="true">Top conexiuni active</string>

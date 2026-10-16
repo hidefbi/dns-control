@@ -192,7 +192,6 @@
     <string name="settings_orbot_notification_action" translatable="true">Otwórz Orbot-a</string>
     <string name="settings_general_header" translatable="true">Ogólne</string>
     <string name="settings_autostart_bootup_heading" translatable="true">Automatyczne uruchamianie po włączeniu (eksperymentalne)</string>
-    <string name="settings_check_update_desc" translatable="true">Automatycznie sprawdzaj dostępność aktualizacji aplikacji raz w tygodniu.</string>
     <string name="settings_custom_downloader_desc" translatable="true">Jeśli ta opcja jest wyłączona, używany jest wbudowany <i>menedżer pobierania</i> systemu Android.</string>
     <string name="settings_notification_dialog_option_1" translatable="true">\n\nPauza / Stop (domyślnie):\n\nPokazuje dwa przyciski, aby szybko wstrzymać i zatrzymać DNS Control.</string>
     <string name="settings_selected_theme" translatable="true">Obecny motyw: %1$s</string>

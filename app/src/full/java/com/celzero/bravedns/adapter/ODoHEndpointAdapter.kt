@@ -32,11 +32,9 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.R
-import com.celzero.bravedns.customdownloader.IpInfoDownloader
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.ODoHEndpoint
 import com.celzero.bravedns.databinding.ListItemEndpointBinding
-import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.util.UIUtils.clipboardCopy
 import com.celzero.bravedns.util.UIUtils.getDnsStatusStringRes
@@ -121,7 +119,6 @@ class ODoHEndpointAdapter(private val context: Context, private val appConfig: A
             // Shows either the info/delete icon for the DoH entries.
             showIcon(endpoint)
 
-            io { updateFlag(endpoint) }
         }
 
         private fun keepSelectedStatusUpdated() {
@@ -267,38 +264,6 @@ class ODoHEndpointAdapter(private val context: Context, private val appConfig: A
                 // no-op
             }
             builder.create().show()
-        }
-
-        private suspend fun updateFlag(endpoint: ODoHEndpoint) {
-            var ip: String? = null
-
-            if (endpoint.isSelected) {
-                val ips = VpnController.getDnsIps(Backend.Preferred)
-                ip = ips?.split(",")?.firstOrNull()?.trim()?.let { stripPort(it) }
-            }
-
-            if (ip.isNullOrBlank()) {
-                ip = Utilities.getIpForUrl(context, endpoint.resolver)
-            }
-
-            if (ip.isNullOrBlank()) {
-                uiCtx { b.endpointFlagText.visibility = View.GONE }
-                return
-            }
-
-            val ipInfo = IpInfoDownloader.getIpInfo(ip)
-            uiCtx {
-                if (ipInfo != null && ipInfo.countryCode.isNotEmpty()) {
-                    b.endpointFlagText.text = Utilities.getFlag(ipInfo.countryCode)
-                    b.endpointFlagText.visibility = View.VISIBLE
-                } else {
-                    b.endpointFlagText.visibility = View.GONE
-                }
-            }
-        }
-
-        private fun stripPort(addr: String): String {
-            return IpRulesManager.splitHostPort(addr).first
         }
 
         private suspend fun uiCtx(f: suspend () -> Unit) {

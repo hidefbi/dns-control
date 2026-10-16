@@ -171,7 +171,6 @@
     <string name="settings_autostart_bootup_heading">開機時自動開啓（實驗性）</string>
     <string name="settings_autostart_bootup_desc">DNS Control 如果喺熄機嘅時候仲行緊，咁喺下次開機嘅時候就自動開。</string>
     <string name="settings_check_update_heading">檢查應用程式更新</string>
-    <string name="settings_check_update_desc">每個禮拜自動檢查一次有冇更新。</string>
     <string name="settings_custom_downloader_heading">用 app 入面嘅下載器</string>
     <string name="settings_theme_heading">外觀</string>
     <string name="settings_theme_desc">暗色／亮色主題</string>

@@ -245,7 +245,6 @@
     <string name="category_name_sys_components">Komponen-komponen Sistem</string>
     <string name="firewall_rule_block_udp_ntp_desc"><![CDATA[Aturan firewall yang ditetapkan pengguna telah memblokir koneksi <i>UDP</i> ini.<br/><br/> Untuk mengubahnya, buka tab <i>Universal</i>.]]></string>
     <string name="firewall_mode_info_explanation_new">Pantau aktivitas jaringan dan blokir aplikasi atau alamat IP apa pun.</string>
-    <string name="settings_check_update_desc">Secara otomatis memeriksa pembaruan setiap minggu.</string>
     <string name="settings_ip_dialog_ipv46">Otomatis (eksperimental)</string>
     <string name="univ_firewall_rule_5">Blokir lalu lintas yang melewati DNS</string>
     <string name="fapps_firewall_filter_excluded">Dikecualikan</string>
@@ -841,7 +840,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">Masukkan nama paket (dipisahkan koma) yang diizinkan untuk memulai atau menghentikan DNS Control.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Instruksi:\nTambahan yang diperlukan dalam siaran:\n• Kunci: pengirim\n• Nilai: Nama paket aplikasi pemanggil\n\nContoh: kunci:pengirim nilai:com.termux\n\nTindakan yang didukung:\n• Mulai VPN – com.celzero.bravedns.intent.action.VPN_START\n• Hentikan VPN – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Masukkan nama paket (contoh: net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_desc" translatable="true">Mengambil detail penyedia layanan untuk situs web dari <i>rethinkdns.com</i>, didukung oleh <i>%1$s</i></string>
     <string name="adv_taster_title" translatable="true">Otomatisasi</string>
     <string name="adv_taster_desc" translatable="true">Konfigurasikan aplikasi yang dapat memulai atau menghentikan DNS Control.</string>
     <string name="close_conns_dialog_desc" translatable="true">Tutup semua koneksi untuk %1$s?</string>
@@ -869,7 +867,6 @@
     <string name="wg_setting_use_on_mobile" translatable="true">Hanya seluler</string>
     <string name="wg_setting_use_on_mobile_desc" translatable="true">Gunakan VPN WireGuard ini melalui data seluler.</string>
     <string name="hop_add_remove_title" translatable="true">Tambahkan / Hapus Relay</string>
-    <string name="download_ip_info_title" translatable="true">Tampilkan informasi penyedia</string>
     <string name="top_active_conns" translatable="true">Koneksi Aktif Teratas</string>
     <string name="wg_mobile_only_hop_err" translatable="true">Mode khusus seluler tidak didukung untuk Relay</string>
     <string name="hop_error_toast_msg_1" translatable="true">Tidak bisa relay, sudah %1$s</string>

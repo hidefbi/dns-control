@@ -876,14 +876,4 @@ object Utilities {
         return true // versions are equal
     }
 
-    fun getIpForUrl(context: Context, url: String): String? {
-        val urls = context.resources.getStringArray(R.array.urls)
-        val ips = context.resources.getStringArray(R.array.ips)
-        val index = urls.indexOf(url)
-        if (index != -1 && index < ips.size) {
-            return ips[index].split(",").firstOrNull()?.trim()
-        }
-        return null
-    }
-
 }

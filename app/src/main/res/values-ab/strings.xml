@@ -177,7 +177,6 @@
     <string name="settings_autostart_bootup_desc" translatable="true">Ашәахәра ацымпылърала, иаахәа, уи иаалырхәаз еиҳа акәын ашәахәала.</string>
     <string name="settings_network_all_networks" translatable="true">Асеира зегIа-зегIа рхыԥшны (а eksperimental)</string>
     <string name="settings_check_update_heading" translatable="true">Апликациақәа рҿынтәкала даԥсалаа</string>
-    <string name="settings_check_update_desc" translatable="true">Ауп naҧ шəахәмала аҧшәамҭақәа рҧхьаҧшра.</string>
     <string name="settings_custom_downloader_heading" translatable="true">Ашәахәаҧшра ашьҭышьҭыҟә</string>
     <string name="settings_custom_downloader_desc" translatable="true">Ако иҧыжьымкәа, иуадаҩым акәымкәам Андроит ихаҭыррала иузаауа «Download Manager»</string>
     <string name="settings_import_export_heading" translatable="true">Ацәыхра &amp; Ажьырæхә</string>
@@ -801,8 +800,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">Аҧсуа бызшәала иазку аҧҟәақәа (ашәахқәа рыла иахьчааны) ашрыхәазыҟaххaa ашәea aшәa ахыршаaa.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Аусуараҿ иаҭахы аусушқәа:\n • Актәы: sender\n • Ақәцә: адгылала а программы акыр\n Анцәгьы: актәы:sender акәцә:com.termux\n\n Иацәхәахахаз аусушқәа:\n • VPN алагалара – com.celzero.bravedns.intent.action.VPN_START\n • VPN ашьҭыра – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Пакет аӡбара (иҟоуп: net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_title" translatable="true">Аҿыхгаҩ идыртәқәа ирбоит</string>
-    <string name="download_ip_info_desc" translatable="true">Иуаахык информация аиуаахык аҵыхәтқәа а веб-саитқәа рзы <i>rethinkdns.com</i> иҟоу, %1$s аҟынтә иаахәҟьоуп</string>
     <string name="adv_taster_title" translatable="true">Ауиашьаҧшра</string>
     <string name="top_active_conns" translatable="true">Аҧшныла амҩыларақәа рхыԥш</string>
     <string name="close_conns_dialog_title" translatable="true">Еицаталарақәа аахәымҧш</string>

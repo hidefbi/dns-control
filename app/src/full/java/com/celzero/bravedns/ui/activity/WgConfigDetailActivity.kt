@@ -42,7 +42,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.adapter.WgIncludeAppsAdapter
 import com.celzero.bravedns.adapter.WgPeersAdapter
-import com.celzero.bravedns.customdownloader.IpInfoDownloader
 import com.celzero.bravedns.data.SsidItem
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
@@ -51,7 +50,6 @@ import com.celzero.bravedns.database.WgConfigFilesImmutable
 import com.celzero.bravedns.databinding.ActivityWgDetailBinding
 import com.celzero.bravedns.net.doh.Transaction
 import com.celzero.bravedns.service.EventLogger
-import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
 import com.celzero.bravedns.service.VpnController
@@ -81,7 +79,6 @@ import com.celzero.bravedns.wireguard.WgInterface
 import com.celzero.firestack.backend.IPMetadata
 import com.celzero.firestack.backend.RouterStats
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import inet.ipaddr.HostName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -326,10 +323,9 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
         }
         setupSsidSection(mapping)
         io { updateStatusUi(config.getId()) }
-        io { updateFlag(configId) }
         prefillConfig(config)
         refreshHopStatus()
-        if (persistentState.downloadIpInfo && mapping?.isActive == true) {
+        if (mapping?.isActive == true) {
             resolveClientIps(configId)
         } else {
             b.shimmerClientInfo.stopShimmer()
@@ -435,40 +431,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
                 Logger.w(LOG_TAG_UI, "failed to resolve client ips: ${e.message}")
             }
             uiCtx { applyClientIps(ip4Meta, ip6Meta) }
-        }
-    }
-
-    private fun stripPort(addr: String): String {
-        return IpRulesManager.splitHostPort(addr).first
-    }
-
-    private suspend fun updateFlag(id: Int) {
-        val cid = ID_WG_BASE + id
-        val addr = VpnController.getProxyAddrById(cid)
-
-        var ip: String? = addr?.split(",")?.firstOrNull()?.trim()?.let { stripPort(it) }
-
-        if (ip.isNullOrBlank()) {
-            val c = WireguardManager.getConfigById(configId)
-            val host = c?.getPeers()?.getOrNull(0)?.getEndpoint()?.orElse(null)?.host
-            if (!host.isNullOrBlank() && HostName(host).asAddress() != null) {
-                ip = host
-            }
-        }
-
-        if (ip.isNullOrBlank()) {
-            uiCtx { b.interfaceFlagText.visibility = View.INVISIBLE }
-            return
-        }
-
-        val ipInfo = IpInfoDownloader.getIpInfo(ip)
-        uiCtx {
-            if (ipInfo != null && ipInfo.countryCode.isNotEmpty()) {
-                b.interfaceFlagText.text = Utilities.getFlag(ipInfo.countryCode)
-                b.interfaceFlagText.visibility = View.VISIBLE
-            } else {
-                b.interfaceFlagText.visibility = View.INVISIBLE
-            }
         }
     }
 

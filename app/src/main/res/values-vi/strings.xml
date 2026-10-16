@@ -167,7 +167,6 @@
     <string name="settings_autostart_bootup_heading" translatable="true">Tự khởi động khi bật nguồn (thử nghiệm)</string>
     <string name="settings_network_all_networks" translatable="true">Sử dụng tất cả các mạng có sẵn (thử nghiệm)</string>
     <string name="settings_check_update_heading" translatable="true">Kiểm tra các bản cập nhật ứng dụng</string>
-    <string name="settings_check_update_desc" translatable="true">Tự động kiểm tra các bản cập nhật ứng dụng mỗi tuần một lần.</string>
     <string name="settings_custom_downloader_desc" translatable="true">Nếu tắt, <i>Trình quản lí Tải xuống</i> tích hợp sẵn của Android sẽ được sử dụng</string>
     <string name="settings_app_notification_a13_desc" translatable="true">Kích hoạt quyền thông báo cho ứng dụng</string>
     <string name="settings_theme_heading" translatable="true">Ngoại hình</string>

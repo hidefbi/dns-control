@@ -13,7 +13,6 @@
     <string name="lbl_advanced">متقدم</string>
     <string name="dns_crypt_relay_remove_dialog_message">احذف مرحل DNSCrypt من التكوين المحفوظ.</string>
     <string name="orbot_install_dialog_title">تثبيت Orbot؟</string>
-    <string name="settings_check_update_desc">تحقق تلقائيًا من تحديثات التطبيق مرة واحدة في الأسبوع.</string>
     <string name="hsf_vpn_prepare_failure">إما إذن VPN مفقود ، أو أن هناك تطبيقًا آخر في وضع VPN قيد التشغيل دائمًا.</string>
     <string name="fapps_firewall_filter_excluded">مستبعد</string>
     <string name="rt_list_simple_btn_txt">بسيط</string>
@@ -728,8 +727,6 @@
     <string name="firewall_card_universal_rules" translatable="true">%1$s قاعدة عالمية</string>
     <string name="logs_card_duration" translatable="true">منذ %1$s</string>
     <string name="wireguard_disclaimer" translatable="true">تم إعادة توجيه DNS إلى %1$s.</string>
-    <string name="download_ip_info_title" translatable="true">إظهار معلومات المزوّد</string>
-    <string name="download_ip_info_desc" translatable="true">يقوم بجلب تفاصيل مزود الخدمة لمواقع الويب من <i>rethinkdns.com</i>, مدعوم بواسطة <i>%1$s</i></string>
     <string name="adv_taster_desc" translatable="true">قم بتكوين التطبيقات التي يمكنها بدء أو إيقاف DNS Control.</string>
     <string name="lbl_always" translatable="true">دائماً</string>
     <string name="ac_retry_options_after_split_desc" translatable="true">إستخدم دائمًا تقنيات مكافحة الرقابة.</string>

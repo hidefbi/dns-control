@@ -410,7 +410,7 @@
     <string name="firewall_act_universal_tab">全局</string>
     <string name="search_custom_domains"><font size="12">搜索域名</font></string>
     <string name="settings_general_header">一般设置</string>
-    <string name="settings_check_update_desc">每周一次自动检查应用是否有可用更新。</string>
+    <string name="settings_check_update_desc">手动检查 GitHub 上是否有新版本，不会自动下载或安装。</string>
     <string name="settings_http_proxy_error_text3">域名为空</string>
     <string name="firewall_status_excluded">已排除在 DNS 与防火墙外</string>
     <string name="hsf_vpn_dialog_message">DNS Control 需要权限来设置本地 VPN，以加密设备的 DNS 请求、实现网络监控并强制执行防火墙规则。\n\n基于 Wi-Fi 的代理自动化需要位置权限来识别连接的 Wi-Fi 网络（SSID）。此权限仅在您启用该功能时请求。\n\nDNS Control 不会以任何方式收集您的信息或监视您。</string>
@@ -861,8 +861,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">输入允许启动或停止DNS Control的应用包名（多个请用英文逗号分隔）。</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">说明：\n 广播消息中必要的额外项：\n •key： sender\n • value：发起调用的应用包名\n\n 示例：key:sender value:com.termux\n\n 支持的操作：\n • 启动 VPN – com.celzero.bravedns.intent.action.VPN_START\n • 停止 VPN – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">输入应用包名（示例：net.dinglisch.android.taskerm）</string>
-    <string name="download_ip_info_title" translatable="true">显示服务商信息</string>
-    <string name="download_ip_info_desc" translatable="true">从 <i>rethinkdns.com</i> 获取服务提供商详情, 数据由 <i>%1$s</i> 提供</string>
     <string name="adv_taster_title" translatable="true">自动化</string>
     <string name="adv_taster_desc" translatable="true">配置可启动或停止 DNS Control 的应用。</string>
     <string name="top_active_conns" translatable="true">活跃连接排行</string>

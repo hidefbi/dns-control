@@ -145,7 +145,6 @@
     <string name="orbot_bs_status_trying_connect">অরবট সেট আপ করা হচ্ছে…</string>
     <string name="settings_socks5_vpn_disabled_error">এগিয়ে যেতে DNS Control শুরু করুন।</string>
     <string name="settings_autostart_bootup_heading">পাওয়ার-আপে অটো-স্টার্ট (পরীক্ষামূলক)</string>
-    <string name="settings_check_update_desc">সপ্তাহে একবার অ্যাপ আপডেটের জন্য স্বয়ংক্রিয়ভাবে পরীক্ষা করুন।</string>
     <string name="settings_http_proxy_error_text3">হোস্টনাম খালি</string>
     <string name="settings_notification_dialog_title">বিজ্ঞপ্তি কর্ম চয়ন করুন</string>
     <string name="cd_dns_crypt_title">সমাধানকারী</string>

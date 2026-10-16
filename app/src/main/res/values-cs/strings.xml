@@ -267,7 +267,6 @@
     <string name="settings_autostart_bootup_desc" translatable="true">Po zapnutí zařízení spustí DNS Control, pokud běžel před vypnutím.</string>
     <string name="settings_network_all_networks" translatable="true">Využívat všechny dostupné sítě (experimentální)</string>
     <string name="settings_network_all_networks_desc" translatable="true">Je-li zapnuto, DNS Control používá všechny dostupné sítě k připojení k internetu. Jinak použije tu, kterou Android označí za „aktivní“.</string>
-    <string name="settings_check_update_desc" translatable="true">Automaticky vyhledávat aktualizace jednou týdně.</string>
     <string name="settings_import_export_heading" translatable="true">Záloha &amp; Obnova</string>
     <string name="settings_import_export_desc" translatable="true">Ruční záloha nebo obnova dat a nastavení aplikace.</string>
     <string name="settings_app_notification_a13_heading" translatable="true">Oznámení aplikace</string>

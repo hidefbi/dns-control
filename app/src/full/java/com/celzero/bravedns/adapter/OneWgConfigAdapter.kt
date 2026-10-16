@@ -32,7 +32,6 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.celzero.bravedns.R
-import com.celzero.bravedns.customdownloader.IpInfoDownloader
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.Severity
@@ -40,7 +39,6 @@ import com.celzero.bravedns.database.WgConfigFiles
 import com.celzero.bravedns.databinding.ListItemWgOneInterfaceBinding
 import com.celzero.bravedns.net.doh.Transaction
 import com.celzero.bravedns.service.EventLogger
-import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.service.ProxyManager
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.service.WireguardManager
@@ -53,7 +51,6 @@ import com.celzero.bravedns.util.UIUtils.fetchColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.firestack.backend.RouterStats
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import inet.ipaddr.HostName
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -125,9 +122,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
             val isWgActive = config.isActive && VpnController.hasTunnel()
             b.oneWgCheck.isChecked = isWgActive
             setupClickListeners(config)
-            io {
-                updateFlag(null, config.id)
-            }
             if (isWgActive) {
                 keepStatusUpdated(config)
             } else {
@@ -202,7 +196,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
             val pair = VpnController.getSupportedIpVersion(id)
             val c = WireguardManager.getConfigById(config.id)
             val stats = VpnController.getProxyStats(id)
-            val addr = VpnController.getProxyAddrById(id)
             val dnsStatusId = VpnController.getDnsStatus(ProxyManager.ID_WG_BASE + config.id)
             val isSplitTunnel =
                 if (c?.getPeers()?.isNotEmpty() == true) {
@@ -214,7 +207,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
                 updateStatusUi(config, statusPair, dnsStatusId, stats)
                 updateProtocolChip(pair)
                 updateSplitTunnelChip(isSplitTunnel)
-                if (!b.interfaceFlagText.isVisible) io { updateFlag(addr, config.id) }
             }
         }
 
@@ -332,37 +324,6 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
             b.interfaceActiveLayout.visibility = View.GONE
             b.interfaceStatus.text =
                 context.getString(R.string.lbl_disabled).replaceFirstChar(Char::titlecase)
-        }
-
-        private fun stripPort(addr: String): String {
-            return IpRulesManager.splitHostPort(addr).first
-        }
-
-        private suspend fun updateFlag(addr: String?, configId: Int) {
-            var ip: String? = addr?.split(",")?.firstOrNull()?.trim()?.let { stripPort(it) }
-
-            if (ip.isNullOrBlank()) {
-                val c = WireguardManager.getConfigById(configId)
-                val host = c?.getPeers()?.getOrNull(0)?.getEndpoint()?.orElse(null)?.host
-                if (!host.isNullOrBlank() && HostName(host).asAddress() != null) {
-                    ip = host
-                }
-            }
-
-            if (ip.isNullOrBlank()) {
-                uiCtx { b.interfaceFlagText.visibility = View.GONE }
-                return
-            }
-
-            val ipInfo = IpInfoDownloader.getIpInfo(ip)
-            uiCtx {
-                if (ipInfo != null && ipInfo.countryCode.isNotEmpty()) {
-                    b.interfaceFlagText.text = Utilities.getFlag(ipInfo.countryCode)
-                    b.interfaceFlagText.visibility = View.VISIBLE
-                } else {
-                    b.interfaceFlagText.visibility = View.GONE
-                }
-            }
         }
 
         private fun getUpTime(stats: RouterStats?): CharSequence {

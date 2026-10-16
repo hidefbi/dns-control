@@ -751,7 +751,6 @@
     <string name="settings_general_header" translatable="true">பொது</string>
     <string name="settings_autostart_bootup_desc" translatable="true">சாதன பவர்-அப் இல், மூடப்படுவதற்கு முன்பு அது இயங்கினால் மறுபரிசீலனை செய்யத் தொடங்குங்கள்.</string>
     <string name="settings_network_all_networks_desc" translatable="true">இயக்கப்பட்டால், இணையத்துடன் இணைக்க ரெதிங்க் கிடைக்கக்கூடிய அனைத்து நெட்வொர்க்குகளையும் பயன்படுத்துகிறது. இல்லையெனில், ஆண்ட்ராய்டு மூலம் எந்த பிணையம் <i> செயலில் </i> எனக் கருதப்படுகிறது.</string>
-    <string name="settings_check_update_desc" translatable="true">பயன்பாட்டு புதுப்பிப்புகளை வாரத்திற்கு ஒரு முறை தானாகவே சரிபார்க்கவும்.</string>
     <string name="settings_custom_downloader_heading" translatable="true">பயன்பாட்டு பதிவிறக்கத்தைப் பயன்படுத்தவும்</string>
     <string name="settings_custom_downloader_desc" translatable="true">முடக்கப்பட்டால், ஆண்ட்ராய்டு இன் உள்ளமைக்கப்பட்ட <i> பதிவிறக்கம் மேலாளர் </i> பயன்படுத்தப்படுகிறது</string>
     <string name="settings_import_export_heading" translatable="true">காப்புப்பிரதி மற்றும் மீட்டமை</string>
@@ -838,8 +837,6 @@
     <string name="adv_tasker_dialog_msg" translatable="true">ரீதிங்கைத் தொடங்க அல்லது நிறுத்த அனுமதிக்கப்பட்ட தொகுப்பு பெயர்களை (கமாவால் பிரிக்கப்பட்ட) உள்ளிடவும்.</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">வழிமுறைகள்: \nஒளிபரப்பில் தேவையான கூடுதல்: \n• விசை: அனுப்புநர் \n• மதிப்பு: அழைப்பு பயன்பாட்டின் தொகுப்பு பெயர் \n\nஎடுத்துக்காட்டு: விசை: அனுப்புநர் மதிப்பு: com.termux \n\nஆதரிக்கப்பட்ட செயல்கள்: \nV VPN ஐத் தொடங்குங்கள் - com.celzero.bravedns.intent.action.vpn_start \nV VPN ஐ நிறுத்துங்கள் - com.celzero.bravedns.intent.action.vpn_stop</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">தொகுப்பு பெயரை உள்ளிடவும் (எடுத்துக்காட்டு: net.dinglisch.android.taskerm)</string>
-    <string name="download_ip_info_title" translatable="true">வழங்குநரின் தகவலைக் காட்டு</string>
-    <string name="download_ip_info_desc" translatable="true"><i> rethinkdns.com </i> இலிருந்து வலைத்தளங்களுக்கான பணி வழங்குநரின் விவரங்களைப் பெறுகிறது, <i>%1$s </i> ஆல் இயக்கப்படுகிறது</string>
     <string name="adv_taster_title" translatable="true">தானியங்கு</string>
     <string name="adv_taster_desc" translatable="true">மறுபரிசீலனை செய்ய அல்லது நிறுத்தக்கூடிய பயன்பாடுகளை உள்ளமைக்கவும்.</string>
     <string name="top_active_conns" translatable="true">சிறந்த செயலில் உள்ள இணைப்புகள்</string>

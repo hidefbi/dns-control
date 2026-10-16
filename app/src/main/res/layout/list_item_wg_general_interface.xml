@@ -40,21 +40,6 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="3dp">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/interface_flag_text"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:layout_marginStart="5dp"
-                        android:maxHeight="32dp"
-                        android:minWidth="32dp"
-                        android:singleLine="true"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textSize="25sp"
-                        tools:visibility="visible"
-                        android:visibility="gone" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/interface_id_text"
@@ -71,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toStartOf="@id/interface_id_text"
-                        android:layout_toEndOf="@id/interface_flag_text"
+                        android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
                         android:ellipsize="end"
                         android:singleLine="true"

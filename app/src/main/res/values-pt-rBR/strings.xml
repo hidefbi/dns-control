@@ -275,7 +275,6 @@
     <string name="settings_orbot_notification_action">Abrir Orbot</string>
     <string name="settings_network_all_networks">Usar todas as redes disponíveis (experimental)</string>
     <string name="settings_check_update_heading">Buscar por atualizações do aplicativo</string>
-    <string name="settings_check_update_desc">Verifica automaticamente atualizações do aplicativos uma vez por semana.</string>
     <string name="settings_custom_downloader_heading">Usar assistente de download do aplicativo</string>
     <string name="settings_custom_downloader_desc">Se desativado, o <i>Gerenciador de Downloads</i> integrado do Android será usado</string>
     <string name="settings_import_export_heading">Backup &amp; Restauração</string>
@@ -866,7 +865,6 @@
     <string name="ac_retry_options_never_desc" translatable="true">Em caso de falha, nunca tente novamente técnicas anticensura.</string>
     <string name="ac_desync_desc" translatable="true">Envie pacotes decoy conforme necessário.</string>
     <string name="ac_retry_options_desc" translatable="true">Defina como as tentativas de reconexão funcionam para conexões censuradas.</string>
-    <string name="download_ip_info_title" translatable="true">Mostrar informações do provedor</string>
     <string name="vpn_policy_auto_desc" translatable="true">Reage a alterações importantes na rede e na conectividade.</string>
     <string name="ssid_location_error_action" translatable="true">Habilitar localização</string>
     <string name="ac_split_tcp_desc" translatable="true">Altere os pacotes TCP.</string>
