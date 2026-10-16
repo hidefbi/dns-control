@@ -67,7 +67,6 @@ import com.celzero.bravedns.wireguard.WgHopManager
 import com.celzero.firestack.backend.Backend
 import com.celzero.firestack.backend.Client
 import com.celzero.firestack.backend.DNSResolver
-import com.celzero.firestack.backend.GoMetrics
 import com.celzero.firestack.backend.NetStat
 import com.celzero.firestack.backend.Proxies
 import com.celzero.firestack.backend.RDNS
@@ -80,7 +79,6 @@ import com.celzero.firestack.settings.Settings
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import java.net.URI
@@ -2104,16 +2102,6 @@ class GoVpnAdapter : KoinComponent {
             Logger.i(LOG_TAG_VPN, "$TAG set go-log level: $l1, $l2, $depth")
         }
 
-        fun getGoMetrics(): GoMetrics? {
-            return try {
-                val stat = Intra.goMet()
-                Logger.i(LOG_TAG_VPN, "$TAG net stat: $stat")
-                stat
-            } catch (e: Exception) {
-                Logger.e(LOG_TAG_VPN, "$TAG err getting net stat: ${e.message}")
-                null
-            }
-        }
     }
 
     suspend fun p50(id: String): Long {

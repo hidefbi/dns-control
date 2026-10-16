@@ -120,9 +120,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // can be triggered accordingly, if any,
     var appVersion by intPref("app_version").withDefault<Int>(0)
 
-    // Last known time when app update checks were done (successful?)
-    var lastAppUpdateCheck by longPref("app_update_last_check").withDefault<Long>(0)
-
     // total blocklists set by the user for RethinkDNS+ (server-side dns blocking)
 
     // total blocklists set by the user (on-device dns blocking)
@@ -179,9 +176,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // whether to block connections from apps not in the foreground
     private var _blockAppWhenBackground by
         booleanPref("background_mode").withDefault<Boolean>(false)
-
-    // whether to check for app updates once-a-week (on website / play-store builds)
-    var checkForAppUpdate by booleanPref("check_for_app_update").withDefault<Boolean>(true)
 
     // last connected dns label name and url
     var connectedDnsName by

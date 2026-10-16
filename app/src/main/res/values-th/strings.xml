@@ -12,7 +12,6 @@
     <string name="status_protected_with_http_private_dns" translatable="true">ได้รับการปกป้องด้วยพร็อกซี HTTP และ DNS ส่วนตัว</string>
     <string name="private_dns_dialog_positive" translatable="true">ไปที่การตั้งค่า</string>
     <string name="dns_crypt_url_remove_success" translatable="true">ลบตัวแก้ไข DNSCrypt แล้ว</string>
-    <string name="download_update_dialog_title" translatable="true">อัปเดตใหม่!</string>
     <string name="orbot_stop_dialog_dns_message" translatable="true">DNS Control ได้รับการตั้งค่าให้ส่งต่อคำขอ DNS ไปยัง Orbot เปลี่ยนแปลงตามต้องการ</string>
     <string name="settings_app_notification_a13_heading" translatable="true">การแจ้งเตือนแอป</string>
     <string name="settings_notification_dialog_option_3" translatable="true">\n\nไม่มี:\n\nไม่แสดงปุ่มใดๆ\n\n</string>
@@ -120,7 +119,6 @@
     <string name="cd_doh_dialog_checkbox_desc" translatable="true">อย่าตรวจสอบใบรับรอง TLS ของเซิร์ฟเวอร์ (เปิดใช้งานเฉพาะเมื่อคุณรู้ว่าคุณกำลังทำอะไรอยู่)</string>
     <string name="cd_dns_alg_heading" translatable="true">การกรอง DNS ขั้นสูง (ทดลอง)</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">ย้อนกลับ</string>
-    <string name="hs_download_negative_default" translatable="true">เตือนฉันภายหลัง</string>
     <string name="univ_firewall_rule_1" translatable="true">บล็อกแอปทั้งหมดเมื่ออุปกรณ์ถูกล็อค</string>
     <string name="univ_firewall_rule_2" translatable="true">บล็อคแอปใด ๆ ที่ไม่ได้ใช้งาน</string>
     <string name="univ_firewall_rule_3" translatable="true">บล็อคเมื่อแอปต้นทางไม่เป็นที่รู้จัก</string>
@@ -152,7 +150,6 @@
     <string name="network_log_app_name_unnamed" translatable="true">ไม่ระบุชื่อ (%1$s)</string>
     <string name="dns_crypt_connection_failure" translatable="true">เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์ DNSCrypt</string>
     <string name="dns_proxy_connection_failure" translatable="true">เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์พร็อกซี DNS</string>
-    <string name="update_complete_action_snack" translatable="true">RESTART</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">Download</string>
     <string name="other_dns_list_tab1" translatable="true">DoH</string>
     <string name="hs_btm_sheet_lock_down" translatable="true">ไม่สามารถเปลี่ยนโหมดได้เมื่อ VPN ถูก<i>ล็อค</i> แตะเพื่อ<u>แก้ไขการตั้งค่า VPN</u></string>
@@ -299,9 +296,6 @@
     <string name="firewall_mode_info_explanation_new" translatable="true">ตรวจสอบกิจกรรมเครือข่ายและไฟร์วอลล์ของแอปหรือที่อยู่ IP ใดๆ</string>
     <string name="hybrid_mode_info_title" translatable="true">DNS + ไฟร์วอลล์</string>
     <string name="alert_permission_accessibility" translatable="true">การอนุญาต-การเข้าถึง</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">อัพเดทล่าสุด!</string>
-    <string name="download_update_dialog_failure_title" translatable="true">มีบางอย่างผิดปกติ!</string>
-    <string name="download_update_dialog_failure_message" translatable="true">เซิร์ฟเวอร์ของเราอาจหยุดทำงานหรือไม่สามารถเชื่อมต่อได้ โปรดลองอีกครั้งในภายหลัง</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">ค้นหาแอพตาม uid, ชื่อ</font></string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">ค้นหารายการบล็อค</font></string>
     <string name="app_mode_dns_low_battery" translatable="true">DNS (ประหยัดแบตเตอรี่)</string>
@@ -337,7 +331,6 @@
     <string name="lbl_configure" translatable="true">การกำหนดค่า</string>
     <string name="lbl_network" translatable="true">เครือข่าย</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">ไม่ได้รับการคุ้มครอง</string>
-    <string name="download_update_dialog_message_ok" translatable="true">คุณใช้เวอร์ชั่นล่าสุดแล้ว</string>
     <string name="settings_ip_network_heading" translatable="true">เลือกเวอร์ชัน IP</string>
     <string name="settings_proxy_header" translatable="true">พร็อกซี</string>
     <string name="settings_autostart_bootup_desc" translatable="true">เมื่อเปิดเครื่องอุปกรณ์ ให้เริ่ม DNS Control หากกำลังทำงานอยู่ก่อนที่จะปิดเครื่อง</string>
@@ -437,7 +430,6 @@
     <string name="settings_theme_dialog_themes_1" translatable="true">ตั้งค่าโดยระบบ</string>
     <string name="dc_local_block_heading" translatable="true">รายการบล็อคบนอุปกรณ์</string>
     <string name="cd_dns_crypt_dialog_stamp" translatable="true">แสตมป์</string>
-    <string name="hs_download_positive_default" translatable="true">ok</string>
     <string name="univ_firewall_rule_4" translatable="true">บล็อค UDP ยกเว้น DNS และ NTP</string>
     <string name="univ_ip_delete_toast_success" translatable="true">ลบกฎ IP ทั้งหมด</string>
     <string name="fapps_filter_clear_btn" translatable="true">ชัดเจน</string>
@@ -496,8 +488,6 @@
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="http_proxy_dialog_heading" translatable="true">ตั้งค่าพร็อกซีเชื่อมต่อ HTTP(S)</string>
     <string name="http_proxy_dialog_desc" translatable="true">ตั้งค่า URL ของฟอร์ม &lt;โปรโตคอล&gt;://&lt;ชื่อผู้ใช้&gt;:&lt;รหัสผ่าน&gt;@&lt;โดเมนหรือไอพี&gt;:&lt;พอร์ต&gt;&lt;เส้นทาง&gt; ตัวอย่าง: http://proxy.example.com:8080/</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">ไม่สามารถอัปเดตได้ในขณะนี้</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">ไม่สามารถดำเนินการอัปเดตได้ในขณะนี้ โปรดลองอีกครั้งในภายหลัง</string>
     <string name="search_universal_ips" translatable="true"><font size="12">ค้นหา IP</font></string>
     <string name="info_dialog_copy_toast_msg" translatable="true">คัดลอกที่อยู่ IP แล้ว</string>
     <string name="relative_time_yesterday" translatable="true">เมื่อวาน</string>
@@ -619,7 +609,6 @@
     <string name="network_log_app_name_unknown" translatable="true">ไม่ทราบ</string>
     <string name="system_dns_connection_failure" translatable="true">ไม่สามารถระบุเซิร์ฟเวอร์ DNS ปัจจุบันได้</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
-    <string name="update_complete_snack_message" translatable="true">ดาวน์โหลดเวอร์ชันใหม่แล้ว</string>
     <string name="settings_local_blocklist_version" translatable="true">เวอร์ชัน: v%1$s</string>
     <string name="accessibility_notification_content" translatable="true">บริการ DNS Control Accessibility หยุดทำงานหรือขัดข้อง ไม่สามารถบล็อกแอปที่ทำงานอยู่เบื้องหลังได้อีกต่อไป แตะเพื่อเปิดใช้งานอีกครั้ง</string>
     <string name="accessibility_failure_toast" translatable="true">บริการ DNS Control Accessibility หยุดทำงานหรือขัดข้อง ไม่สามารถบล็อกแอปที่ทำงานอยู่เบื้องหลังได้อีกต่อไป</string>
@@ -733,7 +722,6 @@
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">บริการการเข้าถึง DNS Control หยุดทำงานหรือขัดข้อง <i><b>ไปที่การตั้งค่าและบังคับหยุด</b></i> DNS Control และเริ่มใหม่อีกครั้งเพื่อใช้ฟีเจอร์ <i>บล็อกแอปใดๆ ที่ไม่ได้ใช้งาน</i> \n \nDNS Control ใช้บริการการเข้าถึงเพื่อติดตามว่าแอปใดใช้งานอยู่ (เบื้องหน้า) เทียบกับแอปที่ไม่ได้ใช้งาน (เบื้องหลัง)</string>
     <string name="firewall_act_universal_tab" translatable="true">สากล</string>
     <string name="dns_crypt_url_remove_dialog_message" translatable="true">ลบตัวแก้ไข DNSCrypt จากการกำหนดค่าที่บันทึกไว้</string>
-    <string name="download_update_dialog_message" translatable="true">สามารถดาวน์โหลดแอปพลิเคชันเวอร์ชันใหม่ได้จากเว็บไซต์ คุณต้องการดำเนินการต่อหรือไม่?</string>
     <string name="download_update_dialog_message_success" translatable="true">ดาวน์โหลดรายการบล็อคสำเร็จแล้ว</string>
     <string name="settings_exclude_proxy_apps_desc" translatable="true">เมื่อปิดใช้งาน จะไม่รวมแอปส่งต่อพร็อกซี (SOCKS5, HTTP, DNS) จากอุโมงค์ VPN ของ DNS Control</string>
     <string name="settings_ip_network_desc" translatable="true">เลือกระหว่างเวอร์ชันโปรโตคอลอินเทอร์เน็ต</string>

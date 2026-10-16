@@ -73,11 +73,6 @@
     <string name="refresh_complete"><!-- use dc_refresh_toast --> Resynchronisation de la liste des applications terminée.</string>
     <string name="doh_custom_url_remove_dialog_message">Supprimer le point de terminaison DNS over HTTPS de la configuration sauvegardée.</string>
     <string name="configure_dns_connected_dns_proxy_status">Proxy DNS</string>
-    <string name="download_update_dialog_title">Nouvelle mise à jour !</string>
-    <string name="download_update_dialog_message">Une nouvelle version de l’application est disponible en téléchargement sur le site web. Voulez-vous continuer ?</string>
-    <string name="download_update_dialog_failure_message">Soit nos serveurs sont hors service, soit la connexion n’a pas pu être établie. Veuillez réessayer plus tard.</string>
-    <string name="download_update_dialog_trylater_title">Impossible d’appliquer la mise à jour actuellement</string>
-    <string name="download_update_dialog_trylater_message">La mise à jour ne peut être appliquée pour le moment, veuillez réessayer plus tard.</string>
     <string name="settings_lock_down_mode_desc">Certaines options sont désactivées lorsque le VPN est en mode de verrouillage. <u>Voir les paramètres VPN</u>.</string>
     <string name="settings_https_desc">Rediriger les connexions vers le point de terminaison HTTP(S) via la méthode CONNECT.</string>
     <string name="orbot_http_desc">Établit un tunnel HTTP CONNECT vers Orbot.</string>
@@ -174,7 +169,6 @@
     <string name="fapps_filter_filter_heading">Type</string>
     <string name="fapps_filter_categories_heading">Catégories</string>
     <string name="fapps_firewall_filter_desc"><![CDATA[Affichage des applis <u>%1$s</u> %2$s]]></string>
-    <string name="download_update_dialog_message_ok_title">À jour !</string>
     <string name="settings_selected_ip_desc" translatable="false">%1$s</string>
     <string name="settings_http_proxy_error_text2">Port invalide</string>
     <string name="dns_info_positive">Valider</string>
@@ -195,7 +189,6 @@
     <string name="cd_custom_dns_proxy_name_default">Proxy</string>
     <string name="cd_dns_proxy_error_text_3">Port invalide</string>
     <string name="cd_dns_crypt_dialog_name">Nom</string>
-    <string name="hs_download_negative_default">Me le rappeler ultérieurement</string>
     <string name="dns_connected">Connecté</string>
     <string name="firewall_rule_univ_block_metered">Avec abonnement (Mobile, Global)</string>
     <string name="new_app_notification_action_toast_allow">Connexion réseau autorisée pour l’application</string>
@@ -267,7 +260,6 @@
     <string name="brbs_restore_desc">Restaure à partir d’un fichier de sauvegarde</string>
     <string name="firewall_rule_exempt_orbot_setup">Configuration Orbot</string>
     <string name="blocklist_update_check_not_required">Les listes de blocage sont déjà à la dernière version.</string>
-    <string name="download_update_dialog_message_ok">Vous êtes déjà sur la dernière version.</string>
     <string name="info_dialog_url_copy_toast_msg">URL copiée</string>
     <string name="settings_ip_network_desc">Choisissez entre les versions du protocole Internet.</string>
     <string name="settings_https_heading">Configuration du proxy HTTP(S) via CONNECT</string>
@@ -371,7 +363,6 @@
     <string name="hsf_pause_vpn_failure">Impossible de mettre en pause : DNS Control n’est pas actif</string>
     <string name="univ_firewall_dialog_message">La suppression de cette règle permettrait à n’importe quelle application de se connecter à cette IP. Voulez-vous continuer ?</string>
     <string name="dns_crypt_relay_remove_success">Relais DNSCrypt supprimé.</string>
-    <string name="download_update_dialog_failure_title">Il y a eu un problème !</string>
     <string name="search_custom_domains"><font size="12">Recherche de noms de domaine</font></string>
     <string name="settings_orbot_heading">Configuration d’Orbot</string>
     <string name="cd_dns_proxy_mode_external">Externe</string>
@@ -380,7 +371,6 @@
     <string name="ctbs_dialog_negative_btn">Retour</string>
     <string name="about_settings_app_info">Infos sur l’appli</string>
     <string name="dns_proxy_desc_no_app" translatable="false">%1$s:%2$s</string>
-    <string name="update_complete_snack_message">Nouvelle version téléchargée.</string>
     <string name="firewall_rule_block_app">Appli bloquée</string>
     <string name="notif_channel_proxy_failure">Alertes du proxy</string>
     <string name="cd_dialog_edittext_hint">Entrez un %1$s</string>
@@ -389,7 +379,6 @@
     <string name="ci_bypass_universal_initial">EG</string>
     <string name="ada_noapp_dialog_positive">D’accord</string>
     <string name="brbs_restore_dialog_title">Restaurer une sauvegarde</string>
-    <string name="hs_download_positive_default">ok</string>
     <string name="univ_accessibility_crash_dialog_positive">Aller aux paramètres</string>
     <string name="ci_no_rule_initial">N</string>
     <string name="settings_ip_network_heading">Choisir la version IP</string>
@@ -508,7 +497,6 @@
     <string name="univ_firewall_rule_2">Bloquer les applications non utilisées</string>
     <string name="network_log_app_name_unknown">Inconnus</string>
     <string name="univ_firewall_rule_9">Bloquer sur les réseaux avec facturation à l\'usage (mobiles)</string>
-    <string name="update_complete_action_snack">REDÉMARRER</string>
     <string name="pause_text">en pause</string>
     <string name="firewall_rule_trusted_ip">IP avec exception (Appli)</string>
     <string name="firewall_rule_device_lock_desc"><![CDATA[Cette connexion était protégée par un pare-feu car <i>l’appareil était verrouillé</i> à ce moment-là.<br/><br/> Pour modifier cela, allez sur l’onglet <i>Global</i>.]]></string>

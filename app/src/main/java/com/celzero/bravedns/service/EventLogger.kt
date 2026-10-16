@@ -15,17 +15,10 @@
  */
 package com.celzero.bravedns.service
 
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.database.Event
 import com.celzero.bravedns.database.EventDao
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
 import com.celzero.bravedns.database.Severity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.asCoroutineDispatcher
-import kotlinx.coroutines.launch
-import java.util.concurrent.Executors
 
 /**
  * EventLogger is a thread-safe, production-ready logging system for recording debugging events
@@ -55,6 +48,4 @@ class EventLogger(private val eventDao: EventDao) {
     fun logLow(type: EventType, message: String, source: EventSource, userAction: Boolean = false, details: String? = null) = Unit
     fun logMedium(type: EventType, message: String, source: EventSource, userAction: Boolean = false, details: String? = null) = Unit
     fun logHigh(type: EventType, message: String, source: EventSource, userAction: Boolean = false, details: String? = null) = Unit
-    fun logCritical(type: EventType, message: String, source: EventSource, details: String? = null) = Unit
-    fun purgeOld(days: Int = 4) = Unit
 }

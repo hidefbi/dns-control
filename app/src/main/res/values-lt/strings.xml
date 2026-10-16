@@ -172,7 +172,6 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s kita (-os) programėlė (-s)</string>
     <string name="ctbs_block_other_apps">Taisyklės, taikomos %1$s, bus taikomos ir kitoms %2$s programėlėms</string>
     <string name="ctbs_dialog_negative_btn">Grįžti atgal</string>
-    <string name="hs_download_negative_default">Priminkite vėliau</string>
     <string name="univ_firewall_rule_2">Blokuoti bet kokią nenaudojamą programėlę</string>
     <string name="univ_firewall_rule_3">Blokuoti, kai šaltinio programėlė nežinoma</string>
     <string name="univ_firewall_rule_4">Blokuoti UDP, išskyrus DNS ir NTP</string>
@@ -219,8 +218,6 @@
     <string name="dns_crypt_connection_failure">Klaida jungiantis prie DNSCrypt serverio.</string>
     <string name="dns_proxy_connection_failure">Klaida jungiantis prie DNS įgaliotojo serverio.</string>
     <string name="copy_clipboard_label">URL</string>
-    <string name="update_complete_snack_message">Atsisiųsta nauja versija.</string>
-    <string name="update_complete_action_snack">PERKRAUTI</string>
     <string name="settings_local_blocklist_dialog_positive">Atsisiųsti</string>
     <string name="settings_local_blocklist_version">Versija: v%1$s</string>
     <string name="accessibility_notification_content">DNS Control pritaikymo neįgaliesiems paslauga sustojo arba sugedo. Nebeblokuojamos foninės programėlės. Bakstelėkite, kad vėl įjungtumėte.</string>
@@ -347,7 +344,6 @@
     <string name="dns_mode_info_explanation_new">Stebėkite, blokuokite ir šifruokite DNS užklausas.</string>
     <string name="hybrid_mode_info_title">DNS + ugniasienė</string>
     <string name="always_on_dialog_positive">Sustabdyti</string>
-    <string name="download_update_dialog_message_ok">Jau naudojate naujausią versiją.</string>
     <string name="alert_permission_accessibility">Leidimas - prieinamumas</string>
     <string name="dns_act_configure_tab">Konfigūravimas</string>
     <string name="alert_firewall_accessibility_explanation">DNS Control naudoja pritaikymo neįgaliesiems paslaugą, kad atsektų, kurios programėlės yra naudojamos (pirmame plane), palyginti su tomis, kurios nenaudojamos (fone). \n \nDNS Control nerenka jokios informacijos ir jokiu būdu nešnipinėja jūsų.</string>
@@ -357,10 +353,6 @@
     <string name="always_on_dialog_positive_btn">Eiti į nustatymus</string>
     <string name="always_on_dialog_neutral">Nustatymai</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
-    <string name="download_update_dialog_message">Naują programėlės versiją galima atsisiųsti iš svetainės. Ar norite tęsti?</string>
-    <string name="download_update_dialog_title">Naujas atnaujinimas!</string>
-    <string name="download_update_dialog_failure_message">Arba mūsų serveriai neveikia, arba nepavyko užmegzti ryšio. Po kurio laiko bandykite dar kartą.</string>
-    <string name="download_update_dialog_failure_title">Kažkas nutiko ne taip!</string>
     <string name="info_dialog_copy_toast_msg">IP adresas nukopijuotas.</string>
     <string name="info_dialog_url_copy_toast_msg">URL nukopijuotas</string>
     <string name="orbot">Orbot</string>
@@ -428,7 +420,6 @@
     <string name="cd_doh_dialog_heading">Pridėti DNS per HTTPS</string>
     <string name="ctbs_app_info_not_available_toast">Programėlės nustatymų puslapis nerastas</string>
     <string name="univ_firewall_rule_1">Blokuoti visas programėles, kai įrenginys užrakintas</string>
-    <string name="hs_download_positive_default">gerai</string>
     <string name="fapps_metered_unblock_dialog_message">Leisti prisijungimus matuojamame (mobiliajame) tinkle <i>išvardytoms</i> programėlėms?</string>
     <string name="univ_delete_firewall_dialog_message">Ištrynus šias taisykles, bet kuri programėlė galėtų prisijungti prie šiuo metu užblokuotų IP adresų.</string>
     <string name="dns_crypt_relay_error_toast">Nepasirinktas joks sprendiklis</string>
@@ -509,9 +500,6 @@
     <string name="doh_custom_url_remove_dialog_title">Ištrinti DoH galinį punktą?</string>
     <string name="doh_custom_url_remove_dialog_message">Ištrinti DNS per Https galinį punktą iš išsaugotos konfigūracijos.</string>
     <string name="doh_custom_url_remove_success">Galinis punktas ištrintas.</string>
-    <string name="download_update_dialog_message_ok_title">Naujausia!</string>
-    <string name="download_update_dialog_trylater_title">Šiuo metu atnaujinti nepavyksta</string>
-    <string name="download_update_dialog_trylater_message">Atnaujinimo šiuo metu negalima atlikti, bandykite vėliau.</string>
     <string name="settings_socks5_desc">Peradresuoti ryšius į SOCKS5 galinį punktą.</string>
     <string name="settings_http_proxy_error_text4">Nepavyko prisijungti prie pagrindinio kompiuterio. Pabandyk dar kartą.</string>
     <string name="settings_dns_proxy_dialog_hostname">Pagrindinio kompiuterio vardas</string>

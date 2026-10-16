@@ -31,20 +31,8 @@ enum class Themes(val id: Int) {
     DARK_FROST(6);
 
     companion object {
-        fun getThemeCount(): Int {
-            return entries.count()
-        }
-
-        fun getAvailableThemeCount(): Int {
-            return entries.count()
-        }
-
         fun isFrostTheme(id: Int): Boolean {
             return id == DARK_FROST.id
-        }
-
-        fun isThemeAvailable(_id: Int): Boolean {
-            return true
         }
 
         fun getTheme(id: Int): Int {

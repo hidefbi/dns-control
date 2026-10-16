@@ -54,8 +54,6 @@ object WireguardManager : KoinComponent {
     private val appConfig: AppConfig by inject()
     private val persistentState: PersistentState by inject()
 
-    // 120 sec + 5 sec buffer
-    const val WG_HANDSHAKE_TIMEOUT = 125 * DateUtils.SECOND_IN_MILLIS
     const val WG_UPTIME_THRESHOLD = 5 * DateUtils.SECOND_IN_MILLIS
 
     const val NOTIF_CHANNEL_ID_WIREGUARD_ALERTS = "WireGuard_Alerts"

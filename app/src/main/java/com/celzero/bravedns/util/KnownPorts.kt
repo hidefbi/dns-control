@@ -22,18 +22,10 @@ class KnownPorts {
         const val DNS_PORT: Int = 53
         private const val NTP_PORT: Int = 123
         const val HTTP_PORT: Int = 80
-        const val HTTPS_PORT: Int = 443
         const val DOT_PORT: Int = 853
-
-        // represents the unknown port in the port map. see class KnownPorts
-        const val PORT_VAL_UNKNOWN = "unknown"
 
         // get protocol desc based on port number
         private var portMap: HashMap<Int, String> = initPortMap()
-
-        fun resolvePort(port: Int): String {
-            return portMap[port] ?: PORT_VAL_UNKNOWN
-        }
 
         fun isNtp(port: Int): Boolean {
             return port == NTP_PORT

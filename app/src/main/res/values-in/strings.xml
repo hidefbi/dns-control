@@ -20,7 +20,6 @@
     <string name="finish">Selesai</string>
     <string name="orbot_stop_dialog_message">DNS Control telah berhenti meneruskan koneksi ke Orbot, tapi mungkin Orbot masih berjalan di latar belakang.</string>
     <string name="settings_orbot_install_desc">Ketuk di sini untuk memasang Orbot</string>
-    <string name="download_update_dialog_trylater_title">Tidak dapat memperbaharui saat ini</string>
     <string name="settings_ip_network_heading">Pilih versi IP</string>
     <string name="orbot_install_dialog_title">Pasang Orbot?</string>
     <string name="app_mode_firewall">Firewall</string>
@@ -34,21 +33,17 @@
     <string name="always_on_dialog_positive_btn">Masuk ke Pengaturan</string>
     <string name="app_mode_choose">Pilih mode</string>
     <string name="orbot_both_desc">Semua di atas.</string>
-    <string name="download_update_dialog_message_ok">Anda sudah menggunakan versi terbaru.</string>
     <string name="info_dialog_url_copy_toast_msg">URL telah disalin</string>
     <string name="orbot_status_arg_2">TCP</string>
     <string name="orbot_install_activity_error" translatable="false">Terjadi kesalahan. Coba beberapa saat lagi</string>
     <string name="slide_2_title">Selamat datang</string>
-    <string name="download_update_dialog_trylater_message">Tidak dapat memperbarui sekarang, harap tunggu beberapa saat dan coba lagi nanti.</string>
     <string name="orbot_app_issue">Tidak dapat menjalankan Orbot. Apakah Orbot sudah terinstal?</string>
     <string name="app_mode_dns_low_battery">DNS (penghemat baterai)</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
     <string name="orbot_install_dialog_positive">Pasang</string>
     <string name="settings_socks5_disabled_error">Terhubung ke %1$s. Silahkan tutup dulu.</string>
-    <string name="download_update_dialog_failure_title">Terjadi kesalahan!</string>
     <string name="always_on_dialog_stop_message">DNS Control diatur sebagai VPN Selalu-Menyala. Apakah Anda yakin untuk menghentikan DNS Control?</string>
     <string name="univ_firewall_dialog_message">Menghapus aturan ini akan memungkinkan aplikasi apa pun terhubung ke alamat IP ini. Apakah Anda ingin melanjutkan?</string>
-    <string name="download_update_dialog_message">Versi baru tersedia untuk diunduh dari situs web. Apakah Anda ingin melanjutkan?</string>
     <string name="search_universal_ips"><font size="12">Cari IP</font></string>
     <string name="settings_ip_network_desc">Pilih versi Protokol Jaringan.</string>
     <string name="orbot_stop_dialog_dns_message">DNS Control disiapkan untuk meneruskan permintaan DNS ke Orbot. Silahkan ubah sesuai kebutuhan.</string>
@@ -125,7 +120,6 @@
     <string name="hsf_downtime">(nonaktif sejak %1$s)</string>
     <string name="notification_action_dns_firewall_mode">DNS + Firewall</string>
     <string name="dns_act_configure_tab">Atur</string>
-    <string name="update_complete_snack_message">Versi baru telah terunduh.</string>
     <string name="firewall_rule_device_lock">Perangkat Terkunci</string>
     <string name="firewall_rule_no_rule_desc">Tidak ada aturan firewall sesuai koneksi ini.</string>
     <string name="new_app_notification_action_deny">Tetap memblok</string>
@@ -242,7 +236,6 @@
     <string name="slide_2_desc">DNS Control adalah cara termudah untuk memantau aktivitas jaringan, melewati penyensoran jaringan, dan mem-firewall aplikasi di perangkat Anda.</string>
     <string name="settings_dns_proxy_dialog_username">Nama pengguna</string>
     <string name="settings_ip_text_ipv46">Otomatis</string>
-    <string name="hs_download_negative_default">Ingatkan saya nanti</string>
     <string name="univ_firewall_rule_10">Blokir semua kecuali aplikasi dan IP yang dipintaskan (di-bypass)</string>
     <string name="lbbs_configure">Atur</string>
     <string name="rt_edit_dialog_positive">Sunting</string>
@@ -441,7 +434,6 @@
     <string name="brbs_restore_dialog_message">Memulihkan pengaturan aplikasi, riwayat jaringan dan DNS dari berkas cadangan. Ini akan memulai ulang aplikasi.</string>
     <string name="brbs_restore_desc">Pulihkan dari file cadangan</string>
     <string name="brbs_backup_dialog_message">Mencadangkan pengaturan, riwayat jaringan dan dns ke sebuah berkas. Ini akan memulai ulang VPN.</string>
-    <string name="download_update_dialog_message_ok_title">Terbaru!</string>
     <string name="brbs_restore_no_uri_toast">Pemulihan gagal, coba lagi</string>
     <string name="brbs_restore_dialog_failure_message">Tidak dapat memulihkan. Coba lagi?</string>
     <string name="brbs_restore_title">Pemulihan</string>
@@ -469,14 +461,12 @@
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">Memblokir malware, ransomware, cryptoware, phisher, dan ancaman lainnya.</string>
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen">Blokir konten dewasa &amp; pembajakan, perjudian &amp; kencan online, dan media sosial.</string>
     <string name="cd_no_rule_initial">N</string>
-    <string name="download_update_dialog_title">Pembaruan Baru!</string>
     <string name="relative_time_today">Hari ini</string>
     <string name="relative_time_yesterday">Kemarin</string>
     <string name="settings_app_notification_a13_heading">Pemberitahuan Aplikasi</string>
     <string name="settings_app_notification_a13_desc">Mengaktifkan izin pemberitahuan untuk aplikasi</string>
     <string name="settings_notification_dialog_option_3">\nTidak ada:\nTidak menampilkan tombol.\n</string>
     <string name="cd_dns_crypt_resolver_heading">Server penyelesai</string>
-    <string name="update_complete_action_snack">MULAI ULANG</string>
     <string name="dns_proxy_connection_failure">Gagal terhubung ke server Proksi DNS.</string>
     <string name="notif_channel_desc_proxy_failure">Peringatan error dan anomali pada Proksi</string>
     <string name="notif_channel_desc_vpn_failure">Beritahu saat DNS Control dihentikan oleh Android atau aplikasi VPN lain</string>
@@ -491,7 +481,6 @@
     <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s daftar blokir</string>
     <string name="dns_info_positive">Oke</string>
     <string name="settings_dns_proxy_dialog_app">Aplikasi</string>
-    <string name="download_update_dialog_failure_message">Entah server kami sedang down atau koneksi tidak dapat dibuat. Silakan coba lagi setelah beberapa saat.</string>
     <string name="settings_lock_down_mode_desc">Opsi tertentu dinonaktifkan saat VPN dalam mode kuncian. <u>Lihat setelan VPN</u>.</string>
     <string name="orbot_bs_status_4">Menyetel Tor-sebagai-Proksi (Orbot) sekali klik.</string>
     <string name="settings_network_all_networks_desc">Jika diaktifkan, DNS Control akan menggunakan semua jaringan yang tersedia untuk terhubung ke internet. Jika tidak, aplikasi ini akan menggunakan jaringan mana pun yang dianggap <i>aktif</i> oleh Android.</string>
@@ -529,7 +518,6 @@
     <string name="ci_blocked_initial">B</string>
     <string name="ci_no_rule_initial">N</string>
     <string name="ada_firewall_title">Aturan firewall untuk aplikasi ini</string>
-    <string name="hs_download_positive_default">oke</string>
     <string name="fapps_unmetered_block_dialog_message">Blokir koneksi pada jaringan yang tidak terukur (WiFi) untuk <i>aplikasi</i> yang terdaftar?</string>
     <string name="fapps_unmetered_unblock_dialog_message">Izinkan koneksi pada jaringan tidak terukur (WiFi) untuk <i>aplikasi</i> yang terdaftar?</string>
     <string name="fapps_metered_block_dialog_message">Blokir koneksi jaringan terukur (data seluler) pada aplikasi <i>yang dipilih</i>\?</string>

@@ -29,10 +29,6 @@ enum class ConnType(val id: Int, val value: String) {
         return this == UNMETERED
     }
 
-    fun isNone(): Boolean {
-        return this == NONE
-    }
-
     companion object {
         fun get(v: Int?): ConnType {
             if (v == null) return NONE

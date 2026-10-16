@@ -177,7 +177,6 @@
     <string name="dns_crypt_relay_error_toast" translatable="true">எந்தவொரு தீர்வும் தேர்ந்தெடுக்கப்படவில்லை</string>
     <string name="fapps_bypass_block_dialog_message" translatable="true"><i> பட்டியலிடப்பட்ட </i> பயன்பாடுகளுக்கான யுனிவர்சல் ஃபயர்வால் விதிகளை பைபாச்?</string>
     <string name="copy_clipboard_label" translatable="true">முகவரி</string>
-    <string name="update_complete_snack_message" translatable="true">புதிய பதிப்பு பதிவிறக்கம்.</string>
     <string name="firewall_rule_block_unmetered" translatable="true">அளவிடப்படாத (வைஃபை)</string>
     <string name="firewall_rule_block_udp_ntp" translatable="true">யுடிபி தடுக்கப்பட்டது</string>
     <string name="ci_block" translatable="true">தொகுதி</string>
@@ -363,7 +362,6 @@
     <string name="lbl_preshared_key" translatable="true">முன்பகிரப்பட்ட விசை</string>
     <string name="status_protected_with_wg" translatable="true">வயர் கார்டுடன் பாதுகாக்கப்படுகிறது</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">வயர் கார்ட் &amp; பிரைவேட் டி.என்.எச் உடன் பாதுகாக்கப்படுகிறது</string>
-    <string name="download_update_dialog_title" translatable="true">புதிய புதுப்பிப்பு!</string>
     <string name="settings_allow_lan_desc" translatable="true">ரீதிங்கின் விபிஎன் சுரங்கப்பாதையில் இருந்து LAN, லூப் பேக், மல்டிகாச்ட், இணைப்பு-உள்ளூர் வழிகளை விலக்குங்கள்.</string>
     <string name="settings_proxy_header" translatable="true">பதிலாள்</string>
     <string name="settings_default_dns_heading" translatable="true">குறைவடையும் DNS ஐத் தேர்வுசெய்க</string>
@@ -458,9 +456,7 @@
     <string name="config_delete_dialog_title" translatable="true">அழி</string>
     <string name="exclude_all_app_wg_dialog_title" translatable="true">எல்லா பயன்பாடுகளையும் விலக்கு</string>
     <string name="wireguard_disclaimer" translatable="true">டி.என்.எச் %1$s க்கு அனுப்பப்பட்டது.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">இப்போது புதுப்பிக்க முடியாது</string>
     <string name="search_proxy_add_apps" translatable="true">பயன்பாடுகளை பெயரால் தேடுங்கள்</string>
-    <string name="download_update_dialog_failure_message" translatable="true">எங்கள் சேவையகங்கள் குறைந்துவிட்டன அல்லது இணைப்பை நிறுவ முடியவில்லை. சிறிது நேரம் கழித்து மீண்டும் முயற்சிக்கவும்.</string>
     <string name="info_dialog_copy_toast_msg" translatable="true">ஐபி முகவரி நகலெடுக்கப்பட்டது.</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">முகவரி நகலெடுக்கப்பட்டது</string>
     <string name="settings_allow_lan_heading" translatable="true">தனியார் ஐபிக்களை வழிநடத்த வேண்டாம் (சோதனை)</string>
@@ -477,8 +473,6 @@
     <string name="about_mail_bugreport_share_title" translatable="true">மின்னஞ்சல் வழங்குநரைத் தேர்ந்தெடுக்கவும்</string>
     <string name="ctbs_block_other_apps" translatable="true">%1$s க்கு பயன்படுத்தப்படும் விதிகள் %2$s பிற பயன்பாடுகளுக்கும் பொருந்தும்</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">திரும்பிச் செல்லுங்கள்</string>
-    <string name="hs_download_positive_default" translatable="true">சரி</string>
-    <string name="hs_download_negative_default" translatable="true">பின்னர் நினைவூட்டு</string>
     <string name="univ_firewall_rule_2" translatable="true">பயன்பாட்டில் இல்லாத எந்த பயன்பாட்டையும் தடுக்கவும்</string>
     <string name="univ_firewall_rule_4" translatable="true">டி.என்.எச் மற்றும் என்.டி.பி தவிர யுடிபியைத் தடுக்கவும்</string>
     <string name="univ_firewall_rule_5" translatable="true">டி.என்.எச் புறக்கணிக்கப்படும்போது தடுக்கிறது</string>
@@ -523,7 +517,6 @@
     <string name="dns_crypt_connection_failure" translatable="true">DNSCRYPT சேவையகத்துடன் இணைப்பதில் பிழை.</string>
     <string name="dns_proxy_connection_failure" translatable="true">டி.என்.எச் பதிலாள் சேவையகத்துடன் இணைப்பதில் பிழை.</string>
     <string name="system_dns_connection_failure" translatable="true">தற்போதைய டிஎன்எச் சேவையகத்தை தீர்மானிக்க முடியாது</string>
-    <string name="update_complete_action_snack" translatable="true">மறுதொடக்கம்</string>
     <string name="settings_local_blocklist_dialog_positive" translatable="true">பதிவிறக்கம்</string>
     <string name="accessibility_notification_content" translatable="true">மறுபரிசீலனை அணுகல் பணி நிறுத்தப்பட்டுள்ளது அல்லது செயலிழந்தது. இனி பின்னணி பயன்பாடுகளைத் தடுக்காது. மீண்டும் இயக்க தட்டவும்.</string>
     <string name="firewall_rule_no_rule" translatable="true">விதி இல்லை</string>
@@ -596,12 +589,7 @@
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">Dnscrypt</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">டி.என்.எச் பதிலாள்</string>
     <string name="http_proxy_dialog_heading" translatable="true">HTTP (கள்) இணைக்க ப்ராக்சியை அமைக்கவும்</string>
-    <string name="download_update_dialog_message" translatable="true">பயன்பாட்டின் புதிய பதிப்பு வலைத்தளத்திலிருந்து பதிவிறக்கம் செய்யக் கிடைக்கிறது. நீங்கள் தொடர விரும்புகிறீர்களா?</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">புதுப்பித்த!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">நீங்கள் ஏற்கனவே அண்மைக் கால பதிப்பில் இருக்கிறீர்கள்.</string>
     <string name="download_update_dialog_message_success" translatable="true">பிளாக்லிச்ட் பதிவிறக்கம் வெற்றிகரமாக.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">ஏதோ தவறு நடந்துவிட்டது!</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">புதுப்பிப்பை இப்போது செயல்படுத்த முடியாது, தயவுசெய்து பின்னர் மீண்டும் முயற்சிக்கவும்.</string>
     <string name="search_universal_ips" translatable="true"><font size="12"> ஐபிஎச் தேடல் </font></string>
     <string name="search_custom_domains" translatable="true"><font size="12"> தேடல் டொமைன் பெயர்கள் </font></string>
     <string name="app_mode_firewall" translatable="true">ஃபயர்வால்</string>

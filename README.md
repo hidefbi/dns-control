@@ -19,6 +19,8 @@ transports and lets you decide which apps may reach the network.
   does not silently switch to system DNS.
 - No Firebase or Google services are configured.
 - Connection, DNS query and diagnostic logs are not stored or uploaded.
+- Manual app update check against GitHub Releases. Nothing is checked or installed
+  automatically; each update must be confirmed by the user.
 
 ## Ad, tracker and malware blocking
 
@@ -174,10 +176,16 @@ back to system DNS.
 Connection and DNS query metadata is not persisted, and no log files are written
 or uploaded. Encrypted DNS queries are sent only to the resolver you select.
 
-The only other network requests made for blocking are the update check and the
-blocklist download described above. Both contact the download host. The update
-check sends the app version code and the timestamp of the currently installed
-blocklist set.
+The blocklist requests described above contact the download host. The blocklist
+update check sends the app version code and the timestamp of the currently
+installed blocklist set.
+
+The app contacts `api.github.com` only when you tap **Check for app updates** in
+miscellaneous settings. The request carries the app version in its User-Agent
+header and no device identifier. If a newer release exists, the APK and
+`SHA256SUMS.txt` are downloaded from GitHub only after you confirm. The APK is
+checked against the published SHA-256 checksum, its package name and version,
+and then Android verifies its signature during installation.
 
 ## License
 

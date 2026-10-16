@@ -72,10 +72,6 @@
     <string name="local_blocklist_download_desc">Blocklisten herunterladen (ca. 60 MB), um diese Funktion zu nutzen?</string>
     <string name="dns_proxy_remove_success">DNS-Proxy gelöscht.</string>
     <string name="configure_dns_connected_doh_status">DNS über HTTPS</string>
-    <string name="download_update_dialog_title">Neues Update!</string>
-    <string name="download_update_dialog_message">Eine neue Version der App steht auf der Website zum Download bereit. Möchtest du fortfahren?</string>
-    <string name="download_update_dialog_message_ok_title">Aktuell!</string>
-    <string name="download_update_dialog_message_ok">Du nutzt bereits die neueste Version.</string>
     <string name="app_mode_firewall">Firewall</string>
     <string name="info_dialog_copy_toast_msg">IP-Adresse kopiert.</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;: Verhindert, dass eine App eine Verbindung zum Internet herstellt. \n &lt;u&gt;#2&lt;/u&gt;: Verhindert, dass eine App eine Verbindung zu einer bestimmten IP-Adresse herstellt. \n &lt;u&gt;#3&lt;/u&gt;: Blockiert alle Verbindungen, wenn das Gerät gesperrt ist (Universelle Firewall). \n &lt;u&gt;#4&lt;/u&gt;: Blockiert alle nicht genutzten Apps (Universelle Firewall). \n &lt;u&gt;#5&lt;/u&gt;: Blockiert Verbindungen, wenn die Quell-App unbekannt ist (Universelle Firewall). \n &lt;u&gt;#6&lt;/u&gt;: Blockiert den gesamten UDP-Datenverkehr mit Ausnahme von DNS (Universelle Firewall). \n &lt;u&gt;#7&lt;/u&gt;: Blockiert Verbindungen, wenn DNS umgangen wird (Universelle Firewall).</string>
@@ -105,10 +101,6 @@
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status">DNS-Proxy</string>
     <string name="http_proxy_dialog_heading">HTTP(S)-CONNECT-Proxy festlegen</string>
-    <string name="download_update_dialog_failure_title">Etwas ist schiefgelaufen!</string>
-    <string name="download_update_dialog_failure_message">Entweder sind unsere Server ausgefallen oder die Verbindung konnte nicht hergestellt werden. Bitte versuche es nach einiger Zeit erneut.</string>
-    <string name="download_update_dialog_trylater_title">Kann im Moment nicht aktualisieren</string>
-    <string name="download_update_dialog_trylater_message">Das Update kann im Moment nicht ausgeführt werden, bitte versuche es später noch einmal.</string>
     <string name="search_firewall_all_apps"><font size="12">Apps suchen</font></string>
     <string name="search_universal_ips"><font size="12">IPs suchen</font></string>
     <string name="search_custom_domains"><font size="12">Domänennamen suchen</font></string>
@@ -481,8 +473,6 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s andere Anwendung(en)</string>
     <string name="ctbs_block_other_apps">Die für %1$s geltenden Regeln gelten auch für %2$s andere Apps</string>
     <string name="ctbs_dialog_negative_btn">Zurück</string>
-    <string name="hs_download_positive_default">OK</string>
-    <string name="hs_download_negative_default">Später erinnern</string>
     <string name="univ_firewall_rule_1">Alle Apps blockieren, wenn das Gerät gesperrt ist</string>
     <string name="univ_firewall_rule_2">Alle nicht verwendeten Apps blockieren</string>
     <string name="univ_firewall_rule_3">Blockieren, wenn die Quell-App unbekannt ist</string>
@@ -516,10 +506,8 @@
     <string name="dns_crypt_connection_failure">Fehler beim Verbinden mit dem DNSCrypt-Server.</string>
     <string name="network_log_app_name_unnamed">Unbenannt (%1$s)</string>
     <string name="dns_proxy_connection_failure">Fehler beim Verbinden mit dem DNS-Proxyserver.</string>
-    <string name="update_complete_action_snack">NEU STARTEN</string>
     <string name="settings_local_blocklist_in_use">%1$s verwendete Sperrlisten</string>
     <string name="settings_local_blocklist_dialog_positive">Downloads</string>
-    <string name="update_complete_snack_message">Neue Version heruntergeladen.</string>
     <string name="univ_delete_firewall_dialog_title">Alle IP-Regeln löschen?</string>
     <string name="univ_delete_firewall_dialog_message">Das Löschen dieser Regeln würde es jeder App ermöglichen, sich mit den derzeit blockierten IPs zu verbinden.</string>
     <string name="dns_proxy_dialog_message_no_app">IP-Adresse: %1$s\n\nPort-Nummer: %2$s</string>

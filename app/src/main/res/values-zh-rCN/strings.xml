@@ -53,7 +53,6 @@
     <string name="notification_action_pause_vpn">暂停</string>
     <string name="hybrid_mode_info_title">DNS + 防火墙</string>
     <string name="always_on_dialog_neutral">设置</string>
-    <string name="download_update_dialog_trylater_title">现在无法更新</string>
     <string name="settings_socks5_heading">设置 SOCKS5 代理</string>
     <string name="orbot">Orbot</string>
     <string name="orbot_socks5">仅 TCP 代理</string>
@@ -150,7 +149,6 @@
     <string name="dns_crypt_url_remove_dialog_message">于已保存的配置中删除此 DNSCrypt 解析服务。</string>
     <string name="local_blocklist_download">下载屏蔽名单</string>
     <string name="blocklist_update_check_failure">似乎有什么出错了。请稍后重试！</string>
-    <string name="download_update_dialog_message_ok_title">已为最新！</string>
     <string name="settings_proxy_header">代理</string>
     <string name="settings_http_proxy_error_text2">无效端口</string>
     <string name="settings_dns_proxy_dialog_username">帐号</string>
@@ -196,7 +194,6 @@
     <string name="local_blocklist_download_desc">是否下载屏蔽名单（约 60 MB ）来使用此功能？</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status">DNS 代理</string>
-    <string name="download_update_dialog_failure_title">出了点问题！</string>
     <string name="search_rethinkplus_file_tag"><font size="12">搜索屏蔽名单</font></string>
     <string name="settings_lock_down_mode_desc">某些选项在 VPN 处于闭关模式时不可用。<u>请移步 VPN 设置</u>。</string>
     <string name="orbot_status_arg_3">DNS 与 TCP</string>
@@ -208,7 +205,6 @@
     <string name="dc_rethink_dns_radio">Rethink DNS</string>
     <string name="dc_check_update_heading">屏蔽名单更新时提示</string>
     <string name="cd_custom_dns_proxy_name_default">代理</string>
-    <string name="hs_download_negative_default">稍后提醒</string>
     <string name="univ_accessibility_dialog_negative">拒绝</string>
     <string name="dns_proxy_name">代理名称</string>
     <string name="fapps_metered_unblock_dialog_message">允许 <i>所列</i> 应用的按流量计费（移动）网络连接吗？</string>
@@ -217,8 +213,6 @@
     <string name="ada_app_bypass_univ">无条件放行</string>
     <string name="dns_crypt_custom_url_remove_dialog_title">是否删除 DNSCrypt 解析服务？</string>
     <string name="dns_proxy_remove_success">DNS 代理已删除。</string>
-    <string name="download_update_dialog_message">已有新版本可于网站下载。您是否想要继续？</string>
-    <string name="download_update_dialog_trylater_message">现在无法更新，请稍后重试。</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
     <string name="orbot_stop_dialog_message">DNS Control 已停止向 Orbot 转发连接，但 Orbot 可能仍于后台运行。</string>
     <string name="orbot_install_dialog_positive">安装</string>
@@ -316,7 +310,6 @@
     <string name="brbs_backup_complete_toast">备份完毕</string>
     <string name="status_protected_with_http">受 HTTP 代理保护</string>
     <string name="firewall_mode_info_title">防火墙</string>
-    <string name="download_update_dialog_title">更新可用！</string>
     <string name="orbot_stop_dialog_neutral">更改 DNS</string>
     <string name="orbot_install_dialog_message">Orbot 将 Tor 的特性与功能带入 Android 。</string>
     <string name="settings_dns_proxy_dialog_header">设置 SOCKS5 代理</string>
@@ -350,7 +343,6 @@
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="cd_dns_crypt_error_text_1">印戳不能为空</string>
     <string name="dns_query_latency">%1$sms</string>
-    <string name="update_complete_snack_message">已下载新版本。</string>
     <string name="accessibility_failure_toast">DNS Control 的无障碍服务已停止或崩溃。现已不再拦截后台应用。</string>
     <string name="firewall_rule_no_rule">无规则</string>
     <string name="firewall_rule_exempt_app_bypass_univ">已绕行应用</string>
@@ -389,7 +381,6 @@
     <string name="exclude">排除</string>
     <string name="status_dns_error">DNS 错误</string>
     <string name="notification_action_dns_firewall_mode">DNS + 防火墙</string>
-    <string name="download_update_dialog_message_ok">您已安装最新版本。</string>
     <string name="app_mode_dns_firewall">DNS 与防火墙（默认）</string>
     <string name="orbot_socks5_desc">将所有 TCP 连接转发至 Orbot 。</string>
     <string name="settings_dns_proxy_dialog_app">应用</string>
@@ -467,7 +458,6 @@
     <string name="always_on_dialog_stop_message">永久连接的 VPN 已对 DNS Control 启用。您是否仍想要停止 DNS Control ？</string>
     <string name="dns_crypt_relay_remove_dialog_message">于已保存的配置中删除此 DNSCrypt 中继。</string>
     <string name="dns_proxy_remove_dialog_title">是否删除此 DNS 代理？</string>
-    <string name="download_update_dialog_failure_message">可能是我们的服务器下线了，或者是网络问题。请稍后重试。</string>
     <string name="settings_ip_network_heading">选择 IP 版本</string>
     <string name="hsf_exclude_error">VPN 闭关模式下无法排除</string>
     <string name="settings_https_desc">将连接转发至 HTTP(S) CONNECT 端点。</string>
@@ -486,7 +476,6 @@
     <string name="cd_custom_doh_url_name">DoH %1$s</string>
     <string name="settings_custom_downloader_heading">使用应用内下载器</string>
     <string name="settings_notification_dialog_option_2">\nDNS / DNS + 防火墙：\n显示两个按钮来快速在省电的 DNS 模式和普通的 DNS + 防火墙模式间切换。</string>
-    <string name="hs_download_positive_default">确定</string>
     <string name="firewall_rule_block_app_unmetered_desc"><![CDATA[一项用户定义的防火墙规则在此<i>应用</i>尝试连接至<i>非计费网络</i>时将其拦截。<br><br>若需更改，请移步<i>所有应用</i>选项卡。]]></string>
     <string name="settings_protocol_translation_dns_inactive">切换至 DNS 或 DNS + 防火墙模式以启用此设置</string>
     <string name="dc_block_heading">规则</string>
@@ -505,7 +494,6 @@
     <string name="rules_load_failure_reload">刷新</string>
     <string name="hs_btm_sheet_lock_down">无法在 VPN 处于<i>锁定模式</i>时更换模式。轻触以&lt;u&gt;编辑 VPN 设置&lt;/u&gt;。</string>
     <string name="fapps_filter_parent_installed">已安装</string>
-    <string name="update_complete_action_snack">重启</string>
     <string name="firewall_rule_block_unmetered">非计费网络（ WiFi ）</string>
     <string name="accessibility_notification_content">DNS Control 的无障碍服务已停止或崩溃。现已不再拦截后台应用。轻触以重新启用。</string>
     <string name="firewall_rule_univ_block_metered">计费网络（全局）</string>

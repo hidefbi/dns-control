@@ -66,15 +66,7 @@
     <string name="refresh_complete"><!-- use dc_refresh_toast --> 應用程式列表已重新同步完畢。</string>
     <string name="blocklist_update_check_failure">似乎有什麼出錯了。請稍後重試！</string>
     <string name="http_proxy_dialog_heading">設定 HTTP(S) 代理</string>
-    <string name="download_update_dialog_title">更新可用！</string>
-    <string name="download_update_dialog_message">已有新版本可於網站下載。您是否想要繼續？</string>
-    <string name="download_update_dialog_message_ok_title">已為最新！</string>
-    <string name="download_update_dialog_message_ok">您已安裝最新版本。</string>
     <string name="download_update_dialog_message_success">攔截清單下載成功。</string>
-    <string name="download_update_dialog_failure_title">似乎有什麼出錯了！</string>
-    <string name="download_update_dialog_failure_message">可能是我們的伺服器下線了，或者是網路問題。請稍後重試。</string>
-    <string name="download_update_dialog_trylater_title">現在無法更新</string>
-    <string name="download_update_dialog_trylater_message">現在無法更新，請稍後重試。</string>
     <string name="search_firewall_all_apps"><font size="12">以 UID / 應用名搜尋應用程式</font></string>
     <string name="search_universal_ips"><font size="12">搜尋 IP</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">搜尋攔截清單</font></string>
@@ -434,8 +426,6 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s 個其他應用程式</string>
     <string name="ctbs_block_other_apps">應用於 %1$s 的規則亦會應用於其他 %2$s 個應用程式</string>
     <string name="ctbs_dialog_negative_btn">返回</string>
-    <string name="hs_download_positive_default">確定</string>
-    <string name="hs_download_negative_default">稍後提醒</string>
     <string name="univ_firewall_rule_1">裝置鎖定時攔截所有應用程式</string>
     <string name="univ_firewall_rule_2">攔截任何未使用的應用程式</string>
     <string name="univ_firewall_rule_3">攔截未知應用程式</string>
@@ -499,8 +489,6 @@
     <string name="dns_proxy_connection_failure">連線至 DNS 代理伺服器時出錯。</string>
     <string name="system_dns_connection_failure">無法確定目前的 DNS 伺服器</string>
     <string name="copy_clipboard_label">URL</string>
-    <string name="update_complete_snack_message">已下載新版本。</string>
-    <string name="update_complete_action_snack">重啟</string>
     <string name="settings_local_blocklist_in_use">正使用 %1$s 個攔截清單</string>
     <string name="settings_local_blocklist_dialog_positive">下載</string>
     <string name="settings_local_blocklist_version">版本： v%1$s</string>

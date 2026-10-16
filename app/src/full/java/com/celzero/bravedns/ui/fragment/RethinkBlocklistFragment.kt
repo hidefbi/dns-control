@@ -124,9 +124,6 @@ class RethinkBlocklistFragment :
         fun newInstance() = RethinkBlocklistFragment()
 
         const val RETHINK_BLOCKLIST_TYPE = "RethinkBlocklistType"
-        const val RETHINK_BLOCKLIST_NAME = "RethinkBlocklistName"
-        const val RETHINK_BLOCKLIST_URL = "RethinkBlocklistUrl"
-
         private val selectedFileTags: MutableLiveData<MutableSet<Int>> = MutableLiveData()
 
         fun updateFileTagList(fileTags: Set<Int>) {

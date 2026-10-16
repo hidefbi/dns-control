@@ -112,20 +112,13 @@
     <string name="local_blocklist_download_desc" translatable="true">Pobierz listy zablokowanych (około 60MB), aby korzystać z tej funkcji?</string>
     <string name="configure_dns_connected_doh_status" translatable="true">DNS przez HTTPS</string>
     <string name="http_proxy_dialog_heading" translatable="true">Ustawienie HTTP(S) CONNECT Proxy</string>
-    <string name="download_update_dialog_title" translatable="true">Nowa aktualizacja!</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Aktualizacja nie może zostać wykonana teraz, spróbuj ponownie później.</string>
     <string name="search_universal_ips" translatable="true"><font size="12"> Wyszukiwanie adresów IP</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Wyszukaj nazwy domen</font></string>
     <string name="search_rethinkplus_file_tag" translatable="true">&lt;rozmiar czcionki=\"12\"&gt;Listy blokowania wyszukiwania&lt;/font&gt;</string>
-    <string name="download_update_dialog_message" translatable="true">Nowa wersja aplikacji jest dostępna do pobrania ze strony internetowej. Czy chcesz kontynuować?</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Albo nasze serwery są wyłączone, albo nie można nawiązać połączenia. Spróbuj ponownie za jakiś czas.</string>
     <string name="info_dialog_copy_toast_msg" translatable="true">Zkopiowano adres IP.</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">Skopiowano URL</string>
     <string name="blocklist_update_check_failure" translatable="true">Coś poszło nie tak. Spróbuj ponownie później!</string>
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Aktualny!</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Nie można pobrać aktualizacji</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Coś poszło nie tak!</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12"> Wyszukaj aplikacje według uid, name</font></string>
     <string name="orbot_http" translatable="true">HTTP proxy</string>
     <string name="orbot_bs_status_2" translatable="true">Serwer proxy HTTP jest ustawiony.</string>
@@ -144,7 +137,6 @@
     <string name="lbl_action_required" translatable="true">Wymagane działanie</string>
     <string name="lbl_ip_rules" translatable="true">Reguły IP</string>
     <string name="lbl_domain_rules" translatable="true">Reguły Domen</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Jesteś już na najnowszej wersji.</string>
     <string name="download_update_dialog_message_success" translatable="true">Pobrano listy blokowania.</string>
     <string name="relative_time_yesterday" translatable="true">Wczoraj</string>
     <string name="settings_ip_network_heading" translatable="true">Wybierz wersję IP</string>
@@ -466,7 +458,6 @@
     <string name="copy_clipboard_label" translatable="true">URL</string>
     <string name="firewall_rule_block_http" translatable="true">Niezabezpieczony HTTP</string>
     <string name="firewall_rule_global_lockdown" translatable="true">Lockdown</string>
-    <string name="update_complete_action_snack" translatable="true">URUCHOM PONOWNIE</string>
     <string name="firewall_rule_block_app" translatable="true">Aplikacja zablokowana</string>
     <string name="firewall_rule_bypass_dns_firewall" translatable="true">Pominięta aplikacja</string>
     <string name="firewall_rule_block_app_exception" translatable="true">Błąd</string>
@@ -513,7 +504,6 @@
     <string name="ctbs_app_info_not_available_toast" translatable="true">Nie znaleziono strony z ustawieniami aplikacji</string>
     <string name="univ_firewall_rule_1" translatable="true">Blokowanie wszystkich aplikacji, gdy urządzenie jest zablokowane</string>
     <string name="univ_firewall_rule_7" translatable="true">Blokowanie IPv4 w IPv6 (eksperymentalnie)</string>
-    <string name="hs_download_positive_default" translatable="true">ok</string>
     <string name="univ_ip_delete_dialog_positive" translatable="true">Usuń wszystko</string>
     <string name="univ_ip_delete_toast_success" translatable="true">Usunięto wszystkie reguły IP</string>
     <string name="univ_delete_firewall_dialog_title" translatable="true">Czy usunąć wszystkie reguły IP?</string>
@@ -608,7 +598,6 @@
     <string name="firewall_status_allow" translatable="true">dozwolony</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">DNS-over-HTTPS (DoH)</string>
     <string name="fapps_info_dialog_message" translatable="true">Zablokuj aplikacjom możliwość łączenia się z Internetem. Ograniczenie dostępu do Internetu pomaga zapobiegać nieuzasadnionemu wykorzystaniu danych, a także oszczędzać baterię.</string>
-    <string name="update_complete_snack_message" translatable="true">Pobrano nową wersję.</string>
     <string name="brbs_backup_dialog_failure_message" translatable="true">Nie można wykonać kopii zapasowej. Spróbuj ponownie?</string>
     <string name="brbs_backup_dialog_failure_title" translatable="true">Tworzenie kopii zapasowej nie powiodło się</string>
     <string name="brbs_restore_dialog_title" translatable="true">Przywróć kopię zapasową</string>
@@ -616,7 +605,6 @@
     <string name="dc_dns_leaks_desc" translatable="true">Po włączeniu, DNS Control przechwytuje wszystkie pakiety na porcie 53 i przekazuje je do ustawionego przez użytkownika punktu końcowego DNS</string>
     <string name="univ_firewall_rule_5" translatable="true">Blokuj, gdy DNS jest omijany</string>
     <string name="brbs_backup_dialog_title" translatable="true">Zrób kopię zapasową</string>
-    <string name="hs_download_negative_default" translatable="true">Przypomnij mi później</string>
     <string name="dns_crypt_connection_failure" translatable="true">Błąd połączenia z serwerem DNSCrypt.</string>
     <string name="firewall_rule_block_ip_univ_desc" translatable="true"><![CDATA[</i>Reguła firewalla ustawiona przez użytkownika zablokowała docelowe IP / port <i>.<br/><br/> Aby to zmienić przejdź do zakładki <i>Universal</i>.]]></string>
     <string name="firewall_rule_foreground_desc" translatable="true"><![CDATA[To połączenie zostało zablokowane, ponieważ aplikacja źródłowa <i>nie była na pierwszym planie</i>.<br/><br/> Aby zmienić to zachowanie przejdź do zakładki <i>Universal</i>.]]></string>

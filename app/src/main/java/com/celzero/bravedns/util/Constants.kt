@@ -27,12 +27,7 @@ class Constants {
         // rethink base url (modified from download to dl on v053l)
         const val DOWNLOAD_BASE_URL = "https://hidefbi.github.io/rules-old"
 
-        // base url for ipinfo download
-        const val IP_INFO_BASE_URL = "http://127.0.0.1:9/ip/"
-
         const val FILE_TAG = "filetag.json"
-
-        const val ALPHA_UPDATE_CHECK_URL = "https://github.com/celzero/rethink-app/actions/workflows/nightly.yml"
 
         // file names which are downloaded as part of on-device blocklists
         val ONDEVICE_BLOCKLIST_FILE_TAG = File.separator + FILE_TAG
@@ -45,29 +40,14 @@ class Constants {
         val ONDEVICE_GEOIP_IPV4 = File.separator + "dbip.v4"
         val ONDEVICE_GEOIP_IPV6 = File.separator + "dbip.v6"
 
-        // url to check if there is update available for on-device blocklist
-        // url parameter used in configure blocklist webview
-        private const val RETHINK_BLOCKLIST_CONFIGURE_URL_PARAMETER = "tstamp="
-
         // query part
         const val ONDEVICE_BLOCKLIST_UPDATE_CHECK_QUERYPART_1 = "update"
         const val ONDEVICE_BLOCKLIST_UPDATE_CHECK_QUERYPART_2 = "blocklists"
 
         const val RETHINK_PACKAGE = "com.celzero.bravedns"
 
-        // url to check if there is update available for on-device blocklist
-        const val ONDEVICE_IPDB_UPDATE_CHECK_URL =
-            "$DOWNLOAD_BASE_URL/update/geoip?$RETHINK_BLOCKLIST_CONFIGURE_URL_PARAMETER"
-
         // const val ONDEVICE_IPDB_DOWNLOAD_URL4 = "$DOWNLOAD_BASE_URL/geoip?v4"
         // const val ONDEVICE_IPDB_DOWNLOAD_URL6 = "$DOWNLOAD_BASE_URL/geoip?v6"
-
-        // url parameter, part of update check for on-device blocklist
-        const val ONDEVICE_BLOCKLIST_UPDATE_CHECK_PARAMETER_VCODE = "vcode="
-
-        // url to check if there is app-update is available (this is for website version only)
-        const val RETHINK_APP_UPDATE_CHECK =
-            "$DOWNLOAD_BASE_URL/update/app?$ONDEVICE_BLOCKLIST_UPDATE_CHECK_PARAMETER_VCODE"
 
         // The version tag value(response) for the update check (both on-device and app update)
         // TODO: have two different response versions for blocklist update and app update
@@ -133,8 +113,6 @@ class Constants {
                 OnDeviceBlocklistsMetadata("index.json.sig", ONDEVICE_BLOCKLIST_FILE_INDEX_SIG)
             )
 
-        const val FILETAG_TEMP_DOWNLOAD_URL = "blocklists"
-
         // url to download the rethinkdns apk file
 
         // base-url for rethinkdns
@@ -143,9 +121,6 @@ class Constants {
 
 
         // rethinkdns sponsor link
-
-        // base-url for bravedns
-        const val BRAVEDNS_DOMAIN = "bravedns.com"
 
         // base-url for rethinkdns
         const val RETHINKDNS_DOMAIN = "rethinkdns.com"
@@ -174,9 +149,6 @@ class Constants {
         // constants used as part of intent to load the viewpager's screen
         const val VIEW_PAGER_SCREEN_TO_LOAD = "view_pager_screen"
 
-        // constants used as part of intent to load the search query
-        const val SEARCH_QUERY = "search_query"
-
         // default custom http proxy port number
         const val HTTP_PROXY_PORT = 8118
 
@@ -191,9 +163,6 @@ class Constants {
 
         // constants to send type of proxy: for http
         const val HTTP = "HTTP"
-
-        // data-time format used as part of network log adapter
-        const val DATE_FORMAT_PATTERN = "HH:mm:ss"
 
         // constants generated as part of com.celzero.bravedns.BuildConfig.FLAVORS
         // (playstore/fdroid/website)
@@ -262,9 +231,6 @@ class Constants {
         // special port number not assigned to any app
         const val UNSPECIFIED_PORT = 0
 
-        // IPv6 loopback address
-        const val LOOPBACK_IPV6 = "::1"
-
         // Invalid port number
         const val INVALID_PORT = -1
 
@@ -277,16 +243,8 @@ class Constants {
         // To initiate / reset the timestamp in milliseconds
         const val INIT_TIME_MS = 0L
 
-        // various time formats used in app
-        const val TIME_FORMAT_1 = "HH:mm:ss"
         const val TIME_FORMAT_2 = "yy.MM (dd)"
-        const val TIME_FORMAT_3 = "dd MMMM yyyy, HH:mm:ss"
         const val TIME_FORMAT_4 = "dd/MM/yy, HH:mm:ss"
-        const val TIME_FORMAT_5 = "HH:mm:ss.SSS"
-
-        // play services package name
-        const val PKG_NAME_PLAY_STORE = "com.android.vending"
-
         // max endpoint
         const val MAX_ENDPOINT = "max"
 
@@ -318,15 +276,9 @@ class Constants {
         // list still compiles; it will just render an empty list.
         val DEFAULT_DNS_LIST: List<DefaultDnsServer> = emptyList()
 
-        // max logs to retrieve from the database, used in the log fragment
-        const val MAX_LOGS = 35000
-
         // wireguard folder name
         const val WIREGUARD_FOLDER_NAME = "wireguard"
 
-
-        // constant used to identify empty package names in dns log and connection tracker
-        const val EMPTY_PACKAGE_NAME = "empty_package_name"
 
         val ip4probes =
             listOf(

@@ -157,9 +157,6 @@
     <string name="configure_dns_connected_doh_status" translatable="true">DNS cez HTTPS</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS Proxy</string>
     <string name="http_proxy_dialog_heading" translatable="true">Nastav HTTP(S) CONNECT Proxy</string>
-    <string name="download_update_dialog_title" translatable="true">Nová aktualizácia!</string>
-    <string name="download_update_dialog_message" translatable="true">Nová verzia aplikácie je k dispozícii na stiahnutie z webovej stránky. Chcete pokračovať?</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Aktuálny!</string>
     <string name="dns_act_configure_tab" translatable="true">Nastaviť</string>
     <string name="univ_firewall_dialog_title" translatable="true">Vymazať IP Pravidlo?</string>
     <string name="univ_firewall_dialog_message" translatable="true">Odstránenie tohto pravidla by umožnilo akejkoľvek aplikácii pripojiť sa k tejto IP adrese. Chcete pokračovať?</string>
@@ -168,12 +165,7 @@
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="blocklist_update_check_failure" translatable="true">Niečo sa pokazilo. Skúste to znova neskôr!</string>
     <string name="http_proxy_dialog_desc" translatable="true">Nastavte adresu URL formulára, &lt;protokol&gt;://&lt;používateľské meno&gt;:&lt;heslo&gt;@&lt;doména-alebo-ip&gt;:&lt;port&gt;&lt;cesta&gt;. Príklad: http://proxy.example.com:8080/</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Už ste na najnovšej verzií.</string>
     <string name="download_update_dialog_message_success" translatable="true">Blok list stiahnutý úspešné.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Niečo sa pokazilo</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Buď naše servery sú dole alebo pripojenie nemôže byť stanovená. Skúste prosím znova po nejakom čase.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Teraz sa nedá aktualizovať</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Aktualizácie nie je možné vykonať hneď, skúste to znova neskôr.</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12"> Hľadať aplikácie uid, názov</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12"> Hľadať IP adresy</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Hľadať názvy domén</font></string>

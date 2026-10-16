@@ -258,11 +258,6 @@ object IpRulesManager : KoinComponent {
         return updateRule(c)
     }
 
-    suspend fun updateProxyCC(c: CustomIp, proxyCC: String) {
-        c.proxyCC = proxyCC
-        return updateRule(c)
-    }
-
     fun hasRule(uid: Int, ipstr: String, port: Int): IpRuleStatus {
         val pair = hostAddr(ipstr, port)
         val ipNetPort = joinIpNetPort(normalize(pair.first) + pair.second)
@@ -536,18 +531,6 @@ object IpRulesManager : KoinComponent {
     suspend fun isIpRuleExists(uid: Int, ipstr: IPAddress, port: Int = 0): Boolean {
         val normalizedIp = padAndNormalize(ipstr)
         return db.getCustomIpDetail(uid, normalizedIp, port) != null
-    }
-
-    suspend fun mkCustomIp(uid: Int, ipAddress: String, port: Int = UNSPECIFIED_PORT): CustomIp {
-        return makeCustomIp(
-            uid = uid,
-            ipAddress = ipAddress,
-            port = port,
-            status = IpRuleStatus.NONE,
-            wildcard = false,
-            proxyId = "",
-            proxyCC = ""
-        )
     }
 
     private fun makeCustomIp(

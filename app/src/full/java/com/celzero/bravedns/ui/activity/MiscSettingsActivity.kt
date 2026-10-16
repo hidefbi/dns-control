@@ -36,6 +36,7 @@ import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.Toast
+import java.io.File
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -51,6 +52,7 @@ import androidx.core.os.LocaleListCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.celzero.bravedns.BuildConfig
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.EventSource
@@ -65,6 +67,7 @@ import com.celzero.bravedns.ui.LauncherSwitcher
 import com.celzero.bravedns.ui.activity.AppLockActivity.Companion.APP_LOCK_ALIAS
 import com.celzero.bravedns.ui.activity.AppLockActivity.Companion.HOME_ALIAS
 import com.celzero.bravedns.ui.bottomsheet.BackupRestoreBottomSheet
+import com.celzero.bravedns.update.AppUpdateChecker
 import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.FirebaseErrorReporting
 import com.celzero.bravedns.util.FirebaseErrorReporting.TOKEN_LENGTH
@@ -85,6 +88,7 @@ import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.handleFrostEffectIfNeeded
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.xmlpull.v1.XmlPullParser
@@ -180,8 +184,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
     private fun initView() {
 
         if (isFdroidFlavour()) {
-            b.settingsActivityCheckUpdateRl.visibility = View.GONE
-            b.dividerCheckUpdate.visibility = View.GONE
             // Hide Firebase error reporting for F-Droid variant
             b.settingsFirebaseErrorReportingRl.visibility = View.GONE
             b.dividerAutoStart.visibility = View.GONE
@@ -191,10 +193,6 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             b.dividerAutoStart.visibility = View.VISIBLE
             // Firebase error reporting
             b.settingsFirebaseErrorReportingSwitch.isChecked = persistentState.firebaseErrorReportingEnabled
-            b.settingsActivityCheckUpdateRl.visibility = View.VISIBLE
-            b.dividerCheckUpdate.visibility = View.VISIBLE
-            // check for app updates
-            b.settingsActivityCheckUpdateSwitch.isChecked = persistentState.checkForAppUpdate
         }
 
         // add ipInfo inc to the desc
@@ -384,14 +382,8 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
 
     private fun setupClickListeners() {
         b.settingsActivityCheckUpdateRl.setOnClickListener {
-            b.settingsActivityCheckUpdateSwitch.isChecked =
-                !b.settingsActivityCheckUpdateSwitch.isChecked
-        }
-
-        b.settingsActivityCheckUpdateSwitch.setOnCheckedChangeListener { _: CompoundButton,
-                                                                         b: Boolean ->
-            persistentState.checkForAppUpdate = b
-            logEvent("Check for app update set to $b")
+            enableAfterDelay(CLICK_DELAY_SHORT_MS, b.settingsActivityCheckUpdateRl)
+            checkForAppUpdate()
         }
 
 
@@ -501,6 +493,120 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
             logEvent("Tombstone apps set to $isChecked")
         }
 
+    }
+
+    private fun checkForAppUpdate() {
+        Toast.makeText(this, R.string.update_check_checking, Toast.LENGTH_SHORT).show()
+        lifecycleScope.launch {
+            val result = withContext(Dispatchers.IO) { AppUpdateChecker.checkLatest() }
+            if (isFinishing) return@launch
+            when (result) {
+                is AppUpdateChecker.CheckResult.Available -> showUpdateAvailableDialog(result.release)
+                is AppUpdateChecker.CheckResult.UpToDate -> showInfoDialog(
+                    R.string.update_check_uptodate_title,
+                    getString(R.string.update_check_uptodate_message, BuildConfig.VERSION_NAME)
+                )
+                is AppUpdateChecker.CheckResult.Failed -> showInfoDialog(
+                    R.string.update_check_failed_title,
+                    getString(R.string.update_check_failed_message)
+                )
+            }
+        }
+    }
+
+    private fun showUpdateAvailableDialog(release: AppUpdateChecker.Release) {
+        val notes = release.notes.ifBlank { getString(R.string.update_check_no_notes) }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.update_check_available_title)
+            .setMessage(
+                getString(
+                    R.string.update_check_available_message,
+                    release.tag,
+                    BuildConfig.VERSION_NAME,
+                    notes
+                )
+            )
+            .setPositiveButton(R.string.update_check_download_install) { dialog, _ ->
+                dialog.dismiss()
+                downloadAndInstall(release)
+            }
+            .setNegativeButton(R.string.update_check_later) { dialog, _ -> dialog.dismiss() }
+            .show()
+    }
+
+    private fun downloadAndInstall(release: AppUpdateChecker.Release) {
+        var cancelled = false
+        val progress = AlertDialog.Builder(this)
+            .setTitle(R.string.update_check_title)
+            .setMessage(getString(R.string.update_download_progress, 0))
+            .setCancelable(true)
+            .setNegativeButton(android.R.string.cancel) { dialog, _ ->
+                cancelled = true
+                dialog.dismiss()
+            }
+            .setOnCancelListener { cancelled = true }
+            .create()
+        progress.show()
+
+        lifecycleScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                AppUpdateChecker.download(
+                    this@MiscSettingsActivity,
+                    release,
+                    shouldStop = { cancelled },
+                    onProgress = { percent ->
+                        runOnUiThread {
+                            if (progress.isShowing) {
+                                progress.setMessage(getString(R.string.update_download_progress, percent))
+                            }
+                        }
+                    }
+                )
+            }
+            if (progress.isShowing) progress.dismiss()
+            if (cancelled || isFinishing) return@launch
+            when (result) {
+                is AppUpdateChecker.DownloadResult.Ready -> installDownloadedApk(result.apk)
+                is AppUpdateChecker.DownloadResult.Failed -> showInfoDialog(
+                    R.string.update_check_failed_title,
+                    getString(R.string.update_download_failed_message, result.reason)
+                )
+            }
+        }
+    }
+
+    private fun installDownloadedApk(apk: File) {
+        if (!AppUpdateChecker.canRequestInstall(this)) {
+            AlertDialog.Builder(this)
+                .setTitle(R.string.update_install_permission_title)
+                .setMessage(R.string.update_install_permission_message)
+                .setPositiveButton(R.string.update_install_open_settings) { dialog, _ ->
+                    dialog.dismiss()
+                    try {
+                        startActivity(AppUpdateChecker.unknownSourcesIntent())
+                    } catch (e: ActivityNotFoundException) {
+                        Logger.w(LOG_TAG_UI, "no settings screen for unknown sources: ${e.message}")
+                    }
+                }
+                .setNegativeButton(R.string.update_check_later) { dialog, _ -> dialog.dismiss() }
+                .show()
+            return
+        }
+        try {
+            startActivity(AppUpdateChecker.installIntent(this, apk))
+        } catch (e: Exception) {
+            Logger.e(LOG_TAG_UI, "unable to start the package installer: ${e.message}", e)
+            showInfoDialog(R.string.update_check_failed_title, getString(R.string.update_install_failed_message))
+        }
+    }
+
+    private fun showInfoDialog(titleRes: Int, message: String) {
+        if (isFinishing) return
+        AlertDialog.Builder(this)
+            .setTitle(titleRes)
+            .setMessage(message)
+            .setPositiveButton(android.R.string.ok, null)
+            .show()
     }
 
     private fun handleFirebaseErrorReportingToggle(isChecked: Boolean) {

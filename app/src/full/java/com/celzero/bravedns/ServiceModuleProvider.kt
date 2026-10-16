@@ -21,9 +21,7 @@ import com.celzero.bravedns.database.DatabaseModule
 import com.celzero.bravedns.download.AppDownloadManager
 import com.celzero.bravedns.scheduler.ScheduleManager
 import com.celzero.bravedns.scheduler.WorkScheduler
-import com.celzero.bravedns.service.AppUpdater
 import com.celzero.bravedns.service.ServiceModule
-import com.celzero.bravedns.util.Constants
 import com.celzero.bravedns.util.OrbotHelper
 import com.celzero.bravedns.viewmodel.ViewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -31,13 +29,6 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 private val rootModule = module { single<ContentResolver> { androidContext().contentResolver } }
-private val updaterModule = module {
-    single { NonStoreAppUpdater() }
-    single<AppUpdater> { get<NonStoreAppUpdater>() }
-}
-
-private val updaterModules = listOf(updaterModule)
-
 private val orbotHelperModule = module { single { OrbotHelper(androidContext(), get(), get()) } }
 
 private val appDownloadManagerModule = module {
@@ -55,7 +46,6 @@ val AppModules: List<Module> by lazy {
         addAll(ViewModelModule.modules)
         addAll(DataModule.modules)
         addAll(ServiceModule.modules)
-        addAll(updaterModules)
         add(schedulerModule)
         add(workerModule)
         add(orbotHelperModule)

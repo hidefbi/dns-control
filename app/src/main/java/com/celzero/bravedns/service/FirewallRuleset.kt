@@ -280,56 +280,6 @@ enum class FirewallRuleset(val id: String, val title: Int, val desc: Int, val ac
             }
         }
 
-        // TODO: Move ico to enum var like for label and desc
-        fun getRulesIcon(ruleId: String?): Int {
-            return when (ruleId) {
-                RULE0.id -> R.drawable.ic_whats_new
-                RULE1.id -> R.drawable.ic_app_info
-                RULE1B.id -> R.drawable.ic_auto_start
-                RULE1C.id -> R.drawable.ic_filter_error
-                RULE1D.id -> R.drawable.ic_firewall_wifi_on_grey
-                RULE1E.id -> R.drawable.ic_firewall_data_on_grey_alpha
-                RULE1F.id -> R.drawable.ic_univ_metered
-                RULE1G.id -> R.drawable.ic_firewall_lockdown_off
-                RULE1H.id -> R.drawable.ic_bypass_dns_firewall_off
-                RULE2.id -> R.drawable.ic_firewall_block_grey
-                RULE2B.id -> R.drawable.ic_bypass
-                RULE2C.id -> R.drawable.ic_bypass
-                RULE2D.id -> R.drawable.ic_bypass
-                RULE2E.id -> R.drawable.bs_dns_home_screen
-                RULE2F.id -> R.drawable.bs_dns_home_screen
-                RULE2G.id -> R.drawable.bs_dns_home_screen
-                RULE2H.id -> R.drawable.bs_dns_home_screen
-                RULE2I.id -> R.drawable.bs_dns_home_screen
-                RULE3.id -> R.drawable.ic_device_lock
-                RULE4.id -> R.drawable.ic_foreground
-                RULE5.id -> R.drawable.ic_unknown_app
-                RULE6.id -> R.drawable.ic_udp
-                RULE7.id -> R.drawable.ic_prevent_dns_leaks
-                RULE8.id -> R.drawable.bs_firewall_home_screen
-                RULE9.id -> R.drawable.bs_dns_home_screen
-                RULE9B.id -> R.drawable.ic_orbot
-                RULE10.id -> R.drawable.ic_http
-                RULE11.id -> R.drawable.ic_global_lockdown
-                RULE12.id -> R.drawable.ic_proxy_white
-                RULE13.id -> R.drawable.ic_proxy_white
-                RULE14.id -> R.drawable.bs_dns_home_screen
-                RULE15.id -> R.drawable.ic_bypass
-                RULE16.id -> R.drawable.ic_proxy_white
-                RULE17.id -> R.drawable.ic_proxy_white
-                RULE18.id -> R.drawable.ic_filter_error
-                else -> R.drawable.bs_dns_home_screen
-            }
-        }
-
-        fun getAllowedRules(): List<FirewallRuleset> {
-            return entries.filter { it.act == R.integer.allow }
-        }
-
-        fun getBlockedRules(): List<FirewallRuleset> {
-            return entries.filter { it.act != R.integer.allow }
-        }
-
         fun ground(rule: FirewallRuleset): Boolean {
             return rule.act != R.integer.allow
         }
@@ -340,34 +290,5 @@ enum class FirewallRuleset(val id: String, val title: Int, val desc: Int, val ac
                 rule.id == RULE8.id || rule.id == RULE9B.id
         }
 
-        fun isProxied(rule: FirewallRuleset): Boolean {
-            return rule.id == RULE12.id
-        }
-
-        fun isProxyError(rule: String?): Boolean {
-            if (rule == null) return false
-
-            return rule == RULE18.id
-        }
-
-        fun shouldShowHint(rule: String?): Boolean {
-            if (rule == null) return false
-
-            return when (rule) {
-                RULE1H.id -> true
-                RULE2B.id -> true
-                RULE2C.id -> true
-                RULE2F.id -> true
-                RULE2H.id -> true
-                RULE2I.id -> true
-                RULE7.id -> true
-                RULE8.id -> true
-                RULE9.id -> true
-                RULE9B.id -> true
-                RULE15.id -> true
-                RULE19.id -> true
-                else -> false
-            }
-        }
     }
 }

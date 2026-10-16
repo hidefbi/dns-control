@@ -122,13 +122,7 @@
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status">DNS 代理</string>
     <string name="http_proxy_dialog_heading">設定 HTTP(S) 代理</string>
-    <string name="download_update_dialog_title">有得更新！</string>
-    <string name="download_update_dialog_message">已經有新版本可以喺網站度下載。您係咪想繼續？</string>
-    <string name="download_update_dialog_message_ok_title">已經係最新！</string>
-    <string name="download_update_dialog_message_ok">您已經裝咗最新版本。</string>
     <string name="download_update_dialog_message_success">攔截清單下載成功。</string>
-    <string name="download_update_dialog_failure_title">似乎有啲咩出咗錯！</string>
-    <string name="download_update_dialog_trylater_title">而家冇得更新</string>
     <string name="search_firewall_all_apps"><font size="12">用 UID / 名搵 app</font></string>
     <string name="search_universal_ips"><font size="12">搵 IP</font></string>
     <string name="search_custom_domains"><font size="12">搵網域</font></string>
@@ -281,8 +275,6 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s 個其他應用程式</string>
     <string name="ctbs_block_other_apps">應用喺 %1$s 嘅規則亦會應用喺其他 %2$s 個應用程式</string>
     <string name="ctbs_dialog_negative_btn">返回</string>
-    <string name="hs_download_positive_default">確定</string>
-    <string name="hs_download_negative_default">陣間提醒</string>
     <string name="univ_firewall_rule_1">裝置鎖定時攔截所有應用程式</string>
     <string name="univ_firewall_rule_2">攔截任何唔係用緊嘅應用程式</string>
     <string name="univ_firewall_rule_3">攔截未知嘅應用程式</string>
@@ -340,8 +332,6 @@
     <string name="dns_proxy_connection_failure">連線去 DNS 代理伺服器時出錯。</string>
     <string name="system_dns_connection_failure">確定唔到而家嘅 DNS 伺服器</string>
     <string name="copy_clipboard_label">URL</string>
-    <string name="update_complete_snack_message">下載咗新版本。</string>
-    <string name="update_complete_action_snack">重啓</string>
     <string name="settings_local_blocklist_in_use">用緊 %1$s 份攔截清單</string>
     <string name="settings_local_blocklist_dialog_positive">下載</string>
     <string name="settings_local_blocklist_version">版本：v%1$s</string>
@@ -494,8 +484,6 @@
     <string name="always_on_dialog">呢部電話嘅「永久連線 VPN」已經開着咗。要開 DNS Control 嘅話，請去系統設定禁用咗「永久連線 VPN」先。</string>
     <string name="alert_firewall_accessibility_exception">打開唔到無障礙設定。請等陣再試過！</string>
     <string name="blocklist_update_check_failure">似乎出咗啲問題。請等陣再試過！</string>
-    <string name="download_update_dialog_failure_message">可能我哋嘅伺服器死咗，或者個網有啲事，請等陣再試過。</string>
-    <string name="download_update_dialog_trylater_message">而家更新唔到，請等陣再試過。</string>
     <string name="orbot_install_activity_error" translatable="false">似乎出咗啲問題，請等陣再試過</string>
     <string name="firewall_status_allow">放行咗</string>
     <string name="firewall_status_excluded">排除咗喺 DNS 同防火牆之外</string>

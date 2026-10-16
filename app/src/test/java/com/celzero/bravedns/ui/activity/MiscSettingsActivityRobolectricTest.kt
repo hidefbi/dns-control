@@ -112,7 +112,6 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
         every { mockPersistentState.tombstoneApps }                 returns false
         every { mockPersistentState.persistentNotification }        returns false
         every { mockPersistentState.firebaseErrorReportingEnabled } returns false
-        every { mockPersistentState.checkForAppUpdate }             returns false
         every { mockPersistentState.goLoggerLevel }                 returns 4L
         every { mockPersistentState.firebaseUserToken }             returns "test-token"
         every { mockPersistentState.firebaseUserTokenTimestamp }    returns System.currentTimeMillis()
@@ -626,7 +625,7 @@ class MiscSettingsActivityRobolectricTest : KoinTest {
                 assertEquals("Firebase RL must be GONE for fdroid", View.GONE, it.visibility)
             }
             activity.findViewById<View>(R.id.settings_activity_check_update_rl)?.let {
-                assertEquals("CheckUpdate RL must be GONE for fdroid", View.GONE, it.visibility)
+                assertEquals("CheckUpdate RL must be VISIBLE", View.VISIBLE, it.visibility)
             }
         } catch (e: Exception) {
             assertTrue("Resource error acceptable: ${e.message}", isExpectedResourceError(e))

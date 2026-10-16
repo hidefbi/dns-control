@@ -152,8 +152,6 @@
     <string name="settings_connectivity_checks" translatable="true">Извършете проверки за свързаност</string>
     <string name="settings_lock_down_mode_desc" translatable="true">Не може да се позволи заобикаляне или настройка на прокси сървъри, когато VPN работи в режим на блокиране. <u>Отидете в настройките на VPN</u>.</string>
     <string name="orbot" translatable="true">Орбот</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Нашите сървъри са повредени или връзката не може да бъде установена. Моля, опитайте отново след известно време.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Не мога да актуализирам точно сега</string>
     <string name="status_protected_with_wg" translatable="true">защитен с wireguard</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNS прокси</string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Търсене в списъци на блокове</font></string>
@@ -173,12 +171,7 @@
     <string name="local_blocklist_redownload_desc" translatable="true">Списъците с блокове в устройството вече са в най-новата версия v%1$s.</string>
     <string name="blocklist_update_check_not_required" translatable="true">Блоковите списъци вече са в последната версия.</string>
     <string name="http_proxy_dialog_heading" translatable="true">Задаване на HTTP(S) прокси</string>
-    <string name="download_update_dialog_title" translatable="true">Нова актуализация!</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">В крак с времето!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Вече сте с най-новата версия.</string>
     <string name="download_update_dialog_message_success" translatable="true">Изтеглянето на блоковия списък е успешно.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Нещо се обърка!</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Актуализацията не може да бъде изпълнена в момента, моля, опитайте отново по-късно.</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Търсене на приложения по uid, име</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">Търсене на IP адреси</font></string>
     <string name="search_proxy_add_apps" translatable="true">Търсене на приложения по име</string>
@@ -201,7 +194,6 @@
     <string name="orbot_stop_dialog_message" translatable="true">DNS Control е спрял да препраща връзки към Orbot, но Orbot може да работи във фонов режим.</string>
     <string name="refresh_complete" translatable="true"><!-- use dc_refresh_toast --> Повторното синхронизиране на списъка с приложения е завършено.</string>
     <string name="configure_dns_connected_doh_status" translatable="true">DNS през HTTPS</string>
-    <string name="download_update_dialog_message" translatable="true">Новата версия на приложението е достъпна за изтегляне от уебсайта. Искате ли да продължите?</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">защитен с wireguard и частен dns</string>
     <string name="public_key_copy_toast_msg" translatable="true">Копиран публичният ключ.</string>
     <string name="orbot_both" translatable="true">TCP + HTTP прокси</string>

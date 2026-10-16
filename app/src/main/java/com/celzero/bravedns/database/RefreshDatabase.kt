@@ -1074,23 +1074,6 @@ internal constructor(
     private val CATEGORY_STRING = "category/"
     private val CATEGORY_GAME_STRING = "GAME_" // All games start with this prefix
 
-    private fun parseAndExtractCategory(url: String): String? {
-        return try {
-            val text = Jsoup.connect(url).get()?.select("a[itemprop=genre]") ?: return null
-            val href = text.attr("abs:href")
-
-            if (href != null && href.length > 4 && href.contains(CATEGORY_STRING)) {
-                getCategoryTypeByHref(href)
-            } else {
-                PlayStoreCategory.OTHER.name
-            }
-        } catch (e: Exception) {
-            Logger.w(LOG_TAG, "Parse Category" + e.message, e)
-            //TODO handle error
-            PlayStoreCategory.OTHER.name
-        }
-    }
-
     private fun getCategoryTypeByHref(href: String): String? {
         val appCategoryType = href.substring(href.indexOf(CATEGORY_STRING) + CAT_SIZE, href.length)
         return if (appCategoryType.contains(CATEGORY_GAME_STRING)) {

@@ -293,17 +293,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         b.dcSplitDnsSwitch.isClickable = true
     }
 
-    private fun disableSplitDnsUi() {
-        b.dcSplitDnsTxt.alpha = 0.5f
-        b.dcSplitDnsDesc.alpha = 0.5f
-        b.dcSplitDnsIcon.alpha = 0.25f
-        b.dcSplitDnsRl.isEnabled = false
-        b.dcSplitDnsRl.isClickable = false
-        b.dcSplitDnsSwitch.isChecked = false
-        b.dcSplitDnsSwitch.isEnabled = false
-        b.dcSplitDnsSwitch.isClickable = false
-    }
-
     private fun updateSpiltDns() {
         if (isAtleastR()) {
             // no-op, no need to depend of alg when device is running on Android 11 or above

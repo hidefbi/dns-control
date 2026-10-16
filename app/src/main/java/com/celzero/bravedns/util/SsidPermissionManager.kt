@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_UI
 import android.Manifest
 import android.app.Activity
 import android.content.Context
@@ -91,17 +90,6 @@ object SsidPermissionManager {
      */
     fun hasRequiredPermissions(context: Context): Boolean {
         return hasForegroundPermissions(context) && hasBackgroundLocationPermission(context)
-    }
-
-    /**
-     * Check if we should show rationale for any of the required permissions
-     * @param activity The activity to check rationale
-     * @return true if rationale should be shown, false otherwise
-     */
-    fun shouldShowPermissionRationale(activity: Activity): Boolean {
-        return REQUIRED_PERMISSIONS.any { permission ->
-            ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)
-        }
     }
 
     /**
@@ -198,35 +186,6 @@ object SsidPermissionManager {
      */
     fun getPermissionExplanation(context: Context): String {
         return context.getString(R.string.ssid_permission_explanation, context.getString(R.string.lbl_ssids))
-    }
-
-    fun getLocationEnableExplanation(context: Context): String {
-        return context.getString(R.string.location_enable_explanation, context.getString(R.string.lbl_ssids))
-    }
-
-    /**
-     * Check and request permissions if needed, then execute the callback
-     * @param activity The activity to request permissions from
-     * @param callback The callback to execute after permission handling
-     */
-    fun checkAndRequestPermissions(activity: Activity, callback: PermissionCallback) {
-        when {
-            hasRequiredPermissions(activity) -> {
-                // Permissions already granted
-                callback.onPermissionsGranted()
-                Logger.d(LOG_TAG_UI, "SSID permissions already granted")
-            }
-            shouldShowPermissionRationale(activity) -> {
-                // Show rationale before requesting
-                callback.onPermissionsRationale()
-                Logger.d(LOG_TAG_UI, "Showing rationale for SSID permissions")
-            }
-            else -> {
-                // Request permissions directly
-                requestSsidPermissions(activity)
-                Logger.d(LOG_TAG_UI, "Requested SSID permissions")
-            }
-        }
     }
 
     /**

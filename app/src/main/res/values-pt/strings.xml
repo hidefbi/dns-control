@@ -37,12 +37,8 @@
     <string name="always_on_dialog_stop_message">A opção \"VPN sempre ativa\" está ativada para DNS Control. Tem a certeza se que pretende parar a aplicação?</string>
     <string name="always_on_dialog_lockdown_stop_message">DNS Control está a executar a VPN no modo <i>Bloqueado</i>. Se parar a aplicação, este perfil deixará de ter acesso à Internet. Tem a certeza de que deseja continuar?</string>
     <string name="blocklist_update_check_not_required">As listas de bloqueio já são da última versão.</string>
-    <string name="download_update_dialog_message">Está disponível, no site, uma nova versão da aplicação. Deseja continuar?</string>
     <string name="local_blocklist_redownload_desc">As listas de bloqueio no dispositivo já são da última versão v%1$s.</string>
     <string name="configure_dns_connected_doh_status">DNS over HTTPS</string>
-    <string name="download_update_dialog_failure_message">Ou os servidores estão em baixo ou não foi possível estabelecer a ligação. Por favor tente mais tarde.</string>
-    <string name="download_update_dialog_trylater_title">Não foi possível atualizar</string>
-    <string name="download_update_dialog_trylater_message">Não foi possível efetuar a atualização. Por favor tente mais tarde.</string>
     <string name="search_custom_domains"><font size="12">Pesquisar nomes de domínio</font></string>
     <string name="app_mode_dns_firewall">DNS e firewall (padrão)</string>
     <string name="info_dialog_copy_toast_msg">Endereço IP copiado.</string>
@@ -125,11 +121,7 @@
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status">Proxy DNS</string>
     <string name="http_proxy_dialog_heading">Definir proxy HTTP(S) CONNECT</string>
-    <string name="download_update_dialog_title">Nova atualização!</string>
-    <string name="download_update_dialog_message_ok_title">Atualizado!</string>
-    <string name="download_update_dialog_message_ok">Já tem a versão mais recente.</string>
     <string name="download_update_dialog_message_success">Lista de bloqueios descarregada com sucesso.</string>
-    <string name="download_update_dialog_failure_title">Algo correu mal!</string>
     <string name="search_firewall_all_apps"><font size="12">Pesquisar aplicações por uid, nome</font></string>
     <string name="search_universal_ips"><font size="12">Pesquisar IPs</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">Pesquisar listas de bloqueio</font></string>
@@ -333,7 +325,6 @@
     <string name="settings_local_blocklist_version">Versão: v%1$s</string>
     <string name="accessibility_failure_toast">O serviço de acessibilidade DNS Control parou ou encravou. Não está a bloquear aplicações em segundo plano.</string>
     <string name="firewall_rule_bypass_universal_ip">IP ignorado</string>
-    <string name="update_complete_snack_message">Nova versão descarregada.</string>
     <string name="settings_local_blocklist_in_use">%1$s listas de bloqueio usadas</string>
     <string name="pause_desc">Nota: as %1$s aplicações bloqueadas continuarão a ser protegidas por firewall.</string>
     <string name="firewall_rule_block_app_mobile_desc"><![CDATA[Uma regra de firewall, definida pelo utilizador, bloqueou <i>esta aplicação</i> de se ligar a uma rede <i>limitada</i>.<br/><br/> Para alterar, aceda ao separador <i>Todas as aplicações</i>.]]></string>
@@ -372,8 +363,6 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s outras aplicações</string>
     <string name="ctbs_block_other_apps">As regras aplicadas em %1$s também serão aplicadas em %2$s outras aplicações</string>
     <string name="ctbs_dialog_negative_btn">Recuar</string>
-    <string name="hs_download_positive_default">ok</string>
-    <string name="hs_download_negative_default">Lembrar mais tarde</string>
     <string name="univ_firewall_rule_2">Bloquear aplicações que não estejam a ser utilizadas</string>
     <string name="univ_firewall_rule_3">Bloquear quando a origem da aplicação for desconhecida</string>
     <string name="univ_firewall_rule_4">Bloquear UDP exceto DNS e NTP</string>
@@ -418,7 +407,6 @@
     <string name="dns_proxy_connection_failure">Erro ao ligar ao servidor DNS Proxy.</string>
     <string name="system_dns_connection_failure">Não foi possível determinar o servidor DNS atual</string>
     <string name="copy_clipboard_label">URL</string>
-    <string name="update_complete_action_snack">Reiniciar</string>
     <string name="settings_local_blocklist_dialog_positive">Descarregar</string>
     <string name="accessibility_notification_content">O serviço de acessibilidade DNS Control parou ou encravou. Não está a bloquear aplicações em segundo plano. Toque para reativar.</string>
     <string name="pause_text">em pausa</string>

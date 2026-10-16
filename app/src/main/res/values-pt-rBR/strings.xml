@@ -39,7 +39,6 @@
     <string name="dc_block_heading">regras</string>
     <string name="about_settings_app_info">Detalhes do aplicativo</string>
     <string name="about_mail_bugreport_share_title">Selecionar provedor de e-mail</string>
-    <string name="hs_download_positive_default">ok</string>
     <string name="univ_firewall_rule_10">Bloquear todos, exceto aplicativos e IPs ignorados</string>
     <string name="univ_delete_firewall_dialog_message">Ao excluir estas regras você permitirá a qualquer aplicativo conectar-se aos IPs atualmente bloqueados.</string>
     <string name="dns_info_positive">OK</string>
@@ -83,8 +82,6 @@
     <string name="notif_channel_firewall_alerts">Alertas de Firewall</string>
     <string name="notif_channel_vpn_failure">VPN inativa</string>
     <string name="notif_channel_proxy_failure">Alertas de proxy</string>
-    <string name="update_complete_snack_message">Nova versão baixada.</string>
-    <string name="update_complete_action_snack">REINICIAR</string>
     <string name="system_dns_connection_failure">Não foi possível determinar o servidor DNS atual</string>
     <string name="copy_clipboard_label">URL</string>
     <string name="category_name_sys_apps">Aplicativos do sistema</string>
@@ -127,10 +124,7 @@
     <string name="dns_proxy_remove_dialog_title">Excluir proxy DNS?</string>
     <string name="local_blocklist_redownload">Atualizado!</string>
     <string name="local_blocklist_redownload_desc">As listas de bloqueio no dispositivo já estão na versão mais recente v%1$s.</string>
-    <string name="download_update_dialog_title">Nova atualização!</string>
-    <string name="download_update_dialog_message">Uma nova versão do aplicativo está disponível para download no site. Continuar?</string>
     <string name="download_update_dialog_message_success">Download da lista de bloqueio bem-sucedido.</string>
-    <string name="download_update_dialog_trylater_title">Não é possível atualizar agora</string>
     <string name="search_universal_ips"><font size="12">Buscar IPs</font></string>
     <string name="search_custom_domains"><font size="12">Buscar nomes de domínio</font></string>
     <string name="search_rethinkplus_file_tag"><font size="12">Buscar listas de bloqueio</font></string>
@@ -234,11 +228,6 @@
     <string name="http_proxy_dialog_heading">Definir proxy HTTP(S) CONNECT</string>
     <string name="settings_ip_network_heading">Escolha a versão IP</string>
     <string name="settings_lock_down_mode_desc">Certas opções são desativadas quando a VPN está no modo de bloqueio. <u>Veja as configurações de VPN</u>.</string>
-    <string name="download_update_dialog_message_ok_title">Atualizado!</string>
-    <string name="download_update_dialog_message_ok">Você já possui a atualização mais recente.</string>
-    <string name="download_update_dialog_failure_title">Algo deu errado!</string>
-    <string name="download_update_dialog_failure_message">Nossos servidores estão inoperantes ou não foi possível estabelecer a conexão. Por favor, tente novamente após algum tempo.</string>
-    <string name="download_update_dialog_trylater_message">A atualização não pode ser executada agora, tente novamente mais tarde.</string>
     <string name="search_firewall_all_apps"><font size="12">Buscar aplicativos por uid, nome</font></string>
     <string name="app_mode_dns_low_battery">DNS (economia de bateria)</string>
     <string name="app_mode_firewall">Firewall</string>
@@ -373,7 +362,6 @@
     <string name="ctbs_app_other_apps">%1$s + %2$s outro(s) aplicativo(s)</string>
     <string name="ctbs_block_other_apps">Regras aplicadas para %1$s também serão aplicadas para %2$s outros aplicativos</string>
     <string name="ctbs_dialog_negative_btn">Voltar</string>
-    <string name="hs_download_negative_default">Lembre-me mais tarde</string>
     <string name="univ_firewall_rule_1">Bloquear todos aplicativos quando o dispositivo estiver bloqueado</string>
     <string name="univ_firewall_rule_2">Bloqueie qualquer aplicativo que não esteja em uso</string>
     <string name="univ_firewall_rule_3">Bloquear quando a origem do aplicativo for desconhecida</string>

@@ -144,17 +144,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         private const val MAX_PROXY_POLL_DELAY_MS = 10_000L
         private const val TEXT_FADE_DURATION_MS = 150L
 
-        // Time calculation constants
-        private const val MILLISECONDS_PER_SECOND = 1000L
         private const val SECONDS_PER_MINUTE = 60L
-        private const val MINUTES_PER_HOUR = 60L
-        private const val HOURS_PER_DAY = 24L
-        private const val DAYS_PER_MONTH = 30.0
-
-        // Sponsorship calculation constants
-        private const val BASE_AMOUNT_PER_MONTH = 0.60
-        private const val ADDITIONAL_AMOUNT_PER_MONTH = 0.20
-
         // DNS latency thresholds (milliseconds)
         private const val LATENCY_VERY_FAST_MAX = 19L
         private const val LATENCY_FAST_MIN = 20L

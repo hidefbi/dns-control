@@ -238,10 +238,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         // route v4 in v6 only networks?
         const val ROUTE4IN6 = true
 
-        // subscription check interval in milliseconds 1 hour
-        // TODO: increase it to 6 hours?
-        private const val PLUS_CHECK_INTERVAL = 6 * 60 * 60 * 1000L
-
         private const val DATA_STALL_THRESHOLD_MS = 30 * 1000L // 30 seconds
 
         // vpnRoutes are only used for diagnostics, the current implementation will taken

@@ -1295,26 +1295,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
         dialog.show()
     }
 
-    private fun showLocationEnableDialog() {
-        val builder = MaterialAlertDialogBuilder(this, R.style.App_Dialog_NoDim)
-        builder.setTitle(getString(R.string.location_disclosure_title))
-        builder.setMessage(getString(R.string.location_disclosure_message))
-        builder.setCancelable(true)
-        builder.setPositiveButton(getString(R.string.location_disclosure_positive)) { dialog, _ ->
-            SsidPermissionManager.requestLocationEnable(this)
-            dialog.dismiss()
-            Logger.vv(LOG_TAG_UI, "Prompted user to enable location services, opening settings...")
-        }
-        builder.setNegativeButton(getString(R.string.location_disclosure_negative)) { _, _ ->
-            // Reset the SSID switch since location is required
-            b.ssidCheck.isChecked = false
-            io { WireguardManager.updateSsidEnabled(configId, false) }
-            logEvent("SSID location denied", "User denied enabling location services for configId: $configId")
-        }
-        val dialog = builder.create()
-        dialog.show()
-    }
-
     private fun updateErrorLayouts(
         hasPermissions: Boolean,
         isLocationEnabled: Boolean,
@@ -1347,13 +1327,6 @@ class WgConfigDetailActivity : BaseActivity(R.layout.activity_wg_detail) {
         Logger.vv(LOG_TAG_UI, "Hiding all SSID error layouts")
         permissionErrorLayout.visibility = View.GONE
         locationErrorLayout.visibility = View.GONE
-    }
-
-    private fun updateSsidPermissionState(hasPermissions: Boolean) {
-        // This method can be used to update UI state when permissions change
-        // Currently handled by setupSsidSection being called from callback
-        val cfg = WireguardManager.getConfigFilesById(configId)
-        setupSsidSection(cfg)
     }
 
     private fun showPermissionDeniedDialog() {

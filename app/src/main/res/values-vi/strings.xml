@@ -113,14 +113,7 @@
     <string name="pause_mode_notification_title" translatable="true">Đã tạm dừng! Các ứng dụng bị chặn sẽ tiếp tục bị chặn bởi tường lửa.</string>
     <string name="doh_custom_url_remove_dialog_message" translatable="true">Xóa điểm cuối DNS qua Https khỏi cấu hình đã lưu.</string>
     <string name="dns_proxy_remove_dialog_message" translatable="true">Xóa Proxy DNS khỏi cấu hình đã lưu.</string>
-    <string name="download_update_dialog_title" translatable="true">Bản cập nhật mới!</string>
-    <string name="download_update_dialog_message" translatable="true">Phiên bản mới của ứng dụng đã có sẵn để tải xuống từ trang web. Bạn có muốn tiếp tục?</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">Đã cập nhật!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">Bạn đã sử dụng phiên bản mới nhất của ứng dụng.</string>
     <string name="download_update_dialog_message_success" translatable="true">Tải xuống danh sách chặn thành công.</string>
-    <string name="download_update_dialog_failure_title" translatable="true">Đã gặp vấn đề!</string>
-    <string name="download_update_dialog_failure_message" translatable="true">Máy chủ của chúng tôi không hoạt động hoặc không thể thiết lập kết nối. Vui lòng thử lại sau một thời gian.</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">Không thể cập nhật ngày bây giờ</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">Tìm kiếm ứng dụng theo UID, tên</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">Tìm kiếm IPs</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">Tìm kiếm tên miền</font></string>
@@ -232,7 +225,6 @@
     <string name="hsf_uptime" translatable="false">(hoạt động %1$s; protos: %2$s; gõ: %3$s)</string>
     <string name="hsf_downtime" translatable="true">(không hoạt động kể từ %1$s)</string>
     <string name="hsf_vpn_dialog_header" translatable="true">Chú ý!</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">Không thể thực hiện cập nhật ngay bây giờ, vui lòng thử lại sau.</string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12">Tìm kiếm danh sách chặn</font></string>
     <string name="settings_import_export_heading" translatable="true">Sao lưu và khôi phục</string>
     <string name="settings_https_desc" translatable="true">Chuyển tiếp các kết nối tới điểm cuối HTTP(S) CONNECT.</string>
@@ -266,7 +258,6 @@
     <string name="settings_dns_proxy_dialog_positive_btn" translatable="true">Thiết đặt</string>
     <string name="cd_dns_crypt_dialog_heading" translatable="true">Thêm Trình phân giải hoặc chuyển tiếp DNSCrypt</string>
     <string name="cd_dns_crypt_relay_name" translatable="true">DNSRelay %1$s</string>
-    <string name="hs_download_positive_default" translatable="true">ok</string>
     <string name="lbl_network" translatable="true">Mạng</string>
     <string name="settings_allow_lan_heading" translatable="true">Không định tuyến IP riêng tư (thử nghiệm)</string>
     <string name="orbot_stop_dialog_title" translatable="true">Cần can thiệp thủ công</string>
@@ -275,7 +266,6 @@
     <string name="dc_custom_block_heading" translatable="true">Quy tắc tên miền</string>
     <string name="cd_custom_doh_url_name_default" translatable="true">DoH</string>
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s ứng dụng khác</string>
-    <string name="hs_download_negative_default" translatable="true">Nhắc tôi sau</string>
     <string name="univ_firewall_rule_2" translatable="true">Chặn mọi ứng dụng không được sử dụng</string>
     <string name="univ_firewall_rule_8" translatable="true">Chặn lưu lượng cổng 80 (HTTP không bảo mật)</string>
     <string name="univ_view_blocked_ip_desc" translatable="true">Sửa đổi các quy tắc tên miền, IP / Cổng bị chặn hoặc đáng tin cậy.</string>
@@ -399,8 +389,6 @@
     <string name="fapps_exclude_block_dialog_message" translatable="true">Loại trừ các ứng dụng <i>được liệt kê</i> khỏi DNS và Tường lửa?</string>
     <string name="dns_crypt_connection_failure" translatable="true">Lỗi kết nối với máy chủ DNSCrypt.</string>
     <string name="copy_clipboard_label" translatable="true">URL</string>
-    <string name="update_complete_snack_message" translatable="true">Phiên bản mới đã được tải xuống.</string>
-    <string name="update_complete_action_snack" translatable="true">KHỞI ĐỘNG LẠI</string>
     <string name="firewall_rule_block_udp_ntp" translatable="true">UDP bị chặn</string>
     <string name="firewall_rule_exempt_orbot_setup" translatable="true">Thiết lập Orbot</string>
     <string name="firewall_rule_block_domain" translatable="true">Tên miền (ứng dụng)</string>

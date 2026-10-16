@@ -5,7 +5,6 @@ import com.celzero.firestack.backend.LogConsumer
 import com.celzero.firestack.intra.Console
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.component.KoinComponent
-import java.io.File
 
 class GoReportingHandler private constructor(private val scope: CoroutineScope, private val ctx: Context): Console, KoinComponent {
 
@@ -29,8 +28,6 @@ class GoReportingHandler private constructor(private val scope: CoroutineScope, 
         // Logging and crash-output sinks are intentionally disabled.
     }
 
-    fun getCrashFile(): File? = null
-
     // should never run in separate go-routine as msg is a bytearray in go and will be
     // released immediately
     override fun log(level: Int, m: String?) = Unit
@@ -44,5 +41,4 @@ class GoReportingHandler private constructor(private val scope: CoroutineScope, 
         size: Long
     ): LogConsumer? = null
 
-    private fun showNwEngineNotification(msg: String) = Unit
 }

@@ -93,10 +93,7 @@
     <string name="refresh_complete" translatable="true">アプリ一覧の再同期が完了しました。</string>
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">DNSCrypt</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">DNSプロキシ</string>
-    <string name="download_update_dialog_title" translatable="true">新しいアップデート!</string>
-    <string name="download_update_dialog_message_ok" translatable="true">すでに最新バージョンを使用しています。</string>
     <string name="download_update_dialog_message_success" translatable="true">ブロックリストのダウンロードに成功しました。</string>
-    <string name="download_update_dialog_failure_title" translatable="true">何かの問題が発生しました!</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12">uid、名前でアプリを検索</font></string>
     <string name="search_universal_ips" translatable="true"><font size="12">IPで検索</font></string>
     <string name="search_custom_domains" translatable="true"><font size="12">ドメイン名で検索</font></string>
@@ -201,8 +198,6 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s 他のアプリ</string>
     <string name="univ_firewall_rule_2" translatable="true">使用中でないアプリをブロックする</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">戻る</string>
-    <string name="hs_download_positive_default" translatable="true">Ok</string>
-    <string name="hs_download_negative_default" translatable="true">後で通知する</string>
     <string name="univ_firewall_rule_5" translatable="true">DNS をバイパスする通信をブロックする</string>
     <string name="univ_firewall_rule_6" translatable="true">新しくインストールしたアプリケーションを既定でブロックする</string>
     <string name="univ_firewall_rule_7" translatable="true">IPv6でIPv4をブロックする(試験的)</string>
@@ -253,14 +248,10 @@
     <string name="doh_custom_url_remove_dialog_message" translatable="true">保存された構成から DNS over Https エンドポイントを削除します。</string>
     <string name="dns_crypt_url_remove_success" translatable="true">DNSCryptリゾルバを削除しました。</string>
     <string name="dns_proxy_remove_dialog_title" translatable="true">DNSプロキシを削除しますか?</string>
-    <string name="download_update_dialog_failure_message" translatable="true">サーバーがダウンしているか、接続が確立されていないかのどちらかです。しばらくしてから、再度お試しください。</string>
     <string name="local_blocklist_download_desc" translatable="true">この機能のブロックリスト(60MB程度)をダウンロードしますか?</string>
     <string name="blocklist_update_check_not_required" translatable="true">ブロックリストはすでに最新版になっています。</string>
     <string name="configure_dns_connected_doh_status" translatable="true">DNS over HTTPS</string>
-    <string name="download_update_dialog_message" translatable="true">アプリの新しいバージョンは、Webサイトからダウンロードできます。続行しますか?</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">現在、更新を実行できません。しばらくしてからもう一度お試しください。</string>
     <string name="http_proxy_dialog_heading" translatable="true">HTTP(S)プロキシを設定する</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">現在更新できません</string>
     <string name="info_dialog_copy_toast_msg" translatable="true">IPアドレスがコピーされました。</string>
     <string name="app_mode_dns_low_battery" translatable="true">DNS (バッテリー セーバー)</string>
     <string name="info_dialog_url_copy_toast_msg" translatable="true">URL がコピーされました</string>
@@ -471,7 +462,6 @@
     <string name="lbl_preshared_key" translatable="true">鍵データ</string>
     <string name="lbl_very" translatable="true">とても</string>
     <string name="lbl_select_all" translatable="true">すべて選択</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">アップデート！</string>
     <string name="lbl_create" translatable="true">作成</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">WireGuard とプライベート DNS で保護保護されています</string>
     <string name="lbl_listen_port" translatable="true">待ち受けポート</string>

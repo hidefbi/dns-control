@@ -32,26 +32,6 @@ object NewSettingsManager: KoinComponent {
         handleNewSettings()
     }
 
-    fun shouldShowBadge(key: String): Boolean {
-        val newSettings = persistentState.newSettings.split(",").filter { it.isNotEmpty() }.toSet()
-        val seenSettings =
-            persistentState.newSettingsSeen.split(",").filter { it.isNotEmpty() }.toSet()
-        val contains = newSettings.contains(key)
-        val seen = seenSettings.contains(key)
-        val show = contains && !seen
-        return show
-    }
-
-    fun markSettingSeen(key: String) {
-        val seenSettings =
-            persistentState.newSettingsSeen.split(",").filter { it.isNotEmpty() }.toMutableSet()
-        if (seenSettings.contains(key)) {
-            return
-        }
-        seenSettings.add(key)
-        saveSeenSettings(seenSettings)
-    }
-
     fun initializeNewSettings() {
         persistentState.newSettings = newSettingsList.joinToString(",")
         persistentState.newSettingsSeen = ""
@@ -66,15 +46,6 @@ object NewSettingsManager: KoinComponent {
             return true
         }
         return diff >= EXPIRY_DAYS * 24 * 60 * 60 * 1000L
-    }
-
-    private fun saveSeenSettings(set: Set<String>) {
-        persistentState.newSettingsSeen = set.joinToString(",")
-        // remove the setting from new settings if it exists
-        val newSettings =
-            persistentState.newSettings.split(",").filter { it.isNotEmpty() }.toMutableSet()
-        newSettings.removeAll(set)
-        persistentState.newSettings = newSettings.joinToString(",")
     }
 
     fun clearAll() {

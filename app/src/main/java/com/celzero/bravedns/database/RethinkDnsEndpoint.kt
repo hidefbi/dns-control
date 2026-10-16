@@ -15,9 +15,7 @@
  */
 package com.celzero.bravedns.database
 
-import android.content.Context
 import androidx.room.Entity
-import com.celzero.bravedns.R
 
 @Entity(primaryKeys = ["name", "url", "uid"], tableName = "RethinkDnsEndpoint")
 class RethinkDnsEndpoint(
@@ -54,7 +52,4 @@ class RethinkDnsEndpoint(
         this.modifiedDataTime = System.currentTimeMillis()
     }
 
-    fun isEditable(context: Context): Boolean {
-        return this.name == context.getString(R.string.rdns_plus)
-    }
 }

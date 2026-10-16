@@ -54,11 +54,6 @@ class ServerWgPeersAdapter(
         return peers.size
     }
 
-    fun updatePeers(newPeers: MutableList<Peer>) {
-        peers = newPeers
-        notifyDataSetChanged()
-    }
-
     inner class ServerWgPeersViewHolder(private val b: ListItemServerWgPeersBinding) :
         RecyclerView.ViewHolder(b.root) {
 

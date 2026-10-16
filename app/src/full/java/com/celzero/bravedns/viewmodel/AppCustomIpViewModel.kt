@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
@@ -53,10 +52,6 @@ class AppCustomIpViewModel(private val customIpDao: CustomIpDao) : ViewModel() {
                     .cachedIn(viewModelScope)
             }
         }
-
-    fun appWiseIpRulesCount(uid: Int): LiveData<Int> {
-        return customIpDao.getAppWiseIpRulesCount(uid)
-    }
 
     fun setFilter(filter: String) {
         filteredList.value = filter

@@ -122,7 +122,6 @@
     <string name="cd_dns_crypt_title">Çözücüler</string>
     <string name="cd_dns_crypt_name_default">DNSCrypt</string>
     <string name="cd_dns_crypt_relay_heading">Aktarım</string>
-    <string name="hs_download_negative_default">Daha sonra anımsat</string>
     <string name="univ_firewall_rule_3">Kaynak uygulama bilinmediğinde engelle</string>
     <string name="univ_delete_firewall_dialog_message">Bu kuralların silinmesi, herhangi bir uygulamanın şu anda engellenen IP\'lere bağlanmasına izin verecektir.</string>
     <string name="fapps_unmetered_block_dialog_title">Ölçülmemiş üzerinde blok</string>
@@ -131,7 +130,6 @@
     <string name="rt_dialog_neutral">Devam Et</string>
     <string name="about_mail_subject">[DNS Control]:</string>
     <string name="brbs_backup_dialog_title">Yedek alın</string>
-    <string name="download_update_dialog_failure_message">Sunucularımız kapalı ya da bağlantı kurulamadı. Lütfen bir süre sonra tekrar deneyin.</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
     <string name="settings_http_proxy_error_text1">Port aralığı 1024-65535 arasında olmalıdır</string>
     <string name="hsf_stop_btn_state">durak</string>
@@ -217,7 +215,6 @@
     <string name="cd_custom_dns_proxy_name">Proxy %1$s</string>
     <string name="dns_crypt_relay_remove_dialog_title">DNSCrypt Aktarıcısı Silinsin mi?</string>
     <string name="http_proxy_dialog_heading">HTTP(S) BAĞLANMA Vekilini ayarla</string>
-    <string name="download_update_dialog_title">Yeni Güncelleme!</string>
     <string name="search_universal_ips"><font size="12">IP\'leri arayın</font></string>
     <string name="info_dialog_copy_toast_msg">IP adresi kopyalandı.</string>
     <string name="orbot_none_desc">Yukarıdakilerin hiçbiri.</string>
@@ -234,7 +231,6 @@
     <string name="cd_remove_dialog_message">Etki alanını kayıtlı yapılandırmadan silin.</string>
     <string name="brbs_backup_dialog_message">Uygulama ayarlarını, ağ, ve dns günlüklerini bir dosyaya yedekler. Bu, VPN\'i yeniden başlatacaktır.</string>
     <string name="local_blocklist_download">Engelleme Listelerini İndirin</string>
-    <string name="download_update_dialog_trylater_title">Şu anda güncelleme yapamıyorum</string>
     <string name="settings_socks5_heading">SOCKS5 Proxy Kurulumu</string>
     <string name="orbot_bs_status_4">Tek tıklamayla Tor-as-a-Proxy (Orbot) kurulumu.</string>
     <string name="settings_http_proxy_error_text3">Ana bilgisayar adı boş</string>
@@ -243,7 +239,6 @@
     <string name="dc_dns_leaks_desc">Etkinleştirildiğinde, DNS Control 53 numaralı bağlantı noktasındaki tüm paketleri yakalar ve kullanıcı tarafından ayarlanan bir DNS uç noktasına iletir</string>
     <string name="cd_custom_dns_proxy_default_app">Hiçbiri</string>
     <string name="cd_dns_proxy_mode_internal">Dahili</string>
-    <string name="hs_download_positive_default">tamam</string>
     <string name="fapps_firewall_filter_hint">Bütün uygulamalar gösteriliyor</string>
     <string name="system_dns_connection_failure">Geçerli DNS sunucusu belirlenemiyor</string>
     <string name="copy_clipboard_label">Adres</string>
@@ -256,7 +251,6 @@
     <string name="always_on_dialog_stop_message">DNS Control için her zaman açık VPN etkinleştirildi. Yine de DNS Control\'i durdurmak istediğinizden emin misiniz?</string>
     <string name="dns_crypt_custom_url_remove_dialog_title">DNSCrypt çözümleyicisi silinsin mi?</string>
     <string name="dns_crypt_relay_remove_success">DNSCrypt Aktarıcısı silindi.</string>
-    <string name="download_update_dialog_trylater_message">Güncelleme şu anda gerçekleştirilemiyor, lütfen daha sonra tekrar deneyin.</string>
     <string name="settings_orbot_heading">Orbot Kurulumu</string>
     <string name="settings_dns_proxy_dialog_app_desc" translatable="false">Seçilen uygulama, sizin adınıza bağlantıları proxy\'lemesine izin vermek için VPN\'den hariç tutulacaktır.</string>
     <string name="firewall_card_text_inactive">Güvenlik duvarı modunu etkinleştirin.</string>
@@ -273,7 +267,6 @@
     <string name="brbs_restore_dialog_failure_message">Geri yüklenemedi. Tekrar deneyelim mi?</string>
     <string name="always_on_dialog_positive">Dur</string>
     <string name="refresh_complete"><!-- use dc_refresh_toast --> Uygulama listesinin yeniden senkronizasyonu tamamlandı.</string>
-    <string name="download_update_dialog_message_ok_title">Güncel!</string>
     <string name="app_mode_dns_low_battery">DNS (pil tasarrufu)</string>
     <string name="app_mode_choose">Mod seçin</string>
     <string name="orbot_none">Yok (varsayılan)</string>
@@ -288,7 +281,6 @@
     <string name="rt_edit_dialog_positive">Düzenle</string>
     <string name="cd_custom_dns_proxy_default_ip" translatable="false">127.0.0.1</string>
     <string name="dns_proxy_remove_success">DNS Vekil Sunucusu silindi.</string>
-    <string name="download_update_dialog_failure_title">Bir şeyler yanlış gitti!</string>
     <string name="search_rethinkplus_file_tag"><font size="12">Blok listelerini arayın</font></string>
     <string name="orbot_stop_dialog_negative">Orbot\'u durdurun</string>
     <string name="settings_check_update_heading">Uygulama güncellemelerini kontrol edin</string>
@@ -389,7 +381,6 @@
     <string name="cd_doh_dialog_resolver_name">Çözümleyici Adı</string>
     <string name="univ_delete_firewall_dialog_title">Tüm IP Kuralları silinsin mi?</string>
     <string name="fapps_metered_block_dialog_message"><i>Listelenen</i> uygulamalar için kotalı (mobil) ağda bağlantılar engellensin mi?</string>
-    <string name="update_complete_action_snack">YENİDEN BAŞLAT</string>
     <string name="new_app_notification_content">DNS Control son yüklenen %1$s uygulamasını engelledi.</string>
     <string name="category_name_others">Diğer</string>
     <string name="settings_notification_dialog_option_1">\nDuraklat / Durdur (varsayılan):\nDNS Control\'i hızlı bir şekilde duraklatmak ve durdurmak için iki düğme gösterir.</string>
@@ -448,8 +439,6 @@
     <string name="blocklist_update_check_failure">Bir şeyler ters gitti. Daha sonra tekrar deneyin!</string>
     <string name="dns_crypt_url_remove_success">DNSCrypt çözümleyici silindi.</string>
     <string name="local_blocklist_download_desc">Bu özelliği kullanmak için gereken engelleme listeleri (~60MB) indirilsin mi?</string>
-    <string name="download_update_dialog_message">Uygulamanın yeni sürümü web sitesinden indirilebilir. Devam etmek istiyor musunuz?</string>
-    <string name="download_update_dialog_message_ok">Zaten en son sürümü kullanıyorsunuz.</string>
     <string name="info_dialog_url_copy_toast_msg">URL kopyalandı</string>
     <string name="settings_ip_network_desc">İnternet Protokolü sürümleri arasından seçim yapın.</string>
     <string name="orbot_http">HTTP Vekili</string>
@@ -491,7 +480,6 @@
     <string name="ci_dialog_error_invalid_ip">Geçersiz IP adresi, alt ağ veya bağlantı noktası.</string>
     <string name="dns_proxy_ip_address">IP Adresi</string>
     <string name="fapps_info_dialog_positive_btn">Tamam</string>
-    <string name="update_complete_snack_message">Yeni sürüm indirildi.</string>
     <string name="firewall_rule_exempt_dns_proxied">DNS Proxy\'li</string>
     <string name="notif_dialog_pause_dialog_neutral">Göster</string>
     <string name="fapps_info_dialog_message">Uygulamaların internete bağlanmasını engelleyin. İnternet erişimini sınırlamak, gereksiz veri kullanımını önlemenin yanı sıra pil tasarrufu da sağlar.</string>

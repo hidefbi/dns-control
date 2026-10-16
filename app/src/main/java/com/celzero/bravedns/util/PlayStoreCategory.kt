@@ -57,8 +57,5 @@ enum class PlayStoreCategory(val rawValue: Int) {
         private val map = entries.associateBy(PlayStoreCategory::rawValue)
         const val GENERAL_GAMES_CATEGORY_NAME = "GAMES"
 
-        fun fromCategoryName(name: String): PlayStoreCategory {
-            return map[name.hashCode()] ?: OTHER
-        }
     }
 }

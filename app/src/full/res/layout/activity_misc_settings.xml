@@ -41,7 +41,7 @@
 
                 <RelativeLayout
                     android:id="@+id/settings_activity_check_update_rl"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?android:attr/selectableItemBackground"
                     android:paddingTop="15dp"
@@ -63,7 +63,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toStartOf="@id/settings_activity_check_update_switch"
                         android:layout_toEndOf="@id/settings_activity_check_update_icon"
                         android:orientation="vertical">
 
@@ -83,14 +82,6 @@
                             android:textColor="?attr/colorOnSurfaceVariant" />
                     </LinearLayout>
 
-                    <com.google.android.material.materialswitch.MaterialSwitch
-                        android:id="@+id/settings_activity_check_update_switch"
-                        style="@style/CustomWidget.Material3.CompoundButton.MaterialSwitch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:padding="10dp" />
 
                 </RelativeLayout>
 

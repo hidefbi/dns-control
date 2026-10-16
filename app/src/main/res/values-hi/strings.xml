@@ -54,9 +54,7 @@
     <string name="dns_proxy_remove_success" translatable="true">डीएनएस प्रॉक्सी हटा दिया गया।</string>
     <string name="configure_dns_connected_dns_proxy_status" translatable="true">डीएनएस प्रॉक्सी</string>
     <string name="configure_dns_connected_dns_crypt_status" translatable="true">डीएनएसक्रिप्ट</string>
-    <string name="download_update_dialog_message_ok" translatable="true">आप पहले से ही नवीनतम संस्करण पर हैं।</string>
     <string name="download_update_dialog_message_success" translatable="true">ब्लॉकलिस्ट डाउनलोड सफल।</string>
-    <string name="download_update_dialog_trylater_message" translatable="true">अपडेट अभी नही किया जा सकता है, कृपया बाद में पुन: प्रयास करें।</string>
     <string name="search_universal_ips" translatable="true"><font size="12"> आईपी खोजें </font></string>
     <string name="search_custom_domains" translatable="true"><font size="12"> डोमेन नाम खोजें </font></string>
     <string name="search_rethinkplus_file_tag" translatable="true"><font size="12"> ब्लॉकलिस्ट खोजें </font></string>
@@ -70,7 +68,6 @@
     <string name="always_on_dialog_lockdown_stop_message" translatable="true">रीथिंक <i>लॉकडाउन</i> मोड में वीपीएन चला रहा है। इसे रोकने से इस उपयोगकर्ता प्रोफ़ाइल पर इंटरनेट बंद हो जाएगा। क्या आप फिर भी जारी रखना चाहते हैं?</string>
     <string name="dns_act_configure_tab" translatable="true">कॉन्फ़िगर</string>
     <string name="dns_proxy_remove_dialog_message" translatable="true">सहेजे गए कॉन्फ़िगरेशन से डीएनएस प्रॉक्सी हटाएं।</string>
-    <string name="download_update_dialog_trylater_title" translatable="true">अभी अपडेट नहीं हो सकता</string>
     <string name="lbl_allowed" translatable="true">अनुमति प्राप्त</string>
     <string name="status_protected_with_http_private_dns" translatable="true">एचटीटीपी प्रॉक्सी और निजी डीएनएस के साथ सुरक्षित</string>
     <string name="status_protected_with_socks5" translatable="true">सॉक्स प्रॉक्सी के साथ सुरक्षित</string>
@@ -122,11 +119,6 @@
     <string name="blocklist_update_check_not_required" translatable="true">ब्लॉकलिस्ट पहले से ही नवीनतम संस्करण पे हैं।</string>
     <string name="refresh_complete" translatable="true"><!-- use dc_refresh_toast -->ऐप सूची पुन: समन्वयन खत्म।</string>
     <string name="configure_dns_connected_doh_status" translatable="true">डीएनएस ओवर एचटीटीपीएस</string>
-    <string name="download_update_dialog_title" translatable="true">नई अपडेट!</string>
-    <string name="download_update_dialog_message" translatable="true">ऐप का एक नया संस्करण वेबसाइट से डाउनलोड के लिए उपलब्ध है। क्या आप आगे बढ़ना चाहते हैं?</string>
-    <string name="download_update_dialog_message_ok_title" translatable="true">आधुनिक!</string>
-    <string name="download_update_dialog_failure_title" translatable="true">कुछ गलत हो गया!</string>
-    <string name="download_update_dialog_failure_message" translatable="true">या तो हमारे सर्वर डाउन हैं या कनेक्शन स्थापित नहीं किया जा सका। कृपया कुछ समय बाद पुन: प्रयास करें।</string>
     <string name="search_firewall_all_apps" translatable="true"><font size="12"> ऐप्स खोजें </font></string>
     <string name="orbot" translatable="true">ऑर्बोट</string>
     <string name="orbot_http_desc" translatable="true">ऑर्बोट के लिए HTTP CONNECT सुरंग स्थापित करता है।</string>
@@ -205,7 +197,6 @@
     <string name="ctbs_app_other_apps" translatable="true">%1$s + %2$s अन्य ऐप</string>
     <string name="ctbs_app_info_not_available_toast" translatable="true">ऐप सेटिंग पेज नहीं मिला</string>
     <string name="ctbs_dialog_negative_btn" translatable="true">पीछे जाएँ</string>
-    <string name="hs_download_positive_default" translatable="true">ठीक है</string>
     <string name="univ_firewall_rule_4" translatable="true">डीएनएस और एनटीपी को छोड़कर यूडीपी को ब्लॉक करें</string>
     <string name="univ_firewall_rule_3" translatable="true">जब स्रोत ऐप अज्ञात हो तो ब्लॉक करें</string>
     <string name="univ_firewall_rule_8" translatable="true">पोर्ट 80 (असुरक्षित एचटीटीपी) ट्रैफिक ब्लाॅक करे</string>
@@ -236,9 +227,7 @@
     <string name="fapps_firewall_filter_desc_category" translatable="true"><![CDATA[श्रेणियों में <u>%1$s</u> %2$s ऐप दिखा रहा है: %3$s]]></string>
     <string name="rules_load_failure_desc" translatable="true">कोई फ़ायरवॉल नियम नहीं मिला</string>
     <string name="copy_clipboard_label" translatable="true">यूआरएल</string>
-    <string name="update_complete_snack_message" translatable="true">नया संस्करण डाउनलोड किया गया।</string>
     <string name="system_dns_connection_failure" translatable="true">वर्तमान डीएनएस सर्वर का पता नहीं कर सका</string>
-    <string name="update_complete_action_snack" translatable="true">पुनर्प्रारंभ करें</string>
     <string name="accessibility_failure_toast" translatable="true">रीथिंक सुलभता सेवा बंद या क्रैश हो गई है। अब बैकग्राउंड वाले ऐप्स को ब्लॉक नहीं किया जा रहा है।</string>
     <string name="firewall_rule_univ_block_metered" translatable="true">मीटर (यूनीवर्सल)</string>
     <string name="firewall_rule_block_app_new_install" translatable="true">नया ऐप</string>
@@ -340,7 +329,6 @@
     <string name="univ_firewall_rule_5" translatable="true">डीएनएस को बायपास करने पर ब्लॉक करें</string>
     <string name="univ_firewall_rule_6" translatable="true">नए इंस्टॉल किए गए ऐप्स को ब्लॉक करें डिफ़ॉल्ट रूप से</string>
     <string name="univ_firewall_rule_7" translatable="true">आईपीवी6 में आईपीवी4 को ब्लॉक करें (प्रयोगात्मक)</string>
-    <string name="hs_download_negative_default" translatable="true">मुझे बाद में याद दिलाना</string>
     <string name="univ_firewall_rule_1" translatable="true">डिवाइस लॉक होने पर सभी ऐप्स को ब्लॉक करें</string>
     <string name="univ_firewall_rule_2" translatable="true">उपयोग में नहीं आने वाले किसी भी ऐप को ब्लॉक करें</string>
     <string name="dns_proxy_dialog_message" translatable="true">ऐप नाम: %1$s \n \nआईपी पता: %2$s \n \nपोर्ट नंबर: %3$s</string>
