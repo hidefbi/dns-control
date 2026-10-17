@@ -20,11 +20,12 @@ import android.net.Uri
 import android.provider.OpenableColumns
 import com.celzero.bravedns.service.DomainRulesManager
 import com.celzero.bravedns.service.IpRulesManager
+import com.celzero.bravedns.util.Utilities.removeLeadingAndTrailingDots
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * Shared helper for the DEBUG-only "Import Rules" feature used by
+ * Shared helper for the "Import Rules" feature used by
  * [CustomIpFragment] and [CustomDomainFragment].
  *
  * Responsibilities:
@@ -33,8 +34,8 @@ import kotlinx.coroutines.withContext
  *  3. Insert valid, non-duplicate entries via the existing service-layer APIs.
  *
  * All public methods are suspend functions intended to be called from an IO coroutine.
- * This object intentionally lives in the fragment package and is never referenced from
- * production (non-debug) code paths — callers must guard access with BuildConfig.DEBUG.
+ * This object lives in the fragment package and is used by the import buttons in
+ * [CustomIpFragment] and [CustomDomainFragment].
  */
 object RulesImportHelper {
 
@@ -156,8 +157,9 @@ object RulesImportHelper {
                             val host = DomainRulesManager.extractHost(line)
                             if (host != null && isAcceptableDomain(host)) {
                                 if (valid.size >= MAX_IMPORT_ENTRIES) return@useLines
-                                // Store the already-extracted host so insertDomain() doesn't re-parse
-                                valid.add(host)
+                                // Same normalisation as the manual add path (CustomDomainFragment):
+                                // trailing dots removed, repeated leading dots reduced to one.
+                                valid.add(removeLeadingAndTrailingDots(host))
                             } else {
                                 invalidCount++
                             }

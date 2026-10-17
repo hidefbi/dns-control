@@ -124,11 +124,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!--
-        Import FAB — DEBUG builds only.
-        Visibility is set to GONE here; CustomDomainFragment shows it at runtime
-        only when BuildConfig.DEBUG / RethinkDnsApplication.DEBUG is true.
-        This prevents the button from being reachable in release builds
-        even if the layout resource is included.
+        Import rules from a plain-text file. Visible by default.
     -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cda_import_fab"
@@ -141,7 +137,6 @@
         android:padding="10dp"
         android:contentDescription="@string/import_rules_fab_desc"
         android:src="@drawable/ic_import_conf"
-        android:visibility="gone"
         app:fabSize="mini"
         app:layout_constraintBottom_toTopOf="@id/cda_add_fab"
         app:layout_constraintEnd_toEndOf="parent" />

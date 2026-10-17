@@ -21,7 +21,6 @@ import android.database.Cursor
 import android.net.Uri
 import android.provider.OpenableColumns
 import com.celzero.bravedns.database.CustomDomain
-import com.celzero.bravedns.database.CustomIp
 import com.celzero.bravedns.service.DomainRulesManager
 import com.celzero.bravedns.service.IpRulesManager
 import com.celzero.bravedns.shadows.ShadowBackend
@@ -38,7 +37,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -475,6 +473,16 @@ class RulesImportHelperTest {
         every { DomainRulesManager.extractHost("https://www.google.com") } returns "google.com"
         every { DomainRulesManager.isValidDomain("google.com") } returns true
         givenFileContent("https://www.google.com")
+        val result = RulesImportHelper.parseFile(mockContext, testUri, RulesImportHelper.ImportType.DOMAIN)!!
+        assertEquals(1, result.valid.size)
+        assertEquals("google.com", result.valid[0])
+    }
+
+    @Test
+    fun `parseFile DOMAIN type - trailing dot is removed so the rule matches the manual add path`() = runTest {
+        every { DomainRulesManager.extractHost("google.com.") } returns "google.com."
+        every { DomainRulesManager.isValidDomain("google.com.") } returns true
+        givenFileContent("google.com.")
         val result = RulesImportHelper.parseFile(mockContext, testUri, RulesImportHelper.ImportType.DOMAIN)!!
         assertEquals(1, result.valid.size)
         assertEquals("google.com", result.valid[0])

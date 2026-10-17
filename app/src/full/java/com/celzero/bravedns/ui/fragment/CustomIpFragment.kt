@@ -36,7 +36,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
-import com.celzero.bravedns.RethinkDnsApplication.Companion.DEBUG
 import com.celzero.bravedns.adapter.CustomIpAdapter
 import com.celzero.bravedns.database.EventSource
 import com.celzero.bravedns.database.EventType
@@ -70,7 +69,7 @@ class CustomIpFragment : Fragment(R.layout.fragment_custom_ip), SearchView.OnQue
     private var rules = CustomRulesActivity.RULES.APP_SPECIFIC_RULES
     private lateinit var adapter: CustomIpAdapter
 
-    // ActivityResultLauncher for the document picker (DEBUG import only).
+    // ActivityResultLauncher for the document picker (import rules from a text file).
     // Must be registered in onCreate — before onStart — to survive configuration changes.
     private lateinit var importFileLauncher: ActivityResultLauncher<Array<String>>
 
@@ -88,7 +87,7 @@ class CustomIpFragment : Fragment(R.layout.fragment_custom_ip), SearchView.OnQue
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Register the document picker launcher here (before onStart) so it survives
-        // configuration changes. The actual UI is only shown when DEBUG == true.
+        // configuration changes.
         importFileLauncher =
             registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
                 // uri is null when the user dismisses the picker without selecting a file
@@ -237,15 +236,10 @@ class CustomIpFragment : Fragment(R.layout.fragment_custom_ip), SearchView.OnQue
 
         b.cipSearchDeleteIcon.setOnClickListener { showIpRulesDeleteDialog() }
 
-        // Import FAB is only shown and wired up in DEBUG builds.
-        // The FAB itself is GONE in XML; this block also stays dead-code in release builds
-        // so ProGuard/R8 can strip it entirely.
-        if (DEBUG) {
-            b.cipImportFab.visibility = View.VISIBLE
-            b.cipImportFab.setOnClickListener {
-                // Launch the system document picker; accept plain text files only
-                importFileLauncher.launch(arrayOf("text/plain"))
-            }
+        // Import rules from a plain-text file (one rule per line).
+        b.cipImportFab.setOnClickListener {
+            // Launch the system document picker; accept plain text files only
+            importFileLauncher.launch(arrayOf("text/plain"))
         }
     }
 
@@ -398,9 +392,7 @@ class CustomIpFragment : Fragment(R.layout.fragment_custom_ip), SearchView.OnQue
     }
 
     // -----------------------------------------------------------------------------------------
-    // DEBUG-only import helpers
-    // The methods below are only called when DEBUG == true. They are intentionally grouped
-    // together at the bottom of the class to make the debug boundary visually clear.
+    // Import helpers
     // -----------------------------------------------------------------------------------------
 
     /**
