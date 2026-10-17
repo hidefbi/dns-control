@@ -827,7 +827,6 @@
     <string name="exclude_no_package_err_toast" translatable="true">Uygulamaları hariç tutmak için paket adı gereklidir.</string>
     <string name="hop_error_toast_msg_1" translatable="true">Aktarım yapılamaz, zaten %1$s</string>
     <string name="hop_error_toast_msg_2" translatable="true">Aktarım için WireGuard mevcut değil; lütfen daha fazla ekleyin.</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Aktarım kullanmak için Yalnızca Mobil veya SSID\'yi devre dışı bırakın</string>
     <string name="mode_change_error_proxy_enabled" translatable="true">Proxy\'ler kullanılırken modlar değiştirilemez. &lt;u&gt;Proxy ayarlarını düzenlemek&lt;/u&gt; için dokunun.</string>
     <string name="blocklist_not_available_toast" translatable="true">Engelleme listelerini güncellemek için uygulamanın en son sürümünü indirin.</string>
     <string name="adv_set_dial_timeout_title" translatable="true">Boşta kalma zaman aşımı</string>
@@ -858,18 +857,6 @@
     <string name="vpn_policy_fixed" translatable="true">Muhafazakar</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Ağ değişikliklerine minimum düzeyde tepki verir.</string>
     <string name="vpn_policy_title" translatable="true">Bağlantı değişiklik politikası</string>
-    <string name="wg_setting_ssid_title" translatable="true">Yalnızca Wi-Fi</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Bu WireGuard VPN\'ini yalnızca Wi-Fi\'ye veya belirtilen WiFi tanımlayıcılarına (%1$s) bağlıyken etkinleştir.</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control\'in Wi‑Fi tanımlayıcılarına (%1$s) erişmek için konum iznine ihtiyacı var.</string>
-    <string name="location_enable_explanation" translatable="true">Wi‑Fi tanımlayıcılarına (%1$s) erişmek için Konum servisini açın.</string>
-    <string name="ssid_location_error" translatable="true">Konum servisini etkinleştir</string>
-    <string name="ssid_permission_error_action" translatable="true">İzin ver</string>
-    <string name="ssid_location_error_action" translatable="true">Konumu etkinleştir</string>
-    <string name="wg_ssid_dialog_description" translatable="true"><i>Etkin</i> Wi-Fi Tanımlayıcısı (%2$s) %3$s olduğunda bu WireGuard VPN\'ini %1$s.</string>
-    <string name="wg_ssid_input_hint" translatable="true">Wi-Fi tanımlayıcısını (%1$s) girin</string>
-    <string name="wg_ssid_type_exact" translatable="true">Tam eşleşen</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Kısmen eşleşen</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi tanımlayıcıları (%1$s) 32 karakter veya daha az olmalıdır.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Kararlılık programı</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Kararlılığı artırmaya yardımcı olmak için hata günlüklerini yakala.</string>
     <string name="settings_locale_dialog_default" translatable="true">Sistem varsayılanı</string>

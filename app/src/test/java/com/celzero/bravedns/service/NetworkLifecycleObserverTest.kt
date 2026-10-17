@@ -15,8 +15,6 @@ import android.net.LinkProperties
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import android.net.wifi.WifiInfo
-import android.net.wifi.WifiManager
 import io.mockk.Runs
 import io.mockk.every
 import io.mockk.just
@@ -159,7 +157,7 @@ class NetworkLifecycleObserverTest {
         val network = mockNetwork(7L)
         cellularCallback!!.onAvailable(network)
         verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED, null)
+            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED)
         }
     }
 
@@ -223,7 +221,7 @@ class NetworkLifecycleObserverTest {
     }
 
     @Test
-    fun `wifi onAvailable is forwarded as NETWORK_ADDED with null ssid when transport unknown`() {
+    fun `wifi onAvailable is forwarded as NETWORK_ADDED when transport unknown`() {
         val list = captureCallbacks()
         newObserver().start()
         val network = mockNetwork(11L)
@@ -232,7 +230,7 @@ class NetworkLifecycleObserverTest {
         wifiCallback.onAvailable(network)
 
         verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED, null)
+            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED)
         }
     }
 
@@ -246,50 +244,7 @@ class NetworkLifecycleObserverTest {
         wifiCallback.onLost(network)
 
         verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_LOST, null)
-        }
-    }
-
-    @Test
-    fun `wifi onCapabilitiesChanged resolves ssid via wifi manager on pre-S`() {
-        val list = captureCallbacks()
-        val observer = newObserver()
-        assertTrue(observer.start())
-
-        // pre-S (sdk 28) resolves SSID through WifiManager#connectionInfo, which is read
-        // when the callback fires, so the dependency is stubbed after start().
-        val wifiInfo = mockk<WifiInfo>()
-        every { wifiInfo.ssid } returns "\"MyWifi\""
-        val wm = mockk<WifiManager>()
-        every { wm.connectionInfo } returns wifiInfo
-        every { context.applicationContext.getSystemService(Context.WIFI_SERVICE) } returns wm
-
-        val network = mockNetwork(33L)
-        val cap = mockk<NetworkCapabilities>()
-        every { cap.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) } returns true
-        val wifiCallback = list[0]
-
-        wifiCallback.onCapabilitiesChanged(network, cap)
-
-        verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.CAPABILITY_CHANGE, "MyWifi")
-        }
-    }
-
-    @Test
-    fun `wifi onCapabilitiesChanged forwards null ssid when transport is not wifi`() {
-        val list = captureCallbacks()
-        newObserver().start()
-        val network = mockNetwork(44L)
-        // relaxed so transportLabel()'s CELLULAR probe returns a default instead of throwing
-        val cap = mockk<NetworkCapabilities>(relaxed = true)
-        every { cap.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) } returns false
-        val wifiCallback = list[0]
-
-        wifiCallback.onCapabilitiesChanged(network, cap)
-
-        verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.CAPABILITY_CHANGE, null)
+            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_LOST)
         }
     }
 
@@ -304,12 +259,12 @@ class NetworkLifecycleObserverTest {
         wifiCallback.onLinkPropertiesChanged(network, lp)
 
         verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.LINK_PROPERTY_CHANGE, null)
+            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.LINK_PROPERTY_CHANGE)
         }
     }
 
     @Test
-    fun `cellular onAvailable is forwarded with null ssid`() {
+    fun `cellular onAvailable is forwarded as NETWORK_ADDED`() {
         val list = captureCallbacks()
         newObserver().start()
         val network = mockNetwork(66L)
@@ -318,12 +273,12 @@ class NetworkLifecycleObserverTest {
         cellularCallback.onAvailable(network)
 
         verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED, null)
+            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED)
         }
     }
 
     @Test
-    fun `cellular onCapabilitiesChanged is forwarded with null ssid`() {
+    fun `cellular onCapabilitiesChanged is forwarded as CAPABILITY_CHANGE`() {
         val list = captureCallbacks()
         newObserver().start()
         val network = mockNetwork(77L)
@@ -333,7 +288,7 @@ class NetworkLifecycleObserverTest {
         cellularCallback.onCapabilitiesChanged(network, cap)
 
         verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.CAPABILITY_CHANGE, null)
+            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.CAPABILITY_CHANGE)
         }
     }
 
@@ -356,7 +311,7 @@ class NetworkLifecycleObserverTest {
         wifiCallback.onLost(network)
 
         verify(exactly = 0) {
-            listener.onNetworkEvent(network, any(), any())
+            listener.onNetworkEvent(network, any())
         }
     }
 
@@ -376,26 +331,8 @@ class NetworkLifecycleObserverTest {
         newCellularCallback.onAvailable(network)
 
         verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED, null)
+            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_ADDED)
         }
-    }
-
-    @Test
-    fun `wifi onLost does not query capabilities for ssid resolution`() {
-        val list = captureCallbacks()
-        val observer = newObserver()
-        assertTrue(observer.start())
-        val network = mockNetwork(101L)
-        val wifiCallback = list[0]
-
-        wifiCallback.onLost(network)
-
-        // NETWORK_LOST must still be forwarded with a null SSID ...
-        verify(exactly = 1) {
-            listener.onNetworkEvent(network, NetworkLifecycleObserver.EventType.NETWORK_LOST, null)
-        }
-        // ... but must not trigger a capabilities IPC against the (now dead) network.
-        verify(exactly = 0) { cm.getNetworkCapabilities(network) }
     }
 
     @Test

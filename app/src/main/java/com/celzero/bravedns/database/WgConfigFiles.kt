@@ -31,9 +31,10 @@ class WgConfigFiles {
     var oneWireGuard: Boolean = false
     var useOnlyOnMetered: Boolean = false
     var isDeletable: Boolean = true
-    // new: ssid based activation
+    // legacy columns of the removed SSID feature: unused, kept only so that the
+    // Room schema matches the existing WgConfigFiles table (no migration).
     var ssidEnabled: Boolean = false
-    var ssids: String = "" // newline separated list
+    var ssids: String = ""
     var modifiedTs: Long = System.currentTimeMillis()
 
     override fun equals(other: Any?): Boolean {
@@ -45,8 +46,6 @@ class WgConfigFiles {
         if (isLockdown != other.isLockdown) return false
         if (oneWireGuard != other.oneWireGuard) return false
         if (useOnlyOnMetered != other.useOnlyOnMetered) return false
-        if (ssidEnabled != other.ssidEnabled) return false
-        if (ssids != other.ssids) return false
         return true
     }
 
@@ -58,8 +57,6 @@ class WgConfigFiles {
         result += result * 31 + this.isLockdown.hashCode()
         result += result * 31 + this.oneWireGuard.hashCode()
         result += result * 31 + this.useOnlyOnMetered.hashCode()
-        result += result * 31 + this.ssidEnabled.hashCode()
-        result += result * 31 + this.ssids.hashCode()
         return result
     }
 
@@ -74,9 +71,7 @@ class WgConfigFiles {
         isLockdown: Boolean,
         oneWireGuard: Boolean,
         useOnlyOnMetered: Boolean,
-        isDeletable: Boolean = true,
-        ssidEnabled: Boolean = false,
-        ssids: String = ""
+        isDeletable: Boolean = true
     ) {
         this.id = id
         this.name = name
@@ -88,8 +83,6 @@ class WgConfigFiles {
         this.oneWireGuard = oneWireGuard
         this.useOnlyOnMetered = useOnlyOnMetered
         this.isDeletable = isDeletable
-        this.ssidEnabled = ssidEnabled
-        this.ssids = ssids
     }
 
     constructor(
@@ -101,9 +94,7 @@ class WgConfigFiles {
         isLockdown: Boolean,
         oneWireGuard: Boolean,
         useOnlyOnMetered: Boolean,
-        isDeletable: Boolean,
-        ssidEnabled: Boolean = false,
-        ssids: String = ""
+        isDeletable: Boolean
     ) {
         this.name = name
         this.configPath = configPath
@@ -114,8 +105,6 @@ class WgConfigFiles {
         this.oneWireGuard = oneWireGuard
         this.useOnlyOnMetered = useOnlyOnMetered
         this.isDeletable = isDeletable
-        this.ssidEnabled = ssidEnabled
-        this.ssids = ssids
     }
 
     fun toImmutable(): WgConfigFilesImmutable {
@@ -129,9 +118,7 @@ class WgConfigFiles {
             isLockdown,
             oneWireGuard,
             useOnlyOnMetered,
-            isDeletable,
-            ssidEnabled,
-            ssids
+            isDeletable
         )
     }
 
@@ -147,9 +134,7 @@ class WgConfigFiles {
                 data.isLockdown,
                 data.oneWireGuard,
                 data.useOnlyOnMetered,
-                data.isDeletable,
-                data.ssidEnabled,
-                data.ssids
+                data.isDeletable
             )
         }
     }
@@ -165,7 +150,5 @@ data class WgConfigFilesImmutable(
     val isLockdown: Boolean,
     val oneWireGuard: Boolean,
     val useOnlyOnMetered: Boolean,
-    val isDeletable: Boolean,
-    val ssidEnabled: Boolean,
-    val ssids: String
+    val isDeletable: Boolean
 ) : java.io.Serializable

@@ -837,7 +837,6 @@
     <string name="exclude_no_package_err_toast" translatable="true">Excluir aplicaciones requiere un nombre de paquete.</string>
     <string name="hop_error_toast_msg_1" translatable="true">No se puede retransmitir, ya está %1$s</string>
     <string name="hop_error_toast_msg_2" translatable="true">No hay WireGuard disponible para retransmitir; añada más.</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Desactive “Solo móvil” o la opción SSID para usar retransmisiones</string>
     <string name="mode_change_error_proxy_enabled" translatable="true">No se pueden cambiar los modos cuando hay proxies en uso. Toque para &lt;u&gt;editar la configuración del proxy&lt;/u&gt;.</string>
     <string name="adv_set_dial_timeout_desc" translatable="true">Cerrar los sockets TCP y UDP inactivos después de esta duración.</string>
     <string name="hop_failure_toast" translatable="true">Error de retransmisión: %1$s -&gt; %2$s</string>
@@ -859,18 +858,6 @@
     <string name="vpn_policy_fixed" translatable="true">Conservador</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Reacciona mínimamente a los cambios de red.</string>
     <string name="vpn_policy_title" translatable="true">Política de cambios de conexión</string>
-    <string name="wg_setting_ssid_title" translatable="true">Solo Wi‑Fi</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Activar esta VPN WireGuard solo cuando esté conectado a una red Wi‑Fi o a uno de los identificadores Wi‑Fi especificados (%1$s).</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control necesita permiso de ubicación para acceder a los identificadores Wi‑Fi (%1$s).</string>
-    <string name="location_enable_explanation" translatable="true">Para acceder a los identificadores Wi‑Fi (%1$s), active los servicios de ubicación.</string>
-    <string name="ssid_location_error" translatable="true">Active los servicios de ubicación</string>
-    <string name="ssid_permission_error_action" translatable="true">Conceder permiso</string>
-    <string name="ssid_location_error_action" translatable="true">Activar ubicación</string>
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s esta VPN WireGuard cuando esté <i>activo</i> el identificador Wi‑Fi (%2$s)%3$s.</string>
-    <string name="wg_ssid_input_hint" translatable="true">Introduzca el identificador Wi‑Fi (%1$s)</string>
-    <string name="wg_ssid_type_exact" translatable="true">Coincidencia exacta</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Coincidencia parcial</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Los identificadores Wi‑Fi (%1$s) deben tener 32 caracteres o menos.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Programa de estabilidad</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capturar registros de errores para ayudar a mejorar la estabilidad.</string>
     <string name="settings_locale_dialog_default" translatable="true">Predeterminado del sistema</string>

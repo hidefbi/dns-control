@@ -16,8 +16,6 @@ import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.net.TransportInfo
-import android.net.wifi.WifiInfo
-import android.net.wifi.WifiManager
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.celzero.bravedns.util.InternetProtocol
 import io.mockk.Runs
@@ -43,7 +41,6 @@ import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
@@ -67,7 +64,6 @@ class ConnectionMonitorTest {
     private lateinit var networkListener: ConnectionMonitor.NetworkListener
     private lateinit var context: Context
     private lateinit var cm: ConnectivityManager
-    private lateinit var wm: WifiManager
 
     private val scheduler = TestCoroutineScheduler()
     private val dispatcher = StandardTestDispatcher(scheduler)
@@ -81,7 +77,6 @@ class ConnectionMonitorTest {
         networkListener = mockk(relaxed = true)
         context = mockk(relaxed = true)
         cm = mockk(relaxed = true)
-        wm = mockk(relaxed = true)
 
         // Defaults used by sendNetworkChanges() and callback registration paths.
         every { persistentState.vpnBuilderPolicy } returns VpnBuilderPolicy.AUTO.ordinal
@@ -101,7 +96,6 @@ class ConnectionMonitorTest {
 
         every { context.applicationContext } returns context
         every { context.getSystemService(Context.CONNECTIVITY_SERVICE) } returns cm
-        every { context.getSystemService(Context.WIFI_SERVICE) } returns wm
 
         @Suppress("DEPRECATION")
         every { cm.allNetworks } returns emptyArray()
@@ -139,7 +133,7 @@ class ConnectionMonitorTest {
         val monitor = newMonitor()
         val network = mockNetwork(101L)
 
-        invokePrivate(monitor, "addToNwSet", arrayOf(Network::class.java, String::class.java), network, null)
+        invokePrivate(monitor, "addToNwSet", arrayOf(Network::class.java), network)
 
         val first = invokeShouldPerform(monitor, ConnectionMonitor.EVENT_ON_CAPABILITIES_CHANGED)
         val second = invokeShouldPerform(monitor, ConnectionMonitor.EVENT_ON_CAPABILITIES_CHANGED)
@@ -165,7 +159,7 @@ class ConnectionMonitorTest {
         val monitor = newMonitor()
         val network = mockNetwork(222L)
 
-        invokePrivate(monitor, "addToNwSet", arrayOf(Network::class.java, String::class.java), network, null)
+        invokePrivate(monitor, "addToNwSet", arrayOf(Network::class.java), network)
         invokePrivate(
             monitor,
             "updateLastConnectivityCheckState",
@@ -252,63 +246,6 @@ class ConnectionMonitorTest {
 
         assertFalse(started)
         coVerify(exactly = 1) { networkListener.onNetworkRegistrationFailed() }
-    }
-
-    @Test
-    @Config(sdk = [28])
-    fun `getNetworkSSID returns wifi manager ssid on pre-S`() {
-        val monitor = newMonitor()
-        setField(monitor, "wm", wm)
-
-        val cap = mockNetworkCapabilities(hasWifi = true)
-        val network = mockNetwork(9001L)
-        val wifiInfo = mockk<WifiInfo>()
-        every { wifiInfo.ssid } returns "\"OfficeWiFi\""
-        @Suppress("DEPRECATION")
-        every { wm.connectionInfo } returns wifiInfo
-
-        val out = monitor.getNetworkSSID(network, cap)
-
-        assertEquals("OfficeWiFi", out)
-    }
-
-    @Test
-    @Config(sdk = [31])
-    fun `getNetworkSSID returns transportInfo ssid on S plus`() {
-        val monitor = newMonitor()
-        setField(monitor, "wm", wm)
-
-        val wifiInfo = mockk<WifiInfo>()
-        every { wifiInfo.ssid } returns "\"Cafe\""
-
-        val cap = mockNetworkCapabilities(hasWifi = true, transportInfo = wifiInfo)
-        val network = mockNetwork(9002L)
-
-        val out = monitor.getNetworkSSID(network, cap)
-
-        assertEquals("Cafe", out)
-    }
-
-    @Test
-    @Config(sdk = [35])
-    fun `getNetworkSSID returns null for non wifi or unknown ssid`() {
-        val monitor = newMonitor()
-        setField(monitor, "wm", wm)
-
-        val nonWifiCap = mockNetworkCapabilities(hasWifi = false)
-        val network = mockNetwork(9003L)
-
-        val notWifi = monitor.getNetworkSSID(network, nonWifiCap)
-        assertNull(notWifi)
-
-        val wifiCap = mockNetworkCapabilities(hasWifi = true)
-        val wifiInfo = mockk<WifiInfo>()
-        every { wifiInfo.ssid } returns "<unknown ssid>"
-        @Suppress("DEPRECATION")
-        every { wm.connectionInfo } returns wifiInfo
-
-        val unknown = monitor.getNetworkSSID(network, wifiCap)
-        assertNull(unknown)
     }
 
     @Test
@@ -673,17 +610,17 @@ class ConnectionMonitorTest {
 
     @Test
     @Config(sdk = [23])
-    fun `android 6 transport callback does not include location info flag`() {
+    fun `android 6 transport callback is a NetworkCallback`() {
         val monitor = newMonitor()
         val transportCallback = monitor.transportCallback()
         assertNotNull(transportCallback)
-        // Verify the callback is a NetworkCallback (pre-S doesn't flag)
+        // pre-S callback
         assertTrue(transportCallback is ConnectivityManager.NetworkCallback)
     }
 
     @Test
     @Config(sdk = [31])
-    fun `android 12 S+ transport callback includes location info flag in signature`() {
+    fun `android 12 S+ transport callback is a NetworkCallback`() {
         val monitor = newMonitor()
         val transportCallback = monitor.transportCallback()
         assertNotNull(transportCallback)

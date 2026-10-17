@@ -785,7 +785,6 @@
     <string name="lbl_always" translatable="true">Immer</string>
     <string name="hop_failure_toast" translatable="true">Relay-Fehler: %1$s -&gt; %2$s</string>
     <string name="wg_mobile_only_hop_err" translatable="true">Mobile-only-Modus wird für Relays nicht unterstützt</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Deaktiviere den Mobile-only-oder-SSID-Modus, um Relays zu nutzen</string>
     <string name="dc_filtering_heading" translatable="true">Filterung</string>
     <string name="firewall_rule_bypass_proxy" translatable="true">Proxy umgehen</string>
     <string name="firewall_rule_paused_app" translatable="true">App angehalten</string>
@@ -858,24 +857,12 @@
     <string name="settings_jumbo_packets" translatable="true">Bandbreiten-Booster</string>
     <string name="vpn_policy_fixed" translatable="true">Konservativ</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Reagiert nur minimal auf Netzwerkänderungen.</string>
-    <string name="wg_setting_ssid_title" translatable="true">Nur WLAN</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Dieses WireGuard-VPN nur aktivieren, wenn eine Verbindung zu WLAN oder zu einer der angegebenen WLAN-Kennungen (%1$s) besteht.</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control benötigt Standortberechtigungen, um auf WLAN-Kennungen (%1$s) zugreifen zu können.</string>
-    <string name="location_enable_explanation" translatable="true">Aktiviere den Standortdienst, um auf WLAN-Kennungen (%1$s) zugreifen zu können.</string>
-    <string name="ssid_location_error" translatable="true">Standortdienst aktivieren</string>
-    <string name="ssid_permission_error_action" translatable="true">Berechtigung gewähren</string>
-    <string name="ssid_location_error_action" translatable="true">Standort aktivieren</string>
-    <string name="wg_ssid_input_hint" translatable="true">WLAN-Kennung eingeben (%1$s)</string>
-    <string name="wg_ssid_type_exact" translatable="true">Exakte Übereinstimmung</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Teilweise Übereinstimmung</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi-Kennungen (%1$s) dürfen maximal 32 Zeichen lang sein.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Stabilitätsprogramm</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Fehlerprotokolle erfassen, um die Stabilität zu verbessern.</string>
     <string name="settings_locale_dialog_default" translatable="true">Systemvorgabe</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Wenn aktiviert, werden eingehende Verbindungen von WireGuard-Peers zugelassen.</string>
     <string name="firewall_rule_proxy_error_desc" translatable="true"><![CDATA[Diese Verbindung wurde blockiert, da der für die App ausgewählte <i>Proxy</i> nicht ausgewählt wurde.<br><br> Um dies zu ändern, gehe auf dem Bildschirm <i>Konfigurieren</i> zu <i>Proxy</i>.]]></string>
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s dieses WireGuard-VPN, wenn <i>aktiv</i> WLAN-Kennung (%2$s) %3$s.</string>
     <string name="lockdown_download_message" translatable="true">Der in Android integrierte <i>Download-Manager</i> funktioniert möglicherweise nicht, da sich das VPN im <i>Sperrmodus</i> befindet. Möchtest du stattdessen den Downloader von DNS Control aktivieren?</string>
     <string name="lockdown_download_enable_inapp" translatable="true">Downloader aktivieren</string>
     <string name="settings_jumbo_packets_desc" translatable="true">Verwendet <i>Jumbo-Pakete</i> innerhalb des VPN-Tunnels von DNS Control.</string>

@@ -407,7 +407,7 @@
     <string name="settings_check_update_desc">手动检查 GitHub 上是否有新版本，不会自动下载或安装。</string>
     <string name="settings_http_proxy_error_text3">域名为空</string>
     <string name="firewall_status_excluded">已排除在 DNS 与防火墙外</string>
-    <string name="hsf_vpn_dialog_message">DNS Control 需要权限来设置本地 VPN，以加密设备的 DNS 请求、实现网络监控并强制执行防火墙规则。\n\n基于 Wi-Fi 的代理自动化需要位置权限来识别连接的 Wi-Fi 网络（SSID）。此权限仅在您启用该功能时请求。\n\nDNS Control 不会以任何方式收集您的信息或监视您。</string>
+    <string name="hsf_vpn_dialog_message">DNS Control 需要权限来设置本地 VPN，以加密设备的 DNS 请求、实现网络监控并强制执行防火墙规则。\n\nDNS Control 不会以任何方式收集您的信息或监视您。</string>
     <string name="dc_check_update_desc">每<i>三</i>天检查一次屏蔽名单更新</string>
     <string name="cd_dnscrypt_relay_heading">中继</string>
     <string name="ctbs_app_other_apps">%1$s + %2$s 个其他应用</string>
@@ -807,13 +807,9 @@
     <string name="adv_set_dial_timeout_title" translatable="true">空闲超时</string>
     <string name="close_conns_dialog_title" translatable="true">关闭连接</string>
     <string name="close_all" translatable="true">全部关闭</string>
-    <string name="wg_setting_ssid_title" translatable="true">仅 Wi‑Fi</string>
     <string name="wg_setting_use_on_mobile" translatable="true">仅移动网络</string>
-    <string name="ssid_permission_error_action" translatable="true">授予权限</string>
     <string name="settings_locale_dialog_default" translatable="true">系统默认</string>
     <string name="settings_allow_incoming_wg_packets" translatable="true">WireGuard P2P</string>
-    <string name="wg_ssid_type_exact" translatable="true">完全匹配</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">部分匹配</string>
     <string name="lbl_criteria" translatable="true">筛选条件</string>
     <string name="settings_theme_dialog_themes_7" translatable="true">霜白</string>
     <string name="firewall_rule_paused_app_desc" translatable="true"><![CDATA[该连接被允许因 <i>应用</i> 处于 <i>暂停</i> 状态。]]></string>
@@ -846,14 +842,6 @@
     <string name="fail_open_network_title" translatable="true">断网时暂停运行</string>
     <string name="fail_open_network_desc" translatable="true">启用后，当设备无网络连接，如处于<i>飞行模式</i>时，DNS Control 将暂停所有数据传输。</string>
     <string name="wg_mobile_only_hop_err" translatable="true">中继功能暂不支持仅移动网络模式</string>
-    <string name="wg_setting_ssid_desc" translatable="true">仅在连接至指定无线标识（%1$s）之一或 Wi-Fi时，启用该 WireGuard VPN。</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control 需要获取位置权限，以访问无线网络标识（%1$s）。</string>
-    <string name="location_enable_explanation" translatable="true">如需访问无线网络标识（%1$s），请开启位置服务。</string>
-    <string name="ssid_location_error" translatable="true">开启位置服务</string>
-    <string name="ssid_location_error_action" translatable="true">开启位置权限</string>
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s 该 WireGuard VPN，当 <i>活跃</i> Wi-Fi 标识 (%2$s) %3$s。</string>
-    <string name="wg_ssid_input_hint" translatable="true">输入无线网络标识（%1$s）</string>
-    <string name="wg_ssid_invalid_error" translatable="true">无线网络标识（%1$s）长度不得超过 32 个字符。</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">稳定性程序</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">捕获错误日志以助力提升稳定性。</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">启用后，允许 WireGuard 对等节点发起的入站连接。</string>
@@ -921,10 +909,6 @@
     <string name="rethink_home_screen_warning" translatable="true">可能会影响连接 ⚠️</string>
     <string name="build_flavor_website_degoogled" translatable="true">website-degoogled</string>
     <string name="dc_global_heading" translatable="true">全局</string>
-    <string name="location_disclosure_title" translatable="true">Wi-Fi 功能的位置权限</string>
-    <string name="location_disclosure_message" translatable="true">DNS Control 将 Wi-Fi 网络信息（SSID/BSSID）视为位置数据。后台位置允许应用在您的 Wi-Fi 更改时自动应用代理自动化，即使应用未打开。DNS Control 不会收集、存储或共享您的实际 GPS 位置。</string>
-    <string name="location_disclosure_positive" translatable="true">继续</string>
-    <string name="location_disclosure_negative" translatable="true">以后再说</string>
     <string name="settings_rinr_btmsht_title" translatable="true">环回（实验性）</string>
     <string name="settings_rinr_exempt_btn" translatable="true">排除 DNS Control</string>
     <string name="app_info_rethink_warning_title" translatable="true">注意</string>

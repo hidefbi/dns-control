@@ -2104,7 +2104,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             EventSource.SERVICE, userAction = false, details = "networks: ${networks.ipv4Net.size + networks.ipv6Net.size}")
         // pause mobile-only wgs on no network
         pauseMobileOnlyWireGuardOnNoNw()
-        pauseSsidEnabledWireGuardOnNoNw()
         setNetworkAndDefaultDnsIfNeeded(true)
         VpnController.onConnectionStateChanged(null)
     }
@@ -2159,21 +2158,20 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     // here (that is ConnectionMonitor's responsibility); this is a passive observer.
     override fun onNetworkEvent(
         network: Network,
-        eventType: NetworkLifecycleObserver.EventType,
-        ssid: String?
+        eventType: NetworkLifecycleObserver.EventType
     ) {
         Logger.i(
             LOG_TAG_VPN,
-            "nw lifecycle; ${eventType.name}, netId: ${ConnectionMonitor.netId(network.networkHandle)}, ssid: $ssid"
+            "nw lifecycle; ${eventType.name}, netId: ${ConnectionMonitor.netId(network.networkHandle)}"
         )
         // Drive proxy refresh/pause/resume/re-add directly from the observer event.
-        // Link-property changes (DNS, addresses) don't affect transport type or SSID --
-        // the only two inputs the refresh logic consumes -- so skip them to avoid
+        // Link-property changes (DNS, addresses) don't affect the transport type, the only
+        // input the refresh logic consumes, so skip them to avoid
         // redundant adapter work on every link-property callback.
         if (eventType == NetworkLifecycleObserver.EventType.LINK_PROPERTY_CHANGE) return
         io("nwLifecycle") {
             withContext(CoroutineName("nwLifecycle") + serializer) {
-                refreshOrPauseOrResumeOrReAddProxiesFromObserver(network, eventType, ssid)
+                refreshOrPauseOrResumeOrReAddProxiesFromObserver(network, eventType)
             }
         }
     }
@@ -2241,7 +2239,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         val isRoutesChanged = hasRouteChangedInAutoMode(out)
         val isBoundNetworksChanged = out.netChanged
         val isMtuChanged = out.mtuChanged
-        val isSsidChanged = out.ssidChanged
         underlyingNetworks = networks
         underlyingNetworks?.vpnLockdown = isLockdown()
 
@@ -2253,16 +2250,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             setUnderlyingNetworks(underlyingNws)
         }
         tunUnderlyingNetworks = underlyingNws?.joinToString()
-        var ipv4Ssid = ""
-        var ipv6Ssid = ""
-        networks.ipv4Net.forEach {
-            ipv4Ssid = ipv4Ssid + it.network.networkHandle.toString() + "##" + (it.ssid.orEmpty())
-        }
-        networks.ipv6Net.forEach {
-            ipv6Ssid = ipv6Ssid + it.network.networkHandle.toString() + "##" + (it.ssid.orEmpty())
-        }
-
-        logd("getNetworkSSID - onNetworkConnected: active: ${networks.activeSsid}, v4: $ipv4Ssid, v6: $ipv6Ssid")
         logd(
             "underlays: ${underlyingNws?.joinToString()}, forceRestart? $forceRestart mtu? $isMtuChanged(o:${curnet?.minMtu}, n:${networks.minMtu}), tun: ${tunMtu()}; routes? $isRoutesChanged, bound-nws? $isBoundNetworksChanged, stall? ${persistentState.stallOnNoNetwork}, updatedTs: ${networks.lastUpdated}"
         )
@@ -2293,14 +2280,14 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         // now the proxy need to be either paused/resumed/refreshed/readded
         // so no need to check for isRoutesChanged, even though the routes are same,
         // the bound networks have changed, so either of the above operations are needed
-        // case: wireguard in mobile-only mode & ssid change in wifi for ssidEnabled wgs
-        if (isBoundNetworksChanged || isSsidChanged) {
+        // case: wireguard in mobile-only mode & bound networks changed
+        if (isBoundNetworksChanged) {
             // Workaround for WireGuard connection issues after network change
             // WireGuard may fail to connect to the server when the network changes.
-            Logger.i(LOG_TAG_VPN, "$TAG ssid/bound-nws changed, refresh wg if needed")
+            Logger.i(LOG_TAG_VPN, "$TAG bound-nws changed, refresh wg if needed")
             refreshOrPauseOrResumeOrReAddProxies() // takes care of adding the proxies if missing in tun
             eventLogger.logLow(EventType.PROXY_REFRESH, "refresh/pause/resume/readd proxies",
-                EventSource.SERVICE, userAction = false, "nwChange, $isBoundNetworksChanged, ssidChanged: $isSsidChanged, ssid: ${networks.activeSsid}, refresh/pause/resume/readd proxies")
+                EventSource.SERVICE, userAction = false, "nwChange, $isBoundNetworksChanged, refresh/pause/resume/readd proxies")
         }
 
         underlyingNetworks?.ipv4Net?.forEach {
@@ -2338,7 +2325,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         val routesChanged: Boolean = true,
         val netChanged: Boolean = true,
         val mtuChanged: Boolean = true,
-        val ssidChanged: Boolean = true,
         val reason: String = ""
     )
 
@@ -2414,17 +2400,13 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                 val netChanged = !okActiv4 || !okActiv6
                 val netChangedReason = "v4[o:$oldActivHas4,n:$activHas4,ok:$okActiv4] v6[o:$oldActivHas6,n:$activHas6,ok:$okActiv6] chg(!ok4 || !ok6)? $netChanged"
 
-                val ssidChanged = old.activeSsid != new.activeSsid
-                val ssidChangedReason = "[o:${old.activeSsid},n:${new.activeSsid}] chg?{$ssidChanged}"
                 var reason = ""
                 if (routesChanged) { reason += routeChangeReason }
                 if (netChanged) { reason += netChangedReason }
                 if (mtuChanged) { reason += mtuChangedReason }
-                if (ssidChanged) { reason += ssidChangedReason }
                 logd("tun: oldActiv4: $oldActivHas4, newActiv4: $activHas4, oldActiv6: $oldActivHas6, newActiv6: $activHas6, netChanged? $netChanged")
-                logd("tun: oldActiveSsid: ${old.activeSsid}, newActiveSsid: ${new.activeSsid}, ssidChanged? $ssidChanged")
                 // for active networks, changes in routes includes all possible network changes;
-                return NetworkChanges(routesChanged, netChanged, mtuChanged, ssidChanged, reason)
+                return NetworkChanges(routesChanged, netChanged, mtuChanged, reason)
             } // active network null, fallthrough to check for netChanged
         }
         // check if ipv6 or ipv4 routes are different in old and new networks
@@ -2444,22 +2426,14 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         val netChanged = !isOld6New6Same || !isOld4New4Same
         val netChangedReason = "v4[o:$oldFirst4,n:$newFirst4,s:$isOld4New4Same] v6[o:$oldFirst6,n:$newFirst6,s:$isOld6New6Same], changed(!v4s || !v6s)? {$netChanged}"
 
-        val oldSsidFirst4 = old.ipv4Net.firstOrNull()?.ssid
-        val newSsidFirst4 = new.ipv4Net.firstOrNull()?.ssid
-        val oldSsidFirst6 = old.ipv6Net.firstOrNull()?.ssid
-        val newSsidFirst6 = new.ipv6Net.firstOrNull()?.ssid
-        val ssidChanged = oldSsidFirst4 != newSsidFirst4 || oldSsidFirst6 != newSsidFirst6
-        val ssidChangedReason = "v4[o:$oldSsidFirst4,n:$newSsidFirst4] v6[o:$oldSsidFirst6,n:$newSsidFirst6] chg?{$ssidChanged}"
 
         logd("tun: oldFirst4: $oldFirst4, newFirst4: $newFirst4, oldFirst6: $oldFirst6, newFirst6: $newFirst6, netChanged? $netChanged")
-        logd("tun: oldSsidFirst4: $oldSsidFirst4, newSsidFirst4: $newSsidFirst4, oldSsidFirst6: $oldSsidFirst6, newSsidFirst6: $newSsidFirst6, ssidChanged? $ssidChanged")
         var reason = ""
         if (routesChanged) { reason += routeChangeReason }
         if (netChanged) { reason += netChangedReason }
         if (mtuChanged) { reason += mtuChangedReason }
-        if (ssidChanged) { reason += ssidChangedReason }
 
-        return NetworkChanges(routesChanged, netChanged, mtuChanged, ssidChanged, reason)
+        return NetworkChanges(routesChanged, netChanged, mtuChanged, reason)
     }
 
     private suspend fun setNetworkAndDefaultDnsIfNeeded(forceUpdate: Boolean = false) {
@@ -3380,13 +3354,9 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
 
     override fun onQuery(origin: String, uidGostr: String, fqdn: String, qtype: Long): DNSOpts {
         return go2kt(dnsQueryDispatcher) {
-            val d = TunDnsManager.DnsParams(origin, uidGostr, fqdn, qtype, isLockdown(), getUnderlyingSsid(), isIfaceCellular(""))
+            val d = TunDnsManager.DnsParams(origin, uidGostr, fqdn, qtype, isLockdown(), isIfaceCellular(""))
             TunDnsManager.handleOnQuery(d)
         }
-    }
-
-    private fun getUnderlyingSsid(): String? {
-        return underlyingNetworks?.activeSsid ?: underlyingNetworks?.ipv4Net?.firstOrNull { it.ssid != null }?.ssid ?: underlyingNetworks?.ipv6Net?.firstOrNull { it.ssid != null }?.ssid
     }
 
     override fun onResponse(summary: DNSSummary?) {
@@ -3732,22 +3702,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         }
     }
 
-    suspend fun pauseSsidEnabledWireGuardOnNoNw() {
-        val activeWgs = WireguardManager.getActiveConfigs()
-        activeWgs.forEach { config ->
-            val map = WireguardManager.getConfigFilesById(config.getId())
-            if (map == null || !map.ssidEnabled) {
-                // if the config is not using ssid restriction, then skip it
-                logd("pause wg from tunnel: ${config.getId()} is not using ssid restriction")
-                return@forEach
-            }
-            val id = ID_WG_BASE + config.getId()
-            logd("pause wg from tunnel (ssid): $id")
-            // pause the wireguard proxy, so that it won't be used for new connections
-            vpnAdapter?.pauseWireguard(id)
-        }
-    }
-
     suspend fun refreshOrPauseOrResumeOrReAddProxies() {
         withContext(CoroutineName("ref-pro") + serializer) {
             logd("refresh wg config")
@@ -3758,9 +3712,8 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             val v4Mobile = v4first?.capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ?: false
             val v6Mobile = v6first?.capabilities?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ?: false
             val isActiveMobile = v4Mobile || (v4first == null && v6Mobile)
-            val activeSsid = getUnderlyingSsid().orEmpty()
-            Logger.v(LOG_TAG_VPN, "refreshOrPauseOrResumeOrReAddProxies: canResumeMobileOnlyWg? $isActiveMobile, curr-ssid: $activeSsid")
-            io("refreshWg") { vpnAdapter?.refreshOrPauseOrResumeOrReAddProxies(isActiveMobile, activeSsid) }
+            Logger.v(LOG_TAG_VPN, "refreshOrPauseOrResumeOrReAddProxies: canResumeMobileOnlyWg? $isActiveMobile")
+            io("refreshWg") { vpnAdapter?.refreshOrPauseOrResumeOrReAddProxies(isActiveMobile) }
         }
     }
 
@@ -3770,42 +3723,39 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
      */
     private suspend fun refreshOrPauseOrResumeOrReAddProxiesFromObserver(
         network: Network,
-        eventType: NetworkLifecycleObserver.EventType,
-        ssid: String?
+        eventType: NetworkLifecycleObserver.EventType
     ) {
         logd("refresh wg config from observer; event: ${eventType.name}")
-        updateObservedNetworks(network, eventType, ssid)
+        updateObservedNetworks(network, eventType)
         observedNetworks = rearrangeObservedNetworks(observedNetworks)
         // first element after rearrange is the active network if present, else the
         // first non-metered network, else the first metered network.
         val priority = observedNetworks.firstOrNull()
         val isActiveMobile = priority?.capabilities
             ?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) ?: false
-        val activeSsid = priority?.ssid.orEmpty()
         Logger.v(
             LOG_TAG_VPN,
-            "refreshOrPauseOrResumeOrReAddProxiesFromObserver: event: ${eventType.name}, observed: ${observedNetworks.size}, canResumeMobileOnlyWg? $isActiveMobile, curr-ssid: $activeSsid"
+            "refreshOrPauseOrResumeOrReAddProxiesFromObserver: event: ${eventType.name}, observed: ${observedNetworks.size}, canResumeMobileOnlyWg? $isActiveMobile"
         )
         val wgConfigs: List<Config> = WireguardManager.getActiveConfigs()
         if (wgConfigs.isEmpty()) {
             Logger.i(LOG_TAG_VPN, "$TAG no active wg-configs found")
             return
         }
-        // pause or resume the proxies based on the mobile/ssid conditions
-        vpnAdapter?.pauseAndResumeProxies(wgConfigs, isActiveMobile, activeSsid)
+        // pause or resume the proxies based on the mobile condition
+        vpnAdapter?.pauseAndResumeProxies(wgConfigs, isActiveMobile)
     }
 
     /**
      * updates [observedNetworks] for a single observer event. NETWORK_LOST removes the
      * network; NETWORK_ADDED and CAPABILITY_CHANGE has its [ConnectionMonitor.NetworkProperties]
-     * from the live capabilities looked up via the connectivity manager. The SSID resolved
-     * by the observer (can be non-null only for WiFi). Capabilities are required by
+     * from the live capabilities looked up via the connectivity manager. Capabilities are
+     * required by
      * [ConnectionMonitor.NetworkProperties].
      */
     private fun updateObservedNetworks(
         network: Network,
-        eventType: NetworkLifecycleObserver.EventType,
-        ssid: String?
+        eventType: NetworkLifecycleObserver.EventType
     ) {
         when (eventType) {
             NetworkLifecycleObserver.EventType.NETWORK_LOST -> {
@@ -3821,7 +3771,7 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                 // linkProperties are unused by rearrange/refresh; pass null to keep the
                 // observer path lightweight (no extra cm.getLinkProperties call).
                 observedNetworks.add(
-                    ConnectionMonitor.NetworkProperties(network, cap, null, nwType, ssid)
+                    ConnectionMonitor.NetworkProperties(network, cap, null, nwType)
                 )
             }
 
@@ -4115,7 +4065,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         val linkAddresses6 = n.underlyingNws?.ipv6Net?.map { it.linkProperties?.linkAddresses?.filter { IPAddressString(it.address.hostAddress).isIPv6 } } ?: emptyList()
         val link4Mtu = if (isAtleastQ()) n.underlyingNws?.ipv4Net?.map { it.linkProperties?.mtu ?: 0 } ?: listOf(-1) else listOf(-1)
         val link6Mtu = if (isAtleastQ()) n.underlyingNws?.ipv6Net?.map { it.linkProperties?.mtu ?: 0 } ?: listOf(-1) else listOf(-1)
-        val ssid = getUnderlyingSsid() ?: "N/A"
 
         val linkAddr4String = if (linkAddresses4.isEmpty()) {
             "N/A"
@@ -4163,7 +4112,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         sb.append("   Link MTU\n")
         sb.append("      4: $link4Mtu\n")
         sb.append("      6: $link6Mtu\n")
-        sb.append("   SSID: $ssid\n")
         return sb.toString()
     }
 

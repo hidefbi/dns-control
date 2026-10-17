@@ -804,7 +804,6 @@
     <string name="exclude_no_package_err_toast" translatable="true">Pentru a exclude aplicații, se cere un nume de pachet.</string>
     <string name="hop_error_toast_msg_1" translatable="true">Nu poate fi retransmis, este deja %1$s</string>
     <string name="hop_error_toast_msg_2" translatable="true">WireGuard indisponibil pentru retransmitere; te rog adaugă.</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Pentru utilizarea releelor, dezactivează \"Numai date mobile\" sau SSID</string>
     <string name="mode_change_error_proxy_enabled" translatable="true">Nu se poate schimba modul când proxy este în uz. Apasă pentru &lt;u&gt;editarea setărilor proxy&lt;/u&gt;.</string>
     <string name="blocklist_not_available_toast" translatable="true">Pentru actualizarea listelor, descarcă ultima versiune a aplicației.</string>
     <string name="adv_set_dial_timeout_title" translatable="true">Timp de așteptare pentru inactivitate</string>
@@ -841,18 +840,6 @@
     <string name="firewall_rule_proxy_error_desc" translatable="true"><![CDATA[Această conexiune a fost blocată pentru că <i>proxy-ul</i> selectat pentru aplicație nu a fost ales.<br/><br/> Pentru a modifica mergi la <i>Proxy</i> din ecranul <i>Configurare</i>.]]></string>
     <string name="vpn_policy_fixed" translatable="true">Conservator</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Reacționează minim la schimbările rețelei.</string>
-    <string name="wg_setting_ssid_title" translatable="true">Numai Wi-Fi</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Activează acest VPN Wireguard numai la conexiunile Wi-Fi sau anumiți identificatori Wi-Fi (%1$s).</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control are nevoie de permisiune pentru locație pentru a accesa identificatori Wi-Fi (%1$s).</string>
-    <string name="location_enable_explanation" translatable="true">Pentru accesarea identificatorilor Wi-Fi (%1$s), pornește serviciul Locație.</string>
-    <string name="ssid_location_error" translatable="true">Activare serviciul Locație</string>
-    <string name="ssid_permission_error_action" translatable="true">Acordă permisiune</string>
-    <string name="ssid_location_error_action" translatable="true">Activează locația</string>
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s această VPN Wireguard când este <i>activ</i> identificatorul Wi-Fi (%2$s) %3$s.</string>
-    <string name="wg_ssid_input_hint" translatable="true">Introdu identificatorul Wi-Fi (%1$s)</string>
-    <string name="wg_ssid_type_exact" translatable="true">Potrivire exactă</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Potrivire parțială</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Identificatorii Wi-Fi (%1$s) trebuie să conțină cel mult 32 caractere..</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Program stabilitate</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capturează înregistrările erorilor pentru îmbunătățirea stabilității.</string>
     <string name="settings_locale_dialog_default" translatable="true">Prestabilit de sistem</string>

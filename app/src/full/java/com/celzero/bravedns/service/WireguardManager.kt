@@ -20,7 +20,6 @@ import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import android.content.Context
 import android.text.format.DateUtils
 import com.celzero.bravedns.data.AppConfig
-import com.celzero.bravedns.data.SsidItem
 import com.celzero.bravedns.database.WgConfigFiles
 import com.celzero.bravedns.database.WgConfigFilesImmutable
 import com.celzero.bravedns.database.WgConfigFilesRepository
@@ -292,9 +291,7 @@ object WireguardManager : KoinComponent {
                     map.isLockdown,
                     map.oneWireGuard,
                     map.useOnlyOnMetered,
-                    map.isDeletable,
-                    map.ssidEnabled,
-                    map.ssids
+                    map.isDeletable
                 )
             mappings.add(newMap)
             val dbMap = WgConfigFiles.fromImmutable(newMap)
@@ -402,9 +399,7 @@ object WireguardManager : KoinComponent {
                 m.isLockdown,
                 false, // confirms with db.disableConfig query
                 m.useOnlyOnMetered,
-                m.isDeletable,
-                m.ssidEnabled,
-                m.ssids
+                m.isDeletable
             )
         mappings.add(newMap)
 
@@ -421,7 +416,7 @@ object WireguardManager : KoinComponent {
     }
 
     // pair - first: proxyId, second - can proceed for next check
-    private fun canUseConfig(idStr: String, type: String, usesMobileNw: Boolean, ssid: String): Boolean {
+    private fun canUseConfig(idStr: String, type: String, usesMobileNw: Boolean): Boolean {
         if (idStr.isEmpty()) {
             return false
         }
@@ -435,18 +430,18 @@ object WireguardManager : KoinComponent {
 
         val lockdown = config.isLockdown
 
-        if (lockdown && isEligibleForNetwork(id, usesMobileNw, ssid, config.useOnlyOnMetered, config.ssidEnabled)) {
+        if (lockdown && isEligibleForNetwork(usesMobileNw, config.useOnlyOnMetered)) {
             Logger.d(LOG_TAG_PROXY, "lockdown wg for $type => return $idStr")
             return true // no need to proceed further for lockdown
         }
 
         // check if the config is active and if it can be used on this network
-        if (config.isActive && isEligibleForNetwork(id, usesMobileNw, ssid, config.useOnlyOnMetered, config.ssidEnabled)) {
+        if (config.isActive && isEligibleForNetwork(usesMobileNw, config.useOnlyOnMetered)) {
             Logger.d(LOG_TAG_PROXY, "active wg for $type => add $idStr")
             return true
         }
 
-        Logger.v(LOG_TAG_PROXY, "wg for $type not active or not eligible nw, return empty, for id: $idStr, usesMtrdNw: $usesMobileNw, ssid: $ssid")
+        Logger.v(LOG_TAG_PROXY, "wg for $type not active or not eligible nw, return empty, for id: $idStr, usesMtrdNw: $usesMobileNw")
         return false
     }
 
@@ -469,7 +464,7 @@ object WireguardManager : KoinComponent {
     }
 
     // no need to check for app excluded from proxy here, expected to call this fn after that
-    suspend fun getAllPossibleConfigIdsForApp(uid: Int, ip: String, port: Int, domain: String, usesMobileNw: Boolean, ssid: String, default: String): List<String> {
+    suspend fun getAllPossibleConfigIdsForApp(uid: Int, ip: String, port: Int, domain: String, usesMobileNw: Boolean, default: String): List<String> {
         val proxyIds: MutableList<String> = mutableListOf()
 
         if (oneWireGuardEnabled()) {
@@ -494,7 +489,7 @@ object WireguardManager : KoinComponent {
         // app-specific configs may be empty if the app is not configured
         if (wgProxyIdsForApp.isNotEmpty()) {
             for (pid in wgProxyIdsForApp) {
-                val canUse = canUseConfig(pid, "app($uid)", usesMobileNw, ssid)
+                val canUse = canUseConfig(pid, "app($uid)", usesMobileNw)
                 if (canUse) {
                     proxyIds.add(pid)
                 }
@@ -519,7 +514,7 @@ object WireguardManager : KoinComponent {
         // if catch-all config is enabled, then add the config id to the list
         val cac = mappings.filter { it.isActive && it.isCatchAll }
         cac.forEach {
-            if (isEligibleForNetwork(it.id, usesMobileNw, ssid, it.useOnlyOnMetered, it.ssidEnabled) &&
+            if (isEligibleForNetwork(usesMobileNw, it.useOnlyOnMetered) &&
                 !proxyIds.contains(ID_WG_BASE + it.id)
             ) {
                 proxyIds.add(ID_WG_BASE + it.id)
@@ -562,86 +557,10 @@ object WireguardManager : KoinComponent {
     }
 
 
-    private fun isEligibleForNetwork(id: Int, usesMobileNw: Boolean, ssid: String, mobileOnlySetting: Boolean, ssidEnabled: Boolean): Boolean {
-        if (!mobileOnlySetting && !ssidEnabled) return true
-
-        val passMobileOnly = mobileOnlySetting && usesMobileNw
-        // On mobile the SSID rule is bypassed (mobile has no SSID context); ssidEnabled
-        // should not make a config ineligible on mobile data.
-        val passSsid = ssidEnabled && (usesMobileNw || matchesSsidListForConfig(id, ssid))
-        return passMobileOnly || passSsid
-    }
-
-    // returns true if the current ssid is allowed by the SSID list configured for the wireguard.
-    // When the config is not found, returns false (fail-closed).
-    private fun matchesSsidListForConfig(id: Int, ssid: String): Boolean {
-        val config = mappings.find { it.id == id }
-        if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "matchesSsidListForConfig: wg not found, id: $id, ${mappings.size}")
-            return false
-        }
-        return matchesSsidList(config.ssids, ssid)
-    }
-
-    private fun matchesWildcard(pattern: String, text: String): Boolean {
-        // Convert wildcard pattern to regex
-        // * matches any sequence of characters
-        // ? matches any single character
-        val regexPattern = pattern
-            .replace(".", "\\.")  // Escape dots
-            .replace("*", ".*")   // Convert * to .*
-            .replace("?", ".")    // Convert ? to .
-
-        return try {
-            text.matches(Regex(regexPattern, RegexOption.IGNORE_CASE)) || text.contains(pattern, ignoreCase = true)
-        } catch (e: Exception) {
-            Logger.w(LOG_TAG_PROXY, "Invalid wildcard pattern: $pattern, error: ${e.message}")
-            false
-        }
-    }
-
-    fun matchesSsidList(ssidList: String, ssid: String): Boolean {
-        val ssidItems = SsidItem.parseStorageList(ssidList)
-        if (ssidItems.isEmpty()) { // treat empty as match all
-            return true
-        }
-
-        // Separate EQUAL items from NOT_EQUAL items
-        val equalItems = ssidItems.filter { it.type.isEqual }
-        val notEqualItems = ssidItems.filter { !it.type.isEqual }
-
-        // Check NOT_EQUAL items first - if any match, return false
-        val notEqualMatch = notEqualItems.any { ssidItem ->
-            when {
-                ssidItem.type.isExact -> {
-                    ssidItem.name.equals(ssid, ignoreCase = true)
-                }
-                else -> { // wildcard
-                    matchesWildcard(ssidItem.name, ssid)
-                }
-            }
-        }
-
-        if (notEqualMatch) {
-            return false
-        }
-
-        // If there are only NOT_EQUAL items and none matched, return true
-        if (equalItems.isEmpty() && notEqualItems.isNotEmpty()) {
-            return true
-        }
-
-        // Check EQUAL items (exact or wildcard)
-        return equalItems.any { ssidItem ->
-            when {
-                ssidItem.type.isExact -> {
-                    ssidItem.name.equals(ssid, ignoreCase = true)
-                }
-                else -> { // wildcard
-                    matchesWildcard(ssidItem.name, ssid)
-                }
-            }
-        }
+    // a config set to mobile-only is eligible only on mobile data; all other configs on any network
+    private fun isEligibleForNetwork(usesMobileNw: Boolean, mobileOnlySetting: Boolean): Boolean {
+        if (!mobileOnlySetting) return true
+        return usesMobileNw
     }
 
     private fun convertStringIdToId(id: String): Int {
@@ -785,9 +704,7 @@ object WireguardManager : KoinComponent {
                 isLockdown, // just updating lockdown field
                 m.oneWireGuard,
                 m.useOnlyOnMetered,
-                m.isDeletable,
-                m.ssidEnabled,
-                m.ssids
+                m.isDeletable
             )
         )
         if (map?.isActive == true) {
@@ -818,9 +735,7 @@ object WireguardManager : KoinComponent {
                 m.isLockdown,
                 m.oneWireGuard,
                 m.useOnlyOnMetered,
-                m.isDeletable,
-                m.ssidEnabled,
-                m.ssids
+                m.isDeletable
             )
         mappings.add(newMap)
 
@@ -848,9 +763,7 @@ object WireguardManager : KoinComponent {
                 m.isLockdown,
                 owg, // updating just one wireguard field
                 m.useOnlyOnMetered,
-                m.isDeletable,
-                m.ssidEnabled,
-                m.ssids
+                m.isDeletable
             )
         )
     }
@@ -876,89 +789,12 @@ object WireguardManager : KoinComponent {
                 m.isLockdown,
                 m.oneWireGuard,
                 useMobileNw, // just updating useMobileNw
-                m.isDeletable,
-                m.ssidEnabled,
-                m.ssids
+                m.isDeletable
             )
         mappings.add(newMap)
         if (m.isActive) {
             VpnController.addWireGuardProxy(id = ID_WG_BASE + id)
             // Refresh proxies to immediately pause/resume based on new mobile-only setting and current network
-            VpnController.refreshOrPauseOrResumeOrReAddProxies()
-        }
-    }
-
-    suspend fun updateSsidEnabled(id: Int, ssidEnabled: Boolean) {
-        val config = configs.find { it.getId() == id }
-        if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "update ssid: wg not found, id: $id, ${configs.size}")
-            return
-        }
-        val m = mappings.find { it.id == id } ?: return
-        // this can be disabled/enabled multiple times, based on the user permission so check
-        // before updating
-        if (m.ssidEnabled == ssidEnabled) {
-            Logger.i(LOG_TAG_PROXY, "ssidEnabled is already $ssidEnabled for config: $id, ${config.getName()}")
-            return
-        }
-
-        db.updateSsidEnabled(id, ssidEnabled)
-        mappings.remove(m)
-        val newMap =
-            WgConfigFilesImmutable(
-                id,
-                config.getName(),
-                m.configPath,
-                m.serverResponse,
-                m.isActive,
-                m.isCatchAll,
-                m.isLockdown,
-                m.oneWireGuard,
-                m.useOnlyOnMetered,
-                m.isDeletable,
-                ssidEnabled, // just updating ssidEnabled
-                m.ssids
-            )
-        mappings.add(newMap)
-        Logger.i(LOG_TAG_PROXY, "updated ssidEnabled as $ssidEnabled for config: $id, ${config.getName()}")
-        if (m.isActive) {
-            // trigger connection monitor to update the SSID info
-            if (ssidEnabled) VpnController.notifyConnectionMonitor(enforcePolicyChange = true)
-            VpnController.addWireGuardProxy(id = ID_WG_BASE + id)
-            // Refresh proxies to immediately pause/resume based on new ssid setting and current network
-            VpnController.refreshOrPauseOrResumeOrReAddProxies()
-        }
-    }
-
-    suspend fun updateSsids(id: Int, ssids: String) {
-        val config = configs.find { it.getId() == id }
-        if (config == null) {
-            Logger.e(LOG_TAG_PROXY, "update ssids: wg not found, id: $id, ${configs.size}")
-            return
-        }
-        Logger.i(LOG_TAG_PROXY, "updating ssids as $ssids for config: $id, ${config.getName()}")
-        db.updateSsids(id, ssids)
-        val m = mappings.find { it.id == id } ?: return
-        mappings.remove(m)
-        val newMap =
-            WgConfigFilesImmutable(
-                id,
-                config.getName(),
-                m.configPath,
-                m.serverResponse,
-                m.isActive,
-                m.isCatchAll,
-                m.isLockdown,
-                m.oneWireGuard,
-                m.useOnlyOnMetered,
-                m.isDeletable,
-                m.ssidEnabled,
-                ssids // just updating ssids
-            )
-        mappings.add(newMap)
-        if (m.isActive) {
-            VpnController.addWireGuardProxy(id = ID_WG_BASE + id)
-            // Refresh proxies to immediately pause/resume based on new ssid setting and current network
             VpnController.refreshOrPauseOrResumeOrReAddProxies()
         }
     }
@@ -1052,9 +888,7 @@ object WireguardManager : KoinComponent {
                     isLockdown = false,
                     oneWireGuard = false,
                     useOnlyOnMetered = false,
-                    isDeletable = true,
-                    ssidEnabled = false,
-                    ssids = ""
+                    isDeletable = true
                 )
             db.insert(wgf)
             addOrUpdateConfigFileMapping(cfg, null, path, serverResponse)
@@ -1089,9 +923,7 @@ object WireguardManager : KoinComponent {
                     isLockdown = false,
                     oneWireGuard = false,
                     isDeletable = true,
-                    useOnlyOnMetered = false,
-                    ssidEnabled = false,
-                    ssids = ""
+                    useOnlyOnMetered = false
                 )
             mappings.add(wgf)
         } else {
@@ -1112,10 +944,6 @@ object WireguardManager : KoinComponent {
             sb.append("   always-on? ${it.isCatchAll}\n")
             sb.append("   lockdown? ${it.isLockdown}\n")
             sb.append("   mobile-only? ${it.useOnlyOnMetered}\n")
-            sb.append("   ssid-only? ${it.ssidEnabled}")
-            if (it.ssidEnabled) {
-                sb.append(", ssids: ${it.ssids}")
-            }
             sb.append("\n")
             sb.append("   ifaddr: ${routerStats?.addrs}").append("\n")
             sb.append("   mtu: ${stats?.mtu}\n")
@@ -1161,10 +989,6 @@ object WireguardManager : KoinComponent {
 
     fun oneWireGuardEnabled(): Boolean {
         return mappings.any { it.oneWireGuard && it.isActive }
-    }
-
-    fun getActiveSsidEnabledConfigs(): List<WgConfigFilesImmutable> {
-        return mappings.filter { it.ssidEnabled && it.isActive }
     }
 
     fun getOneWireGuardProxyId(): Int? {

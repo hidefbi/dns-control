@@ -659,13 +659,13 @@
     <string name="hsf_start_btn_state" translatable="true">start</string>
     <string name="hsf_stop_btn_state" translatable="true">stop</string>
 
-    <string name="hsf_uptime" translatable="false">(active %1$s; protos: %2$s; %3$s; mtu: %4$s; ssid: %5$s)</string>
+    <string name="hsf_uptime" translatable="false">(active %1$s; protos: %2$s; %3$s; mtu: %4$s)</string>
     <string name="hsf_downtime" translatable="true">(inactive since %1$s)</string>
 
     <string name="logs_card_duration" translatable="true">since %1$s</string>
 
     <string name="hsf_vpn_dialog_header" translatable="true">Attention!</string>
-    <string name="hsf_vpn_dialog_message" translatable="true">DNS Control needs permission to set up a local VPN to encrypt the device\'s DNS requests, implement a network monitor, and enforce firewall rules.\n\nWi-Fi-based proxy automation requires Location permission to identify the connected Wi-Fi network (SSID). This permission is requested only when you enable the feature.\n\nDNS Control does not collect any information or spy on you in any way.</string>
+    <string name="hsf_vpn_dialog_message" translatable="true">DNS Control needs permission to set up a local VPN to encrypt the device\'s DNS requests, implement a network monitor, and enforce firewall rules.\n\nDNS Control does not collect any information or spy on you in any way.</string>
 
     <string name="hsf_vpn_prepare_failure" translatable="true">Either VPN permission missing, or another app is in Always-on VPN mode.</string>
 
@@ -1398,7 +1398,7 @@
 
     <string name="hop_error_toast_msg_1" translatable="true">Cannot relay, already %1$s</string>
     <string name="hop_error_toast_msg_2" translatable="true">No WireGuard available for relay; please add more.</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Disable Mobile only or SSID to use Relays</string>
+    <string name="hop_error_toast_msg_3" translatable="true">Disable Mobile only to use Relays</string>
 
     <string name="mode_change_error_proxy_enabled" translatable="true">Cannot change modes when proxies are in use. Tap to &lt;u&gt;edit proxy settings&lt;/u&gt;.</string>
 
@@ -1501,31 +1501,8 @@
 -->
 
 
-    <string name="lbl_ssids" translatable="false">SSIDs</string>
-    <string name="lbl_ssid" translatable="false">SSID</string>
 
-    <string name="wg_setting_ssid_title" translatable="true">Wi‑Fi only</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Enable this WireGuard VPN only when connected to Wi-Fi or to one of the specified WiFi identifiers (%1$s).</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control needs location permission to access Wi‑Fi identifiers (%1$s).</string>
-    <string name="location_enable_explanation" translatable="true">To access Wi‑Fi identifiers (%1$s), turn on Location Services.</string>
-    <string name="ssid_location_error" translatable="true">Enable Location Services</string>
-    <string name="ssid_permission_error_action" translatable="true">Grant permission</string>
-    <string name="ssid_location_error_action" translatable="true">Enable location</string>
 
-    <string name="location_disclosure_title" translatable="true">Location Permission for Wi-Fi Features</string>
-    <string name="location_disclosure_message" translatable="true">DNS Control treats Wi-Fi network information (SSID/BSSID) as location data. Background location allows the app to automatically apply Proxy automation when your Wi-Fi changes, even if the app is not open. DNS Control does NOT collect, store, or share your physical GPS location.</string>
-    <string name="location_disclosure_positive" translatable="true">Continue</string>
-    <string name="location_disclosure_negative" translatable="true">Not Now</string>
-
-    <!-- New SSID Dialog strings -->
-    <!--[Pause / Connect] this WireGuard VPN when active Wi-Fi Identifier (SSID) [exactly / partially]. -->
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s this WireGuard VPN when <i>active</i> Wi-Fi Identifier (%2$s) %3$s.</string>
-    <string name="wg_ssid_input_hint" translatable="true">Enter Wi-Fi identifier (%1$s)</string>
-    <string name="wg_ssid_type_exact" translatable="true">Matches exactly</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Matches partially</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Wi-Fi identifiers (%1$s) must be 32 characters or less.</string>
-    <string name="wg_ssid_empty_error" translatable="false">SSID name cannot be empty</string>
-    <string name="wg_ssid_delete_title" translatable="false">Delete SSID</string>
 
     <string name="settings_firebase_error_reporting_heading" translatable="true">Stability program</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Capture error logs to help improve stability.</string>
@@ -1649,7 +1626,6 @@
     </plurals>
 
 
-    <string name="country_ssid_empty_state" translatable="false">No SSIDs configured yet</string>
 
     <string name="lbl_not_set" translatable="false">Not set</string>
 

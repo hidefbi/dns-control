@@ -843,7 +843,6 @@
     <string name="ac_desync_desc" translatable="true">Envie pacotes decoy conforme necessário.</string>
     <string name="ac_retry_options_desc" translatable="true">Defina como as tentativas de reconexão funcionam para conexões censuradas.</string>
     <string name="vpn_policy_auto_desc" translatable="true">Reage a alterações importantes na rede e na conectividade.</string>
-    <string name="ssid_location_error_action" translatable="true">Habilitar localização</string>
     <string name="ac_split_tcp_desc" translatable="true">Altere os pacotes TCP.</string>
     <string name="adv_tasker_dialog_edit_hint" translatable="true">Insira o nome do pacote (exemplo: net.dinglisch.android.taskerm)</string>
     <string name="close_conns_dialog_desc" translatable="true">Feche todas as conexões para%1$s?</string>

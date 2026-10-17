@@ -803,7 +803,6 @@
     <string name="exclude_no_package_err_toast" translatable="true">Az alkalmazások kizárásához csomagnév megadása szükséges.</string>
     <string name="hop_error_toast_msg_1" translatable="true">Nem lehet továbbítani, már %1$s</string>
     <string name="hop_error_toast_msg_2" translatable="true">Nincs elérhető WireGuard az átirányításhoz; kérlek, adj hozzá többet.</string>
-    <string name="hop_error_toast_msg_3" translatable="true">A Relays használatához kapcsolja ki a csak Mobil vagy az SSID‑alapú Korlátozást</string>
     <string name="mode_change_error_proxy_enabled" translatable="true">Nem lehet módot váltani, amíg proxyk vannak használatban. Koppintson a &lt;u&gt;proxy beállításainak szerkesztéséhez&lt;/u&gt;.</string>
     <string name="blocklist_not_available_toast" translatable="true">A tiltólisták frissítéséhez töltse le az alkalmazás legújabb verzióját.</string>
     <string name="adv_set_dial_timeout_title" translatable="true">Tétlen időkorlát</string>
@@ -838,7 +837,6 @@
         <item quantity="other">%1$d kiszolgálók</item>
     </plurals>
     <string name="tour_step_counter">%1$d / %2$d</string>
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s ezt a WireGuard VPN‑t, amikor az <i>aktív</i> Wi‑Fi‑azonosító (%2$s) %3$s.</string>
     <plurals name="peer_count">
         <item quantity="one">%d partner</item>
         <item quantity="other">%d partnerek</item>
@@ -851,14 +849,9 @@
     <string name="dns_record_types_auto_mode_status" translatable="true">Automatikus – (összes típus)</string>
     <string name="vpn_policy_fixed" translatable="true">Konzervatív</string>
     <string name="lockdown_download_enable_inapp" translatable="true">Letöltő engedélyezése</string>
-    <string name="ssid_permission_explanation" translatable="true">A DNS Controlnek helyhozzáférési engedélyre van szüksége a Wi‑Fi‑azonosítók (%1$s) eléréséhez.</string>
     <string name="config_delete_all_dialog_desc" translatable="true">Biztosan törölni akarod az ÖSSZES WireGuard VPN‑konfigurációt? Ez VISSZAFORDÍTHATATLAN.</string>
     <string name="firewall_rule_proxy_error" translatable="true">Proxy Hiba</string>
-    <string name="wg_ssid_input_hint" translatable="true">Adja meg a Wi‑Fi‑azonosítót (%1$s)</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Pontosan egyezik</string>
     <string name="fs_configure_others_desc" translatable="true">Megjelenés, értesítések és egyebek</string>
-    <string name="ssid_permission_error_action" translatable="true">Engedély megadása</string>
-    <string name="wg_ssid_type_exact" translatable="true">Pontos egyezés</string>
     <string name="lbl_action" translatable="true">Művelet</string>
     <string name="lbl_connect" translatable="true">Kapcsolódás</string>
     <string name="lbl_criteria" translatable="true">Feltételek</string>
@@ -870,20 +863,14 @@
     <string name="fs_configure_advanced_desc" translatable="true">Fejlesztői eszközök és diagnosztika</string>
     <string name="fs_configure_network_desc" translatable="true">VPN‑alagút mód és hálózati beállítások</string>
     <string name="settings_tunnel_metered" translatable="true">Mindig forgalomkorlátosként kezelve</string>
-    <string name="wg_ssid_invalid_error" translatable="true">A Wi‑Fi‑azonosítók (%1$s) legfeljebb 32 karakter hosszúak lehetnek.</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Hibanaplók rögzítése a stabilitás javításához.</string>
     <string name="fs_configure_apps_desc" translatable="true">Alkalmazásonkénti tűzfalszabályok és hálózati házirend</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Stabilítási program</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Minimálisan reagál a hálózati változásokra.</string>
-    <string name="ssid_location_error_action" translatable="true">Helymeghatározás engedélyezése</string>
     <string name="settings_locale_dialog_default" translatable="true">Rendszer alapértelmezés</string>
-    <string name="wg_setting_ssid_title" translatable="true">Csak Wi-Fi</string>
     <string name="tour_btn_skip">Bemutató kihagyása</string>
     <string name="settings_allow_incoming_wg_packets_desc" translatable="true">Engedélyezve lehetővé teszi a WireGuard partnerek által kezdeményezett bejövő kapcsolatok fogadását.</string>
-    <string name="location_enable_explanation" translatable="true">A Wi‑Fi‑azonosítók (%1$s) eléréséhez kapcsolja be a Helymeghatározás szolgáltatást.</string>
     <string name="stability_program_snackbar_msg" translatable="true">A stabilitási program engedélyezve. A hibajelentések segítenek a kísérleti funkciók fejlesztésében.</string>
-    <string name="ssid_location_error" translatable="true">Helymeghatározás szolgáltatás engedélyezése</string>
     <string name="settings_tunnel_metered_desc" translatable="true">A DNS Control VPN-alagút megjelölése forgalomkorlátosként, hogy az alkalmazások kevesebb adatot használjanak. Figyelem: ez leállíthatja a nagyobb feltöltéseket és letöltéseket, például a biztonsági mentéseket.</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Engedélyezd ezt a WireGuard VPN‑t csak akkor, ha Wi‑Fi‑hez vagy a megadott Wi‑Fi‑azonosítókhoz (%1$s) csatlakozol.</string>
     <string name="stability_program_snackbar_disable" translatable="true">Letiltás</string>
 </resources>

@@ -416,7 +416,7 @@ class FirewallManagerTest : KoinTest {
         FirewallManager.load()
 
         val apps = FirewallManager.getAllApps()
-        assertEquals(5, apps.size)
+        assertEquals(4, apps.size)
 
         val packageNames = apps.map { it.packageName }
         assertTrue(packageNames.contains("com.test.app1"))

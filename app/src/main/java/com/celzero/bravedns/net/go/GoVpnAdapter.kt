@@ -1247,7 +1247,7 @@ class GoVpnAdapter : KoinComponent {
         }
     }
 
-    suspend fun refreshOrPauseOrResumeOrReAddProxies(isMobileActive: Boolean, ssid: String) {
+    suspend fun refreshOrPauseOrResumeOrReAddProxies(isMobileActive: Boolean) {
         if (!tunnel.isConnected) {
             Logger.e(LOG_TAG_VPN, "$TAG no tunnel, skip refreshing proxies")
             return
@@ -1255,7 +1255,7 @@ class GoVpnAdapter : KoinComponent {
         try {
             // refresh proxies should never return error/exception
             val res = getProxies()?.refreshProxies()
-            Logger.i(LOG_TAG_VPN, "$TAG wg refresh proxies: $res, mobile? $isMobileActive, ssid? $ssid")
+            Logger.i(LOG_TAG_VPN, "$TAG wg refresh proxies: $res, mobile? $isMobileActive")
             // re-add the proxies if the not available in the tunnel
             val wgConfigs: List<Config> = WireguardManager.getActiveConfigs()
             if (wgConfigs.isEmpty()) {
@@ -1264,10 +1264,10 @@ class GoVpnAdapter : KoinComponent {
             }
             // first, refresh or re-add the proxies that are missing or in a degraded state
             refreshOrReAddProxies(wgConfigs)
-            // then, pause or resume the proxies based on the mobile/ssid conditions
+            // then, pause or resume the proxies based on the mobile conditions
             // mostly this should be no-op, as the proxies are already paused/resumed from
             // NetworkLifecycleObserver's callbacks
-            pauseAndResumeProxies(wgConfigs, isMobileActive, ssid)
+            pauseAndResumeProxies(wgConfigs, isMobileActive)
         } catch (e: Exception) {
             Logger.e(LOG_TAG_VPN, "$TAG err refreshing proxies: ${e.message}", e)
             logEvent(Severity.HIGH, "refresh proxies error", "err refreshing proxies, reason: ${e.message}")
@@ -1308,42 +1308,31 @@ class GoVpnAdapter : KoinComponent {
 
     /**
      * Pauses or resumes the wireguard proxies based on the active network state
-     * (mobile data active / current ssid).
+     * (mobile data active).
      *
      * Encapsulates the pause/resume half of [refreshOrPauseOrResumeOrReAddProxies].
      */
     suspend fun pauseAndResumeProxies(
         wgConfigs: List<Config>,
-        isMobileActive: Boolean,
-        ssid: String
+        isMobileActive: Boolean
     ) {
         wgConfigs.forEach {
             val id = ID_WG_BASE + it.getId()
             val files = WireguardManager.getConfigFilesById(it.getId())
-            // if the proxy is one-wg then mobile-only/ssid automaton doesn't apply
+            // if the proxy is one-wg then mobile-only automaton doesn't apply
             // we can skip those wg's
             val isWireGuardMobileOnly = files?.useOnlyOnMetered == true && !files.oneWireGuard
-            val canResumeMobileWg = isWireGuardMobileOnly && isMobileActive
-
-            val useOnlyOnSsid = files?.ssidEnabled == true && !files.oneWireGuard
-            val configuredSsids = files?.ssids.orEmpty()
-            val ssidMatch = WireguardManager.matchesSsidList(configuredSsids, ssid) && ssid.isNotEmpty()
-            val canResumeSsidWg = useOnlyOnSsid && ssidMatch
-
-            val canResume = canResumeMobileWg || canResumeSsidWg
+            val canResume = isWireGuardMobileOnly && isMobileActive
 
             Logger.d(
                 LOG_TAG_VPN,
-                "$TAG refresh proxy: $id, mobileOnly: $isWireGuardMobileOnly, " +
-                    "canResumeMobileWg: $canResumeMobileWg, canResumeSsidWg: $canResumeSsidWg, isMobileActive: $isMobileActive, " +
-                    "useOnlyOnSsid: $useOnlyOnSsid, ssidMatch: $ssidMatch, ssid: $ssid, canResume: $canResume, wg-ssids: $configuredSsids"
+                "$TAG refresh proxy: $id, mobileOnly: $isWireGuardMobileOnly, canResume: $canResume, isMobileActive: $isMobileActive"
             )
             val stats = getProxyStatusById(id).first
             if (stats == Backend.TPU && canResume) {
                 // if the proxy is paused, then resume it
                 // this is needed when the tunnel is reconnected and the proxies are paused
                 // so resume them, also when there is switch in wg-config for useOnlyOnMetered
-                // or ssid change for ssidEnabled wgs
                 val res = resumeWireguard(id)
                 Logger.i(LOG_TAG_VPN, "$TAG resumed proxy: $id, res: $res")
                 logEvent(
@@ -1362,18 +1351,9 @@ class GoVpnAdapter : KoinComponent {
                     "wireguard proxy paused",
                     "Wireguard proxy with id $id paused, reason: mobile data"
                 )
-            } else if (useOnlyOnSsid && !ssidMatch && !canResume) {
-                // when the ssidEnabled is set and the ssid does not match
-                val res = pauseWireguard(id)
-                Logger.i(LOG_TAG_VPN, "$TAG paused proxy (ssid): $id, res: $res")
-                logEvent(
-                    Severity.LOW,
-                    "wireguard proxy paused",
-                    "Wireguard proxy with id $id paused, reason: ssid mismatch"
-                )
             }
 
-            if (stats == Backend.TPU && !isWireGuardMobileOnly && !useOnlyOnSsid) {
+            if (stats == Backend.TPU && !isWireGuardMobileOnly) {
                 // if the proxy is paused, then resume it
                 // this is needed when the tunnel is reconnected and the proxies are paused
                 val res = getProxies()?.getProxy(id)?.resume()
@@ -1382,7 +1362,7 @@ class GoVpnAdapter : KoinComponent {
                     "wireguard proxy resumed",
                     "Wireguard proxy with id $id resumed successfully"
                 )
-                Logger.i(LOG_TAG_VPN, "$TAG resumed proxy (non-metered/ssid): $id, res: $res")
+                Logger.i(LOG_TAG_VPN, "$TAG resumed proxy (non-metered): $id, res: $res")
             }
         }
     }

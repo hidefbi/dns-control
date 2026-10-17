@@ -129,7 +129,7 @@ class GenericHopAdapter(
 
         private fun updateWgPropertiesChip(config: com.celzero.bravedns.wireguard.Config) {
             val mapping = WireguardManager.getConfigFilesById(config.getId()) ?: return
-            if (!mapping.isCatchAll && !mapping.useOnlyOnMetered && !mapping.ssidEnabled) {
+            if (!mapping.isCatchAll && !mapping.useOnlyOnMetered) {
                 b.chipProperties.visibility = View.GONE
                 return
             }
@@ -144,14 +144,6 @@ class GenericHopAdapter(
                     R.string.two_argument_space,
                     b.chipProperties.text.toString(),
                     context.getString(R.string.symbol_mobile)
-                )
-            }
-            if (mapping.ssidEnabled) {
-                b.chipProperties.visibility = View.VISIBLE
-                b.chipProperties.text = context.getString(
-                    R.string.two_argument_space,
-                    b.chipProperties.text.toString(),
-                    context.getString(R.string.symbol_id)
                 )
             }
 
@@ -295,7 +287,7 @@ class GenericHopAdapter(
                 return
             }
 
-            if (mapping.useOnlyOnMetered || mapping.ssidEnabled) {
+            if (mapping.useOnlyOnMetered) {
                 uiCtx {
                     if (!isAttached) return@uiCtx
                     Utilities.showToastUiCentered(

@@ -840,7 +840,6 @@
     <string name="fail_open_network_title" translatable="true">Останавливать при потере сети</string>
     <string name="fail_open_network_desc" translatable="true">Когда включено, DNS Control блокирует все данные при отсутствии подключения, как в режиме <i> В самолёте</i>.</string>
     <string name="close_all" translatable="true">Закрыть все</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Отключить \"Только мобильный\" или SSID, чтобы использовать релеи</string>
     <string name="wg_mobile_only_hop_err" translatable="true">Режим «Только мобильный» не поддерживается для релеев</string>
     <string name="univ_delete_domain_dialog_title" translatable="true">Удалить все Правила домена?</string>
     <string name="univ_delete_domain_dialog_message" translatable="true">Удаление этих правил позволит любому приложению подключиться к заблокированным доменам.</string>
@@ -858,18 +857,6 @@
     <string name="firewall_rule_proxy_error_desc" translatable="true"><![CDATA[Подключение былл заблокировано потому чтот <i>прокси</i> не выбрано для этого приложения.<br/><br/> Что-бы изменить идите в <i>Прокси</i> из экрана <i>Конфигурация</i> .]]></string>
     <string name="vpn_policy_fixed" translatable="true">Консервативное</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Наименее зависит от изменений сети.</string>
-    <string name="wg_setting_ssid_title" translatable="true">Только Wi‑Fi</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Использовать этот VPN WireGuard только при подключении к Wi-Fi или указанным сетям Wi-Fi (%1$s).</string>
-    <string name="ssid_permission_explanation" translatable="true">Для DNS Control нужно разрешение местоположения чтобы видеть названия Wi-Fi сетей (%1$s).</string>
-    <string name="location_enable_explanation" translatable="true">Чтобы узнать названия Wi-Fi сетей (%1$s), включите службу определения местоположения.</string>
-    <string name="ssid_location_error" translatable="true">Включить службу определения местоположения</string>
-    <string name="ssid_permission_error_action" translatable="true">Позволить</string>
-    <string name="ssid_location_error_action" translatable="true">Включить определение местоположения</string>
-    <string name="wg_ssid_dialog_description" translatable="true"><i>Включено</i> когда сеть Wi-Fi (%2$s) равен %3$s, тогда этот VPN WireGuard %1$s.</string>
-    <string name="wg_ssid_input_hint" translatable="true">Введите название сети Wi-Fi (%1$s)</string>
-    <string name="wg_ssid_type_exact" translatable="true">Совпадает точно</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Совпадает частично</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Идентификаторы Wi-Fi (%1$s) должны быть до 32 символов.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Программа стабилизации</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Отправлять журнал ошибок чтобы помочь улучшить стабильность приложения.</string>
     <string name="settings_locale_dialog_default" translatable="true">Как в системе</string>

@@ -16,12 +16,6 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     
-    <!-- WiFi and Location permissions required for SSID access -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- location permissions removed: they were only ever used to read the current
-         Wi-Fi SSID for WireGuard's per-network auto-switch feature (an Android platform
-         quirk pre-API 33, not for actual location tracking). That feature is now disabled
-         in SsidPermissionManager.kt / ConnectionMonitor.kt instead of requesting this. -->
 
     
     <!-- Android 11 introduces changes related to package visibility. These changes affect

@@ -207,8 +207,7 @@ class WgConfigAdapterTest : KoinTest {
         isActive: Boolean = false,
         isLockdown: Boolean = false,
         isCatchAll: Boolean = false,
-        useOnlyOnMetered: Boolean = false,
-        ssidEnabled: Boolean = false
+        useOnlyOnMetered: Boolean = false
     ): WgConfigFiles {
         val wgConfig = mockk<WgConfigFiles>(relaxed = true)
         every { wgConfig.id } returns id
@@ -217,7 +216,6 @@ class WgConfigAdapterTest : KoinTest {
         every { wgConfig.isCatchAll } returns isCatchAll
         every { wgConfig.isLockdown } returns isLockdown
         every { wgConfig.useOnlyOnMetered } returns useOnlyOnMetered
-        every { wgConfig.ssidEnabled } returns ssidEnabled
         return wgConfig
     }
 
@@ -355,8 +353,7 @@ class WgConfigAdapterTest : KoinTest {
                 isActive = true,
                 isLockdown = false,
                 isCatchAll = true,
-                useOnlyOnMetered = true,
-                ssidEnabled = true
+                useOnlyOnMetered = true
             )
 
         assertEquals("Expected ID: 123", 123, config.id)
@@ -364,7 +361,6 @@ class WgConfigAdapterTest : KoinTest {
         assertTrue("Expected isActive: true", config.isActive)
         assertTrue("Expected isCatchAll: true", config.isCatchAll)
         assertTrue("Expected useOnlyOnMetered: true", config.useOnlyOnMetered)
-        assertTrue("Expected ssidEnabled: true", config.ssidEnabled)
     }
 
     @Test
@@ -427,22 +423,19 @@ class WgConfigAdapterTest : KoinTest {
     fun `test chip properties configurations`() = testScope.runTest {
         val catchAllConfig = createTestWgConfigFiles(isCatchAll = true)
         val meteredConfig = createTestWgConfigFiles(useOnlyOnMetered = true)
-        val ssidConfig = createTestWgConfigFiles(ssidEnabled = true)
         val combinedConfig =
             createTestWgConfigFiles(
                 isCatchAll = true,
                 isLockdown = true,
-                useOnlyOnMetered = true,
-                ssidEnabled = true
+                useOnlyOnMetered = true
             )
 
         // Test each configuration
         mockViewHolder.update(catchAllConfig)
         mockViewHolder.update(meteredConfig)
-        mockViewHolder.update(ssidConfig)
         mockViewHolder.update(combinedConfig)
 
-        verify(exactly = 4) { mockViewHolder.update(any()) }
+        verify(exactly = 3) { mockViewHolder.update(any()) }
     }
 
     // === STATUS UPDATE TESTS ===

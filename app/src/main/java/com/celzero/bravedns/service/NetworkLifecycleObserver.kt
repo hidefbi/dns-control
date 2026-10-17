@@ -21,20 +21,15 @@ import android.net.LinkProperties
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
-import android.net.wifi.WifiInfo
-import android.net.wifi.WifiManager
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_CONNECTION
-import com.celzero.bravedns.util.Utilities.isAtleastS
 
 /**
  * A lightweight network observer that forwards raw network lifecycle events for
  * WiFi and Cellular networks to a [NetworkLifecycleObserver.Listener].
  *
- * For WiFi networks the observer additionally resolves the network SSID, mirroring
- * [ConnectionMonitor.getNetworkSSID] (without the WireGuard/permission notification
- * side-effect, which remains [ConnectionMonitor]'s responsibility). For Cellular
- * networks the SSID is always null and only the event type is forwarded.
+ * The observer does no processing of its own: it only reports which network changed,
+ * what happened to it, and over which transport (WiFi or Cellular).
  */
 class NetworkLifecycleObserver(
     private val context: Context,
@@ -43,12 +38,11 @@ class NetworkLifecycleObserver(
 
     /**
      * Custom callback invoked by [NetworkLifecycleObserver] whenever a tracked network
-     * lifecycle event occurs. Contains a single method so that implementers receive the
-     * [Network] involved, an [EventType] describing what happened, and the resolved SSID
-     * for WiFi networks (null for Cellular networks or when the SSID cannot be resolved).
+     * lifecycle event occurs. Receives the [Network] involved and an [EventType]
+     * describing what happened.
      */
     interface Listener {
-        fun onNetworkEvent(network: Network, eventType: EventType, ssid: String?)
+        fun onNetworkEvent(network: Network, eventType: EventType)
     }
 
     /**
@@ -82,11 +76,8 @@ class NetworkLifecycleObserver(
             .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
             .build()
 
-
     @Volatile
     private var connectivityManager: ConnectivityManager? = null
-    @Volatile
-    private var wifiManager: WifiManager? = null
     @Volatile
     private var wifiCallback: ConnectivityManager.NetworkCallback? = null
     @Volatile
@@ -95,177 +86,46 @@ class NetworkLifecycleObserver(
     @Volatile
     private var stopped: Boolean = false
 
-    private fun createCallback(resolveSsid: Boolean): ConnectivityManager.NetworkCallback {
-        val label = if (resolveSsid) "wifi(ssid)" else "cellular"
-        Logger.d(LOG_TAG_CONNECTION, "$TAG; createCallback($label), inclLocationInfo? ${resolveSsid && isAtleastS()}")
-        return if (resolveSsid && isAtleastS()) {
-            object : ConnectivityManager.NetworkCallback(FLAG_INCLUDE_LOCATION_INFO) {
-                override fun onAvailable(network: Network) =
-                    dispatch(network, EventType.NETWORK_ADDED, null, resolveSsid)
+    /**
+     * Creates a callback for one transport. The transport label is known from the
+     * request the callback is registered with, so no capability lookup is needed.
+     */
+    private fun createCallback(transport: String): ConnectivityManager.NetworkCallback {
+        Logger.d(LOG_TAG_CONNECTION, "$TAG; createCallback($transport)")
+        return object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) =
+                dispatch(network, EventType.NETWORK_ADDED, transport)
 
-                override fun onLost(network: Network) =
-                    dispatch(network, EventType.NETWORK_LOST, null, resolveSsid)
+            override fun onLost(network: Network) =
+                dispatch(network, EventType.NETWORK_LOST, transport)
 
-                override fun onCapabilitiesChanged(
-                    network: Network,
-                    capabilities: NetworkCapabilities
-                ) = dispatch(network, EventType.CAPABILITY_CHANGE, capabilities, resolveSsid)
+            override fun onCapabilitiesChanged(
+                network: Network,
+                capabilities: NetworkCapabilities
+            ) = dispatch(network, EventType.CAPABILITY_CHANGE, transport)
 
-                override fun onLinkPropertiesChanged(
-                    network: Network,
-                    linkProperties: LinkProperties
-                ) = dispatch(network, EventType.LINK_PROPERTY_CHANGE, null, resolveSsid)
-            }
-        } else {
-            object : ConnectivityManager.NetworkCallback() {
-                override fun onAvailable(network: Network) =
-                    dispatch(network, EventType.NETWORK_ADDED, null, resolveSsid)
-
-                override fun onLost(network: Network) =
-                    dispatch(network, EventType.NETWORK_LOST, null, resolveSsid)
-
-                override fun onCapabilitiesChanged(
-                    network: Network,
-                    capabilities: NetworkCapabilities
-                ) = dispatch(network, EventType.CAPABILITY_CHANGE, capabilities, resolveSsid)
-
-                override fun onLinkPropertiesChanged(
-                    network: Network,
-                    linkProperties: LinkProperties
-                ) = dispatch(network, EventType.LINK_PROPERTY_CHANGE, null, resolveSsid)
-            }
+            override fun onLinkPropertiesChanged(
+                network: Network,
+                linkProperties: LinkProperties
+            ) = dispatch(network, EventType.LINK_PROPERTY_CHANGE, transport)
         }
     }
 
-    /**
-     * Routes a callback event to the listener, resolving the SSID when the callback
-     * is interested in SSIDs (WiFi) and ignoring it otherwise (Cellular). Drops the event
-     * entirely once [stopped]. For WiFi [EventType.NETWORK_LOST] events no SSID/transport
-     * is resolved (the network is gone). Otherwise, when capabilities are not provided by
-     * the callback (onAvailable / link props), they are looked up from the connectivity
-     * manager so the transport can still be determined.
-     */
-    private fun dispatch(
-        network: Network,
-        eventType: EventType,
-        capabilities: NetworkCapabilities?,
-        resolveSsid: Boolean
-    ) {
+    /** Forwards a callback event to the listener. Drops the event once [stopped]. */
+    private fun dispatch(network: Network, eventType: EventType, transport: String) {
         // Drop callbacks delivered after stop()
         if (stopped) return
-        if (!resolveSsid) {
-            notify(network, eventType, null, transportLabel(capabilities))
-            return
-        }
-        // For NETWORK_LOST the network is already torn down: getNetworkCapabilities
-        // would return null (wasting an IPC) and the SSID is irrelevant on loss, so
-        // forward the event without resolving either.
-        if (eventType == EventType.NETWORK_LOST) {
-            notify(network, eventType, null, transportLabel(capabilities))
-            return
-        }
-        val cap = capabilities ?: connectivityManager?.getNetworkCapabilities(network)
-        notify(network, eventType, getNetworkSSID(network, cap), transportLabel(cap))
-    }
-
-    private fun transportLabel(cap: NetworkCapabilities?): String {
-        return when {
-            cap?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true -> "wifi"
-            cap?.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) == true -> "cellular"
-            cap == null -> "unknown(no-cap)"
-            else -> "other"
-        }
-    }
-
-    /**
-     * Resolves the SSID for a WiFi network, mirroring [ConnectionMonitor.getNetworkSSID]
-     * but without the WireGuard/permission notification side-effect.
-     *
-     * @param network The network to get the SSID for.
-     * @param cap The network's capabilities (used both to confirm WiFi transport and to
-     *            read transportInfo on S+); may be null, in which case null is returned.
-     * @return The cleaned SSID for the WiFi network, or null if the network is not WiFi
-     *         or the SSID could not be resolved.
-     */
-    private fun getNetworkSSID(network: Network?, cap: NetworkCapabilities?): String? {
-        if (network == null) {
-            Logger.d(LOG_TAG_CONNECTION, "$TAG; getNetworkSSID: network is null")
-            return null
-        }
-
-        // Only WiFi networks carry an SSID.
-        if (cap?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) != true) {
-            Logger.d(
-                LOG_TAG_CONNECTION,
-                "$TAG; getNetworkSSID: network ${network.networkHandle} is not WiFi"
-            )
-            return null
-        }
-
-        try {
-            if (isAtleastS()) {
-                val transportInfo = cap.transportInfo
-                if (transportInfo is WifiInfo) {
-                    extractCleanSsid(transportInfo.ssid)?.let { return it }
-                }
-                Logger.v(
-                    LOG_TAG_CONNECTION,
-                    "$TAG; getNetworkSSID: transportInfo not WifiInfo (${transportInfo?.javaClass?.simpleName}) for ${network.networkHandle}, falling back to WifiManager"
-                )
-            }
-
-            val wm = wifiManager
-                ?: (context.applicationContext
-                    .getSystemService(Context.WIFI_SERVICE) as? WifiManager)
-                    ?.also { wifiManager = it }
-            // Deprecated since API 31 and a synchronous IPC. Used only as a fallback
-            // when transportInfo is unavailable (pre-S, or non-WifiInfo transportInfo)
-            // and runs on the binder callback thread; best-effort and never blocks
-            // start()/stop() (which do not touch WifiManager).
-            @Suppress("DEPRECATION")
-            val wifiInfo = wm?.connectionInfo
-            if (wifiInfo != null) {
-                extractCleanSsid(wifiInfo.ssid)?.let { return it }
-            }
-
-            Logger.d(
-                LOG_TAG_CONNECTION,
-                "$TAG; getNetworkSSID: SSID unavailable for ${network.networkHandle}, wmInfo? ${wifiInfo != null}"
-            )
-            return null
-        } catch (e: SecurityException) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; getNetworkSSID SecurityException", e)
-            return null
-        } catch (e: Exception) {
-            Logger.w(LOG_TAG_CONNECTION, "$TAG; getNetworkSSID err", e)
-            return null
-        }
-    }
-
-    private fun extractCleanSsid(ssid: String?): String? {
-        if (ssid.isNullOrEmpty() || ssid == UNKNOWN_SSID) return null
-        return ssid.removeSurrounding("\"")
-    }
-
-    // Forwards the event to the listener. No processing or business logic is performed
-    // here beyond SSID resolution
-    private fun notify(
-        network: Network,
-        eventType: EventType,
-        ssid: String?,
-        transport: String
-    ) {
         Logger.d(
             LOG_TAG_CONNECTION,
-            "$TAG; ${eventType.name}, transport: $transport, nwHandle: ${network.networkHandle}, ssid: $ssid"
+            "$TAG; ${eventType.name}, transport: $transport, nwHandle: ${network.networkHandle}"
         )
-        listener.onNetworkEvent(network, eventType, ssid)
+        listener.onNetworkEvent(network, eventType)
     }
 
     /**
      * Registers the network callbacks
      *
-     * @return` true if the Cellular callback registered successfully (WiFi is
+     * @return true if the Cellular callback registered successfully (WiFi is
      *         best-effort and may fail), or the observer was already active;
      *         false if the connectivity manager is unavailable or the Cellular
      *         registration threw (any successful WiFi callback is rolled back).
@@ -290,19 +150,19 @@ class NetworkLifecycleObserver(
         // attempted independently: a failing WiFi registration no longer prevents
         // cellular-only observation. The atomic rollback contract is preserved for
         // the case where WiFi succeeded but Cellular then fails.
-        val wifiCb = createCallback(resolveSsid = true)
+        val wifiCb = createCallback(TRANSPORT_WIFI)
         var wifiRegistered = false
         try {
             manager.registerNetworkCallback(wifiNetworkRequest, wifiCb)
             wifiCallback = wifiCb
             wifiRegistered = true
-            Logger.i(LOG_TAG_CONNECTION, "$TAG; wifi callback registered, inclLocationInfo? ${isAtleastS()}")
+            Logger.i(LOG_TAG_CONNECTION, "$TAG; wifi callback registered")
         } catch (e: Exception) {
             Logger.w(LOG_TAG_CONNECTION, "$TAG; err registering wifi callback", e)
         }
 
         // Cellular registration is attempted regardless of the WiFi outcome.
-        val cellCb = createCallback(resolveSsid = false)
+        val cellCb = createCallback(TRANSPORT_CELLULAR)
         try {
             manager.registerNetworkCallback(cellularNetworkRequest, cellCb)
             cellularCallback = cellCb
@@ -353,13 +213,14 @@ class NetworkLifecycleObserver(
                 Logger.w(LOG_TAG_CONNECTION, "$TAG; err unregistering callback", e)
             }
         }
-        // Intentionally NOT clearing connectivityManager / wifiManager: these are
-        // app-wide singletons obtained from applicationContext, so holding them is
-        // not a leak, and reusing them avoids a getSystemService lookup on re-start.
+        // Intentionally NOT clearing connectivityManager: it is an app-wide singleton
+        // obtained from applicationContext, so holding it is not a leak, and reusing it
+        // avoids a getSystemService lookup on re-start.
     }
 
     companion object {
-        private const val UNKNOWN_SSID = "<unknown ssid>"
         private const val TAG = "NetworkLifecycleObserver"
+        private const val TRANSPORT_WIFI = "wifi"
+        private const val TRANSPORT_CELLULAR = "cellular"
     }
 }

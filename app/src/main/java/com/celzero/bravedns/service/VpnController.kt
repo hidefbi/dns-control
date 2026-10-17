@@ -282,11 +282,6 @@ object VpnController : KoinComponent {
         return rvpn?.tunMtu() ?: 0
     }
 
-    fun underlyingSsid(): String? {
-        val b = rvpn ?: return ""
-        return b.underlyingNetworks?.activeSsid ?: b.underlyingNetworks?.ipv4Net?.firstOrNull { !it.ssid.isNullOrEmpty() }?.ssid ?: b.underlyingNetworks?.ipv6Net?.firstOrNull { !it.ssid.isNullOrEmpty() }?.ssid.orEmpty()
-    }
-
     fun netType(): String {
         // using firewall_status_unknown from strings.xml as a place holder to show network
         // type as Unknown.

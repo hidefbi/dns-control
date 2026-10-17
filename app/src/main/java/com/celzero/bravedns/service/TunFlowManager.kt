@@ -1070,7 +1070,6 @@ object TunFlowManager : KoinComponent {
         val connId = connTracker.connId
         val uid = connTracker.uid
         // add baseOrAutoOrExit in the end of the list if needed (not true for lockdown)
-        val ssid = ctx.underlyingNetworks?.activeSsid ?: ctx.underlyingNetworks?.ipv4Net?.firstOrNull { it.ssid != null }?.ssid ?: ctx.underlyingNetworks?.ipv6Net?.firstOrNull { it.ssid != null }?.ssid ?: ""
         val usesMobileNw = ctx.isIfaceCellular(connTracker.destIP)
 
         if (connTracker.uid == rethinkUid && !rinr) {
@@ -1098,7 +1097,7 @@ object TunFlowManager : KoinComponent {
         }
 
         val defProxy = if (isGlobalLockdown) "" else baseOrAutoOrExit
-        val wgs = WireguardManager.getAllPossibleConfigIdsForApp(uid, connTracker.destIP, connTracker.destPort, connTracker.query.orEmpty(), usesMobileNw, ssid, defProxy)
+        val wgs = WireguardManager.getAllPossibleConfigIdsForApp(uid, connTracker.destIP, connTracker.destPort, connTracker.query.orEmpty(), usesMobileNw, defProxy)
         if (wgs.isNotEmpty() && wgs.first() != baseOrAutoOrExit) {
             // canRoute may fail for all configs.
             // if that happens:

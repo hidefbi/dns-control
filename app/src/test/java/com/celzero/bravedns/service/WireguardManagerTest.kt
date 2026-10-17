@@ -170,9 +170,7 @@ class WireguardManagerTest : KoinTest {
         isLockdown: Boolean = false,
         oneWireGuard: Boolean = false,
         useOnlyOnMetered: Boolean = false,
-        isDeletable: Boolean = true,
-        ssidEnabled: Boolean = false,
-        ssids: String = ""
+        isDeletable: Boolean = true
     ): WgConfigFilesImmutable {
         return WgConfigFilesImmutable(
             id = id,
@@ -184,9 +182,7 @@ class WireguardManagerTest : KoinTest {
             isLockdown = isLockdown,
             oneWireGuard = oneWireGuard,
             useOnlyOnMetered = useOnlyOnMetered,
-            isDeletable = isDeletable,
-            ssidEnabled = ssidEnabled,
-            ssids = ssids
+            isDeletable = isDeletable
         )
     }
 
@@ -541,84 +537,6 @@ class WireguardManagerTest : KoinTest {
         println("✅ PASSED: oneWireGuardEnabled() detected disabled state correctly")
     }
 
-    @Test
-    fun `test matchesSsidList - happy case with exact match`() {
-        println("🧪 Testing matchesSsidList() - exact match")
-
-        // Execute
-        val result = WireguardManager.matchesSsidList("""[{"name":"WiFi1","type":"equal_exact"},{"name":"WiFi2","type":"equal_exact"},{"name":"WiFi3","type":"equal_exact"}]""", "WiFi2")
-
-        // Verify
-        assertTrue("Should return true for exact match", result)
-        println("✅ PASSED: matchesSsidList() matched exact SSID correctly")
-    }
-
-    @Test
-    fun `test matchesSsidList - happy case with wildcard prefix match`() {
-        println("🧪 Testing matchesSsidList() - wildcard prefix match")
-
-        // Execute
-        val result = WireguardManager.matchesSsidList("""[{"name":"WiFi*","type":"equal_wildcard"},{"name":"TestNet","type":"equal_exact"}]""", "WiFi123")
-
-        // Verify
-        assertTrue("Should return true for wildcard match", result)
-        println("✅ PASSED: matchesSsidList() matched wildcard SSID correctly")
-    }
-
-    // SSID MATCHING TESTS
-
-    @Test
-    fun `test matchesSsidList - sad case with no match`() {
-        println("🧪 Testing matchesSsidList() - no match")
-
-        // Execute
-        val result = WireguardManager.matchesSsidList("""[{"name":"WiFi1","type":"equal_exact"},{"name":"WiFi2","type":"equal_exact"},{"name":"WiFi3","type":"equal_exact"}]""", "WiFi4")
-
-        // Verify
-        assertFalse("Should return false for no match", result)
-        println("✅ PASSED: matchesSsidList() handled no match correctly")
-    }
-
-    @Test
-    fun `test matchesSsidList - edge case with null current ssid`() {
-        println("🧪 Testing matchesSsidList() - null current ssid")
-
-        // Execute - Test with a specific SSID list that won't match empty string
-        val result = WireguardManager.matchesSsidList("""[{"name":"WiFi1","type":"equal_exact"},{"name":"WiFi2","type":"equal_exact"}]""", "")
-
-        // Verify - empty string should not match specific SSIDs
-        assertFalse("Should return false for empty current ssid when specific SSIDs are listed", result)
-        println("✅ PASSED: matchesSsidList() handled null current ssid correctly")
-    }
-
-    @Test
-    fun `test matchesSsidList - edge case with single wildcard`() {
-        println("🧪 Testing matchesSsidList() - single wildcard")
-
-        // Execute - universal wildcard matches any SSID
-        val result = WireguardManager.matchesSsidList("""[{"name":"*","type":"equal_wildcard"}]""", "AnySSID")
-
-        // Verify
-        assertTrue("Should return true for universal wildcard", result)
-        println("✅ PASSED: matchesSsidList() handled universal wildcard correctly")
-    }
-
-    @Test
-    fun `test matchesSsidList - complex case with multiple wildcards`() {
-        println("🧪 Testing matchesSsidList() - multiple wildcards")
-
-        // Execute - mixed equal_wildcard and equal_exact types in JSON format
-        val wL = """[{"name":"Home*","type":"equal_wildcard"},{"name":"Office*","type":"equal_wildcard"},{"name":"Guest","type":"equal_exact"}]"""
-        val result1 = WireguardManager.matchesSsidList(wL, "Home123")
-        val result2 = WireguardManager.matchesSsidList(wL, "Office456")
-        val result3 = WireguardManager.matchesSsidList(wL, "Guest")
-
-        // Verify
-        assertTrue("Should match first wildcard", result1)
-        assertTrue("Should match second wildcard", result2)
-        assertTrue("Should match exact string", result3)
-        println("✅ PASSED: matchesSsidList() handled multiple wildcards correctly")
-    }
 
     // ERROR HANDLING TESTS
 
@@ -1017,24 +935,24 @@ class WireguardManagerTest : KoinTest {
 
     // ===== ELIGIBILITY TESTS =====
     // These tests exercise the public API getAllPossibleConfigIdsForApp() which internally
-    // calls canUseConfig() -> isEligibleForNetwork() -> checkEligibilityBasedOnNw() and
-    // checkEligibilityBasedOnSsid(). The eligibility helpers are private; we test their
+    // calls canUseConfig() -> isEligibleForNetwork() -> checkEligibilityBasedOnNw(). The
+    // eligibility helpers are private; we test their
     // combined behavior through the public method to avoid reflection-based testing.
 
-    // --- checkEligibilityBasedOnNw (tested via getAllPossibleConfigIdsForApp with no SSID constraints) ---
+    // --- checkEligibilityBasedOnNw (tested via getAllPossibleConfigIdsForApp) ---
 
     @Test
     fun `eligibility Nw - useOnlyOnMetered false is eligible on mobile`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = false
+            useOnlyOnMetered = false
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", true, "", ""
+            100, "1.1.1.1", 80, "", true, ""
         )
         assertTrue("useOnlyOnMetered=false should be eligible on mobile (catch-all)",
             ids.contains("${ID_WG_BASE}1"))
@@ -1045,14 +963,14 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility Nw - useOnlyOnMetered true on mobile is eligible`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = false
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", true, "", ""
+            100, "1.1.1.1", 80, "", true, ""
         )
         assertTrue("useOnlyOnMetered=true on mobile should be eligible",
             ids.contains("${ID_WG_BASE}1"))
@@ -1063,14 +981,14 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility Nw - useOnlyOnMetered false on WiFi is eligible`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = false
+            useOnlyOnMetered = false
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertTrue("useOnlyOnMetered=false on WiFi should be eligible",
             ids.contains("${ID_WG_BASE}1"))
@@ -1081,238 +999,23 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility Nw - useOnlyOnMetered true on WiFi is NOT eligible by NW`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = false
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
 
-        // On WiFi + metered-only + ssidEnabled=false → not eligible
+        // On WiFi + metered-only → not eligible
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
-        assertFalse("useOnlyOnMetered=true on WiFi with no SSID should be NOT eligible",
+        assertFalse("useOnlyOnMetered=true on WiFi should be NOT eligible",
             ids.contains("${ID_WG_BASE}1"))
         unmockkObject(ProxyManager)
     }
 
-    // --- checkEligibilityBasedOnSsid ---
-
-    @Test
-    fun `eligibility Ssid - ssidEnabled false is eligible on WiFi`() = runBlocking {
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = false
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
-        )
-        assertTrue("ssidEnabled=false should be eligible on any WiFi",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility Ssid - ssidEnabled true matching SSID is eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"MyWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
-        )
-        assertTrue("ssidEnabled=true with matching SSID should be eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility Ssid - ssidEnabled true non-matching SSID is NOT eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"MyWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "OtherWiFi", ""
-        )
-        assertFalse("ssidEnabled=true with non-matching SSID should be NOT eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility Ssid - ssidEnabled true wildcard match is eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"Home*","type":"equal_wildcard"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "HomeNetwork", ""
-        )
-        assertTrue("ssidEnabled=true with wildcard match should be eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility Ssid - ssidEnabled true not-equal SSID match is NOT eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"CafeWiFi","type":"notequal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        // SSID matches NOT_EQUAL → block
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "CafeWiFi", ""
-        )
-        assertFalse("ssidEnabled=true matching NOT_EQUAL SSID should be NOT eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility Ssid - empty ssid list with ssidEnabled true matches all`() = runBlocking {
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ""
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "AnyWiFi", ""
-        )
-        assertTrue("ssidEnabled=true with empty SSID list should match all",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
 
     // --- isEligibleForNetwork combined ---
-
-    @Test
-    fun `eligibility combined - useOnlyOnMetered false ssidEnabled true on mobile IS eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"CafeWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        // On mobile the SSID rule is bypassed (mobile has no SSID context).
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", true, "", ""
-        )
-        assertTrue("On mobile, the SSID rule is bypassed (mobile has no SSID)",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility combined - useOnlyOnMetered true ssidEnabled true on WiFi with matching SSID is eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"MyWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        // mobileOnly is meant as an alternative to ssidEnabled; when both are on, either
-        // rule being satisfied is enough. On WiFi with matching SSID, the SSID rule passes.
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
-        )
-        assertTrue("mobileOnly + ssidEnabled on WiFi with matching SSID should be eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility combined - useOnlyOnMetered true ssidEnabled true on WiFi with non-matching SSID is NOT eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"MyWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        // On WiFi with non-matching SSID, neither rule passes: mobileOnly fails (not mobile)
-        // and ssidEnabled fails (SSID mismatch).
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "OtherWiFi", ""
-        )
-        assertFalse("mobileOnly + ssidEnabled on WiFi with non-matching SSID should NOT be eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility combined - useOnlyOnMetered true ssidEnabled true on mobile IS eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"MyWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        // On mobile, both rules pass: mobileOnly on mobile, and ssidEnabled bypassed on mobile.
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", true, "", ""
-        )
-        assertTrue("mobileOnly + ssidEnabled on mobile should be eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility combined - useOnlyOnMetered true on WiFi with non-matching SSID is NOT eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"MyWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(any<Int>()) } returns emptySet()
-
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "OtherWiFi", ""
-        )
-        assertFalse("metered-only with non-matching SSID on WiFi should be NOT eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
 
     // --- canUseConfig (app-specific via getAllPossibleConfigIdsForApp) ---
 
@@ -1320,14 +1023,14 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility canUseConfig - lockdown eligible returns only lockdown config`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isLockdown = true,
-            useOnlyOnMetered = false, ssidEnabled = false
+            useOnlyOnMetered = false
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertTrue("Lockdown eligible should return config id", ids.contains("${ID_WG_BASE}1"))
         assertEquals(1, ids.size)
@@ -1336,18 +1039,17 @@ class WireguardManagerTest : KoinTest {
 
     @Test
     fun `eligibility canUseConfig - lockdown not eligible returns block`() = runBlocking {
-        val ssidsJson = """[{"name":"HomeWiFi","type":"equal_exact"}]"""
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isLockdown = true,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
 
-        // On WiFi with wrong SSID: NW false (useOnlyOnMetered=true), SSID false (no match) → not eligible → block
+        // On WiFi: NW false (useOnlyOnMetered=true) → not eligible → block
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "OtherWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertTrue("Lockdown not eligible should return block", ids.contains(Backend.Block))
         assertFalse("Lockdown not eligible should not contain config id", ids.contains("${ID_WG_BASE}1"))
@@ -1358,14 +1060,14 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility canUseConfig - active eligible returns config id`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isLockdown = false,
-            useOnlyOnMetered = false, ssidEnabled = false
+            useOnlyOnMetered = false
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertTrue("Active eligible should return config id", ids.contains("${ID_WG_BASE}1"))
         assertFalse("Active eligible should not return block", ids.contains(Backend.Block))
@@ -1374,18 +1076,17 @@ class WireguardManagerTest : KoinTest {
 
     @Test
     fun `eligibility canUseConfig - active not eligible on WiFi returns empty`() = runBlocking {
-        val ssidsJson = """[{"name":"HomeWiFi","type":"equal_exact"}]"""
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isLockdown = false,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
 
-        // metered-only on WiFi without SSID match → app-specific returns empty (proceed to catch-all)
+        // metered-only on WiFi → app-specific returns empty (proceed to catch-all)
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "OtherWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertFalse("App-specific not eligible should not contain config id",
             ids.contains("${ID_WG_BASE}1"))
@@ -1396,14 +1097,14 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility canUseConfig - inactive config returns empty`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = false, isLockdown = false,
-            useOnlyOnMetered = false, ssidEnabled = false
+            useOnlyOnMetered = false
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertFalse("Inactive app-specific should not be added", ids.contains("${ID_WG_BASE}1"))
         unmockkObject(ProxyManager)
@@ -1415,17 +1116,16 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility integration - lockdown adds block to empty list when not eligible`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isLockdown = true,
-            useOnlyOnMetered = true, ssidEnabled = true,
-            ssids = """[{"name":"HomeWiFi","type":"equal_exact"}]"""
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
 
-        // On WiFi, wrong SSID, useOnlyOnMetered=true → NW false, SSID false → not eligible → block
+        // On WiFi, useOnlyOnMetered=true → NW false → not eligible → block
         // Then proxyIds is cleared and block is added
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "OtherWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertTrue("Block should be added when lockdown is not eligible", ids.contains(Backend.Block))
         assertEquals(1, ids.size)
@@ -1433,43 +1133,10 @@ class WireguardManagerTest : KoinTest {
     }
 
     @Test
-    fun `eligibility integration - multiple active configs with mixed SSID eligibility`() = runBlocking {
-        val ssidsJson = """[{"name":"HomeWiFi","type":"equal_exact"}]"""
-        val cfg1 = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isCatchAll = false,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ssidsJson
-        )
-        val cfg2 = createMockWgConfigFilesImmutable(
-            id = 2, isActive = true, isCatchAll = false,
-            useOnlyOnMetered = false, ssidEnabled = true, ssids = ssidsJson
-        )
-        val cfg3 = createMockWgConfigFilesImmutable(
-            id = 3, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = false
-        )
-        addConfigToManager(cfg1, setupMockConfig(1))
-        addConfigToManager(cfg2, setupMockConfig(2))
-        addConfigToManager(cfg3, setupMockConfig(3))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(100) } returns setOf(
-            "${ID_WG_BASE}1", "${ID_WG_BASE}2"
-        )
-
-        // On HomeWiFi: app-specific 1 matches, app-specific 2 matches, catch-all 3 eligible
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "HomeWiFi", ""
-        )
-        assertTrue("App-specific 1 should be added", ids.contains("${ID_WG_BASE}1"))
-        assertTrue("App-specific 2 should be added", ids.contains("${ID_WG_BASE}2"))
-        assertTrue("Catch-all 3 should be added", ids.contains("${ID_WG_BASE}3"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
     fun `eligibility integration - no matching configs returns default`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = false
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
@@ -1477,7 +1144,7 @@ class WireguardManagerTest : KoinTest {
 
         // metered-only on WiFi → not eligible → proxyIds empty → returns default
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", "fallback-proxy"
+            100, "1.1.1.1", 80, "", false, "fallback-proxy"
         )
         assertEquals(listOf("fallback-proxy"), ids)
         unmockkObject(ProxyManager)
@@ -1487,14 +1154,14 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility integration - no matching configs and no default returns empty`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isCatchAll = true,
-            useOnlyOnMetered = true, ssidEnabled = false
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns emptySet()
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "MyWiFi", ""
+            100, "1.1.1.1", 80, "", false, ""
         )
         assertTrue("Should return empty list", ids.isEmpty())
         unmockkObject(ProxyManager)
@@ -1504,64 +1171,17 @@ class WireguardManagerTest : KoinTest {
     fun `eligibility integration - active app-specific with metered-only on mobile adds config id`() = runBlocking {
         val cfg = createMockWgConfigFilesImmutable(
             id = 1, isActive = true, isLockdown = false,
-            useOnlyOnMetered = true, ssidEnabled = false
+            useOnlyOnMetered = true
         )
         addConfigToManager(cfg, setupMockConfig(1))
         mockkObject(ProxyManager)
         every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
 
         val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", true, "", ""
+            100, "1.1.1.1", 80, "", true, ""
         )
         assertTrue("Active app-specific metered-only on mobile should be added",
             ids.contains("${ID_WG_BASE}1"))
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility integration - lockdown on mobile with non-empty ssid list is eligible`() = runBlocking {
-        val ssidsJson = """[{"name":"CafeWiFi","type":"equal_exact"}]"""
-        val cfg = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isLockdown = true,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
-        )
-        addConfigToManager(cfg, setupMockConfig(1))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
-
-        // On mobile, both rules pass: mobileOnly on mobile, and ssidEnabled bypassed on mobile.
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", true, "", ""
-        )
-        assertTrue("Lockdown on mobile with non-empty ssidEnabled list should be eligible",
-            ids.contains("${ID_WG_BASE}1"))
-        assertEquals(1, ids.size)
-        unmockkObject(ProxyManager)
-    }
-
-    @Test
-    fun `eligibility integration - active non-lockdown non-eligible on WiFi falls through to catch-all`() = runBlocking {
-        val ssidsJson = """[{"name":"HomeWiFi","type":"equal_exact"}]"""
-        val cfg1 = createMockWgConfigFilesImmutable(
-            id = 1, isActive = true, isLockdown = false, isCatchAll = false,
-            useOnlyOnMetered = true, ssidEnabled = true, ssids = ssidsJson
-        )
-        val cfg2 = createMockWgConfigFilesImmutable(
-            id = 2, isActive = true, isLockdown = false, isCatchAll = true,
-            useOnlyOnMetered = false, ssidEnabled = false
-        )
-        addConfigToManager(cfg1, setupMockConfig(1))
-        addConfigToManager(cfg2, setupMockConfig(2))
-        mockkObject(ProxyManager)
-        every { ProxyManager.getProxyIdsForApp(100) } returns setOf("${ID_WG_BASE}1")
-
-        // App-specific 1 not eligible on OtherWiFi (metered-only + no match)
-        // Catch-all 2 is eligible (no metered restriction, no SSID restriction)
-        val ids = WireguardManager.getAllPossibleConfigIdsForApp(
-            100, "1.1.1.1", 80, "", false, "OtherWiFi", ""
-        )
-        assertFalse("App-specific 1 should not be added", ids.contains("${ID_WG_BASE}1"))
-        assertTrue("Catch-all 2 should be added", ids.contains("${ID_WG_BASE}2"))
         unmockkObject(ProxyManager)
     }
 
@@ -1589,12 +1209,9 @@ class WireguardManagerTest : KoinTest {
             "isAnyOtherOneWgEnabled() - Other OneWireGuard detection",
             "canDisableConfig() - Configuration disable validation (catch-all & regular)",
             "canDisableAllActiveConfigs() - Bulk disable validation",
-            "matchesSsidList() - SSID matching logic (exact, wildcard, edge cases)",
             "getPeers() - Peer retrieval (existing, non-existing, empty, multiple)",
             "deleteResidueWgs() - Database cleanup operations",
             "Eligibility - checkEligibilityBasedOnNw (mobile/WiFi × metered-only combinations)",
-            "Eligibility - checkEligibilityBasedOnSsid (enabled, match types, empty list)",
-            "Eligibility - isEligibleForNetwork combined (mobile bypass, WiFi+SSID logic)",
             "Eligibility - canUseConfig (lockdown block, active eligible, inactive skip)",
             "Eligibility - getAllPossibleConfigIdsForApp integration (lockdown+catch-all, fallthrough, default)",
             "Comprehensive state management - Complex multi-config scenarios",
@@ -1904,57 +1521,6 @@ class WireguardManagerTest : KoinTest {
         println("✅ PASSED: canDisableAllActiveConfigs() handled mixed configs correctly")
     }
 
-    // MATCH SSID LIST TESTS (Additional Coverage)
-    @Test
-    fun `test matchesSsidList - edge case with malformed ssid format`() {
-        println("🧪 Testing matchesSsidList() - malformed format")
-
-        // Execute - Test with malformed format (missing type)
-        val result1 = WireguardManager.matchesSsidList("WiFi1##", "WiFi1")
-        val result2 = WireguardManager.matchesSsidList("##string", "test")
-        val result3 = WireguardManager.matchesSsidList("WiFi1##invalidtype", "WiFi1")
-
-        // Verify - malformed entries should be filtered out, resulting in empty list (match all)
-        assertTrue("Should return true for malformed entries (empty list = match all)", result1)
-        assertTrue("Should return true for empty name (empty list = match all)", result2)
-        assertTrue("Should return true for invalid type (defaults to string type)", result3)
-        println("✅ PASSED: matchesSsidList() handled malformed formats correctly")
-    }
-
-    @Test
-    fun `test matchesSsidList - edge case with case sensitivity`() {
-        println("🧪 Testing matchesSsidList() - case sensitivity")
-
-        // Execute - Test case insensitive matching for strings
-        val result1 = WireguardManager.matchesSsidList("""[{"name":"WiFi1","type":"equal_exact"}]""", "wifi1")
-        val result2 = WireguardManager.matchesSsidList("""[{"name":"WiFi1","type":"equal_exact"}]""", "WIFI1")
-        val result3 = WireguardManager.matchesSsidList("""[{"name":"wifi*","type":"equal_wildcard"}]""", "WIFI123")
-
-        // Verify
-        assertTrue("Should match case insensitively for strings", result1)
-        assertTrue("Should match case insensitively for uppercase", result2)
-        assertTrue("Should match case insensitively for wildcards", result3)
-        println("✅ PASSED: matchesSsidList() handled case sensitivity correctly")
-    }
-
-    @Test
-    fun `test matchesSsidList - complex wildcard patterns`() {
-        println("🧪 Testing matchesSsidList() - complex wildcard patterns")
-
-        // Execute - Test various wildcard patterns in JSON format
-        val result1 = WireguardManager.matchesSsidList("""[{"name":"Test?","type":"equal_wildcard"}]""", "Test1")
-        val result2 = WireguardManager.matchesSsidList("""[{"name":"Test?","type":"equal_wildcard"}]""", "TestAB") // Should not match
-        val result3 = WireguardManager.matchesSsidList("""[{"name":"*Test*","type":"equal_wildcard"}]""", "MyTestNetwork")
-        val result4 = WireguardManager.matchesSsidList("""[{"name":"Home.*.com","type":"equal_wildcard"}]""", "Home.wifi.com")
-
-        // Verify
-        assertTrue("Should match single character wildcard (?)", result1)
-        assertFalse("Should not match multiple characters with ?", result2)
-        assertTrue("Should match with * on both sides", result3)
-        assertTrue("Should match with escaped dots", result4)
-        println("✅ PASSED: matchesSsidList() handled complex wildcard patterns correctly")
-    }
-
     // ERROR HANDLING TESTS (Additional Coverage)
     @Test
     fun `test isConfigActive - edge case with malformed ID_WG_BASE prefix`() {
@@ -2082,23 +1648,6 @@ class WireguardManagerTest : KoinTest {
         assertFalse("Should return false for negative ID", resultNeg)
         assertFalse("Should return false for non-existing high ID", result999)
         println("✅ PASSED: isValidConfig() handled boundary IDs correctly")
-    }
-
-    // EDGE CASE: EMPTY SSID LIST BEHAVIOR
-    @Test
-    fun `test matchesSsidList - edge case with empty ssid list behavior verification`() {
-        println("🧪 Testing matchesSsidList() - empty SSID list behavior verification")
-
-        // Execute - Verify the "match all" behavior for empty lists
-        val result1 = WireguardManager.matchesSsidList("", "AnySSID")
-        val result2 = WireguardManager.matchesSsidList("   ", "AnySSID") // Whitespace only
-        val result3 = WireguardManager.matchesSsidList("\n\r", "AnySSID") // Newlines/returns only
-
-        // Verify
-        assertTrue("Empty string should match all (return true)", result1)
-        assertTrue("Whitespace-only should match all (return true)", result2)
-        assertTrue("Newlines/returns only should match all (return true)", result3)
-        println("✅ PASSED: matchesSsidList() verified empty SSID list behavior correctly")
     }
 
     // COMPREHENSIVE STATE CHANGE TESTS
@@ -2239,8 +1788,6 @@ class WireguardManagerTest : KoinTest {
             "✅ canDisableAllActiveConfigs() - With/without catch-all, mixed scenarios",
             "✅ disableConfig() - Valid, non-existing, dependency scenarios",
             "✅ disableAllActiveConfigs() - Multiple active, none active scenarios",
-            "✅ matchesSsidList() - Exact match, wildcard, no match, empty list, malformed format scenarios",
-            "✅ matchesSsidList() - Case sensitivity, complex wildcards, edge patterns",
             "✅ getPeers() - Existing, non-existing, empty, multiple, exception scenarios",
             "✅ Thread Safety - Concurrent access and modification safety",
             "✅ Data Integrity - Immutable config handling",

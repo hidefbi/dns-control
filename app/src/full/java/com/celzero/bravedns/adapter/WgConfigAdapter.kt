@@ -323,14 +323,6 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
                 b.chipProperties.visibility = View.VISIBLE
                 b.chipProperties.text = context.getString(R.string.two_argument_space,b.chipProperties.text.toString(), context.getString(R.string.symbol_mobile))
             }
-            if (mapping.ssidEnabled) {
-                b.chipProperties.visibility = View.VISIBLE
-                b.chipProperties.text = context.getString(
-                    R.string.two_argument_space,
-                    b.chipProperties.text.toString(),
-                    context.getString(R.string.symbol_id)
-                )
-            }
 
             val visible = if (b.chipProperties.text.isNotEmpty()) View.VISIBLE else View.GONE
             b.chipProperties.visibility = visible

@@ -782,7 +782,6 @@
     <string name="dns_title" translatable="true">Bloqueie anúncios e malware com DNS</string>
     <string name="ac_retry_options_with_split_desc" translatable="true">Aplicar técnicas anticensura quando necessário.</string>
     <string name="ac_split_tls_desc" translatable="true">Altere os pacotes TCP ou TLS.</string>
-    <string name="ssid_permission_error_action" translatable="true">Conceder permissão</string>
     <string name="settings_theme_dialog_themes_6" translatable="true">Escuro Plus</string>
     <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Use DNS do sistema para domínios não delegados</string>
     <string name="lbl_action" translatable="true">Ação</string>
@@ -825,12 +824,10 @@
     <string name="ac_retry_options_never_desc" translatable="true">Em caso de falha, nunca tente novamente técnicas anticensura.</string>
     
     <string name="wireguard_desc" translatable="true">Criptografe o seu tráfego de internet com o WireGuard. Escolha rotas diferentes para apps diferentes.</string>
-    <string name="ssid_location_error_action" translatable="true">Ativar localização</string>
     <string name="univ_delete_domain_dialog_message" translatable="true">Apagar essas regras permitirá que qualquer aplicação conecte aos domínios atualmente bloqueados.</string>
     <string name="status_no_network" translatable="true">sem rede</string>
     <string name="settings_theme_dialog_themes_5" translatable="true">Luz Plus</string>
     <string name="ac_split_tcp_desc" translatable="true">Altere os pacotes TCP.</string>
     <string name="firewall_rule_bypass_proxy" translatable="true">Ignorar proxy</string>
-    <string name="wg_setting_ssid_title" translatable="true">Apenas Wi-Fi</string>
     <string name="ac_split_tls" translatable="true">TCP/TLS</string>
 </resources>

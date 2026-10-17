@@ -826,7 +826,6 @@
     <string name="fail_open_network_title" translatable="true">Зупинка через втрату мережі</string>
     <string name="fail_open_network_desc" translatable="true">Коли функцію ввімкнено, DNS Control зупиняє всі дані, коли немає з’єднання, наприклад, у режимі <i>У літаку</i>.</string>
     <string name="close_all" translatable="true">Закрити все</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Вимкніть опцію \"Тільки мобільні пристрої\" або \"SSID\", щоб використовувати реле</string>
     <string name="wg_mobile_only_hop_err" translatable="true">Режим \"лише для мобільних пристроїв\" не підтримується для реле</string>
     <string name="univ_delete_domain_dialog_title" translatable="true">Видалити всі правила домену?</string>
     <string name="univ_delete_domain_dialog_message" translatable="true">Видалення цих правил дозволить будь-якій програмі підключатися до наразі заблокованих доменів.</string>
@@ -844,18 +843,6 @@
     <string name="firewall_rule_proxy_error_desc" translatable="true"><![CDATA[Це з’єднання було заблоковано, оскільки не вибрано <i>проксі</i>, вибраний для програми.<br/><br/> Щоб змінити, перейдіть до розділу <i>Проксі</i> на екрані <i>Налаштування</i>.]]></string>
     <string name="vpn_policy_fixed" translatable="true">Консервативний</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Мінімально реагує на зміни в мережі.</string>
-    <string name="wg_setting_ssid_title" translatable="true">Тільки Wi-Fi</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Увімкніть цю VPN WireGuard лише під час підключення до Wi-Fi або вказаних ідентифікаторів Wi-Fi (%1$s).</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control потребує дозволу на геодані для доступу до ідентифікаторів Wi-Fi (%1$s).</string>
-    <string name="location_enable_explanation" translatable="true">Щоб отримати доступ до ідентифікаторів Wi-Fi (%1$s), увімкніть службу визначення місцезнаходження.</string>
-    <string name="ssid_location_error" translatable="true">Увімкнути службу визначення місцезнаходження</string>
-    <string name="ssid_permission_error_action" translatable="true">Надати дозвіл</string>
-    <string name="ssid_location_error_action" translatable="true">Увімкнути геодані</string>
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s ця VPN-мережа WireGuard, коли <i>активна</i>. Ідентифікатор Wi-Fi (%2$s) %3$s.</string>
-    <string name="wg_ssid_input_hint" translatable="true">Введіть ідентифікатор Wi-Fi (%1$s)</string>
-    <string name="wg_ssid_type_exact" translatable="true">Точно відповідає</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Частково збігається</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Ідентифікатори Wi-Fi (%1$s) повинні містити 32 символи або менше.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Програма стабільності</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Зберігайте журнали помилок для покращення стабільності.</string>
     <string name="settings_locale_dialog_default" translatable="true">Системні за замовчуванням</string>

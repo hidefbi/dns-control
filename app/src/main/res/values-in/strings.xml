@@ -461,7 +461,7 @@
     <string name="settings_lock_down_mode_desc">Opsi tertentu dinonaktifkan saat VPN dalam mode kuncian. <u>Lihat setelan VPN</u>.</string>
     <string name="orbot_bs_status_4">Menyetel Tor-sebagai-Proksi (Orbot) sekali klik.</string>
     <string name="settings_network_all_networks_desc">Jika diaktifkan, DNS Control akan menggunakan semua jaringan yang tersedia untuk terhubung ke internet. Jika tidak, aplikasi ini akan menggunakan jaringan mana pun yang dianggap <i>aktif</i> oleh Android.</string>
-    <string name="hsf_vpn_dialog_message">DNS Control memerlukan izin untuk menyiapkan VPN lokal guna mengenkripsi permintaan DNS perangkat, menerapkan pemantau jaringan, dan memberlakukan aturan firewall.\n\nOtomatisasi proksi berbasis Wi-Fi memerlukan izin Lokasi untuk mengidentifikasi jaringan Wi-Fi yang terhubung (SSID). Izin ini hanya diminta saat Anda mengaktifkan fitur tersebut.\n\nDNS Control tidak mengumpulkan informasi apa pun atau memata-matai Anda dengan cara apa pun.</string>
+    <string name="hsf_vpn_dialog_message">DNS Control memerlukan izin untuk menyiapkan VPN lokal guna mengenkripsi permintaan DNS perangkat, menerapkan pemantau jaringan, dan memberlakukan aturan firewall.\n\nDNS Control tidak mengumpulkan informasi apa pun atau memata-matai Anda dengan cara apa pun.</string>
     <string name="fapps_info_dialog_positive_btn">Oke</string>
     <string name="orbot_explanation">Orbot adalah aplikasi proksi gratis yang memungkinkan sambungan internet pada aplikasi menjadi tempat yang&lt;u&gt;lebih aman&lt;/u&gt;. \nOrbot menggunakan&lt;u&gt;Tor&lt;/u&gt; untuk mengenkripsi lalu lintas internet anda, juga membantu &lt;u&gt;melewati penyensoran&lt;/u&gt;dan sebagai bentuk pertahanan diri dari berbagai macam&lt;u&gt;pengawasan jaringan&lt;/u&gt; yang bisa membahayakan kebebasan pribadi dan privasi. \n&lt;u&gt;Proksi TCP&lt;/u&gt;: DNS Control hanya meneruskan koneksi TCP untuk aplikasi &lt;i&gt;yang ada&lt;/i&gt; menuju Orbot. \n&lt;u&gt;Proksi HTTP&lt;/u&gt;: DNS Control&lt;i&gt;membangun&lt;/i&gt; terowongan HTTP CONNECT ke Orbot dan hanya meneruskan sambungan TCP untuk aplikasi &lt;i&gt;yang ada&lt;/i&gt;.</string>
     <string name="settings_autostart_bootup_heading">Mulai otomatis saat device dinyalakan (eksperimental)</string>
@@ -839,7 +839,6 @@
     <string name="vpn_policy_relaxed_desc" translatable="true">Bereaksi terhadap perubahan konektivitas yang menarik.</string>
     <string name="vpn_policy_relaxed" translatable="true">Santai</string>
     <string name="hop_error_toast_msg_2" translatable="true">Tidak ada WireGuard yang tersedia untuk relay; silakan tambahkan lebih banyak.</string>
-    <string name="hop_error_toast_msg_3" translatable="true">Nonaktifkan mode Mobile saja atau SSID untuk menggunakan Relays</string>
     <string name="adv_set_dial_timeout_title" translatable="true">Waktu habis saat menganggur</string>
     <string name="wg_setting_use_on_mobile" translatable="true">Hanya seluler</string>
     <string name="wg_setting_use_on_mobile_desc" translatable="true">Gunakan VPN WireGuard ini melalui data seluler.</string>
@@ -858,18 +857,6 @@
     <string name="firewall_rule_proxy_error_desc" translatable="true"><![CDATA[Koneksi ini diblokir karena proxy yang dipilih untuk aplikasi tidak dipilih.<br/><br/> Untuk mengubahnya, pergi ke <i>Proxy</i> dari layar <i>Konfigurasi</i>.]]></string>
     <string name="vpn_policy_fixed" translatable="true">Konservatif</string>
     <string name="vpn_policy_fixed_desc" translatable="true">Menanggapi perubahan jaringan dengan minimal.</string>
-    <string name="wg_setting_ssid_title" translatable="true">Hanya Wi-Fi</string>
-    <string name="wg_setting_ssid_desc" translatable="true">Aktifkan VPN WireGuard ini hanya saat terhubung ke Wi-Fi atau ke salah satu identifikasi Wi-Fi yang ditentukan (%1$s).</string>
-    <string name="ssid_permission_explanation" translatable="true">DNS Control memerlukan izin lokasi untuk mengakses identifikasi Wi-Fi (%1$s).</string>
-    <string name="location_enable_explanation" translatable="true">Untuk mengakses identifikasi Wi-Fi (%1$s), aktifkan Layanan Lokasi.</string>
-    <string name="ssid_location_error" translatable="true">Aktifkan Layanan Lokasi</string>
-    <string name="ssid_permission_error_action" translatable="true">Berikan izin</string>
-    <string name="ssid_location_error_action" translatable="true">Aktifkan lokasi</string>
-    <string name="wg_ssid_dialog_description" translatable="true">%1$s VPN WireGuard ini saat <i>aktif</i> Identifikasi Wi-Fi (%2$s) %3$s.</string>
-    <string name="wg_ssid_input_hint" translatable="true">Masukkan identifikasi Wi-Fi (%1$s)</string>
-    <string name="wg_ssid_type_exact" translatable="true">Cocok sepenuhnya</string>
-    <string name="wg_ssid_type_wildcard" translatable="true">Cocok sebagian</string>
-    <string name="wg_ssid_invalid_error" translatable="true">Identifier Wi-Fi (%1$s) harus terdiri dari 32 karakter atau kurang.</string>
     <string name="settings_firebase_error_reporting_heading" translatable="true">Program Stabilitas</string>
     <string name="settings_firebase_error_reporting_desc" translatable="true">Catat log kesalahan untuk membantu meningkatkan stabilitas.</string>
     <string name="settings_locale_dialog_default" translatable="true">Default sistem</string>
@@ -927,8 +914,4 @@
     <string name="dc_block_unknown_heading" translatable="true">Blokir DNS dari sumber tidak dikenal</string>
     <string name="dc_block_unknown_desc" translatable="true">Blokir semua permintaan DNS yang berasal dari aplikasi tidak dikenal.</string>
     <string name="build_flavor_website_degoogled" translatable="true">website-degoogled</string>
-    <string name="location_disclosure_title" translatable="true">Izin Lokasi untuk Fitur Wi-Fi</string>
-    <string name="location_disclosure_message" translatable="true">DNS Control memperlakukan informasi jaringan Wi-Fi (SSID/BSSID) sebagai data lokasi. Lokasi latar belakang memungkinkan aplikasi menerapkan otomatisasi Proksi secara otomatis saat Wi-Fi Anda berubah, bahkan ketika aplikasi tidak terbuka. DNS Control TIDAK mengumpulkan, menyimpan, atau membagikan lokasi GPS fisik Anda.</string>
-    <string name="location_disclosure_positive" translatable="true">Lanjutkan</string>
-    <string name="location_disclosure_negative" translatable="true">Jangan Sekarang</string>
 </resources>
