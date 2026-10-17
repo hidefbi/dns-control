@@ -671,8 +671,6 @@
 
     <string name="hsf_notification_permission_failure" translatable="true">Enable notification permission from Settings screen</string>
 
-    <string name="hsf_local_network_permission_dialog_heading" translatable="true">Local Network Permission</string>
-    <string name="hsf_local_network_permission_dialog_message" translatable="true">%1$s requires the Local Network permission for some features to function. The VPN has been disabled. Grant the permission from the app settings and try again.</string>
 
 
 

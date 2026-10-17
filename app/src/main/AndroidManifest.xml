@@ -35,13 +35,6 @@
         android:name="android.permission.INTERACT_ACROSS_USERS"
         tools:ignore="ProtectedPermissions" />
 
-    <!-- ACCESS_LOCAL_NETWORK: restored. Removing this broke VPN connection startup entirely —
-         turns out this isn't optional app-level code (nothing in Kotlin references it because
-         the requirement is enforced by the OS/VpnService layer itself, not by this app's own
-         code), it's a newer Android platform permission gating local-network/routing access
-         that VPN establishment itself depends on. Confirmed by testing: without it, "start
-         connection" stops working outright. Keeping it. -->
-    <uses-permission android:name="android.permission.ACCESS_LOCAL_NETWORK" />
 
     <!-- https://github.com/celzero/rethink-app/issues/786 set memtagMode to off -->
     <application

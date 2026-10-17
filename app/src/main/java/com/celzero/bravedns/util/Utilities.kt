@@ -570,10 +570,6 @@ object Utilities {
         return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE
     }
 
-    fun isAtleast37(): Boolean {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.CINNAMON_BUN
-    }
-
     fun isFdroidFlavour(): Boolean {
         return BuildConfig.FLAVOR_releaseChannel == FLAVOR_FDROID
     }
