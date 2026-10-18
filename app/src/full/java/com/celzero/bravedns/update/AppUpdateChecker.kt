@@ -15,6 +15,9 @@ package com.celzero.bravedns.update
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
+import android.content.pm.Signature
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
@@ -263,12 +266,59 @@ object AppUpdateChecker {
         }
     }
 
+    /**
+     * The APK must be for this package, not older than the advertised release, and signed by
+     * the same certificate(s) as the installed app. The checksum only proves the APK matches
+     * the release metadata; the signer check proves it comes from the same signing key.
+     */
     private fun matchesInstalledPackage(context: Context, apk: File, versionCode: Int): Boolean {
-        val info = context.packageManager.getPackageArchiveInfo(apk.absolutePath, 0) ?: return false
+        val pm = context.packageManager
+        val info = pm.getPackageArchiveInfo(apk.absolutePath, 0) ?: return false
         // PackageInfo.versionCode is used because longVersionCode needs API 28 and minSdk is 23
         @Suppress("DEPRECATION")
         val archiveCode = info.versionCode
-        return info.packageName == BuildConfig.APPLICATION_ID && archiveCode >= versionCode
+        if (info.packageName != BuildConfig.APPLICATION_ID || archiveCode < versionCode) {
+            return false
+        }
+
+        val archiveSigners = signerDigests(
+            pm.getPackageArchiveInfo(apk.absolutePath, signingFlags())
+        )
+        val installedSigners = try {
+            signerDigests(pm.getPackageInfo(BuildConfig.APPLICATION_ID, signingFlags()))
+        } catch (e: PackageManager.NameNotFoundException) {
+            return false
+        }
+        if (archiveSigners.isEmpty() || archiveSigners != installedSigners) {
+            Logger.w(LOG_TAG_APP_UPDATE, "update signer does not match installed app")
+            return false
+        }
+        return true
+    }
+
+    @Suppress("DEPRECATION")
+    private fun signingFlags(): Int {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            PackageManager.GET_SIGNING_CERTIFICATES
+        } else {
+            PackageManager.GET_SIGNATURES
+        }
+    }
+
+    /** SHA-256 digests of the signing certificates of [info]; empty if unavailable. */
+    @Suppress("DEPRECATION")
+    private fun signerDigests(info: PackageInfo?): Set<String> {
+        if (info == null) return emptySet()
+        val signatures: Array<Signature>? =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                info.signingInfo?.apkContentsSigners
+            } else {
+                info.signatures
+            }
+        return signatures.orEmpty().map { sig ->
+            MessageDigest.getInstance("SHA-256").digest(sig.toByteArray())
+                .joinToString("") { "%02x".format(it) }
+        }.toSet()
     }
 
     private fun sha256(file: File): String {

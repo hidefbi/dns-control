@@ -16,9 +16,12 @@ limitations under the License.
 
 package com.celzero.bravedns.database
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.celzero.bravedns.util.Constants.Companion.INIT_TIME_MS
+import com.celzero.bravedns.util.SecretBox
 
 @Entity(tableName = "ProxyEndpoint")
 class ProxyEndpoint {
@@ -34,7 +37,19 @@ class ProxyEndpoint {
     var proxyIP: String? = null
     var proxyPort: Int = 0
     var userName: String? = null
-    var password: String? = null
+
+    // Persisted encrypted (Android Keystore AES-256-GCM) in the existing "password" column,
+    // so the schema and column name are unchanged.
+    @ColumnInfo(name = "password")
+    var encryptedPassword: String? = null
+
+    // Plaintext view used by the rest of the app. It has no backing field, so Room ignores it.
+    var password: String?
+        get() = SecretBox.decrypt(encryptedPassword)
+        set(value) {
+            encryptedPassword = SecretBox.encrypt(value)
+        }
+
     var isSelected: Boolean = true
     var isCustom: Boolean = true
     var isUDP: Boolean = false
@@ -51,6 +66,12 @@ class ProxyEndpoint {
         return this.id.hashCode()
     }
 
+    // Explicit no-arg constructor for Room. Declaring any constructor suppresses the implicit one.
+    constructor()
+
+    // This convenience constructor takes a plaintext `password` that has no backing column,
+    // so it is excluded from Room's constructor matching.
+    @Ignore
     constructor(
         id: Int,
         proxyName: String,

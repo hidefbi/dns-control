@@ -38,6 +38,7 @@ class FragmentHostActivity : BaseActivity(R.layout.activity_fragment_host) {
         private const val EXTRA_FRAGMENT_CLASS_NAME = "extra_fragment_class_name"
         private const val EXTRA_FRAGMENT_ARGUMENTS = "extra_fragment_arguments"
         private const val STATE_FRAGMENT_CLASS_NAME = "state_fragment_class_name"
+        private const val ALLOWED_FRAGMENT_PACKAGE_PREFIX = "com.celzero.bravedns."
 
         /**
          * Helper function to create an intent to show any fragment
@@ -90,6 +91,12 @@ class FragmentHostActivity : BaseActivity(R.layout.activity_fragment_host) {
             // Only create fragment on first launch, not on recreation
             val arguments = intent.getBundleExtra(EXTRA_FRAGMENT_ARGUMENTS)
 
+            if (!isAllowedFragmentClass(fragmentClassName!!)) {
+                Logger.e(LOG_TAG_UI, "Refusing to load non-allowed fragment: $fragmentClassName")
+                finish()
+                return
+            }
+
             try {
                 // Instantiate fragment from class name
                 val fragment = supportFragmentManager.fragmentFactory.instantiate(
@@ -110,6 +117,20 @@ class FragmentHostActivity : BaseActivity(R.layout.activity_fragment_host) {
         } else {
             // Fragment will be automatically restored by FragmentManager
             Logger.i(LOG_TAG_UI, "Restoring fragment: $fragmentClassName from savedInstanceState")
+        }
+    }
+
+    /**
+     * Only fragments from this app's own package that are real [Fragment] subtypes may be
+     * instantiated from an intent extra. Class is loaded without initialisation.
+     */
+    private fun isAllowedFragmentClass(name: String): Boolean {
+        if (!name.startsWith(ALLOWED_FRAGMENT_PACKAGE_PREFIX)) return false
+        return try {
+            val cls = Class.forName(name, false, javaClass.classLoader)
+            Fragment::class.java.isAssignableFrom(cls)
+        } catch (e: ClassNotFoundException) {
+            false
         }
     }
 

@@ -162,8 +162,9 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
 
     private fun startHomeActivity() {
         Logger.v(LOG_TAG_UI, "$TAG starting home activity")
+        // Do not forward the incoming intent's extras: they come from an exported entry point
+        // and HomeScreenActivity does not read them.
         val intent = Intent(this, HomeScreenActivity::class.java).apply {
-            putExtras(intent)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         }
         startActivity(intent)

@@ -105,15 +105,12 @@ class BackgroundAccessibilityService : AccessibilityService(), KoinComponent {
 
     // https://stackoverflow.com/questions/45620584/event-getsource-returns-null-in-accessibility-service-catch-source-for-a-3rd-p
     /**
-     * If the event retrieved package name is null then the check for the package name is carried
-     * out in (getRootInActiveWindow)AccessibilityNodeInfo
+     * Uses only the package name carried by the event itself. Window content is not
+     * retrievable (canRetrieveWindowContent=false), so rootInActiveWindow is deliberately
+     * not used as a fallback.
      */
     private fun getEventPackageName(event: AccessibilityEvent): String? {
-        return if (event.packageName.isNullOrBlank()) {
-            this.rootInActiveWindow?.packageName?.toString()
-        } else {
-            event.packageName.toString()
-        }
+        return event.packageName?.toString()?.takeIf { it.isNotBlank() }
     }
 
     private fun getEventUid(pkgName: String): Int? {

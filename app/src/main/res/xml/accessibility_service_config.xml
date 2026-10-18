@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--
+  Least-privilege configuration. The service only uses the package name of the
+  foreground window's content-change events (see BackgroundAccessibilityService), so:
+  - only TYPE_WINDOW_CONTENT_CHANGED events are subscribed to,
+  - window content (view tree, text) is NOT retrievable,
+  - no interactive-window, view-id, fingerprint-gesture or non-important-view flags.
+-->
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accessibilityEventTypes="typeAllMask"
-    android:accessibilityFeedbackType="feedbackAllMask"
-    android:accessibilityFlags="flagRetrieveInteractiveWindows|flagRequestFingerprintGestures|flagReportViewIds|flagIncludeNotImportantViews|flagReportViewIds"
-    android:canRetrieveWindowContent="true"
+    android:accessibilityEventTypes="typeWindowContentChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:canRetrieveWindowContent="false"
     android:description="@string/accessibility_service_description"
     android:notificationTimeout="1000" />
