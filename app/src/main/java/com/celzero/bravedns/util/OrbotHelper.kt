@@ -24,6 +24,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.os.Build
 import android.net.Uri
 import android.net.VpnService
 import android.text.TextUtils
@@ -225,6 +226,18 @@ class OrbotHelper(
             override fun onReceive(context: Context, intent: Intent) {
                 Logger.i(LOG_TAG_VPN, "received status from orbot, action: ${intent.action}")
                 if (ACTION_STATUS != intent.action) {
+                    return
+                }
+
+                // The receiver is exported (Orbot sends to us across apps), so any app can send
+                // this action. On Android 14+ the platform reports the sending package; ignore the
+                // broadcast unless it came from Orbot. Older versions rely on the loopback check in
+                // updateOrbotProxyData.
+                if (
+                    Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE &&
+                    getSentFromPackage() != ORBOT_PACKAGE_NAME
+                ) {
+                    Logger.w(LOG_TAG_VPN, "ignoring orbot status from untrusted sender")
                     return
                 }
 
@@ -472,12 +485,23 @@ class OrbotHelper(
         )
     }
 
+    /** Orbot only ever listens on the loopback interface. Anything else is not Orbot. */
+    private fun isLoopbackHost(host: String?): Boolean {
+        return host == "127.0.0.1" || host == "localhost"
+    }
+
+    private fun isValidPort(port: Int?): Boolean {
+        return port != null && port in 1..65535
+    }
+
     /** Get the data from the received intent from the Orbot and assign the values. */
     fun updateOrbotProxyData(data: Intent?) {
         socks5Port = data?.getIntExtra(EXTRA_SOCKS_PROXY_PORT, SOCKS_DEFAULT_PORT)
+            ?.takeIf { isValidPort(it) }
         httpsPort = data?.getIntExtra(EXTRA_HTTP_PROXY_PORT, HTTP_PROXY_PORT)
-        socks5Ip = data?.getStringExtra(EXTRA_SOCKS_PROXY_HOST)
-        httpsIp = data?.getStringExtra(EXTRA_HTTP_PROXY_HOST)
+            ?.takeIf { isValidPort(it) }
+        socks5Ip = data?.getStringExtra(EXTRA_SOCKS_PROXY_HOST)?.takeIf { isLoopbackHost(it) }
+        httpsIp = data?.getStringExtra(EXTRA_HTTP_PROXY_HOST)?.takeIf { isLoopbackHost(it) }
         dnsPort = data?.getIntExtra(EXTRA_DNS_PORT, 0)
 
         Logger.d(

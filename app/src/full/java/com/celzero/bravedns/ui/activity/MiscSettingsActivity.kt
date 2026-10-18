@@ -222,7 +222,7 @@ class MiscSettingsActivity : BaseActivity(R.layout.activity_misc_settings) {
         // biometric authentication
         if (
             BiometricManager.from(this)
-                .canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK) ==
+                .canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG) ==
             BiometricManager.BIOMETRIC_SUCCESS
         ) {
             val bioMetricType = BioMetricType.fromValue(persistentState.biometricAuthType)

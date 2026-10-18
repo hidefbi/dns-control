@@ -151,7 +151,8 @@ class AppLockActivity : BaseActivity(R.layout.activity_app_lock) {
                 .setTitle(getString(R.string.hs_biometeric_title))
                 .setSubtitle(getString(R.string.hs_biometeric_desc))
                 .setAllowedAuthenticators(
-                    BiometricManager.Authenticators.BIOMETRIC_WEAK or
+                    // Strong (class 3) biometrics only, so weak face unlock cannot open the lock.
+                    BiometricManager.Authenticators.BIOMETRIC_STRONG or
                             BiometricManager.Authenticators.DEVICE_CREDENTIAL
                 )
                 .setConfirmationRequired(false)

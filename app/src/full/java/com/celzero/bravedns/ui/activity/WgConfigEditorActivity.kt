@@ -68,6 +68,9 @@ class WgConfigEditorActivity : BaseActivity(R.layout.activity_wg_config_editor) 
     override fun onCreate(savedInstanceState: Bundle?) {
         theme.applyStyle(Themes.getCurrentTheme(isDarkThemeOn(), persistentState.theme), true)
         super.onCreate(savedInstanceState)
+        // The editor shows the WireGuard private key: block screenshots, screen recording and
+        // the recents-screen preview.
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE)
 
         handleFrostEffectIfNeeded(persistentState.theme)
 
