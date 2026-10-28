@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_settings" translatable="true">’…</string>
+    <string name="bl_update_available_title" translatable="true">ပိတ်ဆို့စာရင်း အပ်ဒိတ် ရနိုင်ပြီ</string>
+    <string name="bl_update_available_message" translatable="true">ပိုအသစ်သော ပိတ်ဆို့စာရင်း အဆင်သင့်ဖြစ်ပါပြီ။\n\nထည့်သွင်းထားသည်: %1$s\nနောက်ဆုံး: %2$s</string>
+    <string name="bl_update_download" translatable="true">ဒေါင်းလုဒ်</string>
+    <string name="bl_update_later" translatable="true">နောက်မှ</string>
+    <string name="bl_update_uptodate_title" translatable="true">အပ်ဒိတ် မတွေ့ပါ</string>
+    <string name="bl_update_failed_title" translatable="true">ပိတ်ဆို့စာရင်း အပ်ဒိတ် မအောင်မြင်ပါ</string>
+    <string name="bl_update_retry" translatable="true">ထပ်ကြိုးစားရန်</string>
 </resources>

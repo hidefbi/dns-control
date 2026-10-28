@@ -742,4 +742,11 @@
     <string name="lbl_experimental" translatable="true">(experimentální)</string>
     <string name="lbl_manual" translatable="true">Manuál</string>
     <string name="wireguard_title" translatable="true">Zabezpečný internet s WireGuard</string>
+    <string name="bl_update_available_title" translatable="true">Je k dispozici aktualizace blokovacího seznamu</string>
+    <string name="bl_update_available_message" translatable="true">Je připraven novější blokovací seznam.\n\nNainstalovaný: %1$s\nNejnovější: %2$s</string>
+    <string name="bl_update_download" translatable="true">Stáhnout</string>
+    <string name="bl_update_later" translatable="true">Později</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nebyla nalezena žádná aktualizace</string>
+    <string name="bl_update_failed_title" translatable="true">Aktualizace blokovacího seznamu selhala</string>
+    <string name="bl_update_retry" translatable="true">Zkusit znovu</string>
 </resources>

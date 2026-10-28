@@ -738,4 +738,11 @@
     <string name="cleanbrowsing_adult_dns_desc" translatable="true">Филтер за одрасле блокира приступ свим сајтовима са садржајем за одрасле. Не блокира прокси или VPN-ове, нити сајтове са мешовитим садржајем. Сајтови попут Редита су дозвољени. Гугл и Бинг су подешени на безбедни мод.</string>
     <string name="crypt_cleanbrowsing_family_desc" translatable="true">Блокира приступ свим сајтовима са садржајем за одрасле. Такође блокира прокси и VPN домене који се могу користити за заобилажење филтера. Сајтови мешовитог садржаја (попут Редита) су такође блокирани. Гугл, Бинг и Јутјуб су подешени на безбедни мод.</string>
     <string name="cleanbrowsing_family_dns_desc" translatable="true">Породични филтер блокира приступ свим сајтовима са садржајем за одрасле. Такође блокира све прокси и VPN домене који се могу користити за заобилажење наших филтера. Сајтови мешовитог садржаја (попут Редита) су такође блокирани. Гугл, Бинг и Јутјуб су подешени на безбедни мод.</string>
+    <string name="bl_update_available_title" translatable="true">Dostupno je ažuriranje liste za blokiranje</string>
+    <string name="bl_update_available_message" translatable="true">Novija lista za blokiranje je spremna.\n\nInstalirana: %1$s\nNajnovija: %2$s</string>
+    <string name="bl_update_download" translatable="true">Preuzmi</string>
+    <string name="bl_update_later" translatable="true">Kasnije</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nisu pronađena ažuriranja</string>
+    <string name="bl_update_failed_title" translatable="true">Ažuriranje liste za blokiranje nije uspelo</string>
+    <string name="bl_update_retry" translatable="true">Pokušaj ponovo</string>
 </resources>

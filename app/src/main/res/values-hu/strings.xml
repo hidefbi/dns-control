@@ -873,4 +873,11 @@
     <string name="stability_program_snackbar_msg" translatable="true">A stabilitási program engedélyezve. A hibajelentések segítenek a kísérleti funkciók fejlesztésében.</string>
     <string name="settings_tunnel_metered_desc" translatable="true">A DNS Control VPN-alagút megjelölése forgalomkorlátosként, hogy az alkalmazások kevesebb adatot használjanak. Figyelem: ez leállíthatja a nagyobb feltöltéseket és letöltéseket, például a biztonsági mentéseket.</string>
     <string name="stability_program_snackbar_disable" translatable="true">Letiltás</string>
+    <string name="bl_update_available_title" translatable="true">Elérhető a blokklista frissítése</string>
+    <string name="bl_update_available_message" translatable="true">Készen áll egy újabb blokklista.\n\nTelepítve: %1$s\nLegújabb: %2$s</string>
+    <string name="bl_update_download" translatable="true">Letöltés</string>
+    <string name="bl_update_later" translatable="true">Később</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nincs elérhető frissítés</string>
+    <string name="bl_update_failed_title" translatable="true">A blokklista frissítése sikertelen</string>
+    <string name="bl_update_retry" translatable="true">Újrapróbálás</string>
 </resources>

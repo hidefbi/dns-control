@@ -592,4 +592,11 @@
     <string name="pause_desc" translatable="true">Love</string>
     <string name="hs_btm_sheet_lock_down" translatable="true">امکان تغییر حالت‌ها زمانی که VPN در <i>Lockdown</i> است وجود ندارد. برای &lt;u&gt;ویرایش تنظیمات VPN&lt;/u&gt; ضربه بزنید.</string>
     <string name="lockdown_download_message" translatable="true">&lt;/i&gt;</string>
+    <string name="bl_update_available_title" translatable="true">به‌روزرسانی فهرست مسدودسازی موجود است</string>
+    <string name="bl_update_available_message" translatable="true">فهرست مسدودسازی جدیدتری آماده است.\n\nنصب‌شده: %1$s\nآخرین: %2$s</string>
+    <string name="bl_update_download" translatable="true">دانلود</string>
+    <string name="bl_update_later" translatable="true">بعداً</string>
+    <string name="bl_update_uptodate_title" translatable="true">به‌روزرسانی‌ای یافت نشد</string>
+    <string name="bl_update_failed_title" translatable="true">به‌روزرسانی فهرست مسدودسازی ناموفق بود</string>
+    <string name="bl_update_retry" translatable="true">تلاش مجدد</string>
 </resources>

@@ -914,4 +914,11 @@
     <string name="app_info_rethink_warning_title" translatable="true">注意</string>
     <string name="app_info_rethink_warning_desc" translatable="true">您即将更改 DNS Control 的防火墙规则。由于 DNS Control 管理 VPN 隧道，因此放行、拦截或隔离其自身流量可能会导致整个网络访问中断。</string>
     <string name="settings_rinr_btmsht_desc" translatable="true">在环回模式下，DNS Control 可以重新路由自身的网络流量。这意味着，DNS Control 可以像对待其他常规应用一样，对其流量应用 IP 和域名规则、全局防火墙规则以及代理规则。尽管环回模式提供了更多控制权，但其最终行为可能并非总是理想的。\n\n\n建议将 DNS Control 排除在防火墙、DNS 和代理规则之外。这样做不会影响网络监控或日志记录，只会影响规则本身。\n\n\n在环回模式下，代理锁定功能目前不会强制执行。</string>
+    <string name="bl_update_available_title" translatable="true">有可用的规则更新</string>
+    <string name="bl_update_available_message" translatable="true">已有更新的规则可以下载。\n\n当前版本：%1$s\n最新版本：%2$s</string>
+    <string name="bl_update_download" translatable="true">下载</string>
+    <string name="bl_update_later" translatable="true">稍后</string>
+    <string name="bl_update_uptodate_title" translatable="true">未检测到更新</string>
+    <string name="bl_update_failed_title" translatable="true">规则更新失败</string>
+    <string name="bl_update_retry" translatable="true">重试</string>
 </resources>

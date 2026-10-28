@@ -1775,4 +1775,11 @@
     <string name="odoh_relay_invalid" translatable="true">Enter an sdns:// relay stamp or an https:// relay URL</string>
     <string name="odoh_relay_none_warning" translatable="true">No relay selected. ODoH targets can see your IP address. Add a relay and select it.</string>
     <string name="odoh_target_hint" translatable="true">Target sdns:// stamp or https:// URL</string>
+    <string name="bl_update_available_title" translatable="true">Blocklist update available</string>
+    <string name="bl_update_available_message" translatable="true">A newer blocklist is ready.\n\nInstalled: %1$s\nLatest: %2$s</string>
+    <string name="bl_update_download" translatable="true">Download</string>
+    <string name="bl_update_later" translatable="true">Later</string>
+    <string name="bl_update_uptodate_title" translatable="true">No update found</string>
+    <string name="bl_update_failed_title" translatable="true">Blocklist update failed</string>
+    <string name="bl_update_retry" translatable="true">Retry</string>
 </resources>

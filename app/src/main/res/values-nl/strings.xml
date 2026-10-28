@@ -527,4 +527,11 @@
     <string name="settings_exclude_proxy_apps_heading" translatable="true">Loopback proxy-forwarder-apps</string>
     <string name="lbl_split" translatable="true">Splitsen</string>
     <string name="lbl_on_device" translatable="true">op-apparaat</string>
+    <string name="bl_update_available_title" translatable="true">Blokkadelijst-update beschikbaar</string>
+    <string name="bl_update_available_message" translatable="true">Er is een nieuwere blokkadelijst klaar.\n\nGeïnstalleerd: %1$s\nNieuwste: %2$s</string>
+    <string name="bl_update_download" translatable="true">Downloaden</string>
+    <string name="bl_update_later" translatable="true">Later</string>
+    <string name="bl_update_uptodate_title" translatable="true">Geen update gevonden</string>
+    <string name="bl_update_failed_title" translatable="true">Blokkadelijst bijwerken mislukt</string>
+    <string name="bl_update_retry" translatable="true">Opnieuw proberen</string>
 </resources>

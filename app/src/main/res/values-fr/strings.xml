@@ -884,4 +884,11 @@
     <string name="tour_btn_skip">Passer la visite guidée</string>
     <string name="stability_program_snackbar_msg" translatable="true">Le mode stabilité est activé. Les rapports d\'erreurs contribuent à l\'amélioration des fonctionnalités expérimentales.</string>
     <string name="stability_program_snackbar_disable" translatable="true">Désactiver</string>
+    <string name="bl_update_available_title" translatable="true">Mise à jour de la liste de blocage disponible</string>
+    <string name="bl_update_available_message" translatable="true">Une liste de blocage plus récente est prête.\n\nInstallée : %1$s\nDernière : %2$s</string>
+    <string name="bl_update_download" translatable="true">Télécharger</string>
+    <string name="bl_update_later" translatable="true">Plus tard</string>
+    <string name="bl_update_uptodate_title" translatable="true">Aucune mise à jour trouvée</string>
+    <string name="bl_update_failed_title" translatable="true">Échec de la mise à jour de la liste de blocage</string>
+    <string name="bl_update_retry" translatable="true">Réessayer</string>
 </resources>

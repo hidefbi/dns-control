@@ -914,4 +914,11 @@
     <string name="dc_block_unknown_heading" translatable="true">Blokir DNS dari sumber tidak dikenal</string>
     <string name="dc_block_unknown_desc" translatable="true">Blokir semua permintaan DNS yang berasal dari aplikasi tidak dikenal.</string>
     <string name="build_flavor_website_degoogled" translatable="true">website-degoogled</string>
+    <string name="bl_update_available_title" translatable="true">Pembaruan daftar blokir tersedia</string>
+    <string name="bl_update_available_message" translatable="true">Daftar blokir yang lebih baru sudah siap.\n\nTerpasang: %1$s\nTerbaru: %2$s</string>
+    <string name="bl_update_download" translatable="true">Unduh</string>
+    <string name="bl_update_later" translatable="true">Nanti</string>
+    <string name="bl_update_uptodate_title" translatable="true">Tidak ada pembaruan ditemukan</string>
+    <string name="bl_update_failed_title" translatable="true">Pembaruan daftar blokir gagal</string>
+    <string name="bl_update_retry" translatable="true">Coba lagi</string>
 </resources>

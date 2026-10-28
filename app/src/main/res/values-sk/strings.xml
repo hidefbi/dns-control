@@ -228,4 +228,11 @@
     <string name="settings_socks5_vpn_disabled_error" translatable="true">Zapnite DNS Control k pokračovaniu.</string>
     <string name="settings_orbot_disabled_error" translatable="true">Vypnite HTTP(S) a/alebo SOCKS5 proxy aby ste mohli pokračovať s nastavením Tor-as-a-proxy.</string>
     <string name="settings_https_disabled_error" translatable="true">Pripojené k %1$s. Vypnite ho aby ste mohli pokračovať.</string>
+    <string name="bl_update_available_title" translatable="true">Je k dispozícii aktualizácia blokovacieho zoznamu</string>
+    <string name="bl_update_available_message" translatable="true">Pripravený je novší blokovací zoznam.\n\nNainštalovaný: %1$s\nNajnovší: %2$s</string>
+    <string name="bl_update_download" translatable="true">Stiahnuť</string>
+    <string name="bl_update_later" translatable="true">Neskôr</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nenašla sa žiadna aktualizácia</string>
+    <string name="bl_update_failed_title" translatable="true">Aktualizácia blokovacieho zoznamu zlyhala</string>
+    <string name="bl_update_retry" translatable="true">Skúsiť znova</string>
 </resources>

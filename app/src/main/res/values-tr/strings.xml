@@ -901,4 +901,11 @@
     <string name="settings_rinr_btmsht_desc" translatable="true">Geri döngü modunda DNS Control kendi ağ trafiğini kendisine yönlendirir. Demek oluyor ki, DNS Control kendi trafiğine (IP ve Domain kuralları, güvenlik duvarı kurallar vb.) aynı diğer uygulamalar gibi kuralları uygular. Geri döngü modu fazlaca kontrol sağlasada sonuçları pek beklendiği gibi olmayabilir.\n\n\nDNS Control\'i güvenlik duvarı, DNS ve proxy kurallarından muaf tutmanız önerilir. Bu işlem, ağ izleme veya günlük kaydı işlemlerini etkilemez; yalnızca kuralları etkiler.\n\n\nGeri döngü modunda, Proxy Lockdown özelliği şimdilik uygulanmayacaktır.</string>
     <string name="settings_rinr_exempt_btn" translatable="true">DNS Control\'i muaf tut</string>
     <string name="app_info_rethink_warning_title" translatable="true">Uyarı</string>
+    <string name="bl_update_available_title" translatable="true">Engel listesi güncellemesi mevcut</string>
+    <string name="bl_update_available_message" translatable="true">Daha yeni bir engel listesi hazır.\n\nYüklü: %1$s\nSon: %2$s</string>
+    <string name="bl_update_download" translatable="true">İndir</string>
+    <string name="bl_update_later" translatable="true">Daha sonra</string>
+    <string name="bl_update_uptodate_title" translatable="true">Güncelleme bulunamadı</string>
+    <string name="bl_update_failed_title" translatable="true">Engel listesi güncellemesi başarısız oldu</string>
+    <string name="bl_update_retry" translatable="true">Yeniden dene</string>
 </resources>

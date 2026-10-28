@@ -896,4 +896,11 @@
     <string name="rethink_home_screen_warning" translatable="true">연결에 영향 끼칠 수 있음 ⚠️</string>
     <string name="build_flavor_website_degoogled" translatable="true">website-degoogled</string>
     <string name="settings_rinr_btmsht_desc" translatable="true">루프백 모드에서는, DNS Control가 자체 네트워크 트래픽을 재라우팅할 수 있습니다. 즉 다른 일반 애플리케이션처럼 DNS Control에도 자체 트래픽에 IP 및 도메인 규칙, 전역 방화벽 규칙, 프록시 규칙을 적용할 수 있습니다. 루프백 모드는 사용자에게 더 많은 제어 권한을 주지만, 항상 원하는 대로 동작하지 않을 수도 있습니다.\n\n\nDNS Control를 방화벽, DNS, 프록시 규칙에서 제외하는 것이 좋습니다. 이렇게 해도 네트워크 모니터링이나 로깅에는 영향을 끼치지 않고, 규칙만 변경됩니다.\n\n\n지금은, 루프백 모드에서 프록시 락다운이 강제되지 않습니다.</string>
+    <string name="bl_update_available_title" translatable="true">차단 목록 업데이트가 있습니다</string>
+    <string name="bl_update_available_message" translatable="true">더 새로운 차단 목록이 준비되었습니다.\n\n설치됨: %1$s\n최신: %2$s</string>
+    <string name="bl_update_download" translatable="true">다운로드</string>
+    <string name="bl_update_later" translatable="true">나중에</string>
+    <string name="bl_update_uptodate_title" translatable="true">업데이트를 찾을 수 없습니다</string>
+    <string name="bl_update_failed_title" translatable="true">차단 목록 업데이트 실패</string>
+    <string name="bl_update_retry" translatable="true">다시 시도</string>
 </resources>

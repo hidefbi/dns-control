@@ -378,4 +378,11 @@
     <string name="settings_proxy_header">mellomtjener</string>
     <string name="settings_check_update_heading">Se etter nye programversjoner</string>
     <string name="firewall_status_allow">tillatt</string>
+    <string name="bl_update_available_title" translatable="true">Oppdatering av blokkeringsliste tilgjengelig</string>
+    <string name="bl_update_available_message" translatable="true">En nyere blokkeringsliste er klar.\n\nInstallert: %1$s\nNyeste: %2$s</string>
+    <string name="bl_update_download" translatable="true">Last ned</string>
+    <string name="bl_update_later" translatable="true">Senere</string>
+    <string name="bl_update_uptodate_title" translatable="true">Fant ingen oppdatering</string>
+    <string name="bl_update_failed_title" translatable="true">Oppdatering av blokkeringsliste mislyktes</string>
+    <string name="bl_update_retry" translatable="true">Prøv igjen</string>
 </resources>

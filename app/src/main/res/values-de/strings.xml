@@ -893,4 +893,11 @@
     <string name="fs_configure_advanced_desc" translatable="true">Entwicklertools und Diagnose</string>
     <string name="fs_configure_network_desc" translatable="true">VPN-Tunnelmodus und Netzwerkeinstellungen</string>
     <string name="fs_configure_apps_desc" translatable="true">Firewallregeln und Netzwerkrichtlinien pro App</string>
+    <string name="bl_update_available_title" translatable="true">Blocklisten-Update verfügbar</string>
+    <string name="bl_update_available_message" translatable="true">Eine neuere Blockliste steht zum Download bereit.\n\nInstalliert: %1$s\nAktuell: %2$s</string>
+    <string name="bl_update_download" translatable="true">Herunterladen</string>
+    <string name="bl_update_later" translatable="true">Später</string>
+    <string name="bl_update_uptodate_title" translatable="true">Kein Update gefunden</string>
+    <string name="bl_update_failed_title" translatable="true">Blockliste-Update fehlgeschlagen</string>
+    <string name="bl_update_retry" translatable="true">Erneut versuchen</string>
 </resources>

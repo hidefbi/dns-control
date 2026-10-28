@@ -857,4 +857,11 @@
     <string name="cd_allowed_dns_record_types_heading" translatable="false">Дозволені типи DNS-записів</string>
     <string name="cd_allowed_dns_record_types_desc" translatable="false">Виберіть, які типи записів ресурсів DNS дозволити.</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Автоматичний (усі типи)</string>
+    <string name="bl_update_available_title" translatable="true">Доступне оновлення блоклиста</string>
+    <string name="bl_update_available_message" translatable="true">Готовий новіший блоклист.\n\nВстановлено: %1$s\nОстанній: %2$s</string>
+    <string name="bl_update_download" translatable="true">Завантажити</string>
+    <string name="bl_update_later" translatable="true">Пізніше</string>
+    <string name="bl_update_uptodate_title" translatable="true">Оновлень не знайдено</string>
+    <string name="bl_update_failed_title" translatable="true">Не вдалося оновити блоклист</string>
+    <string name="bl_update_retry" translatable="true">Повторити</string>
 </resources>

@@ -146,4 +146,11 @@
     <string name="always_on_dialog_heading" translatable="true">Deaktivér \"Altid på-VPN\"</string>
     <string name="always_on_dialog" translatable="true">\"Altid på-VPN\" er aktiveret på denne enhed. For at starte DNS Control skal du gå til indstillinger og deaktivere \"Altid på-VPN\".</string>
     <string name="always_on_dialog_positive_btn" translatable="true">Gå til indstillinger</string>
+    <string name="bl_update_available_title" translatable="true">Opdatering af blokeringsliste tilgængelig</string>
+    <string name="bl_update_available_message" translatable="true">En nyere blokeringsliste er klar.\n\nInstalleret: %1$s\nSeneste: %2$s</string>
+    <string name="bl_update_download" translatable="true">Hent</string>
+    <string name="bl_update_later" translatable="true">Senere</string>
+    <string name="bl_update_uptodate_title" translatable="true">Ingen opdatering fundet</string>
+    <string name="bl_update_failed_title" translatable="true">Opdatering af blokeringsliste mislykkedes</string>
+    <string name="bl_update_retry" translatable="true">Prøv igen</string>
 </resources>

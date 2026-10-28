@@ -608,4 +608,11 @@
     <string name="cd_no_rule_initial" translatable="true">ל</string>
     <string name="cd_no_rule_txt" translatable="true">ללא כלל</string>
     <string name="ci_dialog_title" translatable="true">הוספת כלל IP / יציאה</string>
+    <string name="bl_update_available_title" translatable="true">עדכון רשימת חסימה זמין</string>
+    <string name="bl_update_available_message" translatable="true">רשימת חסימה חדשה יותר מוכנה.\n\nמותקנת: %1$s\nאחרונה: %2$s</string>
+    <string name="bl_update_download" translatable="true">הורדה</string>
+    <string name="bl_update_later" translatable="true">אחר כך</string>
+    <string name="bl_update_uptodate_title" translatable="true">לא נמצא עדכון</string>
+    <string name="bl_update_failed_title" translatable="true">עדכון רשימת החסימה נכשל</string>
+    <string name="bl_update_retry" translatable="true">נסה שוב</string>
 </resources>

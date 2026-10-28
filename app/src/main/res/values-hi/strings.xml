@@ -748,4 +748,11 @@
     <string name="wireguard_apps_proxy_map_desc" translatable="true">%1$s का हिस्सा</string>
     <string name="lbl_on_device" translatable="true">ऑन-डिवाइस</string>
     <string name="lbl_test" translatable="true">मूल्यांकन</string>
+    <string name="bl_update_available_title" translatable="true">ब्लॉकलिस्ट का अपडेट उपलब्ध है</string>
+    <string name="bl_update_available_message" translatable="true">एक नई ब्लॉकलिस्ट तैयार है।\n\nइंस्टॉल की गई: %1$s\nनवीनतम: %2$s</string>
+    <string name="bl_update_download" translatable="true">डाउनलोड करें</string>
+    <string name="bl_update_later" translatable="true">बाद में</string>
+    <string name="bl_update_uptodate_title" translatable="true">कोई अपडेट नहीं मिला</string>
+    <string name="bl_update_failed_title" translatable="true">ब्लॉकलिस्ट अपडेट विफल रहा</string>
+    <string name="bl_update_retry" translatable="true">फिर से कोशिश करें</string>
 </resources>

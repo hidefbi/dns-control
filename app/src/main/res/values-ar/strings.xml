@@ -749,4 +749,11 @@
     <string name="firewall_rule_bypass_dns_firewall" translatable="true">التطبيق المتجاوز</string>
     <string name="firewall_rule_proxied" translatable="true">موكّل</string>
     <string name="firewall_rule_bypass_proxy" translatable="true">تجاوز الوكيل</string>
+    <string name="bl_update_available_title" translatable="true">يتوفر تحديث لقائمة الحظر</string>
+    <string name="bl_update_available_message" translatable="true">توجد قائمة حظر أحدث جاهزة.\n\nالمثبتة: %1$s\nالأحدث: %2$s</string>
+    <string name="bl_update_download" translatable="true">تنزيل</string>
+    <string name="bl_update_later" translatable="true">لاحقاً</string>
+    <string name="bl_update_uptodate_title" translatable="true">لم يتم العثور على تحديث</string>
+    <string name="bl_update_failed_title" translatable="true">فشل تحديث قائمة الحظر</string>
+    <string name="bl_update_retry" translatable="true">إعادة المحاولة</string>
 </resources>

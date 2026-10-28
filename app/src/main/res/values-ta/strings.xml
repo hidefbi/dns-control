@@ -823,4 +823,11 @@
     <string name="fail_open_network_title" translatable="true">பிணைய இழப்பை நிறுத்த வேண்டாம்</string>
     <string name="fail_open_network_desc" translatable="true">முடக்கப்படும்போது, <i> விமானப் பயன்முறை </i> ஐப் போல, இணைப்பு எதுவும் கிடைக்காதபோது எல்லா தரவையும் மறுபரிசீலனை செய்கிறது.</string>
     <string name="close_all" translatable="true">அனைத்தையும் மூடு</string>
+    <string name="bl_update_available_title" translatable="true">தடுப்புப் பட்டியல் புதுப்பிப்பு உள்ளது</string>
+    <string name="bl_update_available_message" translatable="true">புதிய தடுப்புப் பட்டியல் தயாராக உள்ளது.\n\nநிறுவப்பட்டது: %1$s\nசமீபத்தியது: %2$s</string>
+    <string name="bl_update_download" translatable="true">பதிவிறக்கு</string>
+    <string name="bl_update_later" translatable="true">பின்னர்</string>
+    <string name="bl_update_uptodate_title" translatable="true">புதுப்பிப்பு எதுவும் இல்லை</string>
+    <string name="bl_update_failed_title" translatable="true">தடுப்புப் பட்டியல் புதுப்பிப்பு தோல்வி</string>
+    <string name="bl_update_retry" translatable="true">மீண்டும் முயற்சி</string>
 </resources>

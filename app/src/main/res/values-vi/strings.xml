@@ -698,4 +698,11 @@
     <string name="rt_filter_parent_selected" translatable="true">Đã chọn</string>
     <string name="rt_filter_hint" translatable="true">Hiển thị <u>tất cả</u>danh sách chặn</string>
     <string name="rt_filter_desc" translatable="true"><![CDATA[Hiển thị <u>%1$s</u> danh sách chặn]]></string>
+    <string name="bl_update_available_title" translatable="true">Có bản cập nhật danh sách chặn</string>
+    <string name="bl_update_available_message" translatable="true">Đã có danh sách chặn mới hơn.\n\nĐang cài đặt: %1$s\nMới nhất: %2$s</string>
+    <string name="bl_update_download" translatable="true">Tải xuống</string>
+    <string name="bl_update_later" translatable="true">Để sau</string>
+    <string name="bl_update_uptodate_title" translatable="true">Không tìm thấy bản cập nhật</string>
+    <string name="bl_update_failed_title" translatable="true">Cập nhật danh sách chặn thất bại</string>
+    <string name="bl_update_retry" translatable="true">Thử lại</string>
 </resources>

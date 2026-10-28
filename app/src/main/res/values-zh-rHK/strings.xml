@@ -747,4 +747,11 @@
     <string name="lbl_battery_optimization" translatable="true">電池優化</string>
     <string name="battery_optimization_dialog_heading" translatable="true">禁用 %1$s</string>
     <string name="lbl_notification" translatable="true">通知</string>
+    <string name="bl_update_available_title" translatable="true">有可用的規則更新</string>
+    <string name="bl_update_available_message" translatable="true">已有較新的規則可以下載。\n\n目前版本：%1$s\n最新版本：%2$s</string>
+    <string name="bl_update_download" translatable="true">下載</string>
+    <string name="bl_update_later" translatable="true">稍後</string>
+    <string name="bl_update_uptodate_title" translatable="true">未偵測到更新</string>
+    <string name="bl_update_failed_title" translatable="true">規則更新失敗</string>
+    <string name="bl_update_retry" translatable="true">重試</string>
 </resources>

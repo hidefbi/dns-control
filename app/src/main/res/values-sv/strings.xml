@@ -20,4 +20,11 @@
     <string name="lbl_public_key" translatable="true">Publik Nyckel</string>
     <string name="lbl_private_key" translatable="true">Privat nyckel</string>
     <string name="lbl_disabled" translatable="true">Inaktiverad</string>
+    <string name="bl_update_available_title" translatable="true">Uppdatering av blockeringslista finns</string>
+    <string name="bl_update_available_message" translatable="true">En nyare blockeringslista är klar.\n\nInstallerad: %1$s\nSenaste: %2$s</string>
+    <string name="bl_update_download" translatable="true">Hämta</string>
+    <string name="bl_update_later" translatable="true">Senare</string>
+    <string name="bl_update_uptodate_title" translatable="true">Ingen uppdatering hittades</string>
+    <string name="bl_update_failed_title" translatable="true">Uppdateringen av blockeringslistan misslyckades</string>
+    <string name="bl_update_retry" translatable="true">Försök igen</string>
 </resources>

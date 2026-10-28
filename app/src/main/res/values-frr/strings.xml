@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="bl_update_available_title" translatable="true">Blocklisten-Update verfügbar</string>
+    <string name="bl_update_available_message" translatable="true">Eine neuere Blockliste steht zum Download bereit.\n\nInstalliert: %1$s\nAktuell: %2$s</string>
+    <string name="bl_update_download" translatable="true">Herunterladen</string>
+    <string name="bl_update_later" translatable="true">Später</string>
+    <string name="bl_update_uptodate_title" translatable="true">Kein Update gefunden</string>
+    <string name="bl_update_failed_title" translatable="true">Blockliste-Update fehlgeschlagen</string>
+    <string name="bl_update_retry" translatable="true">Erneut versuchen</string>
     </resources>

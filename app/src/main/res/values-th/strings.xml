@@ -739,4 +739,11 @@
     <string name="cleanbrowsing_adult_dns_desc" translatable="true">ตัวกรองสำหรับผู้ใหญ่จะบล็อกการเข้าถึงเว็บไซต์สำหรับผู้ใหญ่ ลามกอนาจาร และเนื้อหาที่ไม่เหมาะสมทั้งหมด ไม่บล็อกพร็อกซีหรือ VPN หรือเว็บไซต์ที่มีเนื้อหาผสมกัน อนุญาตให้ใช้เว็บไซต์เช่น Reddit ส่วน Google และ Bing จะตั้งค่าเป็นโหมดปลอดภัย</string>
     <string name="quad9_dns_desc" translatable="true">Quad9 กำหนดเส้นทางการสอบถาม DNS ของคุณผ่านเครือข่ายเซิร์ฟเวอร์ที่ปลอดภัยทั่วโลก</string>
     <string name="lbl_test" translatable="true">ทดสอบ</string>
+    <string name="bl_update_available_title" translatable="true">มีการอัปเดตรายการบล็อก</string>
+    <string name="bl_update_available_message" translatable="true">มีรายการบล็อกที่ใหม่กว่าพร้อมแล้ว\n\nที่ติดตั้งอยู่: %1$s\nล่าสุด: %2$s</string>
+    <string name="bl_update_download" translatable="true">ดาวน์โหลด</string>
+    <string name="bl_update_later" translatable="true">ภายหลัง</string>
+    <string name="bl_update_uptodate_title" translatable="true">ไม่พบการอัปเดต</string>
+    <string name="bl_update_failed_title" translatable="true">อัปเดตรายการบล็อกไม่สำเร็จ</string>
+    <string name="bl_update_retry" translatable="true">ลองอีกครั้ง</string>
 </resources>

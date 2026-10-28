@@ -132,4 +132,11 @@
     <string name="default_dns_name" translatable="true">Oletusarvoinen RDNS</string>
     <string name="custom_url_error_invalid_url" translatable="true">Epäkelpo osoite</string>
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">Käytettävyyspalvelu on pysähtynyt tai kaatunut. <i><b>Mene asetuksiin ja pakota DNS Controlin lopetus</b></i> \u0020ja käynnistä se uudelleen <i>Estä mikä tahansa sovellus, jota ei käytetä.</i>\n\nDNS Control käyttää saavutettavuuspalvelua seuraamaan, mitkä sovellukset ovat käytössä (etualalla) verrattuna niihin, jotka eivät ole käytössä (taustalla).</string>
+    <string name="bl_update_available_title" translatable="true">Estolistan päivitys saatavilla</string>
+    <string name="bl_update_available_message" translatable="true">Uudempi estolista on valmis.\n\nAsennettu: %1$s\nUusin: %2$s</string>
+    <string name="bl_update_download" translatable="true">Lataa</string>
+    <string name="bl_update_later" translatable="true">Myöhemmin</string>
+    <string name="bl_update_uptodate_title" translatable="true">Päivityksiä ei löytynyt</string>
+    <string name="bl_update_failed_title" translatable="true">Estolistan päivitys epäonnistui</string>
+    <string name="bl_update_retry" translatable="true">Yritä uudelleen</string>
 </resources>

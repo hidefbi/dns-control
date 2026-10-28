@@ -31,4 +31,11 @@
     <string name="lbl_domain_rules" translatable="true">قوانین دامنه</string>
     <string name="lbl_delete" translatable="true">حذف</string>
     <string name="lbl_proceed" translatable="true">سلام خوبی</string>
+    <string name="bl_update_available_title" translatable="true">Blocklist update available</string>
+    <string name="bl_update_available_message" translatable="true">A newer blocklist is ready.\n\nInstalled: %1$s\nLatest: %2$s</string>
+    <string name="bl_update_download" translatable="true">Download</string>
+    <string name="bl_update_later" translatable="true">Later</string>
+    <string name="bl_update_uptodate_title" translatable="true">No update found</string>
+    <string name="bl_update_failed_title" translatable="true">Blocklist update failed</string>
+    <string name="bl_update_retry" translatable="true">Retry</string>
 </resources>

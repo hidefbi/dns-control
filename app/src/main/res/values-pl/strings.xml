@@ -739,4 +739,11 @@
     <string name="lbl_experimental" translatable="true">funkcja testowa</string>
     <string name="lbl_saving" translatable="true">Zapisywanie…</string>
     <string name="lbl_test" translatable="true">Test</string>
+    <string name="bl_update_available_title" translatable="true">Dostępna aktualizacja listy blokad</string>
+    <string name="bl_update_available_message" translatable="true">Gotowa jest nowsza lista blokad.\n\nZainstalowana: %1$s\nNajnowsza: %2$s</string>
+    <string name="bl_update_download" translatable="true">Pobierz</string>
+    <string name="bl_update_later" translatable="true">Później</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nie znaleziono aktualizacji</string>
+    <string name="bl_update_failed_title" translatable="true">Nie udało się zaktualizować listy blokad</string>
+    <string name="bl_update_retry" translatable="true">Ponów</string>
 </resources>

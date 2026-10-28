@@ -895,4 +895,11 @@
     <string name="fs_configure_advanced_desc" translatable="true">Herramientas de desarrollador y diagnósticos</string>
     <string name="fs_configure_network_desc" translatable="true">Modo de túnel VPN y preferencias de red</string>
     <string name="fs_configure_apps_desc" translatable="true">Reglas de cortafuegos y políticas de red por aplicación</string>
+    <string name="bl_update_available_title" translatable="true">Actualización de lista de bloqueo disponible</string>
+    <string name="bl_update_available_message" translatable="true">Hay una lista de bloqueo más reciente lista para descargar.\n\nInstalada: %1$s\nÚltima: %2$s</string>
+    <string name="bl_update_download" translatable="true">Descargar</string>
+    <string name="bl_update_later" translatable="true">Más tarde</string>
+    <string name="bl_update_uptodate_title" translatable="true">No se encontraron actualizaciones</string>
+    <string name="bl_update_failed_title" translatable="true">Error al actualizar la lista de bloqueo</string>
+    <string name="bl_update_retry" translatable="true">Reintentar</string>
 </resources>

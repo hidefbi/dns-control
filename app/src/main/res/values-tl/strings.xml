@@ -113,4 +113,11 @@
     <string name="lbl_public_key" translatable="true">Pampublikong Susi</string>
     <string name="lbl_addresses" translatable="true">Mga address</string>
     <string name="lbl_dns_servers" translatable="true">Mga server ng DNS</string>
+    <string name="bl_update_available_title" translatable="true">May available na update ng blocklist</string>
+    <string name="bl_update_available_message" translatable="true">May mas bagong blocklist na handang i-download.\n\nNaka-install: %1$s\nPinakabago: %2$s</string>
+    <string name="bl_update_download" translatable="true">I-download</string>
+    <string name="bl_update_later" translatable="true">Mamaya</string>
+    <string name="bl_update_uptodate_title" translatable="true">Walang nakitang update</string>
+    <string name="bl_update_failed_title" translatable="true">Nabigo ang pag-update ng blocklist</string>
+    <string name="bl_update_retry" translatable="true">Subukan muli</string>
 </resources>

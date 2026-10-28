@@ -43,4 +43,11 @@
     <string name="lbl_domain_rules" translatable="true">Domēna noteikumi</string>
     <string name="firewall_rules" translatable="true">Tīkla noteikumi</string>
     <string name="univ_firewall_dialog_title" translatable="true">Vai tiešām dzēst IP noteikumu?</string>
+    <string name="bl_update_available_title" translatable="true">Pieejams bloķēšanas saraksta atjauninājums</string>
+    <string name="bl_update_available_message" translatable="true">Ir gatavs jaunāks bloķēšanas saraksts.\n\nInstalēts: %1$s\nJaunākais: %2$s</string>
+    <string name="bl_update_download" translatable="true">Lejupielādēt</string>
+    <string name="bl_update_later" translatable="true">Vēlāk</string>
+    <string name="bl_update_uptodate_title" translatable="true">Atjauninājumi nav atrasti</string>
+    <string name="bl_update_failed_title" translatable="true">Bloķēšanas saraksta atjaunināšana neizdevās</string>
+    <string name="bl_update_retry" translatable="true">Mēģināt vēlreiz</string>
 </resources>

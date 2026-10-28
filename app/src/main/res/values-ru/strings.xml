@@ -871,4 +871,11 @@
     <string name="cd_allowed_dns_record_types_heading" translatable="false">Разрешённые типы записей DNS</string>
     <string name="cd_allowed_dns_record_types_desc" translatable="false">Выберите, какие типы записей ресурсов DNS разрешить.</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Авто (Все типы)</string>
+    <string name="bl_update_available_title" translatable="true">Доступно обновление блоклиста</string>
+    <string name="bl_update_available_message" translatable="true">Готов более новый блоклист.\n\nУстановлен: %1$s\nПоследний: %2$s</string>
+    <string name="bl_update_download" translatable="true">Скачать</string>
+    <string name="bl_update_later" translatable="true">Позже</string>
+    <string name="bl_update_uptodate_title" translatable="true">Обновлений не найдено</string>
+    <string name="bl_update_failed_title" translatable="true">Не удалось обновить блоклист</string>
+    <string name="bl_update_retry" translatable="true">Повторить</string>
 </resources>

@@ -463,4 +463,11 @@
     <string name="lbl_sec" translatable="true">秒</string>
     <string name="status_protected_with_wg" translatable="true">WireGuard で保護されています</string>
     <string name="lbl_dismiss" translatable="true">却下する</string>
+    <string name="bl_update_available_title" translatable="true">ブロックリストの更新があります</string>
+    <string name="bl_update_available_message" translatable="true">より新しいブロックリストの準備ができました。\n\nインストール済み: %1$s\n最新: %2$s</string>
+    <string name="bl_update_download" translatable="true">ダウンロード</string>
+    <string name="bl_update_later" translatable="true">あとで</string>
+    <string name="bl_update_uptodate_title" translatable="true">更新は見つかりませんでした</string>
+    <string name="bl_update_failed_title" translatable="true">ブロックリストの更新に失敗しました</string>
+    <string name="bl_update_retry" translatable="true">再試行</string>
 </resources>

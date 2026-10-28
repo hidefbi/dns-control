@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="bl_update_available_title" translatable="true">Blok siyahısının yeniləməsi mövcuddur</string>
+    <string name="bl_update_available_message" translatable="true">Daha yeni blok siyahısı hazırdır.\n\nQuraşdırılıb: %1$s\nSon: %2$s</string>
+    <string name="bl_update_download" translatable="true">Yüklə</string>
+    <string name="bl_update_later" translatable="true">Sonra</string>
+    <string name="bl_update_uptodate_title" translatable="true">Yeniləmə tapılmadı</string>
+    <string name="bl_update_failed_title" translatable="true">Blok siyahısının yenilənməsi uğursuz oldu</string>
+    <string name="bl_update_retry" translatable="true">Yenidən cəhd et</string>
     </resources>

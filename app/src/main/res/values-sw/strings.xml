@@ -28,4 +28,11 @@
     <string name="lbl_auto" translatable="true">Bila jitihada</string>
     <string name="lbl_include" translatable="true">Kutia ndani</string>
     <string name="lbl_select_all" translatable="true">Chagua zote</string>
+    <string name="bl_update_available_title" translatable="true">Sasisho la orodha ya kuzuia linapatikana</string>
+    <string name="bl_update_available_message" translatable="true">Orodha mpya zaidi ya kuzuia iko tayari.\n\nIliyosakinishwa: %1$s\nYa hivi karibuni: %2$s</string>
+    <string name="bl_update_download" translatable="true">Pakua</string>
+    <string name="bl_update_later" translatable="true">Baadaye</string>
+    <string name="bl_update_uptodate_title" translatable="true">Hakuna sasisho lililopatikana</string>
+    <string name="bl_update_failed_title" translatable="true">Sasisho la orodha ya kuzuia limeshindwa</string>
+    <string name="bl_update_retry" translatable="true">Jaribu tena</string>
 </resources>

@@ -121,4 +121,11 @@
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">ආරක්ෂිත නැත</string>
     <string name="dns_explanation_dns_connected" translatable="true">RethinkDNS මගින් ආරක්ෂිතයි</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Firewall එකකට සම්බන්ධ වි ඇත</string>
+    <string name="bl_update_available_title" translatable="true">බ්ලොක්ලිස්ට් යාවත්කාලීනය ලබා ගත හැක</string>
+    <string name="bl_update_available_message" translatable="true">නව බ්ලොක්ලිස්ට් එකක් සූදානම්ය.\n\nස්ථාපනය කළ: %1$s\nනවතම: %2$s</string>
+    <string name="bl_update_download" translatable="true">බාගන්න</string>
+    <string name="bl_update_later" translatable="true">පසුව</string>
+    <string name="bl_update_uptodate_title" translatable="true">යාවත්කාලීන කිසිවක් හමු නොවීය</string>
+    <string name="bl_update_failed_title" translatable="true">බ්ලොක්ලිස්ට් යාවත්කාලීනය අසාර්ථකයි</string>
+    <string name="bl_update_retry" translatable="true">නැවත උත්සාහ කරන්න</string>
 </resources>

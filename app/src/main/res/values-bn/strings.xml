@@ -561,4 +561,11 @@
     <string name="lbl_unselected" translatable="true">অনির্বাচিত</string>
     <string name="lbl_idle" translatable="true">নিষ্ক্রিয়</string>
     <string name="lbl_on_device" translatable="true">ডিভাইসে</string>
+    <string name="bl_update_available_title" translatable="true">ব্লকলিস্ট আপডেট পাওয়া যাচ্ছে</string>
+    <string name="bl_update_available_message" translatable="true">একটি নতুন ব্লকলিস্ট প্রস্তুত।\n\nইনস্টল করা: %1$s\nসর্বশেষ: %2$s</string>
+    <string name="bl_update_download" translatable="true">ডাউনলোড</string>
+    <string name="bl_update_later" translatable="true">পরে</string>
+    <string name="bl_update_uptodate_title" translatable="true">কোনো আপডেট পাওয়া যায়নি</string>
+    <string name="bl_update_failed_title" translatable="true">ব্লকলিস্ট আপডেট ব্যর্থ হয়েছে</string>
+    <string name="bl_update_retry" translatable="true">আবার চেষ্টা করুন</string>
 </resources>

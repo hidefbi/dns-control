@@ -3,4 +3,11 @@
     <string name="title_settings" translatable="true">ସେଟିଂ</string>
     <string name="txt_home" translatable="true">ଗୃହ</string>
     <string name="skip" translatable="true">ବାଦ୍ ଦିଅ</string>
+    <string name="bl_update_available_title" translatable="true">ବ୍ଲକ୍‌ଲିଷ୍ଟ ଅପଡେଟ୍ ଉପଲବ୍ଧ</string>
+    <string name="bl_update_available_message" translatable="true">ଏକ ନୂଆ ବ୍ଲକ୍‌ଲିଷ୍ଟ ପ୍ରସ୍ତୁତ ଅଛି।\n\nସଂସ୍ଥାପିତ: %1$s\nସର୍ବଶେଷ: %2$s</string>
+    <string name="bl_update_download" translatable="true">ଡାଉନଲୋଡ୍</string>
+    <string name="bl_update_later" translatable="true">ପରେ</string>
+    <string name="bl_update_uptodate_title" translatable="true">କୌଣସି ଅପଡେଟ୍ ମିଳିଲା ନାହିଁ</string>
+    <string name="bl_update_failed_title" translatable="true">ବ୍ଲକ୍‌ଲିଷ୍ଟ ଅପଡେଟ୍ ବିଫଳ</string>
+    <string name="bl_update_retry" translatable="true">ପୁନର୍ଚେଷ୍ଟା</string>
 </resources>

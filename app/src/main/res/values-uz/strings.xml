@@ -51,4 +51,11 @@
     <string name="status_dns_error" translatable="true">dns xatosi</string>
     <string name="status_no_internet" translatable="true">internetga ulanmagan</string>
     <string name="status_protected_with_tor" translatable="true">tor bilan himoyalandi</string>
+    <string name="bl_update_available_title" translatable="true">Blokirovka roʻyxati yangilanishi mavjud</string>
+    <string name="bl_update_available_message" translatable="true">Yangiroq blokirovka roʻyxati tayyor.\n\nOʻrnatilgan: %1$s\nEng soʻnggi: %2$s</string>
+    <string name="bl_update_download" translatable="true">Yuklab olish</string>
+    <string name="bl_update_later" translatable="true">Keyinroq</string>
+    <string name="bl_update_uptodate_title" translatable="true">Yangilanish topilmadi</string>
+    <string name="bl_update_failed_title" translatable="true">Blokirovka roʻyxatini yangilash amalga oshmadi</string>
+    <string name="bl_update_retry" translatable="true">Qayta urinish</string>
 </resources>

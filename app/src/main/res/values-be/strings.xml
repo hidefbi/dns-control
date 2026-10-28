@@ -57,4 +57,11 @@
     <string name="lbl_allowed_ips" translatable="true">Дазволеныя IP-адрасы</string>
     <string name="lbl_save" translatable="true">захаваць</string>
     <string name="lbl_remove" translatable="true">Выдаліць</string>
+    <string name="bl_update_available_title" translatable="true">Даступна абнаўленне спісу блакіроўкі</string>
+    <string name="bl_update_available_message" translatable="true">Гатовы больш новы спіс блакіроўкі.\n\nУсталявана: %1$s\nАпошні: %2$s</string>
+    <string name="bl_update_download" translatable="true">Спампаваць</string>
+    <string name="bl_update_later" translatable="true">Пазней</string>
+    <string name="bl_update_uptodate_title" translatable="true">Абнаўленняў не знойдзена</string>
+    <string name="bl_update_failed_title" translatable="true">Не ўдалося абнавіць спіс блакіроўкі</string>
+    <string name="bl_update_retry" translatable="true">Паўтарыць</string>
 </resources>

@@ -136,4 +136,11 @@
     <string name="univ_firewall_dialog_title" translatable="true">Διαγραφή κανόνα IP;</string>
     <string name="univ_firewall_dialog_message" translatable="true">Η διαγραφή αυτού του κανόνα θα επιτρέψει σε οποιαδήποτε εφαρμογή να συνδεθεί σε αυτήν την IP. Θέλετε να προχωρήσετε;</string>
     <string name="dot_custom_url_remove_dialog_message" translatable="true">Διαγράψτε το τελικό σημείο DNS over TLS από την αποθηκευμένη ρύθμιση παραμέτρων.</string>
+    <string name="bl_update_available_title" translatable="true">Διαθέσιμη ενημέρωση λίστας αποκλεισμού</string>
+    <string name="bl_update_available_message" translatable="true">Μια νεότερη λίστα αποκλεισμού είναι έτοιμη.\n\nΕγκατεστημένη: %1$s\nΤελευταία: %2$s</string>
+    <string name="bl_update_download" translatable="true">Λήψη</string>
+    <string name="bl_update_later" translatable="true">Αργότερα</string>
+    <string name="bl_update_uptodate_title" translatable="true">Δεν βρέθηκε ενημέρωση</string>
+    <string name="bl_update_failed_title" translatable="true">Η ενημέρωση της λίστας αποκλεισμού απέτυχε</string>
+    <string name="bl_update_retry" translatable="true">Επανάληψη</string>
 </resources>

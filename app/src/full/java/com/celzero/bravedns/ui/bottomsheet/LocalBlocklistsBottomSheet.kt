@@ -207,18 +207,68 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
         )
     }
 
-    private fun onDownloadFail() {
+    private fun resetDownloadButtons() {
         b.lbbsDownload.isEnabled = true
         b.lbbsRedownload.isEnabled = true
         b.lbbsDownloadProgress.visibility = View.GONE
         b.lbbsRedownloadProgress.visibility = View.GONE
         b.lbbsDownloadImg.visibility = View.VISIBLE
         b.lbbsRedownloadImg.visibility = View.VISIBLE
+    }
+
+    private fun onDownloadFail() {
+        resetDownloadButtons()
         Utilities.showToastUiCentered(
             requireActivity(),
             getString(R.string.blocklist_update_check_failure),
             Toast.LENGTH_SHORT
         )
+    }
+
+    private fun showUpdateAvailableDialog() {
+        if (!isAdded) return
+
+        val installed =
+            convertLongToTime(persistentState.localBlocklistTimestamp, Constants.TIME_FORMAT_4)
+        val latest =
+            convertLongToTime(persistentState.newestLocalBlocklistTimestamp, Constants.TIME_FORMAT_4)
+
+        val builder = MaterialAlertDialogBuilder(requireContext(), R.style.App_Dialog_NoDim)
+        builder.setTitle(R.string.bl_update_available_title)
+        builder.setMessage(getString(R.string.bl_update_available_message, installed, latest))
+        builder.setCancelable(true)
+        builder.setPositiveButton(R.string.bl_update_download) { _, _ ->
+            downloadLocalBlocklist(isRedownload = false)
+        }
+        // dismissing keeps the inline download button visible, so the update can be fetched later
+        builder.setNegativeButton(R.string.bl_update_later) { dialog, _ -> dialog.dismiss() }
+        builder.create().show()
+    }
+
+    private fun showUpToDateDialog() {
+        if (!isAdded) return
+
+        val builder = MaterialAlertDialogBuilder(requireContext(), R.style.App_Dialog_NoDim)
+        builder.setTitle(R.string.bl_update_uptodate_title)
+        builder.setMessage(R.string.blocklist_update_check_not_required)
+        builder.setCancelable(true)
+        builder.setPositiveButton(R.string.lbl_dismiss) { dialog, _ -> dialog.dismiss() }
+        builder.create().show()
+    }
+
+    private fun showCheckFailedDialog() {
+        if (!isAdded) return
+
+        val builder = MaterialAlertDialogBuilder(requireContext(), R.style.App_Dialog_NoDim)
+        builder.setTitle(R.string.bl_update_failed_title)
+        builder.setMessage(R.string.blocklist_update_check_failure)
+        builder.setCancelable(true)
+        builder.setPositiveButton(R.string.bl_update_retry) { _, _ ->
+            b.lbbsCheckDownload.isEnabled = false
+            isBlocklistUpdateAvailable()
+        }
+        builder.setNegativeButton(R.string.lbl_cancel) { dialog, _ -> dialog.dismiss() }
+        builder.create().show()
     }
 
     private fun showCheckUpdateUi() {
@@ -386,6 +436,7 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
                 ui {
                     showUpdateUi()
                     b.lbbsCheckDownload.isEnabled = true
+                    showUpdateAvailableDialog()
                 }
                 appDownloadManager.downloadRequired.postValue(
                     AppDownloadManager.DownloadManagerStatus.NOT_STARTED
@@ -394,26 +445,18 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
             AppDownloadManager.DownloadManagerStatus.FAILURE -> {
                 ui {
                     b.lbbsCheckDownload.isEnabled = true
-                    Utilities.showToastUiCentered(
-                        requireContext(),
-                        getString(R.string.blocklist_update_check_failure),
-                        Toast.LENGTH_SHORT
-                    )
+                    resetDownloadButtons()
+                    showCheckFailedDialog()
                 }
                 appDownloadManager.downloadRequired.postValue(
                     AppDownloadManager.DownloadManagerStatus.NOT_STARTED
                 )
-                onDownloadFail()
             }
             AppDownloadManager.DownloadManagerStatus.NOT_REQUIRED -> {
                 ui {
                     showRedownloadUi()
                     b.lbbsCheckDownload.isEnabled = true
-                    Utilities.showToastUiCentered(
-                        requireContext(),
-                        getString(R.string.blocklist_update_check_not_required),
-                        Toast.LENGTH_SHORT
-                    )
+                    showUpToDateDialog()
                 }
                 appDownloadManager.downloadRequired.postValue(
                     AppDownloadManager.DownloadManagerStatus.NOT_STARTED

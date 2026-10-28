@@ -875,4 +875,11 @@
     <string name="tour_btn_skip">Sari peste tur</string>
     <string name="stability_program_snackbar_msg" translatable="true">Programul de stabilitate activat. Rapoartele de erori ajută la îmbunătățirea funcționalităților experimentale.</string>
     <string name="stability_program_snackbar_disable" translatable="true">Dezactivează</string>
+    <string name="bl_update_available_title" translatable="true">Actualizare disponibilă pentru lista de blocare</string>
+    <string name="bl_update_available_message" translatable="true">Este pregătită o listă de blocare mai nouă.\n\nInstalată: %1$s\nCea mai recentă: %2$s</string>
+    <string name="bl_update_download" translatable="true">Descarcă</string>
+    <string name="bl_update_later" translatable="true">Mai târziu</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nu s-a găsit nicio actualizare</string>
+    <string name="bl_update_failed_title" translatable="true">Actualizarea listei de blocare a eșuat</string>
+    <string name="bl_update_retry" translatable="true">Reîncearcă</string>
 </resources>

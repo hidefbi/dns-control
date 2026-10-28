@@ -749,4 +749,11 @@
     <string name="wg_setting_use_on_mobile" translatable="true">Solo dati mobili</string>
     <string name="ac_split_tcp_desc" translatable="true">Altera i pacchetti TCP.</string>
     <string name="ac_split_tls" translatable="true">TCP/TLS</string>
+    <string name="bl_update_available_title" translatable="true">Aggiornamento della blocklist disponibile</string>
+    <string name="bl_update_available_message" translatable="true">È pronta una blocklist più recente.\n\nInstallata: %1$s\nUltima: %2$s</string>
+    <string name="bl_update_download" translatable="true">Scarica</string>
+    <string name="bl_update_later" translatable="true">Più tardi</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nessun aggiornamento trovato</string>
+    <string name="bl_update_failed_title" translatable="true">Aggiornamento della blocklist non riuscito</string>
+    <string name="bl_update_retry" translatable="true">Riprova</string>
 </resources>

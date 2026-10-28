@@ -30,4 +30,11 @@
     <string name="lbl_apply" translatable="true">لاگو کرو</string>
     <string name="lbl_dismiss" translatable="true">رد کرو</string>
     <string name="lbl_all" translatable="true">تمام</string>
+    <string name="bl_update_available_title" translatable="true">بلاک لسٹ کی اپ ڈیٹ دستیاب ہے</string>
+    <string name="bl_update_available_message" translatable="true">ایک نئی بلاک لسٹ تیار ہے۔\n\nانسٹال شدہ: %1$s\nتازہ ترین: %2$s</string>
+    <string name="bl_update_download" translatable="true">ڈاؤن لوڈ</string>
+    <string name="bl_update_later" translatable="true">بعد میں</string>
+    <string name="bl_update_uptodate_title" translatable="true">کوئی اپ ڈیٹ نہیں ملی</string>
+    <string name="bl_update_failed_title" translatable="true">بلاک لسٹ کی اپ ڈیٹ ناکام ہوگئی</string>
+    <string name="bl_update_retry" translatable="true">دوبارہ کوشش کریں</string>
 </resources>

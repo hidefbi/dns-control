@@ -223,4 +223,11 @@
     <string name="lbl_notification" translatable="true">известие</string>
     <string name="lbl_idle" translatable="true">Неактивен</string>
     <string name="lbl_split" translatable="true">Разбивка</string>
+    <string name="bl_update_available_title" translatable="true">Налична е актуализация на блокиращия списък</string>
+    <string name="bl_update_available_message" translatable="true">Има по-нов блокиращ списък.\n\nИнсталиран: %1$s\nНай-нов: %2$s</string>
+    <string name="bl_update_download" translatable="true">Изтегли</string>
+    <string name="bl_update_later" translatable="true">По-късно</string>
+    <string name="bl_update_uptodate_title" translatable="true">Няма налична актуализация</string>
+    <string name="bl_update_failed_title" translatable="true">Актуализирането на блокиращия списък се провали</string>
+    <string name="bl_update_retry" translatable="true">Опитай отново</string>
 </resources>

@@ -794,4 +794,11 @@
     <string name="vpn_policy_relaxed_desc" translatable="true">Иуашэхьазыруит ежьапхьабзэ бжьашэу ежьапхьабзэ зеижьакIуакIуэ.</string>
     <string name="vpn_policy_title" translatable="true">Ашәахәалара аполитика аиҭакра</string>
     <string name="settings_allow_lan_heading" translatable="true">Ашәахьыхьаамҧшны (аԥшь аҿы иҟоу) рыцхәажәа аԥсышәҟа.</string>
+    <string name="bl_update_available_title" translatable="true">Blocklist update available</string>
+    <string name="bl_update_available_message" translatable="true">A newer blocklist is ready.\n\nInstalled: %1$s\nLatest: %2$s</string>
+    <string name="bl_update_download" translatable="true">Download</string>
+    <string name="bl_update_later" translatable="true">Later</string>
+    <string name="bl_update_uptodate_title" translatable="true">No update found</string>
+    <string name="bl_update_failed_title" translatable="true">Blocklist update failed</string>
+    <string name="bl_update_retry" translatable="true">Retry</string>
 </resources>

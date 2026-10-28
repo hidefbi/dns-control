@@ -806,4 +806,11 @@
     <string name="vpn_policy_sensitive" translatable="true">敏感</string>
     <string name="vpn_policy_fixed" translatable="true">保守</string>
     <string name="close_all" translatable="true">關閉全部</string>
+    <string name="bl_update_available_title" translatable="true">有可用的規則更新</string>
+    <string name="bl_update_available_message" translatable="true">已有較新的規則可以下載。\n\n目前版本：%1$s\n最新版本：%2$s</string>
+    <string name="bl_update_download" translatable="true">下載</string>
+    <string name="bl_update_later" translatable="true">稍後</string>
+    <string name="bl_update_uptodate_title" translatable="true">未偵測到更新</string>
+    <string name="bl_update_failed_title" translatable="true">規則更新失敗</string>
+    <string name="bl_update_retry" translatable="true">重試</string>
 </resources>

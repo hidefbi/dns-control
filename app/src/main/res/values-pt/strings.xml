@@ -830,4 +830,11 @@
     <string name="ac_split_tcp_desc" translatable="true">Altere os pacotes TCP.</string>
     <string name="firewall_rule_bypass_proxy" translatable="true">Ignorar proxy</string>
     <string name="ac_split_tls" translatable="true">TCP/TLS</string>
+    <string name="bl_update_available_title" translatable="true">Atualização da lista de bloqueio disponível</string>
+    <string name="bl_update_available_message" translatable="true">Uma lista de bloqueio mais recente está pronta.\n\nInstalada: %1$s\nMais recente: %2$s</string>
+    <string name="bl_update_download" translatable="true">Baixar</string>
+    <string name="bl_update_later" translatable="true">Depois</string>
+    <string name="bl_update_uptodate_title" translatable="true">Nenhuma atualização encontrada</string>
+    <string name="bl_update_failed_title" translatable="true">Falha na atualização da lista de bloqueio</string>
+    <string name="bl_update_retry" translatable="true">Tentar novamente</string>
 </resources>
