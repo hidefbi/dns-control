@@ -34,8 +34,6 @@ import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.XrayConfig
-import com.google.android.material.color.MaterialColors
-import com.google.android.material.R as MaterialR
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -52,9 +50,12 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
     private val appConfig by inject<AppConfig>()
     private val persistentState by inject<PersistentState>()
     private val runner by lazy { XrayRunner(applicationContext) }
+    // error colour comes from the layout (?attr/colorError); captured before it is ever changed
+    private var errorColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        errorColor = b.xrayProblem.currentTextColor
         b.xrayInput.setText(runner.savedProfile().orEmpty())
         b.xrayInput.addTextChangedListener(
             object : TextWatcher {
@@ -90,8 +91,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         } else {
             b.xrayProblem.visibility = View.VISIBLE
             b.xrayProblem.text = getString(messageFor(problem))
-            val attr = if (problem == null) MaterialR.attr.colorPrimary else MaterialR.attr.colorError
-            b.xrayProblem.setTextColor(MaterialColors.getColor(b.xrayProblem, attr))
+            b.xrayProblem.setTextColor(if (problem == null) b.xrayStatus.currentTextColor else errorColor)
         }
         return problem
     }
