@@ -170,4 +170,15 @@
     <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
+    <string name="xray_progress_title" translatable="true">Fill-in progress</string>
+    <string name="xray_progress_left" translatable="true">%1$d left</string>
+    <string name="xray_field_server" translatable="true">Server address</string>
+    <string name="xray_field_uuid" translatable="true">UUID</string>
+    <string name="xray_field_sni" translatable="true">Server name (SNI)</string>
+    <string name="xray_field_pubkey" translatable="true">Public key</string>
+    <string name="xray_field_shortid" translatable="true">ShortID</string>
+    <string name="xray_chip_on" translatable="true">Running</string>
+    <string name="xray_chip_off" translatable="true">Stopped</string>
+    <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
+    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
 </resources>

@@ -840,4 +840,15 @@
     <string name="xray_vpn_hint" translatable="true">请先在主界面开启 App 的 VPN，Xray 只有在 VPN 开启时才会转发流量。</string>
     <string name="xray_back" translatable="true">返回</string>
     <string name="xray_err_placeholder" translatable="true">还有 %1$d 项需要填写：请替换高亮的 REPLACE_ 内容</string>
+    <string name="xray_progress_title" translatable="true">填写进度</string>
+    <string name="xray_progress_left" translatable="true">还差 %1$d 项</string>
+    <string name="xray_field_server" translatable="true">服务器地址</string>
+    <string name="xray_field_uuid" translatable="true">UUID</string>
+    <string name="xray_field_sni" translatable="true">伪装域名</string>
+    <string name="xray_field_pubkey" translatable="true">公钥</string>
+    <string name="xray_field_shortid" translatable="true">ShortID</string>
+    <string name="xray_chip_on" translatable="true">运行中</string>
+    <string name="xray_chip_off" translatable="true">未启动</string>
+    <string name="xray_footer_need" translatable="true">保存需填满 %1$d 项；启动需先开启 VPN</string>
+    <string name="xray_footer_ok" translatable="true">启动需先开启 VPN</string>
 </resources>
