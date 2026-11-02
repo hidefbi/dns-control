@@ -18,4 +18,5 @@
     <string name="xray_none" translatable="true">Speichere zuerst ein Profil</string>
     <string name="xray_no_slot" translatable="true">SOCKS5-Proxy konnte nicht auf Xray gesetzt werden</string>
     <string name="xray_error" translatable="true">Xray-Fehler: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Schalte zuerst die Option Route-in-VPN aus, sonst läuft der Xray-Verkehr in eine Schleife</string>
     </resources>

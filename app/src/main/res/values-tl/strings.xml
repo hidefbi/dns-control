@@ -131,4 +131,5 @@
     <string name="xray_none" translatable="true">I-save muna ang profile</string>
     <string name="xray_no_slot" translatable="true">Hindi maitakda ang SOCKS5 proxy sa Xray</string>
     <string name="xray_error" translatable="true">Error ng Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">I-off muna ang opsyon ng routing sa loob ng VPN, kung hindi ay mag-loop ang trapiko ng Xray</string>
 </resources>

@@ -46,4 +46,5 @@
     <string name="xray_none" translatable="true">Hifadhi wasifu kwanza</string>
     <string name="xray_no_slot" translatable="true">Imeshindwa kuweka wakala wa SOCKS5 kwa Xray</string>
     <string name="xray_error" translatable="true">Hitilafu ya Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Zima kwanza chaguo la kuelekeza ndani ya VPN, vinginevyo trafiki ya Xray itazunguka</string>
 </resources>

@@ -893,4 +893,5 @@
     <string name="xray_none" translatable="true">Salvați mai întâi un profil</string>
     <string name="xray_no_slot" translatable="true">Nu s-a putut seta proxy-ul SOCKS5 pe Xray</string>
     <string name="xray_error" translatable="true">Eroare Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Dezactivați mai întâi opțiunea de rutare în VPN, altfel traficul Xray intră în buclă</string>
 </resources>

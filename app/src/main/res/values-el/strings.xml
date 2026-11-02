@@ -154,4 +154,5 @@
     <string name="xray_none" translatable="true">Αποθηκεύστε πρώτα ένα προφίλ</string>
     <string name="xray_no_slot" translatable="true">Δεν ήταν δυνατή η ρύθμιση του διακομιστή SOCKS5 στο Xray</string>
     <string name="xray_error" translatable="true">Σφάλμα Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Απενεργοποιήστε πρώτα την επιλογή δρομολόγησης μέσω VPN, αλλιώς η κίνηση του Xray θα κάνει βρόχο</string>
 </resources>

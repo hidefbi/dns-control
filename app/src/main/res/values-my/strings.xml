@@ -19,4 +19,5 @@
     <string name="xray_none" translatable="true">ပရိုဖိုင်ကို အရင်သိမ်းပါ</string>
     <string name="xray_no_slot" translatable="true">Xray အတွက် SOCKS5 proxy သတ်မှတ်၍ မရပါ</string>
     <string name="xray_error" translatable="true">Xray အမှား: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">VPN အတွင်း လမ်းကြောင်းပေးခြင်း ရွေးချယ်မှုကို အရင်ပိတ်ပါ၊ မဟုတ်ပါက Xray traffic တွင် loop ဖြစ်မည်</string>
 </resources>

@@ -914,4 +914,5 @@
     <string name="xray_none" translatable="true">먼저 프로필을 저장하세요</string>
     <string name="xray_no_slot" translatable="true">Xray용 SOCKS5 프록시를 설정할 수 없습니다</string>
     <string name="xray_error" translatable="true">Xray 오류: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">먼저 VPN 내부 경로 설정을 끄세요. 끄지 않으면 Xray 트래픽이 VPN으로 되돌아가 무한 반복됩니다</string>
 </resources>

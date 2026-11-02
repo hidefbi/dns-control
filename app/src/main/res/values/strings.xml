@@ -1793,4 +1793,5 @@
     <string name="xray_none" translatable="true">Save a profile first</string>
     <string name="xray_no_slot" translatable="true">Could not point the SOCKS5 proxy at Xray</string>
     <string name="xray_error" translatable="true">Xray error: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Turn off the route-in-VPN option first, otherwise Xray traffic loops back into the VPN</string>
 </resources>

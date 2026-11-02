@@ -767,4 +767,5 @@
     <string name="xray_none" translatable="true">احفظ ملفاً شخصياً أولاً</string>
     <string name="xray_no_slot" translatable="true">تعذّر تعيين وكيل SOCKS5 إلى Xray</string>
     <string name="xray_error" translatable="true">خطأ في Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">أوقف خيار التوجيه داخل VPN أولاً، وإلا ستدور حركة Xray في حلقة</string>
 </resources>

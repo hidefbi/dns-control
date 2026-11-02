@@ -139,4 +139,5 @@
     <string name="xray_none" translatable="true">පළමුව පැතිකඩක් සුරකින්න</string>
     <string name="xray_no_slot" translatable="true">Xray සඳහා SOCKS5 proxy සැකසිය නොහැකි විය</string>
     <string name="xray_error" translatable="true">Xray දෝෂය: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">පළමුව VPN තුළ මාර්ගගත කිරීමේ විකල්පය අක්‍රිය කරන්න, නැතහොත් Xray ගමනාගමනය ලූපයක හිරවේ</string>
 </resources>

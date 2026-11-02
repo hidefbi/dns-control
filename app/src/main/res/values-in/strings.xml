@@ -932,4 +932,5 @@
     <string name="xray_none" translatable="true">Simpan profil dulu</string>
     <string name="xray_no_slot" translatable="true">Tidak dapat mengatur proxy SOCKS5 ke Xray</string>
     <string name="xray_error" translatable="true">Kesalahan Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Matikan dulu opsi perutean di dalam VPN, jika tidak lalu lintas Xray akan berputar</string>
 </resources>

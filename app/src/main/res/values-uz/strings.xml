@@ -69,4 +69,5 @@
     <string name="xray_none" translatable="true">Avval profilni saqlang</string>
     <string name="xray_no_slot" translatable="true">Xray uchun SOCKS5 proksini oʻrnatib boʻlmadi</string>
     <string name="xray_error" translatable="true">Xray xatosi: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Avval VPN ichidagi marshrutlash opsiyasini oʻchiring, aks holda Xray trafigi halqaga tushadi</string>
 </resources>

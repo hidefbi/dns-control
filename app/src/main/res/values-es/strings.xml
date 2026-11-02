@@ -913,4 +913,5 @@
     <string name="xray_none" translatable="true">Guarda primero un perfil</string>
     <string name="xray_no_slot" translatable="true">No se pudo configurar el proxy SOCKS5 para Xray</string>
     <string name="xray_error" translatable="true">Error de Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Desactiva primero la opción de enrutar en la VPN; si no, el tráfico de Xray entra en bucle</string>
 </resources>

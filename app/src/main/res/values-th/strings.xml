@@ -757,4 +757,5 @@
     <string name="xray_none" translatable="true">บันทึกโปรไฟล์ก่อน</string>
     <string name="xray_no_slot" translatable="true">ไม่สามารถตั้งค่าพร็อกซี SOCKS5 เป็น Xray ได้</string>
     <string name="xray_error" translatable="true">ข้อผิดพลาดของ Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">ปิดตัวเลือกการส่งทราฟฟิกผ่าน VPN ก่อน ไม่เช่นนั้นทราฟฟิกของ Xray จะวนกลับเข้า VPN</string>
 </resources>

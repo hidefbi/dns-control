@@ -610,4 +610,5 @@
     <string name="xray_none" translatable="true">ابتدا یک پروفایل ذخیره کنید</string>
     <string name="xray_no_slot" translatable="true">تنظیم پراکسی SOCKS5 روی Xray ممکن نشد</string>
     <string name="xray_error" translatable="true">خطای Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">ابتدا گزینه مسیریابی درون VPN را خاموش کنید، وگرنه ترافیک Xray در حلقه می‌افتد</string>
 </resources>

@@ -164,4 +164,5 @@
     <string name="xray_none" translatable="true">Gem en profil først</string>
     <string name="xray_no_slot" translatable="true">Kunne ikke sætte SOCKS5-proxyen til Xray</string>
     <string name="xray_error" translatable="true">Xray-fejl: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Slå først indstillingen for routing i VPN fra, ellers løber Xray-trafikken i en løkke</string>
 </resources>

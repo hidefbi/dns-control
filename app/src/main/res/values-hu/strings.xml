@@ -891,4 +891,5 @@
     <string name="xray_none" translatable="true">Előbb mentsen egy profilt</string>
     <string name="xray_no_slot" translatable="true">Nem sikerült a SOCKS5-proxyt Xray-re állítani</string>
     <string name="xray_error" translatable="true">Xray-hiba: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Előbb kapcsolja ki a VPN-en belüli útválasztás opciót, különben az Xray forgalma hurokba kerül</string>
 </resources>

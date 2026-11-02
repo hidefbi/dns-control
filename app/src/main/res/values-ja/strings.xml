@@ -481,4 +481,5 @@
     <string name="xray_none" translatable="true">先にプロファイルを保存してください</string>
     <string name="xray_no_slot" translatable="true">Xray に SOCKS5 プロキシを設定できませんでした</string>
     <string name="xray_error" translatable="true">Xray エラー: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">先に VPN 内へのルーティング設定をオフにしてください。オフにしないと Xray の通信がループします</string>
 </resources>

@@ -18,4 +18,5 @@
     <string name="xray_none" translatable="true">Əvvəlcə profil yadda saxlayın</string>
     <string name="xray_no_slot" translatable="true">Xray üçün SOCKS5 proksi təyin edilə bilmədi</string>
     <string name="xray_error" translatable="true">Xray xətası: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Əvvəlcə VPN daxilində marşrutlaşdırma seçimini söndürün, əks halda Xray trafiki döngəyə düşəcək</string>
     </resources>

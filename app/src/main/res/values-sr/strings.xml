@@ -756,4 +756,5 @@
     <string name="xray_none" translatable="true">Prvo sačuvajte profil</string>
     <string name="xray_no_slot" translatable="true">Nije moguće postaviti SOCKS5 proksi na Xray</string>
     <string name="xray_error" translatable="true">Greška Xray-a: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Prvo isključite opciju rutiranja unutar VPN-a, inače će se Xray saobraćaj vrteti u petlji</string>
 </resources>

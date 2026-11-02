@@ -61,4 +61,5 @@
     <string name="xray_none" translatable="true">Vispirms saglabājiet profilu</string>
     <string name="xray_no_slot" translatable="true">Neizdevās iestatīt SOCKS5 starpniekserveri uz Xray</string>
     <string name="xray_error" translatable="true">Xray kļūda: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Vispirms izslēdziet maršrutēšanu caur VPN, citādi Xray trafiks cilposies</string>
 </resources>

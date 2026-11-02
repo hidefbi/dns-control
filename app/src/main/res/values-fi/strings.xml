@@ -150,4 +150,5 @@
     <string name="xray_none" translatable="true">Tallenna ensin profiili</string>
     <string name="xray_no_slot" translatable="true">SOCKS5-välityspalvelinta ei voitu asettaa Xraylle</string>
     <string name="xray_error" translatable="true">Xray-virhe: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Poista ensin käytöstä VPN-reititysasetus, muuten Xray-liikenne kiertää silmukassa</string>
 </resources>

@@ -626,4 +626,5 @@
     <string name="xray_none" translatable="true">שמרו קודם פרופיל</string>
     <string name="xray_no_slot" translatable="true">לא ניתן להגדיר את פרוקסי SOCKS5 ל-Xray</string>
     <string name="xray_error" translatable="true">שגיאת Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">כבו קודם את האפשרות לניתוב דרך ה-VPN, אחרת תעבורת Xray תיכנס ללולאה</string>
 </resources>

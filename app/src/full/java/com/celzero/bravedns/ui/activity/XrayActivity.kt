@@ -23,6 +23,7 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.ProxyEndpoint
 import com.celzero.bravedns.databinding.ActivityXrayBinding
+import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.ProxyManager
 import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.ui.BaseActivity
@@ -41,6 +42,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
     private val b by viewBinding(ActivityXrayBinding::bind)
     private val appConfig by inject<AppConfig>()
+    private val persistentState by inject<PersistentState>()
     private val runner by lazy { XrayRunner(applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,6 +99,11 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
     }
 
     private suspend fun startXray(): Result<Unit> {
+        // when the app's own traffic is routed through the VPN, xray's outbound would loop back
+        if (persistentState.routeRethinkInRethink) {
+            return Result.failure(IllegalStateException(getString(R.string.xray_rethink_on)))
+        }
+
         val profile = runner.savedProfile()
         if (profile.isNullOrBlank()) {
             return Result.failure(IllegalStateException(getString(R.string.xray_none)))

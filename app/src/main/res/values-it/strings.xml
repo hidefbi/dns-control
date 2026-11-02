@@ -767,4 +767,5 @@
     <string name="xray_none" translatable="true">Salva prima un profilo</string>
     <string name="xray_no_slot" translatable="true">Impossibile impostare il proxy SOCKS5 su Xray</string>
     <string name="xray_error" translatable="true">Errore Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Disattiva prima l’opzione di instradamento nella VPN, altrimenti il traffico Xray entra in loop</string>
 </resources>

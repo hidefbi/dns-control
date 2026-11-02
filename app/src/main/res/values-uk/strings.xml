@@ -875,4 +875,5 @@
     <string name="xray_none" translatable="true">Спочатку збережіть профіль</string>
     <string name="xray_no_slot" translatable="true">Не вдалося призначити SOCKS5-проксі для Xray</string>
     <string name="xray_error" translatable="true">Помилка Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Спочатку вимкніть опцію маршрутизації всередині VPN, інакше трафік Xray зациклиться</string>
 </resources>

@@ -902,4 +902,5 @@
     <string name="xray_none" translatable="true">Enregistrez d’abord un profil</string>
     <string name="xray_no_slot" translatable="true">Impossible de définir le proxy SOCKS5 sur Xray</string>
     <string name="xray_error" translatable="true">Erreur Xray : %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Désactivez d’abord l’option de routage dans le VPN, sinon le trafic Xray boucle</string>
 </resources>

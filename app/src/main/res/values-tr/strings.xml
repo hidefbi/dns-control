@@ -919,4 +919,5 @@
     <string name="xray_none" translatable="true">Önce bir profil kaydedin</string>
     <string name="xray_no_slot" translatable="true">SOCKS5 proxy Xray’e ayarlanamadı</string>
     <string name="xray_error" translatable="true">Xray hatası: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Önce VPN içinden yönlendirme seçeneğini kapatın, yoksa Xray trafiği döngüye girer</string>
 </resources>

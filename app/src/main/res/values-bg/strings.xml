@@ -241,4 +241,5 @@
     <string name="xray_none" translatable="true">Първо запазете профил</string>
     <string name="xray_no_slot" translatable="true">SOCKS5 прокситу не можа да се зададе към Xray</string>
     <string name="xray_error" translatable="true">Грешка в Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Първо изключете опцията за маршрутизиране във VPN, иначе трафикът на Xray ще се зацикли</string>
 </resources>

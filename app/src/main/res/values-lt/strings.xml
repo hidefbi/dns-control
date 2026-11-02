@@ -540,4 +540,5 @@
     <string name="xray_none" translatable="true">Pirmiausia įrašykite profilį</string>
     <string name="xray_no_slot" translatable="true">Nepavyko nustatyti SOCKS5 tarpinio serverio Xray</string>
     <string name="xray_error" translatable="true">Xray klaida: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Pirmiausia išjunkite maršrutizavimą per VPN, kitaip Xray srautas įstrigs cikle</string>
 </resources>

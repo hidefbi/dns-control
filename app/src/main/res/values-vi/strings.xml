@@ -716,4 +716,5 @@
     <string name="xray_none" translatable="true">Hãy lưu hồ sơ trước</string>
     <string name="xray_no_slot" translatable="true">Không thể đặt proxy SOCKS5 sang Xray</string>
     <string name="xray_error" translatable="true">Lỗi Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Hãy tắt tùy chọn định tuyến qua VPN trước, nếu không lưu lượng Xray sẽ lặp vòng</string>
 </resources>

@@ -246,4 +246,5 @@
     <string name="xray_none" translatable="true">Najprv uložte profil</string>
     <string name="xray_no_slot" translatable="true">Nepodarilo sa nastaviť SOCKS5 proxy na Xray</string>
     <string name="xray_error" translatable="true">Chyba Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Najprv vypnite možnosť smerovať prevádzku cez VPN, inak sa prevádzka Xray zacyklí</string>
 </resources>

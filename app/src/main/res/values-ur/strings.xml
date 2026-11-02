@@ -48,4 +48,5 @@
     <string name="xray_none" translatable="true">پہلے ایک پروفائل محفوظ کریں</string>
     <string name="xray_no_slot" translatable="true">Xray کے لیے SOCKS5 پراکسی سیٹ نہیں ہو سکی</string>
     <string name="xray_error" translatable="true">Xray کی خرابی: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">پہلے VPN کے اندر روٹنگ کا آپشن بند کریں، ورنہ Xray کا ٹریفک لوپ میں چلا جائے گا</string>
 </resources>

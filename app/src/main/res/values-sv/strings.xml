@@ -38,4 +38,5 @@
     <string name="xray_none" translatable="true">Spara en profil först</string>
     <string name="xray_no_slot" translatable="true">Kunde inte ställa in SOCKS5-proxyn till Xray</string>
     <string name="xray_error" translatable="true">Xray-fel: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Stäng först av alternativet att dirigera i VPN, annars hamnar Xray-trafiken i en loop</string>
 </resources>

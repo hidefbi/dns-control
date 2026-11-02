@@ -59,4 +59,5 @@
     <string name="xray_none" translatable="true">ആദ്യം ഒരു പ്രൊഫൈൽ സംരക്ഷിക്കുക</string>
     <string name="xray_no_slot" translatable="true">Xray-ക്ക് SOCKS5 പ്രോക്സി സജ്ജമാക്കാനായില്ല</string>
     <string name="xray_error" translatable="true">Xray പിശക്: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">ആദ്യം VPN-നുള്ളിലെ റൂട്ടിംഗ് ഓപ്ഷൻ ഓഫാക്കുക, അല്ലെങ്കിൽ Xray ട്രാഫിക് ലൂപ്പിൽ കുടുങ്ങും</string>
 </resources>

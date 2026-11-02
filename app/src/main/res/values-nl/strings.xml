@@ -545,4 +545,5 @@
     <string name="xray_none" translatable="true">Sla eerst een profiel op</string>
     <string name="xray_no_slot" translatable="true">Kon de SOCKS5-proxy niet op Xray instellen</string>
     <string name="xray_error" translatable="true">Xray-fout: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">Schakel eerst de optie voor routering via de VPN uit, anders loopt het Xray-verkeer in een lus</string>
 </resources>

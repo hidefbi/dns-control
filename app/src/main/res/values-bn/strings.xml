@@ -579,4 +579,5 @@
     <string name="xray_none" translatable="true">আগে একটি প্রোফাইল সংরক্ষণ করুন</string>
     <string name="xray_no_slot" translatable="true">Xray-এর জন্য SOCKS5 প্রক্সি সেট করা যায়নি</string>
     <string name="xray_error" translatable="true">Xray ত্রুটি: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">আগে VPN-এর ভেতরে রাউটিং বিকল্পটি বন্ধ করুন, নইলে Xray-এর ট্রাফিক লুপে আটকে যাবে</string>
 </resources>

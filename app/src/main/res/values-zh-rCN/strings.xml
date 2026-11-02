@@ -932,4 +932,5 @@
     <string name="xray_none" translatable="true">请先保存配置</string>
     <string name="xray_no_slot" translatable="true">无法将 SOCKS5 代理指向 Xray</string>
     <string name="xray_error" translatable="true">Xray 错误：%1$s</string>
+    <string name="xray_rethink_on" translatable="true">请先关闭 VPN 内路由选项，否则 Xray 流量会回环进入 VPN</string>
 </resources>
