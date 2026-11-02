@@ -70,4 +70,16 @@
     <string name="xray_no_slot" translatable="true">Xray uchun SOCKS5 proksini oʻrnatib boʻlmadi</string>
     <string name="xray_error" translatable="true">Xray xatosi: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Avval VPN ichidagi marshrutlash opsiyasini oʻchiring, aks holda Xray trafigi halqaga tushadi</string>
+    <string name="xray_title" translatable="true">Xray konfiguratsiyasi</string>
+    <string name="xray_ok" translatable="true">Konfiguratsiya to‘g‘ri ko‘rinadi</string>
+    <string name="xray_paste" translatable="true">Joylash</string>
+    <string name="xray_format" translatable="true">Formatlash</string>
+    <string name="xray_clear" translatable="true">Tozalash</string>
+    <string name="xray_format_failed" translatable="true">Formatlab bo‘lmadi: JSON noto‘g‘ri</string>
+    <string name="xray_save_failed" translatable="true">Profilni saqlab bo‘lmadi</string>
+    <string name="xray_err_empty" translatable="true">Joylash uchun hech narsa yo‘q: buferi bo‘sh</string>
+    <string name="xray_err_json" translatable="true">Noto‘g‘ri JSON: qavslar, vergullar va qo‘shtirnoqlarni tekshiring</string>
+    <string name="xray_err_outbound" translatable="true">Foydalanish mumkin bo‘lgan VLESS chiqishi yo‘q: server manzili, port, UUID va publicKey kerak</string>
+    <string name="xray_err_reality" translatable="true">Faqat Reality xavfsizligi qo‘llab-quvvatlanadi: streamSettings.security ni reality ga o‘rnating</string>
+    <string name="xray_err_link" translatable="true">Noto‘g‘ri vless:// havola: UUID, host, port va sni, pbk parametrlarini tekshiring</string>
 </resources>

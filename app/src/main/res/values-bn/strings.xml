@@ -580,4 +580,16 @@
     <string name="xray_no_slot" translatable="true">Xray-এর জন্য SOCKS5 প্রক্সি সেট করা যায়নি</string>
     <string name="xray_error" translatable="true">Xray ত্রুটি: %1$s</string>
     <string name="xray_rethink_on" translatable="true">আগে VPN-এর ভেতরে রাউটিং বিকল্পটি বন্ধ করুন, নইলে Xray-এর ট্রাফিক লুপে আটকে যাবে</string>
+    <string name="xray_title" translatable="true">Xray কনফিগ</string>
+    <string name="xray_ok" translatable="true">কনফিগ ঠিক আছে বলে মনে হচ্ছে</string>
+    <string name="xray_paste" translatable="true">পেস্ট করুন</string>
+    <string name="xray_format" translatable="true">ফরম্যাট</string>
+    <string name="xray_clear" translatable="true">মুছুন</string>
+    <string name="xray_format_failed" translatable="true">ফরম্যাট করা যাচ্ছে না: JSON বৈধ নয়</string>
+    <string name="xray_save_failed" translatable="true">প্রোফাইল সংরক্ষণ করা যায়নি</string>
+    <string name="xray_err_empty" translatable="true">পেস্ট করার কিছু নেই: ক্লিপবোর্ড খালি</string>
+    <string name="xray_err_json" translatable="true">অবৈধ JSON: বন্ধনী, কমা ও উদ্ধৃতি চিহ্ন দেখুন</string>
+    <string name="xray_err_outbound" translatable="true">ব্যবহারযোগ্য VLESS আউটবাউন্ড নেই: সার্ভার ঠিকানা, পোর্ট, UUID ও publicKey দরকার</string>
+    <string name="xray_err_reality" translatable="true">শুধু Reality নিরাপত্তা সমর্থিত: streamSettings.security-কে reality করুন</string>
+    <string name="xray_err_link" translatable="true">অবৈধ vless:// লিংক: UUID, হোস্ট, পোর্ট এবং sni ও pbk প্যারামিটার দেখুন</string>
 </resources>

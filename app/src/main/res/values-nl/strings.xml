@@ -546,4 +546,16 @@
     <string name="xray_no_slot" translatable="true">Kon de SOCKS5-proxy niet op Xray instellen</string>
     <string name="xray_error" translatable="true">Xray-fout: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Schakel eerst de optie voor routering via de VPN uit, anders loopt het Xray-verkeer in een lus</string>
+    <string name="xray_title" translatable="true">Xray-configuratie</string>
+    <string name="xray_ok" translatable="true">De configuratie lijkt geldig</string>
+    <string name="xray_paste" translatable="true">Plakken</string>
+    <string name="xray_format" translatable="true">Opmaken</string>
+    <string name="xray_clear" translatable="true">Wissen</string>
+    <string name="xray_format_failed" translatable="true">Opmaken mislukt: ongeldige JSON</string>
+    <string name="xray_save_failed" translatable="true">Profiel kon niet worden opgeslagen</string>
+    <string name="xray_err_empty" translatable="true">Niets om te plakken: klembord is leeg</string>
+    <string name="xray_err_json" translatable="true">Ongeldige JSON: controleer haakjes, komma’s en aanhalingstekens</string>
+    <string name="xray_err_outbound" translatable="true">Geen bruikbare VLESS-uitgang: serveradres, poort, UUID en publicKey zijn nodig</string>
+    <string name="xray_err_reality" translatable="true">Alleen Reality-beveiliging wordt ondersteund: zet streamSettings.security op reality</string>
+    <string name="xray_err_link" translatable="true">Ongeldige vless://-link: controleer UUID, host, poort en de parameters sni en pbk</string>
 </resources>

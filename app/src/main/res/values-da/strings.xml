@@ -165,4 +165,16 @@
     <string name="xray_no_slot" translatable="true">Kunne ikke sætte SOCKS5-proxyen til Xray</string>
     <string name="xray_error" translatable="true">Xray-fejl: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Slå først indstillingen for routing i VPN fra, ellers løber Xray-trafikken i en løkke</string>
+    <string name="xray_title" translatable="true">Xray-konfiguration</string>
+    <string name="xray_ok" translatable="true">Konfigurationen ser gyldig ud</string>
+    <string name="xray_paste" translatable="true">Indsæt</string>
+    <string name="xray_format" translatable="true">Formater</string>
+    <string name="xray_clear" translatable="true">Ryd</string>
+    <string name="xray_format_failed" translatable="true">Kan ikke formatere: ugyldig JSON</string>
+    <string name="xray_save_failed" translatable="true">Profilen kunne ikke gemmes</string>
+    <string name="xray_err_empty" translatable="true">Intet at indsætte: udklipsholderen er tom</string>
+    <string name="xray_err_json" translatable="true">Ugyldig JSON: tjek parenteser, kommaer og anførselstegn</string>
+    <string name="xray_err_outbound" translatable="true">Mangler en brugbar VLESS-udgang: serveradresse, port, UUID og publicKey er påkrævet</string>
+    <string name="xray_err_reality" translatable="true">Kun Reality-sikkerhed understøttes: sæt streamSettings.security til reality</string>
+    <string name="xray_err_link" translatable="true">Ugyldigt vless://-link: tjek UUID, vært, port og parametrene sni og pbk</string>
 </resources>

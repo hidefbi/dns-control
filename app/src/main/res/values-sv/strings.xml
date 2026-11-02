@@ -39,4 +39,16 @@
     <string name="xray_no_slot" translatable="true">Kunde inte ställa in SOCKS5-proxyn till Xray</string>
     <string name="xray_error" translatable="true">Xray-fel: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Stäng först av alternativet att dirigera i VPN, annars hamnar Xray-trafiken i en loop</string>
+    <string name="xray_title" translatable="true">Xray-konfiguration</string>
+    <string name="xray_ok" translatable="true">Konfigurationen ser giltig ut</string>
+    <string name="xray_paste" translatable="true">Klistra in</string>
+    <string name="xray_format" translatable="true">Formatera</string>
+    <string name="xray_clear" translatable="true">Rensa</string>
+    <string name="xray_format_failed" translatable="true">Kan inte formatera: ogiltig JSON</string>
+    <string name="xray_save_failed" translatable="true">Profilen kunde inte sparas</string>
+    <string name="xray_err_empty" translatable="true">Inget att klistra in: urklipp är tomt</string>
+    <string name="xray_err_json" translatable="true">Ogiltig JSON: kontrollera parenteser, kommatecken och citattecken</string>
+    <string name="xray_err_outbound" translatable="true">Saknar en användbar VLESS-utgång: serveradress, port, UUID och publicKey krävs</string>
+    <string name="xray_err_reality" translatable="true">Endast Reality-säkerhet stöds: sätt streamSettings.security till reality</string>
+    <string name="xray_err_link" translatable="true">Ogiltig vless://-länk: kontrollera UUID, värd, port och parametrarna sni och pbk</string>
 </resources>

@@ -17,6 +17,8 @@ package com.celzero.bravedns.util
 
 import java.net.URI
 import java.net.URLDecoder
+import org.json.JSONException
+import org.json.JSONObject
 
 /**
  * Builds an xray-core configuration for a single VLESS+Reality outbound.
@@ -99,6 +101,69 @@ object XrayConfig {
             shortId = params["sid"].orEmpty(),
             spiderX = params["spx"].orEmpty(),
         )
+    }
+
+    enum class Problem {
+        EMPTY,
+        INVALID_JSON,
+        INVALID_LINK,
+        NO_OUTBOUND,
+        NOT_VLESS,
+        MISSING_SERVER,
+        MISSING_USER,
+        NOT_REALITY,
+        MISSING_PUBLIC_KEY,
+    }
+
+    /** First problem that would keep the input from producing a working config, or null. */
+    fun check(input: String): Problem? {
+        val text = input.trim()
+        if (text.isEmpty()) return Problem.EMPTY
+        if (isVlessLink(text)) {
+            return try {
+                parseVlessLink(text)
+                null
+            } catch (e: InvalidLinkException) {
+                Problem.INVALID_LINK
+            }
+        }
+
+        val root =
+            try {
+                JSONObject(text)
+            } catch (e: JSONException) {
+                return Problem.INVALID_JSON
+            }
+        val outbounds = root.optJSONArray("outbounds")
+        if (outbounds == null || outbounds.length() == 0) return Problem.NO_OUTBOUND
+
+        val vless =
+            (0 until outbounds.length())
+                .mapNotNull { outbounds.optJSONObject(it) }
+                .firstOrNull { it.optString("protocol") == "vless" }
+                ?: return Problem.NOT_VLESS
+
+        val server = vless.optJSONObject("settings")?.optJSONArray("vnext")?.optJSONObject(0)
+        if (server == null || server.optString("address").isEmpty()) return Problem.MISSING_SERVER
+        if (server.optInt("port") !in 1..65535) return Problem.MISSING_SERVER
+
+        val user = server.optJSONArray("users")?.optJSONObject(0)
+        if (user == null || user.optString("id").isEmpty()) return Problem.MISSING_USER
+
+        val stream = vless.optJSONObject("streamSettings")
+        if (stream == null || stream.optString("security") != REALITY) return Problem.NOT_REALITY
+        val reality = stream.optJSONObject("realitySettings")
+        if (reality == null || reality.optString("publicKey").isEmpty()) {
+            return Problem.MISSING_PUBLIC_KEY
+        }
+        return null
+    }
+
+    /** Pretty-prints a JSON config. vless links are returned trimmed and unchanged. */
+    fun format(input: String): String {
+        val text = input.trim()
+        if (isVlessLink(text)) return text
+        return JSONObject(text).toString(2)
     }
 
     fun inbound(): String {

@@ -876,4 +876,16 @@
     <string name="xray_no_slot" translatable="true">Не вдалося призначити SOCKS5-проксі для Xray</string>
     <string name="xray_error" translatable="true">Помилка Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Спочатку вимкніть опцію маршрутизації всередині VPN, інакше трафік Xray зациклиться</string>
+    <string name="xray_title" translatable="true">Конфігурація Xray</string>
+    <string name="xray_ok" translatable="true">Конфігурація виглядає коректною</string>
+    <string name="xray_paste" translatable="true">Вставити</string>
+    <string name="xray_format" translatable="true">Форматувати</string>
+    <string name="xray_clear" translatable="true">Очистити</string>
+    <string name="xray_format_failed" translatable="true">Не вдалося форматувати: некоректний JSON</string>
+    <string name="xray_save_failed" translatable="true">Не вдалося зберегти профіль</string>
+    <string name="xray_err_empty" translatable="true">Нічого вставляти: буфер обміну порожній</string>
+    <string name="xray_err_json" translatable="true">Некоректний JSON: перевірте дужки, коми та лапки</string>
+    <string name="xray_err_outbound" translatable="true">Немає робочого outbound VLESS: потрібні адреса сервера, порт, UUID та publicKey</string>
+    <string name="xray_err_reality" translatable="true">Підтримується лише безпека Reality: задайте streamSettings.security як reality</string>
+    <string name="xray_err_link" translatable="true">Некоректне посилання vless://: перевірте UUID, хост, порт і параметри sni та pbk</string>
 </resources>

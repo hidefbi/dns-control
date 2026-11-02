@@ -920,4 +920,16 @@
     <string name="xray_no_slot" translatable="true">SOCKS5 proxy Xray’e ayarlanamadı</string>
     <string name="xray_error" translatable="true">Xray hatası: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Önce VPN içinden yönlendirme seçeneğini kapatın, yoksa Xray trafiği döngüye girer</string>
+    <string name="xray_title" translatable="true">Xray yapılandırması</string>
+    <string name="xray_ok" translatable="true">Yapılandırma geçerli görünüyor</string>
+    <string name="xray_paste" translatable="true">Yapıştır</string>
+    <string name="xray_format" translatable="true">Biçimlendir</string>
+    <string name="xray_clear" translatable="true">Temizle</string>
+    <string name="xray_format_failed" translatable="true">Biçimlendirilemiyor: JSON geçersiz</string>
+    <string name="xray_save_failed" translatable="true">Profil kaydedilemedi</string>
+    <string name="xray_err_empty" translatable="true">Yapıştırılacak bir şey yok: pano boş</string>
+    <string name="xray_err_json" translatable="true">Geçersiz JSON: parantez, virgül ve tırnakları kontrol edin</string>
+    <string name="xray_err_outbound" translatable="true">Kullanılabilir VLESS çıkışı yok: sunucu adresi, port, UUID ve publicKey gerekli</string>
+    <string name="xray_err_reality" translatable="true">Yalnızca Reality güvenliği destekleniyor: streamSettings.security değerini reality yapın</string>
+    <string name="xray_err_link" translatable="true">Geçersiz vless:// bağlantısı: UUID, sunucu, port ve sni ile pbk parametrelerini kontrol edin</string>
 </resources>

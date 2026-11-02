@@ -62,4 +62,16 @@
     <string name="xray_no_slot" translatable="true">Neizdevās iestatīt SOCKS5 starpniekserveri uz Xray</string>
     <string name="xray_error" translatable="true">Xray kļūda: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Vispirms izslēdziet maršrutēšanu caur VPN, citādi Xray trafiks cilposies</string>
+    <string name="xray_title" translatable="true">Xray konfigurācija</string>
+    <string name="xray_ok" translatable="true">Konfigurācija šķiet pareiza</string>
+    <string name="xray_paste" translatable="true">Ielīmēt</string>
+    <string name="xray_format" translatable="true">Formatēt</string>
+    <string name="xray_clear" translatable="true">Notīrīt</string>
+    <string name="xray_format_failed" translatable="true">Nevar formatēt: JSON nav derīgs</string>
+    <string name="xray_save_failed" translatable="true">Profilu nevarēja saglabāt</string>
+    <string name="xray_err_empty" translatable="true">Nav ko ielīmēt: starpliktuve ir tukša</string>
+    <string name="xray_err_json" translatable="true">Nederīgs JSON: pārbaudiet iekavas, komatus un pēdiņas</string>
+    <string name="xray_err_outbound" translatable="true">Nav derīgas VLESS izvades: nepieciešama servera adrese, ports, UUID un publicKey</string>
+    <string name="xray_err_reality" translatable="true">Atbalstīta ir tikai Reality drošība: iestatiet streamSettings.security uz reality</string>
+    <string name="xray_err_link" translatable="true">Nederīga vless:// saite: pārbaudiet UUID, resursdatoru, portu un sni un pbk parametrus</string>
 </resources>

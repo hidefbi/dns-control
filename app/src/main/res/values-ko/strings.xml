@@ -915,4 +915,16 @@
     <string name="xray_no_slot" translatable="true">Xray용 SOCKS5 프록시를 설정할 수 없습니다</string>
     <string name="xray_error" translatable="true">Xray 오류: %1$s</string>
     <string name="xray_rethink_on" translatable="true">먼저 VPN 내부 경로 설정을 끄세요. 끄지 않으면 Xray 트래픽이 VPN으로 되돌아가 무한 반복됩니다</string>
+    <string name="xray_title" translatable="true">Xray 설정</string>
+    <string name="xray_ok" translatable="true">설정이 유효해 보입니다</string>
+    <string name="xray_paste" translatable="true">붙여넣기</string>
+    <string name="xray_format" translatable="true">서식 지정</string>
+    <string name="xray_clear" translatable="true">지우기</string>
+    <string name="xray_format_failed" translatable="true">서식을 지정할 수 없습니다: JSON이 잘못되었습니다</string>
+    <string name="xray_save_failed" translatable="true">프로필을 저장할 수 없습니다</string>
+    <string name="xray_err_empty" translatable="true">붙여넣을 내용이 없습니다: 클립보드가 비어 있습니다</string>
+    <string name="xray_err_json" translatable="true">잘못된 JSON: 괄호, 쉼표, 따옴표를 확인하세요</string>
+    <string name="xray_err_outbound" translatable="true">사용 가능한 VLESS 아웃바운드가 없습니다: 서버 주소, 포트, UUID, publicKey가 필요합니다</string>
+    <string name="xray_err_reality" translatable="true">Reality 보안만 지원합니다: streamSettings.security를 reality로 설정하세요</string>
+    <string name="xray_err_link" translatable="true">잘못된 vless:// 링크입니다: UUID, 호스트, 포트, sni 및 pbk 매개변수를 확인하세요</string>
 </resources>

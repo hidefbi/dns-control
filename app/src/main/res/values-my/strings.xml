@@ -20,4 +20,16 @@
     <string name="xray_no_slot" translatable="true">Xray အတွက် SOCKS5 proxy သတ်မှတ်၍ မရပါ</string>
     <string name="xray_error" translatable="true">Xray အမှား: %1$s</string>
     <string name="xray_rethink_on" translatable="true">VPN အတွင်း လမ်းကြောင်းပေးခြင်း ရွေးချယ်မှုကို အရင်ပိတ်ပါ၊ မဟုတ်ပါက Xray traffic တွင် loop ဖြစ်မည်</string>
+    <string name="xray_title" translatable="true">Xray config</string>
+    <string name="xray_ok" translatable="true">config သည် မှန်ကန်ပုံရသည်</string>
+    <string name="xray_paste" translatable="true">ကူးထည့်</string>
+    <string name="xray_format" translatable="true">ဖော်မတ်</string>
+    <string name="xray_clear" translatable="true">ရှင်းလင်း</string>
+    <string name="xray_format_failed" translatable="true">ဖော်မတ်လုပ်၍ မရပါ: JSON မမှန်ကန်ပါ</string>
+    <string name="xray_save_failed" translatable="true">ပရိုဖိုင်ကို သိမ်း၍ မရပါ</string>
+    <string name="xray_err_empty" translatable="true">ကူးထည့်စရာ မရှိပါ: Clipboard ဗလာဖြစ်နေသည်</string>
+    <string name="xray_err_json" translatable="true">မမှန်ကန်သော JSON: ကွင်းစများ၊ ကော်မာများနှင့် ကိုးကားချက်များကို စစ်ပါ</string>
+    <string name="xray_err_outbound" translatable="true">အသုံးပြုနိုင်သော VLESS outbound မရှိပါ: server လိပ်စာ၊ port၊ UUID နှင့် publicKey လိုအပ်သည်</string>
+    <string name="xray_err_reality" translatable="true">Reality လုံခြုံရေးကိုသာ ပံ့ပိုးသည်: streamSettings.security ကို reality ဟု သတ်မှတ်ပါ</string>
+    <string name="xray_err_link" translatable="true">မမှန်ကန်သော vless:// လင့်ခ်: UUID၊ host၊ port နှင့် sni၊ pbk parameter များကို စစ်ပါ</string>
 </resources>

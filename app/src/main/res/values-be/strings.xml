@@ -76,4 +76,16 @@
     <string name="xray_no_slot" translatable="true">Не ўдалося прызначыць SOCKS5-проксі для Xray</string>
     <string name="xray_error" translatable="true">Памылка Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Спачатку адключыце опцыю маршрутызацыі ўнутры VPN, інакш трафік Xray зацыкліцца</string>
+    <string name="xray_title" translatable="true">Канфігурацыя Xray</string>
+    <string name="xray_ok" translatable="true">Канфігурацыя выглядае карэктнай</string>
+    <string name="xray_paste" translatable="true">Уставіць</string>
+    <string name="xray_format" translatable="true">Фарматаваць</string>
+    <string name="xray_clear" translatable="true">Ачысціць</string>
+    <string name="xray_format_failed" translatable="true">Не ўдалося фарматаваць: няправільны JSON</string>
+    <string name="xray_save_failed" translatable="true">Не ўдалося захаваць профіль</string>
+    <string name="xray_err_empty" translatable="true">Няма чаго ўстаўляць: буфер абмену пусты</string>
+    <string name="xray_err_json" translatable="true">Няправільны JSON: праверце дужкі, коскі і двукоссі</string>
+    <string name="xray_err_outbound" translatable="true">Няма працоўнага outbound VLESS: патрэбныя адрас сервера, порт, UUID і publicKey</string>
+    <string name="xray_err_reality" translatable="true">Падтрымліваецца толькі бяспека Reality: задайце streamSettings.security як reality</string>
+    <string name="xray_err_link" translatable="true">Няправільная спасылка vless://: праверце UUID, хост, порт і параметры sni і pbk</string>
 </resources>

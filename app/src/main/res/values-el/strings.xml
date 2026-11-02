@@ -155,4 +155,16 @@
     <string name="xray_no_slot" translatable="true">Δεν ήταν δυνατή η ρύθμιση του διακομιστή SOCKS5 στο Xray</string>
     <string name="xray_error" translatable="true">Σφάλμα Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Απενεργοποιήστε πρώτα την επιλογή δρομολόγησης μέσω VPN, αλλιώς η κίνηση του Xray θα κάνει βρόχο</string>
+    <string name="xray_title" translatable="true">Ρύθμιση Xray</string>
+    <string name="xray_ok" translatable="true">Η ρύθμιση φαίνεται έγκυρη</string>
+    <string name="xray_paste" translatable="true">Επικόλληση</string>
+    <string name="xray_format" translatable="true">Μορφοποίηση</string>
+    <string name="xray_clear" translatable="true">Εκκαθάριση</string>
+    <string name="xray_format_failed" translatable="true">Δεν είναι δυνατή η μορφοποίηση: μη έγκυρο JSON</string>
+    <string name="xray_save_failed" translatable="true">Δεν ήταν δυνατή η αποθήκευση του προφίλ</string>
+    <string name="xray_err_empty" translatable="true">Τίποτα για επικόλληση: το πρόχειρο είναι κενό</string>
+    <string name="xray_err_json" translatable="true">Μη έγκυρο JSON: ελέγξτε τις αγκύλες, τα κόμματα και τα εισαγωγικά</string>
+    <string name="xray_err_outbound" translatable="true">Λείπει χρησιμοποιήσιμη έξοδος VLESS: απαιτούνται διεύθυνση διακομιστή, θύρα, UUID και publicKey</string>
+    <string name="xray_err_reality" translatable="true">Υποστηρίζεται μόνο η ασφάλεια Reality: ορίστε το streamSettings.security σε reality</string>
+    <string name="xray_err_link" translatable="true">Μη έγκυρος σύνδεσμος vless://: ελέγξτε το UUID, τον κεντρικό υπολογιστή, τη θύρα και τις παραμέτρους sni και pbk</string>
 </resources>

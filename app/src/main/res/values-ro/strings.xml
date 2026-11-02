@@ -894,4 +894,16 @@
     <string name="xray_no_slot" translatable="true">Nu s-a putut seta proxy-ul SOCKS5 pe Xray</string>
     <string name="xray_error" translatable="true">Eroare Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Dezactivați mai întâi opțiunea de rutare în VPN, altfel traficul Xray intră în buclă</string>
+    <string name="xray_title" translatable="true">Configurație Xray</string>
+    <string name="xray_ok" translatable="true">Configurația pare validă</string>
+    <string name="xray_paste" translatable="true">Lipește</string>
+    <string name="xray_format" translatable="true">Formatează</string>
+    <string name="xray_clear" translatable="true">Șterge</string>
+    <string name="xray_format_failed" translatable="true">Nu se poate formata: JSON invalid</string>
+    <string name="xray_save_failed" translatable="true">Profilul nu a putut fi salvat</string>
+    <string name="xray_err_empty" translatable="true">Nimic de lipit: clipboard-ul este gol</string>
+    <string name="xray_err_json" translatable="true">JSON invalid: verificați parantezele, virgulele și ghilimelele</string>
+    <string name="xray_err_outbound" translatable="true">Lipsește un outbound VLESS utilizabil: sunt necesare adresa serverului, portul, UUID și publicKey</string>
+    <string name="xray_err_reality" translatable="true">Este acceptată doar securitatea Reality: setați streamSettings.security la reality</string>
+    <string name="xray_err_link" translatable="true">Link vless:// invalid: verificați UUID, gazda, portul și parametrii sni și pbk</string>
 </resources>

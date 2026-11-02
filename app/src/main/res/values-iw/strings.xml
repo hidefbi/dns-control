@@ -627,4 +627,16 @@
     <string name="xray_no_slot" translatable="true">לא ניתן להגדיר את פרוקסי SOCKS5 ל-Xray</string>
     <string name="xray_error" translatable="true">שגיאת Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">כבו קודם את האפשרות לניתוב דרך ה-VPN, אחרת תעבורת Xray תיכנס ללולאה</string>
+    <string name="xray_title" translatable="true">תצורת Xray</string>
+    <string name="xray_ok" translatable="true">התצורה נראית תקינה</string>
+    <string name="xray_paste" translatable="true">הדבקה</string>
+    <string name="xray_format" translatable="true">עיצוב</string>
+    <string name="xray_clear" translatable="true">ניקוי</string>
+    <string name="xray_format_failed" translatable="true">לא ניתן לעצב: ה-JSON אינו תקין</string>
+    <string name="xray_save_failed" translatable="true">לא ניתן לשמור את הפרופיל</string>
+    <string name="xray_err_empty" translatable="true">אין מה להדביק: הלוח ריק</string>
+    <string name="xray_err_json" translatable="true">JSON לא תקין: בדקו סוגריים, פסיקים וגרשיים</string>
+    <string name="xray_err_outbound" translatable="true">חסרה יציאת VLESS שמישה: נדרשים כתובת שרת, פורט, UUID ו-publicKey</string>
+    <string name="xray_err_reality" translatable="true">נתמכת רק אבטחת Reality: הגדירו את streamSettings.security ל-reality</string>
+    <string name="xray_err_link" translatable="true">קישור vless:// לא תקין: בדקו UUID, מארח, פורט ופרמטרים sni ו-pbk</string>
 </resources>

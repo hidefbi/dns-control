@@ -768,4 +768,16 @@
     <string name="xray_no_slot" translatable="true">تعذّر تعيين وكيل SOCKS5 إلى Xray</string>
     <string name="xray_error" translatable="true">خطأ في Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">أوقف خيار التوجيه داخل VPN أولاً، وإلا ستدور حركة Xray في حلقة</string>
+    <string name="xray_title" translatable="true">إعداد Xray</string>
+    <string name="xray_ok" translatable="true">يبدو الإعداد صحيحاً</string>
+    <string name="xray_paste" translatable="true">لصق</string>
+    <string name="xray_format" translatable="true">تنسيق</string>
+    <string name="xray_clear" translatable="true">مسح</string>
+    <string name="xray_format_failed" translatable="true">تعذّر التنسيق: JSON غير صالح</string>
+    <string name="xray_save_failed" translatable="true">تعذّر حفظ الملف الشخصي</string>
+    <string name="xray_err_empty" translatable="true">لا يوجد ما يُلصق: الحافظة فارغة</string>
+    <string name="xray_err_json" translatable="true">JSON غير صالح: تحقق من الأقواس والفواصل وعلامات الاقتباس</string>
+    <string name="xray_err_outbound" translatable="true">لا يوجد خرج VLESS صالح: مطلوب عنوان الخادم والمنفذ و UUID و publicKey</string>
+    <string name="xray_err_reality" translatable="true">الأمان المدعوم هو Reality فقط: اضبط streamSettings.security على reality</string>
+    <string name="xray_err_link" translatable="true">رابط vless:// غير صالح: تحقق من UUID والمضيف والمنفذ ومعاملي sni وpbk</string>
 </resources>

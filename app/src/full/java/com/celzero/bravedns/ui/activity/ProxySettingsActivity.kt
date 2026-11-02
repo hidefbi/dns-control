@@ -159,7 +159,7 @@ class ProxySettingsActivity : BaseActivity(R.layout.fragment_proxy_configure) {
             b.settingsActivitySocks5Switch.isChecked = !b.settingsActivitySocks5Switch.isChecked
         }
 
-        b.settingsActivityXrayEntry.setOnClickListener {
+        b.settingsActivityXrayContainer.setOnClickListener {
             startActivity(Intent(this, XrayActivity::class.java))
         }
 

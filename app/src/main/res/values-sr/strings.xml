@@ -757,4 +757,16 @@
     <string name="xray_no_slot" translatable="true">Nije moguće postaviti SOCKS5 proksi na Xray</string>
     <string name="xray_error" translatable="true">Greška Xray-a: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Prvo isključite opciju rutiranja unutar VPN-a, inače će se Xray saobraćaj vrteti u petlji</string>
+    <string name="xray_title" translatable="true">Xray konfiguracija</string>
+    <string name="xray_ok" translatable="true">Konfiguracija izgleda ispravno</string>
+    <string name="xray_paste" translatable="true">Nalepi</string>
+    <string name="xray_format" translatable="true">Formatiraj</string>
+    <string name="xray_clear" translatable="true">Obriši</string>
+    <string name="xray_format_failed" translatable="true">Nije moguće formatirati: JSON nije ispravan</string>
+    <string name="xray_save_failed" translatable="true">Profil nije moguće sačuvati</string>
+    <string name="xray_err_empty" translatable="true">Nema šta da se nalepi: privremena memorija je prazna</string>
+    <string name="xray_err_json" translatable="true">JSON nije ispravan: proverite zagrade, zareze i navodnike</string>
+    <string name="xray_err_outbound" translatable="true">Nema upotrebljivog VLESS outbound-a: potrebni su adresa servera, port, UUID i publicKey</string>
+    <string name="xray_err_reality" translatable="true">Podržana je samo Reality bezbednost: postavite streamSettings.security na reality</string>
+    <string name="xray_err_link" translatable="true">Neispravan vless:// link: proverite UUID, host, port i parametre sni i pbk</string>
 </resources>

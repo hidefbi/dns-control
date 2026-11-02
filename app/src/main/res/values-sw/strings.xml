@@ -47,4 +47,16 @@
     <string name="xray_no_slot" translatable="true">Imeshindwa kuweka wakala wa SOCKS5 kwa Xray</string>
     <string name="xray_error" translatable="true">Hitilafu ya Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Zima kwanza chaguo la kuelekeza ndani ya VPN, vinginevyo trafiki ya Xray itazunguka</string>
+    <string name="xray_title" translatable="true">Usanidi wa Xray</string>
+    <string name="xray_ok" translatable="true">Usanidi unaonekana kuwa sahihi</string>
+    <string name="xray_paste" translatable="true">Bandika</string>
+    <string name="xray_format" translatable="true">Panga</string>
+    <string name="xray_clear" translatable="true">Futa</string>
+    <string name="xray_format_failed" translatable="true">Haiwezi kupanga: JSON si sahihi</string>
+    <string name="xray_save_failed" translatable="true">Imeshindwa kuhifadhi wasifu</string>
+    <string name="xray_err_empty" translatable="true">Hakuna cha kubandika: ubao wa kunakili ni tupu</string>
+    <string name="xray_err_json" translatable="true">JSON si sahihi: angalia mabano, koma na alama za nukuu</string>
+    <string name="xray_err_outbound" translatable="true">Hakuna outbound ya VLESS inayotumika: unahitaji anwani ya seva, bandari, UUID na publicKey</string>
+    <string name="xray_err_reality" translatable="true">Ni usalama wa Reality pekee unaoungwa mkono: weka streamSettings.security kuwa reality</string>
+    <string name="xray_err_link" translatable="true">Kiungo cha vless:// si sahihi: angalia UUID, host, bandari, na vigezo vya sni na pbk</string>
 </resources>

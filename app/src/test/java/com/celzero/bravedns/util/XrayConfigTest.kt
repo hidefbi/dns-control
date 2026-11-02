@@ -17,6 +17,7 @@ package com.celzero.bravedns.util
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertThrows
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -112,6 +113,77 @@ class XrayConfigTest {
                 )
             )
         assertFalse(config.contains("\"flow\""))
+    }
+
+    @Test
+    fun checkAcceptsValidLink() {
+        assertNull(XrayConfig.check(fullLink))
+    }
+
+    @Test
+    fun checkReportsEmptyInput() {
+        assertEquals(XrayConfig.Problem.EMPTY, XrayConfig.check("   "))
+    }
+
+    @Test
+    fun checkReportsBrokenLink() {
+        assertEquals(
+            XrayConfig.Problem.INVALID_LINK,
+            XrayConfig.check("vless://u@example.com:443?security=tls&sni=a&pbk=K")
+        )
+    }
+
+    @Test
+    fun checkReportsInvalidJson() {
+        assertEquals(XrayConfig.Problem.INVALID_JSON, XrayConfig.check("{ not json"))
+    }
+
+    @Test
+    fun checkReportsMissingOutbounds() {
+        assertEquals(XrayConfig.Problem.NO_OUTBOUND, XrayConfig.check("{\"log\":{}}"))
+    }
+
+    @Test
+    fun checkReportsNonVlessOutbound() {
+        assertEquals(
+            XrayConfig.Problem.NOT_VLESS,
+            XrayConfig.check("{\"outbounds\":[{\"protocol\":\"vmess\"}]}")
+        )
+    }
+
+    @Test
+    fun checkAcceptsGeneratedJsonConfig() {
+        val json = XrayConfig.buildConfig(XrayConfig.parseVlessLink(fullLink))
+        assertNull(XrayConfig.check(json))
+    }
+
+    @Test
+    fun checkReportsMissingPublicKeyInJson() {
+        val json =
+            "{\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{\"address\":\"example.com\"," +
+                "\"port\":443,\"users\":[{\"id\":\"u\"}]}]},\"streamSettings\":{\"security\":\"reality\"," +
+                "\"realitySettings\":{}}}]}"
+        assertEquals(XrayConfig.Problem.MISSING_PUBLIC_KEY, XrayConfig.check(json))
+    }
+
+    @Test
+    fun checkReportsNonRealityInJson() {
+        val json =
+            "{\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{\"address\":\"example.com\"," +
+                "\"port\":443,\"users\":[{\"id\":\"u\"}]}]},\"streamSettings\":{\"security\":\"tls\"}}]}"
+        assertEquals(XrayConfig.Problem.NOT_REALITY, XrayConfig.check(json))
+    }
+
+    @Test
+    fun formatPrettyPrintsJson() {
+        val pretty = XrayConfig.format("{\"a\":1}")
+        assertTrue(pretty.contains("\n"))
+        assertEquals(1, org.json.JSONObject(pretty).getInt("a"))
+    }
+
+    @Test
+    fun formatKeepsVlessLinkUnchanged() {
+        assertEquals(fullLink, XrayConfig.format("  $fullLink  "))
     }
 
     @Test

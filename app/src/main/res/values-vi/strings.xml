@@ -717,4 +717,16 @@
     <string name="xray_no_slot" translatable="true">Không thể đặt proxy SOCKS5 sang Xray</string>
     <string name="xray_error" translatable="true">Lỗi Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Hãy tắt tùy chọn định tuyến qua VPN trước, nếu không lưu lượng Xray sẽ lặp vòng</string>
+    <string name="xray_title" translatable="true">Cấu hình Xray</string>
+    <string name="xray_ok" translatable="true">Cấu hình có vẻ hợp lệ</string>
+    <string name="xray_paste" translatable="true">Dán</string>
+    <string name="xray_format" translatable="true">Định dạng</string>
+    <string name="xray_clear" translatable="true">Xóa</string>
+    <string name="xray_format_failed" translatable="true">Không thể định dạng: JSON không hợp lệ</string>
+    <string name="xray_save_failed" translatable="true">Không thể lưu hồ sơ</string>
+    <string name="xray_err_empty" translatable="true">Không có gì để dán: bộ nhớ tạm trống</string>
+    <string name="xray_err_json" translatable="true">JSON không hợp lệ: kiểm tra dấu ngoặc, dấu phẩy và dấu nháy</string>
+    <string name="xray_err_outbound" translatable="true">Thiếu outbound VLESS hợp lệ: cần địa chỉ máy chủ, cổng, UUID và publicKey</string>
+    <string name="xray_err_reality" translatable="true">Chỉ hỗ trợ bảo mật Reality: đặt streamSettings.security thành reality</string>
+    <string name="xray_err_link" translatable="true">Liên kết vless:// không hợp lệ: kiểm tra UUID, máy chủ, cổng và tham số sni, pbk</string>
 </resources>

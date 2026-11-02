@@ -242,4 +242,16 @@
     <string name="xray_no_slot" translatable="true">SOCKS5 прокситу не можа да се зададе към Xray</string>
     <string name="xray_error" translatable="true">Грешка в Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Първо изключете опцията за маршрутизиране във VPN, иначе трафикът на Xray ще се зацикли</string>
+    <string name="xray_title" translatable="true">Конфигурация на Xray</string>
+    <string name="xray_ok" translatable="true">Конфигурацията изглежда валидна</string>
+    <string name="xray_paste" translatable="true">Постави</string>
+    <string name="xray_format" translatable="true">Форматирай</string>
+    <string name="xray_clear" translatable="true">Изчисти</string>
+    <string name="xray_format_failed" translatable="true">Не може да се форматира: невалиден JSON</string>
+    <string name="xray_save_failed" translatable="true">Профилът не можа да се запази</string>
+    <string name="xray_err_empty" translatable="true">Няма какво да се постави: клипбордът е празен</string>
+    <string name="xray_err_json" translatable="true">Невалиден JSON: проверете скобите, запетаите и кавичките</string>
+    <string name="xray_err_outbound" translatable="true">Няма годен VLESS outbound: нужни са адрес на сървъра, порт, UUID и publicKey</string>
+    <string name="xray_err_reality" translatable="true">Поддържа се само сигурност Reality: задайте streamSettings.security на reality</string>
+    <string name="xray_err_link" translatable="true">Невалиден vless:// линк: проверете UUID, хост, порт и параметрите sni и pbk</string>
 </resources>

@@ -247,4 +247,16 @@
     <string name="xray_no_slot" translatable="true">Nepodarilo sa nastaviť SOCKS5 proxy na Xray</string>
     <string name="xray_error" translatable="true">Chyba Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Najprv vypnite možnosť smerovať prevádzku cez VPN, inak sa prevádzka Xray zacyklí</string>
+    <string name="xray_title" translatable="true">Konfigurácia Xray</string>
+    <string name="xray_ok" translatable="true">Konfigurácia vyzerá správne</string>
+    <string name="xray_paste" translatable="true">Vložiť</string>
+    <string name="xray_format" translatable="true">Formátovať</string>
+    <string name="xray_clear" translatable="true">Vymazať</string>
+    <string name="xray_format_failed" translatable="true">Nedá sa formátovať: neplatný JSON</string>
+    <string name="xray_save_failed" translatable="true">Profil sa nepodarilo uložiť</string>
+    <string name="xray_err_empty" translatable="true">Nie je čo vložiť: schránka je prázdna</string>
+    <string name="xray_err_json" translatable="true">Neplatný JSON: skontrolujte zátvorky, čiarky a úvodzovky</string>
+    <string name="xray_err_outbound" translatable="true">Chýba použiteľný outbound VLESS: treba adresu servera, port, UUID a publicKey</string>
+    <string name="xray_err_reality" translatable="true">Podporované je iba zabezpečenie Reality: nastavte streamSettings.security na reality</string>
+    <string name="xray_err_link" translatable="true">Neplatný odkaz vless://: skontrolujte UUID, hostiteľa, port a parametre sni a pbk</string>
 </resources>

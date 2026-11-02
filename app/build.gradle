@@ -384,6 +384,8 @@ dependencies {
     implementation 'com.github.seancfoley:ipaddress:5.5.1'
 
     testImplementation 'junit:junit:4.13.2'
+    // real org.json for plain JVM tests; the Android one is a stub there
+    testImplementation 'org.json:json:20240303'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
     androidTestImplementation 'androidx.test.espresso:espresso-accessibility:3.7.0'

@@ -842,4 +842,16 @@
     <string name="xray_no_slot" translatable="true">Xray-க்கு SOCKS5 ப்ராக்ஸியை அமைக்க முடியவில்லை</string>
     <string name="xray_error" translatable="true">Xray பிழை: %1$s</string>
     <string name="xray_rethink_on" translatable="true">முதலில் VPN உள் வழிப்படுத்தல் விருப்பத்தை அணைக்கவும், இல்லையெனில் Xray போக்குவரத்து சுழலும்</string>
+    <string name="xray_title" translatable="true">Xray கட்டமைப்பு</string>
+    <string name="xray_ok" translatable="true">கட்டமைப்பு சரியாகத் தெரிகிறது</string>
+    <string name="xray_paste" translatable="true">ஒட்டு</string>
+    <string name="xray_format" translatable="true">வடிவமை</string>
+    <string name="xray_clear" translatable="true">அழி</string>
+    <string name="xray_format_failed" translatable="true">வடிவமைக்க முடியவில்லை: JSON தவறானது</string>
+    <string name="xray_save_failed" translatable="true">சுயவிவரத்தைச் சேமிக்க முடியவில்லை</string>
+    <string name="xray_err_empty" translatable="true">ஒட்ட எதுவும் இல்லை: கிளிப்போர்டு காலியாக உள்ளது</string>
+    <string name="xray_err_json" translatable="true">தவறான JSON: அடைப்புக்குறிகள், கமாக்கள் மற்றும் மேற்கோள்களைச் சரிபார்க்கவும்</string>
+    <string name="xray_err_outbound" translatable="true">பயன்படுத்தக்கூடிய VLESS வெளியீடு இல்லை: சேவையக முகவரி, போர்ட், UUID மற்றும் publicKey தேவை</string>
+    <string name="xray_err_reality" translatable="true">Reality பாதுகாப்பு மட்டுமே ஆதரிக்கப்படுகிறது: streamSettings.security-ஐ reality என அமைக்கவும்</string>
+    <string name="xray_err_link" translatable="true">தவறான vless:// இணைப்பு: UUID, ஹோஸ்ட், போர்ட் மற்றும் sni, pbk அளவுருக்களைச் சரிபார்க்கவும்</string>
 </resources>

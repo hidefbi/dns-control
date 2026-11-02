@@ -933,4 +933,16 @@
     <string name="xray_no_slot" translatable="true">Tidak dapat mengatur proxy SOCKS5 ke Xray</string>
     <string name="xray_error" translatable="true">Kesalahan Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Matikan dulu opsi perutean di dalam VPN, jika tidak lalu lintas Xray akan berputar</string>
+    <string name="xray_title" translatable="true">Konfigurasi Xray</string>
+    <string name="xray_ok" translatable="true">Konfigurasi tampak valid</string>
+    <string name="xray_paste" translatable="true">Tempel</string>
+    <string name="xray_format" translatable="true">Format</string>
+    <string name="xray_clear" translatable="true">Hapus</string>
+    <string name="xray_format_failed" translatable="true">Tidak bisa diformat: JSON tidak valid</string>
+    <string name="xray_save_failed" translatable="true">Profil tidak dapat disimpan</string>
+    <string name="xray_err_empty" translatable="true">Tidak ada yang bisa ditempel: papan klip kosong</string>
+    <string name="xray_err_json" translatable="true">JSON tidak valid: periksa tanda kurung, koma, dan tanda kutip</string>
+    <string name="xray_err_outbound" translatable="true">Outbound VLESS yang dapat dipakai tidak ada: perlu alamat server, port, UUID, dan publicKey</string>
+    <string name="xray_err_reality" translatable="true">Hanya keamanan Reality yang didukung: atur streamSettings.security ke reality</string>
+    <string name="xray_err_link" translatable="true">Tautan vless:// tidak valid: periksa UUID, host, port, serta parameter sni dan pbk</string>
 </resources>

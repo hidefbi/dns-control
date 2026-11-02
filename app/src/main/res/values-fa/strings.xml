@@ -611,4 +611,16 @@
     <string name="xray_no_slot" translatable="true">تنظیم پراکسی SOCKS5 روی Xray ممکن نشد</string>
     <string name="xray_error" translatable="true">خطای Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">ابتدا گزینه مسیریابی درون VPN را خاموش کنید، وگرنه ترافیک Xray در حلقه می‌افتد</string>
+    <string name="xray_title" translatable="true">پیکربندی Xray</string>
+    <string name="xray_ok" translatable="true">پیکربندی معتبر به نظر می‌رسد</string>
+    <string name="xray_paste" translatable="true">چسباندن</string>
+    <string name="xray_format" translatable="true">قالب‌بندی</string>
+    <string name="xray_clear" translatable="true">پاک کردن</string>
+    <string name="xray_format_failed" translatable="true">قالب‌بندی ممکن نیست: JSON نامعتبر است</string>
+    <string name="xray_save_failed" translatable="true">ذخیره پروفایل ممکن نشد</string>
+    <string name="xray_err_empty" translatable="true">چیزی برای چسباندن نیست: کلیپ‌بورد خالی است</string>
+    <string name="xray_err_json" translatable="true">JSON نامعتبر: پرانتزها، ویرگول‌ها و نقل‌قول‌ها را بررسی کنید</string>
+    <string name="xray_err_outbound" translatable="true">خروجی VLESS قابل‌استفاده وجود ندارد: نشانی سرور، درگاه، UUID و publicKey لازم است</string>
+    <string name="xray_err_reality" translatable="true">فقط امنیت Reality پشتیبانی می‌شود: مقدار streamSettings.security را reality بگذارید</string>
+    <string name="xray_err_link" translatable="true">پیوند vless:// نامعتبر است: UUID، میزبان، درگاه و پارامترهای sni و pbk را بررسی کنید</string>
 </resources>

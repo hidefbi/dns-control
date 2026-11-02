@@ -140,4 +140,16 @@
     <string name="xray_no_slot" translatable="true">Xray සඳහා SOCKS5 proxy සැකසිය නොහැකි විය</string>
     <string name="xray_error" translatable="true">Xray දෝෂය: %1$s</string>
     <string name="xray_rethink_on" translatable="true">පළමුව VPN තුළ මාර්ගගත කිරීමේ විකල්පය අක්‍රිය කරන්න, නැතහොත් Xray ගමනාගමනය ලූපයක හිරවේ</string>
+    <string name="xray_title" translatable="true">Xray වින්‍යාසය</string>
+    <string name="xray_ok" translatable="true">වින්‍යාසය වලංගු ලෙස පෙනේ</string>
+    <string name="xray_paste" translatable="true">අලවන්න</string>
+    <string name="xray_format" translatable="true">හැඩගස්වන්න</string>
+    <string name="xray_clear" translatable="true">මකන්න</string>
+    <string name="xray_format_failed" translatable="true">හැඩගැස්විය නොහැක: JSON වලංගු නොවේ</string>
+    <string name="xray_save_failed" translatable="true">පැතිකඩ සුරැකිය නොහැකි විය</string>
+    <string name="xray_err_empty" translatable="true">අලවන්න කිසිවක් නැත: පසුරු පුවරුව හිස්ය</string>
+    <string name="xray_err_json" translatable="true">වලංගු නොවන JSON: වරහන්, කොමා සහ උද්ධෘත පරීක්ෂා කරන්න</string>
+    <string name="xray_err_outbound" translatable="true">භාවිත කළ හැකි VLESS ප්‍රතිදානයක් නැත: සේවා ලිපිනය, තොට, UUID සහ publicKey අවශ්‍යයි</string>
+    <string name="xray_err_reality" translatable="true">Reality ආරක්ෂාව පමණක් සහාය දක්වයි: streamSettings.security reality ලෙස සකසන්න</string>
+    <string name="xray_err_link" translatable="true">වලංගු නොවන vless:// සබැඳිය: UUID, සත්කාරක, තොට සහ sni, pbk පරාමිතික පරීක්ෂා කරන්න</string>
 </resources>

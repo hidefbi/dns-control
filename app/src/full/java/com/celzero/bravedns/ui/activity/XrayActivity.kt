@@ -15,7 +15,12 @@
  */
 package com.celzero.bravedns.ui.activity
 
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -29,14 +34,17 @@ import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.XrayConfig
+import com.google.android.material.color.MaterialColors
+import com.google.android.material.R as MaterialR
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.json.JSONException
 import org.koin.android.ext.android.inject
 
 /**
- * Holds the xray profile and starts or stops xray-core. Starting also points the custom SOCKS5
- * proxy at the local xray inbound, so the existing whole-device SOCKS5 mode routes through it.
+ * Edits the xray profile (vless link or xray JSON), checks it as the user types, and starts or
+ * stops xray-core. Starting also points the custom SOCKS5 proxy at the local xray inbound.
  */
 class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
@@ -48,9 +56,79 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b.xrayInput.setText(runner.savedProfile().orEmpty())
+        b.xrayInput.addTextChangedListener(
+            object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
+
+                override fun afterTextChanged(s: Editable?) {
+                    validate()
+                }
+            }
+        )
+        b.xrayPaste.setOnClickListener { pasteFromClipboard() }
+        b.xrayFormat.setOnClickListener { formatInput() }
+        b.xrayClear.setOnClickListener { b.xrayInput.setText("") }
         b.xraySave.setOnClickListener { saveProfile() }
         b.xrayToggle.setOnClickListener { toggleXray() }
+        validate()
         renderStatus()
+    }
+
+    /** Checks the current text, updates the message and buttons, and returns the problem. */
+    private fun validate(): XrayConfig.Problem? {
+        val text = b.xrayInput.text.toString()
+        val problem = XrayConfig.check(text)
+        val blank = text.isBlank()
+        val valid = !blank && problem == null
+
+        b.xraySave.isEnabled = valid
+        b.xrayFormat.isEnabled = valid
+        if (blank) {
+            b.xrayProblem.visibility = View.GONE
+        } else {
+            b.xrayProblem.visibility = View.VISIBLE
+            b.xrayProblem.text = getString(messageFor(problem))
+            val attr = if (problem == null) MaterialR.attr.colorPrimary else MaterialR.attr.colorError
+            b.xrayProblem.setTextColor(MaterialColors.getColor(b.xrayProblem, attr))
+        }
+        return problem
+    }
+
+    private fun messageFor(problem: XrayConfig.Problem?): Int {
+        return when (problem) {
+            null -> R.string.xray_ok
+            XrayConfig.Problem.EMPTY -> R.string.xray_err_empty
+            XrayConfig.Problem.INVALID_JSON -> R.string.xray_err_json
+            XrayConfig.Problem.INVALID_LINK -> R.string.xray_err_link
+            XrayConfig.Problem.NOT_REALITY -> R.string.xray_err_reality
+            else -> R.string.xray_err_outbound
+        }
+    }
+
+    private fun formatInput() {
+        val text = b.xrayInput.text.toString()
+        try {
+            b.xrayInput.setText(XrayConfig.format(text))
+        } catch (e: JSONException) {
+            toast(getString(R.string.xray_format_failed))
+        }
+    }
+
+    private fun pasteFromClipboard() {
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+        val clip =
+            clipboard?.primaryClip
+                ?.takeIf { it.itemCount > 0 }
+                ?.getItemAt(0)
+                ?.coerceToText(this)
+                ?.toString()
+        if (clip.isNullOrBlank()) {
+            toast(getString(R.string.xray_err_empty))
+        } else {
+            b.xrayInput.setText(clip.trim())
+        }
     }
 
     private fun renderStatus() {
@@ -62,15 +140,14 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
     private fun saveProfile() {
         val text = b.xrayInput.text.toString()
+        if (XrayConfig.check(text) != null) {
+            validate()
+            return
+        }
         lifecycleScope.launch(Dispatchers.IO) {
-            val valid = runCatching { runner.buildConfig(text) }
-            val saved = valid.isSuccess && runner.saveProfile(text)
+            val saved = runner.saveProfile(text)
             withContext(Dispatchers.Main) {
-                if (saved) {
-                    toast(getString(R.string.xray_saved))
-                } else {
-                    showError(valid.exceptionOrNull() ?: IllegalStateException("save failed"))
-                }
+                toast(getString(if (saved) R.string.xray_saved else R.string.xray_save_failed))
             }
         }
     }

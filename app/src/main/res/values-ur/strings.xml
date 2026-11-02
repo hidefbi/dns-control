@@ -49,4 +49,16 @@
     <string name="xray_no_slot" translatable="true">Xray کے لیے SOCKS5 پراکسی سیٹ نہیں ہو سکی</string>
     <string name="xray_error" translatable="true">Xray کی خرابی: %1$s</string>
     <string name="xray_rethink_on" translatable="true">پہلے VPN کے اندر روٹنگ کا آپشن بند کریں، ورنہ Xray کا ٹریفک لوپ میں چلا جائے گا</string>
+    <string name="xray_title" translatable="true">Xray کنفیگریشن</string>
+    <string name="xray_ok" translatable="true">کنفیگریشن درست لگتی ہے</string>
+    <string name="xray_paste" translatable="true">چسپاں کریں</string>
+    <string name="xray_format" translatable="true">فارمیٹ کریں</string>
+    <string name="xray_clear" translatable="true">صاف کریں</string>
+    <string name="xray_format_failed" translatable="true">فارمیٹ نہیں ہو سکتا: JSON غلط ہے</string>
+    <string name="xray_save_failed" translatable="true">پروفائل محفوظ نہیں ہو سکا</string>
+    <string name="xray_err_empty" translatable="true">چسپاں کرنے کے لیے کچھ نہیں: کلپ بورڈ خالی ہے</string>
+    <string name="xray_err_json" translatable="true">غلط JSON: بریکٹ، کاما اور اقتباسات چیک کریں</string>
+    <string name="xray_err_outbound" translatable="true">قابل استعمال VLESS آؤٹ باؤنڈ نہیں: سرور کا پتہ، پورٹ، UUID اور publicKey درکار ہیں</string>
+    <string name="xray_err_reality" translatable="true">صرف Reality سیکیورٹی سپورٹ ہے: streamSettings.security کو reality پر سیٹ کریں</string>
+    <string name="xray_err_link" translatable="true">غلط vless:// لنک: UUID، ہوسٹ، پورٹ اور sni اور pbk پیرامیٹرز چیک کریں</string>
 </resources>

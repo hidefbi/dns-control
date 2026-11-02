@@ -151,4 +151,16 @@
     <string name="xray_no_slot" translatable="true">SOCKS5-välityspalvelinta ei voitu asettaa Xraylle</string>
     <string name="xray_error" translatable="true">Xray-virhe: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Poista ensin käytöstä VPN-reititysasetus, muuten Xray-liikenne kiertää silmukassa</string>
+    <string name="xray_title" translatable="true">Xray-asetukset</string>
+    <string name="xray_ok" translatable="true">Asetukset näyttävät kelvollisilta</string>
+    <string name="xray_paste" translatable="true">Liitä</string>
+    <string name="xray_format" translatable="true">Muotoile</string>
+    <string name="xray_clear" translatable="true">Tyhjennä</string>
+    <string name="xray_format_failed" translatable="true">Muotoilu ei onnistu: JSON on virheellinen</string>
+    <string name="xray_save_failed" translatable="true">Profiilia ei voitu tallentaa</string>
+    <string name="xray_err_empty" translatable="true">Ei liitettävää: leikepöytä on tyhjä</string>
+    <string name="xray_err_json" translatable="true">Virheellinen JSON: tarkista sulkeet, pilkut ja lainausmerkit</string>
+    <string name="xray_err_outbound" translatable="true">Käyttökelpoinen VLESS-ulostulo puuttuu: palvelimen osoite, portti, UUID ja publicKey vaaditaan</string>
+    <string name="xray_err_reality" translatable="true">Vain Reality-suojaus on tuettu: aseta streamSettings.security arvoon reality</string>
+    <string name="xray_err_link" translatable="true">Virheellinen vless://-linkki: tarkista UUID, isäntä, portti sekä sni- ja pbk-parametrit</string>
 </resources>

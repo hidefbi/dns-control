@@ -22,4 +22,16 @@
     <string name="xray_no_slot" translatable="true">Xray ପାଇଁ SOCKS5 ପ୍ରକ୍ସି ସେଟ୍ କରି ହେଲା ନାହିଁ</string>
     <string name="xray_error" translatable="true">Xray ତ୍ରୁଟି: %1$s</string>
     <string name="xray_rethink_on" translatable="true">ପ୍ରଥମେ VPN ଭିତରେ ରୁଟିଙ୍ଗ୍ ବିକଳ୍ପ ବନ୍ଦ କରନ୍ତୁ, ନହେଲେ Xray ଟ୍ରାଫିକ୍ ଲୁପ୍ ହେବ</string>
+    <string name="xray_title" translatable="true">Xray କନଫିଗ୍</string>
+    <string name="xray_ok" translatable="true">କନଫିଗ୍ ଠିକ୍ ମନେ ହେଉଛି</string>
+    <string name="xray_paste" translatable="true">ପେଷ୍ଟ କରନ୍ତୁ</string>
+    <string name="xray_format" translatable="true">ଫର୍ମାଟ୍</string>
+    <string name="xray_clear" translatable="true">ସଫା କରନ୍ତୁ</string>
+    <string name="xray_format_failed" translatable="true">ଫର୍ମାଟ୍ ହୋଇପାରିଲା ନାହିଁ: JSON ଅବୈଧ</string>
+    <string name="xray_save_failed" translatable="true">ପ୍ରୋଫାଇଲ୍ ସେଭ୍ ହୋଇପାରିଲା ନାହିଁ</string>
+    <string name="xray_err_empty" translatable="true">ପେଷ୍ଟ କରିବାକୁ କିଛି ନାହିଁ: କ୍ଲିପ୍‌ବୋର୍ଡ ଖାଲି ଅଛି</string>
+    <string name="xray_err_json" translatable="true">ଅବୈଧ JSON: ବନ୍ଧନୀ, କମା ଏବଂ ଉଦ୍ଧୃତି ଯାଞ୍ଚ କରନ୍ତୁ</string>
+    <string name="xray_err_outbound" translatable="true">ବ୍ୟବହାରଯୋଗ୍ୟ VLESS ଆଉଟ୍‌ବାଉଣ୍ଡ ନାହିଁ: ସର୍ଭର ଠିକଣା, ପୋର୍ଟ, UUID ଏବଂ publicKey ଆବଶ୍ୟକ</string>
+    <string name="xray_err_reality" translatable="true">କେବଳ Reality ସୁରକ୍ଷା ସମର୍ଥିତ: streamSettings.security କୁ reality ସେଟ୍ କରନ୍ତୁ</string>
+    <string name="xray_err_link" translatable="true">ଅବୈଧ vless:// ଲିଙ୍କ୍: UUID, ହୋଷ୍ଟ, ପୋର୍ଟ ଏବଂ sni ଓ pbk ପାରାମିଟର ଯାଞ୍ଚ କରନ୍ତୁ</string>
 </resources>

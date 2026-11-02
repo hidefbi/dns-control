@@ -761,4 +761,16 @@
     <string name="xray_no_slot" translatable="true">Nepodařilo se nastavit SOCKS5 proxy na Xray</string>
     <string name="xray_error" translatable="true">Chyba Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Nejprve vypněte možnost směrovat provoz přes VPN, jinak se provoz Xray zacyklí</string>
+    <string name="xray_title" translatable="true">Konfigurace Xray</string>
+    <string name="xray_ok" translatable="true">Konfigurace vypadá správně</string>
+    <string name="xray_paste" translatable="true">Vložit</string>
+    <string name="xray_format" translatable="true">Formátovat</string>
+    <string name="xray_clear" translatable="true">Vymazat</string>
+    <string name="xray_format_failed" translatable="true">Nelze formátovat: neplatný JSON</string>
+    <string name="xray_save_failed" translatable="true">Profil se nepodařilo uložit</string>
+    <string name="xray_err_empty" translatable="true">Není co vložit: schránka je prázdná</string>
+    <string name="xray_err_json" translatable="true">Neplatný JSON: zkontrolujte závorky, čárky a uvozovky</string>
+    <string name="xray_err_outbound" translatable="true">Chybí použitelný outbound VLESS: je potřeba adresa serveru, port, UUID a publicKey</string>
+    <string name="xray_err_reality" translatable="true">Podporováno je pouze zabezpečení Reality: nastavte streamSettings.security na reality</string>
+    <string name="xray_err_link" translatable="true">Neplatný odkaz vless://: zkontrolujte UUID, hostitele, port a parametry sni a pbk</string>
 </resources>

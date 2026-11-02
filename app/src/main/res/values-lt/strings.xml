@@ -541,4 +541,16 @@
     <string name="xray_no_slot" translatable="true">Nepavyko nustatyti SOCKS5 tarpinio serverio Xray</string>
     <string name="xray_error" translatable="true">Xray klaida: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Pirmiausia išjunkite maršrutizavimą per VPN, kitaip Xray srautas įstrigs cikle</string>
+    <string name="xray_title" translatable="true">Xray konfigūracija</string>
+    <string name="xray_ok" translatable="true">Konfigūracija atrodo teisinga</string>
+    <string name="xray_paste" translatable="true">Įklijuoti</string>
+    <string name="xray_format" translatable="true">Formatuoti</string>
+    <string name="xray_clear" translatable="true">Išvalyti</string>
+    <string name="xray_format_failed" translatable="true">Nepavyko formatuoti: JSON netinkamas</string>
+    <string name="xray_save_failed" translatable="true">Nepavyko įrašyti profilio</string>
+    <string name="xray_err_empty" translatable="true">Nėra ką įklijuoti: iškarpinė tuščia</string>
+    <string name="xray_err_json" translatable="true">Netinkamas JSON: patikrinkite skliaustus, kablelius ir kabutes</string>
+    <string name="xray_err_outbound" translatable="true">Nėra tinkamo VLESS išvesties: reikia serverio adreso, prievado, UUID ir publicKey</string>
+    <string name="xray_err_reality" translatable="true">Palaikomas tik Reality saugumas: nustatykite streamSettings.security į reality</string>
+    <string name="xray_err_link" translatable="true">Netinkama vless:// nuoroda: patikrinkite UUID, serverį, prievadą ir sni bei pbk parametrus</string>
 </resources>

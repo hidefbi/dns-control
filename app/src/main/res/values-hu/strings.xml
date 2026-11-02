@@ -892,4 +892,16 @@
     <string name="xray_no_slot" translatable="true">Nem sikerült a SOCKS5-proxyt Xray-re állítani</string>
     <string name="xray_error" translatable="true">Xray-hiba: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Előbb kapcsolja ki a VPN-en belüli útválasztás opciót, különben az Xray forgalma hurokba kerül</string>
+    <string name="xray_title" translatable="true">Xray-konfiguráció</string>
+    <string name="xray_ok" translatable="true">A konfiguráció érvényesnek tűnik</string>
+    <string name="xray_paste" translatable="true">Beillesztés</string>
+    <string name="xray_format" translatable="true">Formázás</string>
+    <string name="xray_clear" translatable="true">Törlés</string>
+    <string name="xray_format_failed" translatable="true">Nem formázható: érvénytelen JSON</string>
+    <string name="xray_save_failed" translatable="true">A profilt nem sikerült menteni</string>
+    <string name="xray_err_empty" translatable="true">Nincs mit beilleszteni: a vágólap üres</string>
+    <string name="xray_err_json" translatable="true">Érvénytelen JSON: ellenőrizze a zárójeleket, vesszőket és idézőjeleket</string>
+    <string name="xray_err_outbound" translatable="true">Nincs használható VLESS-kimenet: szükséges a szerver címe, portja, UUID és publicKey</string>
+    <string name="xray_err_reality" translatable="true">Csak a Reality biztonság támogatott: állítsa a streamSettings.security értékét reality-re</string>
+    <string name="xray_err_link" translatable="true">Érvénytelen vless:// hivatkozás: ellenőrizze az UUID-t, a gazdagépet, a portot és az sni, pbk paramétereket</string>
 </resources>

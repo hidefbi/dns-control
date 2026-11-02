@@ -903,4 +903,16 @@
     <string name="xray_no_slot" translatable="true">Impossible de définir le proxy SOCKS5 sur Xray</string>
     <string name="xray_error" translatable="true">Erreur Xray : %1$s</string>
     <string name="xray_rethink_on" translatable="true">Désactivez d’abord l’option de routage dans le VPN, sinon le trafic Xray boucle</string>
+    <string name="xray_title" translatable="true">Configuration Xray</string>
+    <string name="xray_ok" translatable="true">La configuration semble valide</string>
+    <string name="xray_paste" translatable="true">Coller</string>
+    <string name="xray_format" translatable="true">Formater</string>
+    <string name="xray_clear" translatable="true">Effacer</string>
+    <string name="xray_format_failed" translatable="true">Formatage impossible : JSON invalide</string>
+    <string name="xray_save_failed" translatable="true">Impossible d’enregistrer le profil</string>
+    <string name="xray_err_empty" translatable="true">Rien à coller : le presse-papiers est vide</string>
+    <string name="xray_err_json" translatable="true">JSON invalide : vérifiez les crochets, virgules et guillemets</string>
+    <string name="xray_err_outbound" translatable="true">Sortie VLESS inutilisable : adresse du serveur, port, UUID et publicKey requis</string>
+    <string name="xray_err_reality" translatable="true">Seule la sécurité Reality est prise en charge : définissez streamSettings.security sur reality</string>
+    <string name="xray_err_link" translatable="true">Lien vless:// invalide : vérifiez l’UUID, l’hôte, le port et les paramètres sni et pbk</string>
 </resources>

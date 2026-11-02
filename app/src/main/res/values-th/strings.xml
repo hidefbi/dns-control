@@ -758,4 +758,16 @@
     <string name="xray_no_slot" translatable="true">ไม่สามารถตั้งค่าพร็อกซี SOCKS5 เป็น Xray ได้</string>
     <string name="xray_error" translatable="true">ข้อผิดพลาดของ Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">ปิดตัวเลือกการส่งทราฟฟิกผ่าน VPN ก่อน ไม่เช่นนั้นทราฟฟิกของ Xray จะวนกลับเข้า VPN</string>
+    <string name="xray_title" translatable="true">การตั้งค่า Xray</string>
+    <string name="xray_ok" translatable="true">การตั้งค่าดูถูกต้อง</string>
+    <string name="xray_paste" translatable="true">วาง</string>
+    <string name="xray_format" translatable="true">จัดรูปแบบ</string>
+    <string name="xray_clear" translatable="true">ล้าง</string>
+    <string name="xray_format_failed" translatable="true">จัดรูปแบบไม่ได้: JSON ไม่ถูกต้อง</string>
+    <string name="xray_save_failed" translatable="true">บันทึกโปรไฟล์ไม่สำเร็จ</string>
+    <string name="xray_err_empty" translatable="true">ไม่มีอะไรให้วาง: คลิปบอร์ดว่างเปล่า</string>
+    <string name="xray_err_json" translatable="true">JSON ไม่ถูกต้อง: ตรวจสอบวงเล็บ เครื่องหมายจุลภาค และเครื่องหมายคำพูด</string>
+    <string name="xray_err_outbound" translatable="true">ไม่มี VLESS outbound ที่ใช้งานได้: ต้องมีที่อยู่เซิร์ฟเวอร์ พอร์ต UUID และ publicKey</string>
+    <string name="xray_err_reality" translatable="true">รองรับเฉพาะความปลอดภัยแบบ Reality: ตั้ง streamSettings.security เป็น reality</string>
+    <string name="xray_err_link" translatable="true">ลิงก์ vless:// ไม่ถูกต้อง: ตรวจสอบ UUID โฮสต์ พอร์ต และพารามิเตอร์ sni กับ pbk</string>
 </resources>
