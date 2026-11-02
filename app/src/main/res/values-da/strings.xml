@@ -153,4 +153,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Ingen opdatering fundet</string>
     <string name="bl_update_failed_title" translatable="true">Opdatering af blokeringsliste mislykkedes</string>
     <string name="bl_update_retry" translatable="true">Prøv igen</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Indsæt et vless://-link eller en Xray JSON-konfiguration</string>
+    <string name="xray_status_on" translatable="true">Xray kører</string>
+    <string name="xray_status_off" translatable="true">Xray er stoppet</string>
+    <string name="xray_start" translatable="true">Start</string>
+    <string name="xray_stop" translatable="true">Stop</string>
+    <string name="xray_save" translatable="true">Gem</string>
+    <string name="xray_saved" translatable="true">Gemt</string>
+    <string name="xray_none" translatable="true">Gem en profil først</string>
+    <string name="xray_no_slot" translatable="true">Kunne ikke sætte SOCKS5-proxyen til Xray</string>
+    <string name="xray_error" translatable="true">Xray-fejl: %1$s</string>
 </resources>

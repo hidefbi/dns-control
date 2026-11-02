@@ -903,4 +903,15 @@
     <string name="bl_update_uptodate_title" translatable="true">업데이트를 찾을 수 없습니다</string>
     <string name="bl_update_failed_title" translatable="true">차단 목록 업데이트 실패</string>
     <string name="bl_update_retry" translatable="true">다시 시도</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// 링크 또는 Xray JSON 설정을 붙여넣으세요</string>
+    <string name="xray_status_on" translatable="true">Xray 실행 중</string>
+    <string name="xray_status_off" translatable="true">Xray 중지됨</string>
+    <string name="xray_start" translatable="true">시작</string>
+    <string name="xray_stop" translatable="true">중지</string>
+    <string name="xray_save" translatable="true">저장</string>
+    <string name="xray_saved" translatable="true">저장됨</string>
+    <string name="xray_none" translatable="true">먼저 프로필을 저장하세요</string>
+    <string name="xray_no_slot" translatable="true">Xray용 SOCKS5 프록시를 설정할 수 없습니다</string>
+    <string name="xray_error" translatable="true">Xray 오류: %1$s</string>
 </resources>

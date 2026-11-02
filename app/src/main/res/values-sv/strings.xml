@@ -27,4 +27,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Ingen uppdatering hittades</string>
     <string name="bl_update_failed_title" translatable="true">Uppdateringen av blockeringslistan misslyckades</string>
     <string name="bl_update_retry" translatable="true">Försök igen</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Klistra in en vless://-länk eller en Xray JSON-konfiguration</string>
+    <string name="xray_status_on" translatable="true">Xray körs</string>
+    <string name="xray_status_off" translatable="true">Xray är stoppad</string>
+    <string name="xray_start" translatable="true">Starta</string>
+    <string name="xray_stop" translatable="true">Stoppa</string>
+    <string name="xray_save" translatable="true">Spara</string>
+    <string name="xray_saved" translatable="true">Sparad</string>
+    <string name="xray_none" translatable="true">Spara en profil först</string>
+    <string name="xray_no_slot" translatable="true">Kunde inte ställa in SOCKS5-proxyn till Xray</string>
+    <string name="xray_error" translatable="true">Xray-fel: %1$s</string>
 </resources>

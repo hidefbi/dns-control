@@ -1,0 +1,122 @@
+/*
+ * Copyright 2026 RethinkDNS and its authors
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.celzero.bravedns.util
+
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertThrows
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+class XrayConfigTest {
+
+    private val fullLink =
+        "vless://11111111-2222-3333-4444-555555555555@example.com:443" +
+            "?security=reality&sni=www.example.org&fp=chrome&pbk=PUBKEY123" +
+            "&sid=abcd&flow=xtls-rprx-vision&type=tcp#My%20Node"
+
+    @Test
+    fun parsesFullRealityLink() {
+        val link = XrayConfig.parseVlessLink(fullLink)
+        assertEquals("My Node", link.name)
+        assertEquals("11111111-2222-3333-4444-555555555555", link.uuid)
+        assertEquals("example.com", link.host)
+        assertEquals(443, link.port)
+        assertEquals("xtls-rprx-vision", link.flow)
+        assertEquals("www.example.org", link.serverName)
+        assertEquals("chrome", link.fingerprint)
+        assertEquals("PUBKEY123", link.publicKey)
+        assertEquals("abcd", link.shortId)
+    }
+
+    @Test
+    fun usesDefaultFingerprintWhenMissing() {
+        val link =
+            XrayConfig.parseVlessLink(
+                "vless://u@example.com:443?security=reality&sni=a.example&pbk=K"
+            )
+        assertEquals("chrome", link.fingerprint)
+        assertEquals("", link.flow)
+    }
+
+    @Test
+    fun stripsBracketsFromIpv6Host() {
+        val link =
+            XrayConfig.parseVlessLink(
+                "vless://u@[2001:db8::1]:8443?security=reality&sni=a.example&pbk=K"
+            )
+        assertEquals("2001:db8::1", link.host)
+        assertEquals(8443, link.port)
+    }
+
+    @Test
+    fun rejectsNonRealitySecurity() {
+        assertThrows(XrayConfig.InvalidLinkException::class.java) {
+            XrayConfig.parseVlessLink("vless://u@example.com:443?security=tls&sni=a&pbk=K")
+        }
+    }
+
+    @Test
+    fun rejectsMissingPublicKey() {
+        assertThrows(XrayConfig.InvalidLinkException::class.java) {
+            XrayConfig.parseVlessLink("vless://u@example.com:443?security=reality&sni=a")
+        }
+    }
+
+    @Test
+    fun rejectsNonVlessScheme() {
+        assertFalse(XrayConfig.isVlessLink("vmess://abc"))
+        assertThrows(XrayConfig.InvalidLinkException::class.java) {
+            XrayConfig.parseVlessLink("vmess://abc")
+        }
+    }
+
+    @Test
+    fun builtConfigExposesUdpSocksInboundOnLocalPort() {
+        val config = XrayConfig.buildConfig(XrayConfig.parseVlessLink(fullLink))
+        assertTrue(config.contains("\"protocol\":\"socks\""))
+        assertTrue(config.contains("\"port\":${XrayConfig.LOCAL_PORT}"))
+        assertTrue(config.contains("\"listen\":\"127.0.0.1\""))
+        assertTrue(config.contains("\"udp\":true"))
+    }
+
+    @Test
+    fun builtConfigCarriesRealityParameters() {
+        val config = XrayConfig.buildConfig(XrayConfig.parseVlessLink(fullLink))
+        assertTrue(config.contains("\"security\": \"reality\""))
+        assertTrue(config.contains("\"publicKey\": \"PUBKEY123\""))
+        assertTrue(config.contains("\"serverName\": \"www.example.org\""))
+        assertTrue(config.contains("\"flow\":\"xtls-rprx-vision\""))
+        assertTrue(config.contains("\"port\": 443"))
+    }
+
+    @Test
+    fun omitsFlowWhenAbsent() {
+        val config =
+            XrayConfig.buildConfig(
+                XrayConfig.parseVlessLink(
+                    "vless://u@example.com:443?security=reality&sni=a.example&pbk=K"
+                )
+            )
+        assertFalse(config.contains("\"flow\""))
+    }
+
+    @Test
+    fun jsonStringEscapesQuotesBackslashesAndControls() {
+        assertEquals("\"a\\\"b\\\\c\"", XrayConfig.jsonString("a\"b\\c"))
+        assertEquals("\"x\\ny\"", XrayConfig.jsonString("x\ny"))
+    }
+}

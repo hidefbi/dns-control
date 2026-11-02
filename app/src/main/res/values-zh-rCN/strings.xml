@@ -921,4 +921,15 @@
     <string name="bl_update_uptodate_title" translatable="true">未检测到更新</string>
     <string name="bl_update_failed_title" translatable="true">规则更新失败</string>
     <string name="bl_update_retry" translatable="true">重试</string>
+    <string name="xray_entry" translatable="true">Xray（VLESS+Reality）</string>
+    <string name="xray_hint" translatable="true">粘贴 vless:// 链接或 Xray JSON 配置</string>
+    <string name="xray_status_on" translatable="true">Xray 正在运行</string>
+    <string name="xray_status_off" translatable="true">Xray 已停止</string>
+    <string name="xray_start" translatable="true">启动</string>
+    <string name="xray_stop" translatable="true">停止</string>
+    <string name="xray_save" translatable="true">保存</string>
+    <string name="xray_saved" translatable="true">已保存</string>
+    <string name="xray_none" translatable="true">请先保存配置</string>
+    <string name="xray_no_slot" translatable="true">无法将 SOCKS5 代理指向 Xray</string>
+    <string name="xray_error" translatable="true">Xray 错误：%1$s</string>
 </resources>

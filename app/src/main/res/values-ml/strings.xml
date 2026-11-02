@@ -48,4 +48,15 @@
     <string name="bl_update_uptodate_title" translatable="true">അപ്‌ഡേറ്റ് കണ്ടെത്തിയില്ല</string>
     <string name="bl_update_failed_title" translatable="true">ബ്ലോക്ക്‌ലിസ്റ്റ് അപ്‌ഡേറ്റ് പരാജയപ്പെട്ടു</string>
     <string name="bl_update_retry" translatable="true">വീണ്ടും ശ്രമിക്കുക</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// ലിങ്കോ Xray JSON കോൺഫിഗോ ഒട്ടിക്കുക</string>
+    <string name="xray_status_on" translatable="true">Xray പ്രവർത്തിക്കുന്നു</string>
+    <string name="xray_status_off" translatable="true">Xray നിർത്തി</string>
+    <string name="xray_start" translatable="true">ആരംഭിക്കുക</string>
+    <string name="xray_stop" translatable="true">നിർത്തുക</string>
+    <string name="xray_save" translatable="true">സംരക്ഷിക്കുക</string>
+    <string name="xray_saved" translatable="true">സംരക്ഷിച്ചു</string>
+    <string name="xray_none" translatable="true">ആദ്യം ഒരു പ്രൊഫൈൽ സംരക്ഷിക്കുക</string>
+    <string name="xray_no_slot" translatable="true">Xray-ക്ക് SOCKS5 പ്രോക്സി സജ്ജമാക്കാനായില്ല</string>
+    <string name="xray_error" translatable="true">Xray പിശക്: %1$s</string>
 </resources>

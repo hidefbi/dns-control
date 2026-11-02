@@ -35,4 +35,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Hakuna sasisho lililopatikana</string>
     <string name="bl_update_failed_title" translatable="true">Sasisho la orodha ya kuzuia limeshindwa</string>
     <string name="bl_update_retry" translatable="true">Jaribu tena</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Bandika kiungo cha vless:// au usanidi wa Xray JSON</string>
+    <string name="xray_status_on" translatable="true">Xray inafanya kazi</string>
+    <string name="xray_status_off" translatable="true">Xray imesimamishwa</string>
+    <string name="xray_start" translatable="true">Anza</string>
+    <string name="xray_stop" translatable="true">Simamisha</string>
+    <string name="xray_save" translatable="true">Hifadhi</string>
+    <string name="xray_saved" translatable="true">Imehifadhiwa</string>
+    <string name="xray_none" translatable="true">Hifadhi wasifu kwanza</string>
+    <string name="xray_no_slot" translatable="true">Imeshindwa kuweka wakala wa SOCKS5 kwa Xray</string>
+    <string name="xray_error" translatable="true">Hitilafu ya Xray: %1$s</string>
 </resources>

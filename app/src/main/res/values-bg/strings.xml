@@ -230,4 +230,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Няма налична актуализация</string>
     <string name="bl_update_failed_title" translatable="true">Актуализирането на блокиращия списък се провали</string>
     <string name="bl_update_retry" translatable="true">Опитай отново</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Поставете връзка vless:// или JSON конфигурация на Xray</string>
+    <string name="xray_status_on" translatable="true">Xray работи</string>
+    <string name="xray_status_off" translatable="true">Xray е спрян</string>
+    <string name="xray_start" translatable="true">Старт</string>
+    <string name="xray_stop" translatable="true">Стоп</string>
+    <string name="xray_save" translatable="true">Запази</string>
+    <string name="xray_saved" translatable="true">Запазено</string>
+    <string name="xray_none" translatable="true">Първо запазете профил</string>
+    <string name="xray_no_slot" translatable="true">SOCKS5 прокситу не можа да се зададе към Xray</string>
+    <string name="xray_error" translatable="true">Грешка в Xray: %1$s</string>
 </resources>

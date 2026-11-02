@@ -745,4 +745,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Nisu pronađena ažuriranja</string>
     <string name="bl_update_failed_title" translatable="true">Ažuriranje liste za blokiranje nije uspelo</string>
     <string name="bl_update_retry" translatable="true">Pokušaj ponovo</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Nalepite vless:// vezu ili Xray JSON konfiguraciju</string>
+    <string name="xray_status_on" translatable="true">Xray radi</string>
+    <string name="xray_status_off" translatable="true">Xray je zaustavljen</string>
+    <string name="xray_start" translatable="true">Pokreni</string>
+    <string name="xray_stop" translatable="true">Zaustavi</string>
+    <string name="xray_save" translatable="true">Sačuvaj</string>
+    <string name="xray_saved" translatable="true">Sačuvano</string>
+    <string name="xray_none" translatable="true">Prvo sačuvajte profil</string>
+    <string name="xray_no_slot" translatable="true">Nije moguće postaviti SOCKS5 proksi na Xray</string>
+    <string name="xray_error" translatable="true">Greška Xray-a: %1$s</string>
 </resources>

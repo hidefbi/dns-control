@@ -139,4 +139,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Päivityksiä ei löytynyt</string>
     <string name="bl_update_failed_title" translatable="true">Estolistan päivitys epäonnistui</string>
     <string name="bl_update_retry" translatable="true">Yritä uudelleen</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Liitä vless://-linkki tai Xray JSON-asetukset</string>
+    <string name="xray_status_on" translatable="true">Xray on käynnissä</string>
+    <string name="xray_status_off" translatable="true">Xray on pysäytetty</string>
+    <string name="xray_start" translatable="true">Käynnistä</string>
+    <string name="xray_stop" translatable="true">Pysäytä</string>
+    <string name="xray_save" translatable="true">Tallenna</string>
+    <string name="xray_saved" translatable="true">Tallennettu</string>
+    <string name="xray_none" translatable="true">Tallenna ensin profiili</string>
+    <string name="xray_no_slot" translatable="true">SOCKS5-välityspalvelinta ei voitu asettaa Xraylle</string>
+    <string name="xray_error" translatable="true">Xray-virhe: %1$s</string>
 </resources>

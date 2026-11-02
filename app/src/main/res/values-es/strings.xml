@@ -902,4 +902,15 @@
     <string name="bl_update_uptodate_title" translatable="true">No se encontraron actualizaciones</string>
     <string name="bl_update_failed_title" translatable="true">Error al actualizar la lista de bloqueo</string>
     <string name="bl_update_retry" translatable="true">Reintentar</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Pega un enlace vless:// o una configuración JSON de Xray</string>
+    <string name="xray_status_on" translatable="true">Xray está en ejecución</string>
+    <string name="xray_status_off" translatable="true">Xray está detenido</string>
+    <string name="xray_start" translatable="true">Iniciar</string>
+    <string name="xray_stop" translatable="true">Detener</string>
+    <string name="xray_save" translatable="true">Guardar</string>
+    <string name="xray_saved" translatable="true">Guardado</string>
+    <string name="xray_none" translatable="true">Guarda primero un perfil</string>
+    <string name="xray_no_slot" translatable="true">No se pudo configurar el proxy SOCKS5 para Xray</string>
+    <string name="xray_error" translatable="true">Error de Xray: %1$s</string>
 </resources>

@@ -64,4 +64,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Абнаўленняў не знойдзена</string>
     <string name="bl_update_failed_title" translatable="true">Не ўдалося абнавіць спіс блакіроўкі</string>
     <string name="bl_update_retry" translatable="true">Паўтарыць</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Устаўце спасылку vless:// або JSON-канфігурацыю Xray</string>
+    <string name="xray_status_on" translatable="true">Xray працуе</string>
+    <string name="xray_status_off" translatable="true">Xray спынены</string>
+    <string name="xray_start" translatable="true">Запусціць</string>
+    <string name="xray_stop" translatable="true">Спыніць</string>
+    <string name="xray_save" translatable="true">Захаваць</string>
+    <string name="xray_saved" translatable="true">Захавана</string>
+    <string name="xray_none" translatable="true">Спачатку захавайце профіль</string>
+    <string name="xray_no_slot" translatable="true">Не ўдалося прызначыць SOCKS5-проксі для Xray</string>
+    <string name="xray_error" translatable="true">Памылка Xray: %1$s</string>
 </resources>

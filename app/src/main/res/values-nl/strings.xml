@@ -534,4 +534,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Geen update gevonden</string>
     <string name="bl_update_failed_title" translatable="true">Blokkadelijst bijwerken mislukt</string>
     <string name="bl_update_retry" translatable="true">Opnieuw proberen</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Plak een vless://-link of Xray JSON-configuratie</string>
+    <string name="xray_status_on" translatable="true">Xray draait</string>
+    <string name="xray_status_off" translatable="true">Xray is gestopt</string>
+    <string name="xray_start" translatable="true">Starten</string>
+    <string name="xray_stop" translatable="true">Stoppen</string>
+    <string name="xray_save" translatable="true">Opslaan</string>
+    <string name="xray_saved" translatable="true">Opgeslagen</string>
+    <string name="xray_none" translatable="true">Sla eerst een profiel op</string>
+    <string name="xray_no_slot" translatable="true">Kon de SOCKS5-proxy niet op Xray instellen</string>
+    <string name="xray_error" translatable="true">Xray-fout: %1$s</string>
 </resources>

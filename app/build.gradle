@@ -240,6 +240,8 @@ android {
     // required for google play developer api model classes
     packaging {
         resources.excludes += "META-INF/INDEX.LIST"
+        // xray-core is run as an executable from nativeLibraryDir, which needs the .so extracted
+        jniLibs { useLegacyPackaging = true }
     }
 
     flavorDimensions = ["releaseChannel", "releaseType"]

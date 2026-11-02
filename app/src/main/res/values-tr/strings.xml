@@ -908,4 +908,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Güncelleme bulunamadı</string>
     <string name="bl_update_failed_title" translatable="true">Engel listesi güncellemesi başarısız oldu</string>
     <string name="bl_update_retry" translatable="true">Yeniden dene</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// bağlantısını veya Xray JSON yapılandırmasını yapıştırın</string>
+    <string name="xray_status_on" translatable="true">Xray çalışıyor</string>
+    <string name="xray_status_off" translatable="true">Xray durduruldu</string>
+    <string name="xray_start" translatable="true">Başlat</string>
+    <string name="xray_stop" translatable="true">Durdur</string>
+    <string name="xray_save" translatable="true">Kaydet</string>
+    <string name="xray_saved" translatable="true">Kaydedildi</string>
+    <string name="xray_none" translatable="true">Önce bir profil kaydedin</string>
+    <string name="xray_no_slot" translatable="true">SOCKS5 proxy Xray’e ayarlanamadı</string>
+    <string name="xray_error" translatable="true">Xray hatası: %1$s</string>
 </resources>

@@ -755,4 +755,15 @@
     <string name="bl_update_uptodate_title" translatable="true">कोई अपडेट नहीं मिला</string>
     <string name="bl_update_failed_title" translatable="true">ब्लॉकलिस्ट अपडेट विफल रहा</string>
     <string name="bl_update_retry" translatable="true">फिर से कोशिश करें</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// लिंक या Xray JSON कॉन्फ़िग चिपकाएँ</string>
+    <string name="xray_status_on" translatable="true">Xray चल रहा है</string>
+    <string name="xray_status_off" translatable="true">Xray बंद है</string>
+    <string name="xray_start" translatable="true">शुरू करें</string>
+    <string name="xray_stop" translatable="true">रोकें</string>
+    <string name="xray_save" translatable="true">सहेजें</string>
+    <string name="xray_saved" translatable="true">सहेजा गया</string>
+    <string name="xray_none" translatable="true">पहले एक प्रोफ़ाइल सहेजें</string>
+    <string name="xray_no_slot" translatable="true">Xray के लिए SOCKS5 प्रॉक्सी सेट नहीं हो सकी</string>
+    <string name="xray_error" translatable="true">Xray त्रुटि: %1$s</string>
 </resources>

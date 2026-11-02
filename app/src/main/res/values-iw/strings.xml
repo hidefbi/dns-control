@@ -615,4 +615,15 @@
     <string name="bl_update_uptodate_title" translatable="true">לא נמצא עדכון</string>
     <string name="bl_update_failed_title" translatable="true">עדכון רשימת החסימה נכשל</string>
     <string name="bl_update_retry" translatable="true">נסה שוב</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">הדביקו קישור vless:// או הגדרת JSON של Xray</string>
+    <string name="xray_status_on" translatable="true">Xray פועל</string>
+    <string name="xray_status_off" translatable="true">Xray מושבת</string>
+    <string name="xray_start" translatable="true">הפעל</string>
+    <string name="xray_stop" translatable="true">עצור</string>
+    <string name="xray_save" translatable="true">שמור</string>
+    <string name="xray_saved" translatable="true">נשמר</string>
+    <string name="xray_none" translatable="true">שמרו קודם פרופיל</string>
+    <string name="xray_no_slot" translatable="true">לא ניתן להגדיר את פרוקסי SOCKS5 ל-Xray</string>
+    <string name="xray_error" translatable="true">שגיאת Xray: %1$s</string>
 </resources>

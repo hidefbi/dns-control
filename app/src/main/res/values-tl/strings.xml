@@ -120,4 +120,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Walang nakitang update</string>
     <string name="bl_update_failed_title" translatable="true">Nabigo ang pag-update ng blocklist</string>
     <string name="bl_update_retry" translatable="true">Subukan muli</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">I-paste ang vless:// link o ang Xray JSON config</string>
+    <string name="xray_status_on" translatable="true">Tumatakbo ang Xray</string>
+    <string name="xray_status_off" translatable="true">Huminto ang Xray</string>
+    <string name="xray_start" translatable="true">Simulan</string>
+    <string name="xray_stop" translatable="true">Ihinto</string>
+    <string name="xray_save" translatable="true">I-save</string>
+    <string name="xray_saved" translatable="true">Na-save</string>
+    <string name="xray_none" translatable="true">I-save muna ang profile</string>
+    <string name="xray_no_slot" translatable="true">Hindi maitakda ang SOCKS5 proxy sa Xray</string>
+    <string name="xray_error" translatable="true">Error ng Xray: %1$s</string>
 </resources>

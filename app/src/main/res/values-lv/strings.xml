@@ -50,4 +50,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Atjauninājumi nav atrasti</string>
     <string name="bl_update_failed_title" translatable="true">Bloķēšanas saraksta atjaunināšana neizdevās</string>
     <string name="bl_update_retry" translatable="true">Mēģināt vēlreiz</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Ievietojiet vless:// saiti vai Xray JSON konfigurāciju</string>
+    <string name="xray_status_on" translatable="true">Xray darbojas</string>
+    <string name="xray_status_off" translatable="true">Xray ir apturēts</string>
+    <string name="xray_start" translatable="true">Sākt</string>
+    <string name="xray_stop" translatable="true">Apturēt</string>
+    <string name="xray_save" translatable="true">Saglabāt</string>
+    <string name="xray_saved" translatable="true">Saglabāts</string>
+    <string name="xray_none" translatable="true">Vispirms saglabājiet profilu</string>
+    <string name="xray_no_slot" translatable="true">Neizdevās iestatīt SOCKS5 starpniekserveri uz Xray</string>
+    <string name="xray_error" translatable="true">Xray kļūda: %1$s</string>
 </resources>

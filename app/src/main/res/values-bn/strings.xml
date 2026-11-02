@@ -568,4 +568,15 @@
     <string name="bl_update_uptodate_title" translatable="true">কোনো আপডেট পাওয়া যায়নি</string>
     <string name="bl_update_failed_title" translatable="true">ব্লকলিস্ট আপডেট ব্যর্থ হয়েছে</string>
     <string name="bl_update_retry" translatable="true">আবার চেষ্টা করুন</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// লিংক বা Xray JSON কনফিগ পেস্ট করুন</string>
+    <string name="xray_status_on" translatable="true">Xray চলছে</string>
+    <string name="xray_status_off" translatable="true">Xray বন্ধ আছে</string>
+    <string name="xray_start" translatable="true">শুরু</string>
+    <string name="xray_stop" translatable="true">বন্ধ করুন</string>
+    <string name="xray_save" translatable="true">সংরক্ষণ</string>
+    <string name="xray_saved" translatable="true">সংরক্ষিত হয়েছে</string>
+    <string name="xray_none" translatable="true">আগে একটি প্রোফাইল সংরক্ষণ করুন</string>
+    <string name="xray_no_slot" translatable="true">Xray-এর জন্য SOCKS5 প্রক্সি সেট করা যায়নি</string>
+    <string name="xray_error" translatable="true">Xray ত্রুটি: %1$s</string>
 </resources>

@@ -529,4 +529,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Naujinimų nerasta</string>
     <string name="bl_update_failed_title" translatable="true">Blokavimo sąrašo atnaujinti nepavyko</string>
     <string name="bl_update_retry" translatable="true">Bandyti dar kartą</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Įklijuokite vless:// nuorodą arba Xray JSON konfigūraciją</string>
+    <string name="xray_status_on" translatable="true">Xray veikia</string>
+    <string name="xray_status_off" translatable="true">Xray sustabdytas</string>
+    <string name="xray_start" translatable="true">Paleisti</string>
+    <string name="xray_stop" translatable="true">Sustabdyti</string>
+    <string name="xray_save" translatable="true">Įrašyti</string>
+    <string name="xray_saved" translatable="true">Įrašyta</string>
+    <string name="xray_none" translatable="true">Pirmiausia įrašykite profilį</string>
+    <string name="xray_no_slot" translatable="true">Nepavyko nustatyti SOCKS5 tarpinio serverio Xray</string>
+    <string name="xray_error" translatable="true">Xray klaida: %1$s</string>
 </resources>

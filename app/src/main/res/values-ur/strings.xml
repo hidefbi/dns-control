@@ -37,4 +37,15 @@
     <string name="bl_update_uptodate_title" translatable="true">کوئی اپ ڈیٹ نہیں ملی</string>
     <string name="bl_update_failed_title" translatable="true">بلاک لسٹ کی اپ ڈیٹ ناکام ہوگئی</string>
     <string name="bl_update_retry" translatable="true">دوبارہ کوشش کریں</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// لنک یا Xray JSON کنفیگریشن چسپاں کریں</string>
+    <string name="xray_status_on" translatable="true">Xray چل رہا ہے</string>
+    <string name="xray_status_off" translatable="true">Xray رکا ہوا ہے</string>
+    <string name="xray_start" translatable="true">شروع کریں</string>
+    <string name="xray_stop" translatable="true">روکیں</string>
+    <string name="xray_save" translatable="true">محفوظ کریں</string>
+    <string name="xray_saved" translatable="true">محفوظ ہو گیا</string>
+    <string name="xray_none" translatable="true">پہلے ایک پروفائل محفوظ کریں</string>
+    <string name="xray_no_slot" translatable="true">Xray کے لیے SOCKS5 پراکسی سیٹ نہیں ہو سکی</string>
+    <string name="xray_error" translatable="true">Xray کی خرابی: %1$s</string>
 </resources>

@@ -882,4 +882,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Nu s-a găsit nicio actualizare</string>
     <string name="bl_update_failed_title" translatable="true">Actualizarea listei de blocare a eșuat</string>
     <string name="bl_update_retry" translatable="true">Reîncearcă</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Lipiți un link vless:// sau o configurație JSON Xray</string>
+    <string name="xray_status_on" translatable="true">Xray rulează</string>
+    <string name="xray_status_off" translatable="true">Xray este oprit</string>
+    <string name="xray_start" translatable="true">Pornește</string>
+    <string name="xray_stop" translatable="true">Oprește</string>
+    <string name="xray_save" translatable="true">Salvează</string>
+    <string name="xray_saved" translatable="true">Salvat</string>
+    <string name="xray_none" translatable="true">Salvați mai întâi un profil</string>
+    <string name="xray_no_slot" translatable="true">Nu s-a putut seta proxy-ul SOCKS5 pe Xray</string>
+    <string name="xray_error" translatable="true">Eroare Xray: %1$s</string>
 </resources>

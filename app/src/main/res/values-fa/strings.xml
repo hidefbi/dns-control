@@ -599,4 +599,15 @@
     <string name="bl_update_uptodate_title" translatable="true">به‌روزرسانی‌ای یافت نشد</string>
     <string name="bl_update_failed_title" translatable="true">به‌روزرسانی فهرست مسدودسازی ناموفق بود</string>
     <string name="bl_update_retry" translatable="true">تلاش مجدد</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">لینک vless:// یا پیکربندی JSON مربوط به Xray را بچسبانید</string>
+    <string name="xray_status_on" translatable="true">Xray در حال اجراست</string>
+    <string name="xray_status_off" translatable="true">Xray متوقف است</string>
+    <string name="xray_start" translatable="true">شروع</string>
+    <string name="xray_stop" translatable="true">توقف</string>
+    <string name="xray_save" translatable="true">ذخیره</string>
+    <string name="xray_saved" translatable="true">ذخیره شد</string>
+    <string name="xray_none" translatable="true">ابتدا یک پروفایل ذخیره کنید</string>
+    <string name="xray_no_slot" translatable="true">تنظیم پراکسی SOCKS5 روی Xray ممکن نشد</string>
+    <string name="xray_error" translatable="true">خطای Xray: %1$s</string>
 </resources>

@@ -235,4 +235,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Nenašla sa žiadna aktualizácia</string>
     <string name="bl_update_failed_title" translatable="true">Aktualizácia blokovacieho zoznamu zlyhala</string>
     <string name="bl_update_retry" translatable="true">Skúsiť znova</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Vložte odkaz vless:// alebo JSON konfiguráciu Xray</string>
+    <string name="xray_status_on" translatable="true">Xray beží</string>
+    <string name="xray_status_off" translatable="true">Xray je zastavený</string>
+    <string name="xray_start" translatable="true">Spustiť</string>
+    <string name="xray_stop" translatable="true">Zastaviť</string>
+    <string name="xray_save" translatable="true">Uložiť</string>
+    <string name="xray_saved" translatable="true">Uložené</string>
+    <string name="xray_none" translatable="true">Najprv uložte profil</string>
+    <string name="xray_no_slot" translatable="true">Nepodarilo sa nastaviť SOCKS5 proxy na Xray</string>
+    <string name="xray_error" translatable="true">Chyba Xray: %1$s</string>
 </resources>

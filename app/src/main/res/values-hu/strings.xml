@@ -880,4 +880,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Nincs elérhető frissítés</string>
     <string name="bl_update_failed_title" translatable="true">A blokklista frissítése sikertelen</string>
     <string name="bl_update_retry" translatable="true">Újrapróbálás</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Illessze be a vless:// hivatkozást vagy az Xray JSON-konfigurációt</string>
+    <string name="xray_status_on" translatable="true">Az Xray fut</string>
+    <string name="xray_status_off" translatable="true">Az Xray leállt</string>
+    <string name="xray_start" translatable="true">Indítás</string>
+    <string name="xray_stop" translatable="true">Leállítás</string>
+    <string name="xray_save" translatable="true">Mentés</string>
+    <string name="xray_saved" translatable="true">Mentve</string>
+    <string name="xray_none" translatable="true">Előbb mentsen egy profilt</string>
+    <string name="xray_no_slot" translatable="true">Nem sikerült a SOCKS5-proxyt Xray-re állítani</string>
+    <string name="xray_error" translatable="true">Xray-hiba: %1$s</string>
 </resources>

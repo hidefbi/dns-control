@@ -921,4 +921,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Tidak ada pembaruan ditemukan</string>
     <string name="bl_update_failed_title" translatable="true">Pembaruan daftar blokir gagal</string>
     <string name="bl_update_retry" translatable="true">Coba lagi</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Tempel tautan vless:// atau konfigurasi JSON Xray</string>
+    <string name="xray_status_on" translatable="true">Xray sedang berjalan</string>
+    <string name="xray_status_off" translatable="true">Xray dihentikan</string>
+    <string name="xray_start" translatable="true">Mulai</string>
+    <string name="xray_stop" translatable="true">Hentikan</string>
+    <string name="xray_save" translatable="true">Simpan</string>
+    <string name="xray_saved" translatable="true">Tersimpan</string>
+    <string name="xray_none" translatable="true">Simpan profil dulu</string>
+    <string name="xray_no_slot" translatable="true">Tidak dapat mengatur proxy SOCKS5 ke Xray</string>
+    <string name="xray_error" translatable="true">Kesalahan Xray: %1$s</string>
 </resources>

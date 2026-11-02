@@ -8,4 +8,15 @@
     <string name="bl_update_uptodate_title" translatable="true">အပ်ဒိတ် မတွေ့ပါ</string>
     <string name="bl_update_failed_title" translatable="true">ပိတ်ဆို့စာရင်း အပ်ဒိတ် မအောင်မြင်ပါ</string>
     <string name="bl_update_retry" translatable="true">ထပ်ကြိုးစားရန်</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// လင့်ခ် သို့မဟုတ် Xray JSON config ကို ကူးထည့်ပါ</string>
+    <string name="xray_status_on" translatable="true">Xray အလုပ်လုပ်နေသည်</string>
+    <string name="xray_status_off" translatable="true">Xray ရပ်ထားသည်</string>
+    <string name="xray_start" translatable="true">စတင်</string>
+    <string name="xray_stop" translatable="true">ရပ်</string>
+    <string name="xray_save" translatable="true">သိမ်းရန်</string>
+    <string name="xray_saved" translatable="true">သိမ်းပြီးပါပြီ</string>
+    <string name="xray_none" translatable="true">ပရိုဖိုင်ကို အရင်သိမ်းပါ</string>
+    <string name="xray_no_slot" translatable="true">Xray အတွက် SOCKS5 proxy သတ်မှတ်၍ မရပါ</string>
+    <string name="xray_error" translatable="true">Xray အမှား: %1$s</string>
 </resources>

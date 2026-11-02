@@ -756,4 +756,15 @@
     <string name="bl_update_uptodate_title" translatable="true">لم يتم العثور على تحديث</string>
     <string name="bl_update_failed_title" translatable="true">فشل تحديث قائمة الحظر</string>
     <string name="bl_update_retry" translatable="true">إعادة المحاولة</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">الصق رابط vless:// أو إعداد Xray بصيغة JSON</string>
+    <string name="xray_status_on" translatable="true">Xray قيد التشغيل</string>
+    <string name="xray_status_off" translatable="true">Xray متوقف</string>
+    <string name="xray_start" translatable="true">ابدأ</string>
+    <string name="xray_stop" translatable="true">أوقف</string>
+    <string name="xray_save" translatable="true">حفظ</string>
+    <string name="xray_saved" translatable="true">تم الحفظ</string>
+    <string name="xray_none" translatable="true">احفظ ملفاً شخصياً أولاً</string>
+    <string name="xray_no_slot" translatable="true">تعذّر تعيين وكيل SOCKS5 إلى Xray</string>
+    <string name="xray_error" translatable="true">خطأ في Xray: %1$s</string>
 </resources>

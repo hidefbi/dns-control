@@ -38,4 +38,15 @@
     <string name="bl_update_uptodate_title" translatable="true">No update found</string>
     <string name="bl_update_failed_title" translatable="true">Blocklist update failed</string>
     <string name="bl_update_retry" translatable="true">Retry</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Paste a vless:// link or an Xray JSON config</string>
+    <string name="xray_status_on" translatable="true">Xray is running</string>
+    <string name="xray_status_off" translatable="true">Xray is stopped</string>
+    <string name="xray_start" translatable="true">Start</string>
+    <string name="xray_stop" translatable="true">Stop</string>
+    <string name="xray_save" translatable="true">Save</string>
+    <string name="xray_saved" translatable="true">Saved</string>
+    <string name="xray_none" translatable="true">Save a profile first</string>
+    <string name="xray_no_slot" translatable="true">Could not point the SOCKS5 proxy at Xray</string>
+    <string name="xray_error" translatable="true">Xray error: %1$s</string>
 </resources>

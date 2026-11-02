@@ -830,4 +830,15 @@
     <string name="bl_update_uptodate_title" translatable="true">புதுப்பிப்பு எதுவும் இல்லை</string>
     <string name="bl_update_failed_title" translatable="true">தடுப்புப் பட்டியல் புதுப்பிப்பு தோல்வி</string>
     <string name="bl_update_retry" translatable="true">மீண்டும் முயற்சி</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// இணைப்பு அல்லது Xray JSON கட்டமைப்பை ஒட்டவும்</string>
+    <string name="xray_status_on" translatable="true">Xray இயங்குகிறது</string>
+    <string name="xray_status_off" translatable="true">Xray நிறுத்தப்பட்டுள்ளது</string>
+    <string name="xray_start" translatable="true">தொடங்கு</string>
+    <string name="xray_stop" translatable="true">நிறுத்து</string>
+    <string name="xray_save" translatable="true">சேமி</string>
+    <string name="xray_saved" translatable="true">சேமிக்கப்பட்டது</string>
+    <string name="xray_none" translatable="true">முதலில் ஒரு சுயவிவரத்தைச் சேமிக்கவும்</string>
+    <string name="xray_no_slot" translatable="true">Xray-க்கு SOCKS5 ப்ராக்ஸியை அமைக்க முடியவில்லை</string>
+    <string name="xray_error" translatable="true">Xray பிழை: %1$s</string>
 </resources>

@@ -128,4 +128,15 @@
     <string name="bl_update_uptodate_title" translatable="true">යාවත්කාලීන කිසිවක් හමු නොවීය</string>
     <string name="bl_update_failed_title" translatable="true">බ්ලොක්ලිස්ට් යාවත්කාලීනය අසාර්ථකයි</string>
     <string name="bl_update_retry" translatable="true">නැවත උත්සාහ කරන්න</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// සබැඳිය හෝ Xray JSON වින්‍යාසය ඇලවන්න</string>
+    <string name="xray_status_on" translatable="true">Xray ධාවනය වේ</string>
+    <string name="xray_status_off" translatable="true">Xray නවත්වා ඇත</string>
+    <string name="xray_start" translatable="true">ආරම්භ</string>
+    <string name="xray_stop" translatable="true">නවත්වන්න</string>
+    <string name="xray_save" translatable="true">සුරකින්න</string>
+    <string name="xray_saved" translatable="true">සුරකි</string>
+    <string name="xray_none" translatable="true">පළමුව පැතිකඩක් සුරකින්න</string>
+    <string name="xray_no_slot" translatable="true">Xray සඳහා SOCKS5 proxy සැකසිය නොහැකි විය</string>
+    <string name="xray_error" translatable="true">Xray දෝෂය: %1$s</string>
 </resources>

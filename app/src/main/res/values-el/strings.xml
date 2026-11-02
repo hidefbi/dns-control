@@ -143,4 +143,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Δεν βρέθηκε ενημέρωση</string>
     <string name="bl_update_failed_title" translatable="true">Η ενημέρωση της λίστας αποκλεισμού απέτυχε</string>
     <string name="bl_update_retry" translatable="true">Επανάληψη</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">Επικολλήστε σύνδεσμο vless:// ή ρύθμιση JSON του Xray</string>
+    <string name="xray_status_on" translatable="true">Το Xray εκτελείται</string>
+    <string name="xray_status_off" translatable="true">Το Xray είναι σταματημένο</string>
+    <string name="xray_start" translatable="true">Έναρξη</string>
+    <string name="xray_stop" translatable="true">Διακοπή</string>
+    <string name="xray_save" translatable="true">Αποθήκευση</string>
+    <string name="xray_saved" translatable="true">Αποθηκεύτηκε</string>
+    <string name="xray_none" translatable="true">Αποθηκεύστε πρώτα ένα προφίλ</string>
+    <string name="xray_no_slot" translatable="true">Δεν ήταν δυνατή η ρύθμιση του διακομιστή SOCKS5 στο Xray</string>
+    <string name="xray_error" translatable="true">Σφάλμα Xray: %1$s</string>
 </resources>

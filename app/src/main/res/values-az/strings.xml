@@ -7,4 +7,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Yeniləmə tapılmadı</string>
     <string name="bl_update_failed_title" translatable="true">Blok siyahısının yenilənməsi uğursuz oldu</string>
     <string name="bl_update_retry" translatable="true">Yenidən cəhd et</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// keçidini və ya Xray JSON konfiqurasiyasını yapışdırın</string>
+    <string name="xray_status_on" translatable="true">Xray işləyir</string>
+    <string name="xray_status_off" translatable="true">Xray dayandırılıb</string>
+    <string name="xray_start" translatable="true">Başlat</string>
+    <string name="xray_stop" translatable="true">Dayandır</string>
+    <string name="xray_save" translatable="true">Yadda saxla</string>
+    <string name="xray_saved" translatable="true">Yadda saxlanıldı</string>
+    <string name="xray_none" translatable="true">Əvvəlcə profil yadda saxlayın</string>
+    <string name="xray_no_slot" translatable="true">Xray üçün SOCKS5 proksi təyin edilə bilmədi</string>
+    <string name="xray_error" translatable="true">Xray xətası: %1$s</string>
     </resources>

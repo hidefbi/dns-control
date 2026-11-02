@@ -58,4 +58,15 @@
     <string name="bl_update_uptodate_title" translatable="true">Yangilanish topilmadi</string>
     <string name="bl_update_failed_title" translatable="true">Blokirovka roʻyxatini yangilash amalga oshmadi</string>
     <string name="bl_update_retry" translatable="true">Qayta urinish</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// havolasi yoki Xray JSON konfiguratsiyasini joylang</string>
+    <string name="xray_status_on" translatable="true">Xray ishlamoqda</string>
+    <string name="xray_status_off" translatable="true">Xray toʻxtatilgan</string>
+    <string name="xray_start" translatable="true">Boshlash</string>
+    <string name="xray_stop" translatable="true">Toʻxtatish</string>
+    <string name="xray_save" translatable="true">Saqlash</string>
+    <string name="xray_saved" translatable="true">Saqlandi</string>
+    <string name="xray_none" translatable="true">Avval profilni saqlang</string>
+    <string name="xray_no_slot" translatable="true">Xray uchun SOCKS5 proksini oʻrnatib boʻlmadi</string>
+    <string name="xray_error" translatable="true">Xray xatosi: %1$s</string>
 </resources>

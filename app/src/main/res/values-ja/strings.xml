@@ -470,4 +470,15 @@
     <string name="bl_update_uptodate_title" translatable="true">更新は見つかりませんでした</string>
     <string name="bl_update_failed_title" translatable="true">ブロックリストの更新に失敗しました</string>
     <string name="bl_update_retry" translatable="true">再試行</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// リンクまたは Xray の JSON 設定を貼り付けてください</string>
+    <string name="xray_status_on" translatable="true">Xray は実行中です</string>
+    <string name="xray_status_off" translatable="true">Xray は停止中です</string>
+    <string name="xray_start" translatable="true">開始</string>
+    <string name="xray_stop" translatable="true">停止</string>
+    <string name="xray_save" translatable="true">保存</string>
+    <string name="xray_saved" translatable="true">保存しました</string>
+    <string name="xray_none" translatable="true">先にプロファイルを保存してください</string>
+    <string name="xray_no_slot" translatable="true">Xray に SOCKS5 プロキシを設定できませんでした</string>
+    <string name="xray_error" translatable="true">Xray エラー: %1$s</string>
 </resources>

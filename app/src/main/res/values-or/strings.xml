@@ -10,4 +10,15 @@
     <string name="bl_update_uptodate_title" translatable="true">କୌଣସି ଅପଡେଟ୍ ମିଳିଲା ନାହିଁ</string>
     <string name="bl_update_failed_title" translatable="true">ବ୍ଲକ୍‌ଲିଷ୍ଟ ଅପଡେଟ୍ ବିଫଳ</string>
     <string name="bl_update_retry" translatable="true">ପୁନର୍ଚେଷ୍ଟା</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">vless:// ଲିଙ୍କ କିମ୍ବା Xray JSON କନଫିଗ୍ ପେଷ୍ଟ କରନ୍ତୁ</string>
+    <string name="xray_status_on" translatable="true">Xray ଚାଲୁଛି</string>
+    <string name="xray_status_off" translatable="true">Xray ବନ୍ଦ ଅଛି</string>
+    <string name="xray_start" translatable="true">ଆରମ୍ଭ</string>
+    <string name="xray_stop" translatable="true">ବନ୍ଦ</string>
+    <string name="xray_save" translatable="true">ସେଭ୍</string>
+    <string name="xray_saved" translatable="true">ସେଭ୍ ହୋଇଛି</string>
+    <string name="xray_none" translatable="true">ପ୍ରଥମେ ଏକ ପ୍ରୋଫାଇଲ୍ ସେଭ୍ କରନ୍ତୁ</string>
+    <string name="xray_no_slot" translatable="true">Xray ପାଇଁ SOCKS5 ପ୍ରକ୍ସି ସେଟ୍ କରି ହେଲା ନାହିଁ</string>
+    <string name="xray_error" translatable="true">Xray ତ୍ରୁଟି: %1$s</string>
 </resources>
