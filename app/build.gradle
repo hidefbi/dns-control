@@ -447,7 +447,7 @@ dependencies {
 // and can be executed from nativeLibraryDir. Nothing binary is kept in the source tree.
 def xrayVersion = 'v26.7.28'
 def xrayAsset = 'Xray-android-arm64-v8a.zip'
-def xrayAssetSha256 = 'REPLACE_WITH_SHA256_FROM_RELEASE_DGST'
+def xrayAssetSha256 = '3b27dc081a33b5aa6efdc7b492591b80fcc7d7973eb5a73267ef83d8b39e93da'
 def xrayWorkDir = layout.buildDirectory.dir('xray').get().asFile
 def xrayOutDir = layout.buildDirectory.dir('generated/xray').get().asFile
 
@@ -473,9 +473,11 @@ tasks.register('fetchXrayCore') {
         def abiDir = new File(xrayOutDir, 'arm64-v8a')
         abiDir.mkdirs()
         copy {
-            from zipTree(zip).matching { include 'xray' }
+            from zipTree(zip)
+            include '**/xray'
             into abiDir
-            rename { 'libxray.so' }
+            eachFile { FileCopyDetails d -> d.relativePath = new RelativePath(true, 'libxray.so') }
+            includeEmptyDirs = false
         }
         new File(abiDir, 'libxray.so').setExecutable(true, false)
     }
