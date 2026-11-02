@@ -127,7 +127,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
     /** Success text uses the theme's primary colour, so it follows light and dark themes. */
     private fun okColor(): Int =
-        MaterialColors.getColor(b.root, com.google.android.material.R.attr.colorPrimary)
+        MaterialColors.getColor(b.root, androidx.appcompat.R.attr.colorPrimary)
 
     private fun messageFor(problem: XrayConfig.Problem?): String {
         val res =
