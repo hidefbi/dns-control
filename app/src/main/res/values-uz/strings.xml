@@ -82,4 +82,7 @@
     <string name="xray_err_outbound" translatable="true">Foydalanish mumkin bo‘lgan VLESS chiqishi yo‘q: server manzili, port, UUID va publicKey kerak</string>
     <string name="xray_err_reality" translatable="true">Faqat Reality xavfsizligi qo‘llab-quvvatlanadi: streamSettings.security ni reality ga o‘rnating</string>
     <string name="xray_err_link" translatable="true">Noto‘g‘ri vless:// havola: UUID, host, port va sni, pbk parametrlarini tekshiring</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_back" translatable="true">Back</string>
+    <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

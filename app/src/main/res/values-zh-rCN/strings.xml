@@ -945,4 +945,7 @@
     <string name="xray_err_outbound" translatable="true">缺少可用的 VLESS 出站：需要服务器地址、端口、UUID 和 publicKey</string>
     <string name="xray_err_reality" translatable="true">仅支持 Reality 安全协议：请将 streamSettings.security 设为 reality</string>
     <string name="xray_err_link" translatable="true">vless:// 链接无效：请检查 UUID、主机、端口以及 sni 和 pbk 参数</string>
+    <string name="xray_vpn_hint" translatable="true">请先在主界面开启 App 的 VPN，Xray 只有在 VPN 开启时才会转发流量。</string>
+    <string name="xray_back" translatable="true">返回</string>
+    <string name="xray_err_placeholder" translatable="true">还有 %1$d 项需要填写：请替换高亮的 REPLACE_ 内容</string>
 </resources>

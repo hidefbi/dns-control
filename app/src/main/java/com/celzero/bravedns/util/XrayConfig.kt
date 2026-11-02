@@ -36,6 +36,93 @@ object XrayConfig {
     private const val DEFAULT_TRANSPORT = "tcp"
     private const val REALITY = "reality"
 
+    /** Values the user must replace before the config can be saved. */
+    private val PLACEHOLDER = Regex("REPLACE_[A-Z_]+")
+
+    /**
+     * Built-in client template for a VLESS+Reality server. Every REPLACE_ value must be filled in
+     * with the server's own data. Routing keeps private networks off the proxy; DNS is left to the
+     * app so that the blocklist keeps intercepting queries.
+     */
+    val TEMPLATE: String =
+        """
+        {
+          "log": {
+            "loglevel": "warning"
+          },
+          "inbounds": [
+            {
+              "tag": "socks-in",
+              "listen": "127.0.0.1",
+              "port": 10808,
+              "protocol": "socks",
+              "settings": {
+                "auth": "noauth",
+                "udp": true
+              }
+            }
+          ],
+          "outbounds": [
+            {
+              "tag": "proxy",
+              "protocol": "vless",
+              "settings": {
+                "vnext": [
+                  {
+                    "address": "REPLACE_SERVER_IP",
+                    "port": 443,
+                    "users": [
+                      {
+                        "id": "REPLACE_UUID",
+                        "encryption": "none",
+                        "flow": "xtls-rprx-vision"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "streamSettings": {
+                "network": "tcp",
+                "security": "reality",
+                "realitySettings": {
+                  "serverName": "REPLACE_SNI",
+                  "fingerprint": "chrome",
+                  "publicKey": "REPLACE_PUBLIC_KEY",
+                  "shortId": "REPLACE_SHORT_ID"
+                }
+              }
+            },
+            {
+              "tag": "direct",
+              "protocol": "freedom"
+            }
+          ],
+          "routing": {
+            "domainStrategy": "AsIs",
+            "rules": [
+              {
+                "type": "field",
+                "ip": [
+                  "10.0.0.0/8",
+                  "172.16.0.0/12",
+                  "192.168.0.0/16",
+                  "127.0.0.0/8",
+                  "169.254.0.0/16"
+                ],
+                "outboundTag": "direct"
+              }
+            ]
+          }
+        }
+        """.trimIndent()
+
+    /** Number of REPLACE_ values still left in [input]. */
+    fun placeholderCount(input: String): Int = PLACEHOLDER.findAll(input).count()
+
+    /** Ranges of the REPLACE_ values in [input], used to highlight them in the editor. */
+    fun placeholderRanges(input: String): List<IntRange> =
+        PLACEHOLDER.findAll(input).map { it.range }.toList()
+
     class InvalidLinkException(message: String) : IllegalArgumentException(message)
 
     data class VlessLink(
@@ -105,6 +192,7 @@ object XrayConfig {
 
     enum class Problem {
         EMPTY,
+        PLACEHOLDER,
         INVALID_JSON,
         INVALID_LINK,
         NO_OUTBOUND,
@@ -119,6 +207,7 @@ object XrayConfig {
     fun check(input: String): Problem? {
         val text = input.trim()
         if (text.isEmpty()) return Problem.EMPTY
+        if (PLACEHOLDER.containsMatchIn(text)) return Problem.PLACEHOLDER
         if (isVlessLink(text)) {
             return try {
                 parseVlessLink(text)

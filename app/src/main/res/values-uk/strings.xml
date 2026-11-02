@@ -888,4 +888,7 @@
     <string name="xray_err_outbound" translatable="true">Немає робочого outbound VLESS: потрібні адреса сервера, порт, UUID та publicKey</string>
     <string name="xray_err_reality" translatable="true">Підтримується лише безпека Reality: задайте streamSettings.security як reality</string>
     <string name="xray_err_link" translatable="true">Некоректне посилання vless://: перевірте UUID, хост, порт і параметри sni та pbk</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_back" translatable="true">Back</string>
+    <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

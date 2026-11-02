@@ -780,4 +780,7 @@
     <string name="xray_err_outbound" translatable="true">لا يوجد خرج VLESS صالح: مطلوب عنوان الخادم والمنفذ و UUID و publicKey</string>
     <string name="xray_err_reality" translatable="true">الأمان المدعوم هو Reality فقط: اضبط streamSettings.security على reality</string>
     <string name="xray_err_link" translatable="true">رابط vless:// غير صالح: تحقق من UUID والمضيف والمنفذ ومعاملي sni وpbk</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_back" translatable="true">Back</string>
+    <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

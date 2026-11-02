@@ -17,9 +17,14 @@ package com.celzero.bravedns.ui.activity
 
 import android.content.ClipboardManager
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.text.style.BackgroundColorSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
@@ -30,6 +35,7 @@ import com.celzero.bravedns.database.ProxyEndpoint
 import com.celzero.bravedns.databinding.ActivityXrayBinding
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.ProxyManager
+import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.util.Utilities
@@ -43,6 +49,9 @@ import org.koin.android.ext.android.inject
 /**
  * Edits the xray profile (vless link or xray JSON), checks it as the user types, and starts or
  * stops xray-core. Starting also points the custom SOCKS5 proxy at the local xray inbound.
+ *
+ * A fresh install opens with the built-in client template; its REPLACE_ values are highlighted
+ * and block saving until they are filled in.
  */
 class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
@@ -56,7 +65,8 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         errorColor = b.xrayProblem.currentTextColor
-        b.xrayInput.setText(runner.savedProfile().orEmpty())
+        b.xrayToolbar.setNavigationOnClickListener { finish() }
+        b.xrayInput.setText(runner.savedProfile() ?: XrayConfig.TEMPLATE)
         b.xrayInput.addTextChangedListener(
             object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
@@ -64,6 +74,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
 
                 override fun afterTextChanged(s: Editable?) {
+                    s?.let { highlightPlaceholders(it) }
                     validate()
                 }
             }
@@ -90,20 +101,40 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
             b.xrayProblem.visibility = View.GONE
         } else {
             b.xrayProblem.visibility = View.VISIBLE
-            b.xrayProblem.text = getString(messageFor(problem))
+            b.xrayProblem.text = messageFor(problem, text)
             b.xrayProblem.setTextColor(if (problem == null) b.xrayStatus.currentTextColor else errorColor)
         }
         return problem
     }
 
-    private fun messageFor(problem: XrayConfig.Problem?): Int {
-        return when (problem) {
-            null -> R.string.xray_ok
-            XrayConfig.Problem.EMPTY -> R.string.xray_err_empty
-            XrayConfig.Problem.INVALID_JSON -> R.string.xray_err_json
-            XrayConfig.Problem.INVALID_LINK -> R.string.xray_err_link
-            XrayConfig.Problem.NOT_REALITY -> R.string.xray_err_reality
-            else -> R.string.xray_err_outbound
+    private fun messageFor(problem: XrayConfig.Problem?, text: String): String {
+        val res =
+            when (problem) {
+                null -> return getString(R.string.xray_ok)
+                XrayConfig.Problem.EMPTY -> R.string.xray_err_empty
+                XrayConfig.Problem.PLACEHOLDER ->
+                    return getString(
+                        R.string.xray_err_placeholder,
+                        XrayConfig.placeholderCount(text)
+                    )
+                XrayConfig.Problem.INVALID_JSON -> R.string.xray_err_json
+                XrayConfig.Problem.INVALID_LINK -> R.string.xray_err_link
+                XrayConfig.Problem.NOT_REALITY -> R.string.xray_err_reality
+                else -> R.string.xray_err_outbound
+            }
+        return getString(res)
+    }
+
+    /** Dark, bold text on a light highlight, so the values to replace stand out in any theme. */
+    private fun highlightPlaceholders(text: Editable) {
+        text.getSpans(0, text.length, ForegroundColorSpan::class.java).forEach { text.removeSpan(it) }
+        text.getSpans(0, text.length, BackgroundColorSpan::class.java).forEach { text.removeSpan(it) }
+        text.getSpans(0, text.length, StyleSpan::class.java).forEach { text.removeSpan(it) }
+        for (range in XrayConfig.placeholderRanges(text.toString())) {
+            val end = range.last + 1
+            text.setSpan(ForegroundColorSpan(PLACEHOLDER_TEXT), range.first, end, 0)
+            text.setSpan(BackgroundColorSpan(PLACEHOLDER_BG), range.first, end, 0)
+            text.setSpan(StyleSpan(Typeface.BOLD), range.first, end, 0)
         }
     }
 
@@ -153,10 +184,15 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
     }
 
     private fun toggleXray() {
+        val starting = !XrayRunner.isRunning()
+        // xray only carries traffic that the VPN sends to it, so warn when the VPN is off
+        if (starting && !VpnController.isOn()) {
+            toast(getString(R.string.xray_vpn_hint))
+        }
         b.xrayToggle.isEnabled = false
         lifecycleScope.launch(Dispatchers.IO) {
             val result: Result<Unit> =
-                if (XrayRunner.isRunning()) {
+                if (!starting) {
                     runner.stop()
                     // without this the SOCKS5 slot would keep pointing at a dead local port
                     appConfig.removeProxy(
@@ -226,5 +262,10 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
     private fun toast(message: String) {
         Utilities.showToastUiCentered(this, message, Toast.LENGTH_SHORT)
+    }
+
+    companion object {
+        private val PLACEHOLDER_TEXT = Color.parseColor("#1A1A1A")
+        private val PLACEHOLDER_BG = Color.parseColor("#FFE082")
     }
 }

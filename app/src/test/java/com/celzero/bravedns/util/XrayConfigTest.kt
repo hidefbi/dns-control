@@ -186,6 +186,33 @@ class XrayConfigTest {
     }
 
     @Test
+    fun builtInTemplateNeedsFillingIn() {
+        assertEquals(5, XrayConfig.placeholderCount(XrayConfig.TEMPLATE))
+        assertEquals(XrayConfig.Problem.PLACEHOLDER, XrayConfig.check(XrayConfig.TEMPLATE))
+    }
+
+    @Test
+    fun filledTemplateIsAccepted() {
+        val filled =
+            XrayConfig.TEMPLATE
+                .replace("REPLACE_SERVER_IP", "203.0.113.10")
+                .replace("REPLACE_UUID", "11111111-2222-3333-4444-555555555555")
+                .replace("REPLACE_SNI", "www.example.org")
+                .replace("REPLACE_PUBLIC_KEY", "PUBKEY123")
+                .replace("REPLACE_SHORT_ID", "abcd")
+        assertEquals(0, XrayConfig.placeholderCount(filled))
+        assertNull(XrayConfig.check(filled))
+    }
+
+    @Test
+    fun formatKeepsBuiltInTemplateParseable() {
+        assertEquals(
+            XrayConfig.check(XrayConfig.TEMPLATE),
+            XrayConfig.check(XrayConfig.format(XrayConfig.TEMPLATE))
+        )
+    }
+
+    @Test
     fun jsonStringEscapesQuotesBackslashesAndControls() {
         assertEquals("\"a\\\"b\\\\c\"", XrayConfig.jsonString("a\"b\\c"))
         assertEquals("\"x\\ny\"", XrayConfig.jsonString("x\ny"))
