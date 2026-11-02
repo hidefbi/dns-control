@@ -104,9 +104,15 @@ class XrayRunner(private val context: Context) {
             process = started
 
             Thread {
-                    // xray output can name destinations, so it is only shown in debug builds
-                    started.inputStream.bufferedReader().forEachLine {
-                        if (BuildConfig.DEBUG) Log.i(CORE_TAG, it)
+                    // xray output can name destinations, so it is only shown in debug builds.
+                    // stop() closes this stream, which throws here; that is the normal end of
+                    // the reader, and must not escape the thread, or the whole app crashes.
+                    try {
+                        started.inputStream.bufferedReader().forEachLine {
+                            if (BuildConfig.DEBUG) Log.i(CORE_TAG, it)
+                        }
+                    } catch (e: Exception) {
+                        if (BuildConfig.DEBUG) Log.i(TAG, "xray output closed: ${e.message}")
                     }
                 }
                 .apply {
