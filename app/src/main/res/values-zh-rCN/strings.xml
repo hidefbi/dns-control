@@ -959,4 +959,12 @@
     <string name="xray_chip_off" translatable="true">未启动</string>
     <string name="xray_footer_need" translatable="true">保存需填满 %1$d 项；启动需先开启 VPN</string>
     <string name="xray_footer_ok" translatable="true">启动需先开启 VPN</string>
+    <string name="xray_enable_title" translatable="true">随 VPN 启用 Xray</string>
+    <string name="xray_enable_on" translatable="true">已启用：开启 VPN 时自动启动 Xray</string>
+    <string name="xray_enable_off" translatable="true">未启用：VPN 直连，不经过 Xray</string>
+    <string name="xray_enable_blocked" translatable="true">请先关闭「VPN 内路由本应用」选项</string>
+    <string name="xray_enable_running" translatable="true">下次开启 VPN 时生效</string>
+    <string name="xray_err_json_at" translatable="true">第 %1$d 行，第 %2$d 列：JSON 语法错误</string>
+    <string name="xray_footer_fill" translatable="true">还需填写 %1$d 项才能保存</string>
+    <string name="xray_footer_save" translatable="true">保存后，下次开启 VPN 时使用这份配置</string>
 </resources>

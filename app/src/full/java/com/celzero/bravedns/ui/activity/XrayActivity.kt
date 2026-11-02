@@ -18,9 +18,10 @@ package com.celzero.bravedns.ui.activity
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.style.BackgroundColorSpan
@@ -31,18 +32,15 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
-import com.celzero.bravedns.data.AppConfig
-import com.celzero.bravedns.database.ProxyEndpoint
 import com.celzero.bravedns.databinding.ActivityXrayBinding
 import com.celzero.bravedns.service.PersistentState
-import com.celzero.bravedns.service.ProxyManager
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.XrayConfig
-import com.google.android.material.color.MaterialColors
 import com.google.android.material.chip.Chip
+import com.google.android.material.color.MaterialColors
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -50,24 +48,26 @@ import org.json.JSONException
 import org.koin.android.ext.android.inject
 
 /**
- * Edits the xray profile (vless link or xray JSON), checks it as the user types, and starts or
- * stops xray-core. Starting also points the custom SOCKS5 proxy at the local xray inbound.
+ * Edits the xray profile (vless link or xray JSON). Xray itself is not started here: it runs
+ * with the VPN, which is switched on from the main screen. This page only decides whether xray
+ * starts with the VPN, and checks the profile as the user types.
  *
  * A fresh install opens with the built-in client template. Its REPLACE_ values are listed as
- * missing fields with a progress bar, highlighted in the code, and block saving until filled in.
+ * missing fields, highlighted in the code, and block saving until filled in.
  */
 class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
     private val b by viewBinding(ActivityXrayBinding::bind)
-    private val appConfig by inject<AppConfig>()
     private val persistentState by inject<PersistentState>()
     private val runner by lazy { XrayRunner(applicationContext) }
-    // error colour comes from the layout (?attr/colorError); captured before it is ever changed
-    private var errorColor = 0
+    private val handler = Handler(Looper.getMainLooper())
+    private val refresh = Runnable { refresh() }
+
+    // 1-based line of the JSON syntax error, or -1 when there is none
+    private var errorLine = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        errorColor = b.xrayProblem.currentTextColor
         b.xrayToolbar.setNavigationOnClickListener { finish() }
         b.xrayInput.setText(runner.savedProfile() ?: XrayConfig.TEMPLATE)
         b.xrayInput.addTextChangedListener(
@@ -77,92 +77,142 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
 
                 override fun afterTextChanged(s: Editable?) {
-                    s?.let { highlight(it) }
-                    validate()
-                    b.xrayInput.post { updateGutter() }
+                    scheduleRefresh()
                 }
             }
         )
-        // the line numbers follow wrapping and size changes, not only text edits
+        // line numbers follow wrapping and size changes, not only text edits
         b.xrayInput.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ -> updateGutter() }
         b.xrayPaste.setOnClickListener { pasteFromClipboard() }
         b.xrayFormat.setOnClickListener { formatInput() }
         b.xrayClear.setOnClickListener { b.xrayInput.setText("") }
         b.xraySave.setOnClickListener { saveProfile() }
-        b.xrayToggle.setOnClickListener { toggleXray() }
-        b.xrayInput.text?.let { highlight(it) }
-        validate()
-        renderStatus()
-        b.xrayInput.post { updateGutter() }
+
+        // set the state before the listener, so that it does not fire for the initial value
+        b.xrayEnable.isChecked = persistentState.xrayEnabled
+        b.xrayEnable.setOnCheckedChangeListener { _, checked -> onEnableChanged(checked) }
+        refresh()
     }
 
-    /** Checks the current text, updates the progress, message, footer and buttons. */
-    private fun validate(): XrayConfig.Problem? {
-        val text = b.xrayInput.text.toString()
-        val problem = XrayConfig.check(text)
-        val blank = text.isBlank()
-        val valid = !blank && problem == null
-        val pending = problem == XrayConfig.Problem.PLACEHOLDER
+    override fun onResume() {
+        super.onResume()
+        renderStatus()
+    }
 
+    override fun onDestroy() {
+        handler.removeCallbacks(refresh)
+        super.onDestroy()
+    }
+
+    /** Debounced: checking and colouring the whole JSON on every key press is wasteful. */
+    private fun scheduleRefresh() {
+        handler.removeCallbacks(refresh)
+        handler.postDelayed(refresh, DEBOUNCE_MS)
+    }
+
+    private fun refresh() {
+        // validate first: it sets the error line that the highlight uses
+        validate()
+        b.xrayInput.text?.let { highlight(it) }
+        updateGutter()
+    }
+
+    private fun onEnableChanged(checked: Boolean) {
+        // xray cannot run together with "route the app through the VPN": its traffic would loop
+        if (checked && persistentState.routeRethinkInRethink) {
+            b.xrayEnable.isChecked = false
+            toast(getString(R.string.xray_enable_blocked))
+            return
+        }
+        persistentState.xrayEnabled = checked
+        if (VpnController.isOn()) toast(getString(R.string.xray_enable_running))
+        renderStatus()
+    }
+
+    /** Checks the current text and updates the progress, message, footer and buttons. */
+    private fun validate() {
+        val text = b.xrayInput.text.toString()
+        val blank = text.isBlank()
+        val problem = XrayConfig.check(text)
+        val valid = !blank && problem == null
         b.xraySave.isEnabled = valid
         b.xrayFormat.isEnabled = valid
-        renderProgress(text, pending)
 
-        // while fields are missing, the progress card says what is left, so no extra message
-        val showMessage = !blank && !pending
-        b.xrayProblem.visibility = if (showMessage) View.VISIBLE else View.GONE
-        if (showMessage) {
-            b.xrayProblem.text = messageFor(problem)
-            b.xrayProblem.setTextColor(if (problem == null) okColor() else errorColor)
-        }
-
-        b.xrayFooter.text =
-            if (pending) {
-                getString(R.string.xray_footer_need, XrayConfig.placeholderCount(text))
+        errorLine =
+            if (problem == XrayConfig.Problem.INVALID_JSON) {
+                XrayConfig.errorSpot(text)?.line ?: -1
             } else {
-                getString(R.string.xray_footer_ok)
+                -1
             }
-        return problem
+
+        val missing = if (blank) null else XrayConfig.missingFields(text)
+        renderProgress(missing)
+
+        val pending = problem == XrayConfig.Problem.PLACEHOLDER && !missing.isNullOrEmpty()
+        b.xrayFooter.text =
+            if (!missing.isNullOrEmpty()) {
+                getString(R.string.xray_footer_fill, missing.size)
+            } else {
+                getString(R.string.xray_footer_save)
+            }
+
+        // while values are missing, the progress card already says what is left
+        b.xrayProblem.visibility = if (blank || pending) View.GONE else View.VISIBLE
+        if (!blank && !pending) {
+            b.xrayProblem.text = messageFor(problem, text)
+            b.xrayProblem.setTextColor(
+                if (problem == null) {
+                    MaterialColors.getColor(b.root, androidx.appcompat.R.attr.colorPrimary)
+                } else {
+                    MaterialColors.getColor(b.root, com.google.android.material.R.attr.colorError)
+                }
+            )
+        }
     }
 
-    /** Success text uses the theme's primary colour, so it follows light and dark themes. */
-    private fun okColor(): Int =
-        MaterialColors.getColor(b.root, androidx.appcompat.R.attr.colorPrimary)
-
-    private fun messageFor(problem: XrayConfig.Problem?): String {
-        val res =
-            when (problem) {
-                null -> R.string.xray_ok
-                XrayConfig.Problem.EMPTY -> R.string.xray_err_empty
-                XrayConfig.Problem.INVALID_JSON -> R.string.xray_err_json
-                XrayConfig.Problem.INVALID_LINK -> R.string.xray_err_link
-                XrayConfig.Problem.NOT_REALITY -> R.string.xray_err_reality
-                else -> R.string.xray_err_outbound
+    private fun messageFor(problem: XrayConfig.Problem?, text: String): String {
+        return when (problem) {
+            null -> getString(R.string.xray_ok)
+            XrayConfig.Problem.EMPTY -> getString(R.string.xray_err_empty)
+            XrayConfig.Problem.PLACEHOLDER ->
+                getString(R.string.xray_err_placeholder, XrayConfig.placeholderCount(text))
+            XrayConfig.Problem.INVALID_JSON -> {
+                val spot = XrayConfig.errorSpot(text)
+                if (spot == null) {
+                    getString(R.string.xray_err_json)
+                } else {
+                    getString(R.string.xray_err_json_at, spot.line, spot.column)
+                }
             }
-        return getString(res)
+            XrayConfig.Problem.INVALID_LINK -> getString(R.string.xray_err_link)
+            XrayConfig.Problem.NOT_REALITY -> getString(R.string.xray_err_reality)
+            else -> getString(R.string.xray_err_outbound)
+        }
     }
 
-    /** The five values of the built-in template, in the order they appear in the progress card. */
-    private val fieldLabels =
-        linkedMapOf(
-            "REPLACE_SERVER_IP" to R.string.xray_field_server,
-            "REPLACE_UUID" to R.string.xray_field_uuid,
-            "REPLACE_SNI" to R.string.xray_field_sni,
-            "REPLACE_PUBLIC_KEY" to R.string.xray_field_pubkey,
-            "REPLACE_SHORT_ID" to R.string.xray_field_shortid,
-        )
+    private fun labelOf(field: XrayConfig.Field): Int {
+        return when (field) {
+            XrayConfig.Field.SERVER_ADDRESS -> R.string.xray_field_server
+            XrayConfig.Field.UUID -> R.string.xray_field_uuid
+            XrayConfig.Field.SERVER_NAME -> R.string.xray_field_sni
+            XrayConfig.Field.PUBLIC_KEY -> R.string.xray_field_pubkey
+            XrayConfig.Field.SHORT_ID -> R.string.xray_field_shortid
+        }
+    }
 
-    private fun renderProgress(text: String, pending: Boolean) {
-        b.xrayProgressCard.visibility = if (pending) View.VISIBLE else View.GONE
-        if (!pending) return
-
-        val missing = fieldLabels.filterKeys { text.contains(it) }.values
-        val total = fieldLabels.size
+    /** Shows the card only while values are missing; the counts come from the real fields. */
+    private fun renderProgress(missing: List<XrayConfig.Field>?) {
+        if (missing.isNullOrEmpty()) {
+            b.xrayProgressCard.visibility = View.GONE
+            return
+        }
+        b.xrayProgressCard.visibility = View.VISIBLE
+        val total = XrayConfig.Field.values().size
         b.xrayProgress.max = total
         b.xrayProgress.setProgressCompat(total - missing.size, true)
         b.xrayProgressLeft.text = getString(R.string.xray_progress_left, missing.size)
         b.xrayMissing.removeAllViews()
-        missing.forEach { b.xrayMissing.addView(buildFieldChip(getString(it))) }
+        missing.forEach { b.xrayMissing.addView(buildFieldChip(getString(labelOf(it)))) }
     }
 
     /** A non-clickable chip in the theme's error container colours, one per missing field. */
@@ -188,27 +238,68 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         }
     }
 
-    /** Colours keys, string values and REPLACE_ items in the code panel. */
+    /** Theme colours for the code: keys, values, the placeholders and the error line. */
+    private data class Palette(
+        val key: Int,
+        val value: Int,
+        val placeholderText: Int,
+        val placeholderBg: Int,
+        val errorBg: Int,
+    )
+
+    private fun palette(): Palette {
+        return Palette(
+            key = MaterialColors.getColor(b.root, androidx.appcompat.R.attr.colorPrimary),
+            value = MaterialColors.getColor(b.root, com.google.android.material.R.attr.colorTertiary),
+            placeholderText =
+                MaterialColors.getColor(
+                    b.root,
+                    com.google.android.material.R.attr.colorOnTertiaryContainer
+                ),
+            placeholderBg =
+                MaterialColors.getColor(b.root, com.google.android.material.R.attr.colorTertiaryContainer),
+            errorBg = MaterialColors.getColor(b.root, com.google.android.material.R.attr.colorErrorContainer),
+        )
+    }
+
     private fun highlight(text: Editable) {
         text.getSpans(0, text.length, ForegroundColorSpan::class.java).forEach { text.removeSpan(it) }
         text.getSpans(0, text.length, BackgroundColorSpan::class.java).forEach { text.removeSpan(it) }
         text.getSpans(0, text.length, StyleSpan::class.java).forEach { text.removeSpan(it) }
 
+        val colors = palette()
         val source = text.toString()
-        val keys = KEY.findAll(source).map { it.range.first }.toSet()
-        // values first, then keys, then placeholders on top
+        val keys = KEY.findAll(source).toList()
+        val keyStarts = keys.map { it.range.first }.toSet()
+        // values first, then keys, then the error line and placeholders on top
         STRING.findAll(source)
-            .filter { it.range.first !in keys }
-            .forEach { text.setSpan(ForegroundColorSpan(COLOR_VALUE), it.range.first, it.range.last + 1, 0) }
-        KEY.findAll(source).forEach {
-            text.setSpan(ForegroundColorSpan(COLOR_KEY), it.range.first, it.range.last + 1, 0)
+            .filter { it.range.first !in keyStarts }
+            .forEach { setFg(text, it.range.first, it.range.last + 1, colors.value) }
+        keys.forEach { setFg(text, it.range.first, it.range.last + 1, colors.key) }
+
+        lineRange(source, errorLine)?.let {
+            text.setSpan(BackgroundColorSpan(colors.errorBg), it.first, it.last + 1, 0)
         }
         for (range in XrayConfig.placeholderRanges(source)) {
             val end = range.last + 1
-            text.setSpan(ForegroundColorSpan(COLOR_PLACEHOLDER), range.first, end, 0)
-            text.setSpan(BackgroundColorSpan(COLOR_PLACEHOLDER_BG), range.first, end, 0)
+            setFg(text, range.first, end, colors.placeholderText)
+            text.setSpan(BackgroundColorSpan(colors.placeholderBg), range.first, end, 0)
             text.setSpan(StyleSpan(Typeface.BOLD), range.first, end, 0)
         }
+    }
+
+    private fun setFg(text: Editable, start: Int, end: Int, color: Int) {
+        text.setSpan(ForegroundColorSpan(color), start, end, 0)
+    }
+
+    /** Character range of the given 1-based line, or null when there is no such line. */
+    private fun lineRange(source: String, line: Int): IntRange? {
+        if (line <= 0) return null
+        val lines = source.split('\n')
+        if (line > lines.size) return null
+        var start = 0
+        for (n in 0 until line - 1) start += lines[n].length + 1
+        return start until start + lines[line - 1].length
     }
 
     /**
@@ -262,13 +353,16 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         val running = XrayRunner.isRunning()
         b.xrayChipStatus.text =
             getString(if (running) R.string.xray_chip_on else R.string.xray_chip_off)
-        b.xrayToggle.text = getString(if (running) R.string.xray_stop else R.string.xray_start)
+        b.xrayEnableNote.text =
+            getString(
+                if (persistentState.xrayEnabled) R.string.xray_enable_on else R.string.xray_enable_off
+            )
     }
 
     private fun saveProfile() {
         val text = b.xrayInput.text.toString()
         if (XrayConfig.check(text) != null) {
-            validate()
+            refresh()
             return
         }
         lifecycleScope.launch(Dispatchers.IO) {
@@ -279,96 +373,15 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         }
     }
 
-    private fun toggleXray() {
-        val starting = !XrayRunner.isRunning()
-        // xray only carries traffic that the VPN sends to it, so warn when the VPN is off
-        if (starting && !VpnController.isOn()) {
-            toast(getString(R.string.xray_vpn_hint))
-        }
-        b.xrayToggle.isEnabled = false
-        lifecycleScope.launch(Dispatchers.IO) {
-            val result: Result<Unit> =
-                if (!starting) {
-                    runner.stop()
-                    // without this the SOCKS5 slot would keep pointing at a dead local port
-                    appConfig.removeProxy(
-                        AppConfig.ProxyType.SOCKS5,
-                        AppConfig.ProxyProvider.CUSTOM
-                    )
-                    Result.success(Unit)
-                } else {
-                    startXray()
-                }
-            withContext(Dispatchers.Main) {
-                b.xrayToggle.isEnabled = true
-                result.exceptionOrNull()?.let { showError(it) }
-                renderStatus()
-            }
-        }
-    }
-
-    private suspend fun startXray(): Result<Unit> {
-        // when the app's own traffic is routed through the VPN, xray's outbound would loop back
-        if (persistentState.routeRethinkInRethink) {
-            return Result.failure(IllegalStateException(getString(R.string.xray_rethink_on)))
-        }
-
-        val profile = runner.savedProfile()
-        if (profile.isNullOrBlank()) {
-            return Result.failure(IllegalStateException(getString(R.string.xray_none)))
-        }
-
-        val started = runner.start(profile)
-        if (started.isFailure) return started
-
-        if (!registerSocks5()) {
-            runner.stop()
-            return Result.failure(IllegalStateException(getString(R.string.xray_no_slot)))
-        }
-        return started
-    }
-
-    /** Points the custom SOCKS5 slot at the local xray inbound. */
-    private suspend fun registerSocks5(): Boolean {
-        val current = appConfig.getSocks5ProxyDetails() ?: return false
-        val endpoint =
-            ProxyEndpoint(
-                id = current.id,
-                proxyName = "XRAY",
-                proxyMode = ProxyManager.ProxyMode.SOCKS5.value,
-                proxyType = ProxyEndpoint.DEFAULT_PROXY_TYPE,
-                proxyAppName = "",
-                proxyIP = XrayConfig.LOCAL_HOST,
-                proxyPort = XrayConfig.LOCAL_PORT,
-                userName = null,
-                password = null,
-                isSelected = true,
-                isCustom = true,
-                isUDP = true,
-                modifiedDataTime = 0L,
-                latency = 0,
-            )
-        appConfig.updateCustomSocks5Proxy(endpoint)
-        return true
-    }
-
-    private fun showError(error: Throwable) {
-        toast(getString(R.string.xray_error, error.message ?: error.javaClass.simpleName))
-    }
-
     private fun toast(message: String) {
         Utilities.showToastUiCentered(this, message, Toast.LENGTH_SHORT)
     }
 
     companion object {
+        private const val DEBOUNCE_MS = 300L
+
         // matches a JSON key ("name" followed by a colon) and a string value
         private val KEY = Regex("\"(?:[^\"\\\\]|\\\\.)*\"(?=\\s*:)")
         private val STRING = Regex("\"(?:[^\"\\\\]|\\\\.)*\"")
-
-        // code panel colours; the panel itself is fixed dark in both themes
-        private val COLOR_KEY = Color.parseColor("#9CDCFE")
-        private val COLOR_VALUE = Color.parseColor("#CE9178")
-        private val COLOR_PLACEHOLDER = Color.parseColor("#FFD166")
-        private val COLOR_PLACEHOLDER_BG = Color.parseColor("#4D3D12")
     }
 }

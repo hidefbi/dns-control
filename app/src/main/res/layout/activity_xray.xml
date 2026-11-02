@@ -44,7 +44,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="16dp">
 
-            <!-- progress: only shown while REPLACE_ values remain -->
+            <!-- progress: shown while required values are still missing -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/xray_progress_card"
                 android:layout_width="match_parent"
@@ -184,15 +184,16 @@
                     app:strokeColor="?attr/colorError" />
             </LinearLayout>
 
-            <!-- code area: fixed dark panel in both themes, like an editor -->
+            <!-- code panel: follows the theme; the error line is tinted by the code -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                app:cardBackgroundColor="#1E1E24"
+                app:cardBackgroundColor="?attr/colorSurfaceContainerHighest"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="0dp"
-                app:strokeWidth="0dp">
+                app:strokeColor="?attr/colorOutlineVariant"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -211,7 +212,7 @@
                         android:gravity="end"
                         android:minWidth="28dp"
                         android:paddingEnd="10dp"
-                        android:textColor="#6B6F7A"
+                        android:textColor="?attr/colorOnSurfaceVariant"
                         android:textSize="13sp" />
 
                     <androidx.appcompat.widget.AppCompatEditText
@@ -226,14 +227,14 @@
                         android:inputType="textMultiLine|textNoSuggestions"
                         android:minHeight="240dp"
                         android:padding="0dp"
-                        android:textColor="#E6E6EA"
+                        android:textColor="?attr/colorOnSurface"
                         android:textSize="13sp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>
 
-    <!-- bottom bar: footer hint and the two main actions -->
+    <!-- bottom bar: the switch that ties xray to the VPN, the footer hint and save -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -244,36 +245,36 @@
         android:paddingTop="12dp"
         android:paddingBottom="16dp">
 
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/xray_enable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/xray_enable_title"
+            android:textAppearance="?attr/textAppearanceTitleSmall"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/xray_enable_note"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/xray_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:textAppearance="?attr/textAppearanceBodySmall"
             android:textColor="?attr/colorOnSurfaceVariant" />
 
-        <LinearLayout
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/xray_save"
+            style="@style/Widget.Material3.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/xray_toggle"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/xray_start" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/xray_save"
-                style="@style/Widget.Material3.Button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="@string/xray_save" />
-        </LinearLayout>
+            android:text="@string/xray_save" />
     </LinearLayout>
 </LinearLayout>

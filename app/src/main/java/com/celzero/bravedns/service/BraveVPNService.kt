@@ -254,6 +254,7 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     private val appConfig by inject<AppConfig>()
     private val orbotHelper by inject<OrbotHelper>()
     private val persistentState by inject<PersistentState>()
+    private val xrayController by lazy { XrayController(this, appConfig, persistentState) }
     private val rdb by inject<RefreshDatabase>()
 
     @Volatile
@@ -2719,6 +2720,9 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         unobserveDnsRelay()
         persistentState.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this)
 
+        // stop xray and drop its SOCKS5 slot now; vpnScope is cancelled below, so this must not
+        // be queued on it, or xray could keep running after the VPN has stopped
+        xrayController.stopNow()
         // onVpnStart is also called from the main thread (ui)
         io("cmVpnStop") { connectionMonitor.onVpnStop() }
         networkLifecycleObserver.stop()
@@ -2858,6 +2862,19 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     }
 
     private suspend fun establishVpn(networks: Networks, mtu: Int): ParcelFileDescriptor? {
+        // xray must listen before the tunnel carries traffic. If it cannot start, do not bring the
+        // VPN up, otherwise traffic would silently go direct
+        val xray = xrayController.startForVpn()
+        if (xray.isFailure) {
+            withContext(Dispatchers.Main) {
+                showToastUiCentered(
+                    this@BraveVPNService,
+                    getString(R.string.xray_error, xray.exceptionOrNull()?.message.orEmpty()),
+                    Toast.LENGTH_LONG
+                )
+            }
+            return null
+        }
         try {
             val s = StringBuilder()
             val pendingIntent =

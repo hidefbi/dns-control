@@ -303,6 +303,9 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // route rethink in rethink
     var routeRethinkInRethink by booleanPref("route_rethink_in_rethink").withDefault<Boolean>(false)
 
+    // run xray-core together with the VPN; started before the tunnel, stopped with it
+    var xrayEnabled by booleanPref("xray_enabled").withDefault<Boolean>(false)
+
     // perform connectivity checks
     var connectivityChecks by
         booleanPref("connectivity_check").withDefault<Boolean>(Utilities.isPlayStoreFlavour())

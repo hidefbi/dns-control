@@ -213,6 +213,41 @@ class XrayConfigTest {
     }
 
     @Test
+    fun missingFieldsListsEveryFieldOfTheTemplate() {
+        assertEquals(XrayConfig.Field.values().toList(), XrayConfig.missingFields(XrayConfig.TEMPLATE))
+    }
+
+    @Test
+    fun missingFieldsIsEmptyWhenFilledIn() {
+        val filled =
+            XrayConfig.TEMPLATE
+                .replace("REPLACE_SERVER_IP", "203.0.113.10")
+                .replace("REPLACE_UUID", "11111111-2222-3333-4444-555555555555")
+                .replace("REPLACE_SNI", "www.example.org")
+                .replace("REPLACE_PUBLIC_KEY", "PUBKEY123")
+                .replace("REPLACE_SHORT_ID", "abcd")
+        assertEquals(emptyList<XrayConfig.Field>(), XrayConfig.missingFields(filled))
+    }
+
+    @Test
+    fun missingFieldsIsNullForVlessLinkAndBrokenJson() {
+        assertNull(XrayConfig.missingFields(fullLink))
+        assertNull(XrayConfig.missingFields("{ not json"))
+    }
+
+    @Test
+    fun errorSpotIsNullForValidJson() {
+        assertNull(XrayConfig.errorSpot("{\"a\":1}"))
+    }
+
+    @Test
+    fun errorSpotPointsAtBrokenLine() {
+        // the missing comma after 1 is on line 2 or later, never on line 1
+        val spot = XrayConfig.errorSpot("{\n  \"a\": 1\n  \"b\": 2\n}")
+        assertTrue(spot != null && spot.line >= 2)
+    }
+
+    @Test
     fun jsonStringEscapesQuotesBackslashesAndControls() {
         assertEquals("\"a\\\"b\\\\c\"", XrayConfig.jsonString("a\"b\\c"))
         assertEquals("\"x\\ny\"", XrayConfig.jsonString("x\ny"))

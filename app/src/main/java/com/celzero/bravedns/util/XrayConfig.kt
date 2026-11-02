@@ -248,6 +248,89 @@ object XrayConfig {
         return null
     }
 
+    /** The values the user must fill in for a VLESS+Reality server. */
+    enum class Field {
+        SERVER_ADDRESS,
+        UUID,
+        SERVER_NAME,
+        PUBLIC_KEY,
+        SHORT_ID,
+    }
+
+    /**
+     * Required fields of the first vless outbound that are still empty or still REPLACE_ values.
+     * Null when the input is not an xray JSON object (a vless link, or JSON that does not parse).
+     */
+    fun missingFields(input: String): List<Field>? {
+        val text = input.trim()
+        if (text.isEmpty() || isVlessLink(text)) return null
+        val root =
+            try {
+                JSONObject(text)
+            } catch (e: JSONException) {
+                return null
+            }
+        val outbounds = root.optJSONArray("outbounds")
+        val vless =
+            (0 until (outbounds?.length() ?: 0))
+                .mapNotNull { outbounds?.optJSONObject(it) }
+                .firstOrNull { it.optString("protocol") == "vless" }
+        val server = vless?.optJSONObject("settings")?.optJSONArray("vnext")?.optJSONObject(0)
+        val user = server?.optJSONArray("users")?.optJSONObject(0)
+        val reality = vless?.optJSONObject("streamSettings")?.optJSONObject("realitySettings")
+
+        val values =
+            mapOf(
+                Field.SERVER_ADDRESS to server?.optString("address").orEmpty(),
+                Field.UUID to user?.optString("id").orEmpty(),
+                Field.SERVER_NAME to reality?.optString("serverName").orEmpty(),
+                Field.PUBLIC_KEY to reality?.optString("publicKey").orEmpty(),
+                Field.SHORT_ID to reality?.optString("shortId").orEmpty(),
+            )
+        return Field.values().filter { field ->
+            val value = values.getValue(field)
+            value.isEmpty() || value.contains("REPLACE_")
+        }
+    }
+
+    /** Where a JSON syntax error is, counted from 1. */
+    data class ErrorSpot(val line: Int, val column: Int)
+
+    // org.json on the JVM reports "... [character 6 line 1]"; Android reports "... at character 5 of"
+    private val LINE_AND_COLUMN = Regex("character (\\d+) line (\\d+)")
+    private val CHARACTER_INDEX = Regex("character (\\d+)")
+
+    /** Line and column of the JSON syntax error in [input], or null when the JSON is valid. */
+    fun errorSpot(input: String): ErrorSpot? {
+        val message =
+            try {
+                JSONObject(input)
+                return null
+            } catch (e: JSONException) {
+                e.message.orEmpty()
+            }
+        LINE_AND_COLUMN.find(message)?.let {
+            return ErrorSpot(line = it.groupValues[2].toInt(), column = it.groupValues[1].toInt())
+        }
+        val index = CHARACTER_INDEX.find(message)?.groupValues?.get(1)?.toIntOrNull()
+        return positionOf(input, index ?: 0)
+    }
+
+    private fun positionOf(input: String, index: Int): ErrorSpot {
+        val end = index.coerceIn(0, input.length)
+        var line = 1
+        var column = 1
+        for (i in 0 until end) {
+            if (input[i] == '\n') {
+                line++
+                column = 1
+            } else {
+                column++
+            }
+        }
+        return ErrorSpot(line, column)
+    }
+
     /** Pretty-prints a JSON config. vless links are returned trimmed and unchanged. */
     fun format(input: String): String {
         val text = input.trim()
