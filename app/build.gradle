@@ -441,3 +441,45 @@ dependencies {
     implementation 'com.waseemsabir:betterypermissionhelper:1.0.3'
 
 }
+
+// Xray core for the full flavor. Downloaded from a pinned release at build time, checked against
+// a SHA-256 that must be set below, and packaged as libxray.so so it is installed with the app
+// and can be executed from nativeLibraryDir. Nothing binary is kept in the source tree.
+def xrayVersion = 'v26.7.28'
+def xrayAsset = 'Xray-android-arm64-v8a.zip'
+def xrayAssetSha256 = 'REPLACE_WITH_SHA256_FROM_RELEASE_DGST'
+def xrayWorkDir = layout.buildDirectory.dir('xray').get().asFile
+def xrayOutDir = layout.buildDirectory.dir('generated/xray').get().asFile
+
+def sha256Of = { File f -> java.security.MessageDigest.getInstance('SHA-256').digest(f.bytes).encodeHex().toString() }
+
+tasks.register('fetchXrayCore') {
+    outputs.dir(xrayOutDir)
+    doLast {
+        if (xrayAssetSha256.startsWith('REPLACE')) {
+            throw new GradleException('set xrayAssetSha256 in app/build.gradle')
+        }
+        def zip = new File(xrayWorkDir, xrayAsset)
+        if (!zip.exists() || sha256Of(zip) != xrayAssetSha256) {
+            xrayWorkDir.mkdirs()
+            new URL("https://github.com/XTLS/Xray-core/releases/download/${xrayVersion}/${xrayAsset}").withInputStream { i ->
+                zip.withOutputStream { o -> o << i }
+            }
+        }
+        if (sha256Of(zip) != xrayAssetSha256) {
+            zip.delete()
+            throw new GradleException("checksum mismatch for ${xrayAsset}")
+        }
+        def abiDir = new File(xrayOutDir, 'arm64-v8a')
+        abiDir.mkdirs()
+        copy {
+            from zipTree(zip).matching { include 'xray' }
+            into abiDir
+            rename { 'libxray.so' }
+        }
+        new File(abiDir, 'libxray.so').setExecutable(true, false)
+    }
+}
+
+android.sourceSets.main.jniLibs.srcDir(xrayOutDir)
+tasks.matching { it.name ==~ /merge.*Full.*JniLibFolders/ }.configureEach { dependsOn 'fetchXrayCore' }
