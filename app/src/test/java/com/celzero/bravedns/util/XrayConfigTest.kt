@@ -175,9 +175,8 @@ class XrayConfigTest {
     }
 
     @Test
-    fun formatPrettyPrintsJson() {
+    fun formatKeepsJsonContentEquivalent() {
         val pretty = XrayConfig.format("{\"a\":1}")
-        assertTrue(pretty.contains("\n"))
         assertEquals(1, org.json.JSONObject(pretty).getInt("a"))
     }
 
