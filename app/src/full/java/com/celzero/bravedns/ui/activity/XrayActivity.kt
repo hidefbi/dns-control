@@ -65,9 +65,12 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
 
     // 1-based line of the JSON syntax error, or -1 when there is none
     private var errorLine = -1
+    // error colour comes from the layout (?attr/colorError), read before it is ever changed
+    private var errorColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        errorColor = b.xrayProblem.currentTextColor
         b.xrayToolbar.setNavigationOnClickListener { finish() }
         b.xrayInput.setText(runner.savedProfile() ?: XrayConfig.TEMPLATE)
         b.xrayInput.addTextChangedListener(
@@ -164,7 +167,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
                 if (problem == null) {
                     MaterialColors.getColor(b.root, androidx.appcompat.R.attr.colorPrimary)
                 } else {
-                    MaterialColors.getColor(b.root, com.google.android.material.R.attr.colorError)
+                    errorColor
                 }
             )
         }
