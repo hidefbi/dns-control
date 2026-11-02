@@ -451,7 +451,7 @@ def xrayAssetSha256 = '3b27dc081a33b5aa6efdc7b492591b80fcc7d7973eb5a73267ef83d8b
 def xrayWorkDir = layout.buildDirectory.dir('xray').get().asFile
 def xrayOutDir = layout.buildDirectory.dir('generated/xray').get().asFile
 
-def sha256Of = { File f -> java.security.MessageDigest.getInstance('SHA-256').digest(f.bytes).encodeHex().toString() }
+def sha256Of = { File f -> java.security.MessageDigest.getInstance('SHA-256').digest(f.bytes).collect { String.format('%02x', it) }.join() }
 
 tasks.register('fetchXrayCore') {
     outputs.dir(xrayOutDir)
