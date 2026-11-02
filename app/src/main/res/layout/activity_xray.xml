@@ -248,11 +248,10 @@
 
         <com.google.android.material.materialswitch.MaterialSwitch
             android:id="@+id/xray_enable"
+            style="@style/CustomWidget.Material3.CompoundButton.MaterialSwitch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/xray_enable_title"
-            android:textAppearance="?attr/textAppearanceTitleSmall"
-            android:textColor="?attr/colorOnSurface" />
+            android:text="@string/xray_enable_title" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/xray_enable_note"
