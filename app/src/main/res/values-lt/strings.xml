@@ -575,5 +575,5 @@
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
     <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
-    <string name="xray_err_host_ip" translatable="true">Use the server's IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
 </resources>
