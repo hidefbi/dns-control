@@ -189,6 +189,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
             }
             XrayConfig.Problem.INVALID_LINK -> getString(R.string.xray_err_link)
             XrayConfig.Problem.NOT_REALITY -> getString(R.string.xray_err_reality)
+            XrayConfig.Problem.HOST_NOT_IP -> getString(R.string.xray_err_host_ip)
             else -> getString(R.string.xray_err_outbound)
         }
     }

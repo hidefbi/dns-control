@@ -967,4 +967,5 @@
     <string name="xray_err_json_at" translatable="true">第 %1$d 行，第 %2$d 列：JSON 语法错误</string>
     <string name="xray_footer_fill" translatable="true">还需填写 %1$d 项才能保存</string>
     <string name="xray_footer_save" translatable="true">保存后，下次开启 VPN 时使用这份配置</string>
+    <string name="xray_err_host_ip" translatable="true">请填写服务器的 IP 地址，不要填域名：域名会在隧道外被解析</string>
 </resources>

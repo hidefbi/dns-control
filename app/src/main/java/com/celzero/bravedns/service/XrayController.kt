@@ -58,6 +58,17 @@ class XrayController(
         if (profile.isNullOrBlank()) {
             return Result.failure(IllegalStateException(context.getString(R.string.xray_none)))
         }
+        // re-check on every start: a profile saved by an older version may not pass today's rules
+        val problem = XrayConfig.check(profile)
+        if (problem != null) {
+            val res =
+                if (problem == XrayConfig.Problem.HOST_NOT_IP) {
+                    R.string.xray_err_host_ip
+                } else {
+                    R.string.xray_err_outbound
+                }
+            return Result.failure(IllegalStateException(context.getString(res)))
+        }
 
         // start() returns early when xray is already running, so a VPN restart reuses it
         val started = runner.start(profile)

@@ -107,9 +107,17 @@ object XrayConfig {
                   "172.16.0.0/12",
                   "192.168.0.0/16",
                   "127.0.0.0/8",
-                  "169.254.0.0/16"
+                  "169.254.0.0/16",
+                  "::1/128",
+                  "fc00::/7",
+                  "fe80::/10"
                 ],
                 "outboundTag": "direct"
+              },
+              {
+                "type": "field",
+                "network": "tcp,udp",
+                "outboundTag": "proxy"
               }
             ]
           }
@@ -201,6 +209,7 @@ object XrayConfig {
         MISSING_USER,
         NOT_REALITY,
         MISSING_PUBLIC_KEY,
+        HOST_NOT_IP,
     }
 
     /** First problem that would keep the input from producing a working config, or null. */
@@ -210,8 +219,8 @@ object XrayConfig {
         if (PLACEHOLDER.containsMatchIn(text)) return Problem.PLACEHOLDER
         if (isVlessLink(text)) {
             return try {
-                parseVlessLink(text)
-                null
+                val link = parseVlessLink(text)
+                if (isIpLiteral(link.host)) null else Problem.HOST_NOT_IP
             } catch (e: InvalidLinkException) {
                 Problem.INVALID_LINK
             }
@@ -234,6 +243,7 @@ object XrayConfig {
 
         val server = vless.optJSONObject("settings")?.optJSONArray("vnext")?.optJSONObject(0)
         if (server == null || server.optString("address").isEmpty()) return Problem.MISSING_SERVER
+        if (!isIpLiteral(server.optString("address"))) return Problem.HOST_NOT_IP
         if (server.optInt("port") !in 1..65535) return Problem.MISSING_SERVER
 
         val user = server.optJSONArray("users")?.optJSONObject(0)
@@ -331,6 +341,69 @@ object XrayConfig {
         return ErrorSpot(line, column)
     }
 
+    private val IPV4 = Regex("""\d{1,3}(\.\d{1,3}){3}""")
+    private val IPV6_CHARS = Regex("""[0-9A-Fa-f:.]+""")
+
+    /**
+     * True for an IPv4 or IPv6 literal. Domain names are refused on purpose: resolving the server
+     * name would send a query outside the tunnel.
+     */
+    fun isIpLiteral(host: String): Boolean {
+        if (IPV4.matches(host)) return true
+        return host.contains(':') && IPV6_CHARS.matches(host)
+    }
+
+    /**
+     * The config xray actually runs. It is built only from the server parameters, so any dns,
+     * routing, logging or other settings the user pasted are dropped. Every start path uses this.
+     */
+    fun canonicalConfig(input: String): String {
+        val text = input.trim()
+        val link = if (isVlessLink(text)) parseVlessLink(text) else linkFromJson(JSONObject(text))
+        return buildConfig(link)
+    }
+
+    private fun linkFromJson(root: JSONObject): VlessLink {
+        val outbounds = root.optJSONArray("outbounds")
+        val vless =
+            (0 until (outbounds?.length() ?: 0))
+                .mapNotNull { outbounds?.optJSONObject(it) }
+                .firstOrNull { it.optString("protocol") == "vless" }
+                ?: throw InvalidLinkException("no vless outbound")
+        val server =
+            vless.optJSONObject("settings")?.optJSONArray("vnext")?.optJSONObject(0)
+                ?: throw InvalidLinkException("no server")
+        val user =
+            server.optJSONArray("users")?.optJSONObject(0)
+                ?: throw InvalidLinkException("no user")
+        val stream = vless.optJSONObject("streamSettings")
+        val reality = stream?.optJSONObject("realitySettings")
+        if (stream?.optString("security") != REALITY || reality == null) {
+            throw InvalidLinkException("only reality security is supported")
+        }
+
+        val link =
+            VlessLink(
+                name = "",
+                uuid = user.optString("id"),
+                host = server.optString("address"),
+                port = server.optInt("port"),
+                flow = user.optString("flow"),
+                serverName = reality.optString("serverName"),
+                fingerprint = reality.optString("fingerprint").ifEmpty { DEFAULT_FINGERPRINT },
+                publicKey = reality.optString("publicKey"),
+                shortId = reality.optString("shortId"),
+                spiderX = reality.optString("spiderX"),
+            )
+        if (link.uuid.isEmpty() || link.host.isEmpty() || link.port !in 1..65535) {
+            throw InvalidLinkException("missing uuid, host or port")
+        }
+        if (link.publicKey.isEmpty() || link.serverName.isEmpty()) {
+            throw InvalidLinkException("missing publicKey or serverName")
+        }
+        return link
+    }
+
     /** Pretty-prints a JSON config. vless links are returned trimmed and unchanged. */
     fun format(input: String): String {
         val text = input.trim()
@@ -352,7 +425,6 @@ object XrayConfig {
         return """
             {
               "log": {"loglevel": "warning"},
-              "dns": {"servers": ["1.1.1.1"]},
               "inbounds": [${inbound()}],
               "outbounds": [
                 {
@@ -380,7 +452,7 @@ object XrayConfig {
                 },
                 {"tag": "direct", "protocol": "freedom"}
               ],
-              "routing": {"domainStrategy": "AsIs", "rules": []}
+              "routing": {"domainStrategy": "AsIs", "rules": [{"type": "field", "ip": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8", "169.254.0.0/16", "::1/128", "fc00::/7", "fe80::/10"], "outboundTag": "direct"}, {"type": "field", "network": "tcp,udp", "outboundTag": "proxy"}]}
             }
             """.trimIndent()
     }
