@@ -16,8 +16,7 @@
 package com.celzero.bravedns.service
 
 import android.content.Context
-import com.celzero.bravedns.util.Logger
-import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
+import android.util.Log
 import com.celzero.bravedns.util.SecretBox
 import com.celzero.bravedns.util.XrayConfig
 import org.json.JSONArray
@@ -32,6 +31,8 @@ class XrayRunner(private val context: Context) {
 
     companion object {
         private const val TAG = "XrayRunner"
+        // xray-core output goes to its own tag so it is visible in logcat
+        private const val CORE_TAG = "XrayCore"
         private const val BINARY_NAME = "libxray.so"
         private const val DIR_NAME = "xray"
         private const val PROFILE_NAME = "profile"
@@ -55,7 +56,7 @@ class XrayRunner(private val context: Context) {
             if (!profileFile.exists()) return null
             SecretBox.decrypt(profileFile.readText())
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_PROXY, "$TAG: read profile failed: ${e.message}", e)
+            Log.w(TAG, "read profile failed: ${e.message}", e)
             null
         }
     }
@@ -66,7 +67,7 @@ class XrayRunner(private val context: Context) {
             profileFile.writeText(encrypted)
             true
         } catch (e: Exception) {
-            Logger.w(LOG_TAG_PROXY, "$TAG: write profile failed: ${e.message}", e)
+            Log.w(TAG, "write profile failed: ${e.message}", e)
             false
         }
     }
@@ -116,7 +117,7 @@ class XrayRunner(private val context: Context) {
 
             Thread {
                     started.inputStream.bufferedReader().forEachLine {
-                        Logger.i(LOG_TAG_PROXY, "$TAG: $it")
+                        Log.i(CORE_TAG, it)
                     }
                 }
                 .apply {
