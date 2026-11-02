@@ -34,7 +34,7 @@
     <string name="xray_err_outbound" translatable="true">ବ୍ୟବହାରଯୋଗ୍ୟ VLESS ଆଉଟ୍‌ବାଉଣ୍ଡ ନାହିଁ: ସର୍ଭର ଠିକଣା, ପୋର୍ଟ, UUID ଏବଂ publicKey ଆବଶ୍ୟକ</string>
     <string name="xray_err_reality" translatable="true">କେବଳ Reality ସୁରକ୍ଷା ସମର୍ଥିତ: streamSettings.security କୁ reality ସେଟ୍ କରନ୍ତୁ</string>
     <string name="xray_err_link" translatable="true">ଅବୈଧ vless:// ଲିଙ୍କ୍: UUID, ହୋଷ୍ଟ, ପୋର୍ଟ ଏବଂ sni ଓ pbk ପାରାମିଟର ଯାଞ୍ଚ କରନ୍ତୁ</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

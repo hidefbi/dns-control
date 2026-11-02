@@ -152,7 +152,7 @@
     <string name="xray_err_outbound" translatable="true">භාවිත කළ හැකි VLESS ප්‍රතිදානයක් නැත: සේවා ලිපිනය, තොට, UUID සහ publicKey අවශ්‍යයි</string>
     <string name="xray_err_reality" translatable="true">Reality ආරක්ෂාව පමණක් සහාය දක්වයි: streamSettings.security reality ලෙස සකසන්න</string>
     <string name="xray_err_link" translatable="true">වලංගු නොවන vless:// සබැඳිය: UUID, සත්කාරක, තොට සහ sni, pbk පරාමිතික පරීක්ෂා කරන්න</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

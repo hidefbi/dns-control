@@ -639,7 +639,7 @@
     <string name="xray_err_outbound" translatable="true">חסרה יציאת VLESS שמישה: נדרשים כתובת שרת, פורט, UUID ו-publicKey</string>
     <string name="xray_err_reality" translatable="true">נתמכת רק אבטחת Reality: הגדירו את streamSettings.security ל-reality</string>
     <string name="xray_err_link" translatable="true">קישור vless:// לא תקין: בדקו UUID, מארח, פורט ופרמטרים sni ו-pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

@@ -926,7 +926,7 @@
     <string name="xray_err_outbound" translatable="true">Falta un outbound VLESS utilizable: se requieren dirección del servidor, puerto, UUID y publicKey</string>
     <string name="xray_err_reality" translatable="true">Solo se admite seguridad Reality: define streamSettings.security como reality</string>
     <string name="xray_err_link" translatable="true">Enlace vless:// no válido: revisa UUID, host, puerto y los parámetros sni y pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

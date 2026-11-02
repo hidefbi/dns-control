@@ -927,7 +927,7 @@
     <string name="xray_err_outbound" translatable="true">사용 가능한 VLESS 아웃바운드가 없습니다: 서버 주소, 포트, UUID, publicKey가 필요합니다</string>
     <string name="xray_err_reality" translatable="true">Reality 보안만 지원합니다: streamSettings.security를 reality로 설정하세요</string>
     <string name="xray_err_link" translatable="true">잘못된 vless:// 링크입니다: UUID, 호스트, 포트, sni 및 pbk 매개변수를 확인하세요</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>

@@ -494,7 +494,7 @@
     <string name="xray_err_outbound" translatable="true">使用できる VLESS アウトバウンドがありません: サーバーアドレス、ポート、UUID、publicKey が必要です</string>
     <string name="xray_err_reality" translatable="true">対応しているのは Reality のセキュリティのみです: streamSettings.security を reality に設定してください</string>
     <string name="xray_err_link" translatable="true">無効な vless:// リンクです: UUID、ホスト、ポート、sni と pbk のパラメータを確認してください</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app's VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
 </resources>
