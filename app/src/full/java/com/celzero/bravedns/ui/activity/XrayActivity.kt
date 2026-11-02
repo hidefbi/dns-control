@@ -17,6 +17,7 @@ package com.celzero.bravedns.ui.activity
 
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.res.Configuration
 import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.os.Bundle
@@ -37,6 +38,7 @@ import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.ui.BaseActivity
+import com.celzero.bravedns.util.Themes
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.XrayConfig
 import com.google.android.material.chip.Chip
@@ -69,6 +71,9 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
     private var errorColor = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // apply the user's theme before the views are inflated, as the other activities do;
+        // without this the page follows the system theme instead of the app's setting
+        theme.applyStyle(Themes.getCurrentTheme(isDarkThemeOn(), persistentState.theme), true)
         super.onCreate(savedInstanceState)
         errorColor = b.xrayProblem.currentTextColor
         b.xrayToolbar.setNavigationOnClickListener { finish() }
@@ -192,6 +197,11 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
             XrayConfig.Problem.HOST_NOT_IP -> getString(R.string.xray_err_host_ip)
             else -> getString(R.string.xray_err_outbound)
         }
+    }
+
+    private fun Context.isDarkThemeOn(): Boolean {
+        return resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK ==
+            Configuration.UI_MODE_NIGHT_YES
     }
 
     private fun labelOf(field: XrayConfig.Field): Int {
