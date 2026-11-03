@@ -921,4 +921,51 @@
     <string name="bl_update_uptodate_title" translatable="true">未检测到更新</string>
     <string name="bl_update_failed_title" translatable="true">规则更新失败</string>
     <string name="bl_update_retry" translatable="true">重试</string>
+    <string name="xray_entry" translatable="true">Xray（VLESS+Reality）</string>
+    <string name="xray_hint" translatable="true">粘贴 vless:// 链接或 Xray JSON 配置</string>
+    <string name="xray_status_on" translatable="true">Xray 正在运行</string>
+    <string name="xray_status_off" translatable="true">Xray 已停止</string>
+    <string name="xray_start" translatable="true">启动</string>
+    <string name="xray_stop" translatable="true">停止</string>
+    <string name="xray_save" translatable="true">保存</string>
+    <string name="xray_saved" translatable="true">已保存</string>
+    <string name="xray_none" translatable="true">请先保存配置</string>
+    <string name="xray_no_slot" translatable="true">无法将 SOCKS5 代理指向 Xray</string>
+    <string name="xray_error" translatable="true">Xray 错误：%1$s</string>
+    <string name="xray_rethink_on" translatable="true">请先关闭 VPN 内路由选项，否则 Xray 流量会回环进入 VPN</string>
+    <string name="xray_title" translatable="true">Xray 配置</string>
+    <string name="xray_ok" translatable="true">配置看起来有效</string>
+    <string name="xray_paste" translatable="true">粘贴</string>
+    <string name="xray_format" translatable="true">格式化</string>
+    <string name="xray_clear" translatable="true">清空</string>
+    <string name="xray_format_failed" translatable="true">无法格式化：JSON 无效</string>
+    <string name="xray_save_failed" translatable="true">保存配置失败</string>
+    <string name="xray_err_empty" translatable="true">剪贴板为空，没有可粘贴的内容</string>
+    <string name="xray_err_json" translatable="true">JSON 无效：请检查括号、逗号和引号</string>
+    <string name="xray_err_outbound" translatable="true">缺少可用的 VLESS 出站：需要服务器地址、端口、UUID 和 publicKey</string>
+    <string name="xray_err_reality" translatable="true">仅支持 Reality 安全协议：请将 streamSettings.security 设为 reality</string>
+    <string name="xray_err_link" translatable="true">vless:// 链接无效：请检查 UUID、主机、端口以及 sni 和 pbk 参数</string>
+    <string name="xray_vpn_hint" translatable="true">请先在主界面开启 App 的 VPN，Xray 只有在 VPN 开启时才会转发流量。</string>
+    <string name="xray_back" translatable="true">返回</string>
+    <string name="xray_err_placeholder" translatable="true">还有 %1$d 项需要填写：请替换高亮的 REPLACE_ 内容</string>
+    <string name="xray_progress_title" translatable="true">填写进度</string>
+    <string name="xray_progress_left" translatable="true">还差 %1$d 项</string>
+    <string name="xray_field_server" translatable="true">服务器地址</string>
+    <string name="xray_field_uuid" translatable="true">UUID</string>
+    <string name="xray_field_sni" translatable="true">伪装域名</string>
+    <string name="xray_field_pubkey" translatable="true">公钥</string>
+    <string name="xray_field_shortid" translatable="true">ShortID</string>
+    <string name="xray_chip_on" translatable="true">运行中</string>
+    <string name="xray_chip_off" translatable="true">未启动</string>
+    <string name="xray_footer_need" translatable="true">保存需填满 %1$d 项；启动需先开启 VPN</string>
+    <string name="xray_footer_ok" translatable="true">启动需先开启 VPN</string>
+    <string name="xray_enable_title" translatable="true">随 VPN 启用 Xray</string>
+    <string name="xray_enable_on" translatable="true">已启用：开启 VPN 时自动启动 Xray</string>
+    <string name="xray_enable_off" translatable="true">未启用：VPN 直连，不经过 Xray</string>
+    <string name="xray_enable_blocked" translatable="true">请先关闭「VPN 内路由本应用」选项</string>
+    <string name="xray_enable_running" translatable="true">下次开启 VPN 时生效</string>
+    <string name="xray_err_json_at" translatable="true">第 %1$d 行，第 %2$d 列：JSON 语法错误</string>
+    <string name="xray_footer_fill" translatable="true">还需填写 %1$d 项才能保存</string>
+    <string name="xray_footer_save" translatable="true">保存后，下次开启 VPN 时使用这份配置</string>
+    <string name="xray_err_host_ip" translatable="true">请填写服务器的 IP 地址，不要填域名：域名会在隧道外被解析</string>
 </resources>

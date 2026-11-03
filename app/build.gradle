@@ -240,6 +240,8 @@ android {
     // required for google play developer api model classes
     packaging {
         resources.excludes += "META-INF/INDEX.LIST"
+        // xray-core is run as an executable from nativeLibraryDir, which needs the .so extracted
+        jniLibs { useLegacyPackaging = true }
     }
 
     flavorDimensions = ["releaseChannel", "releaseType"]
@@ -382,6 +384,8 @@ dependencies {
     implementation 'com.github.seancfoley:ipaddress:5.5.1'
 
     testImplementation 'junit:junit:4.13.2'
+    // real org.json for plain JVM tests; the Android one is a stub there
+    testImplementation 'org.json:json:20240303'
     androidTestImplementation 'androidx.test.ext:junit:1.3.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
     androidTestImplementation 'androidx.test.espresso:espresso-accessibility:3.7.0'
@@ -439,3 +443,64 @@ dependencies {
     implementation 'com.waseemsabir:betterypermissionhelper:1.0.3'
 
 }
+
+// Xray core for the full flavor. Downloaded from a pinned release at build time, checked against
+// a pinned SHA-256, and packaged as libxray.so so it is installed with the app and can be executed
+// from nativeLibraryDir. Nothing binary is kept in the source tree.
+def xrayVersion = 'v26.7.28'
+def xrayAsset = 'Xray-android-arm64-v8a.zip'
+def xrayAssetSha256 = 'a442892c175fa648fc56866ec872aac441c5a6b8946a1b60f0258ae16a7fb402'
+def xrayOutDir = layout.buildDirectory.dir('generated/xray').get().asFile
+def xrayWorkDir = layout.buildDirectory.dir('xray').get().asFile
+
+tasks.register('fetchXrayCore') {
+    // copy script values into task-local variables so the action is configuration-cache safe
+    def version = xrayVersion
+    def asset = xrayAsset
+    def expected = xrayAssetSha256
+    def workDir = xrayWorkDir
+    def outDir = xrayOutDir
+    outputs.dir(outDir)
+    doLast {
+        def sha = { File f ->
+            def md = java.security.MessageDigest.getInstance('SHA-256')
+            f.withInputStream { ins ->
+                def buf = new byte[8192]
+                int n
+                while ((n = ins.read(buf)) != -1) {
+                    md.update(buf, 0, n)
+                }
+            }
+            md.digest().collect { String.format('%02x', it) }.join()
+        }
+
+        def zip = new File(workDir, asset)
+        if (!zip.exists() || sha(zip) != expected) {
+            workDir.mkdirs()
+            new URL("https://github.com/XTLS/Xray-core/releases/download/${version}/${asset}").withInputStream { i ->
+                zip.withOutputStream { o -> o << i }
+            }
+        }
+        if (sha(zip) != expected) {
+            zip.delete()
+            throw new GradleException("checksum mismatch for ${asset}")
+        }
+
+        def abiDir = new File(outDir, 'arm64-v8a')
+        abiDir.mkdirs()
+        def bin = new File(abiDir, 'libxray.so')
+        new java.util.zip.ZipFile(zip).withCloseable { z ->
+            def entry = Collections.list(z.entries()).find { !it.isDirectory() && (it.name == 'xray' || it.name.endsWith('/xray')) }
+            if (entry == null) {
+                throw new GradleException("xray binary not found in ${asset}")
+            }
+            z.getInputStream(entry).withCloseable { ins ->
+                bin.withOutputStream { o -> o << ins }
+            }
+        }
+        bin.setExecutable(true, false)
+    }
+}
+
+android.sourceSets.main.jniLibs.srcDir(xrayOutDir)
+tasks.matching { it.name ==~ /merge.*Full.*JniLibFolders/ }.configureEach { dependsOn 'fetchXrayCore' }

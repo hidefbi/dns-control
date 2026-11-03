@@ -321,6 +321,49 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/settings_activity_xray_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/settings_activity_xray_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_xray"
+                        android:tint="?attr/colorControlNormal" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/settings_activity_xray_title"
+                        style="@style/TextAppearance.AppCompat.Subhead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@id/settings_activity_xray_img"
+                        android:layout_toEndOf="@id/settings_activity_xray_icon"
+                        android:text="@string/xray_entry"
+                        android:textSize="@dimen/large_font_text_view" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/settings_activity_xray_img"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_right_arrow_white" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:id="@+id/settings_activity_http_proxy_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -746,4 +746,51 @@
     <string name="bl_update_uptodate_title" translatable="true">ไม่พบการอัปเดต</string>
     <string name="bl_update_failed_title" translatable="true">อัปเดตรายการบล็อกไม่สำเร็จ</string>
     <string name="bl_update_retry" translatable="true">ลองอีกครั้ง</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
+    <string name="xray_hint" translatable="true">วางลิงก์ vless:// หรือการตั้งค่า Xray JSON</string>
+    <string name="xray_status_on" translatable="true">Xray กำลังทำงาน</string>
+    <string name="xray_status_off" translatable="true">Xray หยุดอยู่</string>
+    <string name="xray_start" translatable="true">เริ่ม</string>
+    <string name="xray_stop" translatable="true">หยุด</string>
+    <string name="xray_save" translatable="true">บันทึก</string>
+    <string name="xray_saved" translatable="true">บันทึกแล้ว</string>
+    <string name="xray_none" translatable="true">บันทึกโปรไฟล์ก่อน</string>
+    <string name="xray_no_slot" translatable="true">ไม่สามารถตั้งค่าพร็อกซี SOCKS5 เป็น Xray ได้</string>
+    <string name="xray_error" translatable="true">ข้อผิดพลาดของ Xray: %1$s</string>
+    <string name="xray_rethink_on" translatable="true">ปิดตัวเลือกการส่งทราฟฟิกผ่าน VPN ก่อน ไม่เช่นนั้นทราฟฟิกของ Xray จะวนกลับเข้า VPN</string>
+    <string name="xray_title" translatable="true">การตั้งค่า Xray</string>
+    <string name="xray_ok" translatable="true">การตั้งค่าดูถูกต้อง</string>
+    <string name="xray_paste" translatable="true">วาง</string>
+    <string name="xray_format" translatable="true">จัดรูปแบบ</string>
+    <string name="xray_clear" translatable="true">ล้าง</string>
+    <string name="xray_format_failed" translatable="true">จัดรูปแบบไม่ได้: JSON ไม่ถูกต้อง</string>
+    <string name="xray_save_failed" translatable="true">บันทึกโปรไฟล์ไม่สำเร็จ</string>
+    <string name="xray_err_empty" translatable="true">ไม่มีอะไรให้วาง: คลิปบอร์ดว่างเปล่า</string>
+    <string name="xray_err_json" translatable="true">JSON ไม่ถูกต้อง: ตรวจสอบวงเล็บ เครื่องหมายจุลภาค และเครื่องหมายคำพูด</string>
+    <string name="xray_err_outbound" translatable="true">ไม่มี VLESS outbound ที่ใช้งานได้: ต้องมีที่อยู่เซิร์ฟเวอร์ พอร์ต UUID และ publicKey</string>
+    <string name="xray_err_reality" translatable="true">รองรับเฉพาะความปลอดภัยแบบ Reality: ตั้ง streamSettings.security เป็น reality</string>
+    <string name="xray_err_link" translatable="true">ลิงก์ vless:// ไม่ถูกต้อง: ตรวจสอบ UUID โฮสต์ พอร์ต และพารามิเตอร์ sni กับ pbk</string>
+    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
+    <string name="xray_back" translatable="true">Back</string>
+    <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
+    <string name="xray_progress_title" translatable="true">Fill-in progress</string>
+    <string name="xray_progress_left" translatable="true">%1$d left</string>
+    <string name="xray_field_server" translatable="true">Server address</string>
+    <string name="xray_field_uuid" translatable="true">UUID</string>
+    <string name="xray_field_sni" translatable="true">Server name (SNI)</string>
+    <string name="xray_field_pubkey" translatable="true">Public key</string>
+    <string name="xray_field_shortid" translatable="true">ShortID</string>
+    <string name="xray_chip_on" translatable="true">Running</string>
+    <string name="xray_chip_off" translatable="true">Stopped</string>
+    <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
+    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
+    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
+    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
+    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
+    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
+    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
+    <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
+    <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
+    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
+    <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
 </resources>
