@@ -19,6 +19,8 @@
     <string name="xray_no_slot" translatable="true">Could not point the SOCKS5 proxy at Xray</string>
     <string name="xray_error" translatable="true">Xray error: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Turn off the route-in-VPN option first, otherwise Xray traffic loops back into the VPN</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray needs the Firewall or DNS+Firewall mode. In DNS-only mode no traffic or DNS goes through a proxy</string>
+    <string name="xray_err_provider" translatable="true">WireGuard or Orbot is the selected proxy. Turn it off first: Xray uses the same single proxy slot</string>
     <string name="xray_title" translatable="true">Xray configuration</string>
     <string name="xray_ok" translatable="true">Configuration looks valid</string>
     <string name="xray_paste" translatable="true">Paste</string>
@@ -31,7 +33,6 @@
     <string name="xray_err_outbound" translatable="true">No usable VLESS outbound: server address, port, UUID and publicKey are required</string>
     <string name="xray_err_reality" translatable="true">Only Reality security is supported: set streamSettings.security to reality</string>
     <string name="xray_err_link" translatable="true">Invalid vless:// link: check the UUID, host, port and the sni and pbk parameters</string>
-        <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -44,14 +45,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray and WireGuard cannot run together. Turn off Xray first.</string>
+    <string name="xray_off_confirm" translatable="true">With the VPN on, turning Xray off sends traffic straight out without Xray. Turn it off?</string>
+    <string name="xray_err_dns" translatable="true">Remove the dns block: DNS Control resolves DNS, not xray</string>
+    <string name="xray_err_rule" translatable="true">A routing rule needs an ip, domain or port, and must send to proxy or direct</string>
 </resources>

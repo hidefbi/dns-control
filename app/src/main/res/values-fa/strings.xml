@@ -330,7 +330,7 @@
     <string name="firewall_status_excluded" translatable="true">از dns و فایروال حذف شده است</string>
     <string name="hsf_vpn_prepare_failure" translatable="true">یا مجوز وی پی ان وجود ندارد، یا برنامه دیگری در حالت وی پی ان همیشه روشن است.</string>
     <string name="hsf_notification_permission_failure" translatable="true">فعال کردن مجوز اعلان از صفحه تنظیمات</string>
-    <string name="dc_custom_dns_radio" translatable="true">دی‌ان‌ اس سایر</string>
+    <string name="dc_custom_dns_radio" translatable="true">DNS سفارشی</string>
     <string name="settings_notification_dialog_title" translatable="true">انتخاب اقدام اعلان</string>
     <string name="hs_biometeric_desc" translatable="true">برای باز کردن قفل DNS Control از احراز هویت بیومتریک استفاده کنید</string>
     <string name="dc_check_update_desc" translatable="true">هر <i>سه</i> روز یکبار، به‌روزرسانی‌های فهرست مسدودی‌ها را بررسی کنید</string>
@@ -386,8 +386,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">بعد از ۵ دقیقه</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">بعد از ۱۵ دقیقه</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">از DNS سیستم برای دامنه‌های واگذار نشده استفاده کنید</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">برای دامنه‌های بدون مجوز مانند <i>.Lan</i>، <i>.داخلی</i> و غیره از DNS سیستم استفاده کنید.</string>
     <string name="dc_filtering_heading" translatable="true">فیلتر کردن</string>
     <string name="about_mail_to_string" translatable="true">ایمیل به:</string>
     <string name="about_mail_subject" translatable="true">[DNS Control]:</string>
@@ -611,6 +609,8 @@
     <string name="xray_no_slot" translatable="true">تنظیم پراکسی SOCKS5 روی Xray ممکن نشد</string>
     <string name="xray_error" translatable="true">خطای Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">ابتدا گزینه مسیریابی درون VPN را خاموش کنید، وگرنه ترافیک Xray در حلقه می‌افتد</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray به حالت فایروال یا DNS+فایروال نیاز دارد. در حالت فقط DNS، نه ترافیک و نه DNS از پروکسی عبور نمی‌کند</string>
+    <string name="xray_err_provider" translatable="true">پروکسی انتخاب‌شده WireGuard یا Orbot است. ابتدا آن را خاموش کنید: Xray از همان جایگاه واحد پروکسی استفاده می‌کند</string>
     <string name="xray_title" translatable="true">پیکربندی Xray</string>
     <string name="xray_ok" translatable="true">پیکربندی معتبر به نظر می‌رسد</string>
     <string name="xray_paste" translatable="true">چسباندن</string>
@@ -623,7 +623,6 @@
     <string name="xray_err_outbound" translatable="true">خروجی VLESS قابل‌استفاده وجود ندارد: نشانی سرور، درگاه، UUID و publicKey لازم است</string>
     <string name="xray_err_reality" translatable="true">فقط امنیت Reality پشتیبانی می‌شود: مقدار streamSettings.security را reality بگذارید</string>
     <string name="xray_err_link" translatable="true">پیوند vless:// نامعتبر است: UUID، میزبان، درگاه و پارامترهای sni و pbk را بررسی کنید</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -636,14 +635,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray و WireGuard نمی‌توانند همزمان اجرا شوند. ابتدا Xray را خاموش کنید.</string>
+    <string name="xray_off_confirm" translatable="true">خاموش کردن Xray وقتی VPN روشن است، ترافیک را مستقیم و بدون Xray می‌فرستد. خاموش شود؟</string>
+    <string name="xray_err_dns" translatable="true">بلوک dns را حذف کنید: DNS را DNS Control حل می‌کند، نه Xray</string>
+    <string name="xray_err_rule" translatable="true">قانون مسیریابی باید ip، domain یا port داشته باشد و فقط می‌تواند به proxy یا direct بفرستد</string>
 </resources>

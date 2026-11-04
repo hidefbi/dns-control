@@ -424,7 +424,7 @@
     <string name="rt_filter_hint" translatable="true"><u>すべての</u>ブロックリストを表示</string>
     <string name="dc_rethink_dns_radio" translatable="true">RethinkDNS</string>
     <string name="dc_block_heading" translatable="true">ルール</string>
-    <string name="dc_custom_dns_radio" translatable="true">その他のDNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">カスタム DNS</string>
     <string name="lbl_network" translatable="true">ネットワーク</string>
     <string name="dns_act_configure_tab" translatable="true">設定</string>
     <string name="firewall_act_universal_tab" translatable="true">ユニバーサル</string>
@@ -482,6 +482,8 @@
     <string name="xray_no_slot" translatable="true">Xray に SOCKS5 プロキシを設定できませんでした</string>
     <string name="xray_error" translatable="true">Xray エラー: %1$s</string>
     <string name="xray_rethink_on" translatable="true">先に VPN 内へのルーティング設定をオフにしてください。オフにしないと Xray の通信がループします</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray には「ファイアウォール」または「DNS+ファイアウォール」モードが必要です。DNS のみのモードでは、トラフィックも DNS もプロキシを経由しません</string>
+    <string name="xray_err_provider" translatable="true">選択中のプロキシは WireGuard または Orbot です。先にオフにしてください。Xray は同じ単一のプロキシ枠を使います</string>
     <string name="xray_title" translatable="true">Xray 設定</string>
     <string name="xray_ok" translatable="true">設定は有効なようです</string>
     <string name="xray_paste" translatable="true">貼り付け</string>
@@ -494,7 +496,6 @@
     <string name="xray_err_outbound" translatable="true">使用できる VLESS アウトバウンドがありません: サーバーアドレス、ポート、UUID、publicKey が必要です</string>
     <string name="xray_err_reality" translatable="true">対応しているのは Reality のセキュリティのみです: streamSettings.security を reality に設定してください</string>
     <string name="xray_err_link" translatable="true">無効な vless:// リンクです: UUID、ホスト、ポート、sni と pbk のパラメータを確認してください</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -507,14 +508,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray と WireGuard は同時に使えません。先に Xray をオフにしてください。</string>
+    <string name="xray_off_confirm" translatable="true">VPN がオンのときに Xray をオフにすると、Xray を経由せず直接通信します。オフにしますか？</string>
+    <string name="xray_err_dns" translatable="true">dns ブロックを削除してください。DNS は Xray ではなく DNS Control が解決します</string>
+    <string name="xray_err_rule" translatable="true">ルーティング規則には ip、domain、port のいずれかが必要で、送信先は proxy か direct のみです</string>
 </resources>

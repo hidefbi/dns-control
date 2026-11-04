@@ -16,6 +16,7 @@
  */
 package com.celzero.bravedns.net.go
 
+import com.celzero.bravedns.util.DnsStamp
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_PROXY
 import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
@@ -62,6 +63,7 @@ import com.celzero.bravedns.util.Utilities.isAtleastO
 import com.celzero.bravedns.util.Utilities.isAtleastS
 import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.bravedns.util.Utilities.showToastUiCentered
+import com.celzero.bravedns.util.XrayConfig
 import com.celzero.bravedns.wireguard.Config
 import com.celzero.bravedns.wireguard.WgHopManager
 import com.celzero.firestack.backend.Backend
@@ -149,7 +151,6 @@ class GoVpnAdapter : KoinComponent {
         notifyLoopback()
         setDialStrategy()
         setTransparency()
-        undelegatedDomains()
         setExperimentalWireGuardSettings()
         setAutoDialsParallel()
         setAutoMode()
@@ -194,12 +195,8 @@ class GoVpnAdapter : KoinComponent {
                 addDnsProxyTransport(Backend.Preferred)
             }
 
-            AppConfig.DnsType.SYSTEM_DNS -> {
-                // no-op; system dns propagated by ConnectionMonitor
-            }
-
             AppConfig.DnsType.RETHINK_REMOTE -> {
-                // legacy RDNS type, unreachable: getDnsType() maps it to SYSTEM_DNS
+                // legacy RDNS type, unreachable: getDnsType() maps it to DOH
             }
         }
 
@@ -265,6 +262,35 @@ class GoVpnAdapter : KoinComponent {
         }
     }
 
+    // with xray routing, a resolver is reached only through the xray outbound. a host that is
+    // not an ip literal and has no built-in ips would have to be looked up, and that lookup
+    // leaves through the operator's resolver, so such a resolver is refused.
+    private fun needsLookupOnXray(url: String, ips: String): Boolean {
+        return appConfig.isXrayDnsRouted() && ips.isEmpty() && !XrayConfig.isIpLiteral(hostOf(url))
+    }
+
+    private fun hostOf(url: String): String {
+        val bare = url.substringAfter("://", url)
+        if (XrayConfig.isIpLiteral(bare)) return bare
+        val hostPort = bare.substringBefore('/')
+        return if (hostPort.startsWith("[")) {
+            hostPort.substringAfter('[').substringBefore(']')
+        } else {
+            hostPort.substringBefore(':')
+        }
+    }
+
+    private suspend fun refuseXrayResolver(id: String, url: String) {
+        Logger.e(LOG_TAG_VPN, "$TAG xray routing: resolver $id needs a dns lookup, refused: $url")
+        removeResolver(id)
+        logEvent(
+            Severity.HIGH,
+            "xray dns refused",
+            "resolver $id needs a dns lookup, not routed through xray: $url"
+        )
+        failClosedDns("resolver needs a dns lookup under xray routing")
+    }
+
     private suspend fun addDohTransport(id: String) {
         Logger.v(LOG_TAG_VPN, "$TAG addDohTransport")
         var url: String? = null
@@ -277,6 +303,10 @@ class GoVpnAdapter : KoinComponent {
             }
             url = doh.dohURL
             val ips: String = getIpString(context, url)
+            if (needsLookupOnXray(url, ips)) {
+                refuseXrayResolver(id, url)
+                return
+            }
             if (!doh.isSecure || !url.startsWith("https://", ignoreCase = true)) {
                 failClosedDns()
                 return
@@ -317,6 +347,10 @@ class GoVpnAdapter : KoinComponent {
             url = dot.url
             // if tls is present, remove it and pass it to getIpString
             val ips: String = getIpString(context, url.replace("tls://", ""))
+            if (needsLookupOnXray(url, ips)) {
+                refuseXrayResolver(id, url)
+                return
+            }
             if (dot.isSecure && !url.startsWith("tls")) {
                 Logger.d(LOG_TAG_VPN, "$TAG adding tls to url for $url")
                 // add tls to the url if isSecure is true and the url does not start with tls
@@ -361,6 +395,11 @@ class GoVpnAdapter : KoinComponent {
                 Logger.w(LOG_TAG_VPN, "$TAG odoh: no relay selected, the target can see the client IP")
             }
             resolver = odoh.resolver
+            if (appConfig.isXrayDnsRouted()) {
+                // odoh relays and targets are always named by host and carry no built-in ips
+                refuseXrayResolver(id, odoh.resolver)
+                return
+            }
             val proxyIps = ""
             // add replaces the existing transport with the same id if successful
             // so no need to remove the transport before adding
@@ -395,6 +434,10 @@ class GoVpnAdapter : KoinComponent {
                 return
             }
             val url = dc.dnsCryptURL
+            if (appConfig.isXrayDnsRouted() && !DnsStamp.dnsCryptAddressIsIp(url)) {
+                refuseXrayResolver(id, url)
+                return
+            }
             // add replaces the existing transport with the same id if successful
             // so no need to remove the transport before adding
             Intra.addDNSCryptTransport(tunnel, id, url)
@@ -427,6 +470,11 @@ class GoVpnAdapter : KoinComponent {
             if (dnsProxy == null || dnsProxy.proxyIP.isNullOrEmpty()) {
                 Logger.e(LOG_TAG_VPN, "$TAG connect-tunnel: dns-proxy is empty, cannot add transport")
                 failClosedDns()
+                return
+            }
+            val proxyAddrs = dnsProxy.proxyIP.orEmpty()
+            if (appConfig.isXrayDnsRouted() && proxyAddrs.split(",").any { !XrayConfig.isIpLiteral(it.trim()) }) {
+                refuseXrayResolver(id, proxyAddrs)
                 return
             }
             // append port number to each ip if multiple ips are present else add the single ip:port
@@ -664,6 +712,10 @@ class GoVpnAdapter : KoinComponent {
         val routes: String = appConfig.getDnscryptRelayServers()
         routes.split(",").forEach {
             if (it.isBlank()) return@forEach
+            if (appConfig.isXrayDnsRouted() && !DnsStamp.dnsCryptAddressIsIp(it)) {
+                Logger.w(LOG_TAG_VPN, "$TAG xray routing: relay needs a dns lookup, skipped: $it")
+                return@forEach
+            }
 
             Logger.i(LOG_TAG_VPN, "$TAG new dnscrypt relay: $it")
             try {
@@ -1585,7 +1637,9 @@ class GoVpnAdapter : KoinComponent {
             // when the url is empty, set the default transport to 9.9.9.9, 2620:fe::fe or
             // null based on the value of SKIP_DEFAULT_DNS_ON_INIT
             if (url.isEmpty()) { // empty url denotes default dns set to none (system dns)
-                if (SKIP_DEFAULT_DNS_ON_INIT && !persistentState.routeRethinkInRethink) {
+                // under xray routing the system dns must never become the default transport
+                if ((SKIP_DEFAULT_DNS_ON_INIT && !persistentState.routeRethinkInRethink) ||
+                    appConfig.isXrayDnsRouted()) {
                     Logger.i(LOG_TAG_VPN, "$TAG set default dns to null, as url is empty")
                     return null
                 }
@@ -1604,9 +1658,10 @@ class GoVpnAdapter : KoinComponent {
             return res
         } catch (e: Exception) {
             Logger.w(LOG_TAG_VPN, "$TAG err new default dns($url): ${e.message}", e)
-            if (appConfig.getDnsType().isEncrypted()) {
+            if (appConfig.getDnsType().isEncrypted() || appConfig.isXrayDnsRouted()) {
                 // fail closed: do not route through system dns when an encrypted dns is selected
-                Logger.e(LOG_TAG_VPN, "$TAG encrypted dns selected, no system dns fallback for default")
+                // or when app dns is routed through xray
+                Logger.e(LOG_TAG_VPN, "$TAG encrypted dns or xray routing, no system dns fallback for default")
                 return null
             }
             // most of the android devices have google dns, so add it as default transport
@@ -1687,9 +1742,10 @@ class GoVpnAdapter : KoinComponent {
                 "set default dns failed, goos? $usingGoos",
                 "Error: ${e.message}"
             )
-            if (appConfig.getDnsType().isEncrypted()) {
+            if (appConfig.getDnsType().isEncrypted() || appConfig.isXrayDnsRouted()) {
                 // fail closed: do not route through system dns when an encrypted dns is selected
-                Logger.e(LOG_TAG_VPN, "$TAG encrypted dns selected, no system dns fallback for default")
+                // or when app dns is routed through xray
+                Logger.e(LOG_TAG_VPN, "$TAG encrypted dns or xray routing, no system dns fallback for default")
                 return false
             }
             // most of the android devices have google dns, so add it as default transport
@@ -1715,27 +1771,6 @@ class GoVpnAdapter : KoinComponent {
         // if none is set then the url will either be empty or will not be one of the default dns
         return persistentState.defaultDnsUrl.isEmpty() ||
                 !Constants.DEFAULT_DNS_LIST.any { it.url == persistentState.defaultDnsUrl }
-    }
-
-    suspend fun getSystemDns(): String? {
-        return try {
-            val sysDns = getResolver()?.get(Backend.System)?.addr
-            Logger.i(LOG_TAG_VPN, "$TAG get system dns: $sysDns")
-            logEvent(
-                Severity.LOW,
-                "get system dns",
-                "System DNS: $sysDns"
-            )
-            sysDns
-        } catch (e: Exception) {
-            Logger.e(LOG_TAG_VPN, "$TAG err get system dns: ${e.message}", e)
-            logEvent(
-                Severity.HIGH,
-                "get system dns failed",
-                "Error: ${e.message}"
-            )
-            ""
-        }
     }
 
     suspend fun notifyLoopback() {
@@ -2259,22 +2294,6 @@ class GoVpnAdapter : KoinComponent {
         Intra.transparency(eim, eim)
         Logger.i(LOG_TAG_VPN, "$TAG set transparency: $eim")
         logEvent(Severity.LOW, "transparency", "set transparency to: $eim")
-    }
-
-    suspend fun undelegatedDomains(useSystemDns: Boolean = persistentState.useSystemDnsForUndelegatedDomains) {
-        if (!tunnel.isConnected) {
-            Logger.e(LOG_TAG_VPN, "$TAG no tunnel, skip undelegated domains")
-            logEvent(Severity.CRITICAL, "undeletegated domains", "cannot set undelegated domains to use system dns, tunnel not connected")
-            return
-        }
-        try {
-            Intra.undelegatedDomains(useSystemDns)
-            Logger.i(LOG_TAG_VPN, "$TAG undelegated domains: $useSystemDns")
-            logEvent(Severity.LOW, "undelegated domains", "set undelegated domains to use system dns: $useSystemDns")
-        } catch (e: Exception) {
-            Logger.e(LOG_TAG_VPN, "$TAG err undelegated domains: ${e.message}", e)
-            logEvent(Severity.HIGH, "undelegated domains", "error setting undelegated domains to use system dns: ${e.message}")
-        }
     }
 
     suspend fun getWgClientInfoById(id: String): Client? {

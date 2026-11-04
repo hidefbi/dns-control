@@ -84,7 +84,7 @@
     <string name="settings_theme_desc">暗色/亮色主题</string>
     <string name="settings_notification_desc2">DNS / DNS + 防火墙</string>
     <string name="apps_card_ips_count">%1$s 项 IP 与端口规则</string>
-    <string name="dc_custom_dns_radio">其他 DNS</string>
+    <string name="dc_custom_dns_radio">自定义 DNS</string>
     <string name="cd_dns_proxy_mode_internal">内部</string>
     <string name="fapps_firewall_filter_desc"><![CDATA[显示 <u>%1$s</u> %2$s 个应用]]></string>
     <string name="firewall_rule_block_app_new_install">新应用</string>
@@ -139,7 +139,6 @@
     <string name="dns_crypt_relay_error_toast">未选择解析服务</string>
     <string name="firewall_rule_bypass_universal_ip">已绕行 IP</string>
     <string name="cd_no_rule_initial">无</string>
-    <string name="network_dns">系统 DNS</string>
     <string name="rt_download">下载屏蔽名单</string>
     <string name="always_on_dialog_positive">停止</string>
     <string name="dns_crypt_url_remove_dialog_message">于已保存的配置中删除此 DNSCrypt 解析服务。</string>
@@ -775,8 +774,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">5 分钟后</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">15 分钟后</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">对未委任域名使用系统 DNS</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">对如 <i>.lan</i> 、 <i>.internal</i> 等的未委任域名使用系统 DNS 。</string>
     <string name="dc_filtering_heading" translatable="true">过滤</string>
     <string name="cd_split_dns_heading" translatable="true">DNS 分流（实验性）</string>
     <string name="cd_split_dns_desc" translatable="true">将代理应用的 DNS 请求转发至代理的 DNS 服务器。</string>
@@ -933,6 +930,8 @@
     <string name="xray_no_slot" translatable="true">无法将 SOCKS5 代理指向 Xray</string>
     <string name="xray_error" translatable="true">Xray 错误：%1$s</string>
     <string name="xray_rethink_on" translatable="true">请先关闭 VPN 内路由选项，否则 Xray 流量会回环进入 VPN</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray 需要防火墙或 DNS+防火墙模式。在仅 DNS 模式下，流量和 DNS 都不会经过代理</string>
+    <string name="xray_err_provider" translatable="true">当前代理为 WireGuard 或 Orbot。请先关闭它，Xray 与它们共用同一个代理位置</string>
     <string name="xray_title" translatable="true">Xray 配置</string>
     <string name="xray_ok" translatable="true">配置看起来有效</string>
     <string name="xray_paste" translatable="true">粘贴</string>
@@ -945,7 +944,6 @@
     <string name="xray_err_outbound" translatable="true">缺少可用的 VLESS 出站：需要服务器地址、端口、UUID 和 publicKey</string>
     <string name="xray_err_reality" translatable="true">仅支持 Reality 安全协议：请将 streamSettings.security 设为 reality</string>
     <string name="xray_err_link" translatable="true">vless:// 链接无效：请检查 UUID、主机、端口以及 sni 和 pbk 参数</string>
-    <string name="xray_vpn_hint" translatable="true">请先在主界面开启 App 的 VPN，Xray 只有在 VPN 开启时才会转发流量。</string>
     <string name="xray_back" translatable="true">返回</string>
     <string name="xray_err_placeholder" translatable="true">还有 %1$d 项需要填写：请替换高亮的 REPLACE_ 内容</string>
     <string name="xray_progress_title" translatable="true">填写进度</string>
@@ -958,14 +956,11 @@
     <string name="xray_chip_on" translatable="true">运行中</string>
     <string name="xray_chip_off" translatable="true">未启动</string>
     <string name="xray_footer_need" translatable="true">保存需填满 %1$d 项；启动需先开启 VPN</string>
-    <string name="xray_footer_ok" translatable="true">启动需先开启 VPN</string>
-    <string name="xray_enable_title" translatable="true">随 VPN 启用 Xray</string>
-    <string name="xray_enable_on" translatable="true">已启用：开启 VPN 时自动启动 Xray</string>
-    <string name="xray_enable_off" translatable="true">未启用：VPN 直连，不经过 Xray</string>
-    <string name="xray_enable_blocked" translatable="true">请先关闭「VPN 内路由本应用」选项</string>
-    <string name="xray_enable_running" translatable="true">下次开启 VPN 时生效</string>
     <string name="xray_err_json_at" translatable="true">第 %1$d 行，第 %2$d 列：JSON 语法错误</string>
     <string name="xray_footer_fill" translatable="true">还需填写 %1$d 项才能保存</string>
-    <string name="xray_footer_save" translatable="true">保存后，下次开启 VPN 时使用这份配置</string>
     <string name="xray_err_host_ip" translatable="true">请填写服务器的 IP 地址，不要填域名：域名会在隧道外被解析</string>
+    <string name="xray_wg_conflict" translatable="true">Xray 与 WireGuard 不能同时运行，请先关闭 Xray。</string>
+    <string name="xray_off_confirm" translatable="true">VPN 开启时关闭 Xray，流量将直接发出，不经过 Xray。确定关闭吗？</string>
+    <string name="xray_err_dns" translatable="true">请删除 dns 块：DNS 由 DNS Control 解析，不由 Xray 解析</string>
+    <string name="xray_err_rule" translatable="true">路由规则需包含 ip、domain 或 port，且出站只能是 proxy 或 direct</string>
 </resources>

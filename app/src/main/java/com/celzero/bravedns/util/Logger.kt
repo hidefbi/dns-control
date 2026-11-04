@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-
 object Logger {
 
     private var logLevel: Long = LoggerLevel.NONE.id
@@ -36,7 +35,6 @@ object Logger {
     const val LOG_TAG_APP = "ExceptionHandler"
     const val LOG_OKHTTP = "OkHttp"
     const val LOG_FIREBASE = "FirebaseErrorReporting"
-
 
     // github.com/celzero/firestack/blob/bce8de917f/intra/log/logger.go#L76
     enum class LoggerLevel(val id: Long) {
@@ -67,60 +65,6 @@ object Logger {
                 }
             }
 
-            /**
-             * Maps the single-character log-level prefix written by the Go runtime
-             * to a [LoggerLevel].  The Go side encodes the level as a single ASCII
-             * character rather than a numeric id:
-             *
-             *   'Y' → VERY_VERBOSE
-             *   'V' → VERBOSE
-             *   'D' → DEBUG
-             *   'I' → INFO
-             *   'W' → WARN
-             *   'E' → ERROR
-             *   'F' → STACKTRACE  (Fatal/stacktrace)
-             *   'U' → USR
-             *   ' ' → NONE
-             *
-             * Returns `null` for any unrecognised character so callers can fall back
-             * to the previous known level.
-             */
-            fun fromChar(c: Char): LoggerLevel? {
-                return when (c) {
-                    'Y' -> VERY_VERBOSE
-                    'V' -> VERBOSE
-                    'D' -> DEBUG
-                    'I' -> INFO
-                    'W' -> WARN
-                    'E' -> ERROR
-                    'F' -> STACKTRACE
-                    'U' -> USR
-                    // NONE won't be sent from Go, commenting it from usage
-                    // using NONE will result in switching the log levels as it has ' ' as the char
-                    // below is the e.g., from stacktrace logs
-                    /*  ns.forwarder.deliverPackets [11] ns: tun: forwarder: deliverPackets rand10pc [gobind@v20260304225152-87c7a25]
-                        go log: unknown level char 'n' using ERROR
-                         (#0) -- ideally the space here switching levels to NONE but its actually STACKTRACE
-                        <===>
-                        go log: unknown level char '<' using NONE*/
-                    // ' ' -> NONE
-                    else -> null
-                }
-            }
-        }
-
-        fun toLoggerLevel(): LoggerLevel {
-            return when (this) {
-                VERY_VERBOSE -> VERY_VERBOSE
-                VERBOSE -> VERBOSE
-                DEBUG -> DEBUG
-                INFO -> INFO
-                WARN -> WARN
-                ERROR -> ERROR
-                STACKTRACE -> STACKTRACE
-                USR -> USR
-                NONE -> NONE
-            }
         }
 
         fun stacktrace(): Boolean {
@@ -144,8 +88,6 @@ object Logger {
     fun e(tag: String, message: String, e: Exception? = null) = Unit
     fun crash(tag: String, message: String, e: Exception? = null) = Unit
 
-    fun updateConfigLevel(level: Long) { logLevel = LoggerLevel.NONE.id }
-
     fun throwableToException(throwable: Throwable): Exception {
         return if (throwable is Exception) {
             throwable
@@ -154,32 +96,9 @@ object Logger {
         }
     }
 
-    fun goLog(message: String, type: LoggerLevel) = Unit
-
-    fun goLog2(message: String, type: LoggerLevel) = Unit
-
-    fun goLog3(message: String, type: LoggerLevel): Nothing? = null
-
-    /**
-     * Single-character prefix for a log line, matching the level chars written by the
-     * Go runtime (see [LoggerLevel.fromChar]). Centralised so [dbWrite] and the
-     * batch-oriented [makeGoLog] never drift apart.
-     */
-    private fun levelChar(level: LoggerLevel): String = when (level) {
-        LoggerLevel.VERY_VERBOSE -> "Y"
-        LoggerLevel.VERBOSE -> "V"
-        LoggerLevel.DEBUG -> "D"
-        LoggerLevel.INFO -> "I"
-        LoggerLevel.WARN -> "W"
-        LoggerLevel.ERROR -> "E"
-        LoggerLevel.STACKTRACE -> "F"
-        else -> "V"
-    }
-
     suspend fun wireLog(message: String) = Unit
 
     fun log(tag: String, msg: String, type: LoggerLevel, e: Exception? = null) = Unit
 
-    private fun dbWrite(tag: String, msg: String, level: LoggerLevel, e: Exception? = null) = Unit
 }
 

@@ -60,6 +60,8 @@
     <string name="xray_no_slot" translatable="true">Xray-ക്ക് SOCKS5 പ്രോക്സി സജ്ജമാക്കാനായില്ല</string>
     <string name="xray_error" translatable="true">Xray പിശക്: %1$s</string>
     <string name="xray_rethink_on" translatable="true">ആദ്യം VPN-നുള്ളിലെ റൂട്ടിംഗ് ഓപ്ഷൻ ഓഫാക്കുക, അല്ലെങ്കിൽ Xray ട്രാഫിക് ലൂപ്പിൽ കുടുങ്ങും</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray-ക്ക് ഫയർവാൾ അല്ലെങ്കിൽ DNS+ഫയർവാൾ മോഡ് ആവശ്യമാണ്. DNS മാത്രം മോഡിൽ ട്രാഫിക്കോ DNS-ഓ പ്രോക്സി വഴി പോകില്ല</string>
+    <string name="xray_err_provider" translatable="true">തിരഞ്ഞെടുത്ത പ്രോക്സി WireGuard അല്ലെങ്കിൽ Orbot ആണ്. ആദ്യം അത് ഓഫാക്കുക: Xray ഒരേ പ്രോക്സി സ്ലോട്ട് ആണ് ഉപയോഗിക്കുന്നത്</string>
     <string name="xray_title" translatable="true">Xray കോൺഫിഗ്</string>
     <string name="xray_ok" translatable="true">കോൺഫിഗ് ശരിയെന്ന് തോന്നുന്നു</string>
     <string name="xray_paste" translatable="true">ഒട്ടിക്കുക</string>
@@ -72,7 +74,6 @@
     <string name="xray_err_outbound" translatable="true">ഉപയോഗയോഗ്യമായ VLESS ഔട്ട്ബൗണ്ട് ഇല്ല: സെർവർ വിലാസം, പോർട്ട്, UUID, publicKey എന്നിവ വേണം</string>
     <string name="xray_err_reality" translatable="true">Reality സുരക്ഷ മാത്രമേ പിന്തുണയ്ക്കുന്നുള്ളൂ: streamSettings.security reality ആയി സജ്ജമാക്കുക</string>
     <string name="xray_err_link" translatable="true">അസാധുവായ vless:// ലിങ്ക്: UUID, ഹോസ്റ്റ്, പോർട്ട്, sni, pbk പാരാമീറ്ററുകൾ പരിശോധിക്കുക</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -85,14 +86,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray, WireGuard ഒരേസമയം പ്രവർത്തിക്കില്ല. ആദ്യം Xray ഓഫാക്കുക.</string>
+    <string name="xray_off_confirm" translatable="true">VPN ഓണായിരിക്കെ Xray ഓഫാക്കിയാൽ ട്രാഫിക് Xray ഇല്ലാതെ നേരിട്ട് പോകും. ഓഫാക്കണോ?</string>
+    <string name="xray_err_dns" translatable="true">dns ബ്ലോക്ക് നീക്കം ചെയ്യുക: DNS പരിഹരിക്കുന്നത് DNS Control ആണ്, Xray അല്ല</string>
+    <string name="xray_err_rule" translatable="true">റൂട്ടിംഗ് നിയമത്തിന് ip, domain അല്ലെങ്കിൽ port വേണം; proxy അല്ലെങ്കിൽ direct-ലേക്ക് മാത്രമേ അയയ്ക്കാവൂ</string>
 </resources>

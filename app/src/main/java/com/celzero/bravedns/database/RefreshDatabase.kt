@@ -918,18 +918,6 @@ internal constructor(
 
     }
 
-    /*
-    private val CAT_SIZE = 9
-    private val CATEGORY_STRING = "category/"
-    private val CATEGORY_GAME_STRING = "GAME_" // All games start with this prefix
-
-    private fun getCategoryTypeByHref(href: String): String? {
-        val appCategoryType = href.substring(href.indexOf(CATEGORY_STRING) + CAT_SIZE, href.length)
-        return if (appCategoryType.contains(CATEGORY_GAME_STRING)) {
-            PlayStoreCategory.GENERAL_GAMES_CATEGORY_NAME
-        } else appCategoryType
-    }*/
-
     private fun io(s: String, f: suspend () -> Unit) =
         CoroutineScope(CoroutineName(s) + Dispatchers.IO).launch { f() }
 }

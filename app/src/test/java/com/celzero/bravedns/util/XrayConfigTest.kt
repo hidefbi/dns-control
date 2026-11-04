@@ -291,4 +291,58 @@ class XrayConfigTest {
         assertEquals("\"a\\\"b\\\\c\"", XrayConfig.jsonString("a\"b\\c"))
         assertEquals("\"x\\ny\"", XrayConfig.jsonString("x\ny"))
     }
+
+    private fun filledJsonWith(extra: String): String =
+        "{" + extra + "\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{\"address\":\"203.0.113.10\"," +
+            "\"port\":443,\"users\":[{\"id\":\"u\",\"encryption\":\"none\"}]}]},\"streamSettings\":{\"security\":\"reality\"," +
+            "\"realitySettings\":{\"serverName\":\"a.example\",\"publicKey\":\"K\",\"shortId\":\"ab\"}}}]}"
+
+    @Test
+    fun checkRefusesDnsBlock() {
+        assertEquals(
+            XrayConfig.Problem.DNS_BLOCK,
+            XrayConfig.check(filledJsonWith("\"dns\":{\"servers\":[\"1.1.1.1\"]},"))
+        )
+    }
+
+    @Test
+    fun checkRefusesDirectRuleCoveringDnsPort() {
+        assertEquals(
+            XrayConfig.Problem.BAD_RULE,
+            XrayConfig.check(
+                filledJsonWith("\"routing\":{\"rules\":[{\"port\":\"50-60\",\"outboundTag\":\"direct\"}]},")
+            )
+        )
+    }
+
+    @Test
+    fun checkAcceptsDirectRuleOffDnsPort() {
+        assertEquals(
+            null,
+            XrayConfig.check(filledJsonWith("\"routing\":{\"rules\":[{\"port\":443,\"outboundTag\":\"direct\"}]},"))
+        )
+    }
+
+    @Test
+    fun checkRefusesBlanketUserRule() {
+        assertEquals(
+            XrayConfig.Problem.BAD_RULE,
+            XrayConfig.check(
+                filledJsonWith("\"routing\":{\"rules\":[{\"network\":\"tcp,udp\",\"outboundTag\":\"direct\"}]},")
+            )
+        )
+    }
+
+    @Test
+    fun canonicalKeepsNarrowUserRuleBeforeCatchAll() {
+        val config =
+            XrayConfig.canonicalConfig(
+                filledJsonWith(
+                    "\"routing\":{\"rules\":[{\"type\":\"field\",\"domain\":[\"example.org\"],\"outboundTag\":\"direct\"}]},"
+                )
+            )
+        assertTrue(config.contains("\"domain\":[\"example.org\"]"))
+        assertTrue(config.indexOf("example.org") < config.indexOf("\"network\": \"tcp,udp\""))
+        assertFalse(config.contains("\"dns\""))
+    }
 }

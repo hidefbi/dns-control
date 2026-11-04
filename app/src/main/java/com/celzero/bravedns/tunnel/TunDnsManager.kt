@@ -340,7 +340,7 @@ object TunDnsManager: KoinComponent {
     }
 
     private fun determineDnsTransportIdForDnsMode(isLockdown: Boolean): Pair<String, String> {
-        val tid = if (appConfig.isSystemDns() || (VpnController.isAppPaused() && isLockdown)) {
+        val tid = if (VpnController.isAppPaused() && isLockdown) {
             // in vpn-lockdown mode+appPause , use system dns if the app is paused to mimic
             // as if the apps are excluded from vpn
             Backend.System
@@ -358,14 +358,7 @@ object TunDnsManager: KoinComponent {
             return Pair(Backend.Default, "")
         }
 
-        val defaultTid =
-            if (appConfig.isSystemDns() || (VpnController.isAppPaused() && isLockdown)) {
-                // in vpn-lockdown mode+appPause , use system dns if the app is paused to mimic
-                // as if the apps are excluded from vpn
-                Backend.System
-            } else {
-                Backend.Preferred
-            }
+        val defaultTid = defaultTransportId(isLockdown)
 
         val fallbackTid = if (globalProxyLockdown) {
             Backend.BlockAll
@@ -432,6 +425,22 @@ object TunDnsManager: KoinComponent {
         }
     }
 
+    // transport for an app's dns when no wireguard transport applies. with xray routing it is the
+    // preferred (encrypted) resolver, which is dialed through the xray outbound, mirroring how the
+    // wireguard transport is dialed through its own outbound; the system resolver is never used.
+    private fun defaultTransportId(isLockdown: Boolean): String {
+        if (appConfig.isXrayDnsRouted()) {
+            return Backend.Preferred
+        }
+        return if (VpnController.isAppPaused() && isLockdown) {
+            // in vpn-lockdown mode+appPause , use system dns if the app is paused to mimic
+            // as if the apps are excluded from vpn
+            Backend.System
+        } else {
+            Backend.Preferred
+        }
+    }
+
     private fun isAlreadyBlocked(tidcsv: String): Boolean {
         if (tidcsv.isBlank()) return false
         return tidcsv.split(",").any { token ->
@@ -456,13 +465,43 @@ object TunDnsManager: KoinComponent {
         }
     }
 
+    // Only while the app dns is routed through xray (see AppConfig.isXrayDnsRouted): no transport
+    // may reach the operator's resolver or the carrier default, because app dns must leave through
+    // the xray outbound. The operator's transports are replaced by the encrypted preferred
+    // resolver. Rethink's own queries are exempt. Without xray routing this is a no-op.
+    private fun guardDnsLeak(uid: Int, tid: Pair<String, String>): Pair<String, String> {
+        if (uid == rethinkUid || !appConfig.isXrayDnsRouted()) {
+            return tid
+        }
+        val defaultNone = appConfig.isDefaultDnsNone()
+        val first = replaceOperatorTransports(tid.first, defaultNone)
+        val second = replaceOperatorTransports(tid.second, defaultNone)
+        if (first == tid.first && second == tid.second) return tid
+        logd("guardDnsLeak: uid: $uid, tid: $tid, operator transports replaced, now: $first, $second")
+        return Pair(first, second)
+    }
+
+    // ids may carry a cache prefix (CT+) and a proxy suffix (ex: CT+System:S5:Base); only the
+    // transport name is compared, and both are kept on the replaced id
+    private fun replaceOperatorTransports(csv: String, defaultNone: Boolean): String {
+        if (csv.isBlank()) return csv
+        return csv.split(",").joinToString(",") { id ->
+            val cache = if (id.startsWith(Backend.CT)) Backend.CT else ""
+            val bare = id.substring(cache.length)
+            val name = bare.substringBefore(":")
+            val leaks = name == Backend.System || (name == Backend.Default && defaultNone)
+            if (leaks) cache + Backend.Preferred + bare.substring(name.length) else id
+        }
+    }
+
     private suspend fun makeNsOpts(
         uid: Int,
-        tid: Pair<String, String>,
+        tidIn: Pair<String, String>,
         domain: String,
         bypassLocalBlocklists: Boolean = false,
         isIfaceCellular: Boolean
     ): DNSOpts {
+        val tid = guardDnsLeak(uid, tidIn)
         val opts = DNSOpts()
         opts.uid = uid.toString()
         opts.ipcsv = "" // as of now, no suggested ips
@@ -577,16 +616,25 @@ object TunDnsManager: KoinComponent {
         val usesCellularNw = isIfaceCellular
 
         val emptyOrDefault = if (isGlobalProxyLockdown) "" else defaultProxy
+        // with xray on and prevent dns leaks set, a failing proxy must fail the query rather than
+        // fall back to the direct Base transport. Without xray the proxy branches below keep the
+        // same fallback as before, and the wireguard branch keeps its own fallback either way.
+        val proxyFallback =
+            if (isGlobalProxyLockdown || (persistentState.xrayEnabled && persistentState.preventDnsLeaks)) {
+                ""
+            } else {
+                defaultProxy
+            }
         return if (appConfig.isCustomSocks5Enabled()) {
-            val id = proxyIdBuilder(ProxyManager.ID_S5_BASE, emptyOrDefault)
+            val id = proxyIdBuilder(ProxyManager.ID_S5_BASE, proxyFallback)
             logd("(onQuery-pid)customSocks5 enabled, return $id, global-proxy-lockdown? $isGlobalProxyLockdown")
             id
         } else if (appConfig.isCustomHttpProxyEnabled()) {
-            val id = proxyIdBuilder(ProxyManager.ID_HTTP_BASE, emptyOrDefault)
+            val id = proxyIdBuilder(ProxyManager.ID_HTTP_BASE, proxyFallback)
             logd("(onQuery-pid)customHttp enabled, return $id, global-proxy-lockdown? $isGlobalProxyLockdown")
             id
         } else if (appConfig.isOrbotProxyEnabled()) {
-            val id = proxyIdBuilder(ProxyManager.ID_ORBOT_BASE, emptyOrDefault)
+            val id = proxyIdBuilder(ProxyManager.ID_ORBOT_BASE, proxyFallback)
             logd("(onQuery-pid)orbot enabled, return $id, global-proxy-lockdown? $isGlobalProxyLockdown")
             id
         } else {
@@ -685,14 +733,7 @@ object TunDnsManager: KoinComponent {
                 // there maybe multiple transports when split dns is enabled, so add the already
                 // used transport id as secondary transport id
                 logd("getTransportIdToBypass: global, returning preferred with prev ids as secondary $secTransport")
-                val defaultTid =
-                    if (appConfig.isSystemDns() || (VpnController.isAppPaused() && isLockdown)) {
-                        // in vpn-lockdown mode+appPause , use system dns if the app is paused to mimic
-                        // as if the apps are excluded from vpn
-                        Backend.System
-                    } else {
-                        Backend.Preferred
-                    }
+                val defaultTid = defaultTransportId(isLockdown)
                 return Pair(defaultTid, secTransport)
             }
 
@@ -895,7 +936,7 @@ object TunDnsManager: KoinComponent {
             // will be used, else the same tid from onQuery will be used
             val result = dnsOptsFactory().apply {
                 val id = Pair(params.rcvdDnsOpts.tidcsv, params.rcvdDnsOpts.tidseccsv)
-                val tidPair = getTransportIdToBypass(id, params.isLockdown)
+                val tidPair = guardDnsLeak(uid, getTransportIdToBypass(id, params.isLockdown))
                 if (tidPair == id) {
                     logd("onUpstreamAnswer: no bypass transport needed, rule: $rule")
                     return dnsOptsFactory()

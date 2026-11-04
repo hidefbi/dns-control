@@ -251,7 +251,6 @@
     <string name="ada_app_status_unknown">es desconocido</string>
     <string name="ada_app_isolate">Aislamiento</string>
     <string name="notif_download_content_text">Descarga en curso…</string>
-    <string name="network_dns">Sistema DNS</string>
     <string name="notif_download_failure_content">La descarga ha fallado. Inténtelo de nuevo.</string>
     <string name="notif_download_cancel_content">Descarga cancelada.</string>
     <string name="rbl_privacy" description="The text appears as part of the blocklist setup screen as categories or headlines">Privacidad</string>
@@ -324,7 +323,7 @@
     <string name="hsf_vpn_prepare_failure">O falta el permiso de la VPN, u otra aplicación está en modo de VPN siempre activa.</string>
     <string name="hsf_notification_permission_failure">Activar el permiso de notificación desde la pantalla de Ajustes</string>
     <string name="hsf_pause_vpn_failure">No se puede pausar: DNS Control no está activo</string>
-    <string name="dc_custom_dns_radio">Otros DNS</string>
+    <string name="dc_custom_dns_radio">DNS personalizado</string>
     <string name="hsf_exclude_error">La exclusión no es posible en el modo bloqueo de VPN</string>
     <string name="dc_rethink_dns_radio">Rethink DNS</string>
     <string name="dc_entries">%1$s entradas »</string>
@@ -789,7 +788,6 @@
     <string name="settings_mobile_metered_heading" translatable="true">Medir redes móviles</string>
     <string name="settings_mobile_metered_desc" translatable="true">Considera solo las redes móviles como medidas, el resto como no medidas.</string>
     <string name="settings_biometric_dialog_option_0" translatable="true">Ninguna</string>
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Usar el DNS del sistema para dominios no delegados</string>
     <string name="adv_tasker_dialog_instructions" translatable="true">Instrucciones:\n Al enviar el broadcast es requerido:\n • Key: sender\n • Value: Nombre del paquete de la app\n\n Ejemplo: key:sender value:com.termux\n\n Acciones disponibles:\n • Iniciar VPN – com.celzero.bravedns.intent.action.VPN_START\n • Detener VPN – com.celzero.bravedns.intent.action.VPN_STOP</string>
     <string name="adv_tasker_dialog_msg" translatable="true">Introduce los nombres de paquete (separado por comas) se les permite iniciar o detener DNS Control.</string>
     <string name="adv_set_dial_timeout_title" translatable="true">Tiempo de espera inactivo</string>
@@ -802,7 +800,6 @@
     <string name="settings_theme_dialog_themes_6" translatable="true">Oscuro Plus</string>
     <string name="settings_theme_dialog_themes_7" translatable="true">Escarcha</string>
     
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">Usar el DNS del sistema para dominios no delegados como <i>.lan</i>, <i>.internal</i>, etc.</string>
     <string name="cd_split_dns_heading" translatable="true">DNS dividido (experimental)</string>
     <string name="cd_split_dns_desc" translatable="true">Reenviar las consultas DNS de las aplicaciones proxificadas a los servidores DNS del proxy.</string>
     <string name="dns_record_types_auto_mode_status" translatable="true">Automático (Todos los tipos)</string>
@@ -914,6 +911,8 @@
     <string name="xray_no_slot" translatable="true">No se pudo configurar el proxy SOCKS5 para Xray</string>
     <string name="xray_error" translatable="true">Error de Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Desactiva primero la opción de enrutar en la VPN; si no, el tráfico de Xray entra en bucle</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray necesita el modo Cortafuegos o DNS+Cortafuegos. En modo solo DNS, ni el tráfico ni el DNS pasan por un proxy</string>
+    <string name="xray_err_provider" translatable="true">El proxy seleccionado es WireGuard u Orbot. Desactívelo primero: Xray usa la misma ranura de proxy única</string>
     <string name="xray_title" translatable="true">Configuración de Xray</string>
     <string name="xray_ok" translatable="true">La configuración parece válida</string>
     <string name="xray_paste" translatable="true">Pegar</string>
@@ -926,7 +925,6 @@
     <string name="xray_err_outbound" translatable="true">Falta un outbound VLESS utilizable: se requieren dirección del servidor, puerto, UUID y publicKey</string>
     <string name="xray_err_reality" translatable="true">Solo se admite seguridad Reality: define streamSettings.security como reality</string>
     <string name="xray_err_link" translatable="true">Enlace vless:// no válido: revisa UUID, host, puerto y los parámetros sni y pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -939,14 +937,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray y WireGuard no pueden ejecutarse a la vez. Desactiva primero Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Con la VPN activa, desactivar Xray envía el tráfico directamente, sin pasar por Xray. ¿Desactivar?</string>
+    <string name="xray_err_dns" translatable="true">Quita el bloque dns: DNS lo resuelve DNS Control, no Xray</string>
+    <string name="xray_err_rule" translatable="true">Una regla de enrutamiento necesita ip, domain o port, y solo puede enviar a proxy o direct</string>
 </resources>

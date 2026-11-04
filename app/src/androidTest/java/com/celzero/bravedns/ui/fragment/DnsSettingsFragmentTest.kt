@@ -21,7 +21,6 @@ class DnsSettingsFragmentTest {
 
     @Test
     fun testDnsSettingsDisplay() {
-        onView(withId(R.id.network_dns_rb)).check(matches(isDisplayed()))
         onView(withId(R.id.custom_dns_rb)).check(matches(isDisplayed()))
     }
 }

@@ -366,7 +366,7 @@
     <string name="hsf_exclude_error" translatable="true">VPN 락다운 모드에서는 제외할 수 없습니다</string>
     <string name="restrict_dialog_message" translatable="true"><i>%1$s</i>를 사용하면 연결이 끊길 수 있습니다. 설정을 변경하여 DNS Control가 백그라운드에서 데이터 및 기타 리소스를 사용하도록 허용하세요.</string>
     <string name="dc_block_heading" translatable="true">규칙</string>
-    <string name="dc_custom_dns_radio" translatable="true">기타 DNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">사용자 지정 DNS</string>
     <string name="dc_check_update_heading" translatable="true">차단 목록 업데이트에 대한 프롬프트</string>
     <string name="dc_check_update_desc" translatable="true"><i>3</i>일마다 차단 목록 업데이트 확인</string>
     <string name="cd_dns_proxy_mode_external" translatable="true">외부의</string>
@@ -538,8 +538,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">5분 후</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">15분 후</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">별도로 지정된 DNS가 없는 도메인에 대해서는 시스템 DNS를 사용합니다</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true"><i>.lan</i>, <i>.internal</i> 등 별도로 지정된 DNS가 없는 도메인에는 시스템 DNS를 사용합니다.</string>
     <string name="lbl_hop" translatable="true">중계</string>
     <string name="lbl_manual" translatable="true">수동 편집</string>
     <string name="lbl_experimental" translatable="true">(실험적)</string>
@@ -663,7 +661,6 @@
     <string name="ada_app_bypass_univ" translatable="true">전역 우회</string>
     <string name="ada_app_exclude" translatable="true">제외</string>
     <string name="ada_app_isolate" translatable="true">격리</string>
-    <string name="network_dns" translatable="true">시스템 DNS</string>
     <string name="notif_download_content_title" translatable="true">기기 내 차단 목록 다운로드</string>
     <string name="notif_download_content_text" translatable="true">다운로드하는 중입니다…</string>
     <string name="notif_download_failure_content" translatable="true">다운로드 실패. 다시 시도하십시오.</string>
@@ -915,6 +912,8 @@
     <string name="xray_no_slot" translatable="true">Xray용 SOCKS5 프록시를 설정할 수 없습니다</string>
     <string name="xray_error" translatable="true">Xray 오류: %1$s</string>
     <string name="xray_rethink_on" translatable="true">먼저 VPN 내부 경로 설정을 끄세요. 끄지 않으면 Xray 트래픽이 VPN으로 되돌아가 무한 반복됩니다</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray는 방화벽 또는 DNS+방화벽 모드가 필요합니다. DNS 전용 모드에서는 트래픽과 DNS가 프록시를 거치지 않습니다</string>
+    <string name="xray_err_provider" translatable="true">선택된 프록시가 WireGuard 또는 Orbot입니다. 먼저 끄세요. Xray는 같은 단일 프록시 슬롯을 사용합니다</string>
     <string name="xray_title" translatable="true">Xray 설정</string>
     <string name="xray_ok" translatable="true">설정이 유효해 보입니다</string>
     <string name="xray_paste" translatable="true">붙여넣기</string>
@@ -927,7 +926,6 @@
     <string name="xray_err_outbound" translatable="true">사용 가능한 VLESS 아웃바운드가 없습니다: 서버 주소, 포트, UUID, publicKey가 필요합니다</string>
     <string name="xray_err_reality" translatable="true">Reality 보안만 지원합니다: streamSettings.security를 reality로 설정하세요</string>
     <string name="xray_err_link" translatable="true">잘못된 vless:// 링크입니다: UUID, 호스트, 포트, sni 및 pbk 매개변수를 확인하세요</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -940,14 +938,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray와 WireGuard는 동시에 실행할 수 없습니다. 먼저 Xray를 끄세요.</string>
+    <string name="xray_off_confirm" translatable="true">VPN이 켜진 상태에서 Xray를 끄면 트래픽이 Xray를 거치지 않고 바로 나갑니다. 끌까요?</string>
+    <string name="xray_err_dns" translatable="true">dns 블록을 삭제하세요. DNS는 Xray가 아니라 DNS Control이 처리합니다</string>
+    <string name="xray_err_rule" translatable="true">라우팅 규칙에는 ip, domain, port 중 하나가 필요하며, 출력은 proxy 또는 direct만 가능합니다</string>
 </resources>

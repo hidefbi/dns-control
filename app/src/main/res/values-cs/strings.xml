@@ -336,7 +336,7 @@
     <string name="battery_optimization_dialog_heading" translatable="true">Vypnout %1$s</string>
     <string name="restrict_dialog_message" translatable="true"><i>%1$s</i> může vést ke ztrátě konektivity. Změňte nastavení, abyste DNS Controlu povolili používat data a další prostředky na pozadí.</string>
     <string name="dc_block_heading" translatable="true">pravidla</string>
-    <string name="dc_custom_dns_radio" translatable="true">Jiné DNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">Vlastní DNS</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_local_block_heading" translatable="true">Blokovací seznamy v zařízení</string>
     <string name="dc_local_block_desc_1" translatable="true">Vyberte si z 195+ blokovacích seznamů. Klepnutím stáhněte nebo upravte seznamy.</string>
@@ -518,7 +518,6 @@
     <string name="ada_app_bypass_dns_firewall" translatable="true">Obejít DNS &amp; Firewall</string>
     <string name="ada_app_isolate" translatable="true">Izolovat</string>
     <string name="bypass_dns_firewall_tooltip">%1$s funguje pouze s DNS DNS Control</string>
-    <string name="network_dns" translatable="true">Systémové DNS</string>
     <string name="notif_download_content_text" translatable="true">Probíhá stahování…</string>
     <string name="notif_download_failure_content" translatable="true">Stahování selhalo. Zkuste to znovu.</string>
     <string name="notif_download_cancel_content" translatable="true">Stahování zrušeno.</string>
@@ -761,6 +760,8 @@
     <string name="xray_no_slot" translatable="true">Nepodařilo se nastavit SOCKS5 proxy na Xray</string>
     <string name="xray_error" translatable="true">Chyba Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Nejprve vypněte možnost směrovat provoz přes VPN, jinak se provoz Xray zacyklí</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray vyžaduje režim Firewall nebo DNS+Firewall. V režimu pouze DNS neprochází proxy ani provoz, ani DNS</string>
+    <string name="xray_err_provider" translatable="true">Vybraným proxy je WireGuard nebo Orbot. Nejprve jej vypněte: Xray používá stejné jediné místo pro proxy</string>
     <string name="xray_title" translatable="true">Konfigurace Xray</string>
     <string name="xray_ok" translatable="true">Konfigurace vypadá správně</string>
     <string name="xray_paste" translatable="true">Vložit</string>
@@ -773,7 +774,6 @@
     <string name="xray_err_outbound" translatable="true">Chybí použitelný outbound VLESS: je potřeba adresa serveru, port, UUID a publicKey</string>
     <string name="xray_err_reality" translatable="true">Podporováno je pouze zabezpečení Reality: nastavte streamSettings.security na reality</string>
     <string name="xray_err_link" translatable="true">Neplatný odkaz vless://: zkontrolujte UUID, hostitele, port a parametry sni a pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -786,14 +786,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray a WireGuard nemohou běžet současně. Nejprve Xray vypněte.</string>
+    <string name="xray_off_confirm" translatable="true">Vypnutí Xray při zapnutém VPN pošle provoz přímo, bez Xray. Vypnout?</string>
+    <string name="xray_err_dns" translatable="true">Odstraňte blok dns: DNS řeší DNS Control, ne Xray</string>
+    <string name="xray_err_rule" translatable="true">Pravidlo směrování potřebuje ip, domain nebo port a smí směrovat jen na proxy nebo direct</string>
 </resources>

@@ -357,11 +357,10 @@
     <string name="lbl_on_device" translatable="true">на пристрої</string>
     <string name="settings_connectivity_checks" translatable="true">Перевіряти підключення до мережі</string>
     <string name="generic_error" translatable="true">Невідома \"%s\" помилка</string>
-    <string name="network_dns" translatable="true">Системний DNS</string>
     <string name="lbl_remove" translatable="true">Вилучити</string>
     <string name="unknown_error" translatable="true">Невідома помилка</string>
     <string name="hybrid_mode_with_proxy_notification_title" translatable="true">Захищено! Підключений до DNS + брандмауер + проксі.</string>
-    <string name="dc_custom_dns_radio" translatable="true">Інший DNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">Власний DNS</string>
     <string name="category_name_others" translatable="true">Інші</string>
     <string name="lbl_notification" translatable="true">повідомлення</string>
     <string name="memory_notification_text">DNS Control бракує пам\'яті. Дії системи можуть бути обмежені.</string>
@@ -763,8 +762,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">Через 5 хвилин</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">Через 15 хвилин</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Використовувати системний DNS для неделегованих доменів</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">Використовуйте системний DNS для неделегованих доменів, таких як <i>.lan</i>, <i>.internal</i>, тощо.</string>
     <string name="dc_filtering_heading" translatable="true">фільтрація</string>
     <string name="cd_split_dns_heading" translatable="true">Розділений DNS (експериментальний)</string>
     <string name="cd_split_dns_desc" translatable="true">Пересилати DNS-запити від проксі-програм на DNS-сервери проксі-сервера.</string>
@@ -876,6 +873,8 @@
     <string name="xray_no_slot" translatable="true">Не вдалося призначити SOCKS5-проксі для Xray</string>
     <string name="xray_error" translatable="true">Помилка Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Спочатку вимкніть опцію маршрутизації всередині VPN, інакше трафік Xray зациклиться</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray потребує режиму «Брандмауер» або «DNS+брандмауер». У режимі лише DNS ні трафік, ні DNS не проходять через проксі</string>
+    <string name="xray_err_provider" translatable="true">Обрано проксі WireGuard або Orbot. Спочатку вимкніть його: Xray використовує те саме єдине місце для проксі</string>
     <string name="xray_title" translatable="true">Конфігурація Xray</string>
     <string name="xray_ok" translatable="true">Конфігурація виглядає коректною</string>
     <string name="xray_paste" translatable="true">Вставити</string>
@@ -888,7 +887,6 @@
     <string name="xray_err_outbound" translatable="true">Немає робочого outbound VLESS: потрібні адреса сервера, порт, UUID та publicKey</string>
     <string name="xray_err_reality" translatable="true">Підтримується лише безпека Reality: задайте streamSettings.security як reality</string>
     <string name="xray_err_link" translatable="true">Некоректне посилання vless://: перевірте UUID, хост, порт і параметри sni та pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -901,14 +899,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray і WireGuard не можуть працювати одночасно. Спочатку вимкніть Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Якщо вимкнути Xray, коли VPN увімкнено, трафік піде напряму, минаючи Xray. Вимкнути?</string>
+    <string name="xray_err_dns" translatable="true">Видаліть блок dns: DNS обробляє DNS Control, а не Xray</string>
+    <string name="xray_err_rule" translatable="true">Правилу маршрутизації потрібні ip, domain або port, і воно може спрямовувати лише в proxy або direct</string>
 </resources>

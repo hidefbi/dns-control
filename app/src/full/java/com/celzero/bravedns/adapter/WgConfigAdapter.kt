@@ -618,6 +618,20 @@ class WgConfigAdapter(private val context: Context, private val listener: DnsSta
                 return
             }
 
+            if (WireguardManager.isXrayEnabled()) {
+                Logger.i(LOG_TAG_PROXY, "$TAG xray is enabled, cannot enable WireGuard")
+                uiCtx {
+                    // reset the check box
+                    b.interfaceSwitch.isChecked = false
+                    Utilities.showToastUiCentered(
+                        context,
+                        context.getString(R.string.xray_wg_conflict),
+                        Toast.LENGTH_LONG
+                    )
+                }
+                return
+            }
+
             if (WireguardManager.oneWireGuardEnabled()) {
                 // this should not happen, ui is disabled if one wireGuard is enabled
                 Logger.w(LOG_TAG_PROXY, "$TAG one wireGuard is already enabled")

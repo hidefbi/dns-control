@@ -15,7 +15,6 @@
  */
 package com.celzero.bravedns.util
 
-import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
 import com.celzero.bravedns.util.Logger.LOG_TAG_DOWNLOAD
 import com.celzero.bravedns.util.Logger.LOG_TAG_FIREWALL
 import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
@@ -26,7 +25,6 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ApplicationInfo
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.pm.ServiceInfo
 import android.graphics.drawable.Drawable
@@ -61,8 +59,6 @@ import com.celzero.bravedns.util.Constants.Companion.UNSPECIFIED_IP_IPV4
 import com.celzero.bravedns.util.Constants.Companion.UNSPECIFIED_IP_IPV6
 import com.google.common.net.InternetDomainName
 import com.google.gson.JsonParser
-import inet.ipaddr.HostName
-import inet.ipaddr.IPAddress
 import inet.ipaddr.IPAddressString
 import kotlinx.coroutines.launch
 import okio.HashingSink
@@ -71,8 +67,6 @@ import okio.buffer
 import okio.source
 import java.io.File
 import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 import java.net.InetAddress
 import java.security.SecureRandom
 import java.text.SimpleDateFormat
@@ -231,30 +225,6 @@ object Utilities {
         return String(Character.toChars(firstHalf)) + String(Character.toChars(secondHalf))
     }
 
-    @Suppress("ReturnCount", "TooGenericExceptionCaught")
-    fun normalizeIp(ipstr: String?): InetAddress? {
-        if (ipstr.isNullOrEmpty()) return null
-
-        try {
-            val ipAddress: IPAddress = HostName(ipstr).asAddress() ?: return null
-            val ip = ipAddress.toInetAddress()
-
-            // no need to check if IP is not of type IPv6
-            if (!IPUtil.isIpV6(ipAddress)) return ip
-
-            val ipv4 = IPUtil.ip4in6(ipAddress)
-
-            return if (ipv4 != null) {
-                ipv4.toInetAddress()
-            } else {
-                ip
-            }
-        } catch (e: Exception) { // not expected
-            Logger.e(LOG_TAG_VPN, "err normalizing ip $ipstr ${e.message}", e)
-        }
-        return null
-    }
-
     fun convertLongToTime(time: Long, template: String): String {
         val date = Date(time)
         return SimpleDateFormat(template, Locale.ENGLISH).format(date)
@@ -353,24 +323,6 @@ object Utilities {
         }
     }
 
-    fun getPackageMetadata(pm: PackageManager, pi: String): PackageInfo? {
-        var metadata: PackageInfo? = null
-        try {
-            metadata =
-                if (isAtleastT()) {
-                    pm.getPackageInfo(
-                        pi,
-                        PackageManager.PackageInfoFlags.of(PackageManager.GET_META_DATA.toLong())
-                    )
-                } else {
-                    pm.getPackageInfo(pi, PackageManager.GET_META_DATA)
-                }
-        } catch (e: PackageManager.NameNotFoundException) {
-            Logger.w(LOG_TAG_APP_DB, "app not available $pi" + e.message, e)
-        }
-        return metadata
-    }
-
     @Suppress("ReturnCount", "TooGenericExceptionCaught")
     fun copy(from: String, to: String): Boolean {
         try {
@@ -386,26 +338,6 @@ object Utilities {
         }
 
         return true
-    }
-
-    fun copyWithStream(readStream: InputStream, writeStream: OutputStream): Boolean {
-        val buffer = ByteArray(BUFFER_SIZE)
-        return try {
-            readStream.use { input ->
-                writeStream.use { output ->
-                    var bytesRead: Int = input.read(buffer, 0, BUFFER_SIZE)
-                    // write the required bytes
-                    while (bytesRead > 0) {
-                        output.write(buffer, 0, bytesRead)
-                        bytesRead = input.read(buffer, 0, BUFFER_SIZE)
-                    }
-                }
-            }
-            true
-        } catch (e: Exception) { // Catches IOException and other stream-related exceptions
-            Logger.w(LOG_TAG_DOWNLOAD, "err while copying files using streams: ${e.message}, $e")
-            false
-        }
     }
 
     fun isAlwaysOnEnabled(context: Context, vpnService: BraveVPNService?): Boolean {
@@ -580,10 +512,6 @@ object Utilities {
 
     fun isPlayStoreFlavour(): Boolean {
         return BuildConfig.FLAVOR_releaseChannel == FLAVOR_PLAY
-    }
-
-    fun isWebsiteDegoogledFlavour(): Boolean {
-        return isFdroidFlavour() && BuildConfig.IS_WEBSITE_DEGOOGLD_BUILD
     }
 
     /** Returns true when the app is built with the "alpha" build type. */

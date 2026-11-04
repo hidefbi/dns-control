@@ -341,7 +341,7 @@
     <string name="battery_optimization_dialog_heading" translatable="true">%1$s letiltása</string>
     <string name="restrict_dialog_message" translatable="true">A(z) <i>%1$s</i> kapcsolatvesztést okozhat. Módosítsa a beállítást, hogy a DNS Control a háttérben is használhassa az adatforgalmat és egyéb erőforrásokat.</string>
     <string name="dc_block_heading" translatable="true">Szabályok</string>
-    <string name="dc_custom_dns_radio" translatable="true">Egyéb DNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">Egyéni DNS</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_entries" translatable="true">%1$s bejegyzések 🔗</string>
     <string name="dc_local_block_heading" translatable="true">Eszközön tárolt blokklisták</string>
@@ -625,7 +625,6 @@
     <string name="bypass_dns_firewall_tooltip">A(z) %1$s csak a DNS Control-sel működik</string>
     <string name="exclude_apps_from_proxy">Az alkalmazás megkerüli az összes proxy szervert</string>
     <string name="exclude_apps_from_proxy_failure_toast">Ez az alkalmazás megkerüli a proxykat</string>
-    <string name="network_dns" translatable="true">Rendszer DNS</string>
     <string name="notif_download_content_title" translatable="true">Eszközön tárolt tiltólista letöltése</string>
     <string name="notif_download_content_text" translatable="true">Letöltés folyamatban…</string>
     <string name="notif_download_failure_content" translatable="true">Letöltés sikertelen. Próbálja újra.</string>
@@ -755,8 +754,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">5 perc múlva</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">15 perc múlva</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">A rendszer DNS használata a nem delegált tartományokhoz</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">A rendszer DNS használata a nem delegált tartományokhoz, mint például <i>.lan</i>, <i>.internal</i> stb.</string>
     <string name="dc_filtering_heading" translatable="true">Szűrés</string>
     <string name="cd_split_dns_heading" translatable="true">Split DNS (kísérleti)</string>
     <string name="cd_split_dns_desc" translatable="true">A proxyn keresztül irányított alkalmazások DNS-lekérdezéseinek továbbítása a proxy DNS-kiszolgálóihoz.</string>
@@ -892,6 +889,8 @@
     <string name="xray_no_slot" translatable="true">Nem sikerült a SOCKS5-proxyt Xray-re állítani</string>
     <string name="xray_error" translatable="true">Xray-hiba: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Előbb kapcsolja ki a VPN-en belüli útválasztás opciót, különben az Xray forgalma hurokba kerül</string>
+    <string name="xray_err_dns_mode" translatable="true">Az Xray a Tűzfal vagy a DNS+Tűzfal módot igényli. Csak DNS módban sem a forgalom, sem a DNS nem megy át proxyn</string>
+    <string name="xray_err_provider" translatable="true">A kiválasztott proxy a WireGuard vagy az Orbot. Előbb kapcsolja ki: az Xray ugyanazt az egyetlen proxy-helyet használja</string>
     <string name="xray_title" translatable="true">Xray-konfiguráció</string>
     <string name="xray_ok" translatable="true">A konfiguráció érvényesnek tűnik</string>
     <string name="xray_paste" translatable="true">Beillesztés</string>
@@ -904,7 +903,6 @@
     <string name="xray_err_outbound" translatable="true">Nincs használható VLESS-kimenet: szükséges a szerver címe, portja, UUID és publicKey</string>
     <string name="xray_err_reality" translatable="true">Csak a Reality biztonság támogatott: állítsa a streamSettings.security értékét reality-re</string>
     <string name="xray_err_link" translatable="true">Érvénytelen vless:// hivatkozás: ellenőrizze az UUID-t, a gazdagépet, a portot és az sni, pbk paramétereket</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -917,14 +915,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Az Xray és a WireGuard nem futhat egyszerre. Előbb kapcsolja ki az Xray-t.</string>
+    <string name="xray_off_confirm" translatable="true">Ha VPN közben kikapcsolja az Xray-t, a forgalom közvetlenül, Xray nélkül megy ki. Kikapcsolja?</string>
+    <string name="xray_err_dns" translatable="true">Távolítsa el a dns blokkot: a DNS-t a DNS Control oldja fel, nem az Xray</string>
+    <string name="xray_err_rule" translatable="true">Az útvonalszabálynak kell ip, domain vagy port, és csak proxy vagy direct felé küldhet</string>
 </resources>

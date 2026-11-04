@@ -355,10 +355,6 @@ object VpnController : KoinComponent {
         rvpn?.notifyConnectionMonitor(enforcePolicyChange)
     }
 
-    suspend fun getSystemDns(): String {
-        return rvpn?.getSystemDns().orEmpty()
-    }
-
     suspend fun getNetStat(): NetStat? {
         return rvpn?.getNetStat()
     }

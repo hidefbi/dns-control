@@ -59,6 +59,8 @@ import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.ProxyManager
 import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.service.WireguardManager
+import com.celzero.bravedns.service.XrayController
+import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.service.WireguardManager.WG_UPTIME_THRESHOLD
 import com.celzero.bravedns.ui.activity.AppInfoActivity
 import com.celzero.bravedns.ui.activity.AppListActivity
@@ -68,6 +70,7 @@ import com.celzero.bravedns.ui.activity.FirewallActivity
 import com.celzero.bravedns.ui.activity.PauseActivity
 import com.celzero.bravedns.ui.activity.ProxySettingsActivity
 import com.celzero.bravedns.ui.activity.WgMainActivity
+import com.celzero.bravedns.ui.activity.XrayActivity
 import com.celzero.bravedns.ui.bottomsheet.HomeScreenSettingBottomSheet
 import com.celzero.bravedns.ui.tour.GuidedTourManager
 import com.celzero.bravedns.ui.tour.TourOverlayController
@@ -335,6 +338,8 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
             )
         }
 
+        setupXrayCard()
+
 
 
 
@@ -389,7 +394,63 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         requireActivity().finish()
     }
 
+    private val xrayController by lazy { XrayController(requireContext(), appConfig, persistentState) }
+
+    private fun setupXrayCard() {
+        b.fhsCardXrayEdit.setOnClickListener {
+            startActivity(Intent(requireContext(), XrayActivity::class.java))
+        }
+        b.fhsCardXraySwitch.setOnCheckedChangeListener { _, checked -> onXraySwitchChanged(checked) }
+        renderXrayCard()
+    }
+
+    /** Shows the saved switch state and whether xray is running right now. */
+    private fun renderXrayCard() {
+        if (view == null) return
+        b.fhsCardXraySwitch.setOnCheckedChangeListener(null)
+        b.fhsCardXraySwitch.isChecked = persistentState.xrayEnabled
+        b.fhsCardXraySwitch.setOnCheckedChangeListener { _, checked -> onXraySwitchChanged(checked) }
+        val running = XrayRunner.isRunning()
+        b.fhsCardXrayStatus.text =
+            getString(if (running) R.string.xray_chip_on else R.string.xray_chip_off)
+    }
+
+    private fun onXraySwitchChanged(checked: Boolean) {
+        // xray runs only while the VPN is up, the same way the other proxies do
+        if (checked && !VpnController.hasTunnel()) {
+            showToastUiCentered(
+                requireContext(),
+                getString(R.string.settings_socks5_vpn_disabled_error),
+                Toast.LENGTH_LONG
+            )
+            renderXrayCard()
+            return
+        }
+        if (!checked && VpnController.hasTunnel()) {
+            // with the VPN on, turning xray off sends traffic straight out: confirm first
+            MaterialAlertDialogBuilder(requireContext())
+                .setMessage(R.string.xray_off_confirm)
+                .setPositiveButton(R.string.xray_stop) { _, _ -> applyXraySwitch(false) }
+                .setNegativeButton(android.R.string.cancel) { _, _ -> renderXrayCard() }
+                .setOnCancelListener { renderXrayCard() }
+                .show()
+            return
+        }
+        applyXraySwitch(checked)
+    }
+
+    private fun applyXraySwitch(checked: Boolean) {
+        lifecycleScope.launch {
+            val res = xrayController.setEnabled(checked, VpnController.hasTunnel())
+            res.exceptionOrNull()?.let {
+                showToastUiCentered(requireContext(), it.message ?: "", Toast.LENGTH_LONG)
+            }
+            renderXrayCard()
+        }
+    }
+
     private fun updateCardsUi() {
+        renderXrayCard()
         if (isVpnActivated) {
             showActiveCards()
         } else {
@@ -588,11 +649,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     }
 
     private fun getConnectedDnsId(): String {
-        val preferredId = if (appConfig.isSystemDns()) {
-            Backend.System
-        } else {
-            Backend.Preferred
-        }
+        val preferredId = Backend.Preferred
 
         return if (WireguardManager.oneWireGuardEnabled()) {
             val id = WireguardManager.getOneWireGuardProxyId()

@@ -28,6 +28,10 @@ class ProxyEndpointRepository(private val proxyEndpointDAO: ProxyEndpointDAO) {
         proxyEndpointDAO.insert(proxyEndpoint)
     }
 
+    suspend fun delete(proxyEndpoint: ProxyEndpoint) {
+        proxyEndpointDAO.delete(proxyEndpoint)
+    }
+
     suspend fun removeConnectionStatus() {
         proxyEndpointDAO.removeConnectionStatus()
     }

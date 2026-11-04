@@ -43,10 +43,6 @@ class IPUtil {
         // Bit shift constants
         private const val BITS_PER_BYTE = 8
 
-        fun isIpV6(ip: IPAddress): Boolean {
-            return ip.isIPv6
-        }
-
         fun ip4in6(ip: IPAddress): IPAddress? {
             if (ip.isIPv4) {
                 // already v4; no need to convert
@@ -97,7 +93,6 @@ class IPUtil {
             // Decimal value for the 64(hexa) is 100
             return segment.segmentValue == IPV6_PREFIX_64_SEGMENT_VALUE
         }
-
 
         // ref: github.com/M66B/NetGuard/blob/master/app/src/main/java/eu/faircode/netguard
         @Throws(UnknownHostException::class)

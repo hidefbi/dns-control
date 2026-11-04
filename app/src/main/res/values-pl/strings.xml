@@ -412,7 +412,6 @@
     <string name="notif_channel_desc_vpn_notification" translatable="true">Informowanie, kiedy DNS Control jest aktywny i działa w tle</string>
     <string name="ci_trust_initial" translatable="true">T</string>
     <string name="ci_trust_rule" translatable="true">Zaufane</string>
-    <string name="network_dns" translatable="true">System DNS</string>
     <string name="rt_dialog_message" translatable="true">Czy chcesz zastosować nowo skonfigurowane listy blokad?</string>
     <string name="lbbs_configure" translatable="true">Skonfiguruj</string>
     <string name="lbbs_redownload" translatable="true">Pobierz ponownie listy blokujące</string>
@@ -533,7 +532,7 @@
     <string name="settings_dns_proxy_dialog_hostname" translatable="true">Nazwa hosta</string>
     <string name="settings_dns_proxy_dialog_username" translatable="true">Nazwa użytkownika</string>
     <string name="settings_dns_proxy_dialog_password" translatable="true">Hasło</string>
-    <string name="dc_custom_dns_radio" translatable="true">Inne DNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">Niestandardowy DNS</string>
     <string name="fapps_unmetered_block_dialog_title" translatable="true">Blokuj na WiFi</string>
     <string name="ctbs_block_other_apps" translatable="true">Zasady stosowane dla %1$s będą również stosowane dla %2$s innych aplikacji</string>
     <string name="settings_local_blocklist_in_use" translatable="true">%1$s obowiązujące listy blokad</string>
@@ -758,6 +757,8 @@
     <string name="xray_no_slot" translatable="true">Nie udało się ustawić proxy SOCKS5 na Xray</string>
     <string name="xray_error" translatable="true">Błąd Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Najpierw wyłącz opcję kierowania ruchu przez VPN, inaczej ruch Xray zapętli się</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray wymaga trybu Zapora lub DNS+Zapora. W trybie tylko DNS ani ruch, ani DNS nie przechodzą przez proxy</string>
+    <string name="xray_err_provider" translatable="true">Wybranym proxy jest WireGuard lub Orbot. Najpierw go wyłącz: Xray używa tego samego jednego miejsca na proxy</string>
     <string name="xray_title" translatable="true">Konfiguracja Xray</string>
     <string name="xray_ok" translatable="true">Konfiguracja wygląda poprawnie</string>
     <string name="xray_paste" translatable="true">Wklej</string>
@@ -770,7 +771,6 @@
     <string name="xray_err_outbound" translatable="true">Brak użytecznego outbound VLESS: wymagane są adres serwera, port, UUID i publicKey</string>
     <string name="xray_err_reality" translatable="true">Obsługiwane jest tylko zabezpieczenie Reality: ustaw streamSettings.security na reality</string>
     <string name="xray_err_link" translatable="true">Nieprawidłowy link vless://: sprawdź UUID, host, port oraz parametry sni i pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -783,14 +783,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray i WireGuard nie mogą działać razem. Najpierw wyłącz Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Wyłączenie Xray przy włączonym VPN spowoduje, że ruch pójdzie bezpośrednio, z pominięciem Xray. Wyłączyć?</string>
+    <string name="xray_err_dns" translatable="true">Usuń blok dns: DNS rozwiązuje DNS Control, a nie Xray</string>
+    <string name="xray_err_rule" translatable="true">Reguła routingu wymaga ip, domain lub port i może kierować tylko do proxy lub direct</string>
 </resources>

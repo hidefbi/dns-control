@@ -132,7 +132,7 @@
     <string name="hsf_start_btn_state">mulai</string>
     <string name="settings_local_blocklist_dialog_positive">Unduh</string>
     <string name="category_name_others">Lainnya</string>
-    <string name="dc_custom_dns_radio">DNS lain</string>
+    <string name="dc_custom_dns_radio">DNS kustom</string>
     <string name="notification_action_dns_mode">DNS</string>
     <string name="hybrid_mode_info_title">DNS + Firewall</string>
     <string name="build__flavor_fdroid">fdroid</string>
@@ -162,7 +162,6 @@
     <string name="univ_firewall_rule_1">Blokir semua aplikasi saat perangkat terkunci</string>
     <string name="ada_app_exclude">Kecualikan</string>
     <string name="cd_custom_dns_proxy_name_default">Proksi</string>
-    <string name="network_dns">DNS Sistem</string>
     <string name="local_blocklist_download">Unduh Daftar Blokir</string>
     <string name="doh_custom_url_remove_dialog_title">Hapus titik-akhir DoH?</string>
     <string name="orbot_none">Tidak ada (bawaan)</string>
@@ -777,8 +776,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">Setelah 5 menit</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">Setelah 15 menit</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Gunakan DNS Sistem untuk domain yang tidak didelegasikan</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">Gunakan DNS Sistem untuk domain yang tidak didelegasikan seperti <i>.lan</i>, <i>.internal</i>, dll.</string>
     <string name="dc_filtering_heading" translatable="true">Penyaringan</string>
     <string name="cd_split_dns_heading" translatable="true">DNS Terpisah (pengujian)</string>
     <string name="cd_split_dns_desc" translatable="true">Meneruskan kueri DNS dari aplikasi yang diproksi ke server DNS proxy.</string>
@@ -933,6 +930,8 @@
     <string name="xray_no_slot" translatable="true">Tidak dapat mengatur proxy SOCKS5 ke Xray</string>
     <string name="xray_error" translatable="true">Kesalahan Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Matikan dulu opsi perutean di dalam VPN, jika tidak lalu lintas Xray akan berputar</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray memerlukan mode Firewall atau DNS+Firewall. Dalam mode hanya DNS, tidak ada lalu lintas maupun DNS yang melalui proxy</string>
+    <string name="xray_err_provider" translatable="true">Proxy yang dipilih adalah WireGuard atau Orbot. Matikan dulu: Xray memakai slot proxy tunggal yang sama</string>
     <string name="xray_title" translatable="true">Konfigurasi Xray</string>
     <string name="xray_ok" translatable="true">Konfigurasi tampak valid</string>
     <string name="xray_paste" translatable="true">Tempel</string>
@@ -945,7 +944,6 @@
     <string name="xray_err_outbound" translatable="true">Outbound VLESS yang dapat dipakai tidak ada: perlu alamat server, port, UUID, dan publicKey</string>
     <string name="xray_err_reality" translatable="true">Hanya keamanan Reality yang didukung: atur streamSettings.security ke reality</string>
     <string name="xray_err_link" translatable="true">Tautan vless:// tidak valid: periksa UUID, host, port, serta parameter sni dan pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -958,14 +956,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray dan WireGuard tidak bisa berjalan bersamaan. Matikan Xray terlebih dahulu.</string>
+    <string name="xray_off_confirm" translatable="true">Mematikan Xray saat VPN aktif akan mengirim lalu lintas langsung tanpa Xray. Matikan?</string>
+    <string name="xray_err_dns" translatable="true">Hapus blok dns: DNS diselesaikan oleh DNS Control, bukan Xray</string>
+    <string name="xray_err_rule" translatable="true">Aturan routing memerlukan ip, domain, atau port, dan hanya boleh mengirim ke proxy atau direct</string>
 </resources>

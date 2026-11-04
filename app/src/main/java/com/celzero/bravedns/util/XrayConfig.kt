@@ -32,6 +32,7 @@ object XrayConfig {
     const val LOCAL_PORT = 10808
 
     private const val SCHEME = "vless://"
+    private const val DNS_PORT = 53
     private const val DEFAULT_FINGERPRINT = "chrome"
     private const val DEFAULT_TRANSPORT = "tcp"
     private const val REALITY = "reality"
@@ -210,6 +211,8 @@ object XrayConfig {
         NOT_REALITY,
         MISSING_PUBLIC_KEY,
         HOST_NOT_IP,
+        DNS_BLOCK,
+        BAD_RULE,
     }
 
     /** First problem that would keep the input from producing a working config, or null. */
@@ -232,6 +235,10 @@ object XrayConfig {
             } catch (e: JSONException) {
                 return Problem.INVALID_JSON
             }
+        // dns is always handled by DNS Control; a dns block inside xray would resolve outside it
+        if (root.has("dns")) return Problem.DNS_BLOCK
+        if (userRules(root).any { !isCatchAll(it) && !isAllowedRule(it) }) return Problem.BAD_RULE
+
         val outbounds = root.optJSONArray("outbounds")
         if (outbounds == null || outbounds.length() == 0) return Problem.NO_OUTBOUND
 
@@ -359,8 +366,54 @@ object XrayConfig {
      */
     fun canonicalConfig(input: String): String {
         val text = input.trim()
-        val link = if (isVlessLink(text)) parseVlessLink(text) else linkFromJson(JSONObject(text))
-        return buildConfig(link)
+        if (isVlessLink(text)) return buildConfig(parseVlessLink(text))
+        val root = JSONObject(text)
+        val extra =
+            userRules(root)
+                .filter { !isCatchAll(it) && isAllowedRule(it) }
+                .joinToString("") { ", " + it.toString() }
+        return buildConfig(linkFromJson(root), extra)
+    }
+
+    /** Routing rules the user wrote, in order. Anything but an object is ignored. */
+    private fun userRules(root: JSONObject): List<JSONObject> {
+        val rules = root.optJSONObject("routing")?.optJSONArray("rules") ?: return emptyList()
+        return (0 until rules.length()).mapNotNull { rules.optJSONObject(it) }
+    }
+
+    /**
+     * A user rule must be narrow: it needs an ip, domain or port selector, and it must send to
+     * proxy or direct. A rule that matches everything would take traffic away from the catch-all.
+     */
+    /** The catch-all that every config ends with; a pasted copy is ignored, never refused. */
+    private fun isCatchAll(rule: JSONObject): Boolean {
+        return rule.optString("network") == "tcp,udp" &&
+            rule.optString("outboundTag") == "proxy" &&
+            !rule.has("ip") && !rule.has("domain") && !rule.has("port")
+    }
+
+    private fun isAllowedRule(rule: JSONObject): Boolean {
+        val narrow = rule.has("ip") || rule.has("domain") || rule.has("port")
+        val tag = rule.optString("outboundTag")
+        // a direct rule that covers port 53 would send dns around the proxy, so it is refused
+        return narrow && (tag == "proxy" || (tag == "direct" && !coversDnsPort(rule)))
+    }
+
+    private fun coversDnsPort(rule: JSONObject): Boolean {
+        if (!rule.has("port")) return false
+        val spec = rule.opt("port")?.toString().orEmpty()
+        return spec.split(",").any { part ->
+            val bounds = part.trim().split("-")
+            when (bounds.size) {
+                1 -> bounds[0].trim().toIntOrNull() == DNS_PORT
+                2 -> {
+                    val low = bounds[0].trim().toIntOrNull()
+                    val high = bounds[1].trim().toIntOrNull()
+                    low != null && high != null && DNS_PORT in low..high
+                }
+                else -> false
+            }
+        }
     }
 
     private fun linkFromJson(root: JSONObject): VlessLink {
@@ -417,7 +470,7 @@ object XrayConfig {
             "\"settings\":{\"auth\":\"noauth\",\"udp\":true}}"
     }
 
-    fun buildConfig(link: VlessLink): String {
+    fun buildConfig(link: VlessLink, extraRules: String = ""): String {
         val flowField = if (link.flow.isEmpty()) "" else ",\"flow\":${jsonString(link.flow)}"
         val spiderField =
             if (link.spiderX.isEmpty()) "" else ",\"spiderX\":${jsonString(link.spiderX)}"
@@ -450,9 +503,10 @@ object XrayConfig {
                     }
                   }
                 },
-                {"tag": "direct", "protocol": "freedom"}
+                {"tag": "direct", "protocol": "freedom"},
+                {"tag": "block", "protocol": "blackhole"}
               ],
-              "routing": {"domainStrategy": "AsIs", "rules": [{"type": "field", "ip": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8", "169.254.0.0/16", "::1/128", "fc00::/7", "fe80::/10"], "outboundTag": "direct"}, {"type": "field", "network": "tcp,udp", "outboundTag": "proxy"}]}
+              "routing": {"domainStrategy": "AsIs", "rules": [{"type": "field", "ip": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "169.254.0.0/16", "fc00::/7", "fe80::/10"], "port": "53", "network": "tcp,udp", "outboundTag": "block"}, {"type": "field", "ip": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8", "169.254.0.0/16", "::1/128", "fc00::/7", "fe80::/10"], "outboundTag": "direct"}$extraRules, {"type": "field", "network": "tcp,udp", "outboundTag": "proxy"}]}
             }
             """.trimIndent()
     }

@@ -108,7 +108,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
 
         setupNavigationItemSelectedListener()
 
-
         observeAppState()
 
         handleOnBackPressed()
@@ -135,10 +134,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
         } catch (_: Exception) {
             false
         }
-    }
-
-    private fun isInForeground(): Boolean {
-        return !this.isFinishing && !this.isDestroyed
     }
 
     private fun regenerateFirebaseTokenIfNeeded() {
@@ -279,7 +274,6 @@ class HomeScreenActivity : BaseActivity(R.layout.activity_home_screen) {
             }
         )
     }
-
 
     private fun setupNavigationItemSelectedListener() {
         val btmNavView = findViewById<BottomNavigationView>(R.id.nav_view) ?: run {
