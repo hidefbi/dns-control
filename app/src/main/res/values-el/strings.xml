@@ -155,6 +155,8 @@
     <string name="xray_no_slot" translatable="true">Δεν ήταν δυνατή η ρύθμιση του διακομιστή SOCKS5 στο Xray</string>
     <string name="xray_error" translatable="true">Σφάλμα Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Απενεργοποιήστε πρώτα την επιλογή δρομολόγησης μέσω VPN, αλλιώς η κίνηση του Xray θα κάνει βρόχο</string>
+    <string name="xray_err_dns_mode" translatable="true">Το Xray απαιτεί τη λειτουργία Τείχος προστασίας ή DNS+Τείχος προστασίας. Στη λειτουργία μόνο DNS δεν περνά από proxy ούτε η κίνηση ούτε το DNS</string>
+    <string name="xray_err_provider" translatable="true">Ο επιλεγμένος proxy είναι το WireGuard ή το Orbot. Απενεργοποιήστε τον πρώτα: το Xray χρησιμοποιεί την ίδια μοναδική θέση proxy</string>
     <string name="xray_title" translatable="true">Ρύθμιση Xray</string>
     <string name="xray_ok" translatable="true">Η ρύθμιση φαίνεται έγκυρη</string>
     <string name="xray_paste" translatable="true">Επικόλληση</string>
@@ -167,7 +169,6 @@
     <string name="xray_err_outbound" translatable="true">Λείπει χρησιμοποιήσιμη έξοδος VLESS: απαιτούνται διεύθυνση διακομιστή, θύρα, UUID και publicKey</string>
     <string name="xray_err_reality" translatable="true">Υποστηρίζεται μόνο η ασφάλεια Reality: ορίστε το streamSettings.security σε reality</string>
     <string name="xray_err_link" translatable="true">Μη έγκυρος σύνδεσμος vless://: ελέγξτε το UUID, τον κεντρικό υπολογιστή, τη θύρα και τις παραμέτρους sni και pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -180,14 +181,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Το Xray και το WireGuard δεν μπορούν να λειτουργούν ταυτόχρονα. Απενεργοποιήστε πρώτα το Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Η απενεργοποίηση του Xray ενώ το VPN είναι ενεργό στέλνει την κίνηση απευθείας, χωρίς Xray. Απενεργοποίηση;</string>
+    <string name="xray_err_dns" translatable="true">Αφαιρέστε το μπλοκ dns: το DNS το επιλύει το DNS Control, όχι το Xray</string>
+    <string name="xray_err_rule" translatable="true">Ο κανόνας δρομολόγησης χρειάζεται ip, domain ή port και μπορεί να στέλνει μόνο σε proxy ή direct</string>
 </resources>

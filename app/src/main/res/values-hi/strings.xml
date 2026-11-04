@@ -179,7 +179,7 @@
     <string name="hsf_vpn_dialog_message" translatable="true">रीथिंक डिवाइस के डीएनएस अनुरोधों को एन्क्रिप्ट करने, नेटवर्क मॉनिटर को लागू करने, और फ़ायरवॉल नियमों को लागू करने के लिए एक स्थानीय वीपीएन सेट करने की अनुमति की आवश्यकता होती है। \n \nरीथिंक किसी भी तरह से आपकी कोई जानकारी इकट्ठा या जासूसी नहीं करता है।</string>
     <string name="hsf_exclude_error" translatable="true">वीपीएन लॉकडाउन मोड में निकालना संभव नहीं है</string>
     <string name="hsf_pause_vpn_failure" translatable="true">रोक नहीं सकते: रीथिंक सक्रिय नहीं है</string>
-    <string name="dc_custom_dns_radio" translatable="true">अन्य डीएनएस</string>
+    <string name="dc_custom_dns_radio" translatable="true">कस्टम DNS</string>
     <string name="dc_entries" translatable="true">%1$s एंट्री</string>
     <string name="dc_rethink_dns_radio" translatable="true">रीथिंक डीएनएस</string>
     <string name="dc_custom_block_heading" translatable="true">डोमेन नियम</string>
@@ -363,7 +363,6 @@
     <string name="ci_trust_rule" translatable="true">विश्वास</string>
     <string name="rt_dialog_title" translatable="true">बदलाव सेव कीजिये</string>
     <string name="rt_dialog_message" translatable="true">क्या आप नई कॉन्फ़िगर की गई ब्लॉकलिस्ट लागू करना चाहते हैं?</string>
-    <string name="network_dns" translatable="true">सिस्टम डीएनएस</string>
     <string name="notif_download_content_title" translatable="true">ऑन-डिवाइस ब्लॉकलिस्ट डाउनलोड</string>
     <string name="notif_download_content_text" translatable="true">डाउनलोड चल रहा है…</string>
     <string name="notif_download_failure_content" translatable="true">डाउनलोड विफल। पुनः प्रयास करें।</string>
@@ -767,6 +766,8 @@
     <string name="xray_no_slot" translatable="true">Xray के लिए SOCKS5 प्रॉक्सी सेट नहीं हो सकी</string>
     <string name="xray_error" translatable="true">Xray त्रुटि: %1$s</string>
     <string name="xray_rethink_on" translatable="true">पहले VPN के अंदर रूटिंग विकल्प बंद करें, नहीं तो Xray का ट्रैफ़िक लूप में चला जाएगा</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray को फ़ायरवॉल या DNS+फ़ायरवॉल मोड चाहिए। केवल-DNS मोड में न ट्रैफ़िक और न DNS किसी प्रॉक्सी से गुज़रते हैं</string>
+    <string name="xray_err_provider" translatable="true">चुना गया प्रॉक्सी WireGuard या Orbot है। पहले इसे बंद करें: Xray उसी एक प्रॉक्सी स्लॉट का उपयोग करता है</string>
     <string name="xray_title" translatable="true">Xray कॉन्फ़िग</string>
     <string name="xray_ok" translatable="true">कॉन्फ़िग सही लगता है</string>
     <string name="xray_paste" translatable="true">चिपकाएँ</string>
@@ -779,7 +780,6 @@
     <string name="xray_err_outbound" translatable="true">उपयोग योग्य VLESS आउटबाउंड नहीं है: सर्वर पता, पोर्ट, UUID और publicKey आवश्यक हैं</string>
     <string name="xray_err_reality" translatable="true">केवल Reality सुरक्षा समर्थित है: streamSettings.security को reality पर सेट करें</string>
     <string name="xray_err_link" translatable="true">अमान्य vless:// लिंक: UUID, होस्ट, पोर्ट और sni व pbk पैरामीटर जाँचें</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -792,14 +792,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray और WireGuard एक साथ नहीं चल सकते। पहले Xray बंद करें।</string>
+    <string name="xray_off_confirm" translatable="true">VPN चालू रहते Xray बंद करने पर ट्रैफ़िक Xray के बिना सीधे जाएगा। बंद करें?</string>
+    <string name="xray_err_dns" translatable="true">dns ब्लॉक हटाएँ: DNS को DNS Control हल करता है, Xray नहीं</string>
+    <string name="xray_err_rule" translatable="true">रूटिंग नियम में ip, domain या port होना चाहिए, और वह केवल proxy या direct पर भेज सकता है</string>
 </resources>

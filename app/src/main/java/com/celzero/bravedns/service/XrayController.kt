@@ -20,13 +20,23 @@ import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.ProxyEndpoint
 import com.celzero.bravedns.util.XrayConfig
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
+import org.json.JSONObject
 
 /**
  * Runs xray-core together with the VPN.
  *
- * Xray starts before the tunnel is established, because the tunnel sends its traffic to xray's
- * local SOCKS5 inbound. It stops, and its SOCKS5 slot is removed, whenever the VPN stops, so the
- * next VPN start never inherits a dead proxy.
+ * The switch decides whether xray is used. While the VPN is on, switching xray on starts it and
+ * points the SOCKS5 slot at it; switching it off stops it. xray takes over the custom SOCKS5 slot
+ * only for as long as it runs: the slot's previous contents and the proxy selection are saved
+ * first, and handed back when xray stops, including after a crash (the snapshot is persisted).
+ * The tunnel is brought up only after xray is listening, and xray and WireGuard cannot run together.
  */
 class XrayController(
     private val context: Context,
@@ -35,23 +45,102 @@ class XrayController(
 ) {
 
     companion object {
-        /** Name of the SOCKS5 slot that xray owns; other SOCKS5 settings are never touched. */
+        /** Name of the SOCKS5 row that xray uses while it runs. */
         const val PROXY_NAME = "XRAY"
     }
 
     private val runner = XrayRunner(context)
 
+    // serialises start, stop and restore, so a VPN restart never races a stop
+    private val lock = Mutex()
+
+    // outlives the VPN service: stopNow() is called while the service is being destroyed
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
     /**
-     * Called before the tunnel is established. Does nothing when the user has not enabled xray.
-     * A failure means the VPN must not start, so traffic does not silently go direct.
+     * Called before the tunnel carries traffic. Does nothing when the switch is off, apart from
+     * handing back a slot that xray left behind. A failure means the VPN must not start, so
+     * traffic does not silently go direct.
      */
-    suspend fun startForVpn(): Result<Unit> {
-        if (!persistentState.xrayEnabled) {
-            removeStaleSlot()
-            return Result.success(Unit)
+    suspend fun startForVpn(): Result<Unit> =
+        lock.withLock {
+            withContext(Dispatchers.IO) {
+                if (!persistentState.xrayEnabled) {
+                    restoreSlot()
+                    return@withContext Result.success(Unit)
+                }
+                // wireguard runs only while xray is off. A stale xray switch, left on by an older
+                // build or by a crash, must not block a VPN that uses wireguard: the switch is
+                // turned off and the slot handed back, so wireguard starts as it did before xray.
+                if (appConfig.isWireGuardEnabled()) {
+                    persistentState.xrayEnabled = false
+                    restoreSlot()
+                    return@withContext Result.success(Unit)
+                }
+                startRunning()
+            }
         }
-        if (persistentState.routeRethinkInRethink) {
-            return Result.failure(IllegalStateException(context.getString(R.string.xray_rethink_on)))
+
+    /**
+     * Called when the user flips the switch. While the VPN is on, enabling starts xray right away
+     * and disabling stops it. While the VPN is off, the flag is only saved for the next VPN start.
+     */
+    suspend fun setEnabled(enabled: Boolean, vpnOn: Boolean): Result<Unit> =
+        lock.withLock {
+            withContext(Dispatchers.IO) {
+                if (!enabled) {
+                    persistentState.xrayEnabled = false
+                    runner.stop()
+                    restoreSlot()
+                    return@withContext Result.success(Unit)
+                }
+                conflict()?.let {
+                    return@withContext Result.failure(IllegalStateException(context.getString(it)))
+                }
+                persistentState.xrayEnabled = true
+                if (!vpnOn) return@withContext Result.success(Unit)
+                val started = startRunning()
+                if (started.isFailure) persistentState.xrayEnabled = false
+                started
+            }
+        }
+
+    /**
+     * Stops xray and hands the SOCKS5 slot back. Called while the VPN service is being destroyed:
+     * the process is stopped right away, the slot is restored on the controller's own scope.
+     */
+    fun stopNow() {
+        // xray runs only while the vpn runs: the switch is turned off with the vpn, so a later
+        // wireguard start is not blocked by a leftover xray switch. set before the stop so that
+        // no start can see xray on while the slot is being handed back
+        persistentState.xrayEnabled = false
+        runner.stop()
+        scope.launch {
+            lock.withLock {
+                withContext(Dispatchers.IO) { restoreSlot() }
+            }
+        }
+    }
+
+    /** Resource id of the reason xray cannot run now, or null when it can. */
+    fun conflict(): Int? {
+        if (persistentState.routeRethinkInRethink) return R.string.xray_rethink_on
+        if (appConfig.isWireGuardEnabled()) return R.string.xray_wg_conflict
+        return null
+    }
+
+    private suspend fun startRunning(): Result<Unit> {
+        conflict()?.let { return Result.failure(IllegalStateException(context.getString(it))) }
+        // proxies are not allowed in dns-only mode (see AppConfig#canEnableProxy). Xray would start
+        // but no traffic or DNS would reach it, so refuse with a reason instead.
+        if (!appConfig.canEnableProxy()) {
+            return Result.failure(IllegalStateException(context.getString(R.string.xray_err_dns_mode)))
+        }
+        // the proxy provider is a single setting. Pointing the SOCKS5 slot at xray would overwrite
+        // a WireGuard or Orbot selection, so refuse to start instead of silently replacing it.
+        val provider = AppConfig.ProxyProvider.getProxyProvider(appConfig.getProxyProvider())
+        if (provider == AppConfig.ProxyProvider.WIREGUARD || provider == AppConfig.ProxyProvider.ORBOT) {
+            return Result.failure(IllegalStateException(context.getString(R.string.xray_err_provider)))
         }
 
         val profile = runner.savedProfile()
@@ -62,10 +151,11 @@ class XrayController(
         val problem = XrayConfig.check(profile)
         if (problem != null) {
             val res =
-                if (problem == XrayConfig.Problem.HOST_NOT_IP) {
-                    R.string.xray_err_host_ip
-                } else {
-                    R.string.xray_err_outbound
+                when (problem) {
+                    XrayConfig.Problem.HOST_NOT_IP -> R.string.xray_err_host_ip
+                    XrayConfig.Problem.DNS_BLOCK -> R.string.xray_err_dns
+                    XrayConfig.Problem.BAD_RULE -> R.string.xray_err_rule
+                    else -> R.string.xray_err_outbound
                 }
             return Result.failure(IllegalStateException(context.getString(res)))
         }
@@ -74,29 +164,95 @@ class XrayController(
         val started = runner.start(profile)
         if (started.isFailure) return started
 
-        val current = appConfig.getSocks5ProxyDetails()
-        if (current == null) {
+        return try {
+            takeSlot()
+            Result.success(Unit)
+        } catch (e: Exception) {
             runner.stop()
-            return Result.failure(IllegalStateException(context.getString(R.string.xray_no_slot)))
+            restoreSlot()
+            Result.failure(IllegalStateException(context.getString(R.string.xray_no_slot), e))
         }
-        appConfig.updateCustomSocks5Proxy(socks5Endpoint(current.id))
-        return Result.success(Unit)
     }
 
     /**
-     * Stops xray and removes its SOCKS5 slot. Synchronous on purpose: it is called while the VPN
-     * service is being destroyed, when coroutine scopes are already cancelled.
+     * Points the SOCKS5 slot at xray. The first time, the slot's previous contents and the proxy
+     * selection are saved, so they can be handed back. A slot that is already pointing at xray is
+     * left alone, so a VPN restart does not change the proxy again.
      */
-    fun stopNow() {
-        if (!XrayRunner.isRunning()) return
-        runner.stop()
-        appConfig.removeProxy(AppConfig.ProxyType.SOCKS5, AppConfig.ProxyProvider.CUSTOM)
+    private suspend fun takeSlot() {
+        if (persistentState.xrayProxySnapshot.isBlank()) {
+            saveSnapshot()
+        }
+        val row = appConfig.getSocks5ProxyDetails() ?: throw IllegalStateException("no slot")
+        val pointingAtXray =
+            row.proxyName == PROXY_NAME &&
+                row.proxyIP == XrayConfig.LOCAL_HOST &&
+                row.proxyPort == XrayConfig.LOCAL_PORT &&
+                appConfig.isCustomSocks5Enabled()
+        if (pointingAtXray) return
+        appConfig.updateCustomSocks5Proxy(socks5Endpoint(row.id))
     }
 
-    /** Removes a leftover XRAY slot, for example after the app was killed while xray ran. */
-    private suspend fun removeStaleSlot() {
-        if (appConfig.getSocks5ProxyDetails()?.proxyName == PROXY_NAME) {
-            appConfig.removeProxy(AppConfig.ProxyType.SOCKS5, AppConfig.ProxyProvider.CUSTOM)
+    private suspend fun saveSnapshot() {
+        val original = appConfig.getSocks5ProxyDetails()
+        // a row named XRAY was left by an older build; it is xray's own, so it is removed on restore
+        val created = original == null || original.proxyName == PROXY_NAME
+        val slotId =
+            if (original == null) {
+                appConfig.insertCustomSocks5Row(socks5Endpoint(0))
+                appConfig.getSocks5ProxyDetails()?.id ?: throw IllegalStateException("no slot")
+            } else {
+                original.id
+            }
+        val snapshot =
+            Snapshot(
+                created = created,
+                slotId = slotId,
+                original = if (created) null else original,
+                proxyType = persistentState.proxyType,
+                proxyProvider = persistentState.proxyProvider,
+            )
+        persistentState.xrayProxySnapshot = snapshot.toJson()
+    }
+
+    /**
+     * Hands the SOCKS5 slot and the proxy selection back to what they were before xray. A slot
+     * left by xray without a snapshot (older build) is removed, but only the SOCKS5 selection that
+     * xray set: a WireGuard or other proxy selection is never touched.
+     */
+    private suspend fun restoreSlot() {
+        val raw = persistentState.xrayProxySnapshot
+        if (raw.isBlank()) {
+            removeLegacySlot()
+            return
+        }
+        val snapshot = Snapshot.fromJson(raw)
+        if (snapshot == null) {
+            persistentState.xrayProxySnapshot = ""
+            return
+        }
+        if (snapshot.created) {
+            appConfig.deleteCustomSocks5Row(socks5Endpoint(snapshot.slotId))
+        } else {
+            snapshot.original?.let { appConfig.saveCustomSocks5Row(it) }
+        }
+        persistentState.proxyType = snapshot.proxyType
+        persistentState.proxyProvider = snapshot.proxyProvider
+        persistentState.updateProxyStatus()
+        persistentState.xrayProxySnapshot = ""
+    }
+
+    private suspend fun removeLegacySlot() {
+        val row = appConfig.getSocks5ProxyDetails() ?: return
+        if (row.proxyName != PROXY_NAME) return
+        appConfig.deleteCustomSocks5Row(row)
+        val isXraySelection =
+            persistentState.proxyProvider == AppConfig.ProxyProvider.CUSTOM.name &&
+                AppConfig.ProxyType.of(persistentState.proxyType).isProxyTypeSocks5()
+        if (isXraySelection) {
+            persistentState.proxyType = AppConfig.ProxyType.NONE.name
+            persistentState.proxyProvider = AppConfig.ProxyProvider.NONE.name
+            persistentState.updateProxyStatus()
         }
     }
 
@@ -117,5 +273,86 @@ class XrayController(
             modifiedDataTime = 0L,
             latency = 0,
         )
+    }
+
+    /** What xray replaced; persisted so that a crash does not lose the user's slot. */
+    private class Snapshot(
+        val created: Boolean,
+        val slotId: Int,
+        val original: ProxyEndpoint?,
+        val proxyType: String,
+        val proxyProvider: String,
+    ) {
+        fun toJson(): String {
+            val json = JSONObject()
+            json.put("created", created)
+            json.put("slotId", slotId)
+            json.put("proxyType", proxyType)
+            json.put("proxyProvider", proxyProvider)
+            json.put("original", original?.let { rowToJson(it) } ?: JSONObject.NULL)
+            return json.toString()
+        }
+
+        companion object {
+            fun fromJson(raw: String): Snapshot? {
+                return try {
+                    val json = JSONObject(raw)
+                    val original =
+                        if (json.isNull("original")) null else rowFromJson(json.getJSONObject("original"))
+                    Snapshot(
+                        created = json.getBoolean("created"),
+                        slotId = json.getInt("slotId"),
+                        original = original,
+                        proxyType = json.getString("proxyType"),
+                        proxyProvider = json.getString("proxyProvider"),
+                    )
+                } catch (e: Exception) {
+                    null
+                }
+            }
+
+            // the password stays encrypted as stored, it is never written here in plaintext
+            private fun rowToJson(row: ProxyEndpoint): JSONObject {
+                val json = JSONObject()
+                json.put("id", row.id)
+                json.put("proxyName", row.proxyName)
+                json.put("proxyMode", row.proxyMode)
+                json.put("proxyType", row.proxyType)
+                json.put("proxyAppName", row.proxyAppName ?: JSONObject.NULL)
+                json.put("proxyIP", row.proxyIP ?: JSONObject.NULL)
+                json.put("proxyPort", row.proxyPort)
+                json.put("userName", row.userName ?: JSONObject.NULL)
+                json.put("encryptedPassword", row.encryptedPassword ?: JSONObject.NULL)
+                json.put("isSelected", row.isSelected)
+                json.put("isCustom", row.isCustom)
+                json.put("isUDP", row.isUDP)
+                json.put("modifiedDataTime", row.modifiedDataTime)
+                json.put("latency", row.latency)
+                return json
+            }
+
+            private fun rowFromJson(json: JSONObject): ProxyEndpoint {
+                val row = ProxyEndpoint()
+                row.id = json.getInt("id")
+                row.proxyName = json.getString("proxyName")
+                row.proxyMode = json.getInt("proxyMode")
+                row.proxyType = json.getString("proxyType")
+                row.proxyAppName = optionalString(json, "proxyAppName")
+                row.proxyIP = optionalString(json, "proxyIP")
+                row.proxyPort = json.getInt("proxyPort")
+                row.userName = optionalString(json, "userName")
+                row.encryptedPassword = optionalString(json, "encryptedPassword")
+                row.isSelected = json.getBoolean("isSelected")
+                row.isCustom = json.getBoolean("isCustom")
+                row.isUDP = json.getBoolean("isUDP")
+                row.modifiedDataTime = json.getLong("modifiedDataTime")
+                row.latency = json.getInt("latency")
+                return row
+            }
+
+            private fun optionalString(json: JSONObject, key: String): String? {
+                return if (json.isNull(key)) null else json.getString(key)
+            }
+        }
     }
 }

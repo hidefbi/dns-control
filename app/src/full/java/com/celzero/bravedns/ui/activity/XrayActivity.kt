@@ -35,7 +35,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.celzero.bravedns.R
 import com.celzero.bravedns.databinding.ActivityXrayBinding
 import com.celzero.bravedns.service.PersistentState
-import com.celzero.bravedns.service.VpnController
 import com.celzero.bravedns.service.XrayRunner
 import com.celzero.bravedns.ui.BaseActivity
 import com.celzero.bravedns.util.Themes
@@ -95,10 +94,6 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         b.xrayFormat.setOnClickListener { formatInput() }
         b.xrayClear.setOnClickListener { b.xrayInput.setText("") }
         b.xraySave.setOnClickListener { saveProfile() }
-
-        // set the state before the listener, so that it does not fire for the initial value
-        b.xrayEnable.isChecked = persistentState.xrayEnabled
-        b.xrayEnable.setOnCheckedChangeListener { _, checked -> onEnableChanged(checked) }
         refresh()
     }
 
@@ -125,18 +120,6 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         updateGutter()
     }
 
-    private fun onEnableChanged(checked: Boolean) {
-        // xray cannot run together with "route the app through the VPN": its traffic would loop
-        if (checked && persistentState.routeRethinkInRethink) {
-            b.xrayEnable.isChecked = false
-            toast(getString(R.string.xray_enable_blocked))
-            return
-        }
-        persistentState.xrayEnabled = checked
-        if (VpnController.isOn()) toast(getString(R.string.xray_enable_running))
-        renderStatus()
-    }
-
     /** Checks the current text and updates the progress, message, footer and buttons. */
     private fun validate() {
         val text = b.xrayInput.text.toString()
@@ -157,12 +140,13 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         renderProgress(missing)
 
         val pending = problem == XrayConfig.Problem.PLACEHOLDER && !missing.isNullOrEmpty()
-        b.xrayFooter.text =
-            if (!missing.isNullOrEmpty()) {
-                getString(R.string.xray_footer_fill, missing.size)
-            } else {
-                getString(R.string.xray_footer_save)
-            }
+        // the footer only says how many values are still missing; nothing about starting xray
+        if (!missing.isNullOrEmpty()) {
+            b.xrayFooter.text = getString(R.string.xray_footer_fill, missing.size)
+            b.xrayFooter.visibility = View.VISIBLE
+        } else {
+            b.xrayFooter.visibility = View.GONE
+        }
 
         // while values are missing, the progress card already says what is left
         b.xrayProblem.visibility = if (blank || pending) View.GONE else View.VISIBLE
@@ -195,6 +179,8 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
             XrayConfig.Problem.INVALID_LINK -> getString(R.string.xray_err_link)
             XrayConfig.Problem.NOT_REALITY -> getString(R.string.xray_err_reality)
             XrayConfig.Problem.HOST_NOT_IP -> getString(R.string.xray_err_host_ip)
+            XrayConfig.Problem.DNS_BLOCK -> getString(R.string.xray_err_dns)
+            XrayConfig.Problem.BAD_RULE -> getString(R.string.xray_err_rule)
             else -> getString(R.string.xray_err_outbound)
         }
     }
@@ -367,10 +353,6 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         val running = XrayRunner.isRunning()
         b.xrayChipStatus.text =
             getString(if (running) R.string.xray_chip_on else R.string.xray_chip_off)
-        b.xrayEnableNote.text =
-            getString(
-                if (persistentState.xrayEnabled) R.string.xray_enable_on else R.string.xray_enable_off
-            )
     }
 
     private fun saveProfile() {

@@ -18,9 +18,11 @@ package com.celzero.bravedns.data
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_VPN
 import android.content.Context
-import androidx.lifecycle.LiveData
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import androidx.lifecycle.MutableLiveData
-import com.celzero.bravedns.R
+import java.net.Inet6Address
+import java.net.InetAddress
 import com.celzero.bravedns.database.DnsCryptEndpoint
 import com.celzero.bravedns.database.DnsCryptEndpointRepository
 import com.celzero.bravedns.database.DnsCryptRelayEndpoint
@@ -69,6 +71,10 @@ internal constructor(
     private var orbotEndpoint: ProxyEndpoint? = null
 
     companion object {
+        // built-in encrypted resolver that replaces the removed system dns mode
+        const val QUAD9_DOH_NAME = "Quad9"
+        const val QUAD9_DOH_URL = "https://dns.quad9.net/dns-query"
+
         private val connectedDns: MutableLiveData<String> = MutableLiveData()
 
         private const val ORBOT_DNS = "Orbot"
@@ -145,16 +151,11 @@ internal constructor(
         DNSCRYPT(2),
         DNS_PROXY(3),
         RETHINK_REMOTE(4),
-        SYSTEM_DNS(5),
         DOT(6),
         ODOH(7);
 
         fun isDnsProxy(): Boolean {
             return this == DNS_PROXY
-        }
-
-        fun isSystemDns(): Boolean {
-            return this == SYSTEM_DNS
         }
 
         // encrypted resolvers: a failure here must never silently fall back to system dns
@@ -167,20 +168,22 @@ internal constructor(
                 this == DNSCRYPT ||
                 this == DNS_PROXY ||
                 this == RETHINK_REMOTE ||
-                this == SYSTEM_DNS ||
                 this == DOT ||
                 this == ODOH
         }
 
         companion object {
+            // legacy id of the removed system dns mode, read as doh and migrated on startup
+            const val LEGACY_SYSTEM_DNS_TYPE = 5
+
             fun getDnsType(id: Int): DnsType {
                 return when (id) {
                     DOH.type -> DOH
                     DNSCRYPT.type -> DNSCRYPT
                     DNS_PROXY.type -> DNS_PROXY
-                    // legacy RDNS value: no longer selectable, read as system dns
-                    RETHINK_REMOTE.type -> SYSTEM_DNS
-                    SYSTEM_DNS.type -> SYSTEM_DNS
+                    // legacy RDNS value: no longer selectable, read as doh
+                    RETHINK_REMOTE.type -> DOH
+                    LEGACY_SYSTEM_DNS_TYPE -> DOH
                     DOT.type -> DOT
                     ODOH.type -> ODOH
                     else -> DOH
@@ -335,9 +338,9 @@ internal constructor(
             DnsType.DOH.type -> DnsType.DOH
             DnsType.DNSCRYPT.type -> DnsType.DNSCRYPT
             DnsType.DNS_PROXY.type -> DnsType.DNS_PROXY
-            // legacy RDNS value: no longer selectable, read as system dns
-            DnsType.RETHINK_REMOTE.type -> DnsType.SYSTEM_DNS
-            DnsType.SYSTEM_DNS.type -> DnsType.SYSTEM_DNS
+            // legacy RDNS value: no longer selectable, read as doh
+            DnsType.RETHINK_REMOTE.type -> DnsType.DOH
+            DnsType.LEGACY_SYSTEM_DNS_TYPE -> DnsType.DOH
             DnsType.DOT.type -> DnsType.DOT
             DnsType.ODOH.type -> DnsType.ODOH
             else -> {
@@ -487,9 +490,6 @@ internal constructor(
 
                 postConnectedDnsName(endpoint.name, endpoint.url)
             }
-            DnsType.SYSTEM_DNS -> {
-                postConnectedDnsName(context.getString(R.string.network_dns))
-            }
         }
     }
 
@@ -507,7 +507,6 @@ internal constructor(
             dt == DnsType.DNSCRYPT ||
             dt == DnsType.DNS_PROXY ||
             dt == DnsType.RETHINK_REMOTE ||
-            dt == DnsType.SYSTEM_DNS ||
             dt == DnsType.DOT ||
             dt == DnsType.ODOH)
     }
@@ -566,7 +565,31 @@ internal constructor(
     }
 
     suspend fun getDnscryptRelayServers(): String {
-        return dnsCryptRelayEndpointRepository.getServersToAdd()
+        return dnsCryptRelayEndpointRepository.getServersToAdd(hasGlobalIpv6())
+    }
+
+    // true when a network other than the vpn has a global ipv6 address (2000::/3)
+    private fun hasGlobalIpv6(): Boolean {
+        return try {
+            val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            cm.allNetworks.any { nw ->
+                val caps = cm.getNetworkCapabilities(nw)
+                val usable =
+                    caps != null &&
+                        caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
+                        !caps.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+                usable &&
+                    cm.getLinkProperties(nw)?.linkAddresses?.any { isGlobalIpv6(it.address) } == true
+            }
+        } catch (e: Exception) {
+            false
+        }
+    }
+
+    private fun isGlobalIpv6(address: InetAddress?): Boolean {
+        if (address !is Inet6Address) return false
+        val first = address.address.firstOrNull() ?: return false
+        return (first.toInt() and 0xE0) == 0x20
     }
 
     suspend fun getDohCount(): Int {
@@ -732,22 +755,32 @@ internal constructor(
         return getDnsType() == DnsType.RETHINK_REMOTE
     }
 
-    suspend fun enableSystemDns() {
-        if (getDnsType() != DnsType.SYSTEM_DNS) {
-            removeConnectionStatus()
+    // moves users off the removed system dns mode, and off the legacy rethink remote mode, onto
+    // the built-in quad9 doh resolver. Runs before the tunnel starts; a no-op once a doh resolver
+    // is connected, so a user who picked another resolver is never changed.
+    suspend fun migrateLegacyDnsToQuad9IfNeeded() {
+        val stored = persistentState.dnsType
+        val legacy = stored == DnsType.LEGACY_SYSTEM_DNS_TYPE || stored == DnsType.RETHINK_REMOTE.type
+        if (legacy) {
+            persistentState.dnsType = DnsType.DOH.type
         }
+        if (getDnsType() != DnsType.DOH) return
+        if (doHEndpointRepository.getConnectedDoH() != null) return
 
-        val prev = persistentState.connectedDnsName
-        onDnsChange(DnsType.SYSTEM_DNS)
-        logEvent(
-            EventType.DNS_SERVER_CHANGE,
-            "System DNS enabled",
-            "System DNS enabled, prev: $prev"
-        )
-    }
-
-    fun isSystemDns(): Boolean {
-        return getDnsType().isSystemDns()
+        val endpoint =
+            DoHEndpoint(
+                id = 0,
+                QUAD9_DOH_NAME,
+                QUAD9_DOH_URL,
+                dohExplanation = "",
+                isSelected = true,
+                isCustom = true,
+                isSecure = true,
+                modifiedDataTime = 0,
+                latency = 0
+            )
+        doHEndpointRepository.insertAsync(endpoint)
+        Logger.i(LOG_TAG_VPN, "dns: migrated to built-in quad9 doh, previous type: $stored")
     }
 
     suspend fun isDnscryptRelaySelectable(): Boolean {
@@ -778,9 +811,6 @@ internal constructor(
             }
             DnsType.RETHINK_REMOTE -> {
                 rethinkDnsEndpointRepository.removeConnectionStatus()
-            }
-            DnsType.SYSTEM_DNS -> {
-                // no-op, no need to remove connection status
             }
         }
     }
@@ -997,6 +1027,24 @@ internal constructor(
         return !getBraveMode().isDnsMode()
     }
 
+    // app dns is routed through the xray (custom socks5) outbound when xray is on, dns leak
+    // prevention is set, proxies are usable and wireguard is not the active proxy. while this
+    // holds no dns transport may fall back to the system or the carrier resolver.
+    fun isXrayDnsRouted(): Boolean {
+        return persistentState.xrayEnabled &&
+                persistentState.preventDnsLeaks &&
+                canEnableProxy() &&
+                !isWireGuardEnabled() &&
+                isCustomSocks5Enabled()
+    }
+
+    // true when the default dns is not one of the encrypted resolvers in the default dns list
+    fun isDefaultDnsNone(): Boolean {
+        val url = persistentState.defaultDnsUrl
+        return url.isEmpty() ||
+                !com.celzero.bravedns.util.Constants.DEFAULT_DNS_LIST.any { it.url == url }
+    }
+
     fun canEnableSocks5Proxy(): Boolean {
         val proxyProvider = ProxyProvider.getProxyProvider(persistentState.proxyProvider)
         return !getBraveMode().isDnsMode() &&
@@ -1027,6 +1075,23 @@ internal constructor(
         proxyEndpointRepository.update(proxyEndpoint)
         customSocks5Endpoint = proxyEndpoint
         addProxy(ProxyType.SOCKS5, ProxyProvider.CUSTOM)
+    }
+
+    // writes the custom socks5 row without touching the proxy selection; used by xray to take
+    // over the slot and to hand it back. the cached row is dropped so the next read is from db.
+    suspend fun insertCustomSocks5Row(proxyEndpoint: ProxyEndpoint) {
+        proxyEndpointRepository.insert(proxyEndpoint)
+        customSocks5Endpoint = null
+    }
+
+    suspend fun saveCustomSocks5Row(proxyEndpoint: ProxyEndpoint) {
+        proxyEndpointRepository.update(proxyEndpoint)
+        customSocks5Endpoint = null
+    }
+
+    suspend fun deleteCustomSocks5Row(proxyEndpoint: ProxyEndpoint) {
+        proxyEndpointRepository.delete(proxyEndpoint)
+        customSocks5Endpoint = null
     }
 
     suspend fun updateOrbotProxy(proxyEndpoint: ProxyEndpoint) {
@@ -1060,7 +1125,6 @@ internal constructor(
         sb.append("   never proxy dns: ${!persistentState.proxyDns}\n")
         sb.append("   prevent dns leaks: ${persistentState.preventDnsLeaks}\n")
         sb.append("   block dns from unknown src: ${persistentState.blockDnsForUnknownApp}\n")
-        sb.append("   use sys dns for undelegated domains: ${persistentState.useSystemDnsForUndelegatedDomains}\n")
         sb.append("   bypass-dns-mode: ${BlockFreeDnsMode.fromMode(persistentState.blockFreeDnsMode).name}\n")
 
         sb.append("Proxy \n")
@@ -1092,6 +1156,4 @@ internal constructor(
         return sb.toString()
     }
 
-    val connectedProxy: LiveData<ProxyEndpoint?> =
-        proxyEndpointRepository.getConnectedProxyLiveData()
 }

@@ -106,7 +106,7 @@
     <string name="dc_proxy_dns_desc" translatable="true">อย่าใช้พร็อกซี DNS ผ่าน Always-on WireGuard, SOCKS5, พร็อกซี HTTP</string>
     <string name="restrict_dialog_message" translatable="true"><i>%1$s</i> อาจส่งผลให้สูญเสียการเชื่อมต่อ เปลี่ยนการตั้งค่าเพื่อให้ DNS Control ใช้ข้อมูลและทรัพยากรอื่นๆ เมื่ออยู่ในพื้นหลัง</string>
     <string name="dc_block_heading" translatable="true">กฎ</string>
-    <string name="dc_custom_dns_radio" translatable="true">DNS อื่น ๆ</string>
+    <string name="dc_custom_dns_radio" translatable="true">DNS กำหนดเอง</string>
     <string name="cd_dns_crypt_title" translatable="true">ตัวแก้ปัญหา</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">พร็อกซี</string>
     <string name="cd_custom_doh_url_name" translatable="true">DoH %1$s</string>
@@ -676,7 +676,6 @@
     <string name="wireguard_apps_proxy_map_desc" translatable="true">ส่วนหนึ่งของ %1$s</string>
     <string name="crypt_quad9_desc" translatable="true">Quad9 (anycast) ไม่มี–dnssec/ไม่มี–log/ไม่มี–ตัวกรอง/ecs 9.9.9.12 – 149.112.112.12</string>
     <string name="crypt_relay_france" translatable="true">รีเลย์ DNS ที่ไม่เปิดเผยตัวตนซึ่งโฮสต์อยู่ในปารีส ประเทศฝรั่งเศส จัดทำโดย https://cryptostrom.is/</string>
-    <string name="network_dns" translatable="true">ระบบ DNS</string>
     <string name="cd_dialog_error_invalid_domain" translatable="true">URL หรือชื่อโดเมนไม่ถูกต้อง</string>
     <string name="lbl_unselected" translatable="true">ไม่ได้เลือก</string>
     <string name="dns_mode_info_explanation_new" translatable="true">ตรวจสอบ บล็อก และเข้ารหัสคำขอ DNS</string>
@@ -758,6 +757,8 @@
     <string name="xray_no_slot" translatable="true">ไม่สามารถตั้งค่าพร็อกซี SOCKS5 เป็น Xray ได้</string>
     <string name="xray_error" translatable="true">ข้อผิดพลาดของ Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">ปิดตัวเลือกการส่งทราฟฟิกผ่าน VPN ก่อน ไม่เช่นนั้นทราฟฟิกของ Xray จะวนกลับเข้า VPN</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray ต้องใช้โหมดไฟร์วอลล์หรือ DNS+ไฟร์วอลล์ ในโหมด DNS อย่างเดียว ทั้งทราฟฟิกและ DNS จะไม่ผ่านพรอกซี</string>
+    <string name="xray_err_provider" translatable="true">พรอกซีที่เลือกคือ WireGuard หรือ Orbot ให้ปิดก่อน: Xray ใช้ช่องพรอกซีเดียวกัน</string>
     <string name="xray_title" translatable="true">การตั้งค่า Xray</string>
     <string name="xray_ok" translatable="true">การตั้งค่าดูถูกต้อง</string>
     <string name="xray_paste" translatable="true">วาง</string>
@@ -770,7 +771,6 @@
     <string name="xray_err_outbound" translatable="true">ไม่มี VLESS outbound ที่ใช้งานได้: ต้องมีที่อยู่เซิร์ฟเวอร์ พอร์ต UUID และ publicKey</string>
     <string name="xray_err_reality" translatable="true">รองรับเฉพาะความปลอดภัยแบบ Reality: ตั้ง streamSettings.security เป็น reality</string>
     <string name="xray_err_link" translatable="true">ลิงก์ vless:// ไม่ถูกต้อง: ตรวจสอบ UUID โฮสต์ พอร์ต และพารามิเตอร์ sni กับ pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -783,14 +783,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray และ WireGuard ไม่สามารถทำงานพร้อมกันได้ กรุณาปิด Xray ก่อน</string>
+    <string name="xray_off_confirm" translatable="true">การปิด Xray ขณะเปิด VPN จะส่งข้อมูลออกโดยตรง โดยไม่ผ่าน Xray ต้องการปิดหรือไม่</string>
+    <string name="xray_err_dns" translatable="true">ลบบล็อก dns: DNS จะถูกจัดการโดย DNS Control ไม่ใช่ Xray</string>
+    <string name="xray_err_rule" translatable="true">กฎการกำหนดเส้นทางต้องมี ip, domain หรือ port และส่งได้เฉพาะไปยัง proxy หรือ direct</string>
 </resources>

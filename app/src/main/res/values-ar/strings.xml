@@ -220,7 +220,6 @@
     <string name="firewall_rule_block_unmetered">غير محدود (WiFi)</string>
     <string name="notif_channel_desc_proxy_failure">تنبيه بشأن أخطاء الوكيل والشذوذ</string>
     <string name="cd_dialog_edittext_hint">أدخل %1$s</string>
-    <string name="network_dns">نظام DNS</string>
     <string name="exclude">استثني</string>
     <string name="dns_explanation_firewall_connected">متصل بجدار الحماية</string>
     <string name="doh_custom_url_remove_dialog_message">احذف DNS عبر نقطة نهاية Https من التكوين المحفوظ.</string>
@@ -353,7 +352,7 @@
     <string name="settings_autostart_bootup_heading">بدء التشغيل التلقائي عند التشغيل (تجريبي)</string>
     <string name="settings_dns_proxy_dialog_app_desc" translatable="false">سيتم استبعاد التطبيق المحدد من VPN للسماح له باتصالات الوكيل نيابة عنك.</string>
     <string name="settings_app_list_default_app">لا شيء</string>
-    <string name="dc_custom_dns_radio">DNS آخر</string>
+    <string name="dc_custom_dns_radio">DNS مخصص</string>
     <string name="cd_custom_dns_proxy_name_default">البروكسي</string>
     <string name="cd_dns_proxy_error_text_1">عنوان IP غير صالح</string>
     <string name="univ_firewall_rule_2">حظر أي تطبيق ليس قيد الاستخدام</string>
@@ -768,6 +767,8 @@
     <string name="xray_no_slot" translatable="true">تعذّر تعيين وكيل SOCKS5 إلى Xray</string>
     <string name="xray_error" translatable="true">خطأ في Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">أوقف خيار التوجيه داخل VPN أولاً، وإلا ستدور حركة Xray في حلقة</string>
+    <string name="xray_err_dns_mode" translatable="true">يتطلب Xray وضع الجدار الناري أو DNS+الجدار الناري. في وضع DNS فقط لا يمر أي تراسل أو DNS عبر وكيل</string>
+    <string name="xray_err_provider" translatable="true">الوكيل المحدد هو WireGuard أو Orbot. أوقفه أولاً: يستخدم Xray فتحة الوكيل الواحدة نفسها</string>
     <string name="xray_title" translatable="true">إعداد Xray</string>
     <string name="xray_ok" translatable="true">يبدو الإعداد صحيحاً</string>
     <string name="xray_paste" translatable="true">لصق</string>
@@ -780,7 +781,6 @@
     <string name="xray_err_outbound" translatable="true">لا يوجد خرج VLESS صالح: مطلوب عنوان الخادم والمنفذ و UUID و publicKey</string>
     <string name="xray_err_reality" translatable="true">الأمان المدعوم هو Reality فقط: اضبط streamSettings.security على reality</string>
     <string name="xray_err_link" translatable="true">رابط vless:// غير صالح: تحقق من UUID والمضيف والمنفذ ومعاملي sni وpbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -793,14 +793,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">لا يمكن تشغيل Xray وWireGuard معًا. أوقف تشغيل Xray أولًا.</string>
+    <string name="xray_off_confirm" translatable="true">إيقاف Xray أثناء تشغيل VPN سيرسل حركة المرور مباشرة دون المرور عبر Xray. هل تريد الإيقاف؟</string>
+    <string name="xray_err_dns" translatable="true">أزل كتلة dns: يتولى DNS Control حل أسماء النطاقات، لا Xray</string>
+    <string name="xray_err_rule" translatable="true">تحتاج قاعدة التوجيه إلى ip أو domain أو port، ولا يمكنها الإرسال إلا إلى proxy أو direct</string>
 </resources>

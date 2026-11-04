@@ -152,7 +152,6 @@ import java.util.concurrent.atomic.AtomicInteger
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.math.abs
 import kotlin.math.min
-import kotlin.random.Random
 import kotlin.time.Duration.Companion.milliseconds
 
 class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, NetworkLifecycleObserver.Listener, Bridge, OnSharedPreferenceChangeListener {
@@ -248,8 +247,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     private val isLockDownPrevious = AtomicBoolean(false)
 
     private lateinit var connTracer: ConnectionTracer
-
-    private val rand: Random = Random
 
     private val appConfig by inject<AppConfig>()
     private val orbotHelper by inject<OrbotHelper>()
@@ -1364,10 +1361,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                             addTransport()
                         }
 
-                        AppConfig.DnsType.SYSTEM_DNS -> {
-                            setNetworkAndDefaultDnsIfNeeded(forceUpdate = true)
-                        }
-
                         AppConfig.DnsType.DOT -> {
                             addTransport()
                         }
@@ -1493,11 +1486,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                     setDialStrategy()
                 }
             }
-            PersistentState.USE_SYSTEM_DNS_FOR_UNDELEGATED_DOMAINS -> {
-                io("useSystemDnsForUndelegatedDomains") {
-                    undelegatedDomains()
-                }
-            }
             PersistentState.NETWORK_ENGINE_EXPERIMENTAL -> {
                 io("networkEngineExperimental") {
                     setExperimentalWireGuardSettings(persistentState.nwEngExperimentalFeatures)
@@ -1586,11 +1574,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     private suspend fun setExperimentalWireGuardSettings(experimental: Boolean) {
         Logger.i(LOG_TAG_VPN, "set experimental wg settings: $experimental")
         vpnAdapter?.setExperimentalWireGuardSettings(experimental)
-    }
-
-    private suspend fun undelegatedDomains() {
-        Logger.i(LOG_TAG_VPN, "use system dns for undelegated domains: ${persistentState.useSystemDnsForUndelegatedDomains}")
-        vpnAdapter?.undelegatedDomains(persistentState.useSystemDnsForUndelegatedDomains)
     }
 
     private suspend fun setDialStrategy() {
@@ -2477,18 +2460,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             if (dnsServers.isEmpty()) {
                 // TODO: send an alert/notification instead?
                 Logger.w(LOG_TAG_VPN, "No system dns servers found")
-                if (appConfig.isSystemDns()) {
-                    // on null dns servers, show toast
-                    ui {
-                        showToastUiCentered(
-                            ctx,
-                            getString(R.string.system_dns_connection_failure),
-                            Toast.LENGTH_LONG
-                        )
-                    }
-                } else {
-                    // no-op
-                }
             }
             io("setSystemAndDefaultDns") {
                 // ref: kotlinlang.org/docs/equality.html#structural-equality
@@ -2511,8 +2482,10 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
                 val dns = dnsServers.map { it.hostAddress }
                 val isSysDnsSet = vpnAdapter?.setSystemDns(dns)
                 var defSet: Boolean? = false
-                // set default dns server for the tunnel if none is set
-                if (isDefaultDnsNone()) {
+                // set default dns server for the tunnel if none is set. under xray routing the
+                // carrier resolvers must not become the default transport; app dns is routed to
+                // the encrypted resolver by the tunnel guard instead
+                if (isDefaultDnsNone() && !appConfig.isXrayDnsRouted()) {
                     val dnsCsv = dns.joinToString(",")
                     defSet = vpnAdapter?.addDefaultTransport(dnsCsv)
                 }
@@ -2862,6 +2835,7 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     }
 
     private suspend fun establishVpn(networks: Networks, mtu: Int): ParcelFileDescriptor? {
+        appConfig.migrateLegacyDnsToQuad9IfNeeded()
         // xray must listen before the tunnel carries traffic. If it cannot start, do not bring the
         // VPN up, otherwise traffic would silently go direct
         val xray = xrayController.startForVpn()
@@ -3915,10 +3889,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         // package-replace because activationRequested is still true.
         Logger.i(LOG_TAG_VPN, "onRevoke, treating as user-initiated stop")
         signalStopService("revoked", userInitiated = true)
-    }
-
-    suspend fun getSystemDns(): String {
-        return vpnAdapter?.getSystemDns().orEmpty()
     }
 
     suspend fun getNetStat(): NetStat? {

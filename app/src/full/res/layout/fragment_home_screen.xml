@@ -35,8 +35,6 @@
                 android:text="@string/app_name_small_case"
                 android:textStyle="bold" />
 
-
-
         </LinearLayout>
 
         <RelativeLayout
@@ -47,8 +45,8 @@
                 android:id="@+id/fhs_card_top_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:weightSum="1">
@@ -63,94 +61,93 @@
                         android:id="@+id/fhs_card_dns_ll"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_margin="5dp"
                         android:clipToPadding="false"
-                        app:cardCornerRadius="20dp">
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutlineVariant"
+                        app:strokeWidth="1dp">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="140dp"
-                            android:background="@drawable/home_screen_cards_bg"
-                            android:padding="12dp">
+                            android:minHeight="150dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <FrameLayout
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:backgroundTint="?attr/colorPrimaryContainer"
+                                android:background="@drawable/home_card_icon_tile_bg">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/dns_home_screen"
+                                    app:tint="?attr/colorOnPrimaryContainer" />
+                            </FrameLayout>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_dns_title"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:drawablePadding="10dp"
+                                android:layout_marginTop="12dp"
                                 android:fontFamily="sans-serif-medium"
-                                android:gravity="center_vertical"
                                 android:maxLines="1"
                                 android:text="@string/dns_mode_info_title"
                                 android:textColor="?attr/homeScreenHeaderTextColor"
-                                android:textSize="@dimen/large_font_text_view"
-                                app:autoSizeMaxTextSize="14sp"
-                                app:autoSizeMinTextSize="10sp"
-                                app:autoSizeStepGranularity="1sp"
-                                app:autoSizeTextType="uniform"
-                                app:drawableStartCompat="@drawable/dns_home_screen"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                android:textSize="@dimen/large_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_dns_latency"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="2dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
-                                android:textSize="@dimen/extra_large_font_text_view"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fhs_card_dns_title" />
+                                android:textSize="@dimen/default_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_dns_failure"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:ellipsize="marquee"
-                                android:marqueeRepeatLimit="marquee_forever"
-                                android:singleLine="true"
-                                android:textSize="@dimen/extra_large_font_text_view"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fhs_card_dns_title" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/fhs_card_region"
-                                style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="2dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
                                 android:textSize="@dimen/default_font_text_view"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fhs_card_dns_failure" />
+                                android:visibility="gone" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/fhs_card_region"
+                                style="@style/TextAppearance.Widget.HomeScreen.Desc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:ellipsize="marquee"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:singleLine="true"
+                                android:textSize="@dimen/small_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_dns_connected_dns"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:maxLines="1"
                                 android:singleLine="true"
-                                android:textSize="@dimen/small_font_text_view"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                android:textSize="@dimen/small_font_text_view" />
+                        </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
@@ -165,97 +162,93 @@
                         android:id="@+id/fhs_card_firewall_ll"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:cardCornerRadius="20dp">
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutlineVariant"
+                        app:strokeWidth="1dp">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="140dp"
-                            android:background="@drawable/home_screen_cards_bg"
-                            android:padding="12dp">
+                            android:minHeight="150dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <FrameLayout
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:backgroundTint="?attr/colorTertiaryContainer"
+                                android:background="@drawable/home_card_icon_tile_bg">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/firewall_home_screen"
+                                    app:tint="?attr/colorOnTertiaryContainer" />
+                            </FrameLayout>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_firewall_title"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:drawablePadding="10dp"
+                                android:layout_marginTop="12dp"
                                 android:fontFamily="sans-serif-medium"
-                                android:gravity="center_vertical"
                                 android:maxLines="1"
                                 android:text="@string/firewall_mode_info_title"
                                 android:textColor="?attr/homeScreenHeaderTextColor"
-                                android:textSize="@dimen/large_font_text_view"
-                                app:autoSizeMaxTextSize="14sp"
-                                app:autoSizeMinTextSize="10sp"
-                                app:autoSizeStepGranularity="1sp"
-                                app:autoSizeTextType="uniform"
-                                app:drawableStartCompat="@drawable/firewall_home_screen"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                android:textSize="@dimen/large_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_firewall_univ_rules_count"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="2dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
-                                android:textSize="@dimen/extra_large_font_text_view"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fhs_card_firewall_title" />
+                                android:textSize="@dimen/default_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_firewall_ip_rules_count"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="2dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
-                                android:textSize="@dimen/extra_large_font_text_view"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fhs_card_firewall_univ_rules_count" />
+                                android:textSize="@dimen/small_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_firewall_domain_rules_count"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
+                                android:layout_marginTop="2dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
-                                android:textSize="@dimen/extra_large_font_text_view"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fhs_card_firewall_ip_rules_count" />
+                                android:textSize="@dimen/small_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_firewall_univ_rules"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
-                                android:textSize="@dimen/default_font_text_view"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                                android:textSize="@dimen/small_font_text_view"
+                                android:visibility="gone" />
+                        </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
-
 
             </LinearLayout>
 
@@ -263,8 +256,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/fhs_card_top_ll"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:baselineAligned="false"
                 android:orientation="horizontal"
                 android:weightSum="1">
@@ -279,71 +272,164 @@
                         android:id="@+id/fhs_card_proxy_ll"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:cardCornerRadius="20dp">
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutlineVariant"
+                        app:strokeWidth="1dp">
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="140dp"
-                            android:background="@drawable/home_screen_cards_bg"
-                            android:padding="12dp">
+                            android:minHeight="150dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <FrameLayout
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:backgroundTint="?attr/colorSecondaryContainer"
+                                android:background="@drawable/home_card_icon_tile_bg">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:layout_gravity="center"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_vpn"
+                                    app:tint="?attr/colorOnSecondaryContainer" />
+                            </FrameLayout>
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_proxy_tv"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:drawablePadding="10dp"
+                                android:layout_marginTop="12dp"
                                 android:fontFamily="sans-serif-medium"
-                                android:gravity="center_vertical"
                                 android:maxLines="1"
                                 android:text="@string/cd_custom_dns_proxy_name_default"
                                 android:textColor="?attr/homeScreenHeaderTextColor"
-                                android:textSize="@dimen/large_font_text_view"
-                                app:autoSizeMaxTextSize="14sp"
-                                app:autoSizeMinTextSize="10sp"
-                                app:autoSizeStepGranularity="1sp"
-                                app:autoSizeTextType="uniform"
-                                app:drawableStartCompat="@drawable/ic_vpn"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
+                                android:textSize="@dimen/large_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_proxy_count"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
+                                android:layout_marginTop="2dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:maxLines="3"
-                                android:textSize="@dimen/large_font_text_view"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/fhs_card_proxy_tv" />
+                                android:textSize="@dimen/default_font_text_view" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/fhs_card_other_proxy_count"
                                 style="@style/TextAppearance.Widget.HomeScreen.Desc"
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
                                 android:ellipsize="marquee"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
-                                android:textSize="@dimen/default_font_text_view"
-                                android:visibility="visible"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent" />
+                                android:textSize="@dimen/small_font_text_view"
+                                android:visibility="visible" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
 
-                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/fhs_card_xray_cv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="?attr/colorSurface"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="0dp"
+                        app:strokeColor="?attr/colorOutlineVariant"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="150dp"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <!-- top row: icon tile on the left, the switch that runs xray with the VPN on the right -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <FrameLayout
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:backgroundTint="?attr/colorErrorContainer"
+                                    android:background="@drawable/home_card_icon_tile_bg">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="24dp"
+                                        android:layout_height="24dp"
+                                        android:layout_gravity="center"
+                                        android:contentDescription="@null"
+                                        android:src="@drawable/ic_home_xray_asterisk"
+                                        app:tint="?attr/colorOnErrorContainer" />
+                                </FrameLayout>
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+
+                                <com.google.android.material.materialswitch.MaterialSwitch
+                                    android:id="@+id/fhs_card_xray_switch"
+                                    style="@style/CustomWidget.Material3.CompoundButton.MaterialSwitch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+
+                            <!-- bottom: tap to open the JSON editor -->
+                            <LinearLayout
+                                android:id="@+id/fhs_card_xray_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:background="?attr/selectableItemBackground"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:orientation="vertical">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/fhs_card_xray_tv"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:maxLines="1"
+                                    android:text="@string/xray_entry"
+                                    android:textColor="?attr/homeScreenHeaderTextColor"
+                                    android:textSize="@dimen/large_font_text_view" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/fhs_card_xray_status"
+                                    style="@style/TextAppearance.Widget.HomeScreen.Desc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:textSize="@dimen/default_font_text_view" />
+                            </LinearLayout>
+                        </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
 
             </LinearLayout>
-
 
         </RelativeLayout>
 

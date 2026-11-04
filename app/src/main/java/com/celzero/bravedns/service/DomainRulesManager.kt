@@ -297,19 +297,6 @@ object DomainRulesManager : KoinComponent {
         maybeUpdateTrustedMap(cd.uid, cd.domain, Status.TRUST)
     }
 
-    suspend fun changeStatus(
-        domain: String,
-        uid: Int,
-        ips: String,
-        type: DomainType,
-        status: Status
-    ) {
-        val cd = mkCustomDomain(domain, uid, ips, type, status.id)
-        dbInsertOrUpdate(cd)
-        updateTrie(cd)
-        maybeUpdateTrustedMap(uid, domain, status)
-    }
-
     suspend fun block(domain: String, uid: Int, ips: String = "", type: DomainType) {
         val cd = mkCustomDomain(domain, uid, ips, type, Status.BLOCK.id)
         dbInsertOrUpdate(cd)
@@ -523,7 +510,6 @@ object DomainRulesManager : KoinComponent {
         Logger.i(LOG_TAG_DNS, "setProxyId: updated domain: ${cd.domain} to $proxyId")
         rehydrateFromDB(cd.uid)
     }
-
 
     fun isWildCardEntry(url: String): Boolean {
         return wcRegex.matcher(url).matches()

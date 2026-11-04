@@ -266,7 +266,6 @@
     <string name="ada_app_status_block_md">блокируется в (мобильных) сетях с тарификацией</string>
     <string name="ada_app_status_exclude">исключен из dns и брандмауэра</string>
     <string name="ada_app_status_isolate">изолировано; разрешено только доверенным IP и доменам</string>
-    <string name="network_dns">Системный DNS</string>
     <string name="notif_download_failure_content">Загрузка не удалась. Попробуйте еще раз.</string>
     <string name="notif_download_content_title">Загрузка списка блокировки</string>
     <string name="notif_download_content_text">Загрузка продолжается…</string>
@@ -397,7 +396,7 @@
     <string name="hsf_vpn_prepare_failure">Либо отсутствует разрешение VPN, либо другое приложение находится в режиме постоянного VPN.</string>
     <string name="hsf_exclude_error">Исключение невозможно в режиме блокировки VPN</string>
     <string name="hsf_pause_vpn_failure">Невозможно сделать паузу: DNS Control не активен</string>
-    <string name="dc_custom_dns_radio">Другие DNS</string>
+    <string name="dc_custom_dns_radio">Пользовательский DNS</string>
     <string name="dc_entries">%1$s строк »</string>
     <string name="dc_local_block_desc_1">Выбирайте из 195+ списков блокировок. Нажмите здесь, чтобы загрузить их или настроить.</string>
     <string name="about_bug_report_dialog_positive_btn">Отправить письмо</string>
@@ -777,8 +776,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">через 5 минут</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">Через 15 минут</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Использовать системный DNS для неделегированных доменов</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">Использовать системный DNS для неделегированных доменов, таких как <i>.lan</i>, <i>.internal</i> и т. д.</string>
     <string name="dc_filtering_heading" translatable="true">Фильтрация</string>
     <string name="cd_split_dns_heading" translatable="true">Разделенный DNS (экспериментальный)</string>
     <string name="cd_split_dns_desc" translatable="true">Перенаправляйте DNS-запросы из прокси-приложений на DNS-серверы прокси-сервера.</string>
@@ -890,6 +887,8 @@
     <string name="xray_no_slot" translatable="true">Не удалось назначить SOCKS5-прокси для Xray</string>
     <string name="xray_error" translatable="true">Ошибка Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Сначала отключите опцию маршрутизации внутри VPN, иначе трафик Xray зациклится</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray требует режим «Брандмауэр» или «DNS+брандмауэр». В режиме только DNS ни трафик, ни DNS не проходят через прокси</string>
+    <string name="xray_err_provider" translatable="true">Выбран прокси WireGuard или Orbot. Сначала отключите его: Xray использует то же единственное место для прокси</string>
     <string name="xray_title" translatable="true">Конфигурация Xray</string>
     <string name="xray_ok" translatable="true">Конфигурация выглядит корректно</string>
     <string name="xray_paste" translatable="true">Вставить</string>
@@ -902,7 +901,6 @@
     <string name="xray_err_outbound" translatable="true">Нет рабочего outbound VLESS: нужны адрес сервера, порт, UUID и publicKey</string>
     <string name="xray_err_reality" translatable="true">Поддерживается только безопасность Reality: задайте streamSettings.security как reality</string>
     <string name="xray_err_link" translatable="true">Некорректная ссылка vless://: проверьте UUID, хост, порт и параметры sni и pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -915,14 +913,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray и WireGuard не могут работать одновременно. Сначала выключите Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Если выключить Xray при включённом VPN, трафик пойдёт напрямую, минуя Xray. Выключить?</string>
+    <string name="xray_err_dns" translatable="true">Удалите блок dns: DNS обрабатывает DNS Control, а не Xray</string>
+    <string name="xray_err_rule" translatable="true">Правилу маршрутизации нужны ip, domain или port, и оно может направлять только в proxy или direct</string>
 </resources>

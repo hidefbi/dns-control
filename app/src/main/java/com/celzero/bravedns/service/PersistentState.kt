@@ -66,7 +66,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
         const val RETRY_STRATEGY = "retry_strategy"
         const val ENDPOINT_INDEPENDENCE = "endpoint_independence"
         const val TCP_KEEP_ALIVE = "tcp_keep_alive"
-        const val USE_SYSTEM_DNS_FOR_UNDELEGATED_DOMAINS = "use_system_dns_for_undelegated_domains"
         const val NETWORK_ENGINE_EXPERIMENTAL = "network_engine_experimental"
         const val DIAL_TIMEOUT_SEC = "dial_timeout_sec"
         const val AUTO_DIALS_PARALLEL = "auto_dials_parallel"
@@ -158,14 +157,11 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     var allowBypass by booleanPref("allow_bypass").withDefault<Boolean>(false)
 
     // user set among AppConfig.DnsType enum
-    // was RETHINK_REMOTE (Rethink-DoH, author preset) by default; since all preset DNS
-    // rows (DoH/DNSCrypt/DNSProxy/DoT/ODoH/RethinkDnsEndpoint) have been removed from the
-    // bundled database, defaulting to RETHINK_REMOTE would point at an endpoint that no
-    // longer exists. SYSTEM_DNS means "don't override, use whatever the network already
-    // provides" until the user adds and picks their own custom DNS.
+    // defaults to DOH; the built-in quad9 doh resolver is connected on startup when no doh
+    // resolver is selected yet (see AppConfig.migrateLegacyDnsToQuad9IfNeeded)
     var dnsType by
         intPref("dns_type")
-            .withDefault<Int>(AppConfig.DnsType.SYSTEM_DNS.type)
+            .withDefault<Int>(AppConfig.DnsType.DOH.type)
 
     // whether the app must attempt to startup on reboot if it was running before shutdown
     var prefAutoStartBootUp by booleanPref("auto_start_on_boot").withDefault<Boolean>(true)
@@ -306,6 +302,9 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // run xray-core together with the VPN; started before the tunnel, stopped with it
     var xrayEnabled by booleanPref("xray_enabled").withDefault<Boolean>(false)
 
+    // the custom socks5 slot and proxy selection that xray replaced, kept until xray hands them back
+    var xrayProxySnapshot by stringPref("xray_proxy_snapshot").withDefault<String>("")
+
     // perform connectivity checks
     var connectivityChecks by
         booleanPref("connectivity_check").withDefault<Boolean>(Utilities.isPlayStoreFlavour())
@@ -343,9 +342,6 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
 
     // enable split dns, default on Android R and above, as we can identify app which is sending dns
     var splitDns by booleanPref("split_dns").withDefault<Boolean>(isAtleastR())
-
-    // use system dns for undelegatedDomains
-    var useSystemDnsForUndelegatedDomains by booleanPref("use_system_dns_for_undelegated_domains").withDefault<Boolean>(false)
 
 
 

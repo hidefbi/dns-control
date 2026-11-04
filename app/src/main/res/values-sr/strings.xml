@@ -268,7 +268,7 @@
     <string name="hsf_pause_vpn_failure" translatable="true">Није могуће паузирање: DNS Control није активан</string>
     <string name="lbl_battery_optimization" translatable="true">Оптимизација батерије</string>
     <string name="dc_block_heading" translatable="true">правила</string>
-    <string name="dc_custom_dns_radio" translatable="true">Други DNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">Прилагођени DNS</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_entries" translatable="true">%1$s уноси »</string>
     <string name="dc_local_block_heading" translatable="true">Блок листе на уређају</string>
@@ -473,7 +473,6 @@
     <string name="ada_app_isolate" translatable="true">Изолуј</string>
     <string name="bypass_dns_firewall_tooltip">%1$s ради једино са DNS Control-овим DNS-om</string>
     <string name="exclude_apps_from_proxy">Заобиђи апликацију од свих проксија</string>
-    <string name="network_dns" translatable="true">Системски DNS</string>
     <string name="notif_download_content_title" translatable="true">Преузми блок листу на уређај</string>
     <string name="notif_download_failure_content" translatable="true">Преузимање није успело. Покушајте поново.</string>
     <string name="notif_download_cancel_content" translatable="true">Преузимање прекинуто.</string>
@@ -757,6 +756,8 @@
     <string name="xray_no_slot" translatable="true">Nije moguće postaviti SOCKS5 proksi na Xray</string>
     <string name="xray_error" translatable="true">Greška Xray-a: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Prvo isključite opciju rutiranja unutar VPN-a, inače će se Xray saobraćaj vrteti u petlji</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray захтева режим Заштитни зид или DNS+Заштитни зид. У режиму само DNS ни саобраћај ни DNS не пролазе кроз прокси</string>
+    <string name="xray_err_provider" translatable="true">Изабрани прокси је WireGuard или Orbot. Прво га искључите: Xray користи исто једно место за прокси</string>
     <string name="xray_title" translatable="true">Xray konfiguracija</string>
     <string name="xray_ok" translatable="true">Konfiguracija izgleda ispravno</string>
     <string name="xray_paste" translatable="true">Nalepi</string>
@@ -769,7 +770,6 @@
     <string name="xray_err_outbound" translatable="true">Nema upotrebljivog VLESS outbound-a: potrebni su adresa servera, port, UUID i publicKey</string>
     <string name="xray_err_reality" translatable="true">Podržana je samo Reality bezbednost: postavite streamSettings.security na reality</string>
     <string name="xray_err_link" translatable="true">Neispravan vless:// link: proverite UUID, host, port i parametre sni i pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -782,14 +782,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray и WireGuard не могу да раде истовремено. Прво искључите Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Искључивање Xray-а док је VPN укључен шаље саобраћај директно, без Xray-а. Искључити?</string>
+    <string name="xray_err_dns" translatable="true">Уклоните dns блок: DNS решава DNS Control, а не Xray</string>
+    <string name="xray_err_rule" translatable="true">Правило рутирања треба ip, domain или port и може да шаље само на proxy или direct</string>
 </resources>

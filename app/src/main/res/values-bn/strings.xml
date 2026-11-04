@@ -75,7 +75,7 @@
     <string name="settings_socks_forwarding_desc">ফরওয়ার্ড করা হচ্ছে %1$s:%2$s, %3$s</string>
     <string name="settings_theme_dialog_themes_1">সিস্টেম দ্বারা সেট</string>
     <string name="settings_ip_dialog_ipv6">IPv6 (পরীক্ষামূলক)</string>
-    <string name="dc_custom_dns_radio">অন্যান্য DNS</string>
+    <string name="dc_custom_dns_radio">কাস্টম DNS</string>
     <string name="cd_dns_proxy_error_text_2">পোর্ট পরিসীমা 1024-65535 থেকে হওয়া উচিত</string>
     <string name="univ_firewall_rule_9">মিটারযুক্ত (মোবাইল) নেটওয়ার্কে ব্লক করুন</string>
     <string name="univ_firewall_rule_10">বাইপাস করা অ্যাপ এবং আইপি ছাড়া সব ব্লক করুন</string>
@@ -350,7 +350,6 @@
     <string name="firewall_rule_bypass_universal_ip_desc"><![CDATA[এই সংযোগের অনুমতি দেওয়া হয়েছিল কারণ <i>গন্তব্য আইপি</i> সমস্ত সার্বজনীন ফায়ারওয়াল নিয়মগুলিকে বাইপাস করতে সেট করা হয়েছে৷<br/><br/> পরিবর্তন করতে <i>ইউনিভার্সাল<-এ <i>আইপি নিয়মে<i> যান </i> ট্যাব।]]></string>
     <string name="firewall_rule_device_lock_desc"><![CDATA[এই সংযোগটি ফায়ারওয়াল করা হয়েছিল কারণ <i>ডিভাইসটি সেই সময়ে লক করা ছিল</i>।]]></string>
     <string name="notif_channel_desc_proxy_failure">প্রক্সি ত্রুটি এবং অসঙ্গতির বিষয়ে সতর্কতা</string>
-    <string name="network_dns">সিস্টেম DNS</string>
     <string name="lbbs_update_check">হালনাগাদ আছে কিনা দেখো</string>
     <string name="category_name_sys_apps">সিস্টেম অ্যাপস</string>
     <string name="cd_toast_deleted">কাস্টম তালিকা থেকে ডোমেন সরানো হয়েছে</string>
@@ -580,6 +579,8 @@
     <string name="xray_no_slot" translatable="true">Xray-এর জন্য SOCKS5 প্রক্সি সেট করা যায়নি</string>
     <string name="xray_error" translatable="true">Xray ত্রুটি: %1$s</string>
     <string name="xray_rethink_on" translatable="true">আগে VPN-এর ভেতরে রাউটিং বিকল্পটি বন্ধ করুন, নইলে Xray-এর ট্রাফিক লুপে আটকে যাবে</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray-এর জন্য ফায়ারওয়াল বা DNS+ফায়ারওয়াল মোড দরকার। শুধু-DNS মোডে কোনো ট্রাফিক বা DNS প্রক্সির মধ্য দিয়ে যায় না</string>
+    <string name="xray_err_provider" translatable="true">নির্বাচিত প্রক্সি WireGuard বা Orbot। আগে এটি বন্ধ করুন: Xray একই একক প্রক্সি স্লট ব্যবহার করে</string>
     <string name="xray_title" translatable="true">Xray কনফিগ</string>
     <string name="xray_ok" translatable="true">কনফিগ ঠিক আছে বলে মনে হচ্ছে</string>
     <string name="xray_paste" translatable="true">পেস্ট করুন</string>
@@ -592,7 +593,6 @@
     <string name="xray_err_outbound" translatable="true">ব্যবহারযোগ্য VLESS আউটবাউন্ড নেই: সার্ভার ঠিকানা, পোর্ট, UUID ও publicKey দরকার</string>
     <string name="xray_err_reality" translatable="true">শুধু Reality নিরাপত্তা সমর্থিত: streamSettings.security-কে reality করুন</string>
     <string name="xray_err_link" translatable="true">অবৈধ vless:// লিংক: UUID, হোস্ট, পোর্ট এবং sni ও pbk প্যারামিটার দেখুন</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -605,14 +605,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray ও WireGuard একসাথে চলতে পারে না। আগে Xray বন্ধ করুন।</string>
+    <string name="xray_off_confirm" translatable="true">VPN চালু থাকা অবস্থায় Xray বন্ধ করলে ট্র্যাফিক Xray ছাড়াই সরাসরি যাবে। বন্ধ করবেন?</string>
+    <string name="xray_err_dns" translatable="true">dns ব্লক সরান: DNS সমাধান করে DNS Control, Xray নয়</string>
+    <string name="xray_err_rule" translatable="true">রাউটিং নিয়মে ip, domain বা port থাকতে হবে, এবং শুধু proxy বা direct-এ পাঠাতে পারে</string>
 </resources>

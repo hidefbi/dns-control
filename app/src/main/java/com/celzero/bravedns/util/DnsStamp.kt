@@ -32,6 +32,8 @@ object DnsStamp {
     private const val SCHEME = "sdns://"
     private const val PROTO_ODOH_TARGET = 0x05
     private const val PROTO_ODOH_RELAY = 0x85
+    private const val PROTO_DNSCRYPT = 0x01
+    private const val PROTO_DNSCRYPT_RELAY = 0x81
     private const val PROPS_LEN = 8
     private const val ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
 
@@ -63,6 +65,33 @@ object DnsStamp {
             "https://$host${path.ifEmpty { "/" }}"
         } catch (e: IllegalArgumentException) {
             null
+        }
+    }
+
+    /**
+     * True when a DNSCrypt resolver (0x01) or relay (0x81) stamp carries an ip literal as its
+     * address, so that reaching it needs no dns lookup. False for any other input.
+     */
+    fun dnsCryptAddressIsIp(input: String): Boolean {
+        val text = input.trim()
+        if (!text.startsWith(SCHEME, ignoreCase = true)) return false
+        return try {
+            val bytes = decodeBase64Url(text.substring(SCHEME.length)) ?: return false
+            val reader = Reader(bytes)
+            when (reader.byte()) {
+                PROTO_DNSCRYPT -> reader.skip(PROPS_LEN)
+                PROTO_DNSCRYPT_RELAY -> Unit
+                else -> return false
+            }
+            val addr = reader.str(reader.byte())
+            val host = if (addr.startsWith("[")) {
+                addr.substringAfter('[').substringBefore(']')
+            } else {
+                addr.substringBeforeLast(':')
+            }
+            XrayConfig.isIpLiteral(host)
+        } catch (e: IllegalArgumentException) {
+            false
         }
     }
 

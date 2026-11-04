@@ -363,7 +363,7 @@
     <string name="lbl_battery_optimization" translatable="true">Optimizare baterie</string>
     <string name="battery_optimization_dialog_heading" translatable="true">Dezactivare %1$s</string>
     <string name="dc_block_heading" translatable="true">Reguli</string>
-    <string name="dc_custom_dns_radio" translatable="true">Alte DNS</string>
+    <string name="dc_custom_dns_radio" translatable="true">DNS personalizat</string>
     <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
     <string name="dc_entries" translatable="true">%1$s intrări »</string>
     <string name="dc_local_block_heading" translatable="true">Liste de blocat de pe dispozitiv</string>
@@ -661,7 +661,6 @@
     <string name="bypass_dns_firewall_tooltip">%1$s funcționează doar cu DNS-ul DNS Control</string>
     <string name="exclude_apps_from_proxy">Exclude aplicația la toate proxy-urile</string>
     <string name="exclude_apps_from_proxy_failure_toast">Această aplicație ocolește proxy-urile</string>
-    <string name="network_dns" translatable="true">DNS sistem</string>
     <string name="notif_download_content_title" translatable="true">Descărcare listă de blocat pe dispozitiv</string>
     <string name="notif_download_content_text" translatable="true">Descărcare în progres…</string>
     <string name="notif_download_failure_content" translatable="true">Descărcare nereușită. Încearcă din nou.</string>
@@ -760,8 +759,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">După 5 minute</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">După 15 minute</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Utilizează DNS de sistem pentru domenii nedelegate</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">Utilizează DNS de sistem pentru domenii nedelegate precum <i>.lan</i>, <i>.internal</i>, etc.</string>
     <string name="dc_filtering_heading" translatable="true">Filtrare</string>
     <string name="cd_split_dns_heading" translatable="true">DNS ramificat (experimental)</string>
     <string name="cd_split_dns_desc" translatable="true">Redirecționează cererile DNS de la aplicațiile care folosesc proxy către serverele DNS proxy.</string>
@@ -894,6 +891,8 @@
     <string name="xray_no_slot" translatable="true">Nu s-a putut seta proxy-ul SOCKS5 pe Xray</string>
     <string name="xray_error" translatable="true">Eroare Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Dezactivați mai întâi opțiunea de rutare în VPN, altfel traficul Xray intră în buclă</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray necesită modul Firewall sau DNS+Firewall. În modul doar DNS, nici traficul, nici DNS-ul nu trec printr-un proxy</string>
+    <string name="xray_err_provider" translatable="true">Proxy-ul selectat este WireGuard sau Orbot. Dezactivați-l mai întâi: Xray folosește același unic loc pentru proxy</string>
     <string name="xray_title" translatable="true">Configurație Xray</string>
     <string name="xray_ok" translatable="true">Configurația pare validă</string>
     <string name="xray_paste" translatable="true">Lipește</string>
@@ -906,7 +905,6 @@
     <string name="xray_err_outbound" translatable="true">Lipsește un outbound VLESS utilizabil: sunt necesare adresa serverului, portul, UUID și publicKey</string>
     <string name="xray_err_reality" translatable="true">Este acceptată doar securitatea Reality: setați streamSettings.security la reality</string>
     <string name="xray_err_link" translatable="true">Link vless:// invalid: verificați UUID, gazda, portul și parametrii sni și pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -919,14 +917,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray și WireGuard nu pot rula simultan. Dezactivați mai întâi Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Dezactivarea Xray cu VPN-ul pornit trimite traficul direct, fără Xray. Dezactivați?</string>
+    <string name="xray_err_dns" translatable="true">Eliminați blocul dns: DNS-ul este rezolvat de DNS Control, nu de Xray</string>
+    <string name="xray_err_rule" translatable="true">O regulă de rutare necesită ip, domain sau port și poate trimite doar către proxy sau direct</string>
 </resources>

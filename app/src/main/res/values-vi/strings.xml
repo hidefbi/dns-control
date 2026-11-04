@@ -271,7 +271,7 @@
     <string name="fapps_filter_parent_installed" translatable="true">Đã cài đặt</string>
     <string name="fapps_firewall_filter_excluded" translatable="true">Được loại trừ</string>
     <string name="firewall_card_universal_rules" translatable="true">%1$s quy tắc chung</string>
-    <string name="dc_custom_dns_radio" translatable="true">DNS khác</string>
+    <string name="dc_custom_dns_radio" translatable="true">DNS tùy chỉnh</string>
     <string name="vpn_profile_error" translatable="true">Không thể khởi chạy cấu hình VPN.</string>
     <string name="cd_custom_dns_proxy_name_default" translatable="true">Proxy</string>
     <string name="cd_custom_dns_proxy_name" translatable="true">Proxy %1$s</string>
@@ -521,8 +521,6 @@
     <string name="settings_biometric_dialog_option_2" translatable="true">Sau 5 phút</string>
     <string name="settings_biometric_dialog_option_3" translatable="true">Sau 15 phút</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">Sử dụng DNS hệ thống cho những tên miền không được chuyển giao</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">Sử dụng DNS hệ thống cho những tên miền không được chuyển giao như <i>.lan</i>, <i>.internal</i>,...</string>
     <string name="cd_split_dns_heading" translatable="true">Tách DNS (thử nghiệm)</string>
     <string name="cd_split_dns_desc" translatable="true">Chuyển tiếp yêu cầu DNS từ những ứng dụng có proxy tới máy chủ DNS của proxy.</string>
     <string name="univ_delete_domain_dialog_title" translatable="true">Xóa tất cả Quy tắc Tên miền?</string>
@@ -622,7 +620,6 @@
     <string name="tcp_keep_alive_title" translatable="true">Rút ngắn thời gian duy trì kết nối (TCP)</string>
     <string name="anti_censorship_desc" translatable="true">Chọn từ nhiều biện pháp kỹ thuật chống kiểm duyệt.</string>
     <string name="anti_censorship_title" translatable="true">chống kiểm duyệt</string>
-    <string name="network_dns" translatable="true">DNS hệ thống</string>
     <string name="notif_download_content_text" translatable="true">Quá trình tải xuống đang diễn ra…</string>
     <string name="notif_download_failure_content" translatable="true">Tải xuống thất bại. Vui lòng thử lại</string>
     <string name="notif_download_cancel_content" translatable="true">Quá trình tải xuống bị ngắt.</string>
@@ -717,6 +714,8 @@
     <string name="xray_no_slot" translatable="true">Không thể đặt proxy SOCKS5 sang Xray</string>
     <string name="xray_error" translatable="true">Lỗi Xray: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Hãy tắt tùy chọn định tuyến qua VPN trước, nếu không lưu lượng Xray sẽ lặp vòng</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray cần chế độ Tường lửa hoặc DNS+Tường lửa. Ở chế độ chỉ DNS, không có lưu lượng hay DNS nào đi qua proxy</string>
+    <string name="xray_err_provider" translatable="true">Proxy đang chọn là WireGuard hoặc Orbot. Hãy tắt trước: Xray dùng cùng một vị trí proxy duy nhất</string>
     <string name="xray_title" translatable="true">Cấu hình Xray</string>
     <string name="xray_ok" translatable="true">Cấu hình có vẻ hợp lệ</string>
     <string name="xray_paste" translatable="true">Dán</string>
@@ -729,7 +728,6 @@
     <string name="xray_err_outbound" translatable="true">Thiếu outbound VLESS hợp lệ: cần địa chỉ máy chủ, cổng, UUID và publicKey</string>
     <string name="xray_err_reality" translatable="true">Chỉ hỗ trợ bảo mật Reality: đặt streamSettings.security thành reality</string>
     <string name="xray_err_link" translatable="true">Liên kết vless:// không hợp lệ: kiểm tra UUID, máy chủ, cổng và tham số sni, pbk</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -742,14 +740,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray và WireGuard không thể chạy cùng lúc. Hãy tắt Xray trước.</string>
+    <string name="xray_off_confirm" translatable="true">Tắt Xray khi VPN đang bật sẽ gửi lưu lượng trực tiếp, không qua Xray. Tắt không?</string>
+    <string name="xray_err_dns" translatable="true">Xóa khối dns: DNS do DNS Control xử lý, không phải Xray</string>
+    <string name="xray_err_rule" translatable="true">Quy tắc định tuyến cần ip, domain hoặc port, và chỉ được gửi tới proxy hoặc direct</string>
 </resources>

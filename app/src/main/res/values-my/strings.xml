@@ -20,6 +20,8 @@
     <string name="xray_no_slot" translatable="true">Xray အတွက် SOCKS5 proxy သတ်မှတ်၍ မရပါ</string>
     <string name="xray_error" translatable="true">Xray အမှား: %1$s</string>
     <string name="xray_rethink_on" translatable="true">VPN အတွင်း လမ်းကြောင်းပေးခြင်း ရွေးချယ်မှုကို အရင်ပိတ်ပါ၊ မဟုတ်ပါက Xray traffic တွင် loop ဖြစ်မည်</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray သည် Firewall သို့မဟုတ် DNS+Firewall မုဒ် လိုအပ်သည်။ DNS တစ်ခုတည်းမုဒ်တွင် အသွားအလာ သို့မဟုတ် DNS မည်သည်ကိုမျှ proxy မှတစ်ဆင့် မသွားပါ</string>
+    <string name="xray_err_provider" translatable="true">ရွေးထားသော proxy သည် WireGuard သို့မဟုတ် Orbot ဖြစ်သည်။ ဦးစွာ ပိတ်ပါ။ Xray သည် proxy နေရာတစ်ခုတည်းကို အသုံးပြုသည်</string>
     <string name="xray_title" translatable="true">Xray config</string>
     <string name="xray_ok" translatable="true">config သည် မှန်ကန်ပုံရသည်</string>
     <string name="xray_paste" translatable="true">ကူးထည့်</string>
@@ -32,7 +34,6 @@
     <string name="xray_err_outbound" translatable="true">အသုံးပြုနိုင်သော VLESS outbound မရှိပါ: server လိပ်စာ၊ port၊ UUID နှင့် publicKey လိုအပ်သည်</string>
     <string name="xray_err_reality" translatable="true">Reality လုံခြုံရေးကိုသာ ပံ့ပိုးသည်: streamSettings.security ကို reality ဟု သတ်မှတ်ပါ</string>
     <string name="xray_err_link" translatable="true">မမှန်ကန်သော vless:// လင့်ခ်: UUID၊ host၊ port နှင့် sni၊ pbk parameter များကို စစ်ပါ</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -45,14 +46,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray နှင့် WireGuard ကို တပြိုင်နက် မလည်ပတ်နိုင်ပါ။ Xray ကို အရင်ပိတ်ပါ။</string>
+    <string name="xray_off_confirm" translatable="true">VPN ဖွင့်ထားစဉ် Xray ကို ပိတ်ပါက Xray မပါဘဲ ဒေတာကို တိုက်ရိုက်ပို့ပါမည်။ ပိတ်မလား?</string>
+    <string name="xray_err_dns" translatable="true">dns ပိတ်ဆို့ချက်ကို ဖယ်ရှားပါ- DNS ကို Xray မဟုတ်ဘဲ DNS Control က ဖြေရှင်းသည်</string>
+    <string name="xray_err_rule" translatable="true">လမ်းကြောင်းစည်းမျဉ်းတွင် ip၊ domain သို့မဟုတ် port လိုအပ်ပြီး proxy သို့မဟုတ် direct သို့သာ ပို့နိုင်သည်</string>
 </resources>

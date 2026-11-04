@@ -15,6 +15,8 @@ limitations under the License.
 */
 package com.celzero.bravedns.database
 
+import android.util.Base64
+
 class DnsCryptRelayEndpointRepository(
     private val dnsCryptRelayEndpointDAO: DnsCryptRelayEndpointDAO
 ) {
@@ -51,8 +53,23 @@ class DnsCryptRelayEndpointRepository(
         return dnsCryptRelayEndpointDAO.getCount()
     }
 
-    suspend fun getServersToAdd(): String {
+    // ipv6-only relays are left out when the device has no global ipv6 address, as they cannot be
+    // reached; the remaining relays, if any, are used. with no relay left, dnscrypt connects direct.
+    suspend fun getServersToAdd(hasIpv6: Boolean): String {
         val relays = getConnectedRelays()
-        return relays.joinToString(separator = ",") { it.dnsCryptRelayURL }
+        return relays
+            .filter { hasIpv6 || !isIpv6RelayStamp(it.dnsCryptRelayURL) }
+            .joinToString(separator = ",") { it.dnsCryptRelayURL }
+    }
+
+    // a relay stamp carries its address as text, and an ipv6 address is written in brackets
+    private fun isIpv6RelayStamp(stamp: String): Boolean {
+        return try {
+            val payload = stamp.removePrefix("sdns://")
+            val bytes = Base64.decode(payload, Base64.URL_SAFE or Base64.NO_PADDING or Base64.NO_WRAP)
+            String(bytes, Charsets.ISO_8859_1).contains('[')
+        } catch (e: IllegalArgumentException) {
+            false
+        }
     }
 }

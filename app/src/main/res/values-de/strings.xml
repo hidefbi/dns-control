@@ -375,7 +375,6 @@
     <string name="ada_app_bypass_univ">Universelle Umgehung</string>
     <string name="ada_app_exclude">Ausschließen</string>
     <string name="ada_app_isolate">Isolieren</string>
-    <string name="network_dns">System DNS</string>
     <string name="notif_download_content_title">On-Device Blockliste herunterladen</string>
     <string name="notif_download_content_text">Download in Arbeit…</string>
     <string name="notif_download_failure_content">Download fehlgeschlagen. Versuche es erneut.</string>
@@ -462,7 +461,7 @@
     <string name="univ_firewall_rule_10">Alle außer den ausgenommenen Apps und IP-Adressen blockieren</string>
     <string name="univ_view_blocked_ip">IP- &amp; Port-Regeln</string>
     <string name="cd_dns_proxy_error_text_3">Ungültiger Port</string>
-    <string name="dc_custom_dns_radio">Anderer DNS</string>
+    <string name="dc_custom_dns_radio">Benutzerdefiniertes DNS</string>
     <string name="dc_rethink_dns_radio">Rethink DNS</string>
     <string name="dc_entries">%1$s Einträge »</string>
     <string name="dc_local_block_desc_1">Wähle aus über 195 Blocklisten. Tippe hier, um Blocklisten herunterzuladen oder zu konfigurieren.</string>
@@ -778,8 +777,6 @@
     <string name="settings_biometric_dialog_option_0" translatable="true">Nie</string>
     <string name="settings_biometric_dialog_option_1" translatable="true">Immer</string>
     
-    <string name="dc_use_sys_dns_undelegated_heading" translatable="true">DNS des Systems für undelegierte Domains nutzen</string>
-    <string name="dc_use_sys_dns_undelegated_desc" translatable="true">DNS des Systems für undelegierte Domains wie <i>.lan</i>, <i>.internal</i> etc. nutzen</string>
     <string name="cd_split_dns_desc" translatable="true">DNS-Anfragen von geproxyten Apps zum DNS-Server des Proxys weiterleiten.</string>
     <string name="firewall_rule_private_dns" translatable="true">Privates DNS</string>
     <string name="lbl_always" translatable="true">Immer</string>
@@ -912,6 +909,8 @@
     <string name="xray_no_slot" translatable="true">SOCKS5-Proxy konnte nicht auf Xray gesetzt werden</string>
     <string name="xray_error" translatable="true">Xray-Fehler: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Schalte zuerst die Option Route-in-VPN aus, sonst läuft der Xray-Verkehr in eine Schleife</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray benötigt den Modus Firewall oder DNS+Firewall. Im Modus nur DNS läuft weder Datenverkehr noch DNS über einen Proxy</string>
+    <string name="xray_err_provider" translatable="true">Als Proxy ist WireGuard oder Orbot ausgewählt. Schalten Sie diesen zuerst aus: Xray nutzt denselben einzelnen Proxy-Platz</string>
     <string name="xray_title" translatable="true">Xray-Konfiguration</string>
     <string name="xray_ok" translatable="true">Konfiguration sieht gültig aus</string>
     <string name="xray_paste" translatable="true">Einfügen</string>
@@ -924,7 +923,6 @@
     <string name="xray_err_outbound" translatable="true">Kein brauchbarer VLESS-Outbound: Serveradresse, Port, UUID und publicKey sind nötig</string>
     <string name="xray_err_reality" translatable="true">Nur Reality wird unterstützt: streamSettings.security auf reality setzen</string>
     <string name="xray_err_link" translatable="true">Ungültiger vless://-Link: UUID, Host, Port sowie die Parameter sni und pbk prüfen</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -937,14 +935,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray und WireGuard können nicht gleichzeitig laufen. Schalte zuerst Xray aus.</string>
+    <string name="xray_off_confirm" translatable="true">Wenn Xray bei aktivem VPN ausgeschaltet wird, läuft der Datenverkehr direkt ohne Xray. Ausschalten?</string>
+    <string name="xray_err_dns" translatable="true">Entferne den dns-Block: DNS wird von DNS Control aufgelöst, nicht von Xray</string>
+    <string name="xray_err_rule" translatable="true">Eine Routing-Regel braucht ip, domain oder port und darf nur an proxy oder direct senden</string>
 </resources>

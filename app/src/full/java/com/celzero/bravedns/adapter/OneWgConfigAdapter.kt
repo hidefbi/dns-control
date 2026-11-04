@@ -405,6 +405,20 @@ class OneWgConfigAdapter(private val context: Context, private val listener: Dns
                 return
             }
 
+            if (WireguardManager.isXrayEnabled()) {
+                Logger.i(LOG_TAG_PROXY, "xray is enabled, cannot enable WireGuard")
+                uiCtx {
+                    // reset the check box
+                    b.oneWgCheck.isChecked = false
+                    Utilities.showToastUiCentered(
+                        context,
+                        context.getString(R.string.xray_wg_conflict),
+                        Toast.LENGTH_LONG
+                    )
+                }
+                return
+            }
+
             // checks only for app mode, so show appropriate error message if not enabled
             if (!WireguardManager.canEnableProxy()) {
                 Logger.i(LOG_TAG_PROXY, "not in DNS+Firewall mode, cannot enable WireGuard")

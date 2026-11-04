@@ -1105,7 +1105,6 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
     )
 
     private enum class CheckType {
-        SYSTEM_DNS,
         BOOTSTRAP_DNS,
         DNS_PROXY,
         ORBOT,
@@ -1119,18 +1118,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
     private suspend fun collectLockdownChecks(): List<LockdownCheckItem> {
         val checks = mutableListOf<LockdownCheckItem>()
 
-        // 1. System DNS check
-        val isSystemDns = appConfig.isSystemDns()
-        checks.add(
-            LockdownCheckItem(
-                label = getString(R.string.lockdown_check_dns_system),
-                description = getString(R.string.lockdown_check_dns_system_desc),
-                hasConflict = isSystemDns,
-                type = CheckType.SYSTEM_DNS
-            )
-        )
-
-        // 2. Bootstrap DNS check
+        // 1. Bootstrap DNS check
         val isBootstrapSystemDns = persistentState.defaultDnsUrl.isEmpty()
         checks.add(
             LockdownCheckItem(
@@ -1141,7 +1129,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             )
         )
 
-        // 3. DNS Proxy check
+        // 2. DNS Proxy check
         if (appConfig.isDnsProxyActive()) {
             val dnsDetails = appConfig.getSelectedDnsProxyDetails()
             val appName = dnsDetails?.proxyAppName
@@ -1160,7 +1148,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             )
         }
 
-        // 4. Orbot check
+        // 3. Orbot check
         if (appConfig.isOrbotProxyEnabled()) {
             checks.add(
                 LockdownCheckItem(
@@ -1172,7 +1160,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             )
         }
 
-        // 5. HTTP Proxy check
+        // 4. HTTP Proxy check
         // HTTP proxy cannot be used in lockdown (any HTTP proxy conflicts, not just
         // app-bound ones), since it would override the lockdown proxy.
         if (appConfig.isCustomHttpProxyEnabled()) {
@@ -1187,7 +1175,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             )
         }
 
-        // 6. SOCKS5 Proxy check
+        // 5. SOCKS5 Proxy check
         // SOCKS5 proxy cannot be used in lockdown (any SOCKS5 proxy conflicts, not
         // just app-bound ones), since it would override the lockdown proxy.
         if (appConfig.isCustomSocks5Enabled()) {
@@ -1202,7 +1190,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             )
         }
 
-        // 7. Anti-Censorship check
+        // 6. Anti-Censorship check
         // disable anti-censorship, else only "hybrid" (TCP_PROXY) dial strategy with
         // "never retry" (RETRY_NEVER) is compatible. NEVER_SPLIT (no packet alteration) is also
         // treated as compatible since it does not alter/bypass routing. Any other dial strategy
@@ -1224,7 +1212,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             )
         }
 
-        // 8. No proxy enabled check
+        // 7. No proxy enabled check
         val anyProxyEnabled = appConfig.isProxyEnabled()
         if (!anyProxyEnabled) {
             checks.add(
@@ -1237,7 +1225,7 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             )
         }
 
-        // 9. Rethink bypass check
+        // 8. Rethink bypass check
         if (persistentState.routeRethinkInRethink && FirewallManager.getAppInfoByPackage(this.packageName)?.isProxyExcluded == true) {
             checks.add(
                 LockdownCheckItem(
@@ -1258,9 +1246,6 @@ class TunnelSettingsActivity : BaseActivity(R.layout.activity_tunnel_settings) {
             for (check in checks) {
                 if (!check.hasConflict) continue
                 when (check.type) {
-                    CheckType.SYSTEM_DNS -> {
-                        appConfig.enableDefaultDoh()
-                    }
                     CheckType.BOOTSTRAP_DNS -> {
                         // set rethink as the bootstrap dns
                         persistentState.defaultDnsUrl = Constants.DEFAULT_DNS_LIST.getOrNull(1)?.url ?: ""

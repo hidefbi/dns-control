@@ -16,7 +16,6 @@
 package com.celzero.bravedns.ui.fragment
 
 import com.celzero.bravedns.util.Logger
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -46,13 +45,11 @@ import com.celzero.bravedns.ui.activity.PauseActivity
 import com.celzero.bravedns.ui.bottomsheet.DnsRecordTypesBottomSheet
 import com.celzero.bravedns.ui.bottomsheet.LocalBlocklistsBottomSheet
 import com.celzero.bravedns.util.SnackbarHelper
-import com.celzero.bravedns.util.UIUtils
 import com.celzero.bravedns.util.UIUtils.fetchColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastR
 import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.firestack.backend.Backend
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -93,8 +90,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         super.onResume()
         io { handleProxyDnsUi() }
         io { handlePreventDnsLeaksUi() }
-        // update selected dns values
-        updateSelectedDns()
         // update local blocklist ui
         updateLocalBlocklistUi()
         // update allowed record types ui
@@ -114,8 +109,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         b.dcDownloaderSwitch.isChecked = persistentState.useCustomDownloadManager
         // enable dns caching in tunnel
         b.dcEnableCacheSwitch.isChecked = persistentState.enableDnsCache
-        // use system dns for undelegated domains
-        b.dcUndelegatedDomainsSwitch.isChecked = persistentState.useSystemDnsForUndelegatedDomains
         b.connectedStatusTitle.text = getConnectedDnsType()
         b.dcBlockUnknownSwitch.isChecked = persistentState.blockDnsForUnknownApp
         b.dcPreventDnsLeaksSwitch.isChecked = persistentState.preventDnsLeaks
@@ -238,17 +231,12 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
 
         appConfig.getConnectedDnsObservable().observe(viewLifecycleOwner) {
             updateConnectedStatus(it)
-            updateSelectedDns()
         }
     }
 
     private fun updateLatency(dnsType: String = b.connectedStatusTitleUrl.text.toString()) {
         io {
-            var prefId = if (appConfig.isSystemDns()) {
-                Backend.System
-            } else {
-                Backend.Preferred
-            }
+            var prefId = Backend.Preferred
             if (persistentState.enableDnsCache) {
                 prefId = Backend.CT + prefId
             }
@@ -351,12 +339,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
                     resources.getString(R.string.configure_dns_connected_doh_status)
                 b.connectedStatusTitle.text = dns
             }
-            AppConfig.DnsType.SYSTEM_DNS -> {
-                dnsType = resources.getString(R.string.dc_dns_proxy)
-                b.connectedStatusTitleUrl.text =
-                    resources.getString(R.string.configure_dns_connected_dns_proxy_status)
-                b.connectedStatusTitle.text = dns
-            }
             AppConfig.DnsType.ODOH -> {
                 dnsType = resources.getString(R.string.lbl_odoh)
                 b.connectedStatusTitleUrl.text = resources.getString(R.string.lbl_odoh)
@@ -364,23 +346,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
             }
         }
         updateLatency(dnsType)
-    }
-
-    private fun isSystemDns(): Boolean {
-        return appConfig.isSystemDns()
-    }
-
-    private fun updateSelectedDns() {
-        if (isSystemDns()) {
-            b.networkDnsRb.isChecked = true
-            b.customDnsRb.isChecked = false
-            b.networkDnsRb.isChecked = true
-        } else {
-            // connected to custom dns, update the dns details
-            b.customDnsRb.isChecked = true
-            b.networkDnsRb.isChecked = false
-            b.customDnsRb.isChecked = true
-        }
     }
 
     private fun getConnectedDnsType(): String {
@@ -395,9 +360,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
                 resources.getString(R.string.dc_dns_crypt)
             }
             AppConfig.DnsType.DNS_PROXY -> {
-                resources.getString(R.string.dc_dns_proxy)
-            }
-            AppConfig.DnsType.SYSTEM_DNS -> {
                 resources.getString(R.string.dc_dns_proxy)
             }
             AppConfig.DnsType.DOT -> {
@@ -473,19 +435,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         b.customDnsRb.setOnClickListener {
             // custom dns
             showCustomDns()
-        }
-
-        b.networkDnsRb.setOnCheckedChangeListener(null)
-        b.networkDnsRb.setOnClickListener {
-            if (isSystemDns()) {
-                io {
-                    val sysDns = VpnController.getSystemDns()
-                    uiCtx { showSystemDnsDialog(sysDns) }
-                }
-                return@setOnClickListener
-            }
-            // network dns proxy
-            setNetworkDns()
         }
 
         b.dcDownloaderRl.setOnClickListener {
@@ -568,25 +517,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
             b.dcSplitDnsSwitch.isChecked = !b.dcSplitDnsSwitch.isChecked
         }
 
-        b.networkDnsInfo.setOnClickListener {
-            io {
-                val sysDns = VpnController.getSystemDns()
-                uiCtx { showSystemDnsDialog(sysDns) }
-            }
-        }
-
-        b.dcUndelegatedDomainsRl.setOnClickListener {
-            b.dcUndelegatedDomainsSwitch.isChecked = !b.dcUndelegatedDomainsSwitch.isChecked
-        }
-
-        b.dcUndelegatedDomainsSwitch.setOnCheckedChangeListener { _, isChecked ->
-            persistentState.useSystemDnsForUndelegatedDomains = isChecked
-            logEvent(
-                "undelegated domains? $isChecked",
-                "User changed use system dns for undelegated domains setting to $isChecked"
-            )
-        }
-
         b.dcAllowedRecordTypesRl.setOnClickListener {
             showDnsRecordTypesBottomSheet()
         }
@@ -609,30 +539,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
             updateAllowedRecordTypesUi()
         }
         bottomSheet.show(parentFragmentManager, bottomSheet.tag)
-    }
-
-    private fun showSystemDnsDialog(dns: String) {
-        val builder = MaterialAlertDialogBuilder(requireContext(), R.style.App_Dialog_NoDim)
-            .setTitle(R.string.network_dns)
-            .setMessage(dns)
-            .setCancelable(true)
-            .setPositiveButton(R.string.ada_noapp_dialog_positive) { di, _ ->
-                di.dismiss()
-            }
-            .setNeutralButton(requireContext().getString(R.string.dns_info_neutral)) { _: DialogInterface, _: Int ->
-                UIUtils.clipboardCopy(
-                    requireContext(),
-                    dns,
-                    requireContext().getString(R.string.copy_clipboard_label)
-                )
-                Utilities.showToastUiCentered(
-                    requireContext(),
-                    requireContext().getString(R.string.info_dialog_url_copy_toast_msg),
-                    Toast.LENGTH_SHORT
-                )
-            }
-        val dialog = builder.create()
-        dialog.show()
     }
 
     private fun initAnimation() {
@@ -659,22 +565,6 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
     private fun showCustomDns() {
         val intent = Intent(requireContext(), DnsListActivity::class.java)
         startActivity(intent)
-    }
-
-    private fun setNetworkDns() {
-        // Under proxy lockdown, system DNS cannot be enabled because it bypasses the
-        // lockdown proxy. Block the change and revert the radio button selection.
-        if (persistentState.wgGlobalLockdown) {
-            Utilities.showToastUiCentered(
-                requireContext(),
-                getString(R.string.lockdown_check_setting_disabled),
-                Toast.LENGTH_SHORT
-            )
-            updateSelectedDns()
-            return
-        }
-        // set network dns
-        io { appConfig.enableSystemDns() }
     }
 
     private fun enableAfterDelay(ms: Long, vararg views: View) {

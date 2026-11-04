@@ -196,23 +196,6 @@ object UIUtils {
         }
     }
 
-    fun openAppInfo(context: Context) {
-        val packageName = context.packageName
-        try {
-            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-            intent.data = Uri.fromParts("package", packageName, null)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            context.startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            Utilities.showToastUiCentered(
-                context,
-                context.getString(R.string.app_info_error),
-                Toast.LENGTH_SHORT
-            )
-            Logger.w(LOG_TAG_UI, "activity not found ${e.message}", e)
-        }
-    }
-
     fun clipboardCopy(context: Context, s: String, label: String) {
         val clipboard: ClipboardManager? = context.getSystemService()
         val clip = ClipData.newPlainText(label, s)

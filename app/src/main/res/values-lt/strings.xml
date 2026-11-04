@@ -139,7 +139,7 @@
     <string name="lbl_proceed">Tęsti</string>
     <string name="hsf_pause_vpn_failure">Nepavyksta pristabdyti: DNS Control neaktyvus</string>
     <string name="dc_block_heading">taisyklės</string>
-    <string name="dc_custom_dns_radio">Kitas DNS</string>
+    <string name="dc_custom_dns_radio">Pasirinktinis DNS</string>
     <string name="dc_rethink_dns_radio">RethinkDNS</string>
     <string name="dc_entries">%1$s įrašai 🔗</string>
     <string name="dc_local_block_desc_1">Galite rinktis iš daugiau nei 185 blokavimo sąrašų. Spustelėkite čia, jei norite atsisiųsti arba konfigūruoti blokavimo sąrašus.</string>
@@ -464,7 +464,6 @@
     <string name="ada_app_status_unknown">yra nežinoma</string>
     <string name="ada_app_metered">Matuojami</string>
     <string name="notif_download_content_title">Įrenginyje esančio blokavimo sąrašo atsisiuntimas</string>
-    <string name="network_dns">Sistemos DNS</string>
     <string name="rbl_security">Sauga</string>
     <string name="rt_edit_dialog_positive">Redaguoti</string>
     <string name="pause_title_desc">snaudžiama…</string>
@@ -541,6 +540,8 @@
     <string name="xray_no_slot" translatable="true">Nepavyko nustatyti SOCKS5 tarpinio serverio Xray</string>
     <string name="xray_error" translatable="true">Xray klaida: %1$s</string>
     <string name="xray_rethink_on" translatable="true">Pirmiausia išjunkite maršrutizavimą per VPN, kitaip Xray srautas įstrigs cikle</string>
+    <string name="xray_err_dns_mode" translatable="true">Xray reikalauja Ugniasienės arba DNS+Ugniasienės režimo. Režime tik DNS nei srautas, nei DNS neina per tarpinį serverį</string>
+    <string name="xray_err_provider" translatable="true">Pasirinktas tarpinis serveris yra WireGuard arba Orbot. Pirma išjunkite jį: Xray naudoja tą pačią vienintelę tarpinio serverio vietą</string>
     <string name="xray_title" translatable="true">Xray konfigūracija</string>
     <string name="xray_ok" translatable="true">Konfigūracija atrodo teisinga</string>
     <string name="xray_paste" translatable="true">Įklijuoti</string>
@@ -553,7 +554,6 @@
     <string name="xray_err_outbound" translatable="true">Nėra tinkamo VLESS išvesties: reikia serverio adreso, prievado, UUID ir publicKey</string>
     <string name="xray_err_reality" translatable="true">Palaikomas tik Reality saugumas: nustatykite streamSettings.security į reality</string>
     <string name="xray_err_link" translatable="true">Netinkama vless:// nuoroda: patikrinkite UUID, serverį, prievadą ir sni bei pbk parametrus</string>
-    <string name="xray_vpn_hint" translatable="true">Start the app\'s VPN on the main screen first. Xray only carries traffic while the VPN is on.</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -566,14 +566,11 @@
     <string name="xray_chip_on" translatable="true">Running</string>
     <string name="xray_chip_off" translatable="true">Stopped</string>
     <string name="xray_footer_need" translatable="true">Saving needs %1$d more field(s). Starting needs the app VPN on.</string>
-    <string name="xray_footer_ok" translatable="true">Starting needs the app VPN on.</string>
-    <string name="xray_enable_title" translatable="true">Start with the VPN</string>
-    <string name="xray_enable_on" translatable="true">On: Xray starts automatically when the VPN starts</string>
-    <string name="xray_enable_off" translatable="true">Off: the VPN connects directly, without Xray</string>
-    <string name="xray_enable_blocked" translatable="true">Turn off the route-in-VPN option first</string>
-    <string name="xray_enable_running" translatable="true">Takes effect the next time the VPN starts</string>
     <string name="xray_err_json_at" translatable="true">Line %1$d, column %2$d: invalid JSON syntax</string>
     <string name="xray_footer_fill" translatable="true">Fill in %1$d more field(s) to save</string>
-    <string name="xray_footer_save" translatable="true">The saved profile is used the next time the VPN starts</string>
     <string name="xray_err_host_ip" translatable="true">Use the server\'s IP address, not a domain name: a domain would be looked up outside the tunnel</string>
+    <string name="xray_wg_conflict" translatable="true">Xray ir WireGuard negali veikti kartu. Pirma išjunkite Xray.</string>
+    <string name="xray_off_confirm" translatable="true">Išjungus Xray, kai VPN įjungtas, duomenys keliaus tiesiai, nenaudodami Xray. Išjungti?</string>
+    <string name="xray_err_dns" translatable="true">Pašalinkite dns bloką: DNS tvarko DNS Control, o ne Xray</string>
+    <string name="xray_err_rule" translatable="true">Maršruto taisyklei reikia ip, domain arba port, ir ji gali siųsti tik į proxy arba direct</string>
 </resources>

@@ -53,8 +53,6 @@ object WireguardManager : KoinComponent {
 
     const val WG_UPTIME_THRESHOLD = 5 * DateUtils.SECOND_IN_MILLIS
 
-    const val NOTIF_CHANNEL_ID_WIREGUARD_ALERTS = "WireGuard_Alerts"
-
     // contains db values of wg configs (db stores path of the config file)
     private var mappings: CopyOnWriteArraySet<WgConfigFilesImmutable> = CopyOnWriteArraySet()
 
@@ -67,7 +65,6 @@ object WireguardManager : KoinComponent {
 
     // retrieve last added config id
     private var lastAddedConfigId = 0
-
 
     // invalid config id
     const val INVALID_CONF_ID = -1
@@ -195,11 +192,6 @@ object WireguardManager : KoinComponent {
                 deleteConfig(it.id)
             }
         }
-    }
-
-    private fun clearLoadedConfigs() {
-        configs.clear()
-        mappings.clear()
     }
 
     fun getConfigById(id: Int): Config? {
@@ -556,7 +548,6 @@ object WireguardManager : KoinComponent {
         return suffix.isNotEmpty() && suffix.toIntOrNull() != null
     }
 
-
     // a config set to mobile-only is eligible only on mobile data; all other configs on any network
     private fun isEligibleForNetwork(usesMobileNw: Boolean, mobileOnlySetting: Boolean): Boolean {
         if (!mobileOnlySetting) return true
@@ -712,7 +703,6 @@ object WireguardManager : KoinComponent {
             VpnController.notifyConnectionMonitor()
         }
     }
-
 
     suspend fun updateCatchAllConfig(id: Int, isEnabled: Boolean) {
         val config = configs.find { it.getId() == id }
@@ -985,6 +975,11 @@ object WireguardManager : KoinComponent {
 
     fun getPeers(id: Int): MutableList<Peer> {
         return configs.find { it.getId() == id }?.getPeers()?.toMutableList() ?: mutableListOf()
+    }
+
+    /** xray and WireGuard cannot run together: true while the xray switch is on. */
+    fun isXrayEnabled(): Boolean {
+        return persistentState.xrayEnabled
     }
 
     fun oneWireGuardEnabled(): Boolean {
