@@ -16,6 +16,7 @@
 package com.celzero.bravedns.service
 
 import android.content.Context
+import android.util.Log
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.ProxyEndpoint
@@ -23,6 +24,7 @@ import com.celzero.bravedns.util.XrayConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -47,6 +49,12 @@ class XrayController(
     companion object {
         /** Name of the SOCKS5 row that xray uses while it runs. */
         const val PROXY_NAME = "XRAY"
+
+        private const val TAG = "XrayController"
+        // restarts allowed within one window before xray is left down (fail closed)
+        private const val MAX_RESTARTS = 3
+        private const val RESTART_WINDOW_MS = 60_000L
+        private const val RESTART_DELAY_MS = 1_000L
     }
 
     private val runner = XrayRunner(context)
@@ -56,6 +64,14 @@ class XrayController(
 
     // outlives the VPN service: stopNow() is called while the service is being destroyed
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+    // restarts of a crashed xray, and when the last successful start happened
+    private var restarts = 0
+    private var lastStartMs = 0L
+
+    init {
+        runner.onUnexpectedExit = { code -> onXrayExited(code) }
+    }
 
     /**
      * Called before the tunnel carries traffic. Does nothing when the switch is off, apart from
@@ -122,6 +138,27 @@ class XrayController(
         }
     }
 
+    /**
+     * xray exited on its own while it was switched on. The slot still points at it, so traffic
+     * fails rather than going direct. xray is restarted a few times; after that it stays down.
+     */
+    private fun onXrayExited(code: Int) {
+        Log.w(TAG, "xray exited on its own, code: $code")
+        scope.launch {
+            lock.withLock {
+                if (!persistentState.xrayEnabled) return@withLock
+                if (System.currentTimeMillis() - lastStartMs > RESTART_WINDOW_MS) restarts = 0
+                if (restarts >= MAX_RESTARTS) {
+                    Log.e(TAG, "xray restart limit reached, leaving it stopped")
+                    return@withLock
+                }
+                restarts++
+                delay(RESTART_DELAY_MS)
+                startRunning().onFailure { Log.e(TAG, "xray restart failed: ${it.message}") }
+            }
+        }
+    }
+
     /** Resource id of the reason xray cannot run now, or null when it can. */
     fun conflict(): Int? {
         if (persistentState.routeRethinkInRethink) return R.string.xray_rethink_on
@@ -166,6 +203,13 @@ class XrayController(
 
         return try {
             takeSlot()
+            // the switch may have been turned off while xray was starting: hand everything back
+            if (!persistentState.xrayEnabled) {
+                runner.stop()
+                restoreSlot()
+                return Result.failure(IllegalStateException("xray switched off during start"))
+            }
+            lastStartMs = System.currentTimeMillis()
             Result.success(Unit)
         } catch (e: Exception) {
             runner.stop()
@@ -184,10 +228,13 @@ class XrayController(
             saveSnapshot()
         }
         val row = appConfig.getSocks5ProxyDetails() ?: throw IllegalStateException("no slot")
+        val auth = runner.localAuth() ?: throw IllegalStateException("xray not running")
         val pointingAtXray =
             row.proxyName == PROXY_NAME &&
                 row.proxyIP == XrayConfig.LOCAL_HOST &&
                 row.proxyPort == XrayConfig.LOCAL_PORT &&
+                row.userName == auth.user &&
+                row.password == auth.pass &&
                 appConfig.isCustomSocks5Enabled()
         if (pointingAtXray) return
         appConfig.updateCustomSocks5Proxy(socks5Endpoint(row.id))
@@ -257,6 +304,7 @@ class XrayController(
     }
 
     private fun socks5Endpoint(id: Int): ProxyEndpoint {
+        val auth = runner.localAuth()
         return ProxyEndpoint(
             id = id,
             proxyName = PROXY_NAME,
@@ -265,8 +313,8 @@ class XrayController(
             proxyAppName = "",
             proxyIP = XrayConfig.LOCAL_HOST,
             proxyPort = XrayConfig.LOCAL_PORT,
-            userName = null,
-            password = null,
+            userName = auth?.user,
+            password = auth?.pass,
             isSelected = true,
             isCustom = true,
             isUDP = true,
