@@ -294,7 +294,6 @@ class GoVpnAdapterTest : KoinTest {
         adapter.closeTun()
         adapter.setDialStrategy()
         adapter.setTransparency()
-        adapter.undelegatedDomains()
         adapter.setExperimentalWireGuardSettings()
         adapter.setAutoDialsParallel()
         adapter.setAutoMode()

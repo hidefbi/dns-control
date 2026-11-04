@@ -26,7 +26,7 @@ class XrayConfigTest {
 
     private val fullLink =
         "vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443" +
-            "?security=reality&sni=www.example.org&fp=chrome&pbk=PUBKEY123" +
+            "?security=reality&sni=www.example.org&fp=chrome&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
             "&sid=abcd&flow=xtls-rprx-vision&type=tcp#My%20Node"
 
     @Test
@@ -39,7 +39,7 @@ class XrayConfigTest {
         assertEquals("xtls-rprx-vision", link.flow)
         assertEquals("www.example.org", link.serverName)
         assertEquals("chrome", link.fingerprint)
-        assertEquals("PUBKEY123", link.publicKey)
+        assertEquals("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", link.publicKey)
         assertEquals("abcd", link.shortId)
     }
 
@@ -47,7 +47,7 @@ class XrayConfigTest {
     fun usesDefaultFingerprintWhenMissing() {
         val link =
             XrayConfig.parseVlessLink(
-                "vless://u@203.0.113.10:443?security=reality&sni=a.example&pbk=K"
+                "vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=reality&sni=a.example&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
             )
         assertEquals("chrome", link.fingerprint)
         assertEquals("", link.flow)
@@ -57,7 +57,7 @@ class XrayConfigTest {
     fun stripsBracketsFromIpv6Host() {
         val link =
             XrayConfig.parseVlessLink(
-                "vless://u@[2001:db8::1]:8443?security=reality&sni=a.example&pbk=K"
+                "vless://11111111-2222-3333-4444-555555555555@[2001:db8::1]:8443?security=reality&sni=a.example&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
             )
         assertEquals("2001:db8::1", link.host)
         assertEquals(8443, link.port)
@@ -66,14 +66,14 @@ class XrayConfigTest {
     @Test
     fun rejectsNonRealitySecurity() {
         assertThrows(XrayConfig.InvalidLinkException::class.java) {
-            XrayConfig.parseVlessLink("vless://u@203.0.113.10:443?security=tls&sni=a&pbk=K")
+            XrayConfig.parseVlessLink("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=tls&sni=a&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         }
     }
 
     @Test
     fun rejectsMissingPublicKey() {
         assertThrows(XrayConfig.InvalidLinkException::class.java) {
-            XrayConfig.parseVlessLink("vless://u@203.0.113.10:443?security=reality&sni=a")
+            XrayConfig.parseVlessLink("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=reality&sni=a")
         }
     }
 
@@ -98,7 +98,7 @@ class XrayConfigTest {
     fun builtConfigCarriesRealityParameters() {
         val config = XrayConfig.buildConfig(XrayConfig.parseVlessLink(fullLink))
         assertTrue(config.contains("\"security\": \"reality\""))
-        assertTrue(config.contains("\"publicKey\": \"PUBKEY123\""))
+        assertTrue(config.contains("\"publicKey\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\""))
         assertTrue(config.contains("\"serverName\": \"www.example.org\""))
         assertTrue(config.contains("\"flow\":\"xtls-rprx-vision\""))
         assertTrue(config.contains("\"port\": 443"))
@@ -109,7 +109,7 @@ class XrayConfigTest {
         val config =
             XrayConfig.buildConfig(
                 XrayConfig.parseVlessLink(
-                    "vless://u@203.0.113.10:443?security=reality&sni=a.example&pbk=K"
+                    "vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=reality&sni=a.example&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
                 )
             )
         assertFalse(config.contains("\"flow\""))
@@ -129,7 +129,7 @@ class XrayConfigTest {
     fun checkReportsBrokenLink() {
         assertEquals(
             XrayConfig.Problem.INVALID_LINK,
-            XrayConfig.check("vless://u@203.0.113.10:443?security=tls&sni=a&pbk=K")
+            XrayConfig.check("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=tls&sni=a&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         )
     }
 
@@ -161,7 +161,7 @@ class XrayConfigTest {
     fun checkReportsMissingPublicKeyInJson() {
         val json =
             "{\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{\"address\":\"203.0.113.10\"," +
-                "\"port\":443,\"users\":[{\"id\":\"u\"}]}]},\"streamSettings\":{\"security\":\"reality\"," +
+                "\"port\":443,\"users\":[{\"id\":\"11111111-2222-3333-4444-555555555555\"}]}]},\"streamSettings\":{\"security\":\"reality\"," +
                 "\"realitySettings\":{}}}]}"
         assertEquals(XrayConfig.Problem.MISSING_PUBLIC_KEY, XrayConfig.check(json))
     }
@@ -170,7 +170,7 @@ class XrayConfigTest {
     fun checkReportsNonRealityInJson() {
         val json =
             "{\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{\"address\":\"203.0.113.10\"," +
-                "\"port\":443,\"users\":[{\"id\":\"u\"}]}]},\"streamSettings\":{\"security\":\"tls\"}}]}"
+                "\"port\":443,\"users\":[{\"id\":\"11111111-2222-3333-4444-555555555555\"}]}]},\"streamSettings\":{\"security\":\"tls\"}}]}"
         assertEquals(XrayConfig.Problem.NOT_REALITY, XrayConfig.check(json))
     }
 
@@ -198,7 +198,7 @@ class XrayConfigTest {
                 .replace("REPLACE_SERVER_IP", "203.0.113.10")
                 .replace("REPLACE_UUID", "11111111-2222-3333-4444-555555555555")
                 .replace("REPLACE_SNI", "www.example.org")
-                .replace("REPLACE_PUBLIC_KEY", "PUBKEY123")
+                .replace("REPLACE_PUBLIC_KEY", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                 .replace("REPLACE_SHORT_ID", "abcd")
         assertEquals(0, XrayConfig.placeholderCount(filled))
         assertNull(XrayConfig.check(filled))
@@ -224,7 +224,7 @@ class XrayConfigTest {
                 .replace("REPLACE_SERVER_IP", "203.0.113.10")
                 .replace("REPLACE_UUID", "11111111-2222-3333-4444-555555555555")
                 .replace("REPLACE_SNI", "www.example.org")
-                .replace("REPLACE_PUBLIC_KEY", "PUBKEY123")
+                .replace("REPLACE_PUBLIC_KEY", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
                 .replace("REPLACE_SHORT_ID", "abcd")
         assertEquals(emptyList<XrayConfig.Field>(), XrayConfig.missingFields(filled))
     }
@@ -266,20 +266,20 @@ class XrayConfigTest {
             "{\"dns\":{\"servers\":[\"1.1.1.1\"]},\"routing\":{\"rules\":[]}," +
                 "\"outbounds\":[{\"tag\":\"d\",\"protocol\":\"freedom\"},{\"protocol\":\"vless\"," +
                 "\"settings\":{\"vnext\":[{\"address\":\"203.0.113.10\",\"port\":443," +
-                "\"users\":[{\"id\":\"u\",\"encryption\":\"none\"}]}]}," +
+                "\"users\":[{\"id\":\"11111111-2222-3333-4444-555555555555\",\"encryption\":\"none\"}]}]}," +
                 "\"streamSettings\":{\"security\":\"reality\",\"realitySettings\":" +
-                "{\"serverName\":\"a.example\",\"publicKey\":\"K\",\"shortId\":\"ab\"}}}]}"
+                "{\"serverName\":\"a.example\",\"publicKey\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"shortId\":\"ab\"}}}]}"
         val config = XrayConfig.canonicalConfig(userJson)
         assertFalse(config.contains("\"dns\""))
         assertTrue(config.contains("\"outboundTag\": \"direct\"") || config.contains("\"outboundTag\":\"direct\""))
-        assertTrue(config.contains("\"publicKey\": \"K\""))
+        assertTrue(config.contains("\"publicKey\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\""))
     }
 
     @Test
     fun hostMustBeAnIpAddress() {
         assertEquals(
             XrayConfig.Problem.HOST_NOT_IP,
-            XrayConfig.check("vless://u@server.example:443?security=reality&sni=a.example&pbk=K")
+            XrayConfig.check("vless://11111111-2222-3333-4444-555555555555@server.example:443?security=reality&sni=a.example&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         )
         assertTrue(XrayConfig.isIpLiteral("203.0.113.10"))
         assertTrue(XrayConfig.isIpLiteral("2001:db8::1"))
@@ -294,8 +294,8 @@ class XrayConfigTest {
 
     private fun filledJsonWith(extra: String): String =
         "{" + extra + "\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{\"address\":\"203.0.113.10\"," +
-            "\"port\":443,\"users\":[{\"id\":\"u\",\"encryption\":\"none\"}]}]},\"streamSettings\":{\"security\":\"reality\"," +
-            "\"realitySettings\":{\"serverName\":\"a.example\",\"publicKey\":\"K\",\"shortId\":\"ab\"}}}]}"
+            "\"port\":443,\"users\":[{\"id\":\"11111111-2222-3333-4444-555555555555\",\"encryption\":\"none\"}]}]},\"streamSettings\":{\"security\":\"reality\"," +
+            "\"realitySettings\":{\"serverName\":\"a.example\",\"publicKey\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"shortId\":\"ab\"}}}]}"
 
     @Test
     fun checkRefusesDnsBlock() {
@@ -316,10 +316,21 @@ class XrayConfigTest {
     }
 
     @Test
-    fun checkAcceptsDirectRuleOffDnsPort() {
+    fun checkRefusesDirectRuleWithoutPrivateAddress() {
         assertEquals(
-            null,
+            XrayConfig.Problem.BAD_RULE,
             XrayConfig.check(filledJsonWith("\"routing\":{\"rules\":[{\"port\":443,\"outboundTag\":\"direct\"}]},"))
+        )
+    }
+
+    @Test
+    fun checkAcceptsDirectRuleForPrivateAddress() {
+        assertNull(
+            XrayConfig.check(
+                filledJsonWith(
+                    "\"routing\":{\"rules\":[{\"ip\":[\"10.0.0.0/8\"],\"port\":443,\"outboundTag\":\"direct\"}]},"
+                )
+            )
         )
     }
 
@@ -338,11 +349,90 @@ class XrayConfigTest {
         val config =
             XrayConfig.canonicalConfig(
                 filledJsonWith(
-                    "\"routing\":{\"rules\":[{\"type\":\"field\",\"domain\":[\"example.org\"],\"outboundTag\":\"direct\"}]},"
+                    "\"routing\":{\"rules\":[{\"type\":\"field\",\"domain\":[\"example.org\"],\"outboundTag\":\"proxy\"}]},"
                 )
             )
         assertTrue(config.contains("\"domain\":[\"example.org\"]"))
-        assertTrue(config.indexOf("example.org") < config.indexOf("\"network\": \"tcp,udp\""))
+        assertTrue(config.indexOf("example.org") < config.lastIndexOf("\"network\": \"tcp,udp\""))
         assertFalse(config.contains("\"dns\""))
+    }
+
+    private fun jsonWithRule(rule: String): String =
+        "{\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{" +
+            "\"address\":\"203.0.113.10\",\"port\":443," +
+            "\"users\":[{\"id\":\"11111111-2222-3333-4444-555555555555\"}]}]}," +
+            "\"streamSettings\":{\"security\":\"reality\",\"realitySettings\":{" +
+            "\"serverName\":\"www.example.org\",\"publicKey\":\"" + "A".repeat(43) + "\"," +
+            "\"shortId\":\"abcd\"}}}],\"routing\":{\"rules\":[" + rule + "]}}"
+
+    @Test
+    fun directRuleForPrivateNetworkIsAccepted() {
+        val json = jsonWithRule("{\"ip\":[\"10.0.0.0/8\"],\"outboundTag\":\"direct\"}")
+        assertNull(XrayConfig.check(json))
+    }
+
+    @Test
+    fun directRuleForPublicAddressIsRefused() {
+        val json = jsonWithRule("{\"ip\":[\"8.8.8.8/32\"],\"outboundTag\":\"direct\"}")
+        assertEquals(XrayConfig.Problem.BAD_RULE, XrayConfig.check(json))
+    }
+
+    @Test
+    fun catchAllDirectRuleIsRefused() {
+        val json = jsonWithRule("{\"ip\":[\"0.0.0.0/0\"],\"outboundTag\":\"direct\"}")
+        assertEquals(XrayConfig.Problem.BAD_RULE, XrayConfig.check(json))
+    }
+
+    @Test
+    fun directRuleCoveringDnsPortIsRefused() {
+        val json =
+            jsonWithRule(
+                "{\"ip\":[\"10.0.0.0/8\"],\"port\":\"50-60\",\"outboundTag\":\"direct\"}"
+            )
+        assertEquals(XrayConfig.Problem.BAD_RULE, XrayConfig.check(json))
+    }
+
+    @Test
+    fun ruleWithHostnameIsRefused() {
+        val json = jsonWithRule("{\"ip\":[\"example.com\"],\"outboundTag\":\"proxy\"}")
+        assertEquals(XrayConfig.Problem.BAD_RULE, XrayConfig.check(json))
+    }
+
+    @Test
+    fun proxyRuleForPublicAddressIsAccepted() {
+        val json = jsonWithRule("{\"ip\":[\"8.8.8.8/32\"],\"outboundTag\":\"proxy\"}")
+        assertNull(XrayConfig.check(json))
+    }
+
+    @Test
+    fun builtConfigRequiresLocalCredentialsWhenGiven() {
+        val config =
+            XrayConfig.buildConfig(
+                XrayConfig.parseVlessLink(fullLink),
+                auth = XrayConfig.LocalAuth("user1", "pass1"),
+            )
+        assertTrue(config.contains("\"auth\":\"password\""))
+        assertTrue(config.contains("\"user\":\"user1\""))
+        assertTrue(config.contains("\"pass\":\"pass1\""))
+    }
+
+    @Test
+    fun rejectsMalformedUuid() {
+        assertThrows(XrayConfig.InvalidLinkException::class.java) {
+            XrayConfig.parseVlessLink(
+                "vless://not-a-uuid@203.0.113.10:443?security=reality&sni=a.example&pbk=" +
+                    "A".repeat(43)
+            )
+        }
+    }
+
+    @Test
+    fun directDomainRuleIsRefusedBecauseNamesResolveOutsideTunnel() {
+        assertEquals(
+            XrayConfig.Problem.BAD_RULE,
+            XrayConfig.check(
+                filledJsonWith("\"routing\":{\"rules\":[{\"domain\":[\"example.org\"],\"outboundTag\":\"direct\"}]},")
+            )
+        )
     }
 }

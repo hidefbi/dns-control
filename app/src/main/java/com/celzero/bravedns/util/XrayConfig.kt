@@ -15,6 +15,8 @@
  */
 package com.celzero.bravedns.util
 
+import inet.ipaddr.IPAddress
+import inet.ipaddr.IPAddressString
 import java.net.URI
 import java.net.URLDecoder
 import org.json.JSONException
@@ -30,6 +32,32 @@ object XrayConfig {
 
     const val LOCAL_HOST = "127.0.0.1"
     const val LOCAL_PORT = 10808
+
+    /** Credentials the local SOCKS5 inbound requires. A new pair is generated for every run. */
+    class LocalAuth(val user: String, val pass: String)
+
+    // a direct rule may only cover these; everything else must go through the proxy
+    private val PRIVATE_NETS: List<IPAddress> =
+        listOf(
+                "10.0.0.0/8",
+                "172.16.0.0/12",
+                "192.168.0.0/16",
+                "127.0.0.0/8",
+                "169.254.0.0/16",
+                "::1/128",
+                "fc00::/7",
+                "fe80::/10",
+            )
+            .map { IPAddressString(it).address }
+
+    private val NET_RE = Regex("""[0-9A-Fa-f:.]+(/\d{1,3})?""")
+    private val PORT_SPEC_RE = Regex("""\d{1,5}(-\d{1,5})?(,\d{1,5}(-\d{1,5})?)*""")
+    private val UUID_RE =
+        Regex("""[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}""")
+    private val SHORT_ID_RE = Regex("""(?:[0-9a-fA-F]{2}){0,8}""")
+    private val KEY_RE = Regex("""[A-Za-z0-9_-]{43}""")
+    private val SERVER_NAME_RE = Regex("""[A-Za-z0-9.-]{1,253}""")
+    private val FINGERPRINT_RE = Regex("""[a-z_]{1,32}""")
 
     private const val SCHEME = "vless://"
     private const val DNS_PORT = 53
@@ -151,7 +179,10 @@ object XrayConfig {
         return input.trim().startsWith(SCHEME, ignoreCase = true)
     }
 
-    fun parseVlessLink(input: String): VlessLink {
+    fun parseVlessLink(input: String): VlessLink =
+        parseVlessLinkUnchecked(input).also { validateLink(it) }
+
+    private fun parseVlessLinkUnchecked(input: String): VlessLink {
         val link = input.trim()
         if (!isVlessLink(link)) throw InvalidLinkException("not a vless link")
 
@@ -348,37 +379,67 @@ object XrayConfig {
         return ErrorSpot(line, column)
     }
 
-    private val IPV4 = Regex("""\d{1,3}(\.\d{1,3}){3}""")
-    private val IPV6_CHARS = Regex("""[0-9A-Fa-f:.]+""")
 
     /**
      * True for an IPv4 or IPv6 literal. Domain names are refused on purpose: resolving the server
      * name would send a query outside the tunnel.
      */
     fun isIpLiteral(host: String): Boolean {
-        if (IPV4.matches(host)) return true
-        return host.contains(':') && IPV6_CHARS.matches(host)
+        if (!NET_RE.matches(host)) return false
+        if (!host.contains(':') && host.count { it == '.' } != 3) return false
+        return IPAddressString(host).isValid
     }
 
     /**
      * The config xray actually runs. It is built only from the server parameters, so any dns,
      * routing, logging or other settings the user pasted are dropped. Every start path uses this.
      */
-    fun canonicalConfig(input: String): String {
+    fun canonicalConfig(input: String, auth: LocalAuth? = null): String {
         val text = input.trim()
-        if (isVlessLink(text)) return buildConfig(parseVlessLink(text))
+        if (isVlessLink(text)) return buildConfig(parseVlessLink(text), auth = auth)
         val root = JSONObject(text)
         val extra =
             userRules(root)
                 .filter { !isCatchAll(it) && isAllowedRule(it) }
                 .joinToString("") { ", " + it.toString() }
-        return buildConfig(linkFromJson(root), extra)
+        return buildConfig(linkFromJson(root), extra, auth)
     }
 
     /** Routing rules the user wrote, in order. Anything but an object is ignored. */
     private fun userRules(root: JSONObject): List<JSONObject> {
         val rules = root.optJSONObject("routing")?.optJSONArray("rules") ?: return emptyList()
-        return (0 until rules.length()).mapNotNull { rules.optJSONObject(it) }
+        return (0 until rules.length())
+            .mapNotNull { rules.optJSONObject(it) }
+            .filterNot { isGeneratedRule(it) }
+    }
+
+    private val GENERATED_BLOCK_NETS =
+        setOf("10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "169.254.0.0/16", "fc00::/7", "fe80::/10")
+    private val GENERATED_DIRECT_NETS =
+        setOf(
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "127.0.0.0/8",
+            "169.254.0.0/16",
+            "::1/128",
+            "fc00::/7",
+            "fe80::/10",
+        )
+
+    /**
+     * The two rules this app writes into every config. A config copied back from the app keeps
+     * them, so they are recognised and left out of the user rules.
+     */
+    private fun isGeneratedRule(rule: JSONObject): Boolean {
+        val ips = rule.optJSONArray("ip")
+        val nets =
+            if (ips == null) emptySet() else (0 until ips.length()).map { ips.optString(it) }.toSet()
+        return when (rule.optString("outboundTag")) {
+            "block" -> rule.optString("port") == "53" && nets == GENERATED_BLOCK_NETS
+            "direct" -> !rule.has("port") && nets == GENERATED_DIRECT_NETS
+            else -> false
+        }
     }
 
     /**
@@ -394,9 +455,73 @@ object XrayConfig {
 
     private fun isAllowedRule(rule: JSONObject): Boolean {
         val narrow = rule.has("ip") || rule.has("domain") || rule.has("port")
-        val tag = rule.optString("outboundTag")
-        // a direct rule that covers port 53 would send dns around the proxy, so it is refused
-        return narrow && (tag == "proxy" || (tag == "direct" && !coversDnsPort(rule)))
+        if (!narrow || !selectorsValid(rule)) return false
+        return when (rule.optString("outboundTag")) {
+            "proxy" -> true
+            // a direct rule may only cover private and loopback addresses. Anything else, dns on
+            // port 53 included, would leave the tunnel without going through the proxy
+            "direct" -> isPrivateOnly(rule) && !coversDnsPort(rule)
+            else -> false
+        }
+    }
+
+    /** Every ip entry must be a literal or CIDR, and every port entry a valid port or range. */
+    private fun selectorsValid(rule: JSONObject): Boolean {
+        if (rule.has("ip")) {
+            val ips = rule.optJSONArray("ip") ?: return false
+            if (ips.length() == 0) return false
+            for (i in 0 until ips.length()) {
+                if (parseNet(ips.opt(i) as? String ?: return false) == null) return false
+            }
+        }
+        if (rule.has("port")) {
+            val spec = rule.opt("port")?.toString().orEmpty()
+            if (!PORT_SPEC_RE.matches(spec)) return false
+            val bad =
+                spec.split(",").any { part ->
+                    part.split("-").any { (it.toIntOrNull() ?: -1) !in 0..65535 }
+                }
+            if (bad) return false
+        }
+        return true
+    }
+
+    private fun isPrivateOnly(rule: JSONObject): Boolean {
+        val ips = rule.optJSONArray("ip") ?: return false
+        if (ips.length() == 0) return false
+        for (i in 0 until ips.length()) {
+            val net = parseNet(ips.opt(i) as? String ?: return false) ?: return false
+            if (PRIVATE_NETS.none { it.contains(net) }) return false
+        }
+        return true
+    }
+
+    /** Parses an address or CIDR. Names are never resolved here, so nothing leaves the device. */
+    private fun parseNet(text: String): IPAddress? {
+        val trimmed = text.trim()
+        if (!NET_RE.matches(trimmed)) return null
+        return try {
+            val address = IPAddressString(trimmed)
+            if (address.isValid) address.address else null
+        } catch (e: Exception) {
+            null
+        }
+    }
+
+    /** Rejects server parameters that are not in the shape REALITY uses. */
+    private fun validateLink(link: VlessLink) {
+        if (!UUID_RE.matches(link.uuid)) throw InvalidLinkException("invalid uuid")
+        if (!SHORT_ID_RE.matches(link.shortId)) throw InvalidLinkException("invalid shortId")
+        if (!KEY_RE.matches(link.publicKey)) throw InvalidLinkException("invalid publicKey")
+        if (!SERVER_NAME_RE.matches(link.serverName)) {
+            throw InvalidLinkException("invalid serverName")
+        }
+        if (!FINGERPRINT_RE.matches(link.fingerprint)) {
+            throw InvalidLinkException("invalid fingerprint")
+        }
+        if (link.flow.isNotEmpty() && link.flow != "xtls-rprx-vision") {
+            throw InvalidLinkException("unsupported flow")
+        }
     }
 
     private fun coversDnsPort(rule: JSONObject): Boolean {
@@ -454,6 +579,7 @@ object XrayConfig {
         if (link.publicKey.isEmpty() || link.serverName.isEmpty()) {
             throw InvalidLinkException("missing publicKey or serverName")
         }
+        validateLink(link)
         return link
     }
 
@@ -464,13 +590,24 @@ object XrayConfig {
         return JSONObject(text).toString(2)
     }
 
-    fun inbound(): String {
+    fun inbound(auth: LocalAuth? = null): String {
+        val settings =
+            if (auth == null) {
+                "\"auth\":\"noauth\""
+            } else {
+                "\"auth\":\"password\",\"accounts\":[{\"user\":${jsonString(auth.user)}," +
+                    "\"pass\":${jsonString(auth.pass)}}]"
+            }
         return "{\"tag\":\"socks-in\",\"listen\":${jsonString(LOCAL_HOST)}," +
             "\"port\":$LOCAL_PORT,\"protocol\":\"socks\"," +
-            "\"settings\":{\"auth\":\"noauth\",\"udp\":true}}"
+            "\"settings\":{$settings,\"udp\":true}}"
     }
 
-    fun buildConfig(link: VlessLink, extraRules: String = ""): String {
+    fun buildConfig(
+        link: VlessLink,
+        extraRules: String = "",
+        auth: LocalAuth? = null,
+    ): String {
         val flowField = if (link.flow.isEmpty()) "" else ",\"flow\":${jsonString(link.flow)}"
         val spiderField =
             if (link.spiderX.isEmpty()) "" else ",\"spiderX\":${jsonString(link.spiderX)}"
@@ -478,7 +615,7 @@ object XrayConfig {
         return """
             {
               "log": {"loglevel": "warning"},
-              "inbounds": [${inbound()}],
+              "inbounds": [${inbound(auth)}],
               "outbounds": [
                 {
                   "tag": "proxy",

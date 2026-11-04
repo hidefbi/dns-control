@@ -39,7 +39,7 @@ object SecretBox {
     private const val KEY_ALIAS = "bravedns.secretbox.aes256gcm.v1"
     private const val TRANSFORMATION = "AES/GCM/NoPadding"
     private const val GCM_TAG_BITS = 128
-    private const val PREFIX = "ks1:"
+    const val PREFIX = "ks1:"
     private const val SEPARATOR = ":"
 
     fun encrypt(plain: String?): String? {
