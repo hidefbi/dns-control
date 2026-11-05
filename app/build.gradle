@@ -293,6 +293,12 @@ def firestackDependency = { ->
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 dependencies {
     def room_version = "2.8.1"
     def paging_version = "3.3.6"
@@ -368,8 +374,8 @@ dependencies {
     fullImplementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9'
 
     // add ":debug" suffix to the dependency to include "arm64-v8a"
-    download firestackDependency()
-    implementation firestackDependency()
+    download(name: 'firestack', ext: 'aar')
+    implementation(name: 'firestack', ext: 'aar')
 
     // Work manager
     implementation('androidx.work:work-runtime-ktx:2.11.2') {
