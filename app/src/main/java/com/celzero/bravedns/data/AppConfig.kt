@@ -44,6 +44,9 @@ import com.celzero.bravedns.database.RethinkDnsEndpointRepository
 import com.celzero.bravedns.database.Severity
 import com.celzero.bravedns.service.EventLogger
 import com.celzero.bravedns.service.PersistentState
+import com.celzero.bravedns.service.ProxyManager
+import com.celzero.bravedns.service.ProxyManager.ID_WG_BASE
+import com.celzero.bravedns.service.WireguardManager
 import com.celzero.bravedns.util.InternetProtocol
 import com.celzero.bravedns.util.InternetProtocol.Companion.getInternetProtocol
 import com.celzero.bravedns.util.OrbotHelper
@@ -999,6 +1002,19 @@ internal constructor(
 
         val proxyType = ProxyType.of(persistentState.proxyType)
         return proxyType.isProxyTypeHttp() || proxyType.isProxyTypeHttpSocks5()
+    }
+
+    // the proxy id that default, bootstrap and system dns egress via while global lockdown is on:
+    // the wireguard proxy when wireguard is the proxy type, else the custom socks5 (xray) proxy.
+    // Empty when there is none, in which case those transports stay blocked (fail closed).
+    fun lockdownDnsProxyId(): String {
+        if (!persistentState.wgGlobalLockdown) return ""
+        if (isWireGuardEnabled()) {
+            val id = WireguardManager.getOneWireGuardProxyId() ?: return ""
+            return ID_WG_BASE + id
+        }
+        if (isCustomSocks5Enabled()) return ProxyManager.ID_S5_BASE
+        return ""
     }
 
     fun isCustomSocks5Enabled(): Boolean {

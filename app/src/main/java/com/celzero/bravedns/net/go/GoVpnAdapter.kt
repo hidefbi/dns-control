@@ -1773,8 +1773,8 @@ class GoVpnAdapter : KoinComponent {
                 !Constants.DEFAULT_DNS_LIST.any { it.url == persistentState.defaultDnsUrl }
     }
 
-    // tells firestack whether global proxy lockdown is on; under lockdown the default,
-    // bootstrap and system transports fail closed instead of egressing via the base proxy
+    // tells firestack whether global proxy lockdown is on, and which proxy the default, bootstrap
+    // and system transports egress via under it; without a proxy they fail closed (blocked)
     private fun notifyGlobalLockdown() {
         val y = persistentState.wgGlobalLockdown
         try {
@@ -1782,6 +1782,13 @@ class GoVpnAdapter : KoinComponent {
             Logger.i(LOG_TAG_VPN, "$TAG notify global lockdown? $y")
         } catch (e: Exception) {
             Logger.w(LOG_TAG_VPN, "$TAG err notify global lockdown($y): ${e.message}", e)
+        }
+        val pid = appConfig.lockdownDnsProxyId()
+        try {
+            Intra.lockdownProxy(pid)
+            Logger.i(LOG_TAG_VPN, "$TAG notify lockdown proxy? $pid")
+        } catch (e: Exception) {
+            Logger.w(LOG_TAG_VPN, "$TAG err notify lockdown proxy($pid): ${e.message}", e)
         }
     }
 

@@ -481,12 +481,16 @@ object TunDnsManager: KoinComponent {
         return Pair(first, second)
     }
 
-    // under global proxy lockdown, Default, Bootstrap and System are never allowed to egress:
-    // firestack sends them via the base proxy, which is outside the lockdown. Replace them with
-    // BlockAll (fail closed). Independent of xray, unlike guardDnsLeak. Rethink's own uid is
-    // exempt, same as guardDnsLeak, so that its internal lookups are not cut off.
+    // under global proxy lockdown, Default, Bootstrap and System must never egress via the base
+    // proxy. Firestack sends them via the lockdown proxy (wireguard or socks5) when there is one;
+    // without one they are replaced with BlockAll (fail closed). Independent of xray, unlike
+    // guardDnsLeak. Rethink's own uid is exempt, same as guardDnsLeak, so that its internal
+    // lookups are not cut off.
     private fun lockdownGuard(uid: Int, tid: Pair<String, String>): Pair<String, String> {
         if (uid == rethinkUid || !persistentState.wgGlobalLockdown) {
+            return tid
+        }
+        if (appConfig.lockdownDnsProxyId().isNotEmpty()) {
             return tid
         }
         val first = replaceUnproxiableTransports(tid.first)
