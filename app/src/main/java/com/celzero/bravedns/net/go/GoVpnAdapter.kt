@@ -833,6 +833,8 @@ class GoVpnAdapter : KoinComponent {
             // track the add so that the global proxy handler can re-add if it goes missing
             GlobalProxyHandler.track(id)
             Logger.i(LOG_TAG_VPN, "$TAG socks5 set for ${userName ?: "<anonymous>"}@$ipAddress:$port (credentials redacted), success? ${res != null}")
+            // the socks5 (xray) proxy is now registered, so the lockdown dns proxy can be used
+            notifyGlobalLockdown()
             logEvent(
                 Severity.LOW,
                 "set socks5 proxy",
@@ -1215,6 +1217,8 @@ class GoVpnAdapter : KoinComponent {
             GlobalProxyHandler.track(id)
             val p = getProxies()?.addProxy(id, wgUserSpaceString)
             Logger.i(LOG_TAG_VPN, "$TAG added wireguard proxy with $id; success? ${p != null}")
+            // the wireguard proxy is now registered, so the lockdown dns proxy can be used
+            notifyGlobalLockdown()
             logEvent(Severity.LOW, "add wg proxy", "added wg proxy with id: $id, oneWg? $isOneWg")
         } catch (e: Exception) {
             Logger.e(LOG_TAG_VPN, "$TAG err adding wireguard proxy: ${e.message}", e)
