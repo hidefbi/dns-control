@@ -481,6 +481,32 @@ object TunDnsManager: KoinComponent {
         return Pair(first, second)
     }
 
+    // under global proxy lockdown, Default, Bootstrap and System are never allowed to egress:
+    // firestack sends them via the base proxy, which is outside the lockdown. Replace them with
+    // BlockAll (fail closed). Independent of xray, unlike guardDnsLeak. Rethink's own uid is
+    // exempt, same as guardDnsLeak, so that its internal lookups are not cut off.
+    private fun lockdownGuard(uid: Int, tid: Pair<String, String>): Pair<String, String> {
+        if (uid == rethinkUid || !persistentState.wgGlobalLockdown) {
+            return tid
+        }
+        val first = replaceUnproxiableTransports(tid.first)
+        val second = replaceUnproxiableTransports(tid.second)
+        if (first == tid.first && second == tid.second) return tid
+        logd("lockdownGuard: uid: $uid, tid: $tid, unproxiable transports blocked, now: $first, $second")
+        return Pair(first, second)
+    }
+
+    private fun replaceUnproxiableTransports(csv: String): String {
+        if (csv.isBlank()) return csv
+        return csv.split(",").joinToString(",") { id ->
+            val cache = if (id.startsWith(Backend.CT)) Backend.CT else ""
+            val bare = id.substring(cache.length)
+            val name = bare.substringBefore(":")
+            val unsafe = name == Backend.Default || name == Backend.Bootstrap || name == Backend.System
+            if (unsafe) cache + Backend.BlockAll + bare.substring(name.length) else id
+        }
+    }
+
     // ids may carry a cache prefix (CT+) and a proxy suffix (ex: CT+System:S5:Base); only the
     // transport name is compared, and both are kept on the replaced id
     private fun replaceOperatorTransports(csv: String, defaultNone: Boolean): String {
@@ -501,7 +527,7 @@ object TunDnsManager: KoinComponent {
         bypassLocalBlocklists: Boolean = false,
         isIfaceCellular: Boolean
     ): DNSOpts {
-        val tid = guardDnsLeak(uid, tidIn)
+        val tid = lockdownGuard(uid, guardDnsLeak(uid, tidIn))
         val opts = DNSOpts()
         opts.uid = uid.toString()
         opts.ipcsv = "" // as of now, no suggested ips

@@ -284,10 +284,18 @@ def firestackDependency = { ->
             return "com.github.celzero:firestack:$firestackCommit@aar"
         case "github":
             return "com.github.celzero:firestack:$firestackCommit@aar"
+        case "fork":
+            return "com.github.hidefbi:firestack:$firestackCommit@aar"
         case "ossrh":
             return "com.celzero:firestack:$firestackCommit@aar"
         default:
             throw new GradleException("Unknown firestackRepo: $firestackRepo")
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
     }
 }
 
@@ -366,8 +374,8 @@ dependencies {
     fullImplementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9'
 
     // add ":debug" suffix to the dependency to include "arm64-v8a"
-    download firestackDependency()
-    implementation firestackDependency()
+    download(name: 'firestack', ext: 'aar')
+    implementation(name: 'firestack', ext: 'aar')
 
     // Work manager
     implementation('androidx.work:work-runtime-ktx:2.11.2') {
