@@ -284,6 +284,8 @@ def firestackDependency = { ->
             return "com.github.celzero:firestack:$firestackCommit@aar"
         case "github":
             return "com.github.celzero:firestack:$firestackCommit@aar"
+        case "fork":
+            return "com.github.hidefbi:firestack:$firestackCommit@aar"
         case "ossrh":
             return "com.celzero:firestack:$firestackCommit@aar"
         default:
