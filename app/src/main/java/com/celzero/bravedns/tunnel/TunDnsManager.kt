@@ -616,15 +616,9 @@ object TunDnsManager: KoinComponent {
         val usesCellularNw = isIfaceCellular
 
         val emptyOrDefault = if (isGlobalProxyLockdown) "" else defaultProxy
-        // with xray on and prevent dns leaks set, a failing proxy must fail the query rather than
-        // fall back to the direct Base transport. Without xray the proxy branches below keep the
-        // same fallback as before, and the wireguard branch keeps its own fallback either way.
-        val proxyFallback =
-            if (isGlobalProxyLockdown || (persistentState.xrayEnabled && persistentState.preventDnsLeaks)) {
-                ""
-            } else {
-                defaultProxy
-            }
+        // a selected proxy that fails must fail the query. Falling back to the direct Base transport
+        // would send dns out of the local network without the user knowing, whatever the switches say
+        val proxyFallback = ""
         return if (appConfig.isCustomSocks5Enabled()) {
             val id = proxyIdBuilder(ProxyManager.ID_S5_BASE, proxyFallback)
             logd("(onQuery-pid)customSocks5 enabled, return $id, global-proxy-lockdown? $isGlobalProxyLockdown")

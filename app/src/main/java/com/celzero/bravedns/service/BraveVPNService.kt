@@ -520,7 +520,10 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             Logger.vv(LOG_TAG_VPN, "protect: rinr, within rethink, who: $who, fd: $fd")
             return@go2kt
         }
-        this.protect(fd.toInt())
+        // protect() reports failure as false; an unprotected socket would be routed into the tunnel
+        if (!this.protect(fd.toInt())) {
+            Logger.w(LOG_TAG_VPN, "protect: failed, who: $who, fd: $fd")
+        }
     }
 
     private suspend fun newBuilder(): Builder {

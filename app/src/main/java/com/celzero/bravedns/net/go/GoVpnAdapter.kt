@@ -2074,13 +2074,22 @@ class GoVpnAdapter : KoinComponent {
             val urls: Array<out String>? = res?.getStringArray(R.array.urls)
             val ips: Array<out String>? = res?.getStringArray(R.array.ips)
             if (urls == null) return ""
+            val host = hostOf(url) ?: return ""
             for (i in urls.indices) {
-                // either the url is a substring of urls[i] or urls[i] is a substring of url
-                if ((url.contains(urls[i])) || (urls[i].contains(url))) {
+                // match the host exactly; a substring match sent unrelated urls to another provider
+                if (hostOf(urls[i]) == host) {
                     if (ips != null) return ips[i]
                 }
             }
             return ""
+        }
+
+        private fun hostOf(url: String): String? {
+            return try {
+                URI(url.trim()).host?.lowercase()
+            } catch (e: Exception) {
+                null
+            }
         }
 
         fun replaceHostWithIp(url: String, ips: String): String {

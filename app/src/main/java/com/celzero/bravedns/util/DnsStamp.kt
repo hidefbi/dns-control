@@ -62,6 +62,12 @@ object DnsStamp {
                 else -> return null
             }
             if (host.isEmpty()) return null
+            // the host is built into a url; only dns names, ip literals and an optional port are
+            // accepted, so that no '/', '@', '?', '#' or whitespace can change the target
+            val hostOk =
+                Regex("""(\[[0-9A-Fa-f:.]+\]|[A-Za-z0-9.-]{1,253})(:\d{1,5})?""").matches(host)
+            if (!hostOk) return null
+            if (path.isNotEmpty() && !path.startsWith("/")) return null
             "https://$host${path.ifEmpty { "/" }}"
         } catch (e: IllegalArgumentException) {
             null
