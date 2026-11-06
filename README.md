@@ -15,6 +15,8 @@ transports and lets you decide which apps may reach the network.
   (Secure and DNSCrypt variants). You can add your own resolvers.
 - Optional on-device blocklists for ads, trackers, malware and phishing.
 - Per-app network control through a local VPN.
+- Optional global lockdown. DNS does not leave the device directly while it is on.
+  See [Lockdown](#lockdown).
 - Fail-closed encrypted DNS: if the selected encrypted resolver fails, the app
   does not silently switch to system DNS.
 - No Firebase or Google services are configured.
@@ -118,21 +120,41 @@ Reference sources:
 - ODoH targets: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
 - ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md
 
+## Lockdown
+
+Global lockdown is off by default. When it is on, DNS has to go through a proxy.
+
+- Default, Bootstrap and System DNS use the lockdown proxy. That is the WireGuard
+  tunnel when WireGuard is the active proxy, and the SOCKS5 proxy otherwise.
+- If there is no proxy to use, these three DNS transports are blocked. The app
+  does not fall back to direct DNS.
+- Apps that are exempt from lockdown are not affected.
+
 ## Requirements
 
 - Android 6.0 (API 23) or later.
 - Android Studio, or a JDK and the Android SDK, to build from source.
+- Go, the Android NDK (28.2.13676358) and the pinned `gomobile` and `gobind`
+  tools, to build the firestack library.
 
 ## Building
 
-Build the F-Droid flavor with the full feature set:
+The firestack library is built from the `firestack/` directory in this repo. The
+AAR is not committed.
+
+```
+cd firestack
+make intra
+cp build/intra/tun2socks.aar ../app/libs/firestack.aar
+cd ..
+```
+
+Set `GOTOOLCHAIN=local` and `ANDROID_NDK_HOME` before `make intra`. Then build
+the F-Droid flavor:
 
 ```
 ./gradlew :app:assembleFdroidFullDebug
 ```
-
-The build fetches the `firestack` native library (gomobile AAR) from its published
-source. Use `-PfirestackRepo` and `-PfirestackCommit` to pin a specific version.
 
 Run the unit tests with:
 
@@ -140,25 +162,17 @@ Run the unit tests with:
 ./gradlew :app:testFdroidFullDebugUnitTest
 ```
 
-## Releasing (maintainers)
+## Releasing
 
-Pushing a version tag builds, signs, verifies and publishes a release through
-`.github/workflows/release.yml`:
+Releases are signed locally with the maintainer's keystore. The keystore and its
+passwords are never committed to the repository.
+
+Bump `VERSION_CODE` in `gradle.properties`, add an entry to
+[CHANGELOG.md](CHANGELOG.md), then build the release:
 
 ```
-git tag vX.Y.Z && git push origin vX.Y.Z
+./gradlew :app:assembleFdroidFullRelease
 ```
-
-The tag must be `vMAJOR.MINOR.PATCH` with a numeric patch number. The workflow
-uses the tag as the app's `versionName` and the patch number as its `versionCode`
-(for example, `v0.0.678` gives versionCode 678). The SDK packages follow `compileSdk`
-in `app/build.gradle`. No other file needs to be edited for a release.
-
-The workflow refuses to publish unless the APK's `versionName` matches the tag and
-the APK is signed with the expected certificate. It requires these repository
-secrets: `RELEASE_KEYSTORE_BASE64` (the base64-encoded keystore file),
-`RELEASE_STORE_PASSWORD`, `RELEASE_KEY_ALIAS` and `RELEASE_KEY_PASSWORD`. The
-keystore is never committed to the repository.
 
 ## Changes from upstream
 
@@ -168,13 +182,17 @@ is unchanged.
 
 See [NOTICE](NOTICE) for the full summary. In short: log storage, log viewers and
 bug-report collection are removed; several screens and background features are
-removed; the DNS presets are replaced; and encrypted DNS failures no longer fall
-back to system DNS.
+removed; the DNS presets are replaced; encrypted DNS failures no longer fall
+back to system DNS; and lockdown DNS goes through the lockdown proxy.
+
+The firestack source is in `firestack/` (MPL-2.0, see `firestack/LICENSE`), with
+changes for the lockdown DNS routing.
 
 ## Privacy
 
 Connection and DNS query metadata is not persisted, and no log files are written
 or uploaded. Encrypted DNS queries are sent only to the resolver you select.
+With lockdown on, Default, Bootstrap and System DNS are not sent directly.
 
 The blocklist requests described above contact the download host. The blocklist
 update check sends the app version code and the timestamp of the currently
