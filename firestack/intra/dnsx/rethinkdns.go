@@ -416,7 +416,20 @@ func load(configjson string) ([]string, map[string]string, error) {
 		return nil, nil, err
 	}
 
-	rflags := make([]string, len(obj))
+	// list ids are positions in the config. Disabled lists keep their position,
+	// so ids can have gaps and the largest id can exceed the number of entries.
+	// Size the array by the largest id, not by len(obj), or indexing by id panics.
+	maxIndex := -1
+	for key := range obj {
+		indata, _ := obj[key].(map[string]any)
+		if indata == nil {
+			continue
+		}
+		if findex, ok := indata["value"].(float64); ok && int(findex) > maxIndex {
+			maxIndex = int(findex)
+		}
+	}
+	rflags := make([]string, maxIndex+1)
 	fdata := make(map[string]string)
 	// example:
 	// {
@@ -439,6 +452,9 @@ func load(configjson string) ([]string, map[string]string, error) {
 		}
 		findex, _ := indata["value"].(float64)
 		index := int(findex)
+		if index < 0 || index >= len(rflags) {
+			continue
+		}
 		name, _ := indata["vname"].(string)
 		subgroup, _ := indata["subg"].(string)
 		group, _ := indata["group"].(string)
@@ -553,7 +569,8 @@ func (r *rethinkdns) flagstoinfo(flags []uint16) ([]*listinfo, error) {
 			}
 			if (flag & mask) == mask {
 				pos := (index * 16) + j
-				if pos >= len(r.flags) {
+				// ids with no list (gaps left by disabled lists) have an empty name
+				if pos >= len(r.flags) || len(r.flags[pos]) == 0 {
 					// github.com/celzero/firestack/issues/5
 					// silently ignore scenarios where stamp encodes many
 					// more blocklsts than what's currently loaded
