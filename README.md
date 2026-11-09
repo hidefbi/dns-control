@@ -88,7 +88,7 @@ is in progress.
 ### Sources and licenses
 
 The lists are compiled from public blocklists maintained by their respective
-authors, including StevenBlack, HaGeZi, OISD, EasyList and EasyPrivacy, The Block
+authors, including StevenBlack, HaGeZi, OISD, NextDNS, EasyList and EasyPrivacy, The Block
 List Project, Disconnect, Peter Lowe and others. The full list of upstream URLs
 and groups (Security, Privacy and ParentalControl) is maintained in the
 [rules-old README](https://github.com/hidefbi/rules-old#readme). The build pipeline
