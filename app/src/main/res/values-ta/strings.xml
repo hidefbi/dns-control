@@ -827,7 +827,7 @@
     <string name="bl_update_uptodate_title" translatable="true">புதுப்பிப்பு எதுவும் இல்லை</string>
     <string name="bl_update_failed_title" translatable="true">தடுப்புப் பட்டியல் புதுப்பிப்பு தோல்வி</string>
     <string name="bl_update_retry" translatable="true">மீண்டும் முயற்சி</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://, trojan:// அல்லது ss:// இணைப்பு அல்லது Xray JSON அமைப்பை ஒட்டவும்</string>
     <string name="xray_status_on" translatable="true">Xray இயங்குகிறது</string>
     <string name="xray_status_off" translatable="true">Xray நிறுத்தப்பட்டுள்ளது</string>

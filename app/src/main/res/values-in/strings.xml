@@ -918,7 +918,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Tidak ada pembaruan ditemukan</string>
     <string name="bl_update_failed_title" translatable="true">Pembaruan daftar blokir gagal</string>
     <string name="bl_update_retry" translatable="true">Coba lagi</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Tempel tautan vless://, trojan:// atau ss://, atau konfigurasi JSON Xray</string>
     <string name="xray_status_on" translatable="true">Xray sedang berjalan</string>
     <string name="xray_status_off" translatable="true">Xray dihentikan</string>

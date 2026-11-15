@@ -143,7 +143,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Δεν βρέθηκε ενημέρωση</string>
     <string name="bl_update_failed_title" translatable="true">Η ενημέρωση της λίστας αποκλεισμού απέτυχε</string>
     <string name="bl_update_retry" translatable="true">Επανάληψη</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Επικολλήστε σύνδεσμο vless://, trojan:// ή ss:// ή ρύθμιση JSON του Xray</string>
     <string name="xray_status_on" translatable="true">Το Xray εκτελείται</string>
     <string name="xray_status_off" translatable="true">Το Xray είναι σταματημένο</string>

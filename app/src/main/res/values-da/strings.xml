@@ -153,7 +153,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Ingen opdatering fundet</string>
     <string name="bl_update_failed_title" translatable="true">Opdatering af blokeringsliste mislykkedes</string>
     <string name="bl_update_retry" translatable="true">Prøv igen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Indsæt et vless://-, trojan:// eller ss://-link eller en Xray JSON-konfiguration</string>
     <string name="xray_status_on" translatable="true">Xray kører</string>
     <string name="xray_status_off" translatable="true">Xray er stoppet</string>

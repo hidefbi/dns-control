@@ -567,7 +567,7 @@
     <string name="bl_update_uptodate_title" translatable="true">কোনো আপডেট পাওয়া যায়নি</string>
     <string name="bl_update_failed_title" translatable="true">ব্লকলিস্ট আপডেট ব্যর্থ হয়েছে</string>
     <string name="bl_update_retry" translatable="true">আবার চেষ্টা করুন</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://, trojan:// বা ss:// লিংক, অথবা Xray JSON কনফিগ পেস্ট করুন</string>
     <string name="xray_status_on" translatable="true">Xray চলছে</string>
     <string name="xray_status_off" translatable="true">Xray বন্ধ আছে</string>

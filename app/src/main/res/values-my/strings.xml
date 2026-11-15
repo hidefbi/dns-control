@@ -8,7 +8,7 @@
     <string name="bl_update_uptodate_title" translatable="true">အပ်ဒိတ် မတွေ့ပါ</string>
     <string name="bl_update_failed_title" translatable="true">ပိတ်ဆို့စာရင်း အပ်ဒိတ် မအောင်မြင်ပါ</string>
     <string name="bl_update_retry" translatable="true">ထပ်ကြိုးစားရန်</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://၊ trojan:// သို့မဟုတ် ss:// လင့်ခ် သို့မဟုတ် Xray JSON ဖွဲ့စည်းပုံကို ကူးထည့်ပါ</string>
     <string name="xray_status_on" translatable="true">Xray အလုပ်လုပ်နေသည်</string>
     <string name="xray_status_off" translatable="true">Xray ရပ်ထားသည်</string>

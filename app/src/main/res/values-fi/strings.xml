@@ -139,7 +139,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Päivityksiä ei löytynyt</string>
     <string name="bl_update_failed_title" translatable="true">Estolistan päivitys epäonnistui</string>
     <string name="bl_update_retry" translatable="true">Yritä uudelleen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Liitä vless://-, trojan:// tai ss://-linkki tai Xray-JSON-asetukset</string>
     <string name="xray_status_on" translatable="true">Xray on käynnissä</string>
     <string name="xray_status_off" translatable="true">Xray on pysäytetty</string>

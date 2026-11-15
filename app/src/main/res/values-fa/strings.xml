@@ -597,7 +597,7 @@
     <string name="bl_update_uptodate_title" translatable="true">به‌روزرسانی‌ای یافت نشد</string>
     <string name="bl_update_failed_title" translatable="true">به‌روزرسانی فهرست مسدودسازی ناموفق بود</string>
     <string name="bl_update_retry" translatable="true">تلاش مجدد</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS، Trojan، Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">پیوند vless://، trojan:// یا ss:// یا پیکربندی JSON از Xray را بچسبانید</string>
     <string name="xray_status_on" translatable="true">Xray در حال اجراست</string>
     <string name="xray_status_off" translatable="true">Xray متوقف است</string>

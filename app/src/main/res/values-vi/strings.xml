@@ -702,7 +702,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Không tìm thấy bản cập nhật</string>
     <string name="bl_update_failed_title" translatable="true">Cập nhật danh sách chặn thất bại</string>
     <string name="bl_update_retry" translatable="true">Thử lại</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Dán liên kết vless://, trojan:// hoặc ss:// hoặc cấu hình JSON của Xray</string>
     <string name="xray_status_on" translatable="true">Xray đang chạy</string>
     <string name="xray_status_off" translatable="true">Xray đã dừng</string>

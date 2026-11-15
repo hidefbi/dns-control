@@ -48,7 +48,7 @@
     <string name="bl_update_uptodate_title" translatable="true">അപ്‌ഡേറ്റ് കണ്ടെത്തിയില്ല</string>
     <string name="bl_update_failed_title" translatable="true">ബ്ലോക്ക്‌ലിസ്റ്റ് അപ്‌ഡേറ്റ് പരാജയപ്പെട്ടു</string>
     <string name="bl_update_retry" translatable="true">വീണ്ടും ശ്രമിക്കുക</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://, trojan:// അല്ലെങ്കിൽ ss:// ലിങ്ക്, അല്ലെങ്കിൽ Xray JSON കോൺഫിഗ് ഒട്ടിക്കുക</string>
     <string name="xray_status_on" translatable="true">Xray പ്രവർത്തിക്കുന്നു</string>
     <string name="xray_status_off" translatable="true">Xray നിർത്തി</string>

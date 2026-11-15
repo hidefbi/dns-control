@@ -10,7 +10,7 @@
     <string name="bl_update_uptodate_title" translatable="true">କୌଣସି ଅପଡେଟ୍ ମିଳିଲା ନାହିଁ</string>
     <string name="bl_update_failed_title" translatable="true">ବ୍ଲକ୍‌ଲିଷ୍ଟ ଅପଡେଟ୍ ବିଫଳ</string>
     <string name="bl_update_retry" translatable="true">ପୁନର୍ଚେଷ୍ଟା</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://, trojan:// କିମ୍ବା ss:// ଲିଙ୍କ, କିମ୍ବା Xray JSON କନଫିଗ୍ ପେଷ୍ଟ କରନ୍ତୁ</string>
     <string name="xray_status_on" translatable="true">Xray ଚାଲୁଛି</string>
     <string name="xray_status_off" translatable="true">Xray ବନ୍ଦ ଅଛି</string>

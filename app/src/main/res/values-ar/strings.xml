@@ -755,7 +755,7 @@
     <string name="bl_update_uptodate_title" translatable="true">لم يتم العثور على تحديث</string>
     <string name="bl_update_failed_title" translatable="true">فشل تحديث قائمة الحظر</string>
     <string name="bl_update_retry" translatable="true">إعادة المحاولة</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS، Trojan، Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">الصق رابط vless:// أو trojan:// أو ss:// أو إعداد JSON الخاص بـ Xray</string>
     <string name="xray_status_on" translatable="true">Xray قيد التشغيل</string>
     <string name="xray_status_off" translatable="true">Xray متوقف</string>

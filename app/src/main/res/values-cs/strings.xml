@@ -748,7 +748,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Nebyla nalezena žádná aktualizace</string>
     <string name="bl_update_failed_title" translatable="true">Aktualizace blokovacího seznamu selhala</string>
     <string name="bl_update_retry" translatable="true">Zkusit znovu</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Vložte odkaz vless://, trojan:// nebo ss:// případně JSON konfiguraci Xray</string>
     <string name="xray_status_on" translatable="true">Xray běží</string>
     <string name="xray_status_off" translatable="true">Xray je zastaven</string>

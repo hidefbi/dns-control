@@ -37,7 +37,7 @@
     <string name="bl_update_uptodate_title" translatable="true">کوئی اپ ڈیٹ نہیں ملی</string>
     <string name="bl_update_failed_title" translatable="true">بلاک لسٹ کی اپ ڈیٹ ناکام ہوگئی</string>
     <string name="bl_update_retry" translatable="true">دوبارہ کوشش کریں</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS، Trojan، Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://، trojan:// یا ss:// لنک، یا Xray JSON کنفیگ پیسٹ کریں</string>
     <string name="xray_status_on" translatable="true">Xray چل رہا ہے</string>
     <string name="xray_status_off" translatable="true">Xray رکا ہوا ہے</string>

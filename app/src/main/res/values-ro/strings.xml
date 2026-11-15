@@ -879,7 +879,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Nu s-a găsit nicio actualizare</string>
     <string name="bl_update_failed_title" translatable="true">Actualizarea listei de blocare a eșuat</string>
     <string name="bl_update_retry" translatable="true">Reîncearcă</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Lipiți un link vless://, trojan:// sau ss:// ori o configurație JSON Xray</string>
     <string name="xray_status_on" translatable="true">Xray rulează</string>
     <string name="xray_status_off" translatable="true">Xray este oprit</string>

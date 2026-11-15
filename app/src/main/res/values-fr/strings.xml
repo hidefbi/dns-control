@@ -888,7 +888,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Aucune mise à jour trouvée</string>
     <string name="bl_update_failed_title" translatable="true">Échec de la mise à jour de la liste de blocage</string>
     <string name="bl_update_retry" translatable="true">Réessayer</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Collez un lien vless://, trojan:// ou ss:// ou une configuration JSON Xray</string>
     <string name="xray_status_on" translatable="true">Xray en cours d’exécution</string>
     <string name="xray_status_off" translatable="true">Xray est arrêté</string>

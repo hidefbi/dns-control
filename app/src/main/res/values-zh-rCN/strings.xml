@@ -918,7 +918,7 @@
     <string name="bl_update_uptodate_title" translatable="true">未检测到更新</string>
     <string name="bl_update_failed_title" translatable="true">规则更新失败</string>
     <string name="bl_update_retry" translatable="true">重试</string>
-    <string name="xray_entry" translatable="true">Xray（VLESS、Trojan、Shadowsocks）</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">粘贴 vless://、trojan:// 或 ss:// 链接，或 Xray JSON 配置</string>
     <string name="xray_status_on" translatable="true">Xray 正在运行</string>
     <string name="xray_status_off" translatable="true">Xray 已停止</string>

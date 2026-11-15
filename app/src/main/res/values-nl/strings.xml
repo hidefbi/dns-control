@@ -534,7 +534,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Geen update gevonden</string>
     <string name="bl_update_failed_title" translatable="true">Blokkadelijst bijwerken mislukt</string>
     <string name="bl_update_retry" translatable="true">Opnieuw proberen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Plak een vless://, trojan:// of ss://-link, of een Xray JSON-configuratie</string>
     <string name="xray_status_on" translatable="true">Xray draait</string>
     <string name="xray_status_off" translatable="true">Xray is gestopt</string>

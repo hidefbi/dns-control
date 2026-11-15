@@ -905,7 +905,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Güncelleme bulunamadı</string>
     <string name="bl_update_failed_title" translatable="true">Engel listesi güncellemesi başarısız oldu</string>
     <string name="bl_update_retry" translatable="true">Yeniden dene</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://, trojan:// veya ss:// bağlantısı ya da Xray JSON yapılandırması yapıştırın</string>
     <string name="xray_status_on" translatable="true">Xray çalışıyor</string>
     <string name="xray_status_off" translatable="true">Xray durduruldu</string>

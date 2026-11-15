@@ -230,7 +230,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Няма налична актуализация</string>
     <string name="bl_update_failed_title" translatable="true">Актуализирането на блокиращия списък се провали</string>
     <string name="bl_update_retry" translatable="true">Опитай отново</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Поставете връзка vless://, trojan:// или ss:// или JSON конфигурация на Xray</string>
     <string name="xray_status_on" translatable="true">Xray работи</string>
     <string name="xray_status_off" translatable="true">Xray е спрян</string>

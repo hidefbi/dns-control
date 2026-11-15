@@ -35,7 +35,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Hakuna sasisho lililopatikana</string>
     <string name="bl_update_failed_title" translatable="true">Sasisho la orodha ya kuzuia limeshindwa</string>
     <string name="bl_update_retry" translatable="true">Jaribu tena</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Bandika kiungo cha vless://, trojan:// au ss://, au usanidi wa Xray JSON</string>
     <string name="xray_status_on" translatable="true">Xray inafanya kazi</string>
     <string name="xray_status_off" translatable="true">Xray imesimamishwa</string>

@@ -897,7 +897,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Kein Update gefunden</string>
     <string name="bl_update_failed_title" translatable="true">Blockliste-Update fehlgeschlagen</string>
     <string name="bl_update_retry" translatable="true">Erneut versuchen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://-, trojan:// oder ss://-Link bzw. Xray-JSON-Konfiguration einfügen</string>
     <string name="xray_status_on" translatable="true">Xray läuft</string>
     <string name="xray_status_off" translatable="true">Xray ist gestoppt</string>

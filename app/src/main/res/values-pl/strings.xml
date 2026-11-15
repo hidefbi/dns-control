@@ -745,7 +745,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Nie znaleziono aktualizacji</string>
     <string name="bl_update_failed_title" translatable="true">Nie udało się zaktualizować listy blokad</string>
     <string name="bl_update_retry" translatable="true">Ponów</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Wklej link vless://, trojan:// lub ss:// albo konfigurację JSON Xray</string>
     <string name="xray_status_on" translatable="true">Xray działa</string>
     <string name="xray_status_off" translatable="true">Xray zatrzymany</string>

@@ -470,7 +470,7 @@
     <string name="bl_update_uptodate_title" translatable="true">更新は見つかりませんでした</string>
     <string name="bl_update_failed_title" translatable="true">ブロックリストの更新に失敗しました</string>
     <string name="bl_update_retry" translatable="true">再試行</string>
-    <string name="xray_entry" translatable="true">Xray（VLESS・Trojan・Shadowsocks）</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://・trojan://・ss:// のリンク、または Xray の JSON 設定を貼り付け</string>
     <string name="xray_status_on" translatable="true">Xray は実行中です</string>
     <string name="xray_status_off" translatable="true">Xray は停止中です</string>

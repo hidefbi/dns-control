@@ -120,7 +120,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Walang nakitang update</string>
     <string name="bl_update_failed_title" translatable="true">Nabigo ang pag-update ng blocklist</string>
     <string name="bl_update_retry" translatable="true">Subukan muli</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">I-paste ang vless://, trojan:// o ss:// na link, o Xray JSON config</string>
     <string name="xray_status_on" translatable="true">Tumatakbo ang Xray</string>
     <string name="xray_status_off" translatable="true">Huminto ang Xray</string>

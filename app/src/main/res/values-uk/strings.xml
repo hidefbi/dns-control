@@ -861,7 +861,7 @@
     <string name="bl_update_uptodate_title" translatable="true">Оновлень не знайдено</string>
     <string name="bl_update_failed_title" translatable="true">Не вдалося оновити блоклист</string>
     <string name="bl_update_retry" translatable="true">Повторити</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">Вставте посилання vless://, trojan:// або ss:// чи JSON-конфігурацію Xray</string>
     <string name="xray_status_on" translatable="true">Xray працює</string>
     <string name="xray_status_off" translatable="true">Xray зупинено</string>

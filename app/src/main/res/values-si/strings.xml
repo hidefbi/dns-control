@@ -128,7 +128,7 @@
     <string name="bl_update_uptodate_title" translatable="true">යාවත්කාලීන කිසිවක් හමු නොවීය</string>
     <string name="bl_update_failed_title" translatable="true">බ්ලොක්ලිස්ට් යාවත්කාලීනය අසාර්ථකයි</string>
     <string name="bl_update_retry" translatable="true">නැවත උත්සාහ කරන්න</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_entry" translatable="true">Xray</string>
     <string name="xray_hint" translatable="true">vless://, trojan:// හෝ ss:// සබැඳිය, නැතහොත් Xray JSON වින්‍යාසය ඇලවන්න</string>
     <string name="xray_status_on" translatable="true">Xray ධාවනය වේ</string>
     <string name="xray_status_off" translatable="true">Xray නවත්වා ඇත</string>
