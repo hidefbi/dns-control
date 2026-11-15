@@ -7,8 +7,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Kein Update gefunden</string>
     <string name="bl_update_failed_title" translatable="true">Blockliste-Update fehlgeschlagen</string>
     <string name="bl_update_retry" translatable="true">Erneut versuchen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless://-Link oder Xray-JSON-Konfiguration einfügen</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Paste a vless://, trojan:// or ss:// link, or an Xray JSON config</string>
     <string name="xray_status_on" translatable="true">Xray läuft</string>
     <string name="xray_status_off" translatable="true">Xray ist gestoppt</string>
     <string name="xray_start" translatable="true">Starten</string>
@@ -30,9 +30,15 @@
     <string name="xray_save_failed" translatable="true">Profil konnte nicht gespeichert werden</string>
     <string name="xray_err_empty" translatable="true">Zwischenablage ist leer</string>
     <string name="xray_err_json" translatable="true">Kein gültiges JSON: Klammern, Kommas und Anführungszeichen prüfen</string>
-    <string name="xray_err_outbound" translatable="true">Kein brauchbarer VLESS-Outbound: Serveradresse, Port, UUID und publicKey sind nötig</string>
-    <string name="xray_err_reality" translatable="true">Nur Reality wird unterstützt: streamSettings.security auf reality setzen</string>
-    <string name="xray_err_link" translatable="true">Ungültiger vless://-Link: UUID, Host, Port sowie die Parameter sni und pbk prüfen</string>
+    <string name="xray_err_outbound" translatable="true">No usable outbound: check the server address and credentials for vless, trojan or shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Invalid link: check the host, port, credentials and parameters</string>
+    <string name="xray_err_security" translatable="true">Unsupported security: reality or tls for vless, tls only for trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS needs a server name: add the sni parameter</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks key length does not match this cipher</string>
+    <string name="xray_err_method" translatable="true">Unsupported Shadowsocks cipher: use a 2022-blake3 method</string>
+    <string name="xray_err_transport" translatable="true">Unsupported transport: use tcp, ws or grpc</string>
+    <string name="xray_field_password" translatable="true">Password</string>
+    <string name="xray_field_method" translatable="true">Cipher method</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -52,4 +58,14 @@
     <string name="xray_off_confirm" translatable="true">With the VPN on, turning Xray off sends traffic straight out without Xray. Turn it off?</string>
     <string name="xray_err_dns" translatable="true">Remove the dns block: DNS Control resolves DNS, not xray</string>
     <string name="xray_err_rule" translatable="true">A routing rule needs an ip, domain or port, and must send to proxy or direct</string>
+    <string name="xray_profile_new" translatable="true">Nei profil</string>
+    <string name="xray_profile_name" translatable="true">Profil %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Stopp Xray, uk ap profil to wessel</string>
+    <string name="xray_profile_unsaved" translatable="true">Först sekern of forwarp do ännringen</string>
+    <string name="xray_profile_limit" translatable="true">Heeltyd %1$d profilen</string>
+    <string name="xray_profile_delete_msg" translatable="true">Dit profil slete?</string>
+    <string name="xray_scan" translatable="true">QR skanne</string>
+    <string name="xray_scan_failed" translatable="true">Kamera kon ahn nit apmaaget wurde</string>
+    <string name="xray_share" translatable="true">Lank kopiere</string>
+    <string name="xray_share_copied" translatable="true">Lank kopiert</string>
 </resources>

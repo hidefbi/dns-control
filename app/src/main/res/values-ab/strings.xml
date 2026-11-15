@@ -798,8 +798,8 @@
     <string name="bl_update_uptodate_title" translatable="true">No update found</string>
     <string name="bl_update_failed_title" translatable="true">Blocklist update failed</string>
     <string name="bl_update_retry" translatable="true">Retry</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Paste a vless:// link or an Xray JSON config</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Paste a vless://, trojan:// or ss:// link, or an Xray JSON config</string>
     <string name="xray_status_on" translatable="true">Xray is running</string>
     <string name="xray_status_off" translatable="true">Xray is stopped</string>
     <string name="xray_start" translatable="true">Start</string>
@@ -821,9 +821,15 @@
     <string name="xray_save_failed" translatable="true">Could not save the profile</string>
     <string name="xray_err_empty" translatable="true">Nothing to paste: the clipboard is empty</string>
     <string name="xray_err_json" translatable="true">Invalid JSON: check brackets, commas and quotes</string>
-    <string name="xray_err_outbound" translatable="true">No usable VLESS outbound: server address, port, UUID and publicKey are required</string>
-    <string name="xray_err_reality" translatable="true">Only Reality security is supported: set streamSettings.security to reality</string>
-    <string name="xray_err_link" translatable="true">Invalid vless:// link: check the UUID, host, port and the sni and pbk parameters</string>
+    <string name="xray_err_outbound" translatable="true">No usable outbound: check the server address and credentials for vless, trojan or shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Invalid link: check the host, port, credentials and parameters</string>
+    <string name="xray_err_security" translatable="true">Unsupported security: reality or tls for vless, tls only for trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS needs a server name: add the sni parameter</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks key length does not match this cipher</string>
+    <string name="xray_err_method" translatable="true">Unsupported Shadowsocks cipher: use a 2022-blake3 method</string>
+    <string name="xray_err_transport" translatable="true">Unsupported transport: use tcp, ws or grpc</string>
+    <string name="xray_field_password" translatable="true">Password</string>
+    <string name="xray_field_method" translatable="true">Cipher method</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -843,4 +849,14 @@
     <string name="xray_off_confirm" translatable="true">With the VPN on, turning Xray off sends traffic straight out without Xray. Turn it off?</string>
     <string name="xray_err_dns" translatable="true">Remove the dns block: DNS Control resolves DNS, not xray</string>
     <string name="xray_err_rule" translatable="true">A routing rule needs an ip, domain or port, and must send to proxy or direct</string>
+    <string name="xray_profile_new" translatable="true">Нахыс профиль</string>
+    <string name="xray_profile_name" translatable="true">Профиль %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Алагӡаҩы Xray иҭаӡом</string>
+    <string name="xray_profile_unsaved" translatable="true">Иҟоуп зегьы ҳаҭыр ҭаҳазар, ҳаҳәа</string>
+    <string name="xray_profile_limit" translatable="true">Аҭак %1$d профиль</string>
+    <string name="xray_profile_delete_msg" translatable="true">Ари профиль иахьақәыртуп?</string>
+    <string name="xray_scan" translatable="true">QR-код сканеровать</string>
+    <string name="xray_scan_failed" translatable="true">Камера ачара ацәажәара алҭакыр</string>
+    <string name="xray_share" translatable="true">Ахатә сылсы ахь ҭаҳәара</string>
+    <string name="xray_share_copied" translatable="true">Сылсы ахь ҭаҳәара ҳаҭыр</string>
 </resources>

@@ -755,8 +755,8 @@
     <string name="bl_update_uptodate_title" translatable="true">لم يتم العثور على تحديث</string>
     <string name="bl_update_failed_title" translatable="true">فشل تحديث قائمة الحظر</string>
     <string name="bl_update_retry" translatable="true">إعادة المحاولة</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">الصق رابط vless:// أو إعداد Xray بصيغة JSON</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS، Trojan، Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">الصق رابط vless:// أو trojan:// أو ss:// أو إعداد JSON الخاص بـ Xray</string>
     <string name="xray_status_on" translatable="true">Xray قيد التشغيل</string>
     <string name="xray_status_off" translatable="true">Xray متوقف</string>
     <string name="xray_start" translatable="true">ابدأ</string>
@@ -778,9 +778,15 @@
     <string name="xray_save_failed" translatable="true">تعذّر حفظ الملف الشخصي</string>
     <string name="xray_err_empty" translatable="true">لا يوجد ما يُلصق: الحافظة فارغة</string>
     <string name="xray_err_json" translatable="true">JSON غير صالح: تحقق من الأقواس والفواصل وعلامات الاقتباس</string>
-    <string name="xray_err_outbound" translatable="true">لا يوجد خرج VLESS صالح: مطلوب عنوان الخادم والمنفذ و UUID و publicKey</string>
-    <string name="xray_err_reality" translatable="true">الأمان المدعوم هو Reality فقط: اضبط streamSettings.security على reality</string>
-    <string name="xray_err_link" translatable="true">رابط vless:// غير صالح: تحقق من UUID والمضيف والمنفذ ومعاملي sni وpbk</string>
+    <string name="xray_err_outbound" translatable="true">لا يوجد مخرج صالح: تحقق من عنوان الخادم وبيانات الاعتماد لـ vless أو trojan أو shadowsocks</string>
+    <string name="xray_err_link" translatable="true">رابط غير صالح: تحقق من المضيف والمنفذ وبيانات الاعتماد والمعاملات</string>
+    <string name="xray_err_security" translatable="true">نوع الأمان غير مدعوم: reality أو tls لـ vless، و tls فقط لـ trojan</string>
+    <string name="xray_err_sni" translatable="true">يتطلب TLS اسم خادم: أضف المعامل sni</string>
+    <string name="xray_err_key" translatable="true">طول مفتاح Shadowsocks لا يناسب هذا التشفير</string>
+    <string name="xray_err_method" translatable="true">تشفير Shadowsocks غير مدعوم: استخدم طريقة 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">النقل غير مدعوم: استخدم tcp أو ws أو grpc</string>
+    <string name="xray_field_password" translatable="true">كلمة المرور</string>
+    <string name="xray_field_method" translatable="true">طريقة التشفير</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -800,4 +806,14 @@
     <string name="xray_off_confirm" translatable="true">إيقاف Xray أثناء تشغيل VPN سيرسل حركة المرور مباشرة دون المرور عبر Xray. هل تريد الإيقاف؟</string>
     <string name="xray_err_dns" translatable="true">أزل كتلة dns: يتولى DNS Control حل أسماء النطاقات، لا Xray</string>
     <string name="xray_err_rule" translatable="true">تحتاج قاعدة التوجيه إلى ip أو domain أو port، ولا يمكنها الإرسال إلا إلى proxy أو direct</string>
+    <string name="xray_profile_new" translatable="true">ملف جديد</string>
+    <string name="xray_profile_name" translatable="true">الملف %1$d</string>
+    <string name="xray_profile_busy" translatable="true">أوقف Xray قبل تغيير الملفات</string>
+    <string name="xray_profile_unsaved" translatable="true">احفظ تغييراتك أولاً أو ألغها</string>
+    <string name="xray_profile_limit" translatable="true">حتى %1$d ملفات</string>
+    <string name="xray_profile_delete_msg" translatable="true">حذف هذا الملف؟</string>
+    <string name="xray_scan" translatable="true">مسح QR</string>
+    <string name="xray_scan_failed" translatable="true">تعذّر فتح الكاميرا</string>
+    <string name="xray_share" translatable="true">نسخ رابط المشاركة</string>
+    <string name="xray_share_copied" translatable="true">تم نسخ رابط المشاركة</string>
 </resources>

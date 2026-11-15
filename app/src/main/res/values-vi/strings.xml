@@ -702,8 +702,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Không tìm thấy bản cập nhật</string>
     <string name="bl_update_failed_title" translatable="true">Cập nhật danh sách chặn thất bại</string>
     <string name="bl_update_retry" translatable="true">Thử lại</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Dán liên kết vless:// hoặc cấu hình JSON của Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Dán liên kết vless://, trojan:// hoặc ss:// hoặc cấu hình JSON của Xray</string>
     <string name="xray_status_on" translatable="true">Xray đang chạy</string>
     <string name="xray_status_off" translatable="true">Xray đã dừng</string>
     <string name="xray_start" translatable="true">Bắt đầu</string>
@@ -725,9 +725,15 @@
     <string name="xray_save_failed" translatable="true">Không thể lưu hồ sơ</string>
     <string name="xray_err_empty" translatable="true">Không có gì để dán: bộ nhớ tạm trống</string>
     <string name="xray_err_json" translatable="true">JSON không hợp lệ: kiểm tra dấu ngoặc, dấu phẩy và dấu nháy</string>
-    <string name="xray_err_outbound" translatable="true">Thiếu outbound VLESS hợp lệ: cần địa chỉ máy chủ, cổng, UUID và publicKey</string>
-    <string name="xray_err_reality" translatable="true">Chỉ hỗ trợ bảo mật Reality: đặt streamSettings.security thành reality</string>
-    <string name="xray_err_link" translatable="true">Liên kết vless:// không hợp lệ: kiểm tra UUID, máy chủ, cổng và tham số sni, pbk</string>
+    <string name="xray_err_outbound" translatable="true">Không có outbound dùng được: kiểm tra địa chỉ máy chủ và thông tin đăng nhập của vless, trojan hoặc shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Liên kết không hợp lệ: kiểm tra máy chủ, cổng, thông tin đăng nhập và tham số</string>
+    <string name="xray_err_security" translatable="true">Bảo mật không được hỗ trợ: vless dùng reality hoặc tls, trojan chỉ dùng tls</string>
+    <string name="xray_err_sni" translatable="true">TLS cần tên máy chủ: thêm tham số sni</string>
+    <string name="xray_err_key" translatable="true">Độ dài khóa Shadowsocks không khớp với cipher này</string>
+    <string name="xray_err_method" translatable="true">Cipher Shadowsocks không được hỗ trợ: hãy dùng phương thức 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">Giao thức truyền không được hỗ trợ: dùng tcp, ws hoặc grpc</string>
+    <string name="xray_field_password" translatable="true">Mật khẩu</string>
+    <string name="xray_field_method" translatable="true">Phương thức mã hóa</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -747,4 +753,14 @@
     <string name="xray_off_confirm" translatable="true">Tắt Xray khi VPN đang bật sẽ gửi lưu lượng trực tiếp, không qua Xray. Tắt không?</string>
     <string name="xray_err_dns" translatable="true">Xóa khối dns: DNS do DNS Control xử lý, không phải Xray</string>
     <string name="xray_err_rule" translatable="true">Quy tắc định tuyến cần ip, domain hoặc port, và chỉ được gửi tới proxy hoặc direct</string>
+    <string name="xray_profile_new" translatable="true">Hồ sơ mới</string>
+    <string name="xray_profile_name" translatable="true">Hồ sơ %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Dừng Xray trước khi đổi hồ sơ</string>
+    <string name="xray_profile_unsaved" translatable="true">Lưu hoặc hủy thay đổi trước</string>
+    <string name="xray_profile_limit" translatable="true">Tối đa %1$d hồ sơ</string>
+    <string name="xray_profile_delete_msg" translatable="true">Xóa hồ sơ này?</string>
+    <string name="xray_scan" translatable="true">Quét QR</string>
+    <string name="xray_scan_failed" translatable="true">Không mở được camera</string>
+    <string name="xray_share" translatable="true">Sao chép liên kết chia sẻ</string>
+    <string name="xray_share_copied" translatable="true">Đã sao chép liên kết</string>
 </resources>

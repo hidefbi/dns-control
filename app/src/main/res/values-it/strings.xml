@@ -753,8 +753,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Nessun aggiornamento trovato</string>
     <string name="bl_update_failed_title" translatable="true">Aggiornamento della blocklist non riuscito</string>
     <string name="bl_update_retry" translatable="true">Riprova</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Incolla un link vless:// o una configurazione JSON di Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Incolla un link vless://, trojan:// o ss:// oppure una configurazione JSON di Xray</string>
     <string name="xray_status_on" translatable="true">Xray è in esecuzione</string>
     <string name="xray_status_off" translatable="true">Xray è fermo</string>
     <string name="xray_start" translatable="true">Avvia</string>
@@ -776,9 +776,15 @@
     <string name="xray_save_failed" translatable="true">Impossibile salvare il profilo</string>
     <string name="xray_err_empty" translatable="true">Niente da incollare: gli appunti sono vuoti</string>
     <string name="xray_err_json" translatable="true">JSON non valido: controlla parentesi, virgole e virgolette</string>
-    <string name="xray_err_outbound" translatable="true">Outbound VLESS non utilizzabile: servono indirizzo del server, porta, UUID e publicKey</string>
-    <string name="xray_err_reality" translatable="true">È supportata solo la sicurezza Reality: imposta streamSettings.security su reality</string>
-    <string name="xray_err_link" translatable="true">Link vless:// non valido: controlla UUID, host, porta e i parametri sni e pbk</string>
+    <string name="xray_err_outbound" translatable="true">Nessun outbound utilizzabile: controlla indirizzo del server e credenziali per vless, trojan o shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Link non valido: controlla host, porta, credenziali e parametri</string>
+    <string name="xray_err_security" translatable="true">Sicurezza non supportata: reality o tls per vless, solo tls per trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS richiede un nome server: aggiungi il parametro sni</string>
+    <string name="xray_err_key" translatable="true">La lunghezza della chiave Shadowsocks non corrisponde a questo cifrario</string>
+    <string name="xray_err_method" translatable="true">Cifrario Shadowsocks non supportato: usa un metodo 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">Trasporto non supportato: usa tcp, ws o grpc</string>
+    <string name="xray_field_password" translatable="true">Password</string>
+    <string name="xray_field_method" translatable="true">Metodo di cifratura</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -798,4 +804,14 @@
     <string name="xray_off_confirm" translatable="true">Con la VPN attiva, disattivare Xray invia il traffico direttamente, senza passare da Xray. Disattivare?</string>
     <string name="xray_err_dns" translatable="true">Rimuovi il blocco dns: il DNS è gestito da DNS Control, non da Xray</string>
     <string name="xray_err_rule" translatable="true">Una regola di routing richiede ip, domain o port e può inviare solo a proxy o direct</string>
+    <string name="xray_profile_new" translatable="true">Nuovo profilo</string>
+    <string name="xray_profile_name" translatable="true">Profilo %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Ferma Xray prima di cambiare profilo</string>
+    <string name="xray_profile_unsaved" translatable="true">Salva o annulla prima le modifiche</string>
+    <string name="xray_profile_limit" translatable="true">Massimo %1$d profili</string>
+    <string name="xray_profile_delete_msg" translatable="true">Eliminare questo profilo?</string>
+    <string name="xray_scan" translatable="true">Scansiona QR</string>
+    <string name="xray_scan_failed" translatable="true">Impossibile aprire la fotocamera</string>
+    <string name="xray_share" translatable="true">Copia link di condivisione</string>
+    <string name="xray_share_copied" translatable="true">Link copiato</string>
 </resources>

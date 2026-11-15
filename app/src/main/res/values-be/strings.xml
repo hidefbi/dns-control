@@ -64,8 +64,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Абнаўленняў не знойдзена</string>
     <string name="bl_update_failed_title" translatable="true">Не ўдалося абнавіць спіс блакіроўкі</string>
     <string name="bl_update_retry" translatable="true">Паўтарыць</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Устаўце спасылку vless:// або JSON-канфігурацыю Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Устаўце спасылку vless://, trojan:// або ss:// альбо JSON-канфігурацыю Xray</string>
     <string name="xray_status_on" translatable="true">Xray працуе</string>
     <string name="xray_status_off" translatable="true">Xray спынены</string>
     <string name="xray_start" translatable="true">Запусціць</string>
@@ -87,9 +87,15 @@
     <string name="xray_save_failed" translatable="true">Не ўдалося захаваць профіль</string>
     <string name="xray_err_empty" translatable="true">Няма чаго ўстаўляць: буфер абмену пусты</string>
     <string name="xray_err_json" translatable="true">Няправільны JSON: праверце дужкі, коскі і двукоссі</string>
-    <string name="xray_err_outbound" translatable="true">Няма працоўнага outbound VLESS: патрэбныя адрас сервера, порт, UUID і publicKey</string>
-    <string name="xray_err_reality" translatable="true">Падтрымліваецца толькі бяспека Reality: задайце streamSettings.security як reality</string>
-    <string name="xray_err_link" translatable="true">Няправільная спасылка vless://: праверце UUID, хост, порт і параметры sni і pbk</string>
+    <string name="xray_err_outbound" translatable="true">Няма прыдатнага выходнага злучэння: праверце адрас сервера і дадзеныя доступу</string>
+    <string name="xray_err_link" translatable="true">Няправільная спасылка: праверце хост, порт, дадзеныя доступу і параметры</string>
+    <string name="xray_err_security" translatable="true">Непадтрымліваемы рэжым бяспекі: для vless reality або tls, для trojan толькі tls</string>
+    <string name="xray_err_sni" translatable="true">Для TLS патрэбна імя сервера: дадайце параметр sni</string>
+    <string name="xray_err_key" translatable="true">Даўжыня ключа Shadowsocks не адпавядае гэтаму шыфру</string>
+    <string name="xray_err_method" translatable="true">Непадтрымліваемы шыфр Shadowsocks: выкарыстоўвайце метад 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">Непадтрымліваемы транспарт: выкарыстоўвайце tcp, ws або grpc</string>
+    <string name="xray_field_password" translatable="true">Пароль</string>
+    <string name="xray_field_method" translatable="true">Метад шыфравання</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -109,4 +115,14 @@
     <string name="xray_off_confirm" translatable="true">Калі выключыць Xray пры ўключаным VPN, трафік пойдзе напрамую, без Xray. Выключыць?</string>
     <string name="xray_err_dns" translatable="true">Выдаліце блок dns: DNS апрацоўвае DNS Control, а не Xray</string>
     <string name="xray_err_rule" translatable="true">Правілу маршрутызацыі патрэбны ip, domain або port, і яно можа накіроўваць толькі ў proxy або direct</string>
+    <string name="xray_profile_new" translatable="true">Новы профіль</string>
+    <string name="xray_profile_name" translatable="true">Профіль %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Спачатку спыніце Xray, потым мяняйце профіль</string>
+    <string name="xray_profile_unsaved" translatable="true">Спачатку захавайце або скасуйце змены</string>
+    <string name="xray_profile_limit" translatable="true">Не больш за %1$d профіляў</string>
+    <string name="xray_profile_delete_msg" translatable="true">Выдаліць гэты профіль?</string>
+    <string name="xray_scan" translatable="true">Сканаваць QR</string>
+    <string name="xray_scan_failed" translatable="true">Не ўдалося адкрыць камеру</string>
+    <string name="xray_share" translatable="true">Скапіяваць спасылку</string>
+    <string name="xray_share_copied" translatable="true">Спасылка скапіявана</string>
 </resources>

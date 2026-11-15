@@ -615,8 +615,8 @@
     <string name="bl_update_uptodate_title" translatable="true">לא נמצא עדכון</string>
     <string name="bl_update_failed_title" translatable="true">עדכון רשימת החסימה נכשל</string>
     <string name="bl_update_retry" translatable="true">נסה שוב</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">הדביקו קישור vless:// או הגדרת JSON של Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">הדביקו קישור vless://, trojan:// או ss:// או הגדרת JSON של Xray</string>
     <string name="xray_status_on" translatable="true">Xray פועל</string>
     <string name="xray_status_off" translatable="true">Xray מושבת</string>
     <string name="xray_start" translatable="true">הפעל</string>
@@ -638,9 +638,15 @@
     <string name="xray_save_failed" translatable="true">לא ניתן לשמור את הפרופיל</string>
     <string name="xray_err_empty" translatable="true">אין מה להדביק: הלוח ריק</string>
     <string name="xray_err_json" translatable="true">JSON לא תקין: בדקו סוגריים, פסיקים וגרשיים</string>
-    <string name="xray_err_outbound" translatable="true">חסרה יציאת VLESS שמישה: נדרשים כתובת שרת, פורט, UUID ו-publicKey</string>
-    <string name="xray_err_reality" translatable="true">נתמכת רק אבטחת Reality: הגדירו את streamSettings.security ל-reality</string>
-    <string name="xray_err_link" translatable="true">קישור vless:// לא תקין: בדקו UUID, מארח, פורט ופרמטרים sni ו-pbk</string>
+    <string name="xray_err_outbound" translatable="true">אין יציאה שמישה: בדקו את כתובת השרת ואת פרטי ההתחברות של vless, trojan או shadowsocks</string>
+    <string name="xray_err_link" translatable="true">קישור לא תקין: בדקו מארח, פורט, פרטי התחברות ופרמטרים</string>
+    <string name="xray_err_security" translatable="true">אבטחה לא נתמכת: reality או tls עבור vless, ורק tls עבור trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS דורש שם שרת: הוסיפו את הפרמטר sni</string>
+    <string name="xray_err_key" translatable="true">אורך מפתח Shadowsocks לא מתאים להצפנה הזו</string>
+    <string name="xray_err_method" translatable="true">הצפנת Shadowsocks לא נתמכת: השתמשו בשיטת 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">תעבורה לא נתמכת: השתמשו ב-tcp, ws או grpc</string>
+    <string name="xray_field_password" translatable="true">סיסמה</string>
+    <string name="xray_field_method" translatable="true">שיטת הצפנה</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -660,4 +666,14 @@
     <string name="xray_off_confirm" translatable="true">כיבוי Xray כשה-VPN פעיל ישלח את התעבורה ישירות, בלי Xray. לכבות?</string>
     <string name="xray_err_dns" translatable="true">הסר את בלוק dns: את ה-DNS מטפל DNS Control, לא Xray</string>
     <string name="xray_err_rule" translatable="true">כלל ניתוב חייב ip, domain או port, ויכול לשלוח רק ל-proxy או ל-direct</string>
+    <string name="xray_profile_new" translatable="true">פרופיל חדש</string>
+    <string name="xray_profile_name" translatable="true">פרופיל %1$d</string>
+    <string name="xray_profile_busy" translatable="true">עצור את Xray לפני שינוי פרופיל</string>
+    <string name="xray_profile_unsaved" translatable="true">שמור או בטל את השינויים קודם</string>
+    <string name="xray_profile_limit" translatable="true">עד %1$d פרופילים</string>
+    <string name="xray_profile_delete_msg" translatable="true">למחוק את הפרופיל הזה?</string>
+    <string name="xray_scan" translatable="true">סריקת QR</string>
+    <string name="xray_scan_failed" translatable="true">לא ניתן לפתוח את המצלמה</string>
+    <string name="xray_share" translatable="true">העתקת קישור שיתוף</string>
+    <string name="xray_share_copied" translatable="true">הקישור הועתק</string>
 </resources>

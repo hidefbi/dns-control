@@ -18,11 +18,14 @@ package com.celzero.bravedns.service
 import android.content.Context
 import android.util.Log
 import com.celzero.bravedns.BuildConfig
+import com.celzero.bravedns.R
 import com.celzero.bravedns.util.SecretBox
 import com.celzero.bravedns.util.XrayConfig
 import java.io.File
 import java.security.SecureRandom
 import java.util.concurrent.TimeUnit
+import org.json.JSONArray
+import org.json.JSONObject
 
 /**
  * Stores the user's xray profile (encrypted) and runs the xray-core binary that ships as
@@ -36,7 +39,14 @@ class XrayRunner(private val context: Context) {
         private const val CORE_TAG = "XrayCore"
         private const val BINARY_NAME = "libxray.so"
         private const val DIR_NAME = "xray"
+        // one file from before profiles existed; moved into the list on first use
         private const val PROFILE_NAME = "profile"
+        // the whole list is one encrypted document: the profiles and which one is active
+        private const val PROFILES_NAME = "profiles"
+        private const val PROFILES_TMP_NAME = "profiles.tmp"
+        // more profiles than this would clutter the switcher
+        const val MAX_PROFILES = 10
+        private const val NAME_MAX = 40
         private const val CONFIG_NAME = "config.json"
         private const val CONFIG_TMP_NAME = "config.json.tmp"
         // time xray gets to exit after a stop before it is killed
@@ -47,6 +57,8 @@ class XrayRunner(private val context: Context) {
         private const val CONFIG_KEEP_MS = 2000L
 
         private val random = SecureRandom()
+        // the profile list is shared by the service and the settings page, so it has one lock
+        private val storeLock = Any()
 
         @Volatile private var process: Process? = null
         // a process that was stopped and may still hold the local port
@@ -78,28 +90,166 @@ class XrayRunner(private val context: Context) {
     /** Credentials of the running xray's local SOCKS5 inbound, or null when it is not running. */
     fun localAuth(): XrayConfig.LocalAuth? = if (isRunning()) auth else null
 
-    fun savedProfile(): String? {
+    /** A saved profile. The name is only shown in the list; the text is what xray runs. */
+    data class Profile(val id: String, val name: String, val text: String)
+
+    private class Store(var active: String?, val items: MutableList<Profile>)
+
+    private val profilesFile: File
+        get() = File(dir, PROFILES_NAME)
+    private val profilesTmpFile: File
+        get() = File(dir, PROFILES_TMP_NAME)
+
+    /** All saved profiles, in the order they were added. */
+    fun profiles(): List<Profile> {
+        synchronized(storeLock) {
+            return readStore().items.toList()
+        }
+    }
+
+    /** The profile xray runs, or null when there is none. */
+    fun activeProfile(): Profile? {
+        synchronized(storeLock) {
+            val s = readStore()
+            return s.items.firstOrNull { it.id == s.active }
+        }
+    }
+
+    /** Text of the active profile, or null when there is none. */
+    fun savedProfile(): String? = activeProfile()?.text
+
+    /** Replaces the active profile's text, or creates the first profile when there is none. */
+    fun saveProfile(input: String): Boolean {
+        synchronized(storeLock) {
+            val s = readStore()
+            val i = s.items.indexOfFirst { it.id == s.active }
+            if (i >= 0) {
+                s.items[i] = s.items[i].copy(text = input)
+            } else {
+                val added = newProfile(s, input)
+                s.items.add(added)
+                s.active = added.id
+            }
+            return writeStore(s)
+        }
+    }
+
+    /** Adds a profile and makes it active. Refused while xray runs or when the list is full. */
+    fun addProfile(input: String): Profile? {
+        synchronized(storeLock) {
+            if (isRunning()) return null
+            val s = readStore()
+            if (s.items.size >= MAX_PROFILES) return null
+            val added = newProfile(s, input)
+            s.items.add(added)
+            s.active = added.id
+            return if (writeStore(s)) added else null
+        }
+    }
+
+    /** Makes a profile active. Refused while xray runs. */
+    fun selectProfile(id: String): Boolean {
+        synchronized(storeLock) {
+            if (isRunning()) return false
+            val s = readStore()
+            if (s.items.none { it.id == id }) return false
+            s.active = id
+            return writeStore(s)
+        }
+    }
+
+    /** Removes a profile; the first remaining one becomes active. Refused while xray runs. */
+    fun deleteProfile(id: String): Boolean {
+        synchronized(storeLock) {
+            if (isRunning()) return false
+            val s = readStore()
+            if (!s.items.removeAll { it.id == id }) return false
+            if (s.active == id) s.active = s.items.firstOrNull()?.id
+            return writeStore(s)
+        }
+    }
+
+    private fun newProfile(s: Store, input: String): Profile {
+        var n = s.items.size + 1
+        while (s.items.any { it.name == context.getString(R.string.xray_profile_name, n) }) n++
+        val name = linkName(input) ?: context.getString(R.string.xray_profile_name, n)
+        return Profile(randomHex(8), name, input)
+    }
+
+    /** The #name part of a vless link, used as the profile name when there is one. */
+    private fun linkName(input: String): String? {
+        if (!XrayConfig.isLink(input)) return null
         return try {
-            if (!profileFile.exists()) return null
-            val raw = profileFile.readText()
-            val plain = SecretBox.decrypt(raw) ?: return null
-            // a profile stored before encryption is upgraded the first time it is read
-            if (!raw.startsWith(SecretBox.PREFIX)) saveProfile(plain)
-            plain
+            XrayConfig.parseLink(input).name.trim().take(NAME_MAX).takeIf { it.isNotEmpty() }
         } catch (e: Exception) {
-            Log.w(TAG, "read profile failed: ${e.message}", e)
             null
         }
     }
 
-    fun saveProfile(input: String): Boolean {
-        val encrypted = SecretBox.encrypt(input) ?: return false
+    private fun readStore(): Store {
+        if (!profilesFile.exists()) return migrateLegacy()
         return try {
-            profileFile.writeText(encrypted)
-            true
+            val plain = SecretBox.decrypt(profilesFile.readText())
+            if (plain == null) Store(null, mutableListOf()) else parseStore(plain)
         } catch (e: Exception) {
-            Log.w(TAG, "write profile failed: ${e.message}", e)
+            Log.w(TAG, "read profiles failed: ${e.message}", e)
+            Store(null, mutableListOf())
+        }
+    }
+
+    private fun parseStore(plain: String): Store {
+        val root = JSONObject(plain)
+        val arr = root.optJSONArray("items") ?: JSONArray()
+        val items = mutableListOf<Profile>()
+        for (i in 0 until arr.length()) {
+            val o = arr.optJSONObject(i) ?: continue
+            val id = o.optString("id")
+            if (id.isEmpty()) continue
+            items.add(Profile(id, o.optString("name"), o.optString("text")))
+        }
+        return Store(root.optString("active").takeIf { it.isNotEmpty() }, items)
+    }
+
+    private fun writeStore(s: Store): Boolean {
+        val items = JSONArray()
+        s.items.forEach {
+            items.put(JSONObject().put("id", it.id).put("name", it.name).put("text", it.text))
+        }
+        val json = JSONObject().put("active", s.active ?: "").put("items", items).toString()
+        val encrypted = SecretBox.encrypt(json) ?: return false
+        return try {
+            // temp file and rename, so a crash never leaves a half-written list
+            profilesTmpFile.writeText(encrypted)
+            if (profilesTmpFile.renameTo(profilesFile)) {
+                true
+            } else {
+                profilesTmpFile.delete()
+                false
+            }
+        } catch (e: Exception) {
+            Log.w(TAG, "write profiles failed: ${e.message}", e)
             false
+        }
+    }
+
+    /** Moves the single profile of an older version into the list. The old file goes after a good write. */
+    private fun migrateLegacy(): Store {
+        val s = Store(null, mutableListOf())
+        val text = legacyProfile() ?: return s
+        val added = newProfile(s, text)
+        s.items.add(added)
+        s.active = added.id
+        if (writeStore(s)) profileFile.delete()
+        return s
+    }
+
+    private fun legacyProfile(): String? {
+        return try {
+            if (!profileFile.exists()) return null
+            SecretBox.decrypt(profileFile.readText())
+        } catch (e: Exception) {
+            Log.w(TAG, "read profile failed: ${e.message}", e)
+            null
         }
     }
 

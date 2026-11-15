@@ -900,8 +900,8 @@
     <string name="bl_update_uptodate_title" translatable="true">업데이트를 찾을 수 없습니다</string>
     <string name="bl_update_failed_title" translatable="true">차단 목록 업데이트 실패</string>
     <string name="bl_update_retry" translatable="true">다시 시도</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// 링크 또는 Xray JSON 설정을 붙여넣으세요</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://, trojan:// 또는 ss:// 링크나 Xray JSON 설정을 붙여넣으세요</string>
     <string name="xray_status_on" translatable="true">Xray 실행 중</string>
     <string name="xray_status_off" translatable="true">Xray 중지됨</string>
     <string name="xray_start" translatable="true">시작</string>
@@ -923,9 +923,15 @@
     <string name="xray_save_failed" translatable="true">프로필을 저장할 수 없습니다</string>
     <string name="xray_err_empty" translatable="true">붙여넣을 내용이 없습니다: 클립보드가 비어 있습니다</string>
     <string name="xray_err_json" translatable="true">잘못된 JSON: 괄호, 쉼표, 따옴표를 확인하세요</string>
-    <string name="xray_err_outbound" translatable="true">사용 가능한 VLESS 아웃바운드가 없습니다: 서버 주소, 포트, UUID, publicKey가 필요합니다</string>
-    <string name="xray_err_reality" translatable="true">Reality 보안만 지원합니다: streamSettings.security를 reality로 설정하세요</string>
-    <string name="xray_err_link" translatable="true">잘못된 vless:// 링크입니다: UUID, 호스트, 포트, sni 및 pbk 매개변수를 확인하세요</string>
+    <string name="xray_err_outbound" translatable="true">사용할 수 있는 아웃바운드가 없습니다. vless, trojan, shadowsocks의 서버 주소와 인증 정보를 확인하세요</string>
+    <string name="xray_err_link" translatable="true">잘못된 링크입니다. 호스트, 포트, 인증 정보와 매개변수를 확인하세요</string>
+    <string name="xray_err_security" translatable="true">지원하지 않는 보안 방식입니다. vless는 reality 또는 tls, trojan은 tls만 가능합니다</string>
+    <string name="xray_err_sni" translatable="true">TLS에는 서버 이름이 필요합니다. sni 매개변수를 추가하세요</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks 키 길이가 이 암호 방식과 맞지 않습니다</string>
+    <string name="xray_err_method" translatable="true">지원하지 않는 Shadowsocks 암호 방식입니다. 2022-blake3 계열을 사용하세요</string>
+    <string name="xray_err_transport" translatable="true">지원하지 않는 전송 방식입니다. tcp, ws, grpc를 사용하세요</string>
+    <string name="xray_field_password" translatable="true">비밀번호</string>
+    <string name="xray_field_method" translatable="true">암호 방식</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -945,4 +951,14 @@
     <string name="xray_off_confirm" translatable="true">VPN이 켜진 상태에서 Xray를 끄면 트래픽이 Xray를 거치지 않고 바로 나갑니다. 끌까요?</string>
     <string name="xray_err_dns" translatable="true">dns 블록을 삭제하세요. DNS는 Xray가 아니라 DNS Control이 처리합니다</string>
     <string name="xray_err_rule" translatable="true">라우팅 규칙에는 ip, domain, port 중 하나가 필요하며, 출력은 proxy 또는 direct만 가능합니다</string>
+    <string name="xray_profile_new" translatable="true">새 프로필</string>
+    <string name="xray_profile_name" translatable="true">프로필 %1$d</string>
+    <string name="xray_profile_busy" translatable="true">프로필을 바꾸기 전에 Xray를 멈추세요</string>
+    <string name="xray_profile_unsaved" translatable="true">먼저 변경 내용을 저장하거나 버리세요</string>
+    <string name="xray_profile_limit" translatable="true">프로필은 최대 %1$d개입니다</string>
+    <string name="xray_profile_delete_msg" translatable="true">이 프로필을 삭제할까요?</string>
+    <string name="xray_scan" translatable="true">QR 스캔</string>
+    <string name="xray_scan_failed" translatable="true">카메라를 열 수 없습니다</string>
+    <string name="xray_share" translatable="true">공유 링크 복사</string>
+    <string name="xray_share_copied" translatable="true">공유 링크를 복사했습니다</string>
 </resources>

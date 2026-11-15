@@ -10,8 +10,8 @@
     <string name="bl_update_uptodate_title" translatable="true">କୌଣସି ଅପଡେଟ୍ ମିଳିଲା ନାହିଁ</string>
     <string name="bl_update_failed_title" translatable="true">ବ୍ଲକ୍‌ଲିଷ୍ଟ ଅପଡେଟ୍ ବିଫଳ</string>
     <string name="bl_update_retry" translatable="true">ପୁନର୍ଚେଷ୍ଟା</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// ଲିଙ୍କ କିମ୍ବା Xray JSON କନଫିଗ୍ ପେଷ୍ଟ କରନ୍ତୁ</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://, trojan:// କିମ୍ବା ss:// ଲିଙ୍କ, କିମ୍ବା Xray JSON କନଫିଗ୍ ପେଷ୍ଟ କରନ୍ତୁ</string>
     <string name="xray_status_on" translatable="true">Xray ଚାଲୁଛି</string>
     <string name="xray_status_off" translatable="true">Xray ବନ୍ଦ ଅଛି</string>
     <string name="xray_start" translatable="true">ଆରମ୍ଭ</string>
@@ -33,9 +33,15 @@
     <string name="xray_save_failed" translatable="true">ପ୍ରୋଫାଇଲ୍ ସେଭ୍ ହୋଇପାରିଲା ନାହିଁ</string>
     <string name="xray_err_empty" translatable="true">ପେଷ୍ଟ କରିବାକୁ କିଛି ନାହିଁ: କ୍ଲିପ୍‌ବୋର୍ଡ ଖାଲି ଅଛି</string>
     <string name="xray_err_json" translatable="true">ଅବୈଧ JSON: ବନ୍ଧନୀ, କମା ଏବଂ ଉଦ୍ଧୃତି ଯାଞ୍ଚ କରନ୍ତୁ</string>
-    <string name="xray_err_outbound" translatable="true">ବ୍ୟବହାରଯୋଗ୍ୟ VLESS ଆଉଟ୍‌ବାଉଣ୍ଡ ନାହିଁ: ସର୍ଭର ଠିକଣା, ପୋର୍ଟ, UUID ଏବଂ publicKey ଆବଶ୍ୟକ</string>
-    <string name="xray_err_reality" translatable="true">କେବଳ Reality ସୁରକ୍ଷା ସମର୍ଥିତ: streamSettings.security କୁ reality ସେଟ୍ କରନ୍ତୁ</string>
-    <string name="xray_err_link" translatable="true">ଅବୈଧ vless:// ଲିଙ୍କ୍: UUID, ହୋଷ୍ଟ, ପୋର୍ଟ ଏବଂ sni ଓ pbk ପାରାମିଟର ଯାଞ୍ଚ କରନ୍ତୁ</string>
+    <string name="xray_err_outbound" translatable="true">ବ୍ୟବହାରଯୋଗ୍ୟ ଆଉଟବାଉଣ୍ଡ ନାହିଁ: vless, trojan କିମ୍ବା shadowsocks ପାଇଁ ସର୍ଭର ଠିକଣା ଓ କ୍ରେଡେନସିଆଲ ଯାଞ୍ଚ କରନ୍ତୁ</string>
+    <string name="xray_err_link" translatable="true">ଅବୈଧ ଲିଙ୍କ: ହୋଷ୍ଟ, ପୋର୍ଟ, କ୍ରେଡେନସିଆଲ ଓ ପାରାମିଟର ଯାଞ୍ଚ କରନ୍ତୁ</string>
+    <string name="xray_err_security" translatable="true">ଅସମର୍ଥିତ ସୁରକ୍ଷା: vless ପାଇଁ reality କିମ୍ବା tls, trojan ପାଇଁ କେବଳ tls</string>
+    <string name="xray_err_sni" translatable="true">TLS ପାଇଁ ସର୍ଭର ନାମ ଦରକାର: sni ପାରାମିଟର ଯୋଡ଼ନ୍ତୁ</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks କୀର ଲମ୍ବ ଏହି ସାଇଫର ସହ ମେଳ ଖାଉନାହିଁ</string>
+    <string name="xray_err_method" translatable="true">ଅସମର୍ଥିତ Shadowsocks ସାଇଫର: 2022-blake3 ପଦ୍ଧତି ବ୍ୟବହାର କରନ୍ତୁ</string>
+    <string name="xray_err_transport" translatable="true">ଅସମର୍ଥିତ ଟ୍ରାନ୍ସପୋର୍ଟ: tcp, ws କିମ୍ବା grpc ବ୍ୟବହାର କରନ୍ତୁ</string>
+    <string name="xray_field_password" translatable="true">ପାସୱାର୍ଡ</string>
+    <string name="xray_field_method" translatable="true">ଏନକ୍ରିପସନ ପଦ୍ଧତି</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -55,4 +61,14 @@
     <string name="xray_off_confirm" translatable="true">VPN ଚାଲୁଥିବାବେଳେ Xray ବନ୍ଦ କଲେ ଟ୍ରାଫିକ୍ Xray ବିନା ସିଧା ଯିବ। ବନ୍ଦ କରିବେ?</string>
     <string name="xray_err_dns" translatable="true">dns ବ୍ଲକ୍ ହଟାନ୍ତୁ: DNS ସମାଧାନ କରେ DNS Control, Xray ନୁହେଁ</string>
     <string name="xray_err_rule" translatable="true">ରାଉଟିଂ ନିୟମରେ ip, domain କିମ୍ବା port ଥିବା ଆବଶ୍ୟକ, ଏବଂ ତାହା କେବଳ proxy କିମ୍ବା direct କୁ ପଠାଇପାରିବ</string>
+    <string name="xray_profile_new" translatable="true">ନୂଆ ପ୍ରୋଫାଇଲ୍</string>
+    <string name="xray_profile_name" translatable="true">ପ୍ରୋଫାଇଲ୍ %1$d</string>
+    <string name="xray_profile_busy" translatable="true">ପ୍ରୋଫାଇଲ୍ ବଦଳାଇବା ପୂର୍ବରୁ Xray ବନ୍ଦ କରନ୍ତୁ</string>
+    <string name="xray_profile_unsaved" translatable="true">ପ୍ରଥମେ ପରିବର୍ତ୍ତନ ସେଭ୍ କିମ୍ବା ବାତିଲ୍ କରନ୍ତୁ</string>
+    <string name="xray_profile_limit" translatable="true">ସର୍ବାଧିକ %1$d ପ୍ରୋଫାଇଲ୍</string>
+    <string name="xray_profile_delete_msg" translatable="true">ଏହି ପ୍ରୋଫାଇଲ୍ ଡିଲିଟ୍ କରିବେ?</string>
+    <string name="xray_scan" translatable="true">QR ସ୍କାନ କରନ୍ତୁ</string>
+    <string name="xray_scan_failed" translatable="true">କ୍ୟାମେରା ଖୋଲିପାରିଲା ନାହିଁ</string>
+    <string name="xray_share" translatable="true">ସେୟାର୍ ଲିଙ୍କ୍ କପି କରନ୍ତୁ</string>
+    <string name="xray_share_copied" translatable="true">ଲିଙ୍କ୍ କପି ହୋଇଗଲା</string>
 </resources>

@@ -235,8 +235,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Nenašla sa žiadna aktualizácia</string>
     <string name="bl_update_failed_title" translatable="true">Aktualizácia blokovacieho zoznamu zlyhala</string>
     <string name="bl_update_retry" translatable="true">Skúsiť znova</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Vložte odkaz vless:// alebo JSON konfiguráciu Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Vložte odkaz vless://, trojan:// alebo ss:// prípadne JSON konfiguráciu Xray</string>
     <string name="xray_status_on" translatable="true">Xray beží</string>
     <string name="xray_status_off" translatable="true">Xray je zastavený</string>
     <string name="xray_start" translatable="true">Spustiť</string>
@@ -258,9 +258,15 @@
     <string name="xray_save_failed" translatable="true">Profil sa nepodarilo uložiť</string>
     <string name="xray_err_empty" translatable="true">Nie je čo vložiť: schránka je prázdna</string>
     <string name="xray_err_json" translatable="true">Neplatný JSON: skontrolujte zátvorky, čiarky a úvodzovky</string>
-    <string name="xray_err_outbound" translatable="true">Chýba použiteľný outbound VLESS: treba adresu servera, port, UUID a publicKey</string>
-    <string name="xray_err_reality" translatable="true">Podporované je iba zabezpečenie Reality: nastavte streamSettings.security na reality</string>
-    <string name="xray_err_link" translatable="true">Neplatný odkaz vless://: skontrolujte UUID, hostiteľa, port a parametre sni a pbk</string>
+    <string name="xray_err_outbound" translatable="true">Nie je k dispozícii použiteľný outbound: skontrolujte adresu servera a prihlasovacie údaje pre vless, trojan alebo shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Neplatný odkaz: skontrolujte hostiteľa, port, údaje a parametre</string>
+    <string name="xray_err_security" translatable="true">Nepodporované zabezpečenie: pre vless reality alebo tls, pre trojan len tls</string>
+    <string name="xray_err_sni" translatable="true">TLS vyžaduje názov servera: pridajte parameter sni</string>
+    <string name="xray_err_key" translatable="true">Dĺžka kľúča Shadowsocks nezodpovedá tomuto šifrovaniu</string>
+    <string name="xray_err_method" translatable="true">Nepodporované šifrovanie Shadowsocks: použite metódu 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">Nepodporovaný prenos: použite tcp, ws alebo grpc</string>
+    <string name="xray_field_password" translatable="true">Heslo</string>
+    <string name="xray_field_method" translatable="true">Spôsob šifrovania</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -280,4 +286,14 @@
     <string name="xray_off_confirm" translatable="true">Vypnutie Xray pri zapnutej VPN pošle prevádzku priamo, bez Xray. Vypnúť?</string>
     <string name="xray_err_dns" translatable="true">Odstráňte blok dns: DNS rieši DNS Control, nie Xray</string>
     <string name="xray_err_rule" translatable="true">Pravidlo smerovania potrebuje ip, domain alebo port a smie smerovať iba na proxy alebo direct</string>
+    <string name="xray_profile_new" translatable="true">Nový profil</string>
+    <string name="xray_profile_name" translatable="true">Profil %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Pred zmenou profilu zastavte Xray</string>
+    <string name="xray_profile_unsaved" translatable="true">Najprv uložte alebo zahoďte zmeny</string>
+    <string name="xray_profile_limit" translatable="true">Najviac %1$d profilov</string>
+    <string name="xray_profile_delete_msg" translatable="true">Odstrániť tento profil?</string>
+    <string name="xray_scan" translatable="true">Skenovať QR</string>
+    <string name="xray_scan_failed" translatable="true">Fotoaparát sa nepodarilo otvoriť</string>
+    <string name="xray_share" translatable="true">Kopírovať zdieľací odkaz</string>
+    <string name="xray_share_copied" translatable="true">Odkaz skopírovaný</string>
 </resources>

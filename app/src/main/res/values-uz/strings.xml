@@ -58,8 +58,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Yangilanish topilmadi</string>
     <string name="bl_update_failed_title" translatable="true">Blokirovka roʻyxatini yangilash amalga oshmadi</string>
     <string name="bl_update_retry" translatable="true">Qayta urinish</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// havolasi yoki Xray JSON konfiguratsiyasini joylang</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://, trojan:// yoki ss:// havolasini yoki Xray JSON konfiguratsiyasini joylang</string>
     <string name="xray_status_on" translatable="true">Xray ishlamoqda</string>
     <string name="xray_status_off" translatable="true">Xray toʻxtatilgan</string>
     <string name="xray_start" translatable="true">Boshlash</string>
@@ -81,9 +81,15 @@
     <string name="xray_save_failed" translatable="true">Profilni saqlab bo‘lmadi</string>
     <string name="xray_err_empty" translatable="true">Joylash uchun hech narsa yo‘q: buferi bo‘sh</string>
     <string name="xray_err_json" translatable="true">Noto‘g‘ri JSON: qavslar, vergullar va qo‘shtirnoqlarni tekshiring</string>
-    <string name="xray_err_outbound" translatable="true">Foydalanish mumkin bo‘lgan VLESS chiqishi yo‘q: server manzili, port, UUID va publicKey kerak</string>
-    <string name="xray_err_reality" translatable="true">Faqat Reality xavfsizligi qo‘llab-quvvatlanadi: streamSettings.security ni reality ga o‘rnating</string>
-    <string name="xray_err_link" translatable="true">Noto‘g‘ri vless:// havola: UUID, host, port va sni, pbk parametrlarini tekshiring</string>
+    <string name="xray_err_outbound" translatable="true">Foydalanish mumkin bo\'lgan chiqish yo\'q: vless, trojan yoki shadowsocks uchun server manzili va ma\'lumotlarini tekshiring</string>
+    <string name="xray_err_link" translatable="true">Havola noto\'g\'ri: host, port, ma\'lumotlar va parametrlarni tekshiring</string>
+    <string name="xray_err_security" translatable="true">Qo\'llab-quvvatlanmaydigan xavfsizlik: vless uchun reality yoki tls, trojan uchun faqat tls</string>
+    <string name="xray_err_sni" translatable="true">TLS uchun server nomi kerak: sni parametrini qo\'shing</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks kalitining uzunligi bu shifrga mos emas</string>
+    <string name="xray_err_method" translatable="true">Qo\'llab-quvvatlanmaydigan Shadowsocks shifri: 2022-blake3 usulidan foydalaning</string>
+    <string name="xray_err_transport" translatable="true">Qo\'llab-quvvatlanmaydigan transport: tcp, ws yoki grpc dan foydalaning</string>
+    <string name="xray_field_password" translatable="true">Parol</string>
+    <string name="xray_field_method" translatable="true">Shifrlash usuli</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -103,4 +109,14 @@
     <string name="xray_off_confirm" translatable="true">VPN yoqilgan paytda Xray ni o’chirish trafikni Xray orqali o’tmasdan to’g’ridan-to’g’ri yuboradi. O’chirilsinmi?</string>
     <string name="xray_err_dns" translatable="true">dns blokini o’chiring: DNS ni Xray emas, DNS Control hal qiladi</string>
     <string name="xray_err_rule" translatable="true">Marshrut qoidasida ip, domain yoki port bo’lishi kerak va faqat proxy yoki direct ga yuborishi mumkin</string>
+    <string name="xray_profile_new" translatable="true">Yangi profil</string>
+    <string name="xray_profile_name" translatable="true">Profil %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Profilni almashtirishdan oldin Xray ni toʻxtating</string>
+    <string name="xray_profile_unsaved" translatable="true">Avval oʻzgarishlarni saqlang yoki bekor qiling</string>
+    <string name="xray_profile_limit" translatable="true">%1$d tagacha profil</string>
+    <string name="xray_profile_delete_msg" translatable="true">Bu profilni oʻchirasizmi?</string>
+    <string name="xray_scan" translatable="true">QR kodni skanerlash</string>
+    <string name="xray_scan_failed" translatable="true">Kamerani ochib boʻlmadi</string>
+    <string name="xray_share" translatable="true">Ulashish havolasini nusxalash</string>
+    <string name="xray_share_copied" translatable="true">Havola nusxalandi</string>
 </resources>

@@ -37,8 +37,8 @@
     <string name="bl_update_uptodate_title" translatable="true">کوئی اپ ڈیٹ نہیں ملی</string>
     <string name="bl_update_failed_title" translatable="true">بلاک لسٹ کی اپ ڈیٹ ناکام ہوگئی</string>
     <string name="bl_update_retry" translatable="true">دوبارہ کوشش کریں</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// لنک یا Xray JSON کنفیگریشن چسپاں کریں</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS، Trojan، Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://، trojan:// یا ss:// لنک، یا Xray JSON کنفیگ پیسٹ کریں</string>
     <string name="xray_status_on" translatable="true">Xray چل رہا ہے</string>
     <string name="xray_status_off" translatable="true">Xray رکا ہوا ہے</string>
     <string name="xray_start" translatable="true">شروع کریں</string>
@@ -60,9 +60,15 @@
     <string name="xray_save_failed" translatable="true">پروفائل محفوظ نہیں ہو سکا</string>
     <string name="xray_err_empty" translatable="true">چسپاں کرنے کے لیے کچھ نہیں: کلپ بورڈ خالی ہے</string>
     <string name="xray_err_json" translatable="true">غلط JSON: بریکٹ، کاما اور اقتباسات چیک کریں</string>
-    <string name="xray_err_outbound" translatable="true">قابل استعمال VLESS آؤٹ باؤنڈ نہیں: سرور کا پتہ، پورٹ، UUID اور publicKey درکار ہیں</string>
-    <string name="xray_err_reality" translatable="true">صرف Reality سیکیورٹی سپورٹ ہے: streamSettings.security کو reality پر سیٹ کریں</string>
-    <string name="xray_err_link" translatable="true">غلط vless:// لنک: UUID، ہوسٹ، پورٹ اور sni اور pbk پیرامیٹرز چیک کریں</string>
+    <string name="xray_err_outbound" translatable="true">کوئی قابلِ استعمال آؤٹ باؤنڈ نہیں: vless، trojan یا shadowsocks کا سرور پتہ اور اسناد چیک کریں</string>
+    <string name="xray_err_link" translatable="true">غلط لنک: ہوسٹ، پورٹ، اسناد اور پیرامیٹرز چیک کریں</string>
+    <string name="xray_err_security" translatable="true">غیر معاون سیکیورٹی: vless کے لیے reality یا tls، trojan کے لیے صرف tls</string>
+    <string name="xray_err_sni" translatable="true">TLS کے لیے سرور کا نام درکار ہے: sni پیرامیٹر شامل کریں</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks کی لمبائی اس cipher سے میل نہیں کھاتی</string>
+    <string name="xray_err_method" translatable="true">غیر معاون Shadowsocks cipher: 2022-blake3 طریقہ استعمال کریں</string>
+    <string name="xray_err_transport" translatable="true">غیر معاون ٹرانسپورٹ: tcp، ws یا grpc استعمال کریں</string>
+    <string name="xray_field_password" translatable="true">پاس ورڈ</string>
+    <string name="xray_field_method" translatable="true">انکرپشن طریقہ</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -82,4 +88,14 @@
     <string name="xray_off_confirm" translatable="true">VPN آن ہونے پر Xray بند کرنے سے ٹریفک Xray کے بغیر براہ راست جائے گا۔ بند کریں؟</string>
     <string name="xray_err_dns" translatable="true">dns بلاک ہٹائیں: DNS کو DNS Control حل کرتا ہے، Xray نہیں</string>
     <string name="xray_err_rule" translatable="true">روٹنگ قاعدے میں ip، domain یا port ہونا چاہیے، اور وہ صرف proxy یا direct کی طرف بھیج سکتا ہے</string>
+    <string name="xray_profile_new" translatable="true">نیا پروفائل</string>
+    <string name="xray_profile_name" translatable="true">پروفائل %1$d</string>
+    <string name="xray_profile_busy" translatable="true">پروفائل بدلنے سے پہلے Xray بند کریں</string>
+    <string name="xray_profile_unsaved" translatable="true">پہلے تبدیلیاں محفوظ کریں یا ضائع کریں</string>
+    <string name="xray_profile_limit" translatable="true">زیادہ سے زیادہ %1$d پروفائلز</string>
+    <string name="xray_profile_delete_msg" translatable="true">یہ پروفائل حذف کریں؟</string>
+    <string name="xray_scan" translatable="true">QR اسکین کریں</string>
+    <string name="xray_scan_failed" translatable="true">کیمرہ نہیں کھل سکا</string>
+    <string name="xray_share" translatable="true">شیئر لنک کاپی کریں</string>
+    <string name="xray_share_copied" translatable="true">شیئر لنک کاپی ہو گیا</string>
 </resources>

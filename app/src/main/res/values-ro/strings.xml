@@ -879,8 +879,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Nu s-a găsit nicio actualizare</string>
     <string name="bl_update_failed_title" translatable="true">Actualizarea listei de blocare a eșuat</string>
     <string name="bl_update_retry" translatable="true">Reîncearcă</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Lipiți un link vless:// sau o configurație JSON Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Lipiți un link vless://, trojan:// sau ss:// ori o configurație JSON Xray</string>
     <string name="xray_status_on" translatable="true">Xray rulează</string>
     <string name="xray_status_off" translatable="true">Xray este oprit</string>
     <string name="xray_start" translatable="true">Pornește</string>
@@ -902,9 +902,15 @@
     <string name="xray_save_failed" translatable="true">Profilul nu a putut fi salvat</string>
     <string name="xray_err_empty" translatable="true">Nimic de lipit: clipboard-ul este gol</string>
     <string name="xray_err_json" translatable="true">JSON invalid: verificați parantezele, virgulele și ghilimelele</string>
-    <string name="xray_err_outbound" translatable="true">Lipsește un outbound VLESS utilizabil: sunt necesare adresa serverului, portul, UUID și publicKey</string>
-    <string name="xray_err_reality" translatable="true">Este acceptată doar securitatea Reality: setați streamSettings.security la reality</string>
-    <string name="xray_err_link" translatable="true">Link vless:// invalid: verificați UUID, gazda, portul și parametrii sni și pbk</string>
+    <string name="xray_err_outbound" translatable="true">Nu există o ieșire utilizabilă: verificați adresa serverului și datele de autentificare pentru vless, trojan sau shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Link nevalid: verificați gazda, portul, datele de autentificare și parametrii</string>
+    <string name="xray_err_security" translatable="true">Securitate nesuportată: reality sau tls pentru vless, doar tls pentru trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS necesită un nume de server: adăugați parametrul sni</string>
+    <string name="xray_err_key" translatable="true">Lungimea cheii Shadowsocks nu se potrivește cu acest cifru</string>
+    <string name="xray_err_method" translatable="true">Cifru Shadowsocks nesuportat: folosiți o metodă 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">Transport nesuportat: folosiți tcp, ws sau grpc</string>
+    <string name="xray_field_password" translatable="true">Parolă</string>
+    <string name="xray_field_method" translatable="true">Metodă de criptare</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -924,4 +930,14 @@
     <string name="xray_off_confirm" translatable="true">Dezactivarea Xray cu VPN-ul pornit trimite traficul direct, fără Xray. Dezactivați?</string>
     <string name="xray_err_dns" translatable="true">Eliminați blocul dns: DNS-ul este rezolvat de DNS Control, nu de Xray</string>
     <string name="xray_err_rule" translatable="true">O regulă de rutare necesită ip, domain sau port și poate trimite doar către proxy sau direct</string>
+    <string name="xray_profile_new" translatable="true">Profil nou</string>
+    <string name="xray_profile_name" translatable="true">Profil %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Oprește Xray înainte să schimbi profilul</string>
+    <string name="xray_profile_unsaved" translatable="true">Salvează sau renunță mai întâi la modificări</string>
+    <string name="xray_profile_limit" translatable="true">Până la %1$d profiluri</string>
+    <string name="xray_profile_delete_msg" translatable="true">Ștergi acest profil?</string>
+    <string name="xray_scan" translatable="true">Scanează QR</string>
+    <string name="xray_scan_failed" translatable="true">Camera nu a putut fi deschisă</string>
+    <string name="xray_share" translatable="true">Copiază linkul de partajare</string>
+    <string name="xray_share_copied" translatable="true">Link copiat</string>
 </resources>

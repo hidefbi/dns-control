@@ -15,6 +15,7 @@
  */
 package com.celzero.bravedns.ui.activity
 
+import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.res.Configuration
@@ -42,6 +43,9 @@ import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.XrayConfig
 import com.google.android.material.chip.Chip
 import com.google.android.material.color.MaterialColors
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanOptions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -64,10 +68,26 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
     private val handler = Handler(Looper.getMainLooper())
     private val refresh = Runnable { refresh() }
 
+    // camera scan; the text goes into the editor the same way a paste does
+    private val scanLauncher =
+        registerForActivityResult(ScanContract()) { result ->
+            val text = result.contents ?: return@registerForActivityResult
+            if (isDirty()) {
+                toast(getString(R.string.xray_profile_unsaved))
+            } else {
+                b.xrayInput.setText(text.trim())
+            }
+        }
+
     // 1-based line of the JSON syntax error, or -1 when there is none
     private var errorLine = -1
     // error colour comes from the layout (?attr/colorError), read before it is ever changed
     private var errorColor = 0
+
+    // profiles as last read; the editor is unsaved when its text differs from savedText
+    private var profiles: List<XrayRunner.Profile> = emptyList()
+    private var activeId: String? = null
+    private var savedText = XrayConfig.TEMPLATE
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // apply the user's theme before the views are inflated, as the other activities do;
@@ -76,7 +96,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         super.onCreate(savedInstanceState)
         errorColor = b.xrayProblem.currentTextColor
         b.xrayToolbar.setNavigationOnClickListener { finish() }
-        b.xrayInput.setText(runner.savedProfile() ?: XrayConfig.TEMPLATE)
+        reload()
         b.xrayInput.addTextChangedListener(
             object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
@@ -94,6 +114,10 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         b.xrayFormat.setOnClickListener { formatInput() }
         b.xrayClear.setOnClickListener { b.xrayInput.setText("") }
         b.xraySave.setOnClickListener { saveProfile() }
+        b.xrayScan.setOnClickListener { scanQr() }
+        b.xrayShare.setOnClickListener { shareLink() }
+        b.xrayNew.setOnClickListener { newProfile() }
+        b.xrayDelete.setOnClickListener { confirmDelete() }
         refresh()
     }
 
@@ -128,6 +152,7 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
         val valid = !blank && problem == null
         b.xraySave.isEnabled = valid
         b.xrayFormat.isEnabled = valid
+        b.xrayShare.isEnabled = valid
 
         errorLine =
             if (problem == XrayConfig.Problem.INVALID_JSON) {
@@ -177,7 +202,11 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
                 }
             }
             XrayConfig.Problem.INVALID_LINK -> getString(R.string.xray_err_link)
-            XrayConfig.Problem.NOT_REALITY -> getString(R.string.xray_err_reality)
+            XrayConfig.Problem.UNSUPPORTED_SECURITY -> getString(R.string.xray_err_security)
+            XrayConfig.Problem.UNSUPPORTED_TRANSPORT -> getString(R.string.xray_err_transport)
+            XrayConfig.Problem.MISSING_SERVER_NAME -> getString(R.string.xray_err_sni)
+            XrayConfig.Problem.BAD_METHOD -> getString(R.string.xray_err_method)
+            XrayConfig.Problem.BAD_KEY -> getString(R.string.xray_err_key)
             XrayConfig.Problem.HOST_NOT_IP -> getString(R.string.xray_err_host_ip)
             XrayConfig.Problem.DNS_BLOCK -> getString(R.string.xray_err_dns)
             XrayConfig.Problem.BAD_RULE -> getString(R.string.xray_err_rule)
@@ -197,6 +226,8 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
             XrayConfig.Field.SERVER_NAME -> R.string.xray_field_sni
             XrayConfig.Field.PUBLIC_KEY -> R.string.xray_field_pubkey
             XrayConfig.Field.SHORT_ID -> R.string.xray_field_shortid
+            XrayConfig.Field.PASSWORD -> R.string.xray_field_password
+            XrayConfig.Field.METHOD -> R.string.xray_field_method
         }
     }
 
@@ -207,7 +238,8 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
             return
         }
         b.xrayProgressCard.visibility = View.VISIBLE
-        val total = XrayConfig.Field.values().size
+        // the total depends on the protocol: 5 for VLESS+REALITY, 3 for Trojan and Shadowsocks
+        val total = XrayConfig.requiredFields(b.xrayInput.text.toString()).size
         b.xrayProgress.max = total
         b.xrayProgress.setProgressCompat(total - missing.size, true)
         b.xrayProgressLeft.text = getString(R.string.xray_progress_left, missing.size)
@@ -361,11 +393,125 @@ class XrayActivity : BaseActivity(R.layout.activity_xray) {
             refresh()
             return
         }
-        lifecycleScope.launch(Dispatchers.IO) {
-            val saved = runner.saveProfile(text)
-            withContext(Dispatchers.Main) {
-                toast(getString(if (saved) R.string.xray_saved else R.string.xray_save_failed))
+        lifecycleScope.launch {
+            val saved = withContext(Dispatchers.IO) { runner.saveProfile(text) }
+            toast(getString(if (saved) R.string.xray_saved else R.string.xray_save_failed))
+            if (saved) reload()
+        }
+    }
+
+    /** Reads the profile list and the active profile off the main thread, then shows them. */
+    private fun reload() {
+        lifecycleScope.launch {
+            val (list, active) =
+                withContext(Dispatchers.IO) { runner.profiles() to runner.activeProfile() }
+            profiles = list
+            showProfile(active)
+        }
+    }
+
+    /** Puts a profile in the editor and redraws the list. */
+    private fun showProfile(profile: XrayRunner.Profile?) {
+        activeId = profile?.id
+        savedText = profile?.text ?: XrayConfig.TEMPLATE
+        b.xrayInput.setText(savedText)
+        renderProfiles()
+    }
+
+    private fun renderProfiles() {
+        b.xrayProfiles.removeAllViews()
+        profiles.forEach { profile ->
+            val chip =
+                Chip(this).apply {
+                    text = profile.name
+                    isCheckable = true
+                    setOnClickListener { switchTo(profile) }
+                }
+            b.xrayProfiles.addView(chip)
+            chip.isChecked = profile.id == activeId
+        }
+        b.xrayDelete.isEnabled = activeId != null
+    }
+
+    private fun switchTo(profile: XrayRunner.Profile) {
+        // a click on a chip checks it; put the selection back when the switch is refused
+        if (profile.id == activeId || blocked()) {
+            renderProfiles()
+            return
+        }
+        change({ runner.selectProfile(profile.id) }, R.string.xray_save_failed)
+    }
+
+    private fun newProfile() {
+        if (blocked()) return
+        if (profiles.size >= XrayRunner.MAX_PROFILES) {
+            toast(getString(R.string.xray_profile_limit, XrayRunner.MAX_PROFILES))
+            return
+        }
+        change({ runner.addProfile(XrayConfig.TEMPLATE) != null }, R.string.xray_save_failed)
+    }
+
+    private fun confirmDelete() {
+        val id = activeId ?: return
+        if (blocked()) return
+        MaterialAlertDialogBuilder(this, R.style.App_Dialog_NoDim)
+            .setMessage(R.string.xray_profile_delete_msg)
+            .setPositiveButton(R.string.lbl_delete) { _, _ ->
+                change({ runner.deleteProfile(id) }, R.string.xray_save_failed)
             }
+            .setNegativeButton(R.string.lbl_cancel, null)
+            .show()
+    }
+
+    /** Tells the user why a profile change is refused right now. True when it is refused. */
+    private fun blocked(): Boolean {
+        if (XrayRunner.isRunning()) {
+            toast(getString(R.string.xray_profile_busy))
+            return true
+        }
+        if (isDirty()) {
+            toast(getString(R.string.xray_profile_unsaved))
+            return true
+        }
+        return false
+    }
+
+    private fun isDirty(): Boolean = b.xrayInput.text.toString() != savedText
+
+    private fun scanQr() {
+        try {
+            scanLauncher.launch(
+                ScanOptions()
+                    .setOrientationLocked(false)
+                    .setBeepEnabled(false)
+                    .setPrompt(getString(R.string.lbl_qr_code))
+            )
+        } catch (e: Exception) {
+            toast(getString(R.string.xray_scan_failed))
+        }
+    }
+
+    /** Copies the active server as a vless:// link. The link carries the uuid, so it is only copied, never logged. */
+    private fun shareLink() {
+        val name = profiles.firstOrNull { it.id == activeId }?.name.orEmpty()
+        val link =
+            try {
+                XrayConfig.shareLink(b.xrayInput.text.toString(), name)
+            } catch (e: Exception) {
+                toast(getString(R.string.xray_err_link))
+                return
+            }
+        val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
+        clipboard?.setPrimaryClip(ClipData.newPlainText("vless", link))
+        toast(getString(R.string.xray_share_copied))
+    }
+
+    /** Runs a change to the profile list off the main thread, then shows the result. */
+    private fun change(work: () -> Boolean, failed: Int) {
+        lifecycleScope.launch {
+            val ok = withContext(Dispatchers.IO) { work() }
+            if (!ok) toast(getString(failed))
+            reload()
         }
     }
 

@@ -744,8 +744,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Nisu pronađena ažuriranja</string>
     <string name="bl_update_failed_title" translatable="true">Ažuriranje liste za blokiranje nije uspelo</string>
     <string name="bl_update_retry" translatable="true">Pokušaj ponovo</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Nalepite vless:// vezu ili Xray JSON konfiguraciju</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Nalepite vless://, trojan:// ili ss:// link ili Xray JSON konfiguraciju</string>
     <string name="xray_status_on" translatable="true">Xray radi</string>
     <string name="xray_status_off" translatable="true">Xray je zaustavljen</string>
     <string name="xray_start" translatable="true">Pokreni</string>
@@ -767,9 +767,15 @@
     <string name="xray_save_failed" translatable="true">Profil nije moguće sačuvati</string>
     <string name="xray_err_empty" translatable="true">Nema šta da se nalepi: privremena memorija je prazna</string>
     <string name="xray_err_json" translatable="true">JSON nije ispravan: proverite zagrade, zareze i navodnike</string>
-    <string name="xray_err_outbound" translatable="true">Nema upotrebljivog VLESS outbound-a: potrebni su adresa servera, port, UUID i publicKey</string>
-    <string name="xray_err_reality" translatable="true">Podržana je samo Reality bezbednost: postavite streamSettings.security na reality</string>
-    <string name="xray_err_link" translatable="true">Neispravan vless:// link: proverite UUID, host, port i parametre sni i pbk</string>
+    <string name="xray_err_outbound" translatable="true">Nema upotrebljivog izlaza: proverite adresu servera i akreditive za vless, trojan ili shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Neispravan link: proverite host, port, akreditive i parametre</string>
+    <string name="xray_err_security" translatable="true">Nepodržana bezbednost: reality ili tls za vless, samo tls za trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS zahteva ime servera: dodajte parametar sni</string>
+    <string name="xray_err_key" translatable="true">Dužina Shadowsocks ključa ne odgovara ovom šifrovanju</string>
+    <string name="xray_err_method" translatable="true">Nepodržan Shadowsocks šifrovanje: koristite 2022-blake3 metodu</string>
+    <string name="xray_err_transport" translatable="true">Nepodržan transport: koristite tcp, ws ili grpc</string>
+    <string name="xray_field_password" translatable="true">Lozinka</string>
+    <string name="xray_field_method" translatable="true">Metoda šifrovanja</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -789,4 +795,14 @@
     <string name="xray_off_confirm" translatable="true">Искључивање Xray-а док је VPN укључен шаље саобраћај директно, без Xray-а. Искључити?</string>
     <string name="xray_err_dns" translatable="true">Уклоните dns блок: DNS решава DNS Control, а не Xray</string>
     <string name="xray_err_rule" translatable="true">Правило рутирања треба ip, domain или port и може да шаље само на proxy или direct</string>
+    <string name="xray_profile_new" translatable="true">Нови профил</string>
+    <string name="xray_profile_name" translatable="true">Профил %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Зауставите Xray пре промене профила</string>
+    <string name="xray_profile_unsaved" translatable="true">Прво сачувајте или одбаците измене</string>
+    <string name="xray_profile_limit" translatable="true">До %1$d профила</string>
+    <string name="xray_profile_delete_msg" translatable="true">Обрисати овај профил?</string>
+    <string name="xray_scan" translatable="true">Скенирај QR</string>
+    <string name="xray_scan_failed" translatable="true">Камера није могла да се отвори</string>
+    <string name="xray_share" translatable="true">Копирај линк за дељење</string>
+    <string name="xray_share_copied" translatable="true">Линк је копиран</string>
 </resources>

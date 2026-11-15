@@ -918,8 +918,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Tidak ada pembaruan ditemukan</string>
     <string name="bl_update_failed_title" translatable="true">Pembaruan daftar blokir gagal</string>
     <string name="bl_update_retry" translatable="true">Coba lagi</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Tempel tautan vless:// atau konfigurasi JSON Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Tempel tautan vless://, trojan:// atau ss://, atau konfigurasi JSON Xray</string>
     <string name="xray_status_on" translatable="true">Xray sedang berjalan</string>
     <string name="xray_status_off" translatable="true">Xray dihentikan</string>
     <string name="xray_start" translatable="true">Mulai</string>
@@ -941,9 +941,15 @@
     <string name="xray_save_failed" translatable="true">Profil tidak dapat disimpan</string>
     <string name="xray_err_empty" translatable="true">Tidak ada yang bisa ditempel: papan klip kosong</string>
     <string name="xray_err_json" translatable="true">JSON tidak valid: periksa tanda kurung, koma, dan tanda kutip</string>
-    <string name="xray_err_outbound" translatable="true">Outbound VLESS yang dapat dipakai tidak ada: perlu alamat server, port, UUID, dan publicKey</string>
-    <string name="xray_err_reality" translatable="true">Hanya keamanan Reality yang didukung: atur streamSettings.security ke reality</string>
-    <string name="xray_err_link" translatable="true">Tautan vless:// tidak valid: periksa UUID, host, port, serta parameter sni dan pbk</string>
+    <string name="xray_err_outbound" translatable="true">Tidak ada outbound yang bisa dipakai: periksa alamat server dan kredensial untuk vless, trojan, atau shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Tautan tidak valid: periksa host, port, kredensial, dan parameter</string>
+    <string name="xray_err_security" translatable="true">Keamanan tidak didukung: reality atau tls untuk vless, hanya tls untuk trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS memerlukan nama server: tambahkan parameter sni</string>
+    <string name="xray_err_key" translatable="true">Panjang kunci Shadowsocks tidak cocok dengan cipher ini</string>
+    <string name="xray_err_method" translatable="true">Cipher Shadowsocks tidak didukung: gunakan metode 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">Transport tidak didukung: gunakan tcp, ws, atau grpc</string>
+    <string name="xray_field_password" translatable="true">Kata sandi</string>
+    <string name="xray_field_method" translatable="true">Metode enkripsi</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -963,4 +969,14 @@
     <string name="xray_off_confirm" translatable="true">Mematikan Xray saat VPN aktif akan mengirim lalu lintas langsung tanpa Xray. Matikan?</string>
     <string name="xray_err_dns" translatable="true">Hapus blok dns: DNS diselesaikan oleh DNS Control, bukan Xray</string>
     <string name="xray_err_rule" translatable="true">Aturan routing memerlukan ip, domain, atau port, dan hanya boleh mengirim ke proxy atau direct</string>
+    <string name="xray_profile_new" translatable="true">Profil baru</string>
+    <string name="xray_profile_name" translatable="true">Profil %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Hentikan Xray sebelum mengganti profil</string>
+    <string name="xray_profile_unsaved" translatable="true">Simpan atau buang perubahan dulu</string>
+    <string name="xray_profile_limit" translatable="true">Maksimal %1$d profil</string>
+    <string name="xray_profile_delete_msg" translatable="true">Hapus profil ini?</string>
+    <string name="xray_scan" translatable="true">Pindai QR</string>
+    <string name="xray_scan_failed" translatable="true">Kamera tidak dapat dibuka</string>
+    <string name="xray_share" translatable="true">Salin tautan bagikan</string>
+    <string name="xray_share_copied" translatable="true">Tautan disalin</string>
 </resources>

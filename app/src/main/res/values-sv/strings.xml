@@ -27,8 +27,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Ingen uppdatering hittades</string>
     <string name="bl_update_failed_title" translatable="true">Uppdateringen av blockeringslistan misslyckades</string>
     <string name="bl_update_retry" translatable="true">Försök igen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Klistra in en vless://-länk eller en Xray JSON-konfiguration</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Klistra in en vless://-, trojan:// eller ss://-länk, eller en Xray JSON-konfiguration</string>
     <string name="xray_status_on" translatable="true">Xray körs</string>
     <string name="xray_status_off" translatable="true">Xray är stoppad</string>
     <string name="xray_start" translatable="true">Starta</string>
@@ -50,9 +50,15 @@
     <string name="xray_save_failed" translatable="true">Profilen kunde inte sparas</string>
     <string name="xray_err_empty" translatable="true">Inget att klistra in: urklipp är tomt</string>
     <string name="xray_err_json" translatable="true">Ogiltig JSON: kontrollera parenteser, kommatecken och citattecken</string>
-    <string name="xray_err_outbound" translatable="true">Saknar en användbar VLESS-utgång: serveradress, port, UUID och publicKey krävs</string>
-    <string name="xray_err_reality" translatable="true">Endast Reality-säkerhet stöds: sätt streamSettings.security till reality</string>
-    <string name="xray_err_link" translatable="true">Ogiltig vless://-länk: kontrollera UUID, värd, port och parametrarna sni och pbk</string>
+    <string name="xray_err_outbound" translatable="true">Ingen användbar utgång: kontrollera serveradressen och uppgifterna för vless, trojan eller shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Ogiltig länk: kontrollera värd, port, uppgifter och parametrar</string>
+    <string name="xray_err_security" translatable="true">Stödjer inte säkerhetsläget: reality eller tls för vless, bara tls för trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS kräver ett servernamn: lägg till parametern sni</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks-nyckelns längd passar inte den här chiffersviten</string>
+    <string name="xray_err_method" translatable="true">Stödjer inte Shadowsocks-chiffret: använd en 2022-blake3-metod</string>
+    <string name="xray_err_transport" translatable="true">Stödjer inte transporten: använd tcp, ws eller grpc</string>
+    <string name="xray_field_password" translatable="true">Lösenord</string>
+    <string name="xray_field_method" translatable="true">Krypteringsmetod</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -72,4 +78,14 @@
     <string name="xray_off_confirm" translatable="true">Om du stänger av Xray medan VPN är på går trafiken direkt utan Xray. Stäng av?</string>
     <string name="xray_err_dns" translatable="true">Ta bort dns-blocket: DNS hanteras av DNS Control, inte Xray</string>
     <string name="xray_err_rule" translatable="true">En routingregel behöver ip, domain eller port och får bara skicka till proxy eller direct</string>
+    <string name="xray_profile_new" translatable="true">Ny profil</string>
+    <string name="xray_profile_name" translatable="true">Profil %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Stoppa Xray innan du byter profil</string>
+    <string name="xray_profile_unsaved" translatable="true">Spara eller kasta ändringarna först</string>
+    <string name="xray_profile_limit" translatable="true">Upp till %1$d profiler</string>
+    <string name="xray_profile_delete_msg" translatable="true">Ta bort den här profilen?</string>
+    <string name="xray_scan" translatable="true">Skanna QR-kod</string>
+    <string name="xray_scan_failed" translatable="true">Kameran kunde inte öppnas</string>
+    <string name="xray_share" translatable="true">Kopiera delningslänk</string>
+    <string name="xray_share_copied" translatable="true">Länken kopierad</string>
 </resources>

@@ -143,8 +143,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Δεν βρέθηκε ενημέρωση</string>
     <string name="bl_update_failed_title" translatable="true">Η ενημέρωση της λίστας αποκλεισμού απέτυχε</string>
     <string name="bl_update_retry" translatable="true">Επανάληψη</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Επικολλήστε σύνδεσμο vless:// ή ρύθμιση JSON του Xray</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Επικολλήστε σύνδεσμο vless://, trojan:// ή ss:// ή ρύθμιση JSON του Xray</string>
     <string name="xray_status_on" translatable="true">Το Xray εκτελείται</string>
     <string name="xray_status_off" translatable="true">Το Xray είναι σταματημένο</string>
     <string name="xray_start" translatable="true">Έναρξη</string>
@@ -166,9 +166,15 @@
     <string name="xray_save_failed" translatable="true">Δεν ήταν δυνατή η αποθήκευση του προφίλ</string>
     <string name="xray_err_empty" translatable="true">Τίποτα για επικόλληση: το πρόχειρο είναι κενό</string>
     <string name="xray_err_json" translatable="true">Μη έγκυρο JSON: ελέγξτε τις αγκύλες, τα κόμματα και τα εισαγωγικά</string>
-    <string name="xray_err_outbound" translatable="true">Λείπει χρησιμοποιήσιμη έξοδος VLESS: απαιτούνται διεύθυνση διακομιστή, θύρα, UUID και publicKey</string>
-    <string name="xray_err_reality" translatable="true">Υποστηρίζεται μόνο η ασφάλεια Reality: ορίστε το streamSettings.security σε reality</string>
-    <string name="xray_err_link" translatable="true">Μη έγκυρος σύνδεσμος vless://: ελέγξτε το UUID, τον κεντρικό υπολογιστή, τη θύρα και τις παραμέτρους sni και pbk</string>
+    <string name="xray_err_outbound" translatable="true">Δεν υπάρχει χρησιμοποιήσιμη έξοδος: ελέγξτε τη διεύθυνση του διακομιστή και τα διαπιστευτήρια για vless, trojan ή shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Μη έγκυρος σύνδεσμος: ελέγξτε τον κεντρικό υπολογιστή, τη θύρα, τα διαπιστευτήρια και τις παραμέτρους</string>
+    <string name="xray_err_security" translatable="true">Μη υποστηριζόμενη ασφάλεια: reality ή tls για vless, μόνο tls για trojan</string>
+    <string name="xray_err_sni" translatable="true">Το TLS απαιτεί όνομα διακομιστή: προσθέστε την παράμετρο sni</string>
+    <string name="xray_err_key" translatable="true">Το μήκος του κλειδιού Shadowsocks δεν ταιριάζει με αυτόν τον αλγόριθμο</string>
+    <string name="xray_err_method" translatable="true">Μη υποστηριζόμενος αλγόριθμος Shadowsocks: χρησιμοποιήστε μέθοδο 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">Μη υποστηριζόμενη μεταφορά: χρησιμοποιήστε tcp, ws ή grpc</string>
+    <string name="xray_field_password" translatable="true">Κωδικός πρόσβασης</string>
+    <string name="xray_field_method" translatable="true">Μέθοδος κρυπτογράφησης</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -188,4 +194,14 @@
     <string name="xray_off_confirm" translatable="true">Η απενεργοποίηση του Xray ενώ το VPN είναι ενεργό στέλνει την κίνηση απευθείας, χωρίς Xray. Απενεργοποίηση;</string>
     <string name="xray_err_dns" translatable="true">Αφαιρέστε το μπλοκ dns: το DNS το επιλύει το DNS Control, όχι το Xray</string>
     <string name="xray_err_rule" translatable="true">Ο κανόνας δρομολόγησης χρειάζεται ip, domain ή port και μπορεί να στέλνει μόνο σε proxy ή direct</string>
+    <string name="xray_profile_new" translatable="true">Νέο προφίλ</string>
+    <string name="xray_profile_name" translatable="true">Προφίλ %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Σταματήστε το Xray πριν αλλάξετε προφίλ</string>
+    <string name="xray_profile_unsaved" translatable="true">Αποθηκεύστε ή απορρίψτε πρώτα τις αλλαγές</string>
+    <string name="xray_profile_limit" translatable="true">Έως %1$d προφίλ</string>
+    <string name="xray_profile_delete_msg" translatable="true">Διαγραφή αυτού του προφίλ;</string>
+    <string name="xray_scan" translatable="true">Σάρωση QR</string>
+    <string name="xray_scan_failed" translatable="true">Η κάμερα δεν άνοιξε</string>
+    <string name="xray_share" translatable="true">Αντιγραφή συνδέσμου</string>
+    <string name="xray_share_copied" translatable="true">Ο σύνδεσμος αντιγράφηκε</string>
 </resources>

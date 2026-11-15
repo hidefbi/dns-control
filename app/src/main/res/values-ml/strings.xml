@@ -48,8 +48,8 @@
     <string name="bl_update_uptodate_title" translatable="true">അപ്‌ഡേറ്റ് കണ്ടെത്തിയില്ല</string>
     <string name="bl_update_failed_title" translatable="true">ബ്ലോക്ക്‌ലിസ്റ്റ് അപ്‌ഡേറ്റ് പരാജയപ്പെട്ടു</string>
     <string name="bl_update_retry" translatable="true">വീണ്ടും ശ്രമിക്കുക</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// ലിങ്കോ Xray JSON കോൺഫിഗോ ഒട്ടിക്കുക</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://, trojan:// അല്ലെങ്കിൽ ss:// ലിങ്ക്, അല്ലെങ്കിൽ Xray JSON കോൺഫിഗ് ഒട്ടിക്കുക</string>
     <string name="xray_status_on" translatable="true">Xray പ്രവർത്തിക്കുന്നു</string>
     <string name="xray_status_off" translatable="true">Xray നിർത്തി</string>
     <string name="xray_start" translatable="true">ആരംഭിക്കുക</string>
@@ -71,9 +71,15 @@
     <string name="xray_save_failed" translatable="true">പ്രൊഫൈൽ സംരക്ഷിക്കാനായില്ല</string>
     <string name="xray_err_empty" translatable="true">ഒട്ടിക്കാൻ ഒന്നുമില്ല: ക്ലിപ്ബോർഡ് ശൂന്യമാണ്</string>
     <string name="xray_err_json" translatable="true">അസാധുവായ JSON: ബ്രാക്കറ്റുകളും കോമകളും ഉദ്ധരണികളും പരിശോധിക്കുക</string>
-    <string name="xray_err_outbound" translatable="true">ഉപയോഗയോഗ്യമായ VLESS ഔട്ട്ബൗണ്ട് ഇല്ല: സെർവർ വിലാസം, പോർട്ട്, UUID, publicKey എന്നിവ വേണം</string>
-    <string name="xray_err_reality" translatable="true">Reality സുരക്ഷ മാത്രമേ പിന്തുണയ്ക്കുന്നുള്ളൂ: streamSettings.security reality ആയി സജ്ജമാക്കുക</string>
-    <string name="xray_err_link" translatable="true">അസാധുവായ vless:// ലിങ്ക്: UUID, ഹോസ്റ്റ്, പോർട്ട്, sni, pbk പാരാമീറ്ററുകൾ പരിശോധിക്കുക</string>
+    <string name="xray_err_outbound" translatable="true">ഉപയോഗയോഗ്യമായ ഔട്ട്‌ബൗണ്ട് ഇല്ല: vless, trojan അല്ലെങ്കിൽ shadowsocks-ന്റെ സെർവർ വിലാസവും ക്രെഡൻഷ്യലുകളും പരിശോധിക്കുക</string>
+    <string name="xray_err_link" translatable="true">അസാധുവായ ലിങ്ക്: ഹോസ്റ്റ്, പോർട്ട്, ക്രെഡൻഷ്യലുകൾ, പാരാമീറ്ററുകൾ എന്നിവ പരിശോധിക്കുക</string>
+    <string name="xray_err_security" translatable="true">പിന്തുണയില്ലാത്ത സുരക്ഷ: vless-ന് reality അല്ലെങ്കിൽ tls, trojan-ന് tls മാത്രം</string>
+    <string name="xray_err_sni" translatable="true">TLS-ന് സെർവർ പേര് വേണം: sni പാരാമീറ്റർ ചേർക്കുക</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks കീയുടെ നീളം ഈ സൈഫറുമായി യോജിക്കുന്നില്ല</string>
+    <string name="xray_err_method" translatable="true">പിന്തുണയില്ലാത്ത Shadowsocks സൈഫർ: 2022-blake3 രീതി ഉപയോഗിക്കുക</string>
+    <string name="xray_err_transport" translatable="true">പിന്തുണയില്ലാത്ത ട്രാൻസ്‌പോർട്ട്: tcp, ws അല്ലെങ്കിൽ grpc ഉപയോഗിക്കുക</string>
+    <string name="xray_field_password" translatable="true">പാസ്‌വേഡ്</string>
+    <string name="xray_field_method" translatable="true">എൻക്രിപ്ഷൻ രീതി</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -93,4 +99,14 @@
     <string name="xray_off_confirm" translatable="true">VPN ഓണായിരിക്കെ Xray ഓഫാക്കിയാൽ ട്രാഫിക് Xray ഇല്ലാതെ നേരിട്ട് പോകും. ഓഫാക്കണോ?</string>
     <string name="xray_err_dns" translatable="true">dns ബ്ലോക്ക് നീക്കം ചെയ്യുക: DNS പരിഹരിക്കുന്നത് DNS Control ആണ്, Xray അല്ല</string>
     <string name="xray_err_rule" translatable="true">റൂട്ടിംഗ് നിയമത്തിന് ip, domain അല്ലെങ്കിൽ port വേണം; proxy അല്ലെങ്കിൽ direct-ലേക്ക് മാത്രമേ അയയ്ക്കാവൂ</string>
+    <string name="xray_profile_new" translatable="true">പുതിയ പ്രൊഫൈൽ</string>
+    <string name="xray_profile_name" translatable="true">പ്രൊഫൈൽ %1$d</string>
+    <string name="xray_profile_busy" translatable="true">പ്രൊഫൈൽ മാറ്റുന്നതിന് മുമ്പ് Xray നിർത്തുക</string>
+    <string name="xray_profile_unsaved" translatable="true">ആദ്യം മാറ്റങ്ങൾ സേവ് ചെയ്യുക അല്ലെങ്കിൽ ഒഴിവാക്കുക</string>
+    <string name="xray_profile_limit" translatable="true">%1$d പ്രൊഫൈലുകൾ വരെ</string>
+    <string name="xray_profile_delete_msg" translatable="true">ഈ പ്രൊഫൈൽ ഇല്ലാതാക്കണോ?</string>
+    <string name="xray_scan" translatable="true">QR സ്കാൻ ചെയ്യുക</string>
+    <string name="xray_scan_failed" translatable="true">ക്യാമറ തുറക്കാനായില്ല</string>
+    <string name="xray_share" translatable="true">പങ്കിടൽ ലിങ്ക് പകർത്തുക</string>
+    <string name="xray_share_copied" translatable="true">ലിങ്ക് പകർത്തി</string>
 </resources>

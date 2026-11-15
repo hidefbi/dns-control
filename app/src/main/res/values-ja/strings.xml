@@ -470,8 +470,8 @@
     <string name="bl_update_uptodate_title" translatable="true">更新は見つかりませんでした</string>
     <string name="bl_update_failed_title" translatable="true">ブロックリストの更新に失敗しました</string>
     <string name="bl_update_retry" translatable="true">再試行</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// リンクまたは Xray の JSON 設定を貼り付けてください</string>
+    <string name="xray_entry" translatable="true">Xray（VLESS・Trojan・Shadowsocks）</string>
+    <string name="xray_hint" translatable="true">vless://・trojan://・ss:// のリンク、または Xray の JSON 設定を貼り付け</string>
     <string name="xray_status_on" translatable="true">Xray は実行中です</string>
     <string name="xray_status_off" translatable="true">Xray は停止中です</string>
     <string name="xray_start" translatable="true">開始</string>
@@ -493,9 +493,15 @@
     <string name="xray_save_failed" translatable="true">プロファイルを保存できませんでした</string>
     <string name="xray_err_empty" translatable="true">貼り付けるものがありません: クリップボードが空です</string>
     <string name="xray_err_json" translatable="true">無効な JSON: 括弧、カンマ、引用符を確認してください</string>
-    <string name="xray_err_outbound" translatable="true">使用できる VLESS アウトバウンドがありません: サーバーアドレス、ポート、UUID、publicKey が必要です</string>
-    <string name="xray_err_reality" translatable="true">対応しているのは Reality のセキュリティのみです: streamSettings.security を reality に設定してください</string>
-    <string name="xray_err_link" translatable="true">無効な vless:// リンクです: UUID、ホスト、ポート、sni と pbk のパラメータを確認してください</string>
+    <string name="xray_err_outbound" translatable="true">使用できるアウトバウンドがありません。vless・trojan・shadowsocks のサーバーアドレスと認証情報を確認してください</string>
+    <string name="xray_err_link" translatable="true">リンクが無効です。ホスト、ポート、認証情報、パラメータを確認してください</string>
+    <string name="xray_err_security" translatable="true">未対応のセキュリティ方式です。vless は reality か tls、trojan は tls のみ</string>
+    <string name="xray_err_sni" translatable="true">TLS にはサーバー名が必要です。sni パラメータを追加してください</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks の鍵の長さがこの暗号方式と一致しません</string>
+    <string name="xray_err_method" translatable="true">未対応の Shadowsocks 暗号方式です。2022-blake3 系を使用してください</string>
+    <string name="xray_err_transport" translatable="true">未対応のトランスポートです。tcp、ws、grpc を使用してください</string>
+    <string name="xray_field_password" translatable="true">パスワード</string>
+    <string name="xray_field_method" translatable="true">暗号方式</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -515,4 +521,14 @@
     <string name="xray_off_confirm" translatable="true">VPN がオンのときに Xray をオフにすると、Xray を経由せず直接通信します。オフにしますか？</string>
     <string name="xray_err_dns" translatable="true">dns ブロックを削除してください。DNS は Xray ではなく DNS Control が解決します</string>
     <string name="xray_err_rule" translatable="true">ルーティング規則には ip、domain、port のいずれかが必要で、送信先は proxy か direct のみです</string>
+    <string name="xray_profile_new" translatable="true">新しいプロファイル</string>
+    <string name="xray_profile_name" translatable="true">プロファイル %1$d</string>
+    <string name="xray_profile_busy" translatable="true">プロファイルを切り替える前に Xray を停止してください</string>
+    <string name="xray_profile_unsaved" translatable="true">先に変更を保存するか破棄してください</string>
+    <string name="xray_profile_limit" translatable="true">プロファイルは最大 %1$d 件です</string>
+    <string name="xray_profile_delete_msg" translatable="true">このプロファイルを削除しますか？</string>
+    <string name="xray_scan" translatable="true">QR をスキャン</string>
+    <string name="xray_scan_failed" translatable="true">カメラを開けませんでした</string>
+    <string name="xray_share" translatable="true">共有リンクをコピー</string>
+    <string name="xray_share_copied" translatable="true">共有リンクをコピーしました</string>
 </resources>

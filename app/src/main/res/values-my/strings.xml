@@ -8,8 +8,8 @@
     <string name="bl_update_uptodate_title" translatable="true">အပ်ဒိတ် မတွေ့ပါ</string>
     <string name="bl_update_failed_title" translatable="true">ပိတ်ဆို့စာရင်း အပ်ဒိတ် မအောင်မြင်ပါ</string>
     <string name="bl_update_retry" translatable="true">ထပ်ကြိုးစားရန်</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// လင့်ခ် သို့မဟုတ် Xray JSON config ကို ကူးထည့်ပါ</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://၊ trojan:// သို့မဟုတ် ss:// လင့်ခ် သို့မဟုတ် Xray JSON ဖွဲ့စည်းပုံကို ကူးထည့်ပါ</string>
     <string name="xray_status_on" translatable="true">Xray အလုပ်လုပ်နေသည်</string>
     <string name="xray_status_off" translatable="true">Xray ရပ်ထားသည်</string>
     <string name="xray_start" translatable="true">စတင်</string>
@@ -31,9 +31,15 @@
     <string name="xray_save_failed" translatable="true">ပရိုဖိုင်ကို သိမ်း၍ မရပါ</string>
     <string name="xray_err_empty" translatable="true">ကူးထည့်စရာ မရှိပါ: Clipboard ဗလာဖြစ်နေသည်</string>
     <string name="xray_err_json" translatable="true">မမှန်ကန်သော JSON: ကွင်းစများ၊ ကော်မာများနှင့် ကိုးကားချက်များကို စစ်ပါ</string>
-    <string name="xray_err_outbound" translatable="true">အသုံးပြုနိုင်သော VLESS outbound မရှိပါ: server လိပ်စာ၊ port၊ UUID နှင့် publicKey လိုအပ်သည်</string>
-    <string name="xray_err_reality" translatable="true">Reality လုံခြုံရေးကိုသာ ပံ့ပိုးသည်: streamSettings.security ကို reality ဟု သတ်မှတ်ပါ</string>
-    <string name="xray_err_link" translatable="true">မမှန်ကန်သော vless:// လင့်ခ်: UUID၊ host၊ port နှင့် sni၊ pbk parameter များကို စစ်ပါ</string>
+    <string name="xray_err_outbound" translatable="true">အသုံးပြု၍ရသော outbound မရှိပါ။ vless၊ trojan သို့မဟုတ် shadowsocks အတွက် ဆာဗာလိပ်စာနှင့် အထောက်အထားကို စစ်ပါ</string>
+    <string name="xray_err_link" translatable="true">လင့်ခ်မမှန်ပါ။ host၊ port၊ အထောက်အထားနှင့် parameter များကို စစ်ပါ</string>
+    <string name="xray_err_security" translatable="true">မထောက်ပံ့သော လုံခြုံရေး။ vless အတွက် reality သို့မဟုတ် tls၊ trojan အတွက် tls သာ</string>
+    <string name="xray_err_sni" translatable="true">TLS အတွက် ဆာဗာအမည် လိုအပ်သည်။ sni parameter ထည့်ပါ</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks key အရှည်သည် ဤ cipher နှင့် မကိုက်ညီပါ</string>
+    <string name="xray_err_method" translatable="true">မထောက်ပံ့သော Shadowsocks cipher။ 2022-blake3 နည်းလမ်းကို သုံးပါ</string>
+    <string name="xray_err_transport" translatable="true">မထောက်ပံ့သော transport။ tcp၊ ws သို့မဟုတ် grpc ကို သုံးပါ</string>
+    <string name="xray_field_password" translatable="true">စကားဝှက်</string>
+    <string name="xray_field_method" translatable="true">ကုဒ်ဝှက်နည်းလမ်း</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -53,4 +59,14 @@
     <string name="xray_off_confirm" translatable="true">VPN ဖွင့်ထားစဉ် Xray ကို ပိတ်ပါက Xray မပါဘဲ ဒေတာကို တိုက်ရိုက်ပို့ပါမည်။ ပိတ်မလား?</string>
     <string name="xray_err_dns" translatable="true">dns ပိတ်ဆို့ချက်ကို ဖယ်ရှားပါ- DNS ကို Xray မဟုတ်ဘဲ DNS Control က ဖြေရှင်းသည်</string>
     <string name="xray_err_rule" translatable="true">လမ်းကြောင်းစည်းမျဉ်းတွင် ip၊ domain သို့မဟုတ် port လိုအပ်ပြီး proxy သို့မဟုတ် direct သို့သာ ပို့နိုင်သည်</string>
+    <string name="xray_profile_new" translatable="true">ပရိုဖိုင်အသစ်</string>
+    <string name="xray_profile_name" translatable="true">ပရိုဖိုင် %1$d</string>
+    <string name="xray_profile_busy" translatable="true">ပရိုဖိုင်မပြောင်းမီ Xray ကိုရပ်ပါ</string>
+    <string name="xray_profile_unsaved" translatable="true">အပြောင်းအလဲများကို အရင်သိမ်းရန် သို့မဟုတ် ပယ်ဖျက်ရန်</string>
+    <string name="xray_profile_limit" translatable="true">ပရိုဖိုင် %1$d ခုအထိ</string>
+    <string name="xray_profile_delete_msg" translatable="true">ဤပရိုဖိုင်ကို ဖျက်မလား။</string>
+    <string name="xray_scan" translatable="true">QR စကင်န်</string>
+    <string name="xray_scan_failed" translatable="true">ကင်မရာ မဖွင့်နိုင်ပါ</string>
+    <string name="xray_share" translatable="true">မျှဝေလင့်ခ်ကို ကူးယူရန်</string>
+    <string name="xray_share_copied" translatable="true">လင့်ခ် ကူးယူပြီးပါပြီ</string>
 </resources>

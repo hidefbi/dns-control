@@ -753,8 +753,8 @@
     <string name="bl_update_uptodate_title" translatable="true">未偵測到更新</string>
     <string name="bl_update_failed_title" translatable="true">規則更新失敗</string>
     <string name="bl_update_retry" translatable="true">重試</string>
-    <string name="xray_entry" translatable="true">Xray（VLESS+Reality）</string>
-    <string name="xray_hint" translatable="true">貼上 vless:// 連結或 Xray JSON 設定</string>
+    <string name="xray_entry" translatable="true">Xray（VLESS、Trojan、Shadowsocks）</string>
+    <string name="xray_hint" translatable="true">貼上 vless://、trojan:// 或 ss:// 連結，或 Xray JSON 設定</string>
     <string name="xray_status_on" translatable="true">Xray 正在執行</string>
     <string name="xray_status_off" translatable="true">Xray 已停止</string>
     <string name="xray_start" translatable="true">啟動</string>
@@ -776,9 +776,15 @@
     <string name="xray_save_failed" translatable="true">儲存設定失敗</string>
     <string name="xray_err_empty" translatable="true">剪貼簿為空，沒有可貼上的內容</string>
     <string name="xray_err_json" translatable="true">JSON 無效：請檢查括號、逗號和引號</string>
-    <string name="xray_err_outbound" translatable="true">缺少可用的 VLESS 出站：需要伺服器位址、連接埠、UUID 和 publicKey</string>
-    <string name="xray_err_reality" translatable="true">僅支援 Reality 安全性：請將 streamSettings.security 設為 reality</string>
-    <string name="xray_err_link" translatable="true">vless:// 連結無效：請檢查 UUID、主機、連接埠以及 sni 和 pbk 參數</string>
+    <string name="xray_err_outbound" translatable="true">沒有可用的出站：請檢查 vless、trojan 或 shadowsocks 的伺服器位址和憑證</string>
+    <string name="xray_err_link" translatable="true">連結無效：請檢查主機、連接埠、憑證和參數</string>
+    <string name="xray_err_security" translatable="true">不支援此安全模式：vless 請用 reality 或 tls，trojan 只能用 tls</string>
+    <string name="xray_err_sni" translatable="true">TLS 需要伺服器名稱：請加入 sni 參數</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks 金鑰長度與此加密方式不符</string>
+    <string name="xray_err_method" translatable="true">不支援的 Shadowsocks 加密方式：請使用 2022-blake3 系列</string>
+    <string name="xray_err_transport" translatable="true">不支援的傳輸方式：請使用 tcp、ws 或 grpc</string>
+    <string name="xray_field_password" translatable="true">密碼</string>
+    <string name="xray_field_method" translatable="true">加密方式</string>
     <string name="xray_back" translatable="true">返回</string>
     <string name="xray_err_placeholder" translatable="true">还有 %1$d 项需要填写：请替换高亮的 REPLACE_ 内容</string>
     <string name="xray_progress_title" translatable="true">填写进度</string>
@@ -798,4 +804,14 @@
     <string name="xray_off_confirm" translatable="true">VPN 開啟時關閉 Xray，流量將直接發出，不經過 Xray。確定關閉嗎？</string>
     <string name="xray_err_dns" translatable="true">請刪除 dns 區塊：DNS 由 DNS Control 解析，不由 Xray 解析</string>
     <string name="xray_err_rule" translatable="true">路由規則需包含 ip、domain 或 port，且出站只能是 proxy 或 direct</string>
+    <string name="xray_profile_new" translatable="true">新增設定檔</string>
+    <string name="xray_profile_name" translatable="true">設定檔 %1$d</string>
+    <string name="xray_profile_busy" translatable="true">切換設定檔前請先停止 Xray</string>
+    <string name="xray_profile_unsaved" translatable="true">請先儲存或捨棄變更</string>
+    <string name="xray_profile_limit" translatable="true">最多 %1$d 個設定檔</string>
+    <string name="xray_profile_delete_msg" translatable="true">刪除此設定檔？</string>
+    <string name="xray_scan" translatable="true">掃描 QR Code</string>
+    <string name="xray_scan_failed" translatable="true">無法開啟相機</string>
+    <string name="xray_share" translatable="true">複製分享連結</string>
+    <string name="xray_share_copied" translatable="true">分享連結已複製</string>
 </resources>

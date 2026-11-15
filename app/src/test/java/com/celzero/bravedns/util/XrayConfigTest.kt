@@ -64,9 +64,9 @@ class XrayConfigTest {
     }
 
     @Test
-    fun rejectsNonRealitySecurity() {
+    fun rejectsVlessWithoutSecurity() {
         assertThrows(XrayConfig.InvalidLinkException::class.java) {
-            XrayConfig.parseVlessLink("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=tls&sni=a&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            XrayConfig.parseVlessLink("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=none&sni=a&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         }
     }
 
@@ -128,8 +128,12 @@ class XrayConfigTest {
     @Test
     fun checkReportsBrokenLink() {
         assertEquals(
+            XrayConfig.Problem.UNSUPPORTED_SECURITY,
+            XrayConfig.check("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=none&sni=a&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        )
+        assertEquals(
             XrayConfig.Problem.INVALID_LINK,
-            XrayConfig.check("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=tls&sni=a&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+            XrayConfig.check("vless://not-a-uuid@203.0.113.10:443?security=reality&sni=a&pbk=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         )
     }
 
@@ -146,7 +150,7 @@ class XrayConfigTest {
     @Test
     fun checkReportsNonVlessOutbound() {
         assertEquals(
-            XrayConfig.Problem.NOT_VLESS,
+            XrayConfig.Problem.NO_SUPPORTED_OUTBOUND,
             XrayConfig.check("{\"outbounds\":[{\"protocol\":\"vmess\"}]}")
         )
     }
@@ -170,8 +174,8 @@ class XrayConfigTest {
     fun checkReportsNonRealityInJson() {
         val json =
             "{\"outbounds\":[{\"protocol\":\"vless\",\"settings\":{\"vnext\":[{\"address\":\"203.0.113.10\"," +
-                "\"port\":443,\"users\":[{\"id\":\"11111111-2222-3333-4444-555555555555\"}]}]},\"streamSettings\":{\"security\":\"tls\"}}]}"
-        assertEquals(XrayConfig.Problem.NOT_REALITY, XrayConfig.check(json))
+                "\"port\":443,\"users\":[{\"id\":\"11111111-2222-3333-4444-555555555555\"}]}]},\"streamSettings\":{\"security\":\"none\"}}]}"
+        assertEquals(XrayConfig.Problem.UNSUPPORTED_SECURITY, XrayConfig.check(json))
     }
 
     @Test
@@ -214,7 +218,16 @@ class XrayConfigTest {
 
     @Test
     fun missingFieldsListsEveryFieldOfTheTemplate() {
-        assertEquals(XrayConfig.Field.values().toList(), XrayConfig.missingFields(XrayConfig.TEMPLATE))
+        assertEquals(
+            listOf(
+                XrayConfig.Field.SERVER_ADDRESS,
+                XrayConfig.Field.UUID,
+                XrayConfig.Field.SERVER_NAME,
+                XrayConfig.Field.PUBLIC_KEY,
+                XrayConfig.Field.SHORT_ID,
+            ),
+            XrayConfig.missingFields(XrayConfig.TEMPLATE)
+        )
     }
 
     @Test
@@ -423,6 +436,167 @@ class XrayConfigTest {
                 "vless://not-a-uuid@203.0.113.10:443?security=reality&sni=a.example&pbk=" +
                     "A".repeat(43)
             )
+        }
+    }
+
+    private val tlsWsLink =
+        "vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443" +
+            "?security=tls&sni=a.example&type=ws&path=%2Fws&host=a.example#TLS"
+    private val grpcLink =
+        "vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443" +
+            "?security=tls&sni=a.example&type=grpc&serviceName=svc#G"
+    private val trojanLink = "trojan://pass%20word@203.0.113.10:443?sni=a.example#Trojan"
+
+    // ss:// link whose userinfo is base64url(method:key), the SIP002 form
+    private fun sip002(method: String, key: ByteArray): String {
+        val keyText = java.util.Base64.getEncoder().encodeToString(key)
+        val userinfo =
+            java.util.Base64.getUrlEncoder().withoutPadding().encodeToString("$method:$keyText".toByteArray())
+        return "ss://$userinfo@203.0.113.10:8388#SS%20Node"
+    }
+
+    @Test
+    fun parsesVlessTlsWebsocketLink() {
+        val link = XrayConfig.parseVlessLink(tlsWsLink)
+        assertEquals("tls", link.security)
+        assertEquals("ws", link.network)
+        assertEquals("/ws", link.wsPath)
+        assertEquals("a.example", link.serverName)
+        assertEquals("", link.publicKey)
+    }
+
+    @Test
+    fun vlessTlsConfigUsesTlsAndWebsocketSettings() {
+        val config = XrayConfig.buildConfig(XrayConfig.parseVlessLink(tlsWsLink))
+        assertTrue(config.contains("\"security\": \"tls\""))
+        assertTrue(config.contains("\"tlsSettings\": {\"serverName\": \"a.example\""))
+        assertTrue(config.contains("\"wsSettings\": {\"path\": \"/ws\""))
+        assertFalse(config.contains("realitySettings"))
+        assertNull(XrayConfig.check(config))
+    }
+
+    @Test
+    fun vlessGrpcConfigCarriesServiceName() {
+        val config = XrayConfig.buildConfig(XrayConfig.parseVlessLink(grpcLink))
+        assertTrue(config.contains("\"network\": \"grpc\""))
+        assertTrue(config.contains("\"grpcSettings\": {\"serviceName\": \"svc\"}"))
+    }
+
+    @Test
+    fun tlsLinkNeedsServerName() {
+        assertEquals(
+            XrayConfig.Problem.MISSING_SERVER_NAME,
+            XrayConfig.check("vless://11111111-2222-3333-4444-555555555555@203.0.113.10:443?security=tls")
+        )
+    }
+
+    @Test
+    fun refusesUnknownTransport() {
+        assertEquals(
+            XrayConfig.Problem.UNSUPPORTED_TRANSPORT,
+            XrayConfig.check(tlsWsLink.replace("type=ws", "type=quic"))
+        )
+    }
+
+    @Test
+    fun parsesTrojanLinkWithPercentEncodedPassword() {
+        val link = XrayConfig.parseTrojanLink(trojanLink)
+        assertEquals("pass word", link.password)
+        assertEquals("a.example", link.serverName)
+        assertEquals("Trojan", link.name)
+        assertEquals(443, link.port)
+    }
+
+    @Test
+    fun trojanConfigIsTlsAndPassesCheck() {
+        val config = XrayConfig.buildConfig(XrayConfig.parseLink(trojanLink))
+        assertTrue(config.contains("\"protocol\": \"trojan\""))
+        assertTrue(config.contains("\"security\": \"tls\""))
+        assertNull(XrayConfig.check(config))
+    }
+
+    @Test
+    fun trojanRefusesNonTls() {
+        assertEquals(
+            XrayConfig.Problem.UNSUPPORTED_SECURITY,
+            XrayConfig.check("trojan://pw@203.0.113.10:443?security=none&sni=a.example")
+        )
+    }
+
+    @Test
+    fun trojanJsonNeedsPassword() {
+        val json =
+            "{\"outbounds\":[{\"protocol\":\"trojan\",\"settings\":{\"servers\":[{\"address\":\"203.0.113.10\",\"port\":443}]}," +
+                "\"streamSettings\":{\"security\":\"tls\",\"tlsSettings\":{\"serverName\":\"a.example\"}}}]}"
+        assertEquals(XrayConfig.Problem.MISSING_PASSWORD, XrayConfig.check(json))
+    }
+
+    @Test
+    fun missingFieldsForTrojanAreItsOwn() {
+        val json =
+            "{\"outbounds\":[{\"protocol\":\"trojan\",\"settings\":{\"servers\":[{\"address\":\"REPLACE_SERVER_IP\",\"port\":443,\"password\":\"\"}]}," +
+                "\"streamSettings\":{\"security\":\"tls\",\"tlsSettings\":{\"serverName\":\"REPLACE_SNI\"}}}]}"
+        assertEquals(
+            listOf(XrayConfig.Field.SERVER_ADDRESS, XrayConfig.Field.PASSWORD, XrayConfig.Field.SERVER_NAME),
+            XrayConfig.missingFields(json)
+        )
+    }
+
+    @Test
+    fun parsesShadowsocksSip002Link() {
+        val link = XrayConfig.parseLink(sip002("2022-blake3-aes-128-gcm", ByteArray(16))) as XrayConfig.ShadowsocksLink
+        assertEquals("2022-blake3-aes-128-gcm", link.method)
+        assertEquals("AAAAAAAAAAAAAAAAAAAAAA==", link.password)
+        assertEquals("203.0.113.10", link.host)
+        assertEquals(8388, link.port)
+        assertEquals("SS Node", link.name)
+    }
+
+    @Test
+    fun parsesPlainShadowsocksLink() {
+        val link =
+            XrayConfig.parseShadowsocksLink(
+                "ss://2022-blake3-aes-128-gcm:AAAAAAAAAAAAAAAAAAAAAA==@203.0.113.10:8388"
+            )
+        assertEquals("AAAAAAAAAAAAAAAAAAAAAA==", link.password)
+    }
+
+    @Test
+    fun shadowsocksRejectsKeyOfWrongLength() {
+        assertEquals(
+            XrayConfig.Problem.BAD_KEY,
+            XrayConfig.check(sip002("2022-blake3-aes-128-gcm", ByteArray(32)))
+        )
+    }
+
+    @Test
+    fun shadowsocksRejectsOldCiphers() {
+        assertEquals(
+            XrayConfig.Problem.BAD_METHOD,
+            XrayConfig.check(sip002("aes-256-gcm", ByteArray(32)))
+        )
+    }
+
+    @Test
+    fun generatedShadowsocksConfigPassesCheck() {
+        val config =
+            XrayConfig.buildConfig(XrayConfig.parseLink(sip002("2022-blake3-aes-256-gcm", ByteArray(32))))
+        assertTrue(config.contains("\"protocol\": \"shadowsocks\""))
+        assertNull(XrayConfig.check(config))
+    }
+
+    @Test
+    fun shareLinkRoundTripsEveryProtocol() {
+        val links =
+            listOf(
+                fullLink,
+                tlsWsLink,
+                grpcLink,
+                trojanLink,
+                sip002("2022-blake3-aes-256-gcm", ByteArray(32)),
+            )
+        for (link in links) {
+            assertEquals(XrayConfig.parseLink(link), XrayConfig.parseLink(XrayConfig.shareLink(link)))
         }
     }
 

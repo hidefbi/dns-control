@@ -50,8 +50,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Atjauninājumi nav atrasti</string>
     <string name="bl_update_failed_title" translatable="true">Bloķēšanas saraksta atjaunināšana neizdevās</string>
     <string name="bl_update_retry" translatable="true">Mēģināt vēlreiz</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Ievietojiet vless:// saiti vai Xray JSON konfigurāciju</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Ievietojiet vless://, trojan:// vai ss:// saiti vai Xray JSON konfigurāciju</string>
     <string name="xray_status_on" translatable="true">Xray darbojas</string>
     <string name="xray_status_off" translatable="true">Xray ir apturēts</string>
     <string name="xray_start" translatable="true">Sākt</string>
@@ -73,9 +73,15 @@
     <string name="xray_save_failed" translatable="true">Profilu nevarēja saglabāt</string>
     <string name="xray_err_empty" translatable="true">Nav ko ielīmēt: starpliktuve ir tukša</string>
     <string name="xray_err_json" translatable="true">Nederīgs JSON: pārbaudiet iekavas, komatus un pēdiņas</string>
-    <string name="xray_err_outbound" translatable="true">Nav derīgas VLESS izvades: nepieciešama servera adrese, ports, UUID un publicKey</string>
-    <string name="xray_err_reality" translatable="true">Atbalstīta ir tikai Reality drošība: iestatiet streamSettings.security uz reality</string>
-    <string name="xray_err_link" translatable="true">Nederīga vless:// saite: pārbaudiet UUID, resursdatoru, portu un sni un pbk parametrus</string>
+    <string name="xray_err_outbound" translatable="true">Nav izmantojama izejas savienojuma: pārbaudiet servera adresi un pieteikšanās datus vless, trojan vai shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Nederīga saite: pārbaudiet resursdatoru, portu, pieteikšanās datus un parametrus</string>
+    <string name="xray_err_security" translatable="true">Neatbalstīta drošība: vless reality vai tls, trojan tikai tls</string>
+    <string name="xray_err_sni" translatable="true">TLS nepieciešams servera nosaukums: pievienojiet parametru sni</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks atslēgas garums neatbilst šim šifram</string>
+    <string name="xray_err_method" translatable="true">Neatbalstīts Shadowsocks šifrs: izmantojiet 2022-blake3 metodi</string>
+    <string name="xray_err_transport" translatable="true">Neatbalstīts transports: izmantojiet tcp, ws vai grpc</string>
+    <string name="xray_field_password" translatable="true">Parole</string>
+    <string name="xray_field_method" translatable="true">Šifrēšanas metode</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -95,4 +101,14 @@
     <string name="xray_off_confirm" translatable="true">Ja izslēgsiet Xray, kamēr VPN ir ieslēgts, trafiks iet tieši, bez Xray. Izslēgt?</string>
     <string name="xray_err_dns" translatable="true">Noņemiet dns bloku: DNS apstrādā DNS Control, nevis Xray</string>
     <string name="xray_err_rule" translatable="true">Maršruta noteikumam vajag ip, domain vai port, un tas var sūtīt tikai uz proxy vai direct</string>
+    <string name="xray_profile_new" translatable="true">Jauns profils</string>
+    <string name="xray_profile_name" translatable="true">Profils %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Pirms profila maiņas apturiet Xray</string>
+    <string name="xray_profile_unsaved" translatable="true">Vispirms saglabājiet vai atmetiet izmaiņas</string>
+    <string name="xray_profile_limit" translatable="true">Līdz %1$d profiliem</string>
+    <string name="xray_profile_delete_msg" translatable="true">Dzēst šo profilu?</string>
+    <string name="xray_scan" translatable="true">Skenēt QR</string>
+    <string name="xray_scan_failed" translatable="true">Kameru nevarēja atvērt</string>
+    <string name="xray_share" translatable="true">Kopēt kopīgošanas saiti</string>
+    <string name="xray_share_copied" translatable="true">Saite nokopēta</string>
 </resources>

@@ -7,8 +7,8 @@
     <string name="bl_update_uptodate_title" translatable="true">No update found</string>
     <string name="bl_update_failed_title" translatable="true">Blocklist update failed</string>
     <string name="bl_update_retry" translatable="true">Retry</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Paste a vless:// link or an Xray JSON config</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Įklijuokite vless://, trojan:// ar ss:// nuorodą arba Xray JSON konfigūraciją</string>
     <string name="xray_status_on" translatable="true">Xray is running</string>
     <string name="xray_status_off" translatable="true">Xray is stopped</string>
     <string name="xray_start" translatable="true">Start</string>
@@ -30,9 +30,15 @@
     <string name="xray_save_failed" translatable="true">Could not save the profile</string>
     <string name="xray_err_empty" translatable="true">Nothing to paste: the clipboard is empty</string>
     <string name="xray_err_json" translatable="true">Invalid JSON: check brackets, commas and quotes</string>
-    <string name="xray_err_outbound" translatable="true">No usable VLESS outbound: server address, port, UUID and publicKey are required</string>
-    <string name="xray_err_reality" translatable="true">Only Reality security is supported: set streamSettings.security to reality</string>
-    <string name="xray_err_link" translatable="true">Invalid vless:// link: check the UUID, host, port and the sni and pbk parameters</string>
+    <string name="xray_err_outbound" translatable="true">Nėra tinkamo išvesties kanalo: patikrinkite serverio adresą ir prisijungimo duomenis vless, trojan ar shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Netinkama nuoroda: patikrinkite serverį, prievadą, prisijungimo duomenis ir parametrus</string>
+    <string name="xray_err_security" translatable="true">Nepalaikomas saugumo režimas: vless – reality arba tls, trojan – tik tls</string>
+    <string name="xray_err_sni" translatable="true">TLS reikia serverio pavadinimo: pridėkite parametrą sni</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks rakto ilgis netinka šiam šifrui</string>
+    <string name="xray_err_method" translatable="true">Nepalaikomas Shadowsocks šifras: naudokite 2022-blake3 metodą</string>
+    <string name="xray_err_transport" translatable="true">Nepalaikomas transportas: naudokite tcp, ws arba grpc</string>
+    <string name="xray_field_password" translatable="true">Slaptažodis</string>
+    <string name="xray_field_method" translatable="true">Šifravimo metodas</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -52,4 +58,14 @@
     <string name="xray_off_confirm" translatable="true">With the VPN on, turning Xray off sends traffic straight out without Xray. Turn it off?</string>
     <string name="xray_err_dns" translatable="true">Remove the dns block: DNS Control resolves DNS, not xray</string>
     <string name="xray_err_rule" translatable="true">A routing rule needs an ip, domain or port, and must send to proxy or direct</string>
+    <string name="xray_profile_new" translatable="true">Naujas profilis</string>
+    <string name="xray_profile_name" translatable="true">Profilis %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Prieš keisdami profilį, sustabdykite Xray</string>
+    <string name="xray_profile_unsaved" translatable="true">Pirmiausia išsaugokite arba atmeskite pakeitimus</string>
+    <string name="xray_profile_limit" translatable="true">Daugiausia %1$d profilių</string>
+    <string name="xray_profile_delete_msg" translatable="true">Ištrinti šį profilį?</string>
+    <string name="xray_scan" translatable="true">Skenuoti QR</string>
+    <string name="xray_scan_failed" translatable="true">Nepavyko atidaryti kameros</string>
+    <string name="xray_share" translatable="true">Kopijuoti bendrinimo nuorodą</string>
+    <string name="xray_share_copied" translatable="true">Nuoroda nukopijuota</string>
 </resources>

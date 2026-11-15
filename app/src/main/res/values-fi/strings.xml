@@ -139,8 +139,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Päivityksiä ei löytynyt</string>
     <string name="bl_update_failed_title" translatable="true">Estolistan päivitys epäonnistui</string>
     <string name="bl_update_retry" translatable="true">Yritä uudelleen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Liitä vless://-linkki tai Xray JSON-asetukset</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Liitä vless://-, trojan:// tai ss://-linkki tai Xray-JSON-asetukset</string>
     <string name="xray_status_on" translatable="true">Xray on käynnissä</string>
     <string name="xray_status_off" translatable="true">Xray on pysäytetty</string>
     <string name="xray_start" translatable="true">Käynnistä</string>
@@ -162,9 +162,15 @@
     <string name="xray_save_failed" translatable="true">Profiilia ei voitu tallentaa</string>
     <string name="xray_err_empty" translatable="true">Ei liitettävää: leikepöytä on tyhjä</string>
     <string name="xray_err_json" translatable="true">Virheellinen JSON: tarkista sulkeet, pilkut ja lainausmerkit</string>
-    <string name="xray_err_outbound" translatable="true">Käyttökelpoinen VLESS-ulostulo puuttuu: palvelimen osoite, portti, UUID ja publicKey vaaditaan</string>
-    <string name="xray_err_reality" translatable="true">Vain Reality-suojaus on tuettu: aseta streamSettings.security arvoon reality</string>
-    <string name="xray_err_link" translatable="true">Virheellinen vless://-linkki: tarkista UUID, isäntä, portti sekä sni- ja pbk-parametrit</string>
+    <string name="xray_err_outbound" translatable="true">Käyttökelpoista ulostuloa ei ole: tarkista palvelimen osoite ja tunnukset (vless, trojan tai shadowsocks)</string>
+    <string name="xray_err_link" translatable="true">Virheellinen linkki: tarkista isäntä, portti, tunnukset ja parametrit</string>
+    <string name="xray_err_security" translatable="true">Tuettu suojaus: vless tukee reality- tai tls-tilaa, trojan vain tls-tilaa</string>
+    <string name="xray_err_sni" translatable="true">TLS vaatii palvelimen nimen: lisää sni-parametri</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks-avaimen pituus ei sovi tälle salaukselle</string>
+    <string name="xray_err_method" translatable="true">Tukematon Shadowsocks-salaus: käytä 2022-blake3-menetelmää</string>
+    <string name="xray_err_transport" translatable="true">Tukematon siirtotapa: käytä tcp:tä, ws:ää tai grpc:tä</string>
+    <string name="xray_field_password" translatable="true">Salasana</string>
+    <string name="xray_field_method" translatable="true">Salausmenetelmä</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -184,4 +190,14 @@
     <string name="xray_off_confirm" translatable="true">Xrayn sammuttaminen VPN:n ollessa päällä lähettää liikenteen suoraan ilman Xrayta. Sammutetaanko?</string>
     <string name="xray_err_dns" translatable="true">Poista dns-lohko: DNS:n selvittää DNS Control, ei Xray</string>
     <string name="xray_err_rule" translatable="true">Reitityssäännössä pitää olla ip, domain tai port, ja se voi ohjata vain proxy- tai direct-kohteeseen</string>
+    <string name="xray_profile_new" translatable="true">Uusi profiili</string>
+    <string name="xray_profile_name" translatable="true">Profiili %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Pysäytä Xray ennen profiilin vaihtoa</string>
+    <string name="xray_profile_unsaved" translatable="true">Tallenna tai hylkää muutokset ensin</string>
+    <string name="xray_profile_limit" translatable="true">Enintään %1$d profiilia</string>
+    <string name="xray_profile_delete_msg" translatable="true">Poistetaanko tämä profiili?</string>
+    <string name="xray_scan" translatable="true">Skannaa QR</string>
+    <string name="xray_scan_failed" translatable="true">Kameraa ei voitu avata</string>
+    <string name="xray_share" translatable="true">Kopioi jakolinkki</string>
+    <string name="xray_share_copied" translatable="true">Jakolinkki kopioitu</string>
 </resources>

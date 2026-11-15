@@ -534,8 +534,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Geen update gevonden</string>
     <string name="bl_update_failed_title" translatable="true">Blokkadelijst bijwerken mislukt</string>
     <string name="bl_update_retry" translatable="true">Opnieuw proberen</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Plak een vless://-link of Xray JSON-configuratie</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Plak een vless://, trojan:// of ss://-link, of een Xray JSON-configuratie</string>
     <string name="xray_status_on" translatable="true">Xray draait</string>
     <string name="xray_status_off" translatable="true">Xray is gestopt</string>
     <string name="xray_start" translatable="true">Starten</string>
@@ -557,9 +557,15 @@
     <string name="xray_save_failed" translatable="true">Profiel kon niet worden opgeslagen</string>
     <string name="xray_err_empty" translatable="true">Niets om te plakken: klembord is leeg</string>
     <string name="xray_err_json" translatable="true">Ongeldige JSON: controleer haakjes, komma’s en aanhalingstekens</string>
-    <string name="xray_err_outbound" translatable="true">Geen bruikbare VLESS-uitgang: serveradres, poort, UUID en publicKey zijn nodig</string>
-    <string name="xray_err_reality" translatable="true">Alleen Reality-beveiliging wordt ondersteund: zet streamSettings.security op reality</string>
-    <string name="xray_err_link" translatable="true">Ongeldige vless://-link: controleer UUID, host, poort en de parameters sni en pbk</string>
+    <string name="xray_err_outbound" translatable="true">Geen bruikbare outbound: controleer het serveradres en de inloggegevens voor vless, trojan of shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Ongeldige link: controleer host, poort, inloggegevens en parameters</string>
+    <string name="xray_err_security" translatable="true">Niet ondersteunde beveiliging: reality of tls voor vless, alleen tls voor trojan</string>
+    <string name="xray_err_sni" translatable="true">TLS heeft een servernaam nodig: voeg de parameter sni toe</string>
+    <string name="xray_err_key" translatable="true">De lengte van de Shadowsocks-sleutel past niet bij deze cipher</string>
+    <string name="xray_err_method" translatable="true">Niet ondersteunde Shadowsocks-cipher: gebruik een 2022-blake3-methode</string>
+    <string name="xray_err_transport" translatable="true">Niet ondersteund transport: gebruik tcp, ws of grpc</string>
+    <string name="xray_field_password" translatable="true">Wachtwoord</string>
+    <string name="xray_field_method" translatable="true">Versleutelingsmethode</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -579,4 +585,14 @@
     <string name="xray_off_confirm" translatable="true">Als je Xray uitzet terwijl de VPN aan staat, gaat het verkeer rechtstreeks zonder Xray. Uitzetten?</string>
     <string name="xray_err_dns" translatable="true">Verwijder het dns-blok: DNS wordt door DNS Control afgehandeld, niet door Xray</string>
     <string name="xray_err_rule" translatable="true">Een routeringsregel heeft ip, domain of port nodig en mag alleen naar proxy of direct</string>
+    <string name="xray_profile_new" translatable="true">Nieuw profiel</string>
+    <string name="xray_profile_name" translatable="true">Profiel %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Stop Xray voordat je van profiel wisselt</string>
+    <string name="xray_profile_unsaved" translatable="true">Sla je wijzigingen eerst op of gooi ze weg</string>
+    <string name="xray_profile_limit" translatable="true">Maximaal %1$d profielen</string>
+    <string name="xray_profile_delete_msg" translatable="true">Dit profiel verwijderen?</string>
+    <string name="xray_scan" translatable="true">QR-code scannen</string>
+    <string name="xray_scan_failed" translatable="true">Camera kon niet worden geopend</string>
+    <string name="xray_share" translatable="true">Deellink kopiëren</string>
+    <string name="xray_share_copied" translatable="true">Link gekopieerd</string>
 </resources>

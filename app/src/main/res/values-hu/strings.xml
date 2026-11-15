@@ -877,8 +877,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Nincs elérhető frissítés</string>
     <string name="bl_update_failed_title" translatable="true">A blokklista frissítése sikertelen</string>
     <string name="bl_update_retry" translatable="true">Újrapróbálás</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Illessze be a vless:// hivatkozást vagy az Xray JSON-konfigurációt</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Illesszen be vless://, trojan:// vagy ss:// hivatkozást, vagy Xray JSON konfigurációt</string>
     <string name="xray_status_on" translatable="true">Az Xray fut</string>
     <string name="xray_status_off" translatable="true">Az Xray leállt</string>
     <string name="xray_start" translatable="true">Indítás</string>
@@ -900,9 +900,15 @@
     <string name="xray_save_failed" translatable="true">A profilt nem sikerült menteni</string>
     <string name="xray_err_empty" translatable="true">Nincs mit beilleszteni: a vágólap üres</string>
     <string name="xray_err_json" translatable="true">Érvénytelen JSON: ellenőrizze a zárójeleket, vesszőket és idézőjeleket</string>
-    <string name="xray_err_outbound" translatable="true">Nincs használható VLESS-kimenet: szükséges a szerver címe, portja, UUID és publicKey</string>
-    <string name="xray_err_reality" translatable="true">Csak a Reality biztonság támogatott: állítsa a streamSettings.security értékét reality-re</string>
-    <string name="xray_err_link" translatable="true">Érvénytelen vless:// hivatkozás: ellenőrizze az UUID-t, a gazdagépet, a portot és az sni, pbk paramétereket</string>
+    <string name="xray_err_outbound" translatable="true">Nincs használható kimenet: ellenőrizze a szerver címét és a hitelesítő adatokat (vless, trojan vagy shadowsocks)</string>
+    <string name="xray_err_link" translatable="true">Érvénytelen hivatkozás: ellenőrizze a gazdagépet, a portot, a hitelesítő adatokat és a paramétereket</string>
+    <string name="xray_err_security" translatable="true">Nem támogatott biztonság: vless esetén reality vagy tls, trojan esetén csak tls</string>
+    <string name="xray_err_sni" translatable="true">A TLS-hez szervernév kell: adja meg az sni paramétert</string>
+    <string name="xray_err_key" translatable="true">A Shadowsocks-kulcs hossza nem illik ehhez a titkosításhoz</string>
+    <string name="xray_err_method" translatable="true">Nem támogatott Shadowsocks-titkosítás: használjon 2022-blake3 módszert</string>
+    <string name="xray_err_transport" translatable="true">Nem támogatott átvitel: használjon tcp, ws vagy grpc módot</string>
+    <string name="xray_field_password" translatable="true">Jelszó</string>
+    <string name="xray_field_method" translatable="true">Titkosítási módszer</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -922,4 +928,14 @@
     <string name="xray_off_confirm" translatable="true">Ha VPN közben kikapcsolja az Xray-t, a forgalom közvetlenül, Xray nélkül megy ki. Kikapcsolja?</string>
     <string name="xray_err_dns" translatable="true">Távolítsa el a dns blokkot: a DNS-t a DNS Control oldja fel, nem az Xray</string>
     <string name="xray_err_rule" translatable="true">Az útvonalszabálynak kell ip, domain vagy port, és csak proxy vagy direct felé küldhet</string>
+    <string name="xray_profile_new" translatable="true">Új profil</string>
+    <string name="xray_profile_name" translatable="true">%1$d. profil</string>
+    <string name="xray_profile_busy" translatable="true">Állítsd le az Xray-t a profilváltás előtt</string>
+    <string name="xray_profile_unsaved" translatable="true">Előbb mentsd vagy vesd el a módosításokat</string>
+    <string name="xray_profile_limit" translatable="true">Legfeljebb %1$d profil</string>
+    <string name="xray_profile_delete_msg" translatable="true">Törlöd ezt a profilt?</string>
+    <string name="xray_scan" translatable="true">QR-kód beolvasása</string>
+    <string name="xray_scan_failed" translatable="true">A kamera nem nyitható meg</string>
+    <string name="xray_share" translatable="true">Megosztási link másolása</string>
+    <string name="xray_share_copied" translatable="true">Link másolva</string>
 </resources>

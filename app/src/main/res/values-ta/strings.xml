@@ -827,8 +827,8 @@
     <string name="bl_update_uptodate_title" translatable="true">புதுப்பிப்பு எதுவும் இல்லை</string>
     <string name="bl_update_failed_title" translatable="true">தடுப்புப் பட்டியல் புதுப்பிப்பு தோல்வி</string>
     <string name="bl_update_retry" translatable="true">மீண்டும் முயற்சி</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// இணைப்பு அல்லது Xray JSON கட்டமைப்பை ஒட்டவும்</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://, trojan:// அல்லது ss:// இணைப்பு அல்லது Xray JSON அமைப்பை ஒட்டவும்</string>
     <string name="xray_status_on" translatable="true">Xray இயங்குகிறது</string>
     <string name="xray_status_off" translatable="true">Xray நிறுத்தப்பட்டுள்ளது</string>
     <string name="xray_start" translatable="true">தொடங்கு</string>
@@ -850,9 +850,15 @@
     <string name="xray_save_failed" translatable="true">சுயவிவரத்தைச் சேமிக்க முடியவில்லை</string>
     <string name="xray_err_empty" translatable="true">ஒட்ட எதுவும் இல்லை: கிளிப்போர்டு காலியாக உள்ளது</string>
     <string name="xray_err_json" translatable="true">தவறான JSON: அடைப்புக்குறிகள், கமாக்கள் மற்றும் மேற்கோள்களைச் சரிபார்க்கவும்</string>
-    <string name="xray_err_outbound" translatable="true">பயன்படுத்தக்கூடிய VLESS வெளியீடு இல்லை: சேவையக முகவரி, போர்ட், UUID மற்றும் publicKey தேவை</string>
-    <string name="xray_err_reality" translatable="true">Reality பாதுகாப்பு மட்டுமே ஆதரிக்கப்படுகிறது: streamSettings.security-ஐ reality என அமைக்கவும்</string>
-    <string name="xray_err_link" translatable="true">தவறான vless:// இணைப்பு: UUID, ஹோஸ்ட், போர்ட் மற்றும் sni, pbk அளவுருக்களைச் சரிபார்க்கவும்</string>
+    <string name="xray_err_outbound" translatable="true">பயன்படுத்தக்கூடிய வெளியேற்றம் இல்லை: vless, trojan அல்லது shadowsocks-க்கான சேவையக முகவரி மற்றும் அடையாளங்களைச் சரிபார்க்கவும்</string>
+    <string name="xray_err_link" translatable="true">தவறான இணைப்பு: ஹோஸ்ட், போர்ட், அடையாளங்கள் மற்றும் அளவுருக்களைச் சரிபார்க்கவும்</string>
+    <string name="xray_err_security" translatable="true">ஆதரிக்கப்படாத பாதுகாப்பு: vless-க்கு reality அல்லது tls, trojan-க்கு tls மட்டும்</string>
+    <string name="xray_err_sni" translatable="true">TLS-க்கு சேவையக பெயர் தேவை: sni அளவுருவைச் சேர்க்கவும்</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks விசையின் நீளம் இந்த சைஃபருக்குப் பொருந்தவில்லை</string>
+    <string name="xray_err_method" translatable="true">ஆதரிக்கப்படாத Shadowsocks சைஃபர்: 2022-blake3 முறையைப் பயன்படுத்தவும்</string>
+    <string name="xray_err_transport" translatable="true">ஆதரிக்கப்படாத போக்குவரத்து: tcp, ws அல்லது grpc பயன்படுத்தவும்</string>
+    <string name="xray_field_password" translatable="true">கடவுச்சொல்</string>
+    <string name="xray_field_method" translatable="true">குறியாக்க முறை</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -872,4 +878,14 @@
     <string name="xray_off_confirm" translatable="true">VPN இயங்கும்போது Xray-ஐ முடக்கினால் போக்குவரத்து Xray வழியின்றி நேரடியாகச் செல்லும். முடக்கவா?</string>
     <string name="xray_err_dns" translatable="true">dns தொகுதியை நீக்கவும்: DNS-ஐ Xray அல்ல, DNS Control தீர்க்கும்</string>
     <string name="xray_err_rule" translatable="true">ஒரு வழிப்படுத்தல் விதிக்கு ip, domain அல்லது port தேவை; proxy அல்லது direct-க்கு மட்டுமே அனுப்ப முடியும்</string>
+    <string name="xray_profile_new" translatable="true">புதிய சுயவிவரம்</string>
+    <string name="xray_profile_name" translatable="true">சுயவிவரம் %1$d</string>
+    <string name="xray_profile_busy" translatable="true">சுயவிவரத்தை மாற்றும் முன் Xray ஐ நிறுத்துங்கள்</string>
+    <string name="xray_profile_unsaved" translatable="true">முதலில் மாற்றங்களைச் சேமிக்கவும் அல்லது நிராகரிக்கவும்</string>
+    <string name="xray_profile_limit" translatable="true">%1$d சுயவிவரங்கள் வரை</string>
+    <string name="xray_profile_delete_msg" translatable="true">இந்த சுயவிவரத்தை நீக்கவா?</string>
+    <string name="xray_scan" translatable="true">QR ஸ்கேன் செய்</string>
+    <string name="xray_scan_failed" translatable="true">கேமராவைத் திறக்க முடியவில்லை</string>
+    <string name="xray_share" translatable="true">பகிர்வு இணைப்பை நகலெடு</string>
+    <string name="xray_share_copied" translatable="true">இணைப்பு நகலெடுக்கப்பட்டது</string>
 </resources>

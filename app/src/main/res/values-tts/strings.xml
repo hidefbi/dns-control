@@ -7,8 +7,8 @@
     <string name="bl_update_uptodate_title" translatable="true">No update found</string>
     <string name="bl_update_failed_title" translatable="true">Blocklist update failed</string>
     <string name="bl_update_retry" translatable="true">Retry</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Paste a vless:// link or an Xray JSON config</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">วางลิงก์ vless://, trojan:// หรือ ss:// หรือการตั้งค่า JSON ของ Xray</string>
     <string name="xray_status_on" translatable="true">Xray is running</string>
     <string name="xray_status_off" translatable="true">Xray is stopped</string>
     <string name="xray_start" translatable="true">Start</string>
@@ -30,9 +30,15 @@
     <string name="xray_save_failed" translatable="true">Could not save the profile</string>
     <string name="xray_err_empty" translatable="true">Nothing to paste: the clipboard is empty</string>
     <string name="xray_err_json" translatable="true">Invalid JSON: check brackets, commas and quotes</string>
-    <string name="xray_err_outbound" translatable="true">No usable VLESS outbound: server address, port, UUID and publicKey are required</string>
-    <string name="xray_err_reality" translatable="true">Only Reality security is supported: set streamSettings.security to reality</string>
-    <string name="xray_err_link" translatable="true">Invalid vless:// link: check the UUID, host, port and the sni and pbk parameters</string>
+    <string name="xray_err_outbound" translatable="true">ไม่มีเอาต์บาวด์ที่ใช้งานได้ ตรวจสอบที่อยู่เซิร์ฟเวอร์และข้อมูลยืนยันตัวตนของ vless, trojan หรือ shadowsocks</string>
+    <string name="xray_err_link" translatable="true">ลิงก์ไม่ถูกต้อง ตรวจสอบโฮสต์ พอร์ต ข้อมูลยืนยันตัวตน และพารามิเตอร์</string>
+    <string name="xray_err_security" translatable="true">ไม่รองรับความปลอดภัยนี้ vless ใช้ reality หรือ tls ได้ trojan ใช้ได้เฉพาะ tls</string>
+    <string name="xray_err_sni" translatable="true">TLS ต้องมีชื่อเซิร์ฟเวอร์ เพิ่มพารามิเตอร์ sni</string>
+    <string name="xray_err_key" translatable="true">ความยาวคีย์ Shadowsocks ไม่ตรงกับวิธีเข้ารหัสนี้</string>
+    <string name="xray_err_method" translatable="true">ไม่รองรับวิธีเข้ารหัส Shadowsocks ให้ใช้วิธี 2022-blake3</string>
+    <string name="xray_err_transport" translatable="true">ไม่รองรับการขนส่งนี้ ให้ใช้ tcp, ws หรือ grpc</string>
+    <string name="xray_field_password" translatable="true">รหัสผ่าน</string>
+    <string name="xray_field_method" translatable="true">วิธีเข้ารหัส</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -52,4 +58,14 @@
     <string name="xray_off_confirm" translatable="true">With the VPN on, turning Xray off sends traffic straight out without Xray. Turn it off?</string>
     <string name="xray_err_dns" translatable="true">Remove the dns block: DNS Control resolves DNS, not xray</string>
     <string name="xray_err_rule" translatable="true">A routing rule needs an ip, domain or port, and must send to proxy or direct</string>
+    <string name="xray_profile_new" translatable="true">โปรไฟล์ใหม่</string>
+    <string name="xray_profile_name" translatable="true">โปรไฟล์ %1$d</string>
+    <string name="xray_profile_busy" translatable="true">หยุด Xray ก่อนเปลี่ยนโปรไฟล์</string>
+    <string name="xray_profile_unsaved" translatable="true">บันทึกหรือทิ้งการเปลี่ยนแปลงก่อน</string>
+    <string name="xray_profile_limit" translatable="true">สูงสุด %1$d โปรไฟล์</string>
+    <string name="xray_profile_delete_msg" translatable="true">ลบโปรไฟล์นี้ไหม</string>
+    <string name="xray_scan" translatable="true">สแกน QR</string>
+    <string name="xray_scan_failed" translatable="true">เปิดกล้องไม่ได้</string>
+    <string name="xray_share" translatable="true">คัดลอกลิงก์แชร์</string>
+    <string name="xray_share_copied" translatable="true">คัดลอกลิงก์แล้ว</string>
 </resources>

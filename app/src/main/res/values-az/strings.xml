@@ -7,8 +7,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Yeniləmə tapılmadı</string>
     <string name="bl_update_failed_title" translatable="true">Blok siyahısının yenilənməsi uğursuz oldu</string>
     <string name="bl_update_retry" translatable="true">Yenidən cəhd et</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// keçidini və ya Xray JSON konfiqurasiyasını yapışdırın</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://, trojan:// və ya ss:// linkini, yaxud Xray JSON konfiqurasiyasını yapışdırın</string>
     <string name="xray_status_on" translatable="true">Xray işləyir</string>
     <string name="xray_status_off" translatable="true">Xray dayandırılıb</string>
     <string name="xray_start" translatable="true">Başlat</string>
@@ -30,9 +30,15 @@
     <string name="xray_save_failed" translatable="true">Profil yadda saxlanıla bilmədi</string>
     <string name="xray_err_empty" translatable="true">Yapışdırılacaq heç nə yoxdur: bufer boşdur</string>
     <string name="xray_err_json" translatable="true">Yanlış JSON: mötərizələri, vergülləri və dırnaqları yoxlayın</string>
-    <string name="xray_err_outbound" translatable="true">İstifadə oluna bilən VLESS çıxışı yoxdur: server ünvanı, port, UUID və publicKey lazımdır</string>
-    <string name="xray_err_reality" translatable="true">Yalnız Reality təhlükəsizliyi dəstəklənir: streamSettings.security dəyərini reality edin</string>
-    <string name="xray_err_link" translatable="true">Yanlış vless:// keçidi: UUID, host, port və sni, pbk parametrlərini yoxlayın</string>
+    <string name="xray_err_outbound" translatable="true">İstifadə oluna bilən çıxış yoxdur: vless, trojan və ya shadowsocks üçün server ünvanını və məlumatları yoxlayın</string>
+    <string name="xray_err_link" translatable="true">Yanlış link: host, port, məlumatlar və parametrləri yoxlayın</string>
+    <string name="xray_err_security" translatable="true">Dəstəklənməyən təhlükəsizlik: vless üçün reality və ya tls, trojan üçün yalnız tls</string>
+    <string name="xray_err_sni" translatable="true">TLS üçün server adı lazımdır: sni parametrini əlavə edin</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks açarının uzunluğu bu şifrə uyğun deyil</string>
+    <string name="xray_err_method" translatable="true">Dəstəklənməyən Shadowsocks şifrəsi: 2022-blake3 metodundan istifadə edin</string>
+    <string name="xray_err_transport" translatable="true">Dəstəklənməyən nəqletmə: tcp, ws və ya grpc istifadə edin</string>
+    <string name="xray_field_password" translatable="true">Parol</string>
+    <string name="xray_field_method" translatable="true">Şifrləmə metodu</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -52,4 +58,14 @@
     <string name="xray_off_confirm" translatable="true">VPN açıq olarkən Xray-i söndürmək trafiki Xray-siz birbaşa göndərəcək. Söndürülsün?</string>
     <string name="xray_err_dns" translatable="true">dns blokunu silin: DNS-i Xray yox, DNS Control həll edir</string>
     <string name="xray_err_rule" translatable="true">Marşrutlaşdırma qaydasında ip, domain və ya port olmalıdır və yalnız proxy və ya direct-ə göndərə bilər</string>
+    <string name="xray_profile_new" translatable="true">Yeni profil</string>
+    <string name="xray_profile_name" translatable="true">Profil %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Profilləri dəyişməzdən əvvəl Xray-i dayandırın</string>
+    <string name="xray_profile_unsaved" translatable="true">Əvvəl dəyişiklikləri yadda saxlayın və ya ləğv edin</string>
+    <string name="xray_profile_limit" translatable="true">Ən çox %1$d profil</string>
+    <string name="xray_profile_delete_msg" translatable="true">Bu profil silinsin?</string>
+    <string name="xray_scan" translatable="true">QR kodu oxut</string>
+    <string name="xray_scan_failed" translatable="true">Kameranı açmaq mümkün olmadı</string>
+    <string name="xray_share" translatable="true">Paylaşma linkini kopyala</string>
+    <string name="xray_share_copied" translatable="true">Paylaşma linki kopyalandı</string>
 </resources>

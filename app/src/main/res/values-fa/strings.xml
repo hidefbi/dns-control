@@ -597,8 +597,8 @@
     <string name="bl_update_uptodate_title" translatable="true">به‌روزرسانی‌ای یافت نشد</string>
     <string name="bl_update_failed_title" translatable="true">به‌روزرسانی فهرست مسدودسازی ناموفق بود</string>
     <string name="bl_update_retry" translatable="true">تلاش مجدد</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">لینک vless:// یا پیکربندی JSON مربوط به Xray را بچسبانید</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS، Trojan، Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">پیوند vless://، trojan:// یا ss:// یا پیکربندی JSON از Xray را بچسبانید</string>
     <string name="xray_status_on" translatable="true">Xray در حال اجراست</string>
     <string name="xray_status_off" translatable="true">Xray متوقف است</string>
     <string name="xray_start" translatable="true">شروع</string>
@@ -620,9 +620,15 @@
     <string name="xray_save_failed" translatable="true">ذخیره پروفایل ممکن نشد</string>
     <string name="xray_err_empty" translatable="true">چیزی برای چسباندن نیست: کلیپ‌بورد خالی است</string>
     <string name="xray_err_json" translatable="true">JSON نامعتبر: پرانتزها، ویرگول‌ها و نقل‌قول‌ها را بررسی کنید</string>
-    <string name="xray_err_outbound" translatable="true">خروجی VLESS قابل‌استفاده وجود ندارد: نشانی سرور، درگاه، UUID و publicKey لازم است</string>
-    <string name="xray_err_reality" translatable="true">فقط امنیت Reality پشتیبانی می‌شود: مقدار streamSettings.security را reality بگذارید</string>
-    <string name="xray_err_link" translatable="true">پیوند vless:// نامعتبر است: UUID، میزبان، درگاه و پارامترهای sni و pbk را بررسی کنید</string>
+    <string name="xray_err_outbound" translatable="true">خروجی قابل استفاده‌ای وجود ندارد: آدرس سرور و اطلاعات ورود vless، trojan یا shadowsocks را بررسی کنید</string>
+    <string name="xray_err_link" translatable="true">پیوند نامعتبر است: میزبان، پورت، اطلاعات ورود و پارامترها را بررسی کنید</string>
+    <string name="xray_err_security" translatable="true">امنیت پشتیبانی نمی‌شود: برای vless از reality یا tls و برای trojan فقط tls</string>
+    <string name="xray_err_sni" translatable="true">TLS به نام سرور نیاز دارد: پارامتر sni را اضافه کنید</string>
+    <string name="xray_err_key" translatable="true">طول کلید Shadowsocks با این رمزنگاری مطابقت ندارد</string>
+    <string name="xray_err_method" translatable="true">رمزنگاری Shadowsocks پشتیبانی نمی‌شود: از روش 2022-blake3 استفاده کنید</string>
+    <string name="xray_err_transport" translatable="true">انتقال پشتیبانی نمی‌شود: از tcp، ws یا grpc استفاده کنید</string>
+    <string name="xray_field_password" translatable="true">رمز عبور</string>
+    <string name="xray_field_method" translatable="true">روش رمزنگاری</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -642,4 +648,14 @@
     <string name="xray_off_confirm" translatable="true">خاموش کردن Xray وقتی VPN روشن است، ترافیک را مستقیم و بدون Xray می‌فرستد. خاموش شود؟</string>
     <string name="xray_err_dns" translatable="true">بلوک dns را حذف کنید: DNS را DNS Control حل می‌کند، نه Xray</string>
     <string name="xray_err_rule" translatable="true">قانون مسیریابی باید ip، domain یا port داشته باشد و فقط می‌تواند به proxy یا direct بفرستد</string>
+    <string name="xray_profile_new" translatable="true">پروفایل جدید</string>
+    <string name="xray_profile_name" translatable="true">پروفایل %1$d</string>
+    <string name="xray_profile_busy" translatable="true">برای تغییر پروفایل، Xray را متوقف کنید</string>
+    <string name="xray_profile_unsaved" translatable="true">ابتدا تغییرات را ذخیره یا لغو کنید</string>
+    <string name="xray_profile_limit" translatable="true">حداکثر %1$d پروفایل</string>
+    <string name="xray_profile_delete_msg" translatable="true">این پروفایل حذف شود؟</string>
+    <string name="xray_scan" translatable="true">اسکن QR</string>
+    <string name="xray_scan_failed" translatable="true">دوربین باز نشد</string>
+    <string name="xray_share" translatable="true">کپی لینک اشتراک</string>
+    <string name="xray_share_copied" translatable="true">لینک اشتراک کپی شد</string>
 </resources>

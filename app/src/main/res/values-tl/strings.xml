@@ -120,8 +120,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Walang nakitang update</string>
     <string name="bl_update_failed_title" translatable="true">Nabigo ang pag-update ng blocklist</string>
     <string name="bl_update_retry" translatable="true">Subukan muli</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">I-paste ang vless:// link o ang Xray JSON config</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">I-paste ang vless://, trojan:// o ss:// na link, o Xray JSON config</string>
     <string name="xray_status_on" translatable="true">Tumatakbo ang Xray</string>
     <string name="xray_status_off" translatable="true">Huminto ang Xray</string>
     <string name="xray_start" translatable="true">Simulan</string>
@@ -143,9 +143,15 @@
     <string name="xray_save_failed" translatable="true">Hindi na-save ang profile</string>
     <string name="xray_err_empty" translatable="true">Walang ipapaste: walang laman ang clipboard</string>
     <string name="xray_err_json" translatable="true">Hindi valid ang JSON: suriin ang mga bracket, comma, at quotation mark</string>
-    <string name="xray_err_outbound" translatable="true">Walang magamit na VLESS outbound: kailangan ang address ng server, port, UUID, at publicKey</string>
-    <string name="xray_err_reality" translatable="true">Reality security lang ang suportado: itakda ang streamSettings.security sa reality</string>
-    <string name="xray_err_link" translatable="true">Hindi valid ang vless:// link: suriin ang UUID, host, port, at ang sni at pbk na parameter</string>
+    <string name="xray_err_outbound" translatable="true">Walang magagamit na outbound: tingnan ang address ng server at credentials para sa vless, trojan, o shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Hindi wastong link: tingnan ang host, port, credentials, at mga parameter</string>
+    <string name="xray_err_security" translatable="true">Hindi suportadong seguridad: reality o tls para sa vless, tls lang para sa trojan</string>
+    <string name="xray_err_sni" translatable="true">Kailangan ng TLS ang pangalan ng server: idagdag ang parameter na sni</string>
+    <string name="xray_err_key" translatable="true">Hindi tugma ang haba ng Shadowsocks key sa cipher na ito</string>
+    <string name="xray_err_method" translatable="true">Hindi suportadong Shadowsocks cipher: gumamit ng 2022-blake3 method</string>
+    <string name="xray_err_transport" translatable="true">Hindi suportadong transport: gumamit ng tcp, ws, o grpc</string>
+    <string name="xray_field_password" translatable="true">Password</string>
+    <string name="xray_field_method" translatable="true">Paraan ng encryption</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -165,4 +171,14 @@
     <string name="xray_off_confirm" translatable="true">Ang pag-off ng Xray habang naka-on ang VPN ay magpapadala ng trapiko nang direkta, nang walang Xray. I-off?</string>
     <string name="xray_err_dns" translatable="true">Alisin ang dns block: DNS ay nireresolba ng DNS Control, hindi ng Xray</string>
     <string name="xray_err_rule" translatable="true">Ang routing rule ay kailangan ng ip, domain, o port, at puwede lang magpadala sa proxy o direct</string>
+    <string name="xray_profile_new" translatable="true">Bagong profile</string>
+    <string name="xray_profile_name" translatable="true">Profile %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Ihinto ang Xray bago magpalit ng profile</string>
+    <string name="xray_profile_unsaved" translatable="true">I-save o itapon muna ang mga pagbabago</string>
+    <string name="xray_profile_limit" translatable="true">Hanggang %1$d profile</string>
+    <string name="xray_profile_delete_msg" translatable="true">Burahin ang profile na ito?</string>
+    <string name="xray_scan" translatable="true">I-scan ang QR</string>
+    <string name="xray_scan_failed" translatable="true">Hindi mabuksan ang camera</string>
+    <string name="xray_share" translatable="true">Kopyahin ang share link</string>
+    <string name="xray_share_copied" translatable="true">Nakopya ang link</string>
 </resources>

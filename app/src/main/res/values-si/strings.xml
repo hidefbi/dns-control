@@ -128,8 +128,8 @@
     <string name="bl_update_uptodate_title" translatable="true">යාවත්කාලීන කිසිවක් හමු නොවීය</string>
     <string name="bl_update_failed_title" translatable="true">බ්ලොක්ලිස්ට් යාවත්කාලීනය අසාර්ථකයි</string>
     <string name="bl_update_retry" translatable="true">නැවත උත්සාහ කරන්න</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">vless:// සබැඳිය හෝ Xray JSON වින්‍යාසය ඇලවන්න</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">vless://, trojan:// හෝ ss:// සබැඳිය, නැතහොත් Xray JSON වින්‍යාසය ඇලවන්න</string>
     <string name="xray_status_on" translatable="true">Xray ධාවනය වේ</string>
     <string name="xray_status_off" translatable="true">Xray නවත්වා ඇත</string>
     <string name="xray_start" translatable="true">ආරම්භ</string>
@@ -151,9 +151,15 @@
     <string name="xray_save_failed" translatable="true">පැතිකඩ සුරැකිය නොහැකි විය</string>
     <string name="xray_err_empty" translatable="true">අලවන්න කිසිවක් නැත: පසුරු පුවරුව හිස්ය</string>
     <string name="xray_err_json" translatable="true">වලංගු නොවන JSON: වරහන්, කොමා සහ උද්ධෘත පරීක්ෂා කරන්න</string>
-    <string name="xray_err_outbound" translatable="true">භාවිත කළ හැකි VLESS ප්‍රතිදානයක් නැත: සේවා ලිපිනය, තොට, UUID සහ publicKey අවශ්‍යයි</string>
-    <string name="xray_err_reality" translatable="true">Reality ආරක්ෂාව පමණක් සහාය දක්වයි: streamSettings.security reality ලෙස සකසන්න</string>
-    <string name="xray_err_link" translatable="true">වලංගු නොවන vless:// සබැඳිය: UUID, සත්කාරක, තොට සහ sni, pbk පරාමිතික පරීක්ෂා කරන්න</string>
+    <string name="xray_err_outbound" translatable="true">භාවිත කළ හැකි outbound නැත: vless, trojan හෝ shadowsocks සඳහා සේවාදායක ලිපිනය සහ අක්තපත්‍ර පරීක්ෂා කරන්න</string>
+    <string name="xray_err_link" translatable="true">වලංගු නොවන සබැඳිය: host, port, අක්තපත්‍ර සහ පරාමිති පරීක්ෂා කරන්න</string>
+    <string name="xray_err_security" translatable="true">සහාය නැති ආරක්ෂාව: vless සඳහා reality හෝ tls, trojan සඳහා tls පමණයි</string>
+    <string name="xray_err_sni" translatable="true">TLS සඳහා සේවාදායක නමක් අවශ්‍යයි: sni පරාමිතිය එක් කරන්න</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks යතුරේ දිග මෙම cipher සමඟ ගැළපෙන්නේ නැත</string>
+    <string name="xray_err_method" translatable="true">සහාය නැති Shadowsocks cipher: 2022-blake3 ක්‍රමය භාවිත කරන්න</string>
+    <string name="xray_err_transport" translatable="true">සහාය නැති transport: tcp, ws හෝ grpc භාවිත කරන්න</string>
+    <string name="xray_field_password" translatable="true">මුරපදය</string>
+    <string name="xray_field_method" translatable="true">සංකේතන ක්‍රමය</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -173,4 +179,14 @@
     <string name="xray_off_confirm" translatable="true">VPN ක්‍රියාත්මක විට Xray අක්‍රිය කිරීමෙන් දත්ත Xray හරහා නොගොස් කෙලින්ම යයි. අක්‍රිය කරන්නද?</string>
     <string name="xray_err_dns" translatable="true">dns අවහිරය ඉවත් කරන්න: DNS විසඳන්නේ Xray නොව DNS Control</string>
     <string name="xray_err_rule" translatable="true">මාර්ගගත රීතියට ip, domain හෝ port අවශ්‍යයි, සහ proxy හෝ direct වෙත පමණක් යැවිය හැක</string>
+    <string name="xray_profile_new" translatable="true">නව පැතිකඩ</string>
+    <string name="xray_profile_name" translatable="true">පැතිකඩ %1$d</string>
+    <string name="xray_profile_busy" translatable="true">පැතිකඩ වෙනස් කිරීමට පෙර Xray නවත්වන්න</string>
+    <string name="xray_profile_unsaved" translatable="true">පළමුව වෙනස්කම් සුරකින්න හෝ ඉවත ලන්න</string>
+    <string name="xray_profile_limit" translatable="true">පැතිකඩ %1$d දක්වා</string>
+    <string name="xray_profile_delete_msg" translatable="true">මෙම පැතිකඩ මකන්නද?</string>
+    <string name="xray_scan" translatable="true">QR ස්කෑන් කරන්න</string>
+    <string name="xray_scan_failed" translatable="true">කැමරාව විවෘත කළ නොහැක</string>
+    <string name="xray_share" translatable="true">බෙදාගැනීමේ සබැඳිය පිටපත් කරන්න</string>
+    <string name="xray_share_copied" translatable="true">සබැඳිය පිටපත් කරන ලදී</string>
 </resources>

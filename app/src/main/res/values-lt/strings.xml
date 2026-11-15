@@ -528,8 +528,8 @@
     <string name="bl_update_uptodate_title" translatable="true">Naujinimų nerasta</string>
     <string name="bl_update_failed_title" translatable="true">Blokavimo sąrašo atnaujinti nepavyko</string>
     <string name="bl_update_retry" translatable="true">Bandyti dar kartą</string>
-    <string name="xray_entry" translatable="true">Xray (VLESS+Reality)</string>
-    <string name="xray_hint" translatable="true">Įklijuokite vless:// nuorodą arba Xray JSON konfigūraciją</string>
+    <string name="xray_entry" translatable="true">Xray (VLESS, Trojan, Shadowsocks)</string>
+    <string name="xray_hint" translatable="true">Įklijuokite vless://, trojan:// ar ss:// nuorodą arba Xray JSON konfigūraciją</string>
     <string name="xray_status_on" translatable="true">Xray veikia</string>
     <string name="xray_status_off" translatable="true">Xray sustabdytas</string>
     <string name="xray_start" translatable="true">Paleisti</string>
@@ -551,9 +551,15 @@
     <string name="xray_save_failed" translatable="true">Nepavyko įrašyti profilio</string>
     <string name="xray_err_empty" translatable="true">Nėra ką įklijuoti: iškarpinė tuščia</string>
     <string name="xray_err_json" translatable="true">Netinkamas JSON: patikrinkite skliaustus, kablelius ir kabutes</string>
-    <string name="xray_err_outbound" translatable="true">Nėra tinkamo VLESS išvesties: reikia serverio adreso, prievado, UUID ir publicKey</string>
-    <string name="xray_err_reality" translatable="true">Palaikomas tik Reality saugumas: nustatykite streamSettings.security į reality</string>
-    <string name="xray_err_link" translatable="true">Netinkama vless:// nuoroda: patikrinkite UUID, serverį, prievadą ir sni bei pbk parametrus</string>
+    <string name="xray_err_outbound" translatable="true">Nėra tinkamo išvesties kanalo: patikrinkite serverio adresą ir prisijungimo duomenis vless, trojan ar shadowsocks</string>
+    <string name="xray_err_link" translatable="true">Netinkama nuoroda: patikrinkite serverį, prievadą, prisijungimo duomenis ir parametrus</string>
+    <string name="xray_err_security" translatable="true">Nepalaikomas saugumo režimas: vless – reality arba tls, trojan – tik tls</string>
+    <string name="xray_err_sni" translatable="true">TLS reikia serverio pavadinimo: pridėkite parametrą sni</string>
+    <string name="xray_err_key" translatable="true">Shadowsocks rakto ilgis netinka šiam šifrui</string>
+    <string name="xray_err_method" translatable="true">Nepalaikomas Shadowsocks šifras: naudokite 2022-blake3 metodą</string>
+    <string name="xray_err_transport" translatable="true">Nepalaikomas transportas: naudokite tcp, ws arba grpc</string>
+    <string name="xray_field_password" translatable="true">Slaptažodis</string>
+    <string name="xray_field_method" translatable="true">Šifravimo metodas</string>
     <string name="xray_back" translatable="true">Back</string>
     <string name="xray_err_placeholder" translatable="true">%1$d value(s) still to fill in: the highlighted REPLACE_ items</string>
     <string name="xray_progress_title" translatable="true">Fill-in progress</string>
@@ -573,4 +579,14 @@
     <string name="xray_off_confirm" translatable="true">Išjungus Xray, kai VPN įjungtas, duomenys keliaus tiesiai, nenaudodami Xray. Išjungti?</string>
     <string name="xray_err_dns" translatable="true">Pašalinkite dns bloką: DNS tvarko DNS Control, o ne Xray</string>
     <string name="xray_err_rule" translatable="true">Maršruto taisyklei reikia ip, domain arba port, ir ji gali siųsti tik į proxy arba direct</string>
+    <string name="xray_profile_new" translatable="true">Naujas profilis</string>
+    <string name="xray_profile_name" translatable="true">Profilis %1$d</string>
+    <string name="xray_profile_busy" translatable="true">Prieš keisdami profilį, sustabdykite Xray</string>
+    <string name="xray_profile_unsaved" translatable="true">Pirmiausia išsaugokite arba atmeskite pakeitimus</string>
+    <string name="xray_profile_limit" translatable="true">Daugiausia %1$d profilių</string>
+    <string name="xray_profile_delete_msg" translatable="true">Ištrinti šį profilį?</string>
+    <string name="xray_scan" translatable="true">Skenuoti QR</string>
+    <string name="xray_scan_failed" translatable="true">Nepavyko atidaryti kameros</string>
+    <string name="xray_share" translatable="true">Kopijuoti bendrinimo nuorodą</string>
+    <string name="xray_share_copied" translatable="true">Nuoroda nukopijuota</string>
 </resources>
