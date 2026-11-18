@@ -16,7 +16,6 @@
 package com.celzero.bravedns.service
 
 import android.content.Context
-import android.util.Log
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.ProxyEndpoint
@@ -50,7 +49,6 @@ class XrayController(
         /** Name of the SOCKS5 row that xray uses while it runs. */
         const val PROXY_NAME = "XRAY"
 
-        private const val TAG = "XrayController"
         // restarts allowed within one window before xray is left down (fail closed)
         private const val MAX_RESTARTS = 3
         private const val RESTART_WINDOW_MS = 60_000L
@@ -143,18 +141,16 @@ class XrayController(
      * fails rather than going direct. xray is restarted a few times; after that it stays down.
      */
     private fun onXrayExited(code: Int) {
-        Log.w(TAG, "xray exited on its own, code: $code")
         scope.launch {
             lock.withLock {
                 if (!persistentState.xrayEnabled) return@withLock
                 if (System.currentTimeMillis() - lastStartMs > RESTART_WINDOW_MS) restarts = 0
                 if (restarts >= MAX_RESTARTS) {
-                    Log.e(TAG, "xray restart limit reached, leaving it stopped")
                     return@withLock
                 }
                 restarts++
                 delay(RESTART_DELAY_MS)
-                startRunning().onFailure { Log.e(TAG, "xray restart failed: ${it.message}") }
+                startRunning()
             }
         }
     }

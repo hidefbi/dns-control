@@ -290,8 +290,8 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
     // biometric last auth time
     var biometricAuthTime by longPref("biometric_auth_time").withDefault<Long>(INIT_TIME_MS)
 
-    // go logger level, default 3 -> info
-    var goLoggerLevel by longPref("go_logger_level").withDefault<Long>(3)
+    // go logger level, default 8 -> none
+    var goLoggerLevel by longPref("go_logger_level").withDefault<Long>(8)
 
 
     // previous data usage check timestamp

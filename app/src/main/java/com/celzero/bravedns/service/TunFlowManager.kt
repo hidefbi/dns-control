@@ -48,7 +48,6 @@ import com.celzero.bravedns.util.UIUtils.getAccentColor
 import com.celzero.bravedns.util.Utilities
 import com.celzero.bravedns.util.Utilities.isAtleastO
 import com.celzero.bravedns.util.Utilities.isAtleastQ
-import com.celzero.bravedns.util.Utilities.isPlayStoreFlavour
 import com.celzero.bravedns.util.Utilities.isUnspecifiedIp
 import com.celzero.firestack.backend.Backend
 import com.celzero.firestack.intra.FlowSummary
@@ -337,10 +336,9 @@ object TunFlowManager : KoinComponent {
         // TODO: handle multiple domains, for now, use the first domain
         var domains = d?.split(",") ?: emptyList()
         if (domains.isEmpty()) {
-            // add probableDomains in case of empty domains, do this only when the log level is
-            // debug or below, and when in play-version.
-            val canAddProbableDomains = isPlayStoreFlavour() || Logger.LoggerLevel.fromId(persistentState.goLoggerLevel.toInt())
-                ?.isLessThanOrEqualTo(Logger.LoggerLevel.DEBUG) == true
+            // probable domains are off for now. the old gate read the go log level, which is
+            // not a privacy setting, so it is switched off until it is decoupled.
+            val canAddProbableDomains = false
             if (canAddProbableDomains) {
                 domains = probableDomains?.split(",") ?: emptyList()
             }

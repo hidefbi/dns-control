@@ -196,7 +196,7 @@ object XrayConfig {
         """
         {
           "log": {
-            "loglevel": "warning"
+            "loglevel": "none"
           },
           "inbounds": [
             {
@@ -1022,7 +1022,7 @@ object XrayConfig {
     fun buildConfig(server: Server, extraRules: String = "", auth: LocalAuth? = null): String {
         return """
             {
-              "log": {"loglevel": "warning"},
+              "log": {"loglevel": "none"},
               "inbounds": [${inbound(auth)}],
               "outbounds": [
                 ${outboundJson(server)},

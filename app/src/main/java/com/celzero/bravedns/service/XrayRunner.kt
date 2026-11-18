@@ -16,8 +16,6 @@
 package com.celzero.bravedns.service
 
 import android.content.Context
-import android.util.Log
-import com.celzero.bravedns.BuildConfig
 import com.celzero.bravedns.R
 import com.celzero.bravedns.util.SecretBox
 import com.celzero.bravedns.util.XrayConfig
@@ -34,9 +32,7 @@ import org.json.JSONObject
 class XrayRunner(private val context: Context) {
 
     companion object {
-        private const val TAG = "XrayRunner"
         // xray-core output goes to its own tag so it is visible in logcat
-        private const val CORE_TAG = "XrayCore"
         private const val BINARY_NAME = "libxray.so"
         private const val DIR_NAME = "xray"
         // one file from before profiles existed; moved into the list on first use
@@ -192,7 +188,6 @@ class XrayRunner(private val context: Context) {
             val plain = SecretBox.decrypt(profilesFile.readText())
             if (plain == null) Store(null, mutableListOf()) else parseStore(plain)
         } catch (e: Exception) {
-            Log.w(TAG, "read profiles failed: ${e.message}", e)
             Store(null, mutableListOf())
         }
     }
@@ -227,7 +222,6 @@ class XrayRunner(private val context: Context) {
                 false
             }
         } catch (e: Exception) {
-            Log.w(TAG, "write profiles failed: ${e.message}", e)
             false
         }
     }
@@ -248,7 +242,6 @@ class XrayRunner(private val context: Context) {
             if (!profileFile.exists()) return null
             SecretBox.decrypt(profileFile.readText())
         } catch (e: Exception) {
-            Log.w(TAG, "read profile failed: ${e.message}", e)
             null
         }
     }
@@ -335,14 +328,12 @@ class XrayRunner(private val context: Context) {
 
     private fun streamOutput(proc: Process) {
         Thread {
-                // xray output can name destinations, so it is only shown in debug builds.
-                // the stream closes when the process exits, which ends this reader
+                // output is not kept: it can name destinations. it is read only so the pipe
+                // never fills up. the stream closes when the process exits, which ends this reader
                 try {
-                    proc.inputStream.bufferedReader().forEachLine {
-                        if (BuildConfig.DEBUG) Log.i(CORE_TAG, it)
-                    }
+                    proc.inputStream.bufferedReader().forEachLine {}
                 } catch (e: Exception) {
-                    if (BuildConfig.DEBUG) Log.i(TAG, "xray output closed: ${e.message}")
+                    // closed with the process, nothing to do
                 }
             }
             .apply {
@@ -370,7 +361,6 @@ class XrayRunner(private val context: Context) {
                     }
                 }
                 if (unexpected) {
-                    Log.w(TAG, "xray exited on its own, code: $code")
                     onUnexpectedExit?.invoke(code)
                 }
             }
