@@ -7,6 +7,10 @@ transports and lets you decide which apps may reach the network.
 > This is an unofficial fork. It is not affiliated with or endorsed by RethinkDNS,
 > BraveDNS, or any DNS provider. See [NOTICE](NOTICE) for details.
 
+<p align="center">
+  <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" alt="DNS Control home screen" width="280">
+</p>
+
 ## Features
 
 - Encrypted DNS over DNS-over-HTTPS, DNS-over-TLS, ODoH and DNSCrypt. ODoH and
