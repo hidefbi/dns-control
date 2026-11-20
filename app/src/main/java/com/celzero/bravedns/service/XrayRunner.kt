@@ -43,14 +43,13 @@ class XrayRunner(private val context: Context) {
         // more profiles than this would clutter the switcher
         const val MAX_PROFILES = 10
         private const val NAME_MAX = 40
+        // plaintext configs from older versions: removed on start, never written now
         private const val CONFIG_NAME = "config.json"
         private const val CONFIG_TMP_NAME = "config.json.tmp"
         // time xray gets to exit after a stop before it is killed
         private const val STOP_GRACE_MS = 2000L
         // time given to a previous xray to release the local port before it is killed
         private const val REAP_WAIT_MS = 3000L
-        // the plaintext config is only needed until xray has read it
-        private const val CONFIG_KEEP_MS = 2000L
 
         private val random = SecureRandom()
         // the profile list is shared by the service and the settings page, so it has one lock
@@ -99,14 +98,14 @@ class XrayRunner(private val context: Context) {
     /** All saved profiles, in the order they were added. */
     fun profiles(): List<Profile> {
         synchronized(storeLock) {
-            return readStore().items.toList()
+            return loadStore()?.items?.toList() ?: emptyList()
         }
     }
 
     /** The profile xray runs, or null when there is none. */
     fun activeProfile(): Profile? {
         synchronized(storeLock) {
-            val s = readStore()
+            val s = loadStore() ?: return null
             return s.items.firstOrNull { it.id == s.active }
         }
     }
@@ -117,7 +116,7 @@ class XrayRunner(private val context: Context) {
     /** Replaces the active profile's text, or creates the first profile when there is none. */
     fun saveProfile(input: String): Boolean {
         synchronized(storeLock) {
-            val s = readStore()
+            val s = loadStore() ?: return false
             val i = s.items.indexOfFirst { it.id == s.active }
             if (i >= 0) {
                 s.items[i] = s.items[i].copy(text = input)
@@ -134,7 +133,7 @@ class XrayRunner(private val context: Context) {
     fun addProfile(input: String): Profile? {
         synchronized(storeLock) {
             if (isRunning()) return null
-            val s = readStore()
+            val s = loadStore() ?: return null
             if (s.items.size >= MAX_PROFILES) return null
             val added = newProfile(s, input)
             s.items.add(added)
@@ -147,7 +146,7 @@ class XrayRunner(private val context: Context) {
     fun selectProfile(id: String): Boolean {
         synchronized(storeLock) {
             if (isRunning()) return false
-            val s = readStore()
+            val s = loadStore() ?: return false
             if (s.items.none { it.id == id }) return false
             s.active = id
             return writeStore(s)
@@ -158,7 +157,7 @@ class XrayRunner(private val context: Context) {
     fun deleteProfile(id: String): Boolean {
         synchronized(storeLock) {
             if (isRunning()) return false
-            val s = readStore()
+            val s = loadStore() ?: return false
             if (!s.items.removeAll { it.id == id }) return false
             if (s.active == id) s.active = s.items.firstOrNull()?.id
             return writeStore(s)
@@ -182,13 +181,17 @@ class XrayRunner(private val context: Context) {
         }
     }
 
-    private fun readStore(): Store {
+    /**
+     * The saved list, or null when the file exists but cannot be decrypted or parsed. Callers
+     * must not write when this is null: a write would replace the list the user still has.
+     */
+    private fun loadStore(): Store? {
         if (!profilesFile.exists()) return migrateLegacy()
         return try {
-            val plain = SecretBox.decrypt(profilesFile.readText())
-            if (plain == null) Store(null, mutableListOf()) else parseStore(plain)
+            val plain = SecretBox.decrypt(profilesFile.readText()) ?: return null
+            parseStore(plain)
         } catch (e: Exception) {
-            Store(null, mutableListOf())
+            null
         }
     }
 
@@ -211,8 +214,8 @@ class XrayRunner(private val context: Context) {
             items.put(JSONObject().put("id", it.id).put("name", it.name).put("text", it.text))
         }
         val json = JSONObject().put("active", s.active ?: "").put("items", items).toString()
-        val encrypted = SecretBox.encrypt(json) ?: return false
         return try {
+            val encrypted = SecretBox.encrypt(json) ?: return false
             // temp file and rename, so a crash never leaves a half-written list
             profilesTmpFile.writeText(encrypted)
             if (profilesTmpFile.renameTo(profilesFile)) {
@@ -260,6 +263,9 @@ class XrayRunner(private val context: Context) {
             return Result.failure(IllegalStateException("xray binary not found"))
         }
         reapExiting()
+        // plaintext configs left by older versions are removed; none is written any more
+        configFile.delete()
+        tmpConfigFile.delete()
 
         val creds = XrayConfig.LocalAuth(randomHex(8), randomHex(24))
         val config =
@@ -270,25 +276,22 @@ class XrayRunner(private val context: Context) {
             }
 
         return try {
-            // written to a temp file and renamed into place, so a crash never leaves a partial file
-            tmpConfigFile.writeText(config)
-            tmpConfigFile.setReadable(false, false)
-            tmpConfigFile.setReadable(true, true)
-            if (!tmpConfigFile.renameTo(configFile)) {
-                tmpConfigFile.delete()
-                return Result.failure(IllegalStateException("config write failed"))
-            }
-
+            // the config goes to xray on stdin, so it never touches the disk
             val started =
-                ProcessBuilder(binary.absolutePath, "run", "-c", configFile.absolutePath)
+                ProcessBuilder(binary.absolutePath, "run", "-c", "stdin:")
                     .directory(dir)
                     .redirectErrorStream(true)
                     .start()
+            try {
+                started.outputStream.use { it.write(config.toByteArray(Charsets.UTF_8)) }
+            } catch (e: Exception) {
+                started.destroyForcibly()
+                throw e
+            }
             process = started
             auth = creds
             streamOutput(started)
             watchExit(started)
-            dropConfigLater(started)
             Result.success(Unit)
         } catch (e: Exception) {
             Result.failure(e)
@@ -300,8 +303,6 @@ class XrayRunner(private val context: Context) {
         val proc = process
         process = null
         auth = null
-        // the config holds credentials: its plaintext copy goes away with the process
-        configFile.delete()
         if (proc == null) return
         proc.destroy()
         exiting = proc
@@ -356,30 +357,11 @@ class XrayRunner(private val context: Context) {
                     if (process === proc) {
                         process = null
                         auth = null
-                        configFile.delete()
                         unexpected = true
                     }
                 }
                 if (unexpected) {
                     onUnexpectedExit?.invoke(code)
-                }
-            }
-            .apply {
-                isDaemon = true
-                start()
-            }
-    }
-
-    /** Removes the plaintext config once xray has had time to read it. */
-    private fun dropConfigLater(proc: Process) {
-        Thread {
-                try {
-                    Thread.sleep(CONFIG_KEEP_MS)
-                } catch (e: InterruptedException) {
-                    // nothing to do: the config is removed by stop() or by the exit watcher
-                }
-                synchronized(this@XrayRunner) {
-                    if (process === proc) configFile.delete()
                 }
             }
             .apply {

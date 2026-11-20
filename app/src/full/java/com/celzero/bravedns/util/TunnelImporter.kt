@@ -149,7 +149,6 @@ object TunnelImporter : KoinComponent {
     suspend fun importTunnel(configText: String, messageCallback: (CharSequence) -> Unit) {
         withContext(Dispatchers.IO) {
             try {
-                Logger.d(LOG_TAG_PROXY, "Importing tunnel: $configText")
                 val config =
                     Config.parse(
                         ByteArrayInputStream(configText.toByteArray(StandardCharsets.UTF_8))
@@ -170,8 +169,7 @@ object TunnelImporter : KoinComponent {
         for (throwable in throwables) {
             val error = ErrorMessages[context, throwable]
             message = context.getString(R.string.import_error, error)
-            val ex = Logger.throwableToException(throwable)
-            Logger.e(LOG_TAG_PROXY, message, ex)
+            Logger.e(LOG_TAG_PROXY, message)
         }
         // trim the message and take string after ":"
         val idx = message.indexOf(':')
