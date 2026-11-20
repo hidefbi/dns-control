@@ -1,11 +1,8 @@
 # DNS Control
 
-An unofficial, privacy-focused Android DNS and per-app firewall, based on
-RethinkDNS. DNS Control runs a local VPN service that resolves DNS over encrypted
-transports and lets you decide which apps may reach the network.
-
-> This is an unofficial fork. It is not affiliated with or endorsed by RethinkDNS,
-> BraveDNS, or any DNS provider. See [NOTICE](NOTICE) for details.
+A privacy-focused Android DNS and per-app firewall. DNS Control runs a local VPN
+service that sends your DNS queries to the resolver you choose, and lets you decide
+which apps can reach the network.
 
 <p align="center">
   <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.jpg" alt="DNS Control home screen" width="280">
@@ -13,148 +10,54 @@ transports and lets you decide which apps may reach the network.
 
 ## Features
 
-- Encrypted DNS over HTTPS, DNS over TLS, Oblivious DNS over HTTPS (ODoH) and
-  DNSCrypt. DNSCrypt and ODoH servers and relays are not built in; see
-  [DNSCrypt and ODoH servers](#dnscrypt-and-odoh-servers).
-- Plain DNS on port 53 for custom resolvers that have no encrypted option.
-- Built-in presets: Quad9 (Classic and ECS) and Cloudflare over HTTPS, and Quad9
-  (Classic and ECS) over TLS. You can add your own resolvers.
-- Fail-closed encrypted DNS: if the selected encrypted resolver fails, the app
-  does not silently switch to system DNS.
-- Optional on-device blocklists for ads, trackers, malware and phishing.
-- Per-app firewall rules, plus custom domain and IP rules.
-- Proxies: custom SOCKS5 and HTTP proxies, Orbot (Tor) as SOCKS5 or HTTP, and
-  WireGuard. WireGuard configs can be imported from a file or pasted text.
-- Xray profiles: VLESS (REALITY or TLS), Trojan (TLS) and Shadowsocks 2022, over
-  tcp, ws or grpc where the protocol allows it. While Xray is on, it runs on the
-  device as a local SOCKS5 proxy. Xray-core is bundled in the APK; see
-  [NOTICE](NOTICE).
-- Optional global lockdown. DNS does not leave the device directly while it is on.
-  See [Lockdown](#lockdown).
-- Optional TCP dial and retry strategies (split, desync) for networks that
-  interfere with connections.
-- No Firebase or Google services are configured.
-- Connection, DNS query and diagnostic logs are not stored or uploaded.
-- Manual app update check against GitHub Releases. Nothing is checked or installed
-  automatically; each update must be confirmed by the user.
+- **Encrypted DNS**: DNS over HTTPS, DNS over TLS, Oblivious DNS over HTTPS (ODoH)
+  and DNSCrypt, with custom resolvers and relays.
+- **Plain DNS** on port 53, for resolvers without encryption.
+- **Fail-closed**: if the encrypted resolver you picked fails, DNS does not quietly
+  fall back to system DNS.
+- **Presets**: Quad9 and Cloudflare to start with. Add your own anytime.
+- **Blocklists**: optional on-device lists for ads, trackers, malware and phishing.
+- **Per-app firewall**, plus custom domain and IP rules.
+- **Proxies**: SOCKS5, HTTP, Orbot (Tor) and WireGuard. WireGuard configs can be
+  imported from a file or pasted text.
+- **Xray**: VLESS (REALITY or TLS), Trojan and Shadowsocks 2022. Xray runs on the
+  device as a local SOCKS5 proxy.
+- **Lockdown**: when on, DNS only goes through your WireGuard or SOCKS5 proxy.
+- **TCP dial strategies**: optional split and desync options, with retry settings.
+- **No logs, no Google**: connection and DNS logs are not stored or uploaded, and
+  there is no Firebase or Google service in the app.
+- **Manual updates**: the app checks GitHub only when you ask, and never installs
+  anything on its own.
 
-## Ad, tracker and malware blocking
+## Blocklists
 
-DNS Control can block known advertising, tracking, malware and phishing domains
-at the DNS level. Blocking is optional and is configured on the local blocklists
-screen.
-
-### How it works
-
-1. The app downloads a prepared set of blocklist files from the project's
-   download host, `https://hidefbi.github.io/rules-old`. The set is built from
-   public third-party blocklists (see [Sources and licenses](#sources-and-licenses)).
-2. The domain lists are stored on the device as a compressed trie, a tree of
-   domain-name labels that can be searched quickly. A rank file and a tag file
-   describe the lists, and a basic configuration file holds the default settings.
-3. When an app resolves a name, the query is checked against the local trie. A
-   match receives a blocked answer; a non-match is resolved by the selected DNS
-   resolver as usual.
-
-Matching happens on the device. The lookup does not send the queried name to a
-blocking service. Blocking applies to DNS queries only. It does not block traffic
-to a server whose IP address an app already has, and it cannot inspect encrypted
-content.
-
-### Updates and verification
-
-The app checks for a newer blocklist set approximately every 3 days. The check
-sends the app version code (`vcode`) and the timestamp of the currently installed
-set (`tstamp`) to `update/blocklists` on the download host. The check only
-determines whether an update is available; it does not download anything. The
-download is started from the local blocklists screen.
-
-A download first fetches the manifest, `index.json`, and its signature,
-`index.json.sig`. Each file that is already installed and whose size and SHA-256
-hash match the new manifest is reused and not downloaded again. Only changed files
-are fetched. Because `trie` is a single file, any change to the lists requires it
-to be downloaded again. The optional Android Download Manager mode, which is off
-by default, always downloads the full set.
-
-Before a new set is activated, the app verifies it:
-
-- `index.json` must carry a valid ECDSA P-256 / SHA-256 signature in
-  `index.json.sig`, made with the project key. The public key is compiled into
-  the app.
-- The `blocklists`, `basicconfig`, `rank` and `trie` files must match the size
-  and SHA-256 hash recorded in `index.json`.
-- The set's sequence number must match the update being installed and must not be
-  older than the last accepted set. This prevents rollback to an older set.
-
-If any check fails, the new set is discarded and the current set remains active.
-
-### Download size
-
-The size of the published set changes with each rebuild, so it is not listed
-here. The current file sizes are in the
-[`index.json` manifest](https://hidefbi.github.io/rules-old/index.json) and are
-described in the [rules-old README](https://github.com/hidefbi/rules-old#readme).
-
-The download is written to temporary storage before it is copied into the app's
-storage, so free space of roughly the size of the set is needed while an update
-is in progress.
-
-### Sources and licenses
-
-The lists are compiled from public blocklists maintained by their respective
-authors, including StevenBlack, HaGeZi, OISD, NextDNS, EasyList and EasyPrivacy, The Block
-List Project, Disconnect, Peter Lowe and others. The full list of upstream URLs
-and groups (Security, Privacy and ParentalControl) is maintained in the
-[rules-old README](https://github.com/hidefbi/rules-old#readme). The build pipeline
-is documented in [dns-rules-builder](https://github.com/hidefbi/dns-rules-builder).
-
-Each upstream list remains under its own license and terms. The compiler used to
-build the files is derived from serverless-dns/blocklists and is licensed under
-MPL-2.0. This project does not claim ownership of any upstream list. Check the
-upstream license before redistributing a list.
-
-Blocklists can cause false positives. If a site stops working, change the selected
-lists in the app.
+Blocklists are optional. The app downloads a signed set built from public lists
+(StevenBlack, HaGeZi, OISD and others), checks the signature, and then matches
+queries on the device. Each upstream list keeps its own license. Sources and the
+build pipeline are in the [rules-old README](https://github.com/hidefbi/rules-old#readme).
 
 ## DNSCrypt and ODoH servers
 
-The app does not ship with DNSCrypt or ODoH servers or relays. Add them from the
-DNSCrypt and ODoH screens using a source of your choice.
-
-- **DNSCrypt**: add a server or relay as an `sdns://` stamp.
-- **ODoH**: add a target as an `https://` URL or an `sdns://` stamp (protocol
-  0x05). Add a relay as an `sdns://` stamp (protocol 0x85) or an `https://` URL on
-  the ODoH screen, then select it. The selected relay is used for ODoH targets.
-  Without a relay, the target can see your IP address, and the app shows a warning.
-
-Reference sources:
+The app does not ship with DNSCrypt or ODoH servers or relays. Add them on the
+DNSCrypt and ODoH screens, as `sdns://` stamps or `https://` URLs.
 
 - DNSCrypt servers: https://github.com/Quad9DNS/dnscrypt-settings/blob/main/dnscrypt/quad9-resolvers.md
 - DNSCrypt relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/relays.md
 - ODoH targets: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-servers.md
 - ODoH relays: https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/odoh-relays.md
 
-## Lockdown
-
-Global lockdown is off by default. When it is on, DNS has to go through a proxy.
-
-- Default, Bootstrap and System DNS use the lockdown proxy. That is the WireGuard
-  tunnel when WireGuard is the active proxy, and the SOCKS5 proxy otherwise.
-- If there is no proxy to use, these three DNS transports are blocked. The app
-  does not fall back to direct DNS.
-- Apps that are exempt from lockdown are not affected.
+Without an ODoH relay, the target can see your IP address, and the app shows a warning.
 
 ## Requirements
 
 - Android 6.0 (API 23) or later.
-- Android Studio, or a JDK and the Android SDK, to build from source.
-- Go, the Android NDK (28.2.13676358) and the pinned `gomobile` and `gobind`
-  tools, to build the firestack library.
+- Android Studio, or a JDK and the Android SDK.
+- For firestack: Go, Android NDK 28.2.13676358, and the pinned `gomobile` and
+  `gobind` tools.
 
 ## Building
 
-The firestack library is built from the `firestack/` directory in this repo. The
-AAR is not committed.
+Build the firestack library first. The AAR is not committed.
 
 ```
 cd firestack
@@ -163,15 +66,14 @@ cp build/intra/tun2socks.aar ../app/libs/firestack.aar
 cd ..
 ```
 
-Set `GOTOOLCHAIN=local` and `ANDROID_NDK_HOME` before `make intra`. Then build
-the F-Droid flavor:
+Set `GOTOOLCHAIN=local` and `ANDROID_NDK_HOME` before `make intra`. Then build:
 
 ```
 ./gradlew :app:assembleFdroidFullDebug
 ```
 
 The build also downloads the Xray-core release (v26.7.28) from GitHub and checks
-it against a pinned SHA-256 before packaging it, so this step needs network access.
+it against a pinned SHA-256, so it needs network access.
 
 Run the unit tests with:
 
@@ -181,11 +83,9 @@ Run the unit tests with:
 
 ## Releasing
 
-Releases are signed locally with the maintainer's keystore. The keystore and its
-passwords are never committed to the repository.
-
-Bump `VERSION_CODE` in `gradle.properties`, add an entry to
-[CHANGELOG.md](CHANGELOG.md), then build the release:
+Releases are signed locally. The keystore and its passwords are never committed.
+Bump `VERSION_CODE` in `gradle.properties`, add a [CHANGELOG.md](CHANGELOG.md) entry,
+then run:
 
 ```
 ./gradlew :app:assembleFdroidFullRelease
@@ -193,27 +93,11 @@ Bump `VERSION_CODE` in `gradle.properties`, add an entry to
 
 ## Privacy
 
-Connection and DNS query metadata is not persisted, and no log files are written
-or uploaded. Encrypted DNS queries are sent only to the resolver you select.
-With lockdown on, Default, Bootstrap and System DNS are not sent directly.
-
-The blocklist requests described above contact the download host. The blocklist
-update check sends the app version code and the timestamp of the currently
-installed blocklist set.
-
-The app contacts `api.github.com` only when you tap **Check for app updates** in
-miscellaneous settings. The request carries the app version in its User-Agent
-header and no device identifier. If a newer release exists, the APK and
-`SHA256SUMS.txt` are downloaded from GitHub only after you confirm. The APK is
-checked against the published SHA-256 checksum, its package name and version,
-and then Android verifies its signature during installation.
+DNS queries go only to the resolver you select. The app talks to the blocklist
+host (`hidefbi.github.io`) to check for and download blocklist sets, and to
+`api.github.com` only when you check for app updates. The update check sends no
+device identifier.
 
 ## License
 
-Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE). Original
-copyright notices are retained in each source file.
-
-## Trademarks
-
-"RethinkDNS" and "BraveDNS" and their logos are trademarks of their respective
-owners. This project does not use them to imply endorsement.
+Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
