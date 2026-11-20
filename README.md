@@ -1,6 +1,6 @@
 # DNS Control
 
-An unofficial, privacy-focused Android DNS and per-app firewall, forked from
+An unofficial, privacy-focused Android DNS and per-app firewall, based on
 RethinkDNS. DNS Control runs a local VPN service that resolves DNS over encrypted
 transports and lets you decide which apps may reach the network.
 
@@ -13,16 +13,26 @@ transports and lets you decide which apps may reach the network.
 
 ## Features
 
-- Encrypted DNS over DNS-over-HTTPS, DNS-over-TLS, ODoH and DNSCrypt. ODoH and
-  DNSCrypt servers and relays are not built in; see [DNSCrypt and ODoH servers](#dnscrypt-and-odoh-servers).
-- Built-in presets for Cloudflare (standard, Family and Security) and Quad9
-  (Secure and DNSCrypt variants). You can add your own resolvers.
-- Optional on-device blocklists for ads, trackers, malware and phishing.
-- Per-app network control through a local VPN.
-- Optional global lockdown. DNS does not leave the device directly while it is on.
-  See [Lockdown](#lockdown).
+- Encrypted DNS over HTTPS, DNS over TLS, Oblivious DNS over HTTPS (ODoH) and
+  DNSCrypt. DNSCrypt and ODoH servers and relays are not built in; see
+  [DNSCrypt and ODoH servers](#dnscrypt-and-odoh-servers).
+- Plain DNS on port 53 for custom resolvers that have no encrypted option.
+- Built-in presets: Quad9 (Classic and ECS) and Cloudflare over HTTPS, and Quad9
+  (Classic and ECS) over TLS. You can add your own resolvers.
 - Fail-closed encrypted DNS: if the selected encrypted resolver fails, the app
   does not silently switch to system DNS.
+- Optional on-device blocklists for ads, trackers, malware and phishing.
+- Per-app firewall rules, plus custom domain and IP rules.
+- Proxies: custom SOCKS5 and HTTP proxies, Orbot (Tor) as SOCKS5 or HTTP, and
+  WireGuard. WireGuard configs can be imported from a file or pasted text.
+- Xray profiles: VLESS (REALITY or TLS), Trojan (TLS) and Shadowsocks 2022, over
+  tcp, ws or grpc where the protocol allows it. While Xray is on, it runs on the
+  device as a local SOCKS5 proxy. Xray-core is bundled in the APK; see
+  [NOTICE](NOTICE).
+- Optional global lockdown. DNS does not leave the device directly while it is on.
+  See [Lockdown](#lockdown).
+- Optional TCP dial and retry strategies (split, desync) for networks that
+  interfere with connections.
 - No Firebase or Google services are configured.
 - Connection, DNS query and diagnostic logs are not stored or uploaded.
 - Manual app update check against GitHub Releases. Nothing is checked or installed
@@ -160,6 +170,9 @@ the F-Droid flavor:
 ./gradlew :app:assembleFdroidFullDebug
 ```
 
+The build also downloads the Xray-core release (v26.7.28) from GitHub and checks
+it against a pinned SHA-256 before packaging it, so this step needs network access.
+
 Run the unit tests with:
 
 ```
@@ -177,20 +190,6 @@ Bump `VERSION_CODE` in `gradle.properties`, add an entry to
 ```
 ./gradlew :app:assembleFdroidFullRelease
 ```
-
-## Changes from upstream
-
-The application ID is `com.hidefbi.dnscontrol`, so this fork installs alongside
-the upstream application and is listed under its own name. The Java package name
-is unchanged.
-
-See [NOTICE](NOTICE) for the full summary. In short: log storage, log viewers and
-bug-report collection are removed; several screens and background features are
-removed; the DNS presets are replaced; encrypted DNS failures no longer fall
-back to system DNS; and lockdown DNS goes through the lockdown proxy.
-
-The firestack source is in `firestack/` (MPL-2.0, see `firestack/LICENSE`), with
-changes for the lockdown DNS routing.
 
 ## Privacy
 

@@ -26,10 +26,23 @@ Modifications in this fork (summary):
 - Lockdown DNS: under global lockdown, Default, Bootstrap and System DNS go
   through the lockdown proxy (WireGuard or SOCKS5) and are blocked when there is
   no proxy.
+- Added Xray profiles (VLESS, Trojan, Shadowsocks 2022). Xray-core runs as a local
+  process and is used as a local SOCKS5 proxy while it is on.
+- Proxy usernames and passwords are stored encrypted with the Android Keystore.
+  Existing rows are encrypted when the database opens.
+- Blocklist downloads have size limits per file and per set.
+- Removed the log line that printed WireGuard configs on import.
 
 firestack (networking library):
 - The Go source in firestack/ comes from celzero/firestack, licensed under
   MPL-2.0 (see firestack/LICENSE). It is modified for the lockdown DNS routing.
+
+Xray-core (libxray.so, bundled in the APK):
+- Source: https://github.com/XTLS/Xray-core, release v26.7.28
+  (https://github.com/XTLS/Xray-core/releases/tag/v26.7.28)
+- Licensed under the Mozilla Public License 2.0 (MPL-2.0).
+- Downloaded at build time from the release and checked against a pinned SHA-256.
+  Not modified.
 
 - Blocklist data: the prepared blocklist set downloaded by the app is published
   from hidefbi/rules-old and built by hidefbi/dns-rules-builder from the public
