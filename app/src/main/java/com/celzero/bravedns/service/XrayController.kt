@@ -19,6 +19,7 @@ import android.content.Context
 import com.celzero.bravedns.R
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.database.ProxyEndpoint
+import com.celzero.bravedns.util.SecretBox
 import com.celzero.bravedns.util.XrayConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -365,7 +366,7 @@ class XrayController(
                 json.put("proxyAppName", row.proxyAppName ?: JSONObject.NULL)
                 json.put("proxyIP", row.proxyIP ?: JSONObject.NULL)
                 json.put("proxyPort", row.proxyPort)
-                json.put("userName", row.userName ?: JSONObject.NULL)
+                json.put("encryptedUserName", row.encryptedUserName ?: JSONObject.NULL)
                 json.put("encryptedPassword", row.encryptedPassword ?: JSONObject.NULL)
                 json.put("isSelected", row.isSelected)
                 json.put("isCustom", row.isCustom)
@@ -384,7 +385,10 @@ class XrayController(
                 row.proxyAppName = optionalString(json, "proxyAppName")
                 row.proxyIP = optionalString(json, "proxyIP")
                 row.proxyPort = json.getInt("proxyPort")
-                row.userName = optionalString(json, "userName")
+                // older snapshots kept the username in plaintext, encrypt it on restore
+                row.encryptedUserName =
+                    optionalString(json, "encryptedUserName")
+                        ?: optionalString(json, "userName")?.let { SecretBox.encrypt(it) }
                 row.encryptedPassword = optionalString(json, "encryptedPassword")
                 row.isSelected = json.getBoolean("isSelected")
                 row.isCustom = json.getBoolean("isCustom")

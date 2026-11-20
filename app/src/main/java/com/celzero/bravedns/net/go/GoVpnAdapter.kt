@@ -832,24 +832,24 @@ class GoVpnAdapter : KoinComponent {
             val res = getProxies()?.addProxy(id, url)
             // track the add so that the global proxy handler can re-add if it goes missing
             GlobalProxyHandler.track(id)
-            Logger.i(LOG_TAG_VPN, "$TAG socks5 set for ${userName ?: "<anonymous>"}@$ipAddress:$port (credentials redacted), success? ${res != null}")
+            Logger.i(LOG_TAG_VPN, "$TAG socks5 set for $ipAddress:$port, auth ${!userName.isNullOrEmpty()}, success? ${res != null}")
             // the socks5 (xray) proxy is now registered, so the lockdown dns proxy can be used
             notifyGlobalLockdown()
             logEvent(
                 Severity.LOW,
                 "set socks5 proxy",
-                "set socks5 proxy $userName@$ipAddress:$port"
+                "set socks5 proxy $ipAddress:$port"
             )
         } catch (e: Exception) {
             Logger.e(
                 LOG_TAG_VPN,
-                "$TAG connect-tunnel: err start proxy $userName@$ipAddress:$port",
+                "$TAG connect-tunnel: err start proxy $ipAddress:$port",
                 e
             )
             logEvent(
                 Severity.HIGH,
                 "set socks5 proxy error",
-                "error setting socks5 proxy $userName@$ipAddress:$port, reason: ${e.message}"
+                "error setting socks5 proxy $ipAddress:$port, reason: ${e.javaClass.simpleName}"
             )
         }
     }

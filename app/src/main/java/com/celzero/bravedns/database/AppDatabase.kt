@@ -17,6 +17,7 @@ package com.celzero.bravedns.database
 
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_APP_DB
+import com.celzero.bravedns.util.SecretBox
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -168,6 +169,7 @@ abstract class AppDatabase : RoomDatabase() {
                 override fun onOpen(db: SupportSQLiteDatabase) {
                     super.onOpen(db)
                     Logger.i(LOG_TAG_APP_DB, "Database opened, ${db.version}")
+                    ProxyCredentialMigrator.run(db)
                 }
             }
 
@@ -1562,4 +1564,57 @@ abstract class AppDatabase : RoomDatabase() {
     fun wgHopMapRepository() = WgHopMapRepository(wgHopMapDao())
 
 
+}
+
+/**
+ * Encrypts proxy credentials that were stored as plaintext before SecretBox covered them.
+ * Runs on every open and does nothing once all rows are encrypted.
+ */
+internal object ProxyCredentialMigrator {
+
+    fun run(db: SupportSQLiteDatabase) {
+        try {
+            val rows = legacyRows(db)
+            if (rows.isEmpty()) return
+            for (row in rows) {
+                db.execSQL(
+                    "UPDATE ProxyEndpoint SET userName = ?, password = ? WHERE id = ?",
+                    arrayOf<Any?>(row.user, row.pass, row.id)
+                )
+            }
+            Logger.i(LOG_TAG_APP_DB, "proxy credentials: encrypted ${rows.size} legacy rows")
+            // plaintext left in free pages and the wal is only dropped by a vacuum
+            db.execSQL("VACUUM")
+        } catch (e: Exception) {
+            Logger.w(LOG_TAG_APP_DB, "proxy credential migration: ${e.javaClass.simpleName}")
+        }
+    }
+
+    private class Row(val id: Int, val user: String?, val pass: String?)
+
+    private fun legacyRows(db: SupportSQLiteDatabase): List<Row> {
+        val raw = mutableListOf<Triple<Int, String?, String?>>()
+        db.query("SELECT id, userName, password FROM ProxyEndpoint").use { c ->
+            while (c.moveToNext()) {
+                val user = if (c.isNull(1)) null else c.getString(1)
+                val pass = if (c.isNull(2)) null else c.getString(2)
+                raw.add(Triple(c.getInt(0), user, pass))
+            }
+        }
+        val out = mutableListOf<Row>()
+        for ((id, user, pass) in raw) {
+            val newUser = legacy(user)?.let { SecretBox.encrypt(it) }
+            val newPass = legacy(pass)?.let { SecretBox.encrypt(it) }
+            if (newUser == null && newPass == null) continue
+            out.add(Row(id, newUser ?: user, newPass ?: pass))
+        }
+        return out
+    }
+
+    // only non-blank values that are not already encrypted
+    private fun legacy(value: String?): String? {
+        if (value.isNullOrEmpty()) return null
+        if (value.startsWith(SecretBox.PREFIX)) return null
+        return value
+    }
 }

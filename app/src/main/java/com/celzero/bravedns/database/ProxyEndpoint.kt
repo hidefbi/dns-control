@@ -36,7 +36,15 @@ class ProxyEndpoint {
     var proxyAppName: String? = null
     var proxyIP: String? = null
     var proxyPort: Int = 0
-    var userName: String? = null
+    // Persisted encrypted in the existing "userName" column, same scheme as the password.
+    @ColumnInfo(name = "userName")
+    var encryptedUserName: String? = null
+
+    var userName: String?
+        get() = SecretBox.decrypt(encryptedUserName)
+        set(value) {
+            encryptedUserName = SecretBox.encrypt(value)
+        }
 
     // Persisted encrypted (Android Keystore AES-256-GCM) in the existing "password" column,
     // so the schema and column name are unchanged.
