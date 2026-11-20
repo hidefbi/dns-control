@@ -103,8 +103,8 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
         private const val NOTIFICATION_PROGRESS_MAX = 100
 
         // size caps for the downloaded files; the manifest and signature use their own caps
-        private const val MAX_FILE_BYTES = 64L * 1024 * 1024
-        private const val MAX_SET_BYTES = 128L * 1024 * 1024
+        private const val MAX_FILE_BYTES = 100L * 1024 * 1024
+        private const val MAX_SET_BYTES = 256L * 1024 * 1024
     }
 
     override suspend fun doWork(): Result {
