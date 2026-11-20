@@ -34,6 +34,7 @@ import com.celzero.bravedns.RethinkDnsApplication.Companion.DEBUG
 import com.celzero.bravedns.customdownloader.RetrofitManager.Companion.getBlocklistBaseBuilder
 import com.celzero.bravedns.data.AppConfig
 import com.celzero.bravedns.download.BlocklistDownloadHelper
+import com.celzero.bravedns.download.BlocklistVerifier
 import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.service.RethinkBlocklistManager
 import com.celzero.bravedns.ui.activity.AppLockActivity
@@ -100,6 +101,10 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
 
         // Notification progress constants
         private const val NOTIFICATION_PROGRESS_MAX = 100
+
+        // size caps for the downloaded files; the manifest and signature use their own caps
+        private const val MAX_FILE_BYTES = 64L * 1024 * 1024
+        private const val MAX_SET_BYTES = 128L * 1024 * 1024
     }
 
     override suspend fun doWork(): Result {
@@ -171,6 +176,8 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
             if (isManifestFile(it.filename)) 0 else 1
         }
         var reuseChecked = false
+        // what is left of the set cap, counted in bytes actually written
+        var budget = MAX_SET_BYTES
         ordered.forEachIndexed { idx, onDeviceBlocklistsMetadata ->
             if (!reuseChecked && !isManifestFile(onDeviceBlocklistsMetadata.filename)) {
                 reuseUnchangedFiles(file, persistentState.localBlocklistTimestamp)
@@ -198,8 +205,10 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
             }
 
             val fileCount = Constants.ONDEVICE_BLOCKLISTS_IN_APP.size
-            when (startFileDownload(context, onDeviceBlocklistsMetadata.url, filePath, 0, idx + 1, fileCount, onDeviceBlocklistsMetadata.filename)) {
+            val limit = minOf(maxBytesFor(onDeviceBlocklistsMetadata.filename), budget)
+            when (startFileDownload(context, onDeviceBlocklistsMetadata.url, filePath, 0, idx + 1, fileCount, onDeviceBlocklistsMetadata.filename, limit)) {
                 true -> {
+                    budget -= File(filePath).length()
                     Logger.i(LOG_TAG_DOWNLOAD, "Download successful for id: $id")
                     downloadStatuses[id] = DownloadStatus.SUCCESSFUL
                 }
@@ -290,7 +299,8 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
         retryCount: Int = 0,
         fileIndex: Int = 1,
         fileCount: Int = 1,
-        displayName: String = ""
+        displayName: String = "",
+        maxBytes: Long
     ): Boolean {
         // enable the OkHttp's logging only in debug mode for testing
         if (DEBUG) OkHttpDebugLogging.enableHttp2()
@@ -303,7 +313,7 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
             Logger.i(LOG_TAG_DOWNLOAD, "Downloading file: $filePath, urlPath: $urlPath")
             val response = retrofit.downloadLocalBlocklistFile(urlPath, persistentState.appVersion, "")
             if (response?.isSuccessful == true) {
-                return downloadFile(context, response.body(), filePath, fileIndex, fileCount, displayName)
+                return downloadFile(context, response.body(), filePath, fileIndex, fileCount, displayName, maxBytes)
             } else {
                 Logger.e(
                     LOG_TAG_DOWNLOAD,
@@ -315,7 +325,7 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
         }
         return if (isRetryRequired(retryCount)) {
             Logger.i(LOG_TAG_DOWNLOAD, "retrying download($urlPath) $filePath, count: $retryCount")
-            startFileDownload(context, urlPath, filePath, retryCount + 1, fileIndex, fileCount, displayName)
+            startFileDownload(context, urlPath, filePath, retryCount + 1, fileIndex, fileCount, displayName, maxBytes)
         } else {
             Logger.i(LOG_TAG_DOWNLOAD, "download failed for $filePath, retry: $retryCount")
             false
@@ -333,7 +343,8 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
         fileName: String,
         fileIndex: Int,
         fileCount: Int,
-        displayName: String
+        displayName: String,
+        maxBytes: Long
     ): Boolean {
         if (body == null) {
             return false
@@ -342,11 +353,16 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
         showNotification(context)
         var input: InputStream? = null
         var output: OutputStream? = null
+        val outputFile = File(fileName)
+        var complete = false
         try {
-            val outputFile = File(fileName)
-            output = FileOutputStream(outputFile)
             // total size is taken from Content-Length, unknown (-1) when the server omits it
             val contentLength = body.contentLength()
+            if (contentLength > maxBytes) {
+                Logger.e(LOG_TAG_DOWNLOAD, "$fileName rejected, size $contentLength over $maxBytes")
+                return false
+            }
+            output = FileOutputStream(outputFile)
             val knownTotal = if (contentLength > 0) contentLength else -1L
             var doneBytes = 0L
             var bytesRead: Int
@@ -358,6 +374,8 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
             publishProgress(0, 0L, knownTotal, fileIndex, fileCount)
             while (input.read(buf).also { bytesRead = it } != -1) {
                 doneBytes += bytesRead
+                // counted from the bytes actually read, Content-Length may be missing or wrong
+                if (doneBytes > maxBytes) throw IOException("download over $maxBytes bytes")
                 val percent =
                     if (knownTotal > 0) {
                         (doneBytes * NOTIFICATION_PROGRESS_MAX / knownTotal).toInt().coerceIn(0, 100)
@@ -384,12 +402,16 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
                 fileCount
             )
             Logger.i(LOG_TAG_DOWNLOAD, "$fileName > ${doneBytes / BYTES_PER_MB}MB downloaded ($displayName)")
+            complete = true
             return true
         } catch (e: Exception) {
             Logger.e(LOG_TAG_DOWNLOAD, "$fileName download err: ${e.message}", e)
         } finally {
             output?.close()
             input?.close()
+            body.close()
+            // nothing partial is kept
+            if (!complete) outputFile.delete()
         }
         return false
     }
@@ -408,6 +430,14 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
         }
     }
 
+    private fun maxBytesFor(filename: String): Long {
+        return when (filename) {
+            Constants.ONDEVICE_BLOCKLIST_FILE_INDEX -> BlocklistVerifier.MAX_MANIFEST_BYTES
+            Constants.ONDEVICE_BLOCKLIST_FILE_INDEX_SIG -> BlocklistVerifier.MAX_SIGNATURE_BYTES
+            else -> MAX_FILE_BYTES
+        }
+    }
+
     private fun isManifestFile(filename: String): Boolean {
         return filename == Constants.ONDEVICE_BLOCKLIST_FILE_INDEX ||
             filename == Constants.ONDEVICE_BLOCKLIST_FILE_INDEX_SIG
@@ -422,7 +452,7 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
     private fun reuseUnchangedFiles(tempDir: File, installedTs: Long) {
         try {
             val manifest = File(tempDir.absolutePath + Constants.ONDEVICE_BLOCKLIST_FILE_INDEX)
-            if (!manifest.isFile) return
+            if (!manifest.isFile || manifest.length() > BlocklistVerifier.MAX_MANIFEST_BYTES) return
 
             val files = JSONObject(manifest.readText()).optJSONObject("files") ?: return
             val installedDir = File(blocklistDownloadBasePath(context, LOCAL_BLOCKLIST_DOWNLOAD_FOLDER_NAME, installedTs))

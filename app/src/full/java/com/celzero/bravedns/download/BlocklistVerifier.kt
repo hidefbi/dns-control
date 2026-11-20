@@ -24,6 +24,9 @@ object BlocklistVerifier {
         "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEsduDrMZU/AawN08qzrdZmV4+ruZ5qvpmWwEyaL0qvCVGdcuih91q5Sn9cuasebWxI3h1q5dpkJHKWax+EjvTUg=="
     private const val PREFS = "blocklist_verifier"
     private const val KEY_SEQ = "last_sequence"
+    // caps for the signed manifest and its signature, the downloader enforces the same
+    const val MAX_MANIFEST_BYTES = 512L * 1024
+    const val MAX_SIGNATURE_BYTES = 64L * 1024
     private val PAYLOAD = listOf("blocklists", "basicconfig", "rank", "trie")
 
     fun verify(context: Context, dir: File, expectedSequence: Long): Boolean {
@@ -31,6 +34,9 @@ object BlocklistVerifier {
             val manifestFile = File(dir, "index.json")
             val sigFile = File(dir, "index.json.sig")
             if (!manifestFile.isFile || !sigFile.isFile) return fail("manifest or signature missing")
+            if (manifestFile.length() > MAX_MANIFEST_BYTES || sigFile.length() > MAX_SIGNATURE_BYTES) {
+                return fail("manifest or signature too large")
+            }
 
             val manifestBytes = manifestFile.readBytes()
             val sig = Base64.decode(sigFile.readText().trim(), Base64.DEFAULT)
