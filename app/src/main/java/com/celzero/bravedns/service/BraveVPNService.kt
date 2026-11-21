@@ -112,6 +112,7 @@ import com.celzero.firestack.backend.Backend
 import com.celzero.firestack.backend.Client
 import com.celzero.firestack.backend.DNSOpts
 import com.celzero.firestack.backend.DNSSummary
+import com.celzero.firestack.backend.DomainOpts
 import com.celzero.firestack.backend.NetStat
 import com.celzero.firestack.backend.Proxy
 import com.celzero.firestack.backend.RDNS
@@ -3346,9 +3347,14 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     private suspend fun uiCtx(s: String, f: suspend () -> Unit) =
         withContext(CoroutineName(s) + Dispatchers.Main) { f() }
 
-    override fun onQuery(origin: String, uidGostr: String, fqdn: String, qtype: Long): DNSOpts {
+    // no rank hints yet; returning null skips rank gating for this query
+    override fun onPrequery(who: String, fid: String, uid: String, domain: String, qtyp: Long): DomainOpts? {
+        return null
+    }
+
+    override fun onQuery(who: String, fid: String, uid: String, domain: String, qtyp: Long): DNSOpts {
         return go2kt(dnsQueryDispatcher) {
-            val d = TunDnsManager.DnsParams(origin, uidGostr, fqdn, qtype, isLockdown(), isIfaceCellular(""))
+            val d = TunDnsManager.DnsParams(who, fid, uid, domain, qtyp, isLockdown(), isIfaceCellular(""))
             TunDnsManager.handleOnQuery(d)
         }
     }
@@ -3458,7 +3464,8 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     }
 
     override fun onUpstreamAnswer(
-        id: String,
+        who: String,
+        fid: String,
         smm: DNSSummary,
         rcvdDnsOpts: DNSOpts,
         ipcsv: String
@@ -3466,7 +3473,7 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         return go2kt(upstreamQueryDispatcher) {
             val params = TunDnsManager.UpstreamAnswerParams(
                 scope = vpnScope,
-                id = id,
+                id = who,
                 smm = smm,
                 rcvdDnsOpts = rcvdDnsOpts,
                 ipcsv = ipcsv,
@@ -3505,13 +3512,14 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         TunFlowManager.handlePostflow(buildFlowContext(), s)
     }
 
-    override fun preflow(protocol: Int, uid: Int, src: String?, dst: String?): PreMark = go2kt(preflowDispatcher) {
+    override fun preflow(protocol: Int, uid: Int, cid: String?, src: String?, dst: String?): PreMark = go2kt(preflowDispatcher) {
         TunFlowManager.handlePreflow(buildFlowContext(), protocol, uid, src, dst)
     }
 
     override fun flow(
         protocol: Int,
         _uid: Int,
+        cid: String?,
         src: String?,
         dst: String?,
         realIps: String?,
@@ -3522,13 +3530,13 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
     ): Mark = go2kt(flowDispatcher) {
         TunFlowManager.handleFlow(
             buildFlowContext(),
-            protocol, _uid, src, dst, realIps, d, probableDomains, blocklists, isAlg
+            protocol, _uid, cid, src, dst, realIps, d, probableDomains, blocklists, isAlg
         )
     }
 
-    override fun inflow(protocol: Int, recvdUid: Int, src: String?, dst: String?): Mark =
+    override fun inflow(protocol: Int, recvdUid: Int, cid: String?, src: String?, dst: String?): Mark =
         go2kt(inflowDispatcher) {
-            TunFlowManager.handleInflow(buildFlowContext(), protocol, recvdUid, src, dst)
+            TunFlowManager.handleInflow(buildFlowContext(), protocol, recvdUid, cid, src, dst)
         }
 
     // no need of go2kt here as it is called from go and performs db operations with no return value

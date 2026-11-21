@@ -52,29 +52,21 @@ Without an ODoH relay, the target can see your IP address, and the app shows a w
 
 - Android 6.0 (API 23) or later.
 - Android Studio, or a JDK and the Android SDK.
-- Go 1.26, for Xray-core and firestack. For firestack, also the Android NDK
-  (28.2.13676358). firestack's Go modules are vendored, but `gomobile bind` still
-  reads the module cache, so the first `make intra` on a clean machine needs network.
+- Go 1.26, for Xray-core.
+- Network on the first build, for firestack (see below).
 
 ## Building
 
-Build the firestack library first. The AAR is not committed.
-
-```
-cd firestack
-make intra
-cp build/intra/tun2socks.aar ../app/libs/firestack.aar
-cd ..
-```
-
-Set `GOTOOLCHAIN=local` and `ANDROID_NDK_HOME` before `make intra`. Then build:
+firestack is pulled from JitPack (`com.github.hidefbi:firestack`), so there is
+nothing to build first. Just run:
 
 ```
 ./gradlew :app:assembleFdroidFullDebug
 ```
 
 The build also compiles Xray-core from the `xray-core/` directory (v26.7.28, see
-`xray-core/SOURCE`). It uses the vendored Go modules, so no network access is needed.
+`xray-core/SOURCE`). It uses the vendored Go modules, so no network access is needed
+for that part.
 
 Run the unit tests with:
 

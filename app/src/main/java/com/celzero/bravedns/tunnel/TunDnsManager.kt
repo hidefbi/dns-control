@@ -37,7 +37,7 @@ import org.koin.core.component.inject
 
 object TunDnsManager: KoinComponent {
     private const val TAG = "TunDnsManager"
-    data class DnsParams(val origin: String, val uidStr: String?, val fqdn: String, val qtype: Long, val isLockdown: Boolean, val isIfaceCellular: Boolean)
+    data class DnsParams(val origin: String, val fid: String?, val uidStr: String?, val fqdn: String, val qtype: Long, val isLockdown: Boolean, val isIfaceCellular: Boolean)
 
     data class UpstreamAnswerParams(
         val scope: CoroutineScope,

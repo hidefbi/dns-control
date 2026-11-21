@@ -281,6 +281,7 @@ object TunFlowManager : KoinComponent {
         ctx: FlowContext,
         protocol: Int,
         _uid: Int,
+        cid: String?,
         src: String?,
         dst: String?,
         realIps: String?,
@@ -329,9 +330,9 @@ object TunFlowManager : KoinComponent {
         uid = FirewallManager.appId(uid, ctx.isPrimaryUser)
         val userId = FirewallManager.userId(uid)
 
-        // generates a random 6-byte value, converts it to hexadecimal, and then
-        // provides the hexadecimal value as a string for connId
-        val connId = Utilities.getRandomString(8)
+        // firestack owns the flow id (cid) and matches it in postflow; reuse it so
+        // logs line up, fall back to a random id if it is missing
+        val connId = cid?.takeIf { it.isNotEmpty() } ?: Utilities.getRandomString(8)
 
         // TODO: handle multiple domains, for now, use the first domain
         var domains = d?.split(",") ?: emptyList()
@@ -463,6 +464,7 @@ object TunFlowManager : KoinComponent {
         ctx: FlowContext,
         protocol: Int,
         recvdUid: Int,
+        cid: String?,
         src: String?,
         dst: String?
     ): Mark {
@@ -490,7 +492,7 @@ object TunFlowManager : KoinComponent {
 
         logd("inflow: $uid($recvdUid), $srcIp, $srcPort, $dstIp, $dstPort")
 
-        val connId = Utilities.getRandomString(8)
+        val connId = cid?.takeIf { it.isNotEmpty() } ?: Utilities.getRandomString(8)
 
         val connType =
             if (isConnectionMetered(ctx, dstIp)) {
