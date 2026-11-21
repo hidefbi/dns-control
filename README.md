@@ -77,8 +77,8 @@ Run the unit tests with:
 ## Releasing
 
 Releases are signed locally. The keystore and its passwords are never committed.
-Bump `VERSION_CODE` in `gradle.properties`, add a [CHANGELOG.md](CHANGELOG.md) entry,
-then run:
+Bump `VERSION_CODE` in `gradle.properties`, add a short plain-text note at
+`fastlane/metadata/android/en-US/changelogs/<VERSION_CODE>.txt`, then run:
 
 ```
 ./gradlew :app:assembleFdroidFullRelease
