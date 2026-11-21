@@ -53,7 +53,8 @@ Without an ODoH relay, the target can see your IP address, and the app shows a w
 - Android 6.0 (API 23) or later.
 - Android Studio, or a JDK and the Android SDK.
 - Go 1.26, for Xray-core and firestack. For firestack, also the Android NDK
-  (28.2.13676358). firestack's Go modules are vendored, so no download is needed.
+  (28.2.13676358). firestack's Go modules are vendored, but `gomobile bind` still
+  reads the module cache, so the first `make intra` on a clean machine needs network.
 
 ## Building
 
