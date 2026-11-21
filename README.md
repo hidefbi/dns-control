@@ -52,8 +52,8 @@ Without an ODoH relay, the target can see your IP address, and the app shows a w
 
 - Android 6.0 (API 23) or later.
 - Android Studio, or a JDK and the Android SDK.
-- For firestack: Go, Android NDK 28.2.13676358, and the pinned `gomobile` and
-  `gobind` tools.
+- Go 1.26, for Xray-core and firestack. For firestack, also the Android NDK
+  (28.2.13676358) and the pinned `gomobile` and `gobind` tools.
 
 ## Building
 
@@ -72,8 +72,8 @@ Set `GOTOOLCHAIN=local` and `ANDROID_NDK_HOME` before `make intra`. Then build:
 ./gradlew :app:assembleFdroidFullDebug
 ```
 
-The build also downloads the Xray-core release (v26.7.28) from GitHub and checks
-it against a pinned SHA-256, so it needs network access.
+The build also compiles Xray-core from the `xray-core/` directory (v26.7.28, see
+`xray-core/SOURCE`). It uses the vendored Go modules, so no network access is needed.
 
 Run the unit tests with:
 
