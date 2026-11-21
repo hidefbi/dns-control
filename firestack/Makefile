@@ -13,7 +13,7 @@ XGO_LDFLAGS='-s -w -X main.version=$(COMMIT_ID)'
 LDFLAGS_DEBUG='-checklinkname=0 -X $(IMPORT_PATH)/intra/core.Date=$(DATESTR) -X $(IMPORT_PATH)/intra/core.Commit=$(COMMIT_ID)'
 # checklinkname to override runtime.secureMode; see: core/runtime/overreach.go
 # github.com/golang/go/issues/69868
-LDFLAGS='-checklinkname=0 -w -s -buildid= -X $(IMPORT_PATH)/intra/core.Date=$(DATESTR) -X $(IMPORT_PATH)/intra/core.Commit=$(COMMIT_ID)'
+LDFLAGS='-checklinkname=0 -w -s -buildid= -X $(IMPORT_PATH)/intra/core.Commit=$(COMMIT_ID)'
 # without -s -w so DWARF from C/CGO objects is preserved for llvm-objcopy
 # extraction in the debugsymbols target; must come before CGO_LDFLAGS :=
 CGO_LDFLAGS_DEBUG:="$(CGO_LDFLAGS) -Wl,-z,max-page-size=16384"
@@ -24,13 +24,13 @@ BUILD_OVERLAY=$(BUILDDIR)/overlay.json
 # github.com/golang/mobile/blob/a1d90793fc/cmd/gomobile/bind.go#L36
 GOBIND=bind -trimpath -v -x -a -javapkg com.celzero.firestack
 # -work: keep the temporary directory for debugging
-ANDROID23=-androidapi 23 -target=android -tags='android' -work
+ANDROID23=-androidapi 23 -target=android/arm64 -tags='android' -work
 # -tags debuglog to enable runtime crash logging output with "<< begin log" prefix
 # example debug log: github.com/golang/go/issues/69629#issuecomment-2389297820
 # build-time tags may be required in somecases
 # github.com/golang/go/blob/e2fef50def98/src/runtime/HACKING.md?plain=1#L524
 # github.com/golang/go/blob/e2fef50def98/src/runtime/debuglog.go#L63-L64
-ANDROID23_DEBUG=-androidapi 23 -target=android -tags='android,debuglog' -work
+ANDROID23_DEBUG=-androidapi 23 -target=android/arm64 -tags='android,debuglog' -work
 
 WINDOWS_BUILDDIR=$(BUILDDIR)/windows
 LINUX_BUILDDIR=$(BUILDDIR)/linux
@@ -91,13 +91,9 @@ $(WINDOWS_BUILDDIR)/tun2socks.exe: $(XGO)
 $(BUILDDIR)/apple/Tun2socks.xcframework: $(GOMOBILE)
 	export MACOSX_DEPLOYMENT_TARGET=10.14; $(GOMOBILE) $(GOBIND) -iosversion=9.0 -target=ios,iossimulator,macos -o $@ -ldflags '-s -w' -bundleid org.outline.tun2socks $(IMPORT_PATH)/outline/apple $(IMPORT_PATH)/outline/shadowsocks
 
-go.mod: tools/tools.go
-	go mod tidy
-	touch go.mod
-
 $(GOMOBILE): go.mod
-	env GOBIN=$(GOBIN) go install golang.org/x/mobile/cmd/gomobile@latest
-	env GOBIN=$(GOBIN) go install github.com/felixge/go-patch-overlay@latest
+	env GOBIN=$(GOBIN) go install golang.org/x/mobile/cmd/gomobile
+	env GOBIN=$(GOBIN) go install github.com/felixge/go-patch-overlay
 	env PATH=$(GOBIN):$(PATH) $(GOMOBILE) init
 
 $(XGO): go.mod

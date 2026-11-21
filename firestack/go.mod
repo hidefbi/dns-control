@@ -17,6 +17,7 @@ require (
 	github.com/coder/websocket v1.8.14
 	github.com/crazy-max/xgo v0.31.0
 	github.com/elazarl/goproxy v0.0.0-20230808193330-2592e75ae04a
+	github.com/felixge/go-patch-overlay v0.0.0-20250623154806-ec286d1fd9dc
 	github.com/showwin/speedtest-go v1.7.10
 	github.com/tailscale/depaware v0.0.0-20251001183927-9c2ad255ef3f
 	github.com/txthinking/socks5 v0.0.0-20260601051520-339b044ab0eb
@@ -31,6 +32,7 @@ require (
 	git.schwanenlied.me/yawning/x448.git v0.0.0-20170617130356-01b048fb03d6 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/aead/poly1305 v0.0.0-20180717145839-3fee0db0b635 // indirect
+	github.com/bluekeyes/go-gitdiff v0.5.1 // indirect
 	github.com/cisco/go-hpke v0.0.0-20210215210317-01c430f1f302 // indirect
 	github.com/cisco/go-tls-syntax v0.0.0-20200617162716-46b0cfb76b9b // indirect
 	github.com/cloudflare/circl v1.6.3 // indirect

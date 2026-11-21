@@ -10,6 +10,8 @@ github.com/aead/poly1305 v0.0.0-20180717145839-3fee0db0b635/go.mod h1:lmLxL+FV29
 github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20210208195552-ff826a37aa15/go.mod h1:OMCwj8VM1Kc9e19TLln2VL61YJF0x1XFtfdL4JdbSyE=
 github.com/bazelbuild/rules_go v0.44.2/go.mod h1:Dhcz716Kqg1RHNWos+N6MlXNkjNP2EwZQ0LukRKJfMs=
+github.com/bluekeyes/go-gitdiff v0.5.1 h1:nb0/nbk4SGxK80taUG+gKjOpUYhpkVxqDRULlMLsWng=
+github.com/bluekeyes/go-gitdiff v0.5.1/go.mod h1:QpfYYO1E0fTVHVZAZKiRjtSGY9823iCdvGXBcEzHGbM=
 github.com/bwesterb/go-ristretto v1.2.3/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/celzero/gotrie v0.0.0-20250314130138-a2756ab2f6bd h1:jPvF+c8M0ACi/TNPYigCzY39avz5qYI4hYE+ygrt4Xc=
 github.com/celzero/gotrie v0.0.0-20250314130138-a2756ab2f6bd/go.mod h1:Yq0X9rVFGSEfmT/V95Z2blOpJGwhZsoboAdTAzlK6uo=
@@ -50,6 +52,8 @@ github.com/elazarl/goproxy v0.0.0-20230808193330-2592e75ae04a/go.mod h1:Ro8st/El
 github.com/elazarl/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2 h1:dWB6v3RcOy03t/bUadywsbyrQwCqZeNIEX6M1OtSZOM=
 github.com/elazarl/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2/go.mod h1:gNh8nYJoAm43RfaxurUnxr+N1PwuFV3ZMl/efxlIlY8=
 github.com/fatih/color v1.18.0/go.mod h1:4FelSpRwEGDpQ12mAdzqdOukCy4u8WUtOY6lkT/6HfU=
+github.com/felixge/go-patch-overlay v0.0.0-20250623154806-ec286d1fd9dc h1:70ZuG4kj39qwn1oB3OP6hEQe7PQxQfdRBjMANnNkmT4=
+github.com/felixge/go-patch-overlay v0.0.0-20250623154806-ec286d1fd9dc/go.mod h1:PfPmQusYVFm5sFIQ50EYVNQRu98cXH7PZuqppuwyeIA=
 github.com/go-logr/logr v1.4.3/go.mod h1:9T104GzyrTigFIr8wt5mBrctHMim0Nb2HLGrmQ40KvY=
 github.com/godbus/dbus/v5 v5.1.0/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/gofrs/flock v0.8.0/go.mod h1:F1TvTiK9OcQqauNUHlbJvyl9Qa1QvF/gOUDKA14jxHU=
