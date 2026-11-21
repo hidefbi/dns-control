@@ -100,10 +100,10 @@
     <string name="status_protected_with_socks5">protegido con proxy socks</string>
     <string name="status_protected_with_http">protegido con proxy http</string>
     <string name="status_protected_with_proxy">protegido con proxy</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">el dns privado está activado</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">el dns privado está activado</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">no protegido</string>
-    <string name="dns_explanation_dns_connected">Conectado a RethinkDNS</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Conectado a RethinkDNS y al cortafuegos</string>
+    <string name="dns_explanation_dns_connected">Conectado a DNS Control</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Conectado a DNS Control y al cortafuegos</string>
     <string name="dns_explanation_firewall_connected">Conectado al cortafuegos</string>
     <string name="universal_firewall_explanation">Aplique reglas de cortafuegos en todas las aplicaciones en función de los eventos del dispositivo, p.ej., bloqueándolas cuando el dispositivo está bloqueado o cuando una determinada aplicación no está en uso.</string>
     <string name="notification_action_resume_vpn">REANUDAR</string>
@@ -325,7 +325,7 @@
     <string name="hsf_pause_vpn_failure">No se puede pausar: DNS Control no está activo</string>
     <string name="dc_custom_dns_radio">DNS personalizado</string>
     <string name="hsf_exclude_error">La exclusión no es posible en el modo bloqueo de VPN</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_entries">%1$s entradas »</string>
     <string name="dc_dns_leaks_heading">Evitar las fugas de DNS</string>
     <string name="dc_check_update_desc">Comprueba las actualizaciones de la lista de bloqueo una vez cada <i>tres</i> días</string>
@@ -411,8 +411,8 @@
     <string name="lbl_advanced">Avanzado</string>
     <string name="rt_list_simple_btn_txt">Simple</string>
     <string name="bsrf_sub_group_heading">Subgrupo</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s listas de bloqueo</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s listas de bloqueo</string>
     <string name="notif_dialog_pause_dialog_negative">Descartar</string>
     <string name="notif_dialog_pause_dialog_message">Aplicación pausada, reanudar para continuar</string>
     <string name="notif_dialog_pause_dialog_title">¡Aplicación pausada!</string>
@@ -539,7 +539,7 @@
     <string name="fapps_isolate_block_dialog_title">Aislamiento de aplicaciones</string>
     <string name="fapps_exclude_block_dialog_message">¿Excluir las aplicaciones en la <i>lista</i> del DNS y Firewall?</string>
     <string name="ci_trust_rule">Confiar</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">Iniciar DNS Control para continuar</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">Iniciar DNS Control para continuar</string>
     <string name="ssv_see_more">Mostrar todo</string>
     <string name="hs_biometeric_title">Desbloquear DNS Control</string>
     <string name="hs_biometeric_desc">Utilice la autenticación biométrica para desbloquear DNS Control</string>

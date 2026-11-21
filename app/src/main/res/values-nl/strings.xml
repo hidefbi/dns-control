@@ -4,7 +4,7 @@
     <string name="alert_firewall_accessibility_explanation">DNS Control gebruikt de toegankelijkheidsdienst om bij te houden welke apps in gebruik zijn (voorgrond) versus die welke niet in gebruik zijn (achtergrond). \n \nDNS Control verzamelt geen informatie en bespioneert u op geen enkele manier.</string>
     <string name="status_no_internet">geen internet</string>
     <string name="status_protected_with_private_dns">beveiligd met privé dns</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Verbonden met RethinkDNS en Firewall</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Verbonden met DNS Control en Firewall</string>
     <string name="status_protected_with_proxy">beschermd met proxy</string>
     <string name="status_protected_with_socks5_private_dns">beschermd met socks5 &amp; private dns</string>
     <string name="notification_action_stop_vpn">STOP</string>
@@ -86,7 +86,7 @@
     <string name="status_protected_with_socks5">beschermd met socks proxy</string>
     <string name="status_protected_with_http">beschermd met http proxy</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">niet beschermd</string>
-    <string name="dns_explanation_dns_connected">Verbonden met RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Verbonden met DNS Control</string>
     <string name="dns_explanation_firewall_connected">Verbonden met Firewall</string>
     <string name="notification_action_dns_firewall_mode">DNS + Firewall</string>
     <string name="dns_mode_info_title">DNS</string>
@@ -182,7 +182,7 @@
     <string name="always_on_dialog_stop_message">Always-on VPN is ingeschakeld voor DNS Control. Weet je zeker dat je DNS Control toch wilt stoppen?</string>
     <string name="app_mode_dns_low_battery">DNS (batterijbesparing)</string>
     <string name="info_dialog_copy_toast_msg">IP adres gekopieerd.</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">private dns is ingeschakeld</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">private dns is ingeschakeld</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;: Blokkeert een app om verbinding te maken met het internet. \n &lt;u&gt;#2&lt;/u&gt;: Blokkeert een app om verbinding te maken met een bepaald IP-adres. \n &lt;u&gt;#3&lt;/u&gt;: Blokkeert alle verbindingen wanneer het apparaat is vergrendeld (Universal Firewall). \n &lt;u&gt;#4&lt;/u&gt;: Blokkeert elke app die niet in gebruik is (Universal Firewall). \n &lt;u&gt;#5&lt;/u&gt;: Blokkeert verbindingen wanneer bron app onbekend is (Universal Firewall). \n &lt;u&gt;#6&lt;/u&gt;: Blokkeert alle UDP verkeer behalve DNS (Universal Firewall). \n &lt;u&gt;#7&lt;/u&gt;: Blokkeert verbindingen wanneer DNS wordt omzeild (Universal Firewall).</string>
     <string name="firewall_act_universal_tab">Universele</string>
     <string name="always_on_dialog">\"Always-On VPN\" is ingeschakeld op dit apparaat. Om DNS Control te starten, ga naar Instellingen app en schakel \"Always-on VPN\" uit.</string>
@@ -199,7 +199,7 @@
     <string name="hsf_pause_vpn_failure">Kan niet pauzeren: DNS Control niet actief</string>
     <string name="dc_block_heading">regels</string>
     <string name="dc_custom_dns_radio">Aangepaste DNS</string>
-    <string name="dc_rethink_dns_radio">RethinkDNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_local_block_heading">Blokkeringslijsten op het apparaat</string>
     <string name="univ_firewall_rule_5">Blokkeren wanneer DNS wordt omzeild</string>
     <string name="dc_check_update_desc">Controleer eenmaal per <i>drie</i> dagen of de blocklist is bijgewerkt</string>

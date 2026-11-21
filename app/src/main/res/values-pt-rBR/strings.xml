@@ -33,7 +33,7 @@
     <string name="about_mail_to_string">para:</string>
     <string name="dc_entries">%1$s entradas »</string>
     <string name="dc_local_block_heading">Listas de bloqueio no dispositivo</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_local_block_desc_1">Escolha entre mais de 195 listas de bloqueio. Clique aqui para baixar ou configurar listas de bloqueio.</string>
     <string name="dc_custom_block_heading">Regras de domínio</string>
     <string name="dc_block_heading">regras</string>
@@ -141,7 +141,7 @@
     <string name="status_protected_with_tor">protegido com tor</string>
     <string name="status_protected_with_private_dns">protegido com dns privado</string>
     <string name="status_protected_with_tor_private_dns">protegido com tor e dns privado</string>
-    <string name="dns_explanation_dns_connected">Conectado ao RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Conectado ao DNS Control</string>
     <string name="status_protected_with_proxy_private_dns">protegido com proxy e dns privado</string>
     <string name="status_protected_with_socks5_private_dns">protegido com socks5 e dns privados</string>
     <string name="orbot_explanation">Orbot é um aplicativo de proxy gratuito que permite que outros aplicativos usem a internet com mais &lt;u&gt;segurança&lt;/u&gt;. \nOrbot usa o &lt;u&gt;Tor&lt;/u&gt; para criptografar seu tráfego de internet, o que ajuda você a &lt;u&gt;ignorar a censura&lt;/u&gt; e a se defender contra formas de &lt;u&gt;vigilância de rede&lt;/u&gt; que ameaçam a liberdade e a privacidade pessoais. \n&lt;u&gt;Proxy TCP&lt;/u&gt;: DNS Control encaminha apenas conexões TCP de aplicativos &lt;i&gt;incluídos&lt;/i&gt; para Orbot. \n&lt;u&gt;Proxy HTTP&lt;/u&gt;: DNS Control &lt;i&gt;estabelece&lt;/i&gt; o túnel HTTP CONNECT para Orbot e encaminha apenas conexões TCP de aplicativos &lt;i&gt;incluídos&lt;/i&gt;.</string>
@@ -172,10 +172,10 @@
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">protegido</string>
     <string name="status_dns_error">falha de dns</string>
     <string name="status_dns_server_down">servidor dns inativo</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">dns privado está ativado</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">dns privado está ativado</string>
     <string name="notification_action_resume_vpn">RETOMAR</string>
     <string name="dns_explanation_firewall_connected">Conectado ao Firewall</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Conectado ao RethinkDNS e Firewall</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Conectado ao DNS Control e Firewall</string>
     <string name="notification_action_pause_vpn">PAUSAR</string>
     <string name="notification_action_stop_vpn">ENCERRAR</string>
     <string name="notification_action_dns_mode">DNS</string>
@@ -496,7 +496,7 @@
     <string name="bsrf_sub_group_heading">Subgrupo</string>
     <string name="bsrf_clear_filter">Limpar</string>
     <string name="dc_local_block_enabled">Ativado</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="dc_doh" translatable="false">Dns sobre HTTPS</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="dc_dns_proxy" translatable="false">Proxy DNS</string>
@@ -658,7 +658,7 @@
     <string name="firewall_rule_trusted_domain_desc" translatable="true"><![CDATA[Esta conexão foi permitida porque o <i>domínio</i> está configurado como Domínio confiável.<br/><br/> Para alterar, acesse a tela <i>Firewall específico do aplicativo</i>.]]></string>
     <string name="firewall_rule_domain_trusted_univ_desc" translatable="true"><![CDATA[Esta conexão foi permitida porque o <i>domínio</i> está configurado como confiável nas regras de domínio universal.<br/><br/> Para alterar esse comportamento, acesse a guia <i>Configurar DNS</i>.]]></string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Agrupar solicitações, respostas de cache, tratamento de erros resiliente</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s lista(s) de bloqueio</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s lista(s) de bloqueio</string>
     <string name="bad_config_reason_invalid_key" translatable="true">Chave inválida</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Número inválido</string>
     <string name="key_length_explanation_base64" translatable="true">: As chaves base64 do WireGuard devem ter 44 caracteres (32 bytes)</string>
@@ -691,7 +691,7 @@
     <string name="cd_no_rules_text" translatable="true">Sem regras de domínio.</string>
     <string name="ci_trust_initial" translatable="true">T</string>
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen" translatable="true">Bloquear conteúdo adulto e pirateado, jogos e encontros on-line e mídias sociais.</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Inicie o DNS Control para continuar</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Inicie o DNS Control para continuar</string>
     <string name="no_configs_error" translatable="true">Nenhuma configuração encontrada</string>
     <string name="bad_extension_error" translatable="true">O arquivo deve ser \".conf\" ou \".zip\"</string>
     <string name="config_delete_dialog_desc">Tem certeza de que deseja excluir esta configuração?</string>

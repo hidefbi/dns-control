@@ -30,7 +30,7 @@
         tools:ignore="ProtectedPermissions" />
 
 
-    <!-- https://github.com/celzero/rethink-app/issues/786 set memtagMode to off -->
+    <!-- set memtagMode to off -->
     <application
         android:name=".RethinkDnsApplication"
         android:allowBackup="false"

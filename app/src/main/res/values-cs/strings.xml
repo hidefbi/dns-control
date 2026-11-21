@@ -68,7 +68,7 @@
     <string name="lbl_anonymous" translatable="true">anonymní</string>
     <string name="block" translatable="true">blokovat</string>
     <string name="exclude" translatable="true">vyloučit</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">čekání</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">čekání</string>
     <string name="status_protected_with_socks5_private_dns" translatable="true">chráněno pomocí socks5 &amp; private dns</string>
     <string name="status_protected_with_http_private_dns" translatable="true">chráněno pomocí http proxy &amp; private dns</string>
     <string name="notification_action_resume_vpn" translatable="true">OBNOVIT</string>
@@ -97,7 +97,7 @@
     <string name="notification_action_pause_vpn" translatable="true">POZASTAVIT</string>
     <string name="dns_mode_info_title" translatable="true">DNS</string>
     <string name="lbl_unselected" translatable="true">Neoznačeno</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">private dns je zapnuté</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">private dns je zapnuté</string>
     <string name="lbl_split" translatable="true">Rozdělit</string>
     <string name="pause_title_desc" translatable="true">dávám si šlofíka…</string>
     <string name="lbl_mtu" translatable="true">MTU</string>
@@ -113,9 +113,9 @@
     <string name="hybrid_mode_with_proxy_notification_title" translatable="true">Chráněno! Připojeno k DNS + Firewall + Proxy.</string>
     <string name="pause_mode_notification_title" translatable="true">Pozastaveno! Blokované aplikace budou nadále firewallovány.</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">selhává</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Připojeno k RethinkDNS a Firewallu</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Připojeno k DNS Control a Firewallu</string>
     <string name="firewall_mode_info_explanation_new" translatable="true">Monitorujte síťovou aktivitu a firewallujte jakoukoli aplikaci nebo IP adresu.</string>
-    <string name="dns_explanation_dns_connected" translatable="true">Připojeno k RethinkDNS</string>
+    <string name="dns_explanation_dns_connected" translatable="true">Připojeno k DNS Control</string>
     <string name="apps_info_title" translatable="true">Aplikace</string>
     <string name="hybrid_mode_info_title" translatable="true">DNS + Firewall</string>
     <string name="universal_firewall_explanation" translatable="true">Použijte firewallová pravidla pro všechny aplikace na základě událostí zařízení, například firewall při uzamčení zařízení nebo pokud aplikace není používána.</string>
@@ -337,7 +337,7 @@
     <string name="restrict_dialog_message" translatable="true"><i>%1$s</i> může vést ke ztrátě konektivity. Změňte nastavení, abyste DNS Controlu povolili používat data a další prostředky na pozadí.</string>
     <string name="dc_block_heading" translatable="true">pravidla</string>
     <string name="dc_custom_dns_radio" translatable="true">Vlastní DNS</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_local_block_heading" translatable="true">Blokovací seznamy v zařízení</string>
     <string name="dc_local_block_desc_1" translatable="true">Vyberte si z 195+ blokovacích seznamů. Klepnutím stáhněte nebo upravte seznamy.</string>
     <string name="dc_custom_block_heading" translatable="true">Doménová pravidla</string>
@@ -671,8 +671,8 @@
     <string name="lbbs_redownload" translatable="true">Znovu stáhnout blokovací seznamy</string>
     <string name="lbbs_download" translatable="true">Aktualizovat blokovací seznamy</string>
     <string name="lbbs_heading" translatable="true">Konfigurace 195+ blokovacích seznamů</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blokovacích seznamů</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Spusťte DNS Control pro pokračování</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blokovacích seznamů</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Spusťte DNS Control pro pokračování</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Neplatné číslo</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Neplatná hodnota</string>
     <string name="bad_config_reason_missing_attribute" translatable="true">Chybějící atribut</string>

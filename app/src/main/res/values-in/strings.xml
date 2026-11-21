@@ -12,7 +12,7 @@
     <string name="search_firewall_all_apps"><font size="12">Cari aplikasi berdasarkan uid, nama</font></string>
     <string name="orbot_stop_dialog_negative">Hentikan Orbot</string>
     <string name="settings_orbot_header">Orbot\t❯</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">dns pribadi telah aktif</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">dns pribadi telah aktif</string>
     <string name="orbot_status_arg_3">DNS dan TCP</string>
     <string name="orbot_bs_status_trying_connect">Menyiapkan Orbot…</string>
     <string name="orbot_stop_dialog_neutral">Ubah DNS</string>
@@ -114,7 +114,7 @@
     <string name="firewall_status_excluded">dikecualikan dari dns dan firewall</string>
     <string name="network_log_app_name_unknown">Tidak diketahui</string>
     <string name="category_name_non_app_sys">Layanan Sistem</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="about_bug_report_dialog_positive_btn">Kirim email</string>
     <string name="settings_notification_dialog_title">Pilih tindakan atas notifikasi</string>
     <string name="hsf_downtime">(nonaktif sejak %1$s)</string>
@@ -140,8 +140,8 @@
     <string name="cd_custom_doh_url_name_default">DoH</string>
     <string name="new_app_bulk_notification_title">Perhatian</string>
     <string name="settings_protocol_translation_dns_inactive">Beralih ke mode DNS/DNS+Firewall untuk mengaktifkan pengaturan ini</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Terhubung dengan RethinkDNS dan Firewall</string>
-    <string name="dns_explanation_dns_connected">Terhubung dengan RethinkDNS</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Terhubung dengan DNS Control dan Firewall</string>
+    <string name="dns_explanation_dns_connected">Terhubung dengan DNS Control</string>
     <string name="dns_explanation_firewall_connected">Terhubung dengan Firewall</string>
     <string name="new_app_bulk_notification_content">DNS Control memblokir %1$s aplikasi baru. Ketuk untuk melihat atau mengubah.</string>
     <string name="ci_dialog_desc">Izinkan (pintas/bypass) atau blokir alamat IP, subnet IP (dalam rentang tertentu), Port. Contoh: 10.10.10.10, 10.1.1.*, 10.2.2/24, ffff::/104, [::]:80, [10.1.0.0/16]:80, *.*:80</string>
@@ -336,7 +336,7 @@
     <string name="orbot_bs_status_2">Proksi HTTP telah diatur.</string>
     <string name="status_protected_with_proxy_private_dns">terproteksi dengan proksi &amp; dns pribadi</string>
     <string name="fapps_filter_clear_btn">Kosongkan</string>
-    <string name="dc_rethink_dns" translatable="false">DNS Rethink</string>
+    <string name="dc_rethink_dns" translatable="false">DNS DNS Control</string>
     <string name="download_update_dialog_message_success">Daftar blokir berhasil terunduh.</string>
     <string name="alert_firewall_accessibility_explanation">DNS Control menggunakan layanan aksesibilitas untuk mengawasi aplikasi yang sedang digunakan (latar depan) dan aplikasi yang tidak digunakan (latar belakang) \n \nDNS Control tidak mengumpulkan data apa pun dan tidak memata-matai Anda dengan cara apa pun.</string>
     <string name="doh_custom_url_remove_success">Titik-akhir telah terhapus.</string>
@@ -454,7 +454,7 @@
     <string name="rt_filter_hint">Menampilkan <u>semua</u> daftar blokir</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="rt_filter_desc"><![CDATA[Menampilkan <u>%1$s</u> daftar blokir]]></string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s daftar blokir</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s daftar blokir</string>
     <string name="dns_info_positive">Oke</string>
     <string name="settings_dns_proxy_dialog_app">Aplikasi</string>
     <string name="settings_lock_down_mode_desc">Opsi tertentu dinonaktifkan saat VPN dalam mode kuncian. <u>Lihat setelan VPN</u>.</string>
@@ -545,7 +545,7 @@
     <string name="fapps_unblock_dialog_message">Izinkan koneksi untuk aplikasi yang <i>terdaftar</i>\?</string>
     <string name="fapps_exclude_block_dialog_message">Kecualikan <i>aplikasi</i> yang terdaftar dari DNS dan Firewall?</string>
     <string name="fapps_isolate_block_dialog_message">Mengisolasi <i>aplikasi</i> yang terdaftar?</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">Mulai DNS Control untuk melanjutkan</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">Mulai DNS Control untuk melanjutkan</string>
     <string name="ssv_see_more">Tampilkan Semua</string>
     <string name="fapps_exclude_block_dialog_title">Aplikasi yang dikecualikan</string>
     <string name="fapps_bypass_block_dialog_title">Lewati aplikasi</string>
@@ -718,7 +718,7 @@
     <string name="settings_rinr_heading" translatable="true">Putar Balik (eksperimental)</string>
     <string name="settings_rinr_desc_disabled" translatable="true">Rutekan Lalu lintas DNS Control sendiri, seperti unduhan daftar blokir, pemeriksaan konektivitas, koneksi DNS, kembali ke tunnel.</string>
     <string name="cd_toast_edit" translatable="true">Disunting</string>
-    <string name="settings_rinr_desc_enabled" translatable="true">Rutekan lalu lintas mandiri dari rethink melalui terowongan. Kecuali Anda tahu apa yang Anda lakukan, matikan.</string>
+    <string name="settings_rinr_desc_enabled" translatable="true">Rutekan lalu lintas mandiri dari DNS Control melalui terowongan. Kecuali Anda tahu apa yang Anda lakukan, matikan.</string>
     <string name="dot_custom_url_remove_dialog_title" translatable="true">Hapus titik akhir DoT?</string>
     <string name="dot_custom_url_remove_dialog_message" translatable="true">Menghapus DNS melalui titik-akhir TLS dari konfigurasi yang tersimpan.</string>
     <string name="one_wg_apps_added" translatable="true">Merutekan semua aplikasi</string>

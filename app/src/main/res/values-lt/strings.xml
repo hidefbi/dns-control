@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_settings">Nustatymai</string>
-    <string name="dns_explanation_dns_connected">Prisijungta prie RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Prisijungta prie DNS Control</string>
     <string name="dns_explanation_firewall_connected">Prisijungta prie ugniasienės</string>
     <string name="universal_firewall_explanation">Taikykite ugniasienės taisykles visoms programėlėms pagal įrenginio įvykius, pvz., ugniasienę, kai įrenginys užrakintas arba kai tam tikra programėlė nenaudojama.</string>
     <string name="txt_home">Pagrindinis</string>
@@ -140,7 +140,7 @@
     <string name="hsf_pause_vpn_failure">Nepavyksta pristabdyti: DNS Control neaktyvus</string>
     <string name="dc_block_heading">taisyklės</string>
     <string name="dc_custom_dns_radio">Pasirinktinis DNS</string>
-    <string name="dc_rethink_dns_radio">RethinkDNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_entries">%1$s įrašai 🔗</string>
     <string name="dc_local_block_desc_1">Galite rinktis iš daugiau nei 185 blokavimo sąrašų. Spustelėkite čia, jei norite atsisiųsti arba konfigūruoti blokavimo sąrašus.</string>
     <string name="dc_custom_block_heading">Leisti arba neleisti atskirų domenų</string>
@@ -288,7 +288,7 @@
     <string name="lbl_advanced">išplėstinė</string>
     <string name="bsrf_clear_filter">Išvalyti</string>
     <string name="dc_local_block_enabled">Įjungta</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="dc_doh" translatable="false">Dns per HTTPS</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="dc_dns_proxy" translatable="false">DNS įgaliotasis serveris</string>
@@ -306,8 +306,8 @@
     <string name="allow">leisti</string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">apsaugota</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">neapsaugota</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Prisijungta prie RethinkDNS ir ugniasienės</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">įjungtas privatus dns</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Prisijungta prie DNS Control ir ugniasienės</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">įjungtas privatus dns</string>
     <string name="block">blokuoti</string>
     <string name="pause_mode_notification_title">Pristabdyta! Užblokuotoms programėlėms ir toliau bus taikoma ugniasienė.</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]">neveikia</string>

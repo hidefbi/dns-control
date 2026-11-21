@@ -1,5 +1,6 @@
 /*
  * Copyright 2023 RethinkDNS and its authors
+ * Modifications Copyright 2026 hidefbi
  *
  * Copyright © 2017-2023 WireGuard LLC. All Rights Reserved.
  * SPDX-License-Identifier: Apache-2.0

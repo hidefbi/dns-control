@@ -500,7 +500,6 @@ object TunFirewallManager : KoinComponent {
         if (!isUdp) return false
 
         // fall through dns requests, other rules might catch as appropriate
-        // https://github.com/celzero/rethink-app/issues/492#issuecomment-1299090538
         if (isDns(port)) return false
 
         val isNtpFromSystemApp = KnownPorts.isNtp(port) && FirewallManager.isUidSystemApp(uid)

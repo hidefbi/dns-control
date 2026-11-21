@@ -52,7 +52,7 @@
     <string name="ada_app_unmetered">唔收費嘅網絡</string>
     <string name="ada_app_metered">收費嘅網絡</string>
     <string name="ada_app_exclude">排除</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="title_settings">設定</string>
     <string name="settings_title_desc">一款可以高度自訂嘅 DNS 同防火牆軟件</string>
     <string name="txt_home">首頁</string>
@@ -75,11 +75,11 @@
     <string name="status_protected_with_socks5">被 SOCKS5 代理保護住</string>
     <string name="status_protected_with_http">被 HTTP 代理保護住</string>
     <string name="status_protected_with_proxy">被代理保護住</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">私人 DNS 開着咗</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">私人 DNS 開着咗</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">未保護</string>
-    <string name="dns_explanation_dns_connected">連線咗去 RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">連線咗去 DNS Control</string>
     <string name="dns_explanation_firewall_connected">連線咗去防火牆</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">連線咗去 RethinkDNS 同防火牆</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">連線咗去 DNS Control 同防火牆</string>
     <string name="notification_action_resume_vpn">恢復</string>
     <string name="notification_action_pause_vpn">暫停</string>
     <string name="notification_action_stop_vpn">停止</string>
@@ -228,7 +228,7 @@
     <string name="hsf_pause_vpn_failure">暫停唔到：DNS Control 未啓用</string>
     <string name="dc_block_heading">規則</string>
     <string name="dc_custom_dns_radio">自訂 DNS</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_entries">%1$s 個項目 »</string>
     <string name="dc_local_block_heading">本地攔截清單</string>
     <string name="dc_local_block_desc_1">喺超過 195 條攔截清單之中揀。㩒一下呢度下載或者配置攔截清單。</string>
@@ -519,7 +519,7 @@
     <string name="hsf_notification_permission_failure">由設定區准許應用程式通知權限</string>
     <string name="notification_screen_error">開唔到應用程式通知區。</string>
     <string name="intent_launch_error">開唔到 %1$s</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s 份攔截清單</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s 份攔截清單</string>
     <string name="private_dns_dialog_heading">熄私人 DNS</string>
     <string name="private_dns_dialog_positive">去設定</string>
     <string name="ci_trust_txt">信任</string>
@@ -539,7 +539,7 @@
     <string name="fapps_unblock_dialog_title">准許應用程式</string>
     <string name="fapps_exclude_block_dialog_title">被排除嘅應用程式</string>
     <string name="fapps_exclude_block_dialog_message">係咪由 DNS 同防火牆排除<i>列出嘅</i>應用程式？</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">啓動 DNS Control 以繼續</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">啓動 DNS Control 以繼續</string>
     <string name="ssv_see_more">冚唪唥睇哂</string>
     <string name="fapps_unblock_dialog_message">係咪放行嚟自<i>列出嘅</i>應用程式嘅連接？</string>
     <string name="fapps_info_unmetered_msg">喺唔收錢嘅網絡（WiFi）放行／攔截。</string>

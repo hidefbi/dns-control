@@ -42,11 +42,11 @@
     <string name="status_protected_with_http_private_dns">захищено http проксі та приватним dns</string>
     <string name="status_protected_with_http">захищено http проксі</string>
     <string name="status_protected_with_proxy">захищено проксі</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">ввімкнено приватний dns</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">ввімкнено приватний dns</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">не захищено</string>
-    <string name="dns_explanation_dns_connected">Підключено до RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Підключено до DNS Control</string>
     <string name="dns_explanation_firewall_connected">Підключено до Брандмауера</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Підключено до RethinkDNS та Брандмауера</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Підключено до DNS Control та Брандмауера</string>
     <string name="notification_action_resume_vpn">ПРОДОВЖИТИ</string>
     <string name="notification_action_pause_vpn">ПАУЗА</string>
     <string name="notification_action_stop_vpn">СТОП</string>
@@ -531,7 +531,7 @@
     <string name="firewall_rule_bypass_universal_ip_desc" translatable="true"><![CDATA[This connection was allowed because the <i>IP-адреса призначення</i> налаштована на обхід усіх правил універсального брандмауера.<br/><br/> Щоб змінити, перейдіть до <i>Правила IP<i> на вкладці <i>Універсальний</i>.]]></string>
     <string name="exclude_apps_from_proxy_failure_toast">Цей застосунок обходить проксі</string>
     <string name="exclude_apps_from_proxy">Застосунок обходить усі проксі-сервери</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Щоб продовжити, вімкніть DNS Control</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Щоб продовжити, вімкніть DNS Control</string>
     <string name="bad_extension_error" translatable="true">Файл повинен бути .conf або .zip</string>
     <string name="no_configs_error" translatable="true">Конфігурацій не знайдені</string>
     <string name="illegal_filename_error" translatable="true">Неправильна назва файлу “%s”</string>
@@ -613,10 +613,10 @@
     <string name="notif_dialog_pause_dialog_neutral" translatable="true">Показати</string>
     <string name="rt_list_simple_btn_txt" translatable="true">простий лист</string>
     <string name="rt_filter_parent_selected" translatable="true">Обрати батьківські фільтри</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s блоклисти</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s блоклисти</string>
     <string name="firewall_status_excluded" translatable="true">виключено з DNS та фаєрвола</string>
     <string name="hs_biometeric_desc" translatable="true">Використовувати біометричну автентифікацію, щоб розблоковувати DNS Control</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_dns_leaks_desc" translatable="true">Якщо ввімкнено, DNS Control захоплює всі пакети на порту 53 і пересилає їх до визначеної користувачем кінцевої точки DNS</string>
     <string name="dns_connected" translatable="true">Під’єднано dns</string>
     <string name="dns_info_neutral" translatable="true">Копіювати</string>

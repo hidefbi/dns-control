@@ -203,7 +203,7 @@
     <string name="settings_dns_proxy_dialog_hostname">হোস্ট নাম</string>
     <string name="settings_theme_dialog_themes_4">সত্যিকারের কালো</string>
     <string name="settings_notification_desc2">DNS / DNS + ফায়ারওয়াল</string>
-    <string name="dc_rethink_dns_radio">RethinkDNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="about_mail_subject">[DNS Control]:</string>
     <string name="cd_dns_crypt_name">DNSCrypt %1$s</string>
     <string name="univ_firewall_rule_3">উৎস অ্যাপ অজানা হলে ব্লক করুন</string>
@@ -253,14 +253,14 @@
     <string name="skip">এড়িয়ে যান</string>
     <string name="accessibility_service_description">DNS Control ব্যাকগ্রাউন্ড অ্যাপ্লিকেশন সনাক্ত করতে এবং ফায়ারওয়াল করার জন্য অ্যাক্সেসিবিলিটি পরিষেবা ব্যবহার করে। DNS Control কোনো তথ্য সংগ্রহ বা বিক্রি করে না।</string>
     <string name="slide_2_desc">DNS Control হল নেটওয়ার্ক কার্যকলাপ নিরীক্ষণ, ইন্টারনেট সেন্সরশিপ বাইপাস, এবং আপনার Android ডিভাইসে ফায়ারওয়াল অ্যাপ্লিকেশানগুলির সবচেয়ে সহজ উপায়৷</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">ব্যক্তিগত ডিএনএস সক্রিয় করা হয়েছে</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">ব্যক্তিগত ডিএনএস সক্রিয় করা হয়েছে</string>
     <string name="exclude">বাদ</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">সতর্কতা: DNS Control নিষ্ক্রিয় করা হয়েছে</string>
     <string name="firewall_mode_notification_title">সুরক্ষিত ! ফায়ারওয়ালের সাথে সংযুক্ত।</string>
     <string name="status_protected_with_proxy_private_dns">প্রক্সি এবং ব্যক্তিগত ডিএনএস দিয়ে সুরক্ষিত</string>
     <string name="status_protected_with_socks5">মোজা প্রক্সি দিয়ে সুরক্ষিত</string>
     <string name="alert_firewall_accessibility_explanation">DNS Control অ্যাক্সেসিবিলিটি পরিষেবা ব্যবহার করে কোন অ্যাপগুলি ব্যবহার করা হচ্ছে (ফোরগ্রাউন্ড) বনাম যেগুলি ব্যবহারে নেই (পটভূমিতে) তা ট্র্যাক করতে। \n \nDNS Control কোনো তথ্য সংগ্রহ করে না বা কোনোভাবেই আপনার উপর গুপ্তচরবৃত্তি করে না।</string>
-    <string name="dns_explanation_dns_connected">RethinkDNS এর সাথে সংযুক্ত</string>
+    <string name="dns_explanation_dns_connected">DNS Control এর সাথে সংযুক্ত</string>
     <string name="notification_action_dns_firewall_mode">DNS + ফায়ারওয়াল</string>
     <string name="dns_mode_notification_title">সুরক্ষিত ! দ্রুত এবং নিরাপদ DNS এর সাথে সংযুক্ত।</string>
     <string name="status_protected_with_proxy">প্রক্সি দিয়ে সুরক্ষিত</string>

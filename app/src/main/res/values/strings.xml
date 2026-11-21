@@ -204,7 +204,7 @@
 
     <string name="pause_mode_notification_title" translatable="true">Paused! Blocked apps will continue to be firewalled.</string>
 
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">
     waiting
     </string>
 
@@ -246,7 +246,7 @@
 
     <string name="status_protected_with_wg_private_dns" translatable="true">protected with wireguard &amp; private dns</string>
 
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">
     private dns is enabled
     </string>
 
@@ -254,11 +254,11 @@
     not protected
     </string>
 
-    <string name="dns_explanation_dns_connected" translatable="true">Connected to RethinkDNS</string>
+    <string name="dns_explanation_dns_connected" translatable="true">Connected to DNS Control</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Connected to Firewall</string>
 
     <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">
-        Connected to RethinkDNS and Firewall
+        Connected to DNS Control and Firewall
     </string>
 
     <string name="universal_firewall_explanation" translatable="true">Apply firewall rules on all applications based on device events, for example, firewall when the device is locked or when a particular app is not in use.
@@ -695,7 +695,7 @@
     <string name="dc_global_heading" translatable="true">Global</string>
 
     <string name="dc_custom_dns_radio" translatable="true">Custom DNS</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
 
     <string name="dc_entries" translatable="true">%1$s entries »</string>
 
@@ -1197,7 +1197,7 @@
     <!-- dns configure fragment -->
     <string name="dc_local_block_enabled" translatable="true">Enabled</string>
 
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="dc_doh" translatable="false">DNS-over-HTTPS</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="dc_dns_proxy" translatable="false">DNS Proxy</string>
@@ -1222,9 +1222,9 @@
 
 
     <!-- Rethink simple view -->
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blocklists</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s blocklists</string>
 
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Start DNS Control to proceed</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Start DNS Control to proceed</string>
     <string name="ssv_see_more" translatable="true">Show All</string>
 
     <!-- wireguard -->

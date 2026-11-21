@@ -8,7 +8,7 @@
     <string name="firewall_mode_info_title">Брандмауэр</string>
     <string name="settings_socks5_dialog_hint_port">Порт</string>
     <string name="orbot">Orbot</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">включен приватный DNS</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">включен приватный DNS</string>
     <string name="notification_action_pause_vpn">ПАУЗА</string>
     <string name="firewall_act_universal_tab">Универсальные правила</string>
     <string name="settings_dns_proxy_dialog_app">Приложение</string>
@@ -36,7 +36,7 @@
     <string name="always_on_dialog_positive">Остановить</string>
     <string name="orbot_install_dialog_positive">Установить</string>
     <string name="rdns_plus" translatable="false">RDNS Plus</string>
-    <string name="dns_explanation_dns_connected">Подключен к RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Подключен к DNS Control</string>
     <string name="isolate">изолировать</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification.">Предупреждение: DNS Control был деактивирован</string>
     <string name="notification_action_dns_firewall_mode">DNS + Брандмауэр</string>
@@ -70,7 +70,7 @@
     <string name="dns_explanation_firewall_connected">Подключен к брандмауэру</string>
     <string name="app_mode_firewall">Брандмауэр</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">не защищенно</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Подключен к RethinkDNS и брандмауэру</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Подключен к DNS Control и брандмауэру</string>
     <string name="universal_firewall_explanation">Применяйте правила брандмауэра для всех приложений на основе событий устройства, например, применяйте брандмауэр, когда устройство заблокировано или когда определенное приложение не используется.</string>
     <string name="configure_dns_connected_dns_crypt_status">DNSCrypt</string>
     <string name="orbot_download_link_website" translatable="false">https://github.com/guardianproject/orbot/releases</string>
@@ -85,7 +85,7 @@
     <string name="always_on_dialog_stop_message">Для DNS Control включен постоянный VPN. Вы уверены, что хотите остановить DNS Control в любом случае?</string>
     <string name="univ_firewall_dialog_message">Удаление этого правила позволит любому приложению подключаться к этому IP. Вы хотите продолжить?</string>
     <string name="doh_custom_url_remove_success">Конечная точка удалена.</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="doh_custom_url_remove_dialog_message">Удалите конечную точку DNS через Https из сохраненной конфигурации.</string>
     <string name="dns_crypt_url_remove_dialog_message">Удалите резолвер DNSCrypt из сохраненной конфигурации.</string>
     <string name="dns_crypt_relay_remove_dialog_message">Удаление ретрансляции DNSCrypt из сохраненной конфигурации.</string>
@@ -525,7 +525,7 @@
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen">Блокировка пиратского и контента для взрослых, азартных игр, онлайн знакомств, а также социальных сетей.</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">Блокировка вредоносного ПО, фишинга, программ-вымогателей, криптософта и прочих угроз.</string>
     <string name="rbl_privacy_desc" description="The text appears as blocklists description in configure screen">Блокировка вредоносного ПО, привлекающего внимание, программ шпионов и программ-страшилок.</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">Списков блокировок: %1$s</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">Списков блокировок: %1$s</string>
     <string name="settings_locale_heading">Изменить язык</string>
     <string name="settings_locale_desc">Выберите предпочтительный язык</string>
     <string name="settings_biometeric_heading">Включить блокировку приложения</string>
@@ -547,7 +547,7 @@
     <string name="fapps_isolate_block_dialog_message">Изолировать <i>перечисленные</i> приложения?</string>
     <string name="ci_trust_initial">T</string>
     <string name="ci_trust_rule">Доверять</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">Запустите DNS Control, чтобы продолжить</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">Запустите DNS Control, чтобы продолжить</string>
     <string name="ssv_see_more">Показать все</string>
     <string name="settings_locale_dialog_title">Выберите предпочтительный язык</string>
     <string name="ci_trust_txt">Доверенный</string>

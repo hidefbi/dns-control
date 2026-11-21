@@ -30,7 +30,7 @@
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline.">in attesa</string>
     <string name="status_protected_with_tor">protetto con tor</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">non protetto</string>
-    <string name="dns_explanation_dns_connected">Connesso a RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Connesso a DNS Control</string>
     <string name="notification_action_resume_vpn">RIATTIVA</string>
     <string name="notification_action_pause_vpn">PAUSA</string>
     <string name="notification_action_stop_vpn">DISATTIVA</string>
@@ -159,7 +159,7 @@
     <string name="status_protected_with_http_private_dns">protetto con proxy http e dns privato</string>
     <string name="status_protected_with_socks5">protetto con proxy socks</string>
     <string name="status_protected_with_http">protetto con proxy http</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Connesso a RethinkDNS e al firewall</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Connesso a DNS Control e al firewall</string>
     <string name="dns_explanation_firewall_connected">Connesso al firewall</string>
     <string name="notification_action_dns_mode">DNS</string>
     <string name="dns_mode_info_title">DNS</string>
@@ -168,7 +168,7 @@
     <string name="pause_mode_notification_title">In pausa! Le applicazioni bloccate resteranno dietro il firewall.</string>
     <string name="status_no_internet">non sei connesso ad internet</string>
     <string name="status_protected_with_proxy">protetto con proxy</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">Il dns privato è attivato</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">Il dns privato è attivato</string>
     <string name="dns_firewall_mode_info_explanation_new">Tutto ciò che è sopra citato, inoltre aggira la censura di Internet.</string>
     <string name="status_protected_with_tor_private_dns">protetto con tor e dns privato</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]">fallendo</string>
@@ -279,7 +279,7 @@
     <string name="hsf_pause_vpn_failure">Impossibile mettere in pausa: DNS Control non è attivo</string>
     <string name="dc_block_heading">regole</string>
     <string name="dc_custom_dns_radio">DNS personalizzato</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_entries">%1$s elementi »</string>
     <string name="dc_local_block_heading">Liste dei filtri sul dispositivo</string>
     <string name="dc_local_block_desc_1">Scegli tra più di 195 liste di filtri. Clicca qui per scaricarle o configurarle.</string>
@@ -494,7 +494,7 @@
     <string name="lbl_advanced">avanzate</string>
     <string name="bsrf_clear_filter">Azzera</string>
     <string name="dc_local_block_enabled">Abilitato</string>
-    <string name="dc_rethink_dns" translatable="false">DNS Rethink</string>
+    <string name="dc_rethink_dns" translatable="false">DNS DNS Control</string>
     <string name="dc_doh" translatable="false">DNS su HTTPS</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="dc_dns_proxy" translatable="false">Proxy DNS</string>
@@ -526,7 +526,7 @@
     <string name="rt_filter_hint">Mostra <u>tutte</u> le blocklist</string>
     <string name="rt_filter_desc"><![CDATA[Liste dei filtri <u>%1$s</u> mostrate]]></string>
     <string name="rt_filter_desc_subgroups"><![CDATA[Liste dei filtri <u>%1$s</u> nel sottogruppo %3$s del gruppo %2$s mostrate]]></string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s blocklist</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s blocklist</string>
     <string name="ci_trust_initial">A</string>
     <string name="settings_locale_heading">Cambia lingua</string>
     <string name="settings_biometeric_heading">Abilita blocco app</string>
@@ -539,7 +539,7 @@
     <string name="hs_biometeric_desc">Usa l\'autenticazione biometrica per sbloccare DNS Control</string>
     <string name="fapps_info_unmetered_msg">Consenti / Blocca su connessioni non a consumo (Wi-Fi).</string>
     <string name="fapps_info_metered_msg">Consenti / Blocca su connessioni a consumo (dati mobili).</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">Avvia DNS Control per procedere</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">Avvia DNS Control per procedere</string>
     <string name="fapps_info_exclude_msg">Escludi da DNS e Firewall.</string>
     <string name="fapps_info_isolate_msg">Blocca tutti gli IP tranne quelli autorizzati.</string>
     <string name="fapps_info_bypass_msg">Aggira le regole del firewall universale.</string>

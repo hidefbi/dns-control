@@ -32,11 +32,11 @@
     <string name="status_protected_with_socks5">geschützt mit Socks-Proxy</string>
     <string name="status_protected_with_http_private_dns">geschützt mit http-Proxy &amp; privaten DNS</string>
     <string name="status_protected_with_proxy">geschützt mit Proxy</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">private DNS ist eingeschaltet</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">private DNS ist eingeschaltet</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">nicht geschützt</string>
-    <string name="dns_explanation_dns_connected">Verbunden mit RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Verbunden mit DNS Control</string>
     <string name="dns_explanation_firewall_connected">Verbunden mit der Firewall</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Verbunden mit RethinkDNS und Firewall</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Verbunden mit DNS Control und Firewall</string>
     <string name="notification_action_resume_vpn">FORTSETZEN</string>
     <string name="notification_action_pause_vpn">PAUSE</string>
     <string name="notification_action_stop_vpn">STOPP</string>
@@ -324,7 +324,7 @@
     <string name="rt_filter_desc_subgroups"><![CDATA[Zeige <u>%1$s</u> Blocklisten in Gruppe: %2$s und Untergruppe: %3$s]]></string>
     <string name="bsrf_sub_group_heading">Untergruppe</string>
     <string name="bsrf_clear_filter">Leeren</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="dc_doh" translatable="false">DNS über HTTPS</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="dc_dns_proxy" translatable="false">DNS-Proxy</string>
@@ -386,7 +386,7 @@
     <string name="rt_filter_parent_selected">Ausgewählt</string>
     <string name="dc_local_block_enabled">Aktiviert</string>
     <string name="lbbs_configure">Konfigurieren</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s Blocklisten</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s Blocklisten</string>
     <string name="hsf_vpn_dialog_message">DNS Control benötigt die Berechtigung, ein lokales VPN einzurichten, um die DNS-Anfragen des Geräts zu verschlüsseln, einen Netzwerkmonitor zu implementieren und Firewall-Regeln durchzusetzen.\n\nDNS Control sammelt keine Informationen und spioniert dich in keiner Weise aus.</string>
     <string name="firewall_card_text_inactive">Firewall-Modus aktivieren.</string>
     <string name="hsf_vpn_dialog_header">Achtung!</string>
@@ -462,7 +462,7 @@
     <string name="univ_view_blocked_ip">IP- &amp; Port-Regeln</string>
     <string name="cd_dns_proxy_error_text_3">Ungültiger Port</string>
     <string name="dc_custom_dns_radio">Benutzerdefiniertes DNS</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_entries">%1$s Einträge »</string>
     <string name="dc_local_block_desc_1">Wähle aus über 195 Blocklisten. Tippe hier, um Blocklisten herunterzuladen oder zu konfigurieren.</string>
     <string name="dc_local_block_heading">Geräteinterne Sperrlisten</string>
@@ -547,7 +547,7 @@
     <string name="copy_clipboard_label">URL</string>
     <string name="fapps_unmetered_block_dialog_title" translatable="true">Bei ungetaktet blockieren</string>
     <string name="fapps_info_metered_msg" translatable="true">Im getakteten (mobilen) Netz zulassen / blockieren.</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Starte DNS Control, um fortzufahren</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Starte DNS Control, um fortzufahren</string>
     <string name="lbl_wildcard" translatable="true">Platzhalter</string>
     <string name="lbl_allowed" translatable="true">Erlaubt</string>
     <string name="lbl_blocked" translatable="true">Blockiert</string>

@@ -73,7 +73,7 @@
     <string name="dns_mode_notification_title" translatable="true">Προστατεύεσαι! Συνδεθήκατε με ενα γρήγορο και ασφαλές DNS.</string>
     <string name="bypass_dns_firewall" translatable="true">παράκαμψη dns &amp; τείχος προστασίας</string>
     <string name="hybrid_mode_notification_title" translatable="true">Προστατεύεσαι! Συνδεθήκατε με DNS + τείχος προστασίας.</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">αναμονή</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">αναμονή</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">αποτυχία</string>
     <string name="status_protected_with_tor" translatable="true">προστατεύεται με tor</string>
     <string name="lbl_domain" translatable="true">Τομέας</string>
@@ -101,11 +101,11 @@
     <string name="status_protected_with_http" translatable="true">προστατεύεται με http proxy</string>
     <string name="status_protected_with_proxy" translatable="true">προστατεύεται με proxy</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">προστατεύεται με wireguard &amp; private dns</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">το private dns είναι ενεργοποιημένο</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">το private dns είναι ενεργοποιημένο</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">δεν προστατεύεται</string>
-    <string name="dns_explanation_dns_connected" translatable="true">Συνδέθηκε με το RethinkDNS</string>
+    <string name="dns_explanation_dns_connected" translatable="true">Συνδέθηκε με το DNS Control</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Συνδέθηκε με τείχος προστασίας</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Συνδέθηκε στο RethinkDNS και το Firewall</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Συνδέθηκε στο DNS Control και το Firewall</string>
     <string name="universal_firewall_explanation" translatable="true">Εφαρμόστε κανόνες τείχους προστασίας σε όλες τις εφαρμογές βάσει συμβάντων της συσκευής, για παράδειγμα, τείχος προστασίας όταν η συσκευή είναι κλειδωμένη ή όταν μια συγκεκριμένη εφαρμογή δεν χρησιμοποιείται.</string>
     <string name="notification_action_pause_vpn" translatable="true">ΠΑΥΣΗ</string>
     <string name="apps_info_title" translatable="true">Εφαρμογές</string>

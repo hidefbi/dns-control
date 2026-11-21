@@ -13,7 +13,6 @@ plugins {
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
 
-// https://github.com/celzero/rethink-app/issues/1032
 // https://docs.gradle.org/8.2/userguide/configuration_cache.html#config_cache:requirements:external_processes
 // get the git version from the command line.
 // Falls back gracefully when the source tree isn't a git checkout (e.g. an extracted

@@ -44,7 +44,7 @@
     <string name="status_protected_with_tor">محمي بتور</string>
     <string name="dc_doh" translatable="false">DNS عبر HTTPS</string>
     <string name="orbot_stop_dialog_neutral">تغيير DNS</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="rbl_privacy">الخصوصية</string>
     <string name="firewall_rule_block_metered">مقنن (جوال)</string>
     <string name="notif_dialog_pause_dialog_negative">تجاهل</string>
@@ -66,7 +66,7 @@
     <string name="settings_http_proxy_error_text2">المنفذ غير صالح</string>
     <string name="about_settings_app_info">معلومات التطبيق</string>
     <string name="isolate">عزل</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">تم تمكين نظام dns الخصوصي</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">تم تمكين نظام dns الخصوصي</string>
     <string name="ctbs_dialog_negative_btn">العودة</string>
     <string name="orbot_bs_status_trying_connect">جارٍ إعداد Orbot …</string>
     <string name="txt_home">الصفحة الرئيسية</string>
@@ -196,7 +196,7 @@
     <string name="firewall_rule_block_ip_univ_desc"><![CDATA[حظرت قاعدة جدار الحماية التي وضعها المستخدم <i> الوجهة IP / المنفذ </i>. <br/> <br/> للتغيير ، انتقل إلى علامة التبويب <i> العالمي </i>.]]></string>
     <string name="cd_remove_dialog_title">حذف النطاق؟</string>
     <string name="ada_app_status_unknown">غير معروف</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="status_protected_with_http">محمية بوكيل http</string>
     <string name="always_on_dialog_positive_btn">الانتقال إلى الإعدادات</string>
     <string name="univ_firewall_dialog_title">حذف قاعدة IP؟</string>
@@ -244,7 +244,7 @@
     <string name="notif_download_failure_content">التحميل فشل. حاول مرة أخرى.</string>
     <string name="lbbs_update_check">التحقق من التحديثات</string>
     <string name="skip">تخطي</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">متصل بـ RethinkDNS وجدار الحماية</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">متصل بـ DNS Control وجدار الحماية</string>
     <string name="http_proxy_dialog_heading">قم بتعيين وكيل HTTP(S) CONNECT</string>
     <string name="search_universal_ips"><font size="12"> بحث في عناوين IP </font></string>
     <string name="settings_socks5_heading">إعداد وكيل SOCKS5</string>
@@ -468,7 +468,7 @@
     <string name="always_on_dialog_lockdown_stop_message">يقوم DNS Control بتشغيل VPN في وضع <i> الإغلاق </i>. قد يؤدي إيقافه إلى فقدان الإتصال بالأنترنت في ملف تعريف المستخدم هذا. هل تريد المتابعة على أية حال؟</string>
     <string name="dns_crypt_custom_url_remove_dialog_title">حذف محلل DNSCrypt؟</string>
     <string name="dns_crypt_url_remove_dialog_message">احذف محلل DNSCrypt من التكوين المحفوظ.</string>
-    <string name="dns_explanation_dns_connected">متصل بـ RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">متصل بـ DNS Control</string>
     <string name="settings_http_proxy_error_text1">يجب أن يتراوح نطاق المنفذ بين 1024 و 65535</string>
     <string name="local_blocklist_redownload_desc">قوائم الحظر على الجهاز موجودة بالفعل في أحدث إصدار %1$s.</string>
     <string name="blocklist_update_check_failure">هناك خطأ ما. حاول مرة أخرى في وقت لاحق!</string>
@@ -524,7 +524,7 @@
     <string name="ci_trust_initial">T</string>
     <string name="ci_trust_txt">موثوق به</string>
     <string name="rbl_privacy_desc" description="The text appears as blocklists description in configure screen">حظر برامج الانتباه وبرامج التجسس وبرامج الرعب.</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s قوائم الحظر</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s قوائم الحظر</string>
     <string name="private_dns_dialog_desc">تم تجاوز إعدادات DNS الخاصة بـ DNS Control بواسطة DNS الخاص بنظام Android. \n \nلاستخدام DNS الخاص بـ DNS Control، انتقل إلى إعدادات Android وقم بإيقاف تشغيل \"Private DNS\".</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">حظر البرامج الضارة وبرامج الفدية وبرامج التشفير والمخادعين والتهديدات الأخرى.</string>
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen">حظر مواقع البالغين والمحتوى المقرصن، مواقع المقامرة عبر الإنترنت والمواعدة، ووسائل التواصل الاجتماعي.</string>
@@ -639,7 +639,7 @@
     <string name="no_configs_error" translatable="true">لم يتم العثور على أي تكوينات</string>
     <string name="bad_extension_error" translatable="true">يجب أن يكون الملف .conf أو .zip</string>
     <string name="add_peer" translatable="true">أضف ند</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">إبدأ DNS Control للمتابعة</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">إبدأ DNS Control للمتابعة</string>
     <string name="bad_config_explanation_pka" translatable="true">: يجب أن يكون موجبًا ولا يزيد عن 65535</string>
     <string name="setup_wireguard" translatable="true">إعداد WireGuard</string>
     <string name="one_wg_dialog_desc" translatable="true">سيتم توجيه جميع الاتصالات من جميع التطبيقات، بما في ذلك DNS، إلى شبكة WireGuard VPN واحدة نشطة. سيتم إيقاف شبكات WireGuard VPN النشطة الأخرى، إن وجدت.</string>

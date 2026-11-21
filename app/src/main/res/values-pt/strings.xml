@@ -20,7 +20,7 @@
     <string name="status_protected_with_socks5_private_dns">protegido com socks5 e dns privado</string>
     <string name="status_protected_with_http_private_dns">protegido com proxy http e dns privado</string>
     <string name="notification_action_stop_vpn">Parar</string>
-    <string name="dns_explanation_dns_connected">Conectado a RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Conectado a DNS Control</string>
     <string name="dns_explanation_firewall_connected">Conectado a firewall</string>
     <string name="dns_mode_info_explanation_new">Monitorizar, bloquear e cifrar pedidos DNS.</string>
     <string name="dns_firewall_mode_info_explanation_new">Para além dos anteriores (DNS e Firewall), evitar também a censura na Internet.</string>
@@ -44,7 +44,7 @@
     <string name="info_dialog_copy_toast_msg">Endereço IP copiado.</string>
     <string name="settings_theme_heading">Aparência</string>
     <string name="settings_http_proxy_error_text3">O nome do servidor está vazio</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Conectado com RethinkDNS e firewall</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Conectado com DNS Control e firewall</string>
     <string name="notification_action_resume_vpn">Retomar</string>
     <string name="universal_firewall_explanation">Aplicar regras de firewall em todas as aplicações com base em eventos do dispositivo, por exemplo, firewall quando o dispositivo está bloqueado ou quando uma determinada aplicação não está a ser utilizada.</string>
     <string name="notification_action_pause_vpn">Pausa</string>
@@ -93,7 +93,7 @@
     <string name="status_protected_with_socks5">protegido com proxy socks</string>
     <string name="status_protected_with_http">protegido com proxy http</string>
     <string name="status_protected_with_proxy">protegido com proxy</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">dns privado está ativo</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">dns privado está ativo</string>
     <string name="dns_mode_info_title">DNS</string>
     <string name="default_dns_name">RDNS padrão</string>
     <string name="custom_url_error_invalid_url">URL inválido</string>
@@ -250,7 +250,7 @@
     <string name="about_mail_subject">[DNS Control]:</string>
     <string name="about_mail_bugreport_share_title">Selecione a aplicação de e-mail</string>
     <string name="dc_custom_dns_radio">DNS personalizado</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_entries">%1$s entradas »</string>
     <string name="dc_local_block_heading">Listas de bloqueio no dispositivo</string>
     <string name="dc_local_block_desc_1">Escolha entre mais de 195 listas de bloqueio. Clique aqui para descarregar ou configurar listas de bloqueio.</string>
@@ -499,7 +499,7 @@
     <string name="bsrf_sub_group_heading">Subgrupo</string>
     <string name="bsrf_clear_filter">Limpar</string>
     <string name="dc_local_block_enabled">Ativado</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="dc_doh" translatable="false">DNS sobre HTTPS</string>
     <string name="dc_dns_crypt" translatable="false">DNSCrypt</string>
     <string name="dc_dns_proxy" translatable="false">Proxy DNS</string>
@@ -526,7 +526,7 @@
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen">Bloquear sites com conteúdo adulto, pirataria, jogos de azar, encontros online e redes sociais.</string>
     <string name="rbl_privacy_desc" description="The text appears as blocklists description in configure screen">Bloquear attentionware, spyware, scareware.</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">Bloquear malware, ransomware, cryptoware, phishers e outras ameaças.</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s listas de bloqueio</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s listas de bloqueio</string>
     <string name="isolate">isolar</string>
     <string name="settings_locale_heading">Alterar idioma</string>
     <string name="settings_locale_desc">Escolha o seu idioma preferido</string>
@@ -548,7 +548,7 @@
     <string name="fapps_isolate_block_dialog_title">Isolar aplicações</string>
     <string name="fapps_isolate_block_dialog_message">Isolar aplicações <i>da lista</i>\?</string>
     <string name="ci_trust_rule">Confiar</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">Inicie DNS Control para continuar</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">Inicie DNS Control para continuar</string>
     <string name="settings_biometric_desc">Proteger aplicação com o bloqueio de ecrã</string>
     <string name="ssv_see_more">Mostrar tudo</string>
     <string name="lbl_allowed" translatable="true">Permitida</string>

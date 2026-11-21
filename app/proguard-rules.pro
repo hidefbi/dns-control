@@ -24,7 +24,6 @@
 -printmapping obfuscation/mapping.txt
 -printmapping build/outputs/mapping/release/mapping.txt
 
-# https://github.com/celzero/rethink-app/issues/875
 # Keep generic signature of Call, Response (R8 full mode strips signatures from non-kept items).
 -keep,allowobfuscation,allowshrinking interface retrofit2.Call
 -keep,allowobfuscation,allowshrinking class retrofit2.Response
@@ -43,7 +42,6 @@
 
 # A resource is loaded with a relative path so the package of this class must be preserved.
 # ref: github.com/square/okhttp/issues/8154#issuecomment-1868462895
-# issue: https://github.com/celzero/rethink-app/issues/1495
 # square.github.io/okhttp/features/r8_proguard/
 -keeppackagenames okhttp3.internal.publicsuffix.*
 -adaptresourcefilenames okhttp3/internal/publicsuffix/PublicSuffixDatabase.gz

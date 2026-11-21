@@ -11,7 +11,7 @@
     <string name="status_no_internet">няма интернет</string>
     <string name="status_protected_with_http_private_dns">защитен с http proxy и частен dns</string>
     <string name="status_protected_with_socks5_private_dns">защитен със socks5 и частен dns</string>
-    <string name="dns_explanation_dns_connected">Свързан с RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Свързан с DNS Control</string>
     <string name="status_protected_with_proxy">защитен с прокси</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">не е защитен</string>
     <string name="dns_explanation_firewall_connected">Свързан към защитната стена</string>
@@ -47,8 +47,8 @@
     <string name="status_protected_with_proxy_private_dns">защитен с прокси и частен dns</string>
     <string name="status_protected_with_socks5">защитен със socks прокси</string>
     <string name="status_protected_with_http">защитен с http прокси</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">частният dns е разрешен</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Свързан към RethinkDNS и защитна стена</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">частният dns е разрешен</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Свързан към DNS Control и защитна стена</string>
     <string name="notification_action_resume_vpn">ПРОДЪЛЖИ</string>
     <string name="notification_action_pause_vpn">ПАУЗА</string>
     <string name="notification_action_dns_mode">DNS</string>

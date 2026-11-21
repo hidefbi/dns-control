@@ -68,7 +68,7 @@
     <string name="ada_app_metered" translatable="true">มิเตอร์</string>
     <string name="rt_list_simple_btn_txt" translatable="true">เรียบง่าย</string>
     <string name="status_protected_with_tor_private_dns" translatable="true">ได้รับการปกป้องด้วย Tor และ DNS ส่วนตัว</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">เชื่อมต่อกับ RethinkDNS และไฟร์วอลล์</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">เชื่อมต่อกับ DNS Control และไฟร์วอลล์</string>
     <string name="status_protected" description="This is a large message in a reassuring color. It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">ได้รับการคุ้มครอง</string>
     <string name="alert_firewall_accessibility_exception" translatable="true">ไม่สามารถเปิดการตั้งค่าการเข้าถึงได้ โปรดลองอีกครั้งในภายหลัง!</string>
     <string name="always_on_dialog_heading" translatable="true">ปิดใช้งาน VPN ที่เปิดตลอดเวลา</string>
@@ -273,14 +273,14 @@
     <string name="notification_content" description="Indicates what will happen if the user taps the notification." translatable="true">แตะเพื่อเปลี่ยนการตั้งค่าการป้องกัน</string>
     <string name="firewall_mode_notification_title" translatable="true">ได้รับการป้องกัน! เชื่อมต่อกับไฟร์วอลล์แล้ว</string>
     <string name="pause_mode_notification_title" translatable="true">หยุดชั่วคราว! แอปที่ถูกบล็อคจะยังคงถูกไฟร์วอลล์ต่อไป</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">ซึ่งรอคอย</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">ซึ่งรอคอย</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">ล้มเหลว</string>
     <string name="status_protected_with_wg" translatable="true">ป้องกันด้วย Wireguard</string>
     <string name="status_protected_with_proxy_private_dns" translatable="true">ได้รับการปกป้องด้วยพร็อกซีและ DNS ส่วนตัว</string>
     <string name="status_protected_with_http" translatable="true">ได้รับการปกป้องด้วยพร็อกซี HTTP</string>
     <string name="status_protected_with_proxy" translatable="true">ได้รับการปกป้องด้วยพร็อกซี</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">ได้รับการปกป้องด้วย wireguard และ dns ส่วนตัว</string>
-    <string name="dns_explanation_dns_connected" translatable="true">เชื่อมต่อกับ RethinkDNS</string>
+    <string name="dns_explanation_dns_connected" translatable="true">เชื่อมต่อกับ DNS Control</string>
     <string name="dns_explanation_firewall_connected" translatable="true">เชื่อมต่อกับไฟร์วอลล์</string>
     <string name="notification_action_resume_vpn" translatable="true">ประวัติย่อ</string>
     <string name="notification_action_pause_vpn" translatable="true">หยุดชั่วคราว</string>
@@ -315,7 +315,7 @@
     <string name="ada_noapp_dialog_positive" translatable="true">ตกลง</string>
     <string name="rbl_security" description="The text appears as part of the blocklist setup screen as categories or headlines" translatable="true">ความปลอดภัย</string>
     <string name="lbbs_update_check" translatable="true">ตรวจสอบการอัปเดต</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">รายการบล็อค %1$s</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">รายการบล็อค %1$s</string>
     <string name="bad_config_explanation_positive_number" translatable="true">: ต้องเป็นบวก</string>
     <string name="bad_config_context" translatable="true">%1$s\'s %2$s</string>
     <string name="bad_extension_error" translatable="true">ไฟล์จะต้องเป็น .conf หรือ .zip</string>
@@ -438,7 +438,7 @@
     <string name="rt_download" translatable="true">ดาวน์โหลดรายการบล็อค</string>
     <string name="rt_filter_desc_subgroups" translatable="true"><![CDATA[กำลังแสดง <u>%1$s</u> รายการบล็อกในกลุ่ม: %2$s และกลุ่มย่อย: %3$s]]></string>
     <string name="lbbs_configure" translatable="true">การกำหนดค่า</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_entries" translatable="true">%1$s รายการ »</string>
     <string name="fapps_bypass_block_dialog_message" translatable="true">ข้ามกฎไฟร์วอลล์สากลสำหรับแอปที่<i>อยู่ในรายการ</i>หรือไม่?</string>
     <string name="cd_toast_added" translatable="true">เพิ่มโดเมนสำเร็จแล้ว</string>
@@ -643,7 +643,7 @@
     <string name="rt_dialog_neutral" translatable="true">ดำเนินการต่อ</string>
     <string name="rt_download_start" translatable="true">กำลังดาวน์โหลดรายการบล็อค…</string>
     <string name="dc_setting_dns_cache_heading" translatable="true">บูสเตอร์ DNS</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">เริ่มคิดใหม่เพื่อดำเนินการต่อ</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">เริ่มคิดใหม่เพื่อดำเนินการต่อ</string>
     <string name="bad_config_reason_invalid_key" translatable="true">คีย์ไม่ถูกต้อง</string>
     <string name="ssv_see_more" translatable="true">แสดงทั้งหมด</string>
     <string name="bad_config_reason_invalid_number" translatable="true">หมายเลขไม่ถูกต้อง</string>
@@ -693,7 +693,7 @@
     <string name="no_configs_error" translatable="true">ไม่พบการกำหนดค่า</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">การรวมคำขอ การตอบสนองแคช การจัดการข้อผิดพลาดที่ยืดหยุ่น</string>
     <string name="status_protected_with_socks5" translatable="true">ป้องกันด้วยพร็อกซีถุงเท้า</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">เปิดใช้งาน DNS ส่วนตัวแล้ว</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">เปิดใช้งาน DNS ส่วนตัวแล้ว</string>
     <string name="bsct_conn_rule_explanation" translatable="true">&lt;u&gt;#1&lt;/u&gt;: บล็อกแอปไม่ให้เชื่อมต่อกับอินเทอร์เน็ต \n&lt;u&gt;#2&lt;/u&gt;: บล็อกแอปใดๆ ไม่ให้เชื่อมต่อกับ IP เฉพาะ \n&lt;u&gt;#3&lt;/u&gt;: บล็อกการเชื่อมต่อทั้งหมดเมื่ออุปกรณ์ถูกล็อก (ไฟร์วอลล์สากล) \n&lt;u&gt;#4&lt;/u&gt;: บล็อกแอปใดๆ ที่ไม่ได้ใช้งาน (ไฟร์วอลล์สากล) \n&lt;u&gt;#5&lt;/u&gt;: บล็อกการเชื่อมต่อเมื่อไม่รู้จักแอปต้นทาง (ไฟร์วอลล์สากล) \n&lt;u&gt;#6&lt;/u&gt;: บล็อกการรับส่งข้อมูล UDP ทั้งหมด ยกเว้น DNS (ไฟร์วอลล์สากล) \n&lt;u&gt;#7&lt;/u&gt;: บล็อกการเชื่อมต่อเมื่อข้าม DNS (ไฟร์วอลล์สากล)</string>
     <string name="private_dns_dialog_desc" translatable="true">การตั้งค่า DNS ของ DNS Control จะถูกแทนที่ด้วย DNS ส่วนตัวของ Android \n \nหากต้องการใช้ DNS ของ DNS Control ให้ไปที่การตั้งค่า Android แล้วปิด \"DNS ส่วนตัว\"</string>
     <string name="alert_firewall_accessibility_explanation" translatable="true">DNS Control ใช้บริการการเข้าถึงเพื่อติดตามว่าแอปใดใช้งานอยู่ (เบื้องหน้า) และแอปใดไม่ได้ใช้งาน (เบื้องหลัง) \n \nDNS Control ไม่รวบรวมข้อมูลหรือสอดส่องคุณในทางใดทางหนึ่ง</string>

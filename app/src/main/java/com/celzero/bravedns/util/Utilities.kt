@@ -1,5 +1,6 @@
 /*
  * Copyright 2020 RethinkDNS and its authors
+ * Modifications Copyright 2026 hidefbi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -668,7 +669,6 @@ object Utilities {
 
     @Suppress("ReturnCount")
     fun getPrivateDnsMode(context: Context): PrivateDnsMode {
-        // https://github.com/celzero/rethink-app/issues/408
         if (!isAtleastQ()) {
             // Private DNS was introduced in P.
             return PrivateDnsMode.NONE

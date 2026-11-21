@@ -37,7 +37,7 @@
     <string name="firewall_mode_notification_title" translatable="true">Шьахәыла! Firewall-раҟны имҩасуа иазааргәылшьоит.</string>
     <string name="hybrid_mode_notification_title" translatable="true">Ашәахьча! DNS + Firewall ашәахьчарала еицҵоуп.</string>
     <string name="pause_mode_notification_title" translatable="true">Ацамышь! Ашәым-адәықәҵәаларақәа реимҵәахыра иахыҟаҵәахын.</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">Ашәашьҟаҵәа</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">Ашәашьҟаҵәа</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">Ашәашәра</string>
     <string name="status_protected" description="This is a large message in a reassuring color. It indicates that DNS queries can't be surveilled or modified in transit." translatable="true"><string name="protected">А proteção</string></string>
     <string name="status_dns_error" translatable="true">DNS æнхъицI</string>
@@ -52,11 +52,11 @@
     <string name="status_protected_with_socks5" translatable="true">soks proxyлак еицызжьыны\"\"\"</string>
     <string name="status_protected_with_http" translatable="true">http аҧхьаҧнрала ишьҭахыуп</string>
     <string name="status_protected_with_proxy" translatable="true">Proxy-лак шҳәахәҭаханы иҟоуп</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">А приватт DNS аҿуп</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">А приватт DNS аҿуп</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">маҿыцхьауам</string>
-    <string name="dns_explanation_dns_connected" translatable="true">RethinkDNS-иҧшәаҳәара</string>
+    <string name="dns_explanation_dns_connected" translatable="true">DNS Control-иҧшәаҳәара</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Аҿыцлара ашәахтәҿы</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">RethinkDNS &amp; Firewall-ик еиццыжьуп</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">DNS Control &amp; Firewall-ик еиццыжьуп</string>
     <string name="universal_firewall_explanation" translatable="true">Ашәымҭақәа зегьы ашәымҭа шьҟаҵар, ацынхарҭа амҩаду аҟәыҟәырҵа, мамзаракь ацынхарҭала аҟәыҟәырҵа, абжьы зхыуа аҟәыҟәырҵа, мамзаракь аҟәыҟәырҵа аҟәыҟәырҵа аҟәыҟәырҵа аҟәыҟәырҵа аҟәыҟәырҵа абжьы зхыу аҟәыҟәырҵа аҟәыҟәырҵа аҟәыҟәырҵа аҟәыҟәырҵа аҟәыҟәырҵа аҟәыҟәырҵа апрвило</string>
     <string name="notification_action_resume_vpn" translatable="true">ААДЫЗРА</string>
     <string name="notification_action_pause_vpn" translatable="true">Аҧхыжьра</string>
@@ -261,7 +261,7 @@
     <string name="hsf_pause_vpn_failure" translatable="true">Cannot pause: DNS Control not active</string>
     <string name="dc_block_heading" translatable="true">Ашәақәа</string>
     <string name="dc_custom_dns_radio" translatable="true">Custom DNS</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Риthink Ҟьшьшәааԥш</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control Ҟьшьшәааԥш</string>
     <string name="dc_entries" translatable="true">%1$s аҧызар »</string>
     <string name="dc_local_block_heading" translatable="true">АBYҧaa ҿаҧхьа амҩынтәи адҵақәа</string>
     <string name="dc_local_block_desc_1" translatable="true">195+ азблоклистқәа рахь дзырхыжә. Абри анаҳатәуп ауалахәера еиуоу аслотқәеи рыцҳазгаразы.</string>
@@ -555,8 +555,8 @@
     <string name="lbbs_redownload" translatable="true">Ашәахьышәажәатәи ақәымҵәажьқәа</string>
     <string name="lbbs_download" translatable="true">Аҳәоуааира бзкаларақəə</string>
     <string name="lbbs_heading" translatable="true">195+ адрынажқəа рконфигурациа анамхəа</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s ашәахәқәа</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">DNS Control ацашьаха, аҧҵы аиҭашәашәаразы</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s ашәахәқәа</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">DNS Control ацашьаха, аҧҵы аиҭашәашәаразы</string>
     <string name="ssv_see_more" translatable="true">Иҭабужь Аҭабужь</string>
     <string name="lbl_create" translatable="true">Аишьҭра</string>
     <string name="lbl_qr_code" translatable="true">QR код</string>
@@ -779,7 +779,7 @@
     <string name="close_conns_dialog_title" translatable="true">Еицаталарақәа аахәымҧш</string>
     <string name="local_blocklist_delete_desc" translatable="true">Аҧсуажәырла аҵыхлақәа даацәымшра?</string>
     <string name="fail_open_network_title" translatable="true">Амшынра аҵыхәтәи аиҩымҵмра</string>
-    <string name="fail_open_network_desc" translatable="true">Уаахыжьуа, Риthink аушьааит жьынчъеижьыр адгьыл ауахьтәи, иахьатәи ауахьтәи ауахьтәи ауахь ауахь ауахь ауахь ауахь ахь анхыжьуа, еиԥш <i>Авиаҩылатә режим</i> аҟны.</string>
+    <string name="fail_open_network_desc" translatable="true">Уаахыжьуа, DNS Control аушьааит жьынчъеижьыр адгьыл ауахьтәи, иахьатәи ауахьтәи ауахьтәи ауахь ауахь ауахь ауахь ауахь ахь анхыжьуа, еиԥш <i>Авиаҩылатә режим</i> аҟны.</string>
     <string name="close_all" translatable="true">Уахмра Амлара</string>
     <string name="hop_error_toast_msg_3" translatable="true">Адаҟьа амо ҟаҵа, аицклаҩқәа хәыҬны иалагаларазы</string>
     <string name="wg_mobile_only_hop_err" translatable="true">Аупшәа-плшьымбара уалынала Ашәахьчаразы адгылара раамҭакала ауни</string>

@@ -99,7 +99,7 @@
     <string name="hybrid_mode_notification_title" translatable="true">ආරක්ෂිතයි! DNS + Firewall එකකට සම්බන්ධ වි ඇත.</string>
     <string name="hybrid_mode_with_proxy_notification_title" translatable="true">ආරක්ෂිතයි! DNS + Firewall + Proxy වලට සම්බන්ධ වි ඇත.</string>
     <string name="pause_mode_notification_title" translatable="true">විරාම කර ඇත! අවහිර කරන ලද යෙදුම් දිගටම firewall වේ.</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">බලාසිටීම</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">බලාසිටීම</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">අසමත් වෙමින් ඇත</string>
     <string name="status_protected" description="This is a large message in a reassuring color. It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">ආරක්ෂිතයි</string>
     <string name="status_dns_error" translatable="true">DNS දෝෂය</string>
@@ -117,9 +117,9 @@
     <string name="status_protected_with_proxy" translatable="true">Proxy මගින් ආරක්ෂිතයි</string>
     <string name="status_protected_with_wg" translatable="true">WireGuard මගින් ආරක්ෂිතයි</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">Private DNS &amp; WireGuard හරහා ආරක්ෂිතයි</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">පුද්ගලික DNS enable කර ඇත</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">පුද්ගලික DNS enable කර ඇත</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">ආරක්ෂිත නැත</string>
-    <string name="dns_explanation_dns_connected" translatable="true">RethinkDNS මගින් ආරක්ෂිතයි</string>
+    <string name="dns_explanation_dns_connected" translatable="true">DNS Control මගින් ආරක්ෂිතයි</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Firewall එකකට සම්බන්ධ වි ඇත</string>
     <string name="bl_update_available_title" translatable="true">බ්ලොක්ලිස්ට් යාවත්කාලීනය ලබා ගත හැක</string>
     <string name="bl_update_available_message" translatable="true">නව බ්ලොක්ලිස්ට් එකක් සූදානම්ය.\n\nස්ථාපනය කළ: %1$s\nනවතම: %2$s</string>

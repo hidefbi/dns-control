@@ -38,7 +38,7 @@
     <string name="firewall_mode_notification_title" translatable="true">보호됐습니다! 방화벽에 연결되었습니다.</string>
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline." translatable="true">대기 중</string>
     <string name="lbl_configure" translatable="true">구성</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">개인 DNS가 활성화됨</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">개인 DNS가 활성화됨</string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">보호됨</string>
     <string name="lbl_delete" translatable="true">삭제</string>
     <string name="status_protected_with_private_dns" translatable="true">개인 DNS로 보호됨</string>
@@ -89,11 +89,11 @@
     <string name="lbl_preshared_key" translatable="true">사전 공유 키</string>
     <string name="lbl_include" translatable="true">포함</string>
     <string name="firewall_rules" translatable="true">네트워크 규칙</string>
-    <string name="dns_explanation_dns_connected" translatable="true">RethinkDNS에 연결됨</string>
+    <string name="dns_explanation_dns_connected" translatable="true">DNS Control에 연결됨</string>
     <string name="notification_action_dns_mode" translatable="true">DNS</string>
     <string name="lbl_very" translatable="true">매우</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">보호되지 않음</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">RethinkDNS 및 방화벽에 연결됨</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">DNS Control 및 방화벽에 연결됨</string>
     <string name="allow" translatable="true">허용</string>
     <string name="dns_mode_info_explanation_new" translatable="true">DNS 요청을 모니터링, 차단 및 암호화합니다.</string>
     <string name="lbl_select_all" translatable="true">전체 선택</string>
@@ -360,7 +360,7 @@
     <string name="dc_entries" translatable="true">%1$s 항목 »</string>
     <string name="dc_proxy_dns_heading" translatable="true">DNS 프록시 사용 안 함</string>
     <string name="cd_custom_dns_proxy_default_app" translatable="true">없음</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="cd_dns_proxy_mode_internal" translatable="true">내부의</string>
     <string name="hsf_pause_vpn_failure" translatable="true">일시 중지할 수 없음: DNS Control가 비활성화되어 있습니다</string>
     <string name="hsf_exclude_error" translatable="true">VPN 락다운 모드에서는 제외할 수 없습니다</string>
@@ -578,8 +578,8 @@
     <string name="lbbs_redownload" translatable="true">차단 목록 다시 다운로드</string>
     <string name="lbbs_download" translatable="true">차단 목록 업데이트</string>
     <string name="lbbs_heading" translatable="true">195+ 차단 목록 구성</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">차단 목록 %1$s개</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">DNS Control를 시작해 계속 진행</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">차단 목록 %1$s개</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">DNS Control를 시작해 계속 진행</string>
     <string name="ssv_see_more" translatable="true">모두 표시</string>
     <string name="bad_config_reason_invalid_key" translatable="true">잘못된 키</string>
     <string name="bad_config_reason_invalid_number" translatable="true">잘못된 숫자</string>

@@ -51,7 +51,6 @@ class DiagnosticsManager(
 
     private var cdm: ConnectivityDiagnosticsManager? = null
 
-    // clear-cap ref: github.com/celzero/rethink-app/issues/347
     private val diagRequest: NetworkRequest = NetworkRequest.Builder().clearCapabilities()
         .addTransportType(NetworkCapabilities.TRANSPORT_VPN)
         .apply { if (isAtleastS()) setIncludeOtherUidNetworks(true) }

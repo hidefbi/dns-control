@@ -109,7 +109,7 @@
     <string name="exclude" translatable="true">exclude</string>
     <string name="isolate" translatable="true">izolează</string>
     <string name="pause_mode_notification_title" translatable="true">În repaus! Aplicațiile blocate vor fi protejate în continuare.</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">în așteptare</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">în așteptare</string>
     <string name="status_protected" description="This is a large message in a reassuring color. It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">protejat</string>
     <string name="wireguard_disclaimer" translatable="true">DNS retrimis la %1$s.</string>
     <string name="wireguard_no_config_msg" translatable="true">Nu există VPN AdGuard. Adaugă unul pentru a începe.</string>
@@ -173,11 +173,11 @@
     <string name="status_protected_with_proxy" translatable="true">protejat cu proxy</string>
     <string name="status_protected_with_wg" translatable="true">protejat cu WireGuard</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">protejat cu WireGuard și DNS privat</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">DNS-ul privat este activat</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">DNS-ul privat este activat</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">neprotejat</string>
-    <string name="dns_explanation_dns_connected" translatable="true">Conectat la RethinkDNS</string>
+    <string name="dns_explanation_dns_connected" translatable="true">Conectat la DNS Control</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Conectat la Firewall</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Conectat la RethinkDNS și Firewall</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Conectat la DNS Control și Firewall</string>
     <string name="universal_firewall_explanation" translatable="true">Aplică regulile Firewall-ului la toate aplicațiile în funcție de evenimentele de pe dispozitiv; de exemplu, protejează când dispozitivul este blocat sau când o anumită aplicație nu rulează.</string>
     <string name="notification_action_resume_vpn" translatable="true">CONTINUĂ</string>
     <string name="notification_action_pause_vpn" translatable="true">PAUZĂ</string>
@@ -364,7 +364,7 @@
     <string name="battery_optimization_dialog_heading" translatable="true">Dezactivare %1$s</string>
     <string name="dc_block_heading" translatable="true">Reguli</string>
     <string name="dc_custom_dns_radio" translatable="true">DNS personalizat</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_entries" translatable="true">%1$s intrări »</string>
     <string name="dc_local_block_heading" translatable="true">Liste de blocat de pe dispozitiv</string>
     <string name="hsf_pause_vpn_failure" translatable="true">DNS Control nu poate fi pus în pauză deoarece e inactiv</string>
@@ -690,8 +690,8 @@
     <string name="dc_setting_dns_cache_heading" translatable="true">Booster DNS</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Grupează cererile, memorează răspunsurile, rezolvă cu promptitudine erorile</string>
     <string name="dc_refresh_toast" translatable="true">Reîmprospătare completă</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s liste de blocat</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Pornește DNS Control pentru a începe</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s liste de blocat</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Pornește DNS Control pentru a începe</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Valoarea nu e validă</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Numărul nu e valid</string>
     <string name="bad_config_reason_invalid_key" translatable="true">Cheia nu e validă</string>

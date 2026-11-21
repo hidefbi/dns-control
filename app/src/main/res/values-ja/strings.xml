@@ -29,9 +29,9 @@
     <string name="status_protected_with_proxy_private_dns" translatable="true">プロキシとプライベート DNS で保護されています</string>
     <string name="status_protected_with_socks5_private_dns" translatable="true">SOCKS5 とプライベート DNS で保護されています</string>
     <string name="status_protected_with_proxy" translatable="true">プロキシで保護されています</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">プライベート DNS が有効</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">プライベート DNS が有効</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">保護されていません</string>
-    <string name="dns_explanation_dns_connected" translatable="true">RethinkDNS に接続済み</string>
+    <string name="dns_explanation_dns_connected" translatable="true">DNS Control に接続済み</string>
     <string name="dns_explanation_firewall_connected" translatable="true">ファイアウォールに接続済み</string>
     <string name="notification_action_dns_mode" translatable="true">DNS</string>
     <string name="firewall_mode_info_title" translatable="true">ファイアウォール</string>
@@ -61,7 +61,7 @@
     <string name="status_protected_with_tor_private_dns" translatable="true">Tor とプライベート DNS で保護されています</string>
     <string name="status_protected_with_http_private_dns" translatable="true">HTTP プロキシとプライベート DNS で保護されています</string>
     <string name="status_protected_with_http" translatable="true">HTTP プロキシで保護されています</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">RethinkDNS とファイアウォールに接続済み</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">DNS Control とファイアウォールに接続済み</string>
     <string name="notification_action_pause_vpn" translatable="true">一時停止</string>
     <string name="notification_action_stop_vpn" translatable="true">停止</string>
     <string name="dns_firewall_mode_info_explanation_new" translatable="true">上記のすべてに加えて、インターネットの検閲を回避します。</string>
@@ -217,7 +217,7 @@
     <string name="fapps_filter_categories_heading" translatable="true">カテゴリー</string>
     <string name="fapps_info_exclude_msg" translatable="true">DNSとファイアウォールの両方から除外する。</string>
     <string name="fapps_info_isolate_msg" translatable="true">信頼できるIP以外をブロックする。</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">DNS Controlを起動して始める</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">DNS Controlを起動して始める</string>
     <string name="lbbs_update_check" translatable="true">更新を確認</string>
     <string name="hsf_vpn_prepare_failure" translatable="true">VPN権限がないか、別のアプリケーションが常時接続 VPNに設定されています。</string>
     <string name="univ_firewall_rule_1" translatable="true">デバイスがロック状態であるときはすべてのアプリをブロックする</string>
@@ -381,7 +381,7 @@
     <string name="ci_trust_initial" translatable="true">T</string>
     <string name="ci_no_rule_initial" translatable="true">N</string>
     <string name="ci_block" translatable="true">ブロック</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="dc_dns_proxy" translatable="false">DNSプロキシ</string>
     <string name="dc_doh" translatable="false">Dns over HTTPS</string>
     <string name="lbbs_configure" translatable="true">構成</string>
@@ -422,7 +422,7 @@
     <string name="ci_bypass_universal_initial" translatable="true">BU</string>
     <string name="ci_delete" translatable="true">消去</string>
     <string name="rt_filter_hint" translatable="true"><u>すべての</u>ブロックリストを表示</string>
-    <string name="dc_rethink_dns_radio" translatable="true">RethinkDNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_block_heading" translatable="true">ルール</string>
     <string name="dc_custom_dns_radio" translatable="true">カスタム DNS</string>
     <string name="lbl_network" translatable="true">ネットワーク</string>

@@ -1,5 +1,6 @@
 /*
  * Copyright 2021 RethinkDNS and its authors
+ * Modifications Copyright 2026 hidefbi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +37,6 @@ object Logger {
     const val LOG_OKHTTP = "OkHttp"
     const val LOG_FIREBASE = "FirebaseErrorReporting"
 
-    // github.com/celzero/firestack/blob/bce8de917f/intra/log/logger.go#L76
     enum class LoggerLevel(val id: Long) {
         // the order of the levels is important, do not change it, add new levels at the end
         VERY_VERBOSE(0),

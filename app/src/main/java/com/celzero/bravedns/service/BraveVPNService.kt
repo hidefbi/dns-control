@@ -1,6 +1,7 @@
 /*
  * Copyright 2019 Jigsaw Operations LLC
  * Copyright 2020 RethinkDNS and its authors
+ * Modifications Copyright 2026 hidefbi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -905,7 +906,7 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
         // associated with a foreground service by default. To do so, users perform a swipe gesture
         // on the notification. On previous versions of Android, the notification can't be dismissed
         // unless the foreground service is either stopped or removed from the foreground.
-        // make it ongoing to prevent that. https://github.com/celzero/rethink-app/issues/1136
+        // make it ongoing to prevent that.
         if (persistentState.persistentNotification) {
             builder.setOngoing(true)
         } else {
@@ -3124,7 +3125,6 @@ class BraveVPNService : VpnService(), ConnectionMonitor.NetworkListener, Network
             // Adds a route to the VPN's routing table. The VPN will forward all traffic to the
             // destination through the VPN interface. The destination is specified by address and
             // prefixLength.
-            // ref: github.com/celzero/rethink-app/issues/26
             // github.com/M66B/NetGuard/blob/master/app/src/main/java/eu/faircode/netguard/ServiceSinkhole.java#L1276-L1353
             val ipsToExclude: MutableList<IPUtil.CIDR> = ArrayList()
 

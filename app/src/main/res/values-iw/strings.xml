@@ -24,7 +24,7 @@
     <string name="status_protected_with_tor_private_dns" translatable="true">מוגן עם DNS פרטי &amp; Tor</string>
     <string name="status_protected_with_proxy_private_dns" translatable="true">מוגן עם פרוקסי ו-DNS פרטי</string>
     <string name="status_protected_with_proxy" translatable="true">מוגן עם פרוקסי</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">DNS פרטי מופעל</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">DNS פרטי מופעל</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">לא מוגן</string>
     <string name="notification_action_stop_vpn" translatable="true">עצור</string>
     <string name="notification_action_pause_vpn" translatable="true">הַשהה</string>
@@ -50,8 +50,8 @@
     <string name="accessibility_service_description" translatable="true">DNS Control משתמשת בשירות הנגישות כדי לזהות ולחסום יישומי רקע. DNS Control אינה אוספת או מוכרת מידע כלשהו.</string>
     <string name="bypass_dns_firewall" translatable="true">עקוף כללי dns וחומת אש</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification." translatable="true">אזהרה: DNS Control הושבת</string>
-    <string name="dns_explanation_dns_connected" translatable="true">מחובר ל-RethinkDNS</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">מחובר ל-RethinkDNS ולחומת האש</string>
+    <string name="dns_explanation_dns_connected" translatable="true">מחובר ל-DNS Control</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">מחובר ל-DNS Control ולחומת האש</string>
     <string name="notification_action_resume_vpn" translatable="true">המשך</string>
     <string name="notification_action_dns_mode" translatable="true">DNS</string>
     <string name="apps_info_title" translatable="true">אפליקציות</string>
@@ -121,7 +121,7 @@
     <string name="lbbs_update_check" translatable="true">בדוק אם ישנם עדכונים</string>
     <string name="bsrf_clear_filter" translatable="true">אפס</string>
     <string name="ssv_see_more" translatable="true">הצג הכל</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">הפעל את DNS Control כדי להמשיך</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">הפעל את DNS Control כדי להמשיך</string>
     <string name="always_on_dialog_positive_btn" translatable="true">מעבר להגדרות</string>
     <string name="always_on_dialog" translatable="true">\"VPN תמיד פועל\" מאופשר במכשיר זה. כדי להפעיל את DNS Control, עבור אל אפליקציית ההגדרות והשבת את \"VPN תמיד פועל\".</string>
     <string name="univ_delete_firewall_dialog_title" translatable="true">למחוק את כל כללי ה-IP?</string>
@@ -362,7 +362,7 @@
     <string name="battery_optimization_dialog_heading" translatable="true">כבה %1$s</string>
     <string name="restrict_dialog_message" translatable="true"><i>%1$s</i>עלול לגרום לאובדן קישוריות.שנה את ההגדרה כדי לתת לDNS Control להשתמש בנתונים ובעוד משאבים ברקע.</string>
     <string name="dc_custom_dns_radio" translatable="true">DNS מותאם אישית</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_local_block_desc_1" translatable="true">בחר מתוך 195+ רשימות חסימה. לחץ כאן כדי להוריד או להגדיר רשימות חסימה.</string>
     <string name="dc_custom_block_heading" translatable="true">כללי דומיין</string>
     <string name="dc_dns_leaks_heading" translatable="true">מנע דליפות DNS</string>

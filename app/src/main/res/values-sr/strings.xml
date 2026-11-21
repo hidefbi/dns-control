@@ -70,16 +70,16 @@
     <string name="bypass_dns_firewall" translatable="true">заобиђи днс и заштитни зид</string>
     <string name="notification_content" description="Indicates what will happen if the user taps the notification." translatable="true">Додирните да промените подешавања заштите</string>
     <string name="firewall_mode_notification_title" translatable="true">Заштићени! Повезани са заштитним зидом.</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">чекање</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">чекање</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">неуспех</string>
     <string name="status_protected" description="This is a large message in a reassuring color. It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">заштићен</string>
     <string name="status_protected_with_socks5" translatable="true">заштићен са socks проксијем</string>
     <string name="status_protected_with_proxy" translatable="true">заштићен са проксијем</string>
     <string name="status_protected_with_wg" translatable="true">заштићен са wireguard-ом</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">није заштићен</string>
-    <string name="dns_explanation_dns_connected" translatable="true">Повезан са RethinkDNS-ом</string>
+    <string name="dns_explanation_dns_connected" translatable="true">Повезан са DNS Control-ом</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Повезан са заштитним зидом</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Повезан са RethinkDNS-ом и заштитним зидом</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Повезан са DNS Control-ом и заштитним зидом</string>
     <string name="notification_action_resume_vpn" translatable="true">НАСТАВИ</string>
     <string name="hybrid_mode_notification_title" translatable="true">Заштићени! Повезани са DNS + заштитни зид.</string>
     <string name="hybrid_mode_with_proxy_notification_title" translatable="true">Заштићени! Повезани са DNS + заштитни зид + прокси.</string>
@@ -89,7 +89,7 @@
     <string name="status_protected_with_proxy_private_dns" translatable="true">заштићен са проксијем и приватним dns-ом</string>
     <string name="status_protected_with_socks5_private_dns" translatable="true">заштићен са socks5 и приватним dns-ом</string>
     <string name="status_protected_with_http_private_dns" translatable="true">заштићен са http проксијем и приватним dns-ом</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">омогућен је приватни dns</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">омогућен је приватни dns</string>
     <string name="firewall_mode_info_title" translatable="true">Заштитни зид</string>
     <string name="apps_info_title" translatable="true">Апликације</string>
     <string name="alert_permission_accessibility" translatable="true">Дозвола - Приступачност</string>
@@ -269,7 +269,7 @@
     <string name="lbl_battery_optimization" translatable="true">Оптимизација батерије</string>
     <string name="dc_block_heading" translatable="true">правила</string>
     <string name="dc_custom_dns_radio" translatable="true">Прилагођени DNS</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_entries" translatable="true">%1$s уноси »</string>
     <string name="dc_local_block_heading" translatable="true">Блок листе на уређају</string>
     <string name="dc_local_block_desc_1" translatable="true">Изаберите међу 195+ блок листи. Кликните овде да преузмете или подесите блок листе.</string>
@@ -495,9 +495,9 @@
     <string name="lbbs_enabled" translatable="true">Омогућено</string>
     <string name="lbbs_update_check" translatable="true">Провери надоградњу</string>
     <string name="lbbs_redownload" translatable="true">Поново преузми блок листе</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s блок листи</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s блок листи</string>
     <string name="dc_setting_dns_cache_desc" translatable="true">Спаја захтеве, кешира одговоре, отпорно решавање грешака</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Покрени DNS Control за наставак</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Покрени DNS Control за наставак</string>
     <string name="ssv_see_more" translatable="true">Прикажи све</string>
     <string name="bad_config_reason_invalid_key" translatable="true">Неисправан кључ</string>
     <string name="bad_config_reason_invalid_number" translatable="true">Неисправан број</string>

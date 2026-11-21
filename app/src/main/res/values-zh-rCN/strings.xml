@@ -165,7 +165,7 @@
     <string name="rt_dialog_title">保存更改</string>
     <string name="title_settings">设置</string>
     <string name="status_protected_with_socks5_private_dns">受 SOCKS5 与私人 DNS 保护</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">已连接至 RethinkDNS 与防火墙</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">已连接至 DNS Control 与防火墙</string>
     <string name="dns_mode_info_explanation_new">监测、拦截并加密 DNS 请求。</string>
     <string name="alert_firewall_accessibility_exception">打开无障碍设置失败。请稍后重试！</string>
     <string name="dns_crypt_url_remove_success">DNSCrypt 解析服务已删除。</string>
@@ -197,7 +197,7 @@
     <string name="settings_theme_dialog_title">外观</string>
     <string name="settings_notification_dialog_title">选择通知操作</string>
     <string name="hsf_pause_vpn_failure">无法暂停： DNS Control 未启用</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_check_update_heading">屏蔽名单更新时提示</string>
     <string name="cd_custom_dns_proxy_name_default">代理</string>
     <string name="univ_accessibility_dialog_negative">拒绝</string>
@@ -436,8 +436,8 @@
     <string name="status_no_internet">无网络连接</string>
     <string name="status_protected_with_tor">已由 Tor 保护</string>
     <string name="status_protected_with_private_dns">受私人 DNS 保护</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">私人 DNS 已启用</string>
-    <string name="dns_explanation_dns_connected">已连接至 RethinkDNS</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">私人 DNS 已启用</string>
+    <string name="dns_explanation_dns_connected">已连接至 DNS Control</string>
     <string name="universal_firewall_explanation">根据设备事件应用防火墙规则，如在设备被锁定时或未使用某一应用程序时拦截。</string>
     <string name="notification_action_resume_vpn">恢复</string>
     <string name="bsct_conn_rule_explanation">&lt;u&gt;#1&lt;/u&gt;：阻止某应用联网。 \n &lt;u&gt;#2&lt;/u&gt;：阻止任意应用连接至某特定 IP 。 \n &lt;u&gt;#3&lt;/u&gt;：在设备锁定时阻止所有连接（全局拦截规则）。 \n &lt;u&gt;#4&lt;/u&gt;：阻止任意未使用的应用程序连接（全局拦截规则）。 \n &lt;u&gt;#5&lt;/u&gt;：阻止未知应用的连接（全局拦截规则）。 \n &lt;u&gt;#6&lt;/u&gt;：拦截除 DNS 外的所有 UDP 流量（全局拦截规则）。 \n &lt;u&gt;#7&lt;/u&gt;：拦截绕过 DNS 的流量（全局拦截规则）。</string>
@@ -502,7 +502,7 @@
     <string name="rt_download_start">正在下载屏蔽名单……</string>
     <string name="lbbs_update_check">检查更新</string>
     <string name="lbbs_heading">配置逾 195 个屏蔽名单</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="lbbs_configure">配置</string>
     <string name="lbbs_redownload">重新下载屏蔽名单</string>
     <string name="hsf_notification_permission_failure">于设置屏启用通知权限</string>
@@ -528,7 +528,7 @@
     <string name="private_dns_dialog_desc">DNS Control 的 DNS 设置已被 Android 的私人 DNS 覆盖。 \n \n若要使用 DNS Control 的 DNS ，请至 Android 设置并关闭「私人 DNS 」。</string>
     <string name="ci_trust_initial">信</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">拦截恶意软件、勒索软件、加密软件、钓鱼及其他威胁。</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s 个屏蔽名单</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s 个屏蔽名单</string>
     <string name="fapps_isolate_block_dialog_title">隔离应用</string>
     <string name="fapps_exclude_block_dialog_message">从 DNS 与防火墙中排除<i>所列</i>应用吗？</string>
     <string name="fapps_isolate_block_dialog_message">隔离<i>所列</i>应用吗？</string>
@@ -551,7 +551,7 @@
     <string name="fapps_exclude_block_dialog_title">排除应用</string>
     <string name="ci_trust_rule">信任</string>
     <string name="ssv_see_more">显示所有</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">启动 DNS Control 以继续</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">启动 DNS Control 以继续</string>
     <string name="lbl_all" translatable="true">全部</string>
     <string name="lbl_blocked" translatable="true">拦截</string>
     <string name="lbl_wildcard" translatable="true">通配</string>

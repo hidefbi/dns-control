@@ -1,6 +1,6 @@
 plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
 }
-rootProject.name='rethink'
+rootProject.name='dns-control'
 include ':app'
 include ':benchmark'

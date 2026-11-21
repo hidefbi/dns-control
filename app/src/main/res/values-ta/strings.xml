@@ -24,12 +24,12 @@
     <string name="status_protected_with_http_private_dns">http பதிலாள் மற்றும் தனியார் டிஎன்எச் உடன் பாதுகாக்கப்படுகிறது</string>
     <string name="status_protected_with_socks5">சாக்ச் பதிலாள் மூலம் பாதுகாக்கப்படுகிறது</string>
     <string name="status_protected_with_proxy">பதிலாள் மூலம் பாதுகாக்கப்படுகிறது</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">தனியார் டிஎன்எச் இயக்கப்பட்டது</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">தனியார் டிஎன்எச் இயக்கப்பட்டது</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">பாதுகாக்கப்படவில்லை</string>
-    <string name="dns_explanation_dns_connected">RethinkDNS உடன் இணைக்கப்பட்டது</string>
+    <string name="dns_explanation_dns_connected">DNS Control உடன் இணைக்கப்பட்டது</string>
     <string name="alert_permission_accessibility">இசைவு - அணுகல்</string>
     <string name="notification_action_resume_vpn">தற்குறிப்பு</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">RethinkDNS மற்றும் Firewall உடன் இணைக்கப்பட்டுள்ளது</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">DNS Control மற்றும் Firewall உடன் இணைக்கப்பட்டுள்ளது</string>
     <string name="firewall_mode_info_title">ஃபயர்வால்</string>
     <string name="universal_firewall_explanation">சாதன நிகழ்வுகளின் அடிப்படையில் அனைத்து பயன்பாடுகளிலும் ஃபயர்வால் விதிகளைப் பயன்படுத்தவும், எடுத்துக்காட்டாக, சாதனம் பூட்டப்பட்டிருக்கும் போது அல்லது குறிப்பிட்ட பயன்பாடு பயன்பாட்டில் இல்லாதபோது ஃபயர்வால்.</string>
     <string name="notification_action_stop_vpn">நிறுத்து</string>
@@ -159,7 +159,7 @@
     <string name="pause_desc" translatable="true">குறிப்பு: %1$s தடுக்கப்பட்ட பயன்பாடுகள் தொடர்ந்து ஃபயர்வால் செய்யப்படும்.</string>
     <string name="other_dns_list_tab1" translatable="true">தோ</string>
     <string name="bypass_dns_firewall_tooltip">%1$s ரீதிங்கின் டிஎன்எச் உடன் மட்டுமே வேலை செய்கின்றன</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">தொடர மறுபரிசீலனை செய்யத் தொடங்குங்கள்</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">தொடர மறுபரிசீலனை செய்யத் தொடங்குங்கள்</string>
     <string name="ssv_see_more" translatable="true">அனைத்தையும் காட்டு</string>
     <string name="bad_config_reason_invalid_key" translatable="true">தவறான விசை</string>
     <string name="orbot_socks5" translatable="true">TCP- மட்டும் பதிலாள்</string>
@@ -241,7 +241,7 @@
     <string name="dc_setting_dns_cache_heading" translatable="true">டி.என்.எச் பூச்டர்</string>
     <string name="lbbs_enabled" translatable="true">இயக்கப்பட்டது</string>
     <string name="lbbs_configure" translatable="true">உள்ளமைக்கவும்</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s பிளாக்லிச்ட்கள்</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s பிளாக்லிச்ட்கள்</string>
     <string name="bad_config_reason_invalid_number" translatable="true">தவறான எண்</string>
     <string name="bad_config_reason_missing_section" translatable="true">காணாமல் போன பிரிவு</string>
     <string name="bad_config_reason_syntax_error" translatable="true">தொடரியல் பிழை</string>

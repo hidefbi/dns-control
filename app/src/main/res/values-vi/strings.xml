@@ -33,10 +33,10 @@
     <string name="status_protected_with_socks5" translatable="true">Đã được bảo vệ bởi socks5 proxy</string>
     <string name="status_protected_with_http" translatable="true">Đã được bảo vệ bởi http proxy</string>
     <string name="status_protected_with_proxy" translatable="true">Đã được bảo vệ bởi proxy</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">DNS riêng tư đang bật</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">DNS riêng tư đang bật</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit." translatable="true">Chưa được bảo vệ</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Đã kết nối với tường lửa</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Đã kết nối với RethinkDNS và tường lửa</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Đã kết nối với DNS Control và tường lửa</string>
     <string name="notification_action_stop_vpn" translatable="true">DỪNG</string>
     <string name="notification_action_dns_firewall_mode" translatable="true">DNS + tường lửa</string>
     <string name="dns_mode_info_title" translatable="true">DNS</string>
@@ -56,7 +56,7 @@
     <string name="status_waiting" description="This text appears during the connection process if Intra needs user permission or the phone is offline." translatable="true">đang chờ</string>
     <string name="status_dns_server_down" translatable="true">máy chủ dns ngừng hoạt động</string>
     <string name="status_protected_with_proxy_private_dns" translatable="true">"đã được bảo vệ bởi proxy &amp;  dns riêng tư"</string>
-    <string name="dns_explanation_dns_connected" translatable="true">Đã kết nối với RethinkDNS</string>
+    <string name="dns_explanation_dns_connected" translatable="true">Đã kết nối với DNS Control</string>
     <string name="notification_action_pause_vpn" translatable="true">NGƯNG</string>
     <string name="notification_action_dns_mode" translatable="true">DNS</string>
     <string name="dns_firewall_mode_info_explanation_new" translatable="true">Tất cả những điều trên + bỏ qua kiểm duyệt Internet.</string>
@@ -295,7 +295,7 @@
     <string name="hsf_vpn_dialog_message" translatable="true">DNS Control cần có quyền thiết lập VPN cục bộ để mã hoá các yêu cầu DNS, triển khai trình giám sát mạng và thực thi các quy tắc tường lửa.\n\nDNS Control không thu thập thông tin hay theo dõi bạn dưới bất kì hình thức nào.</string>
     <string name="about_mail_bugreport_share_title" translatable="true">Chọn nhà cung cấp email</string>
     <string name="hsf_pause_vpn_failure" translatable="true">Không thể dừng: DNS Control đang không hoạt động</string>
-    <string name="dc_rethink_dns_radio" translatable="true">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_block_heading" translatable="true">Các quy tắc</string>
     <string name="dc_entries" translatable="true">%1$s mục »</string>
     <string name="dc_local_block_desc_1" translatable="true">Chọn từ hơn 195 danh sách chặn. Nhấn vào đây để tải xuống hoặc định cấu hình danh sách chặn.</string>
@@ -637,8 +637,8 @@
     <string name="bad_config_reason_syntax_error" translatable="true">Lỗi cú pháp</string>
     <string name="bad_config_reason_invalid_value" translatable="true">Giá trị không hợp lệ</string>
     <string name="bad_config_reason_invalid_key" translatable="true">Khóa không hợp lệ</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Khởi động DNS Control để tiếp tục</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s danh sách chặn</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Khởi động DNS Control để tiếp tục</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category" translatable="true">%1$s danh sách chặn</string>
     <string name="lbbs_configure" translatable="true">Tinh chỉnh</string>
     <string name="lbbs_enabled" translatable="true">Cho phép</string>
     <string name="dc_refresh_toast" translatable="true">Làm mới hoàn tất</string>

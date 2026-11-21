@@ -85,7 +85,7 @@
     <string name="dns_mode_notification_title" translatable="true">Suojattu! Yhdistetty nopeaan ja suojattuun DNS:ään.</string>
     <string name="status_failing" description="This text appears if the connection is currently not working correctly. [CHAR_LIMIT=NONE]" translatable="true">epäonnistuminen</string>
     <string name="hybrid_mode_notification_title" translatable="true">Suojattu! Yhteys DNS + palomuuriin.</string>
-    <string name="status_waiting" description="This text appears during the connection process if Rethink needs user permission or the phone is offline." translatable="true">odottamassa</string>
+    <string name="status_waiting" description="This text appears during the connection process if DNS Control needs user permission or the phone is offline." translatable="true">odottamassa</string>
     <string name="warning_title" description="Status indicator text shown in a warning notification." translatable="true">Varoitus: DNS Control on poistettu käytöstä</string>
     <string name="firewall_mode_notification_title" translatable="true">Suojattu! Yhteys palomuuriin.</string>
     <string name="status_protected" description="This is a large message in a reassuring color. It indicates that DNS queries can't be surveilled or modified in transit." translatable="true">suojattu</string>
@@ -108,10 +108,10 @@
     <string name="status_protected_with_http" translatable="true">suojattu HTTP-välityspalvelimella</string>
     <string name="status_protected_with_wg" translatable="true">suojattu WireGuardilla</string>
     <string name="status_protected_with_wg_private_dns" translatable="true">suojattu WireGuardilla ja yksityisellä DNS:llä</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted." translatable="true">yksityinen DNS on käytössä</string>
-    <string name="dns_explanation_dns_connected" translatable="true">Yhdistetty RethinkDNS:ään</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted." translatable="true">yksityinen DNS on käytössä</string>
+    <string name="dns_explanation_dns_connected" translatable="true">Yhdistetty DNS Control:ään</string>
     <string name="dns_explanation_firewall_connected" translatable="true">Yhdistetty palomuuriin</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Yhdistetty RethinkDNS:ään ja palomuuriin</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected" translatable="true">Yhdistetty DNS Control:ään ja palomuuriin</string>
     <string name="notification_action_resume_vpn" translatable="true">Jatka</string>
     <string name="notification_action_stop_vpn" translatable="true">Lopeta</string>
     <string name="notification_action_dns_mode" translatable="true">DNS</string>

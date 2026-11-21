@@ -1,5 +1,6 @@
 /*
  * Copyright 2020 RethinkDNS and its authors
+ * Modifications Copyright 2026 hidefbi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1476,7 +1477,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
     private fun bytesToTB(bytes: Long): Double = bytes / BYTES_PER_TB
 
     /**
-     * Issue fix - https://github.com/celzero/rethink-app/issues/57 When the application
+     * Issue fix -  When the application
      * crashes/updates it goes into red waiting state. This causes confusion to the users also
      * requires click of START button twice to start the app. FIX : The check for the controller
      * state. If persistence state has vpn enabled and the VPN is not connected then the start will
@@ -1560,7 +1561,7 @@ class HomeScreenFragment : Fragment(R.layout.fragment_home_screen) {
         Logger.d(LOG_TAG_VPN, "Status : $isVpnActivated , BraveMode: ${appConfig.getBraveMode()}")
 
         // no need to check for app modes to open this activity
-        // one use case: https://github.com/celzero/rethink-app/issues/611
+        // one use case:
         val intent = Intent(requireContext(), AppListActivity::class.java)
         startActivity(intent)
     }

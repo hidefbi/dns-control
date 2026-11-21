@@ -36,7 +36,7 @@
     <string name="status_protected_with_socks5_private_dns">socks5 ve özel dns ile korunuyor</string>
     <string name="status_protected_with_socks5">socks vekil sunucusu ile korunuyor</string>
     <string name="status_protected_with_http">http vekil sunucusu ile korunuyor</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">RethinkDNS ve güvenlik duvarına bağlandı</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">DNS Control ve güvenlik duvarına bağlandı</string>
     <string name="universal_firewall_explanation">Aygıt olaylarına göre tüm uygulamalara güvenlik duvarı kuralları uygulayın; örneğin, aygıt kilitlendiğinde veya belirli bir uygulama kullanımda olmadığında güvenlik duvarı uygulayın.</string>
     <string name="notification_action_resume_vpn">SÜRDÜR</string>
     <string name="notification_action_pause_vpn">DURAKLAT</string>
@@ -48,10 +48,10 @@
     <string name="firewall_mode_info_title">Güvenlik Duvarı</string>
     <string name="status_protected_with_proxy">vekil sunucu ile korunuyor</string>
     <string name="status_protected_with_http_private_dns">http vekil sunucu ve özel dns ile korunuyor</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">özel dns etkin</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">özel dns etkin</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">korunmuyor</string>
     <string name="dns_explanation_firewall_connected">Güvenlik duvarına bağlandı</string>
-    <string name="dns_explanation_dns_connected">RethinkDNS\'e bağlandı</string>
+    <string name="dns_explanation_dns_connected">DNS Control\'e bağlandı</string>
     <string name="settings_https_heading">HTTP(S) BAĞLAN Vekili Kurulumu</string>
     <string name="settings_https_desc">HTTP(S) BAĞLAN son noktası için ileri bağlantılar.</string>
     <string name="orbot">Orbot</string>
@@ -141,7 +141,7 @@
     <string name="ci_no_rule_txt">Kural Yok</string>
     <string name="orbot_download_link_website" translatable="false">https://github.com/guardianproject/orbot/releases</string>
     <string name="dns_proxy_desc_no_app" translatable="false">%1$s:%2$s</string>
-    <string name="dc_rethink_dns" translatable="false">Rethink DNS</string>
+    <string name="dc_rethink_dns" translatable="false">DNS Control</string>
     <string name="dns_crypt_relay_remove_dialog_message">DNSCrypt aktarıcısını kayıtlı yapılandırmadan silin.</string>
     <string name="search_custom_domains"><font size="12">Alan adlarını arama</font></string>
     <string name="orbot_bs_status_3">%1$s adresinden Orbot\'a yönlendirme, HTTP Proxy de ayarlandı.</string>
@@ -330,7 +330,7 @@
     <string name="settings_dns_proxy_dialog_port_number">Liman Numarası</string>
     <string name="settings_dns_proxy_dialog_positive_btn">Set</string>
     <string name="settings_ip_dialog_ipv6">IPv6 (deneysel)</string>
-    <string name="dc_rethink_dns_radio">Rethink DNS</string>
+    <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_local_block_heading">Cihaz üzerinde blok listeleri</string>
     <string name="cd_custom_dns_proxy_name_default">Vekil</string>
     <string name="cd_dns_crypt_dialog_name">Ad</string>
@@ -525,7 +525,7 @@
     <string name="rbl_parental_control_desc" description="The text appears as blocklists description in configure screen">Yetişkinlere yönelik ve korsan içerikleri, çevrim içi kumar ve randevuları ve sosyal medyayı engelleyin.</string>
     <string name="rbl_privacy_desc" description="The text appears as blocklists description in configure screen">Dikkat yazılımlarını, casus yazılımları, korkutucu yazılımları engelleyin.</string>
     <string name="rbl_security_desc" description="The text appears as blocklists description in configure screen">Kötü amaçlı yazılımları, fidye yazılımlarını, kripto yazılımlarını, kimlik avcılarını ve diğer tehditleri engelleyin.</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s engel listesi</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s engel listesi</string>
     <string name="lbl_configure" translatable="true">Yapılandır</string>
     <string name="lbl_network" translatable="true">Ağ</string>
     <string name="bypass_dns_firewall" translatable="true">DNS &amp; Güvenlik duvarını atla</string>
@@ -588,7 +588,7 @@
     <string name="lbl_optional" translatable="true">(opsiyonel)</string>
     <string name="settings_biometric_desc" translatable="true">Ekran kilidinizi kullanarak bu uygulamayı güvenli hale getirin</string>
     <string name="cleanbrowsing_family_dns_desc" translatable="true">Aile filtresi, tüm yetişkin, pornografik ve açık sitelere erişimi engeller. Ayrıca filtrelerimizi atlamak için kullanılabilecek proxy ve VPN alan adlarını da engeller. Karışık içerikli siteler (örneğin Reddit) de engellenir. Google, Bing ve Youtube Güvenli Mod\'a ayarlanmıştır.</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app" translatable="true">Devam etmek için DNS Control\'i başlatın</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app" translatable="true">Devam etmek için DNS Control\'i başlatın</string>
     <string name="settings_locale_heading" translatable="true">Dili değiştir</string>
     <string name="public_key_copy_toast_msg" translatable="true">Ortak anahtar kopyalandı.</string>
     <string name="import_error" translatable="true">Tünel içe aktarılamıyor: %s</string>

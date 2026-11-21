@@ -1,5 +1,6 @@
 /*
  * Copyright 2021 RethinkDNS and its authors
+ * Modifications Copyright 2026 hidefbi
  * Copyright 2019 Jigsaw Operations LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -1352,7 +1353,6 @@ class GoVpnAdapter : KoinComponent {
                 // case: some of the wg proxies are added to tunnel but erring out, so
                 // re-adding those proxies seems working, work around for now until the
                 // re-add logic is handled in go-tun
-                // (github.com/celzero/firestack/blob/61187f88c1/intra/ipn/wgproxy.go#L404)
                 if (avoidReaddingProxies) {
                     refreshWgProxy(id)
                 } else {

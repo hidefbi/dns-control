@@ -6,9 +6,9 @@
     <string name="status_protected_with_http_private_dns">zabezpieczone przez proxy http &amp; prywatnym dns</string>
     <string name="status_protected_with_http">zabezpieczone przez http proxy</string>
     <string name="status_protected" description="This is a large message in a reassuring color.  It indicates that DNS queries can't be surveilled or modified in transit.">zabezpieczone</string>
-    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by Rethink.  It is not color-highlighted.">prywatne dns włączone</string>
+    <string name="status_strict" description="This is similar to dns_on, but the protection is being provided by the operating system, not by DNS Control.  It is not color-highlighted.">prywatne dns włączone</string>
     <string name="status_exposed" description="This is a large message in a scary color.  It indicates that DNS queries can be surveilled or modified in transit.">brak zabezpieczienia</string>
-    <string name="dns_explanation_dns_connected">Połączone z RethinkDNS</string>
+    <string name="dns_explanation_dns_connected">Połączone z DNS Control</string>
     <string name="status_protected_with_tor_private_dns">zabezpieczone przez tor &amp; prywatnym dns</string>
     <string name="status_protected_with_socks5">zabezpieczone przez socks proxy</string>
     <string name="status_protected_with_proxy">zabezpieczone przez proxy</string>
@@ -16,7 +16,7 @@
     <string name="dns_explanation_firewall_connected">Połączone z Zaporą</string>
     <string name="apps_info_title">Aplikacje</string>
     <string name="hybrid_mode_info_title">DNS + Zapora</string>
-    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Połączone z RethinkDNS oraz Zaporą</string>
+    <string name="dns_explanation_connected" description="The message will be shown when the DNS is connected">Połączone z DNS Control oraz Zaporą</string>
     <string name="universal_firewall_explanation">Zastosuj reguły zapory do wszystkich aplikacji na podstawie zdarzeń urządzenia, na przykład włączenie zapory, gdy urządzenie jest zablokowane lub gdy dana aplikacja nie jest używana.</string>
     <string name="dns_mode_info_explanation_new">Monitoruj, blokuj i szyfruj żądania DNS.</string>
     <string name="notification_action_resume_vpn">KONTYNUUJ</string>
@@ -84,8 +84,8 @@
     <string name="doh_custom_url_remove_dialog_title">Usunąć punkt końcowy DoH?</string>
     <string name="dns_crypt_relay_remove_dialog_title">Usunąć DNSCrypt Relay?</string>
     <string name="dns_crypt_relay_remove_dialog_message">Usuń przekaźnik DNSCrypt z zapisanej konfiguracji.</string>
-    <string name="rsv_blocklist_count_text" description="This label will appear in rethink configure simple view screen which shows number of blocklists for each category">%1$s listy blokowania</string>
-    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start Rethink app">Uruchom DNS Control, aby kontynuować</string>
+    <string name="rsv_blocklist_count_text" description="This label will appear in DNS Control configure simple view screen which shows number of blocklists for each category">%1$s listy blokowania</string>
+    <string name="ssv_toast_start_rethink" description="This label will appear on the stats screen as toast to start DNS Control app">Uruchom DNS Control, aby kontynuować</string>
     <string name="ssv_see_more">Pokaż Wszystko</string>
     <string name="txt_home">Strona główna</string>
     <string name="app_mode_dns_low_battery" translatable="true">DNS (oszczędzanie baterii)</string>
@@ -418,7 +418,7 @@
     <string name="lbl_proceed" translatable="true">Kontynuować</string>
     <string name="hsf_pause_vpn_failure" translatable="true">Nie można wstrzymać: DNS Control nie jest aktywny</string>
     <string name="dc_block_heading" translatable="true">zasady</string>
-    <string name="dc_rethink_dns_radio" translatable="true">RethinkDNS</string>
+    <string name="dc_rethink_dns_radio" translatable="true">DNS Control</string>
     <string name="dc_dns_leaks_heading" translatable="true">Zapobieganie wyciekom DNS</string>
     <string name="cd_dns_crypt_name_default" translatable="true">DNSCrypt</string>
     <string name="cd_dns_crypt_name" translatable="true">DNSCrypt %1$s</string>
