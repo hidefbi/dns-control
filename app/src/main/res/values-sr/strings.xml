@@ -277,7 +277,7 @@
     <string name="dc_dns_leaks_heading" translatable="true">Спречи DNS цурења</string>
     <string name="dc_dns_leaks_desc" translatable="true">Када је омогућено, DNS Control хвата све пакете на порту 53 и прослеђује их ка кориснички подешеној DNS крајњој тачки</string>
     <string name="dc_check_update_heading" translatable="true">Питај при освежењу блок листе</string>
-    <string name="dc_check_update_desc" translatable="true">Проверавај освежење блок листе на свака <i>три</i> дана</string>
+    <string name="dc_check_update_desc" translatable="true">Проверавај освежење блок листе на свака <i>%1$d</i> дана</string>
     <string name="dc_proxy_dns_heading" translatable="true">Никада не проксуј DNS</string>
     <string name="dc_proxy_dns_desc" translatable="true">Не проксуј DNS преко увек укљученог WireGuard-а, SOCKS5, HTTP проксија.</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Пошаљи е-поруку</string>

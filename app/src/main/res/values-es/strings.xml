@@ -328,7 +328,7 @@
     <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_entries">%1$s entradas »</string>
     <string name="dc_dns_leaks_heading">Evitar las fugas de DNS</string>
-    <string name="dc_check_update_desc">Comprueba las actualizaciones de la lista de bloqueo una vez cada <i>tres</i> días</string>
+    <string name="dc_check_update_desc">Comprueba las actualizaciones de la lista de bloqueo una vez cada <i>%1$d</i> días</string>
     <string name="about_bug_report_dialog_positive_btn">Enviar correo electrónico</string>
     <string name="about_mail_to_string">a:</string>
     <string name="about_mail_subject">[DNS Control]:</string>

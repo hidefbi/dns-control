@@ -709,7 +709,7 @@
     <string name="dc_dns_leaks_desc" translatable="true">When enabled, DNS Control captures all packets on port 53 and forwards it to a user-set DNS endpoint</string>
 
     <string name="dc_check_update_heading" translatable="true">Prompt on blocklist updates</string>
-    <string name="dc_check_update_desc" translatable="true">Check for blocklist updates once every <i>three</i> days</string>
+    <string name="dc_check_update_desc" translatable="true">Check for blocklist updates once every <i>%1$d</i> days</string>
 
     <string name="dc_proxy_dns_heading" translatable="true">Never proxy DNS</string>
     <string name="dc_proxy_dns_desc" translatable="true">Do not proxy DNS over Always-on WireGuard, SOCKS5, HTTP proxies.</string>

@@ -363,7 +363,7 @@
     <string name="dc_custom_block_heading">網域規則</string>
     <string name="dc_dns_leaks_desc">若啟用， DNS Control 將捕獲埠 53 上的所有封包，並將其轉送至您設定的 DNS 端點</string>
     <string name="dc_check_update_heading">攔截清單更新時提示</string>
-    <string name="dc_check_update_desc">每<i>三</i>天檢查有無攔截清單更新</string>
+    <string name="dc_check_update_desc">每<i>%1$d</i>天檢查有無攔截清單更新</string>
     <string name="about_bug_report_dialog_positive_btn">寄送電子郵件</string>
     <string name="about_settings_app_info">應用程式資料</string>
     <string name="about_mail_to_string">mailto:</string>

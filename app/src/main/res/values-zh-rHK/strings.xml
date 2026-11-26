@@ -16,7 +16,7 @@
     <string name="settings_socks5_dialog_hint_port">埠</string>
     <string name="settings_socks5_dialog_hint_username">帳號（可選）</string>
     <string name="hsf_vpn_dialog_message">DNS Control 需要設定本地 VPN 嘅權限，以加密裝置嘅 DNS 請求、實現網絡監測同執行防火牆規則。 \n \nDNS Control 並唔會收集任何資料，同埋唔會以任何方式監視您。</string>
-    <string name="dc_check_update_desc">每<i>三</i>日檢查有冇攔截清單更新</string>
+    <string name="dc_check_update_desc">每<i>%1$d</i>日檢查有冇攔截清單更新</string>
     <string name="dns_mode_info_title">DNS</string>
     <string name="firewall_rules">網絡規則</string>
     <string name="orbot_explanation">Orbot 係一款能夠畀其他程式更&lt;u&gt;安全&lt;/u&gt;咁連線去互聯網嘅免費代理應用程式。 \nOrbot 會用到 &lt;u&gt;Tor&lt;/u&gt; 嚟加密您嘅網絡流量，幫您&lt;u&gt;繞過網絡審查&lt;/u&gt;，同埋抵禦威脅個人自由同隱私嘅&lt;u&gt;網絡監視&lt;/u&gt;。 \n&lt;u&gt;TCP 代理&lt;/u&gt;：DNS Control 只會將&lt;i&gt;包含嘅&lt;/i&gt;應用程式嘅 TCP 連線轉發去 Orbot。 \n&lt;u&gt;HTTP 代理&lt;/u&gt;：DNS Control 會同 Orbot &lt;i&gt;起一條&lt;/i&gt; HTTP CONNECT 隧道，並且只會轉發&lt;i&gt;包含嘅&lt;/i&gt;應用程式嘅 TCP 連線。</string>

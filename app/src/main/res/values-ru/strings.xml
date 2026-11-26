@@ -301,7 +301,7 @@
     <string name="hsf_notification_permission_failure">Включить разрешение на уведомления на экране Настройки</string>
     <string name="dc_custom_block_heading">Правила домена</string>
     <string name="dc_check_update_heading">Уведомление об обновлении списка блокировки</string>
-    <string name="dc_check_update_desc">Проверять обновления списков блокировки каждые <i>три</i> дня</string>
+    <string name="dc_check_update_desc">Проверять обновления списков блокировки каждые <i>%1$d</i> дней</string>
     <string name="dc_local_block_heading">Списки блокировки на устройстве</string>
     <string name="dc_dns_leaks_heading">Предотвращение утечек DNS</string>
     <string name="dc_dns_leaks_desc">При включении этой функции, DNS Control перехватывает все пакеты на 53-м порту и перенаправляет их на заданную пользователем конечную точку DNS</string>

@@ -325,7 +325,7 @@
     <string name="hsf_pause_vpn_failure">Não é possível pausar: DNS Control não está ativo</string>
     <string name="dc_dns_leaks_desc">Quando ativado, o DNS Control captura todos os pacotes na porta 53 e os encaminha para um endpoint DNS configurado pelo usuário</string>
     <string name="dc_check_update_heading">Avisar sobre atualizações de listas de bloqueio</string>
-    <string name="dc_check_update_desc">Verifica se há atualizações da lista de bloqueio uma vez a cada <i>três</i> dias</string>
+    <string name="dc_check_update_desc">Verifica se há atualizações da lista de bloqueio uma vez a cada <i>%1$d</i> dias</string>
     <string name="about_bug_report_dialog_positive_btn">Enviar email</string>
     <string name="dc_dns_leaks_heading">Evitar vazamentos de DNS</string>
     <string name="cd_dns_crypt_title">resolvedores</string>

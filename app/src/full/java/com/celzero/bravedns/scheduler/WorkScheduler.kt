@@ -17,6 +17,7 @@
 
 package com.celzero.bravedns.scheduler
 
+import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.Logger
 import com.celzero.bravedns.util.Logger.LOG_TAG_SCHEDULER
 import android.content.Context
@@ -33,7 +34,7 @@ class WorkScheduler(val context: Context) {
         const val BLOCKLIST_UPDATE_CHECK_JOB_TAG = "ScheduledBlocklistUpdateCheckJob"
         const val DATA_USAGE_JOB_TAG = "ScheduledDataUsageJob"
 
-        const val BLOCKLIST_UPDATE_CHECK_INTERVAL_DAYS: Long = 3
+        const val BLOCKLIST_UPDATE_CHECK_INTERVAL_DAYS: Long = 8
         const val DATA_USAGE_TIME_INTERVAL_MINS: Long = 20
 
         fun isWorkRunning(context: Context, tag: String): Boolean {
@@ -108,6 +109,18 @@ class WorkScheduler(val context: Context) {
                 ExistingPeriodicWorkPolicy.CANCEL_AND_REENQUEUE,
                 blocklistUpdateCheck
             )
+    }
+
+    // installs from before the interval change still run on the old period,
+    // so enqueue once more when the saved interval differs from the one in code
+    fun rescheduleBlocklistUpdateCheckIfNeeded(persistentState: PersistentState) {
+        if (!persistentState.periodicallyCheckBlocklistUpdate) return
+        val interval = BLOCKLIST_UPDATE_CHECK_INTERVAL_DAYS.toInt()
+        if (persistentState.blocklistCheckIntervalDays == interval) return
+
+        Logger.i(LOG_TAG_SCHEDULER, "blocklist check interval changed, rescheduling to $interval days")
+        scheduleBlocklistUpdateCheckJob()
+        persistentState.blocklistCheckIntervalDays = interval
     }
 
     fun scheduleDataUsageJob() {

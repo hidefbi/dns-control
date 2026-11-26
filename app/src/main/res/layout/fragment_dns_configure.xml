@@ -317,8 +317,8 @@
                             style="@style/TextAppearance.Material3.BodyMedium"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:id="@+id/dc_check_update_desc"
                             android:paddingTop="3dp"
-                            android:text="@string/dc_check_update_desc"
                             android:textColor="?attr/colorOnSurfaceVariant" />
                     </LinearLayout>
 

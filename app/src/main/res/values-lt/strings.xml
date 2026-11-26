@@ -145,7 +145,7 @@
     <string name="dc_local_block_desc_1">Galite rinktis iš daugiau nei 185 blokavimo sąrašų. Spustelėkite čia, jei norite atsisiųsti arba konfigūruoti blokavimo sąrašus.</string>
     <string name="dc_custom_block_heading">Leisti arba neleisti atskirų domenų</string>
     <string name="dc_check_update_heading">Priminti atnaujinti blokavimo sąrašus</string>
-    <string name="dc_check_update_desc">Patikrinti, ar nėra blokavimo sąrašų atnaujinimų, kartą per <i>tris</i> dienas</string>
+    <string name="dc_check_update_desc">Patikrinti, ar nėra blokavimo sąrašų atnaujinimų, kartą per <i>%1$d</i> dienas</string>
     <string name="about_settings_app_info">Programėlės informacija</string>
     <string name="about_mail_bugreport_share_title">Pasirinkti el. pašto paslaugų teikėją</string>
     <string name="cd_dns_crypt_title">sprendikliai</string>

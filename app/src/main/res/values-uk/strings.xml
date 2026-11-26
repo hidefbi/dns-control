@@ -405,7 +405,7 @@
     <string name="crypt_relay_sweden" translatable="true">Анонімна ретрансляція DNS (Система доменних імен) розміщена в Швеції, надається https://cryptostrom.is/.</string>
     <string name="lbl_split" translatable="true">Роздільне тунел-ня</string>
     <string name="settings_socks5_dialog_hint_ip" translatable="true">IP-адреса</string>
-    <string name="dc_check_update_desc" translatable="true">Перевіряти оновленя блок листа раз на <i>три</i> дні</string>
+    <string name="dc_check_update_desc" translatable="true">Перевіряти оновленя блок листа раз на <i>%1$d</i> днів</string>
     <string name="dc_proxy_dns_desc" translatable="true">Не проксірувати DNS через Always-on, WireGuard, Socks5, HTTP-проксі.</string>
     <string name="dc_proxy_dns_heading" translatable="true">Нікли не проксувати DNS</string>
     <string name="firewall_rule_bypass_universal_ip" translatable="true">Обхід IP</string>

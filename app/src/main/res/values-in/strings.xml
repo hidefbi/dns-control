@@ -182,7 +182,7 @@
     <string name="univ_accessibility_dialog_negative">Tolak</string>
     <string name="orbot_title">Orbot dan Proksi</string>
     <string name="settings_local_blocklist_in_use">%1$s daftar blokir yang digunakan</string>
-    <string name="dc_check_update_desc">Periksa pembaruan daftar blokir setiap <i>tiga</i> hari</string>
+    <string name="dc_check_update_desc">Periksa pembaruan daftar blokir setiap <i>%1$d</i> hari</string>
     <string name="rt_dialog_message">Apakah Anda ingin menerapkan daftar-daftar blokir yang baru saja diatur?</string>
     <string name="firewall_status_blocked">terblokir</string>
     <string name="univ_ip_delete_toast_success">Hapus semua aturan IP.</string>

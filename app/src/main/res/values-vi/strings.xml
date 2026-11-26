@@ -301,7 +301,7 @@
     <string name="dc_local_block_desc_1" translatable="true">Chọn từ hơn 195 danh sách chặn. Nhấn vào đây để tải xuống hoặc định cấu hình danh sách chặn.</string>
     <string name="dc_local_block_heading" translatable="true">Danh sách chặn trên thiết bị</string>
     <string name="dc_check_update_heading" translatable="true">Nhắc nhở khi danh sách chặn có cập nhật</string>
-    <string name="dc_check_update_desc" translatable="true">Kiểm tra bản cập nhật danh sách chặn <i>ba</i> ngày một lần</string>
+    <string name="dc_check_update_desc" translatable="true">Kiểm tra bản cập nhật danh sách chặn <i>%1$d</i> ngày một lần</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Gửi email</string>
     <string name="cd_custom_doh_url_name" translatable="true">DoH %1$s</string>
     <string name="about_settings_app_info" translatable="true">Thông tin ứng dụng</string>

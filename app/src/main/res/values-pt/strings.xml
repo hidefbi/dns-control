@@ -257,7 +257,7 @@
     <string name="dc_dns_leaks_heading">Prevenir fugas de DNS</string>
     <string name="dc_dns_leaks_desc">Se ativa, DNS Control captura todos os pacotes na porta 53 e encaminha-os para um \'endpoint\' DNS definido pelo utilizador</string>
     <string name="dc_check_update_heading">Avisar sobre atualização das listas de bloqueio</string>
-    <string name="dc_check_update_desc">Procurar atualizações das listas de bloqueio a cada <i>três</i> dias</string>
+    <string name="dc_check_update_desc">Procurar atualizações das listas de bloqueio a cada <i>%1$d</i> dias</string>
     <string name="about_mail_to_string">mailto:</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="app_info_error">Não foi possível ver as informação da aplicação.</string>

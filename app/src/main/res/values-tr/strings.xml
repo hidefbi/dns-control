@@ -434,7 +434,7 @@
     <string name="apps_card_ips_count">%1$s IP ve Port kuralı</string>
     <string name="hsf_start_btn_state">başlat</string>
     <string name="hsf_vpn_dialog_message">DNS Control, cihazın DNS isteklerini şifrelemek, bir ağ izleyicisi uygulamak ve güvenlik duvarı kurallarını uygulamak için yerel bir VPN kurma iznine ihtiyaç duyar. \n \nDNS Control herhangi bir şekilde bilgi toplamaz veya sizi gözetlemez.</string>
-    <string name="dc_check_update_desc">Her <i>üç</i> günde bir blok listesi güncellemelerini kontrol edin</string>
+    <string name="dc_check_update_desc">Her <i>%1$d</i> günde bir blok listesi güncellemelerini kontrol edin</string>
     <string name="rbl_privacy">Gizlilik</string>
     <string name="rt_dialog_message">Yeni yapılandırılmış blok listelerini uygulamak istiyor musunuz?</string>
     <string name="cd_doh_dialog_resolver_url">Çözümleyici URL\'si</string>

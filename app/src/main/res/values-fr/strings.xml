@@ -363,7 +363,7 @@
     <string name="ci_no_rule_initial">N</string>
     <string name="settings_ip_network_heading">Choisir la version IP</string>
     <string name="orbot_stop_dialog_message_combo" translatable="false">%1$s \n \n%2$s</string>
-    <string name="dc_check_update_desc">Vérifier les mises à jour des listes de blocage tous les <i>trois</i> jours</string>
+    <string name="dc_check_update_desc">Vérifier les mises à jour des listes de blocage tous les <i>%1$d</i> jours</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="cd_dns_proxy_error_text_1">Adresse IP invalide</string>
     <string name="vpn_profile_error">Impossible de lancer le profil VPN.</string>

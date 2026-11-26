@@ -316,7 +316,7 @@
     <string name="lbbs_enabled" translatable="true">有効化</string>
     <string name="lbbs_redownload" translatable="true">ブロックリストの再ダウンロード</string>
     <string name="orbot_explanation" translatable="true">Orbotは無料のプロキシアプリで、他のアプリがより&lt;u&gt;安全に&lt;/u&gt;インターネットを利用できるようになります。 \nOrbotは&lt;u&gt;Tor&lt;/u&gt;を使ってインターネットトラフィックを暗号化し、&lt;u&gt;検閲を回避し&lt;/u&gt;個人の自由とプライバシーを脅かす&lt;u&gt;ネットワーク監視&lt;/u&gt;形態からユーザーを守るのに役立ちます。 \n&lt;u&gt;TCPプロキシ&lt;/u&gt;:DNS Controlは、除外されたアプリを除くすべてのTCP接続のみをOrbotに転送する。 \n&lt;u&gt;HTTPプロキシ&lt;/u&gt;:DNS ControlはHTTPプロキシを&lt;i&gt;設定&lt;/i&gt;するが、アプリがそれを使用することを強制されません。通常、ChromeやFirefoxのようなブラウザはそれを使用しています。HTTP(S)プロキシを使用するアプリは、ファイアウォールとDNSの両方のルールがバイパスされます。</string>
-    <string name="dc_check_update_desc" translatable="true"><i>3</i>日ごとにブロックリストの更新を確認する</string>
+    <string name="dc_check_update_desc" translatable="true"><i>%1$d</i>日ごとにブロックリストの更新を確認する</string>
     <string name="alert_firewall_accessibility_regrant_explanation" translatable="true">DNS Control のユーザー補助サービスが停止またはクラッシュしました。<i><b>設定に移動して DNS Control を強制終了</b></i>し、再度起動してください。<i>使用していないアプリをブロックする</i> 機能を使用してください。 \n \nDNS Control は、ユーザー補助サービスを使用して、使用中 (フォアグラウンド) のアプリと使用していない (バックグラウンド) のアプリを追跡しています。</string>
     <string name="firewall_rule_bypass_universal_ip_desc" translatable="true"><![CDATA[<i>宛先IP</i>がすべてのユニバーサルファイアウォールルールをバイパスするように設定されているため、この接続は許可されました。<br/><br/>変更するには、<i>ユニバーサル</i>の<i>IPルール</i>に移動してください。]]></string>
     <string name="firewall_rule_domain_blocked_univ_desc" translatable="true"><![CDATA[<i>ドメイン</i>がユニバーサルドメインルールでブロックされているため、この接続はブロックされました。<br/><br/>この動作を変更するには、<i>DNSの設定</i>タブに移動します。]]></string>

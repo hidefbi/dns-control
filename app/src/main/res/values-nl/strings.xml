@@ -202,7 +202,7 @@
     <string name="dc_rethink_dns_radio">DNS Control</string>
     <string name="dc_local_block_heading">Blokkeringslijsten op het apparaat</string>
     <string name="univ_firewall_rule_5">Blokkeren wanneer DNS wordt omzeild</string>
-    <string name="dc_check_update_desc">Controleer eenmaal per <i>drie</i> dagen of de blocklist is bijgewerkt</string>
+    <string name="dc_check_update_desc">Controleer eenmaal per <i>%1$d</i> dagen of de blocklist is bijgewerkt</string>
     <string name="about_settings_app_info">App-informatie</string>
     <string name="about_mail_subject">[DNS Control]:</string>
     <string name="about_version_install_source" translatable="false">%1$s (%2$s)</string>

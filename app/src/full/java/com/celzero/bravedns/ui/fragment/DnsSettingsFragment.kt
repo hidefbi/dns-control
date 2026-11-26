@@ -106,6 +106,8 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
         b.dcAlgSwitch.isChecked = persistentState.enableDnsAlg
         // periodically check for blocklist update
         b.dcCheckUpdateSwitch.isChecked = persistentState.periodicallyCheckBlocklistUpdate
+        b.dcCheckUpdateDesc.text =
+            getString(R.string.dc_check_update_desc, WorkScheduler.BLOCKLIST_UPDATE_CHECK_INTERVAL_DAYS)
         // use custom download manager
         b.dcDownloaderSwitch.isChecked = persistentState.useCustomDownloadManager
         // enable dns caching in tunnel
@@ -386,6 +388,8 @@ class DnsSettingsFragment : Fragment(R.layout.fragment_dns_configure),
             persistentState.periodicallyCheckBlocklistUpdate = enabled
             if (enabled) {
                 get<WorkScheduler>().scheduleBlocklistUpdateCheckJob()
+                persistentState.blocklistCheckIntervalDays =
+                    WorkScheduler.BLOCKLIST_UPDATE_CHECK_INTERVAL_DAYS.toInt()
             } else {
                 Logger.i(
                     Logger.LOG_TAG_SCHEDULER,

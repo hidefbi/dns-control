@@ -407,7 +407,7 @@
     <string name="settings_http_proxy_error_text3">域名为空</string>
     <string name="firewall_status_excluded">已排除在 DNS 与防火墙外</string>
     <string name="hsf_vpn_dialog_message">DNS Control 需要权限来设置本地 VPN，以加密设备的 DNS 请求、实现网络监控并强制执行防火墙规则。\n\nDNS Control 不会以任何方式收集您的信息或监视您。</string>
-    <string name="dc_check_update_desc">每<i>三</i>天检查一次屏蔽名单更新</string>
+    <string name="dc_check_update_desc">每<i>%1$d</i>天检查一次屏蔽名单更新</string>
     <string name="cd_dnscrypt_relay_heading">中继</string>
     <string name="ctbs_app_other_apps">%1$s + %2$s 个其他应用</string>
     <string name="univ_firewall_rule_7">于 IPv6 拦截 IPv4 （实验性）</string>

@@ -269,7 +269,7 @@
     <string name="dc_dns_leaks_heading" translatable="true">DNS маицәаажьра ҳәа иахәаԥшлам</string>
     <string name="dc_dns_leaks_desc" translatable="true">УПС! Иашьаҭырҵәара адырра аиура иахәҭоуп.\nАжәабжьҳәаҩ:\nЕрыцәҟәоуп, DNS Control иаанахәоит 53-тәи амҩаҿы зегьы реисмозгьы, насгьы ақәырҧшра абеиаҩцәа ирынаҵы шьҭыхаауеит.</string>
     <string name="dc_check_update_heading" translatable="true">Аблок хьыжьра амшәала</string>
-    <string name="dc_check_update_desc" translatable="true">Амсыр адкылара аура <i>хԥыжәа амш</i> рышьҭалатәуп</string>
+    <string name="dc_check_update_desc" translatable="true">Амсыр адкылара аура <i>%1$d амш</i> рышьҭалатәуп</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Аeguы́лара ааҳәа</string>
     <string name="about_settings_app_info" translatable="true">Апликациазын адылхъва</string>
     <string name="about_mail_to_string" translatable="true">mailto:</string>

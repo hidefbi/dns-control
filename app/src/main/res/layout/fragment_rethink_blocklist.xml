@@ -247,36 +247,34 @@
             android:layout_marginTop="60dp"
             android:background="@drawable/accent_btn_bg">
 
-            <ProgressBar
-                android:id="@+id/lb_download_progress"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:indeterminate="true"
-                android:indeterminateTint="?attr/chipTextColor"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:visibility="gone" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/lb_download_btn"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/lb_download_progress"
                 android:padding="10dp"
                 android:text="@string/rt_download"
                 android:textColor="?attr/chipTextColor" />
         </RelativeLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/lb_download_progress"
+            android:layout_width="200dp"
+            android:layout_height="6dp"
+            android:layout_below="@id/lb_download_rl"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:trackCornerRadius="3dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/lb_cancel_download_btn"
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/lb_download_rl"
+            android:layout_below="@id/lb_download_progress"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:minHeight="40dp"

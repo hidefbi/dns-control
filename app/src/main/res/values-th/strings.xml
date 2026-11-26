@@ -554,7 +554,7 @@
     <string name="battery_optimization_dialog_heading" translatable="true">ปิดการใช้งาน %1$s</string>
     <string name="dc_local_block_desc_1" translatable="true">เลือกจากรายการบล็อกมากกว่า 195 รายการ คลิกที่นี่เพื่อดาวน์โหลดหรือกำหนดค่ารายการบล็อก</string>
     <string name="dc_dns_leaks_heading" translatable="true">ป้องกันการรั่วไหลของ DNS</string>
-    <string name="dc_check_update_desc" translatable="true">ตรวจสอบการอัปเดตรายการบล็อกทุก ๆ <i>สาม</i> วัน</string>
+    <string name="dc_check_update_desc" translatable="true">ตรวจสอบการอัปเดตรายการบล็อกทุก ๆ <i>%1$d</i> วัน</string>
     <string name="dc_proxy_dns_heading" translatable="true">ไม่เคยใช้พร็อกซี DNS</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">ส่งอีเมล์</string>
     <string name="about_settings_app_info" translatable="true">ข้อมูลแอป</string>

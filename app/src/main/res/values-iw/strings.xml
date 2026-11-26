@@ -335,7 +335,7 @@
     <string name="dc_block_heading" translatable="true">כללים</string>
     <string name="dc_entries" translatable="true">%1$s ערכים »</string>
     <string name="dc_local_block_heading" translatable="true">רשימות חסימה במכשיר</string>
-    <string name="dc_check_update_desc" translatable="true">בדוק אם יש עדכונים לרשימת החסימה אחת ל-<i>שלושה</i> ימים</string>
+    <string name="dc_check_update_desc" translatable="true">בדוק אם יש עדכונים לרשימת החסימה אחת ל-<i>%1$d</i> ימים</string>
     <string name="dns_card_latency_inactive" translatable="true">הפעל מצב DNS.</string>
     <string name="rules_card_domain_count" translatable="true">%1$s כלל(י) דומיין</string>
     <string name="settings_custom_downloader_desc" translatable="true">אם מושבת, נעשה שימוש ב-<i>מנהל ההורדות</i> המובנה של אנדרואיד</string>

@@ -311,7 +311,7 @@
     <string name="dc_dns_leaks_heading">DNS ফাঁস প্রতিরোধ করুন</string>
     <string name="dc_dns_leaks_desc">সক্রিয় করা হলে, DNS Control পোর্ট 53-এ সমস্ত প্যাকেট ক্যাপচার করে এবং এটি একটি ব্যবহারকারী-সেট DNS এন্ডপয়েন্টে ফরোয়ার্ড করে</string>
     <string name="dc_check_update_heading">ব্লকলিস্ট আপডেটে প্রম্পট করুন</string>
-    <string name="dc_check_update_desc">প্রতি <i>তিন</i> দিনে একবার ব্লকলিস্ট আপডেট চেক করুন</string>
+    <string name="dc_check_update_desc">প্রতি <i>%1$d</i> দিনে একবার ব্লকলিস্ট আপডেট চেক করুন</string>
     <string name="hsf_vpn_dialog_message">ডিভাইসের DNS অনুরোধগুলি এনক্রিপ্ট করতে, একটি নেটওয়ার্ক মনিটর প্রয়োগ করতে এবং ফায়ারওয়াল নিয়মগুলি প্রয়োগ করতে একটি স্থানীয় VPN সেট আপ করার জন্য DNS Control-এর অনুমতি প্রয়োজন৷DNS Control কোনো তথ্য সংগ্রহ করে না বা কোনোভাবেই আপনার উপর গুপ্তচরবৃত্তি করে না।</string>
     <string name="hsf_downtime">(%1$s থেকে নিষ্ক্রিয়)</string>
     <string name="hsf_vpn_prepare_failure">হয় VPN অনুমতি অনুপস্থিত, অথবা অন্য একটি অ্যাপ সবসময়-চালু VPN মোডে আছে।</string>

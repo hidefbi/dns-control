@@ -287,7 +287,7 @@
     <string name="dc_dns_leaks_heading">Previeni aggiramenti del DNS</string>
     <string name="dc_dns_leaks_desc">Se abilitata, DNS Control cattura i pacchetti sulla porta 53 e li invia invece all\'endpoint DNS scelto dall\'utente</string>
     <string name="dc_check_update_heading">Promemoria aggiornamenti liste dei filtri</string>
-    <string name="dc_check_update_desc">Controlla se le liste dei filtri sono aggiornate ogni <i>tre</i> giorni</string>
+    <string name="dc_check_update_desc">Controlla se le liste dei filtri sono aggiornate ogni <i>%1$d</i> giorni</string>
     <string name="about_bug_report_dialog_positive_btn">Invia email</string>
     <string name="about_settings_app_info">Info applicazione</string>
     <string name="about_mail_to_string">mailto:</string>

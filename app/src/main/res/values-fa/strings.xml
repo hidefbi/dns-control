@@ -333,7 +333,7 @@
     <string name="dc_custom_dns_radio" translatable="true">DNS سفارشی</string>
     <string name="settings_notification_dialog_title" translatable="true">انتخاب اقدام اعلان</string>
     <string name="hs_biometeric_desc" translatable="true">برای باز کردن قفل DNS Control از احراز هویت بیومتریک استفاده کنید</string>
-    <string name="dc_check_update_desc" translatable="true">هر <i>سه</i> روز یکبار، به‌روزرسانی‌های فهرست مسدودی‌ها را بررسی کنید</string>
+    <string name="dc_check_update_desc" translatable="true">هر <i>%1$d</i> روز یکبار، به‌روزرسانی‌های فهرست مسدودی‌ها را بررسی کنید</string>
     <string name="rules_card_domain_count" translatable="true">قانون(های) دامنه %1$s</string>
     <string name="dc_dns_leaks_desc" translatable="true">وقتی فعال باشد، DNS Control تمام بسته‌های روی پورت ۵۳ را ضبط کرده و به یک نقطه پایانی دی ان اس تنظیم شده توسط کاربر ارسال می‌کند.</string>
     <string name="dc_dns_leaks_heading" translatable="true">جلوگیری از نشت دی ان اس</string>

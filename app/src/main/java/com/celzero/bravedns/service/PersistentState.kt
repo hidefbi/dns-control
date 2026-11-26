@@ -234,9 +234,13 @@ class PersistentState(context: Context) : SimpleKrate(context), KoinComponent {
         longPref("local_blocklist_update_ts").withDefault<Long>(INIT_TIME_MS)
 
 
-    // auto-check for blocklist update periodically (once in a day)
+    // auto-check for blocklist update periodically (period set in WorkScheduler)
     var periodicallyCheckBlocklistUpdate by
         booleanPref("check_blocklist_update").withDefault<Boolean>(false)
+
+    // days between blocklist update checks, as the job was last scheduled (0 = never)
+    var blocklistCheckIntervalDays by
+        intPref("blocklist_check_interval_days").withDefault<Int>(0)
 
     // user-preferred Internet Protocol type, default IPv4
     var internetProtocolType by

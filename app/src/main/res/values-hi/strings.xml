@@ -184,7 +184,7 @@
     <string name="dc_rethink_dns_radio" translatable="true">रीथिंक डीएनएस</string>
     <string name="dc_custom_block_heading" translatable="true">डोमेन नियम</string>
     <string name="dc_dns_leaks_heading" translatable="true">डीएनएस लीक को रोकें</string>
-    <string name="dc_check_update_desc" translatable="true">प्रत्येक <i>तीन</i> दिन में एक बार ब्लॉकलिस्ट अपडेट की जांच करें</string>
+    <string name="dc_check_update_desc" translatable="true">प्रत्येक <i>%1$d</i> दिन में एक बार ब्लॉकलिस्ट अपडेट की जांच करें</string>
     <string name="vpn_profile_error" translatable="true">वीपीएन प्रोफ़ाइल लॉन्च नहीं की जा सकी।</string>
     <string name="cd_custom_dns_proxy_name" translatable="true">प्रॉक्सी %1$s</string>
     <string name="cd_dns_proxy_mode_internal" translatable="true">आंतरिक</string>

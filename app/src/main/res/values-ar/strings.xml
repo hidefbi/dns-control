@@ -141,7 +141,7 @@
     <string name="settings_socks5_dialog_hint_port">المنفذ</string>
     <string name="settings_theme_dialog_themes_1">حسب النظام</string>
     <string name="settings_theme_dialog_themes_3">مظهر داكن</string>
-    <string name="dc_check_update_desc">تحقق من وجود تحديثات لقائمة الحظر مرة واحدة كل <i> ثلاثة </i> أيام</string>
+    <string name="dc_check_update_desc">تحقق من وجود تحديثات لقائمة الحظر مرة واحدة كل <i>%1$d</i> أيام</string>
     <string name="app_info_error">يتعذر تشغيل معلومات التطبيق.</string>
     <string name="cd_dns_proxy_mode_internal">داخلي</string>
     <string name="dns_crypt_relay_error_toast">لم يتم تحديد محلل</string>

@@ -833,9 +833,9 @@ class RethinkBlocklistFragment :
     }
 
     private fun updateDownloadProgress(data: androidx.work.Data) {
-        val text = com.celzero.bravedns.customdownloader.LocalBlocklistProgress.format(requireContext(), data) ?: return
         com.celzero.bravedns.customdownloader.LocalBlocklistProgress.applyTo(b.lbDownloadProgress, data)
-        b.lbDownloadBtn.text = text
+        val percent = data.getInt(com.celzero.bravedns.customdownloader.LocalBlocklistProgress.KEY_PERCENT, -1)
+        b.lbDownloadBtn.text = if (percent >= 0) "$percent%" else getString(R.string.rt_download_start)
     }
 
     private fun onDownloadStart() {

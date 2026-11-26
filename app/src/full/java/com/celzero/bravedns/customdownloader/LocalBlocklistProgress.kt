@@ -1,5 +1,6 @@
 /*
  * Copyright 2026 RethinkDNS and its authors
+ * Modifications Copyright 2026 hidefbi
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,18 +17,18 @@
 package com.celzero.bravedns.customdownloader
 
 import android.content.Context
-import android.widget.ProgressBar
 import androidx.work.Data
 import androidx.work.workDataOf
 import com.celzero.bravedns.R
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import java.util.Locale
 
 /**
  * Progress reported by [LocalBlocklistCoordinator] through WorkManager's progress data.
  * Read by the UI from `WorkInfo.progress`.
  *
- * [KEY_PERCENT] is 0..100 for the current file, or -1 when the server did not send a
- * Content-Length, in which case the bar is shown as indeterminate.
+ * [KEY_PERCENT] is 0..100 for the whole set (finished files plus the current one), or -1
+ * when the server did not send a Content-Length, in which case the bar is indeterminate.
  */
 object LocalBlocklistProgress {
     const val KEY_PERCENT = "lb_progress_percent"
@@ -47,14 +48,13 @@ object LocalBlocklistProgress {
     }
 
     /** Applies the percent to [bar]; indeterminate when the total size is unknown. */
-    fun applyTo(bar: ProgressBar, data: Data) {
+    fun applyTo(bar: LinearProgressIndicator, data: Data) {
         val percent = data.getInt(KEY_PERCENT, -1)
         if (percent < 0) {
             bar.isIndeterminate = true
         } else {
             bar.isIndeterminate = false
-            bar.max = 100
-            bar.progress = percent
+            bar.setProgressCompat(percent, true)
         }
     }
 

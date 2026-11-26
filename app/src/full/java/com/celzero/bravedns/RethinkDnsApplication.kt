@@ -24,6 +24,7 @@ import android.content.pm.ApplicationInfo
 import android.os.StrictMode
 import com.celzero.bravedns.scheduler.ScheduleManager
 import com.celzero.bravedns.scheduler.WorkScheduler
+import com.celzero.bravedns.service.PersistentState
 import com.celzero.bravedns.util.FirebaseErrorReporting
 import com.celzero.bravedns.util.GlobalExceptionHandler
 import com.celzero.bravedns.util.GoReportingHandler
@@ -78,6 +79,7 @@ class RethinkDnsApplication : Application() {
         // database refresh to keep app data up to date
         get<ScheduleManager>().scheduleDatabaseRefreshJob()
         get<WorkScheduler>().scheduleDataUsageJob()
+        get<WorkScheduler>().rescheduleBlocklistUpdateCheckIfNeeded(get<PersistentState>())
     }
 
     private fun turnOnStrictMode() {

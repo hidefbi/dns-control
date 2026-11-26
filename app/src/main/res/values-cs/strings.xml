@@ -341,7 +341,7 @@
     <string name="dc_local_block_heading" translatable="true">Blokovací seznamy v zařízení</string>
     <string name="dc_local_block_desc_1" translatable="true">Vyberte si z 195+ blokovacích seznamů. Klepnutím stáhněte nebo upravte seznamy.</string>
     <string name="dc_custom_block_heading" translatable="true">Doménová pravidla</string>
-    <string name="dc_check_update_desc" translatable="true">Kontrola aktualizace blokovacích seznamů jednou za <i>tři</i> dny</string>
+    <string name="dc_check_update_desc" translatable="true">Kontrola aktualizace blokovacích seznamů jednou za <i>%1$d</i> dnů</string>
     <string name="dc_proxy_dns_heading" translatable="true">Nikdy neproxyovat DNS</string>
     <string name="dc_proxy_dns_desc" translatable="true">Nepoužívat proxy pro DNS při Always-on WireGuard, SOCKS5, HTTP proxyně.</string>
     <string name="dc_dns_leaks_heading" translatable="true">Zamezit únikům DNS</string>

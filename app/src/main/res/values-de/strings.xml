@@ -427,7 +427,7 @@
     <string name="ct_ip_details" translatable="false">%1$s (%2$s)</string>
     <string name="dc_dns_leaks_heading">Verhindere DNS-Leaks</string>
     <string name="dc_dns_leaks_desc">Wenn aktiviert, fängt DNS Control alle Pakete an Port 53 ab und leitet sie an den festgelegten DNS-Endpunkt weiter</string>
-    <string name="dc_check_update_desc">Alle <i>drei</i> Tage auf Aktualisierungen der Blocklisten prüfen</string>
+    <string name="dc_check_update_desc">Alle <i>%1$d</i> Tage auf Aktualisierungen der Blocklisten prüfen</string>
     <string name="about_settings_app_info">App-Info</string>
     <string name="about_mail_to_string">mailto:</string>
     <string name="about_mail_subject">[DNS Control]:</string>

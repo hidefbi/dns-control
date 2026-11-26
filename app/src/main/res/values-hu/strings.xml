@@ -350,7 +350,7 @@
     <string name="dc_dns_leaks_heading" translatable="true">DNS-szivárgások megakadályozása</string>
     <string name="dc_dns_leaks_desc" translatable="true">Amikor ez a funkció engedélyezve van, a DNS Control minden, 53-as porton érkező csomagot rögzít, és azokat az Ön által beállított DNS-végpontra továbbítja</string>
     <string name="dc_check_update_heading" translatable="true">Prompt a blokklista frissítésekre</string>
-    <string name="dc_check_update_desc" translatable="true">Ellenőrizze a blokklisták frissítését <i>három</i> naponként egyszer</string>
+    <string name="dc_check_update_desc" translatable="true">Ellenőrizze a blokklisták frissítését <i>%1$d</i> naponként egyszer</string>
     <string name="dc_proxy_dns_heading" translatable="true">Soha ne használd proxyként a DNS-t</string>
     <string name="dc_proxy_dns_desc" translatable="true">Ne továbbítsa a DNS-forgalmat proxy-n keresztül, ha folyamatosan aktív WireGuard, SOCKS5 vagy HTTP proxy-t használ.</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Email küldése</string>

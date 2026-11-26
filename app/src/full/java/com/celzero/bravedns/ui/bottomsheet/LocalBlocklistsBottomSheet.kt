@@ -176,20 +176,20 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
     }
 
     private fun showCheckDownloadProgressUi() {
-        b.lbbsCheckDownloadProgress.visibility = View.VISIBLE
+        b.lbbsProgress.isIndeterminate = true
+        b.lbbsProgress.visibility = View.VISIBLE
         b.lbbsCheckDownloadImg.visibility = View.GONE
     }
 
     private fun updateDownloadProgress(data: androidx.work.Data) {
         val text = com.celzero.bravedns.customdownloader.LocalBlocklistProgress.format(requireContext(), data) ?: return
-        com.celzero.bravedns.customdownloader.LocalBlocklistProgress.applyTo(b.lbbsDownloadProgress, data)
+        com.celzero.bravedns.customdownloader.LocalBlocklistProgress.applyTo(b.lbbsProgress, data)
         b.lbbsDownloadProgressText.text = text
         b.lbbsDownloadProgressText.visibility = View.VISIBLE
     }
 
     private fun onDownloadProgress() {
-        b.lbbsDownloadProgress.visibility = View.VISIBLE
-        b.lbbsRedownloadProgress.visibility = View.VISIBLE
+        b.lbbsProgress.visibility = View.VISIBLE
         b.lbbsDownloadImg.visibility = View.GONE
         b.lbbsRedownloadImg.visibility = View.GONE
     }
@@ -197,8 +197,7 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
     private fun onDownloadSuccess() {
         b.lbbsDownload.isEnabled = true
         b.lbbsRedownload.isEnabled = true
-        b.lbbsDownloadProgress.visibility = View.GONE
-        b.lbbsRedownloadProgress.visibility = View.GONE
+        b.lbbsProgress.visibility = View.GONE
         b.lbbsDownloadImg.visibility = View.VISIBLE
         b.lbbsRedownloadImg.visibility = View.VISIBLE
         Utilities.showToastUiCentered(
@@ -211,8 +210,7 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
     private fun resetDownloadButtons() {
         b.lbbsDownload.isEnabled = true
         b.lbbsRedownload.isEnabled = true
-        b.lbbsDownloadProgress.visibility = View.GONE
-        b.lbbsRedownloadProgress.visibility = View.GONE
+        b.lbbsProgress.visibility = View.GONE
         b.lbbsDownloadImg.visibility = View.VISIBLE
         b.lbbsRedownloadImg.visibility = View.VISIBLE
     }
@@ -278,9 +276,7 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
         b.lbbsRedownload.visibility = View.GONE
 
         b.lbbsCheckDownloadImg.visibility = View.VISIBLE
-        b.lbbsCheckDownloadProgress.visibility = View.GONE
-        b.lbbsDownloadProgress.visibility = View.GONE
-        b.lbbsRedownloadProgress.visibility = View.GONE
+        b.lbbsProgress.visibility = View.GONE
     }
 
     private fun showUpdateUi() {
@@ -289,9 +285,7 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
         b.lbbsRedownload.visibility = View.GONE
 
         b.lbbsDownloadImg.visibility = View.VISIBLE
-        b.lbbsCheckDownloadProgress.visibility = View.GONE
-        b.lbbsDownloadProgress.visibility = View.GONE
-        b.lbbsRedownloadProgress.visibility = View.GONE
+        b.lbbsProgress.visibility = View.GONE
     }
 
     private fun showRedownloadUi() {
@@ -300,9 +294,7 @@ class LocalBlocklistsBottomSheet : BottomSheetDialogFragment() {
         b.lbbsRedownload.visibility = View.VISIBLE
 
         b.lbbsRedownloadImg.visibility = View.VISIBLE
-        b.lbbsCheckDownloadProgress.visibility = View.GONE
-        b.lbbsDownloadProgress.visibility = View.GONE
-        b.lbbsRedownloadProgress.visibility = View.GONE
+        b.lbbsProgress.visibility = View.GONE
     }
 
     private fun showDownloadDialog(isRedownload: Boolean) {

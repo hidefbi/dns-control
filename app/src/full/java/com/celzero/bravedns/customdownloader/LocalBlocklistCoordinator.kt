@@ -372,7 +372,13 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
             var progressJumpsMs = PROGRESS_UPDATE_INTERVAL_MS
             var lastPublishMs = -PROGRESS_PUBLISH_INTERVAL_MS
             val buf = ByteArray(BYTE_BUFFER_SIZE)
-            publishProgress(0, 0L, knownTotal, fileIndex, fileCount)
+            publishProgress(
+                overallPercent(fileIndex, fileCount, if (knownTotal > 0) 0 else -1),
+                0L,
+                knownTotal,
+                fileIndex,
+                fileCount
+            )
             while (input.read(buf).also { bytesRead = it } != -1) {
                 doneBytes += bytesRead
                 // counted from the bytes actually read, Content-Length may be missing or wrong
@@ -383,20 +389,21 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
                     } else {
                         -1
                     }
+                val overall = overallPercent(fileIndex, fileCount, percent)
                 val elapsedMs = SystemClock.elapsedRealtime() - startMs
                 if (elapsedMs >= progressJumpsMs) {
-                    updateProgress(context, if (percent < 0) 0 else percent)
+                    updateProgress(context, if (overall < 0) 0 else overall)
                     progressJumpsMs += PROGRESS_UPDATE_INTERVAL_MS
                 }
                 if (elapsedMs - lastPublishMs >= PROGRESS_PUBLISH_INTERVAL_MS) {
                     lastPublishMs = elapsedMs
-                    publishProgress(percent, doneBytes, knownTotal, fileIndex, fileCount)
+                    publishProgress(overall, doneBytes, knownTotal, fileIndex, fileCount)
                 }
                 output.write(buf, 0, bytesRead)
             }
             output.flush()
             publishProgress(
-                if (knownTotal > 0) NOTIFICATION_PROGRESS_MAX else -1,
+                overallPercent(fileIndex, fileCount, if (knownTotal > 0) NOTIFICATION_PROGRESS_MAX else -1),
                 doneBytes,
                 knownTotal,
                 fileIndex,
@@ -415,6 +422,13 @@ class LocalBlocklistCoordinator(val context: Context, workerParams: WorkerParame
             if (!complete) outputFile.delete()
         }
         return false
+    }
+
+    // finished files plus the share of the current one, out of 100 for the whole set
+    private fun overallPercent(index: Int, count: Int, filePercent: Int): Int {
+        if (filePercent < 0 || count <= 0) return -1
+        val done = (index - 1).coerceAtLeast(0) * NOTIFICATION_PROGRESS_MAX + filePercent
+        return (done / count).coerceIn(0, NOTIFICATION_PROGRESS_MAX)
     }
 
     private suspend fun publishProgress(

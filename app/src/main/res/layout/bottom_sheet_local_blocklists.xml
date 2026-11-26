@@ -127,15 +127,6 @@
                 android:layout_weight="0.1"
                 android:src="@drawable/ic_update_small" />
 
-            <ProgressBar
-                android:id="@+id/lbbs_check_download_progress"
-                style="@android:style/Widget.DeviceDefault.ProgressBar.Small"
-                android:layout_width="0dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center"
-                android:layout_weight="0.1"
-                android:visibility="gone" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -164,16 +155,17 @@
                 android:layout_weight="0.1"
                 android:src="@drawable/ic_update_small" />
 
-            <ProgressBar
-                android:id="@+id/lbbs_download_progress"
-                style="@android:style/Widget.DeviceDefault.ProgressBar.Small"
-                android:layout_width="0dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center"
-                android:layout_weight="0.1"
-                android:visibility="gone" />
-
         </LinearLayout>
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/lbbs_progress"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:trackCornerRadius="3dp" />
 
         <TextView
             android:id="@+id/lbbs_download_progress_text"
@@ -209,15 +201,6 @@
                 android:layout_gravity="center"
                 android:layout_weight="0.1"
                 android:src="@drawable/ic_update_small" />
-
-            <ProgressBar
-                android:id="@+id/lbbs_redownload_progress"
-                style="@android:style/Widget.DeviceDefault.ProgressBar.Small"
-                android:layout_width="0dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center"
-                android:layout_weight="0.1"
-                android:visibility="gone" />
 
         </LinearLayout>
 

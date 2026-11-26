@@ -453,7 +453,7 @@
     <string name="lbl_battery_optimization" translatable="true">பேட்டரி தேர்வுமுறை</string>
     <string name="restrict_dialog_message" translatable="true"><i>%1$s </i> இணைப்பு இழப்பை ஏற்படுத்தக்கூடும். பின்னணியில் இருக்கும்போது தரவு மற்றும் பிற வளங்களைப் பயன்படுத்த ரீடிங்க் அனுமதிக்க அமைப்பை மாற்றவும்.</string>
     <string name="dc_check_update_heading" translatable="true">பிளாக்லிச்ட் புதுப்பிப்புகளில் வரியில்</string>
-    <string name="dc_check_update_desc" translatable="true">ஒவ்வொரு <i> மூன்று </i> நாட்களுக்கு ஒரு முறை பிளாக்லிச்ட் புதுப்பிப்புகளைச் சரிபார்க்கவும்</string>
+    <string name="dc_check_update_desc" translatable="true">ஒவ்வொரு <i>%1$d</i> நாட்களுக்கு ஒரு முறை பிளாக்லிச்ட் புதுப்பிப்புகளைச் சரிபார்க்கவும்</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">மின்னஞ்சல் அனுப்பு</string>
     <string name="about_settings_app_info" translatable="true">பயன்பாட்டு செய்தி</string>
     <string name="about_mail_bugreport_share_title" translatable="true">மின்னஞ்சல் வழங்குநரைத் தேர்ந்தெடுக்கவும்</string>

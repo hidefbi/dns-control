@@ -355,7 +355,7 @@
     <string name="dc_local_block_heading" translatable="true">Listy blokowe w urządzeniach</string>
     <string name="dc_local_block_desc_1" translatable="true">Wybieraj spośród ponad 195 list blokujących. Kliknij tutaj, aby pobrać lub skonfigurować listy blokujące.</string>
     <string name="dc_custom_block_heading" translatable="true">Reguły domen</string>
-    <string name="dc_check_update_desc" translatable="true">Sprawdzanie aktualizacji list blokujących raz na <i>trzy</i> dni</string>
+    <string name="dc_check_update_desc" translatable="true">Sprawdzanie aktualizacji list blokujących raz na <i>%1$d</i> dni</string>
     <string name="about_bug_report_dialog_positive_btn" translatable="true">Wyślij e-mail</string>
     <string name="about_version_install_source" translatable="false">v%1$s (%2$s)</string>
     <string name="app_info_error" translatable="true">Nie można uruchomić informacji o aplikacji.</string>

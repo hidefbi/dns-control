@@ -346,7 +346,7 @@
     <string name="ctbs_app_other_apps">%1$s og %2$s program(mer) til</string>
     <string name="firewall_rule_block_app_desc"><![CDATA[En brukervalgt brannmursregel blokkerte dette <i>programmet</i>.<br/><br/> Endre dette fra <i>Alle programmer</i>-fanen.]]></string>
     <string name="orbot_bs_status_3">Videresender %1$s til Orbot. HTTP-mellomtjener også satt.</string>
-    <string name="dc_check_update_desc">Se etter endringer i svartelister hver <i>tredje</i> dag</string>
+    <string name="dc_check_update_desc">Se etter endringer i svartelister hver <i>%1$d.</i> dag</string>
     <string name="cd_dns_crypt_resolver_heading">Utleder</string>
     <string name="dc_block_heading">Regler</string>
     <string name="firewall_rule_block_metered">Kvotebasert (mobilnett)</string>
